@@ -1,0 +1,43 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using pg_class.pg_classes;
+
+namespace pg_class
+{
+    /// <summary>
+    /// Аргумент событий изменения сущности 
+    /// </summary>
+    public class GlobalPropLinkClassPropChangeEventArgs : EventArgs
+    {
+        #region КОНСТРУКТОРЫ КЛАССА
+        /// <summary>
+        /// Основной конструктор класса аргумента события
+        /// </summary>
+        public GlobalPropLinkClassPropChangeEventArgs(global_prop_link_class_prop newGlobalPropLinkClassProp, eAction Action) : base()
+        {
+            action = Action;
+            if (newGlobalPropLinkClassProp != null)
+            {
+                global_prop_link_class_prop = newGlobalPropLinkClassProp;
+            }
+        }
+        #endregion
+
+        #region СВОЙСТВА КЛАССА
+        eAction action;
+        global_prop_link_class_prop global_prop_link_class_prop;
+
+        /// <summary>
+        /// Перечисление определяющее тип действия выполняемого методом доступа к БД
+        /// </summary>
+        public eAction Action { get => action;}
+        /// <summary>
+        /// Сущность подвергшаяся модификации
+        /// </summary>
+        public global_prop_link_class_prop GlobalPropLinkClassProp { get => global_prop_link_class_prop; }
+        #endregion
+    }
+}

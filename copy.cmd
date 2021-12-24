@@ -1,0 +1,2 @@
+xcopy "D:\Project\Учет 2.0\PgClass\C# [ClassPostrgeUhcet]\Source code\ClassPostrgeUhcet\pg_class\bin\Debug" "D:\Project\Учет 2.0\Конструктор концепций\Source code\PgClass" /Y
+xcopy "D:\Project\Учет 2.0\PgClass\C# [ClassPostrgeUhcet]\Source code\ClassPostrgeUhcet\pg_class\bin\Debug" "D:\Project\Учет 2.0\PgClass\C# [ClassPostrgeUhcet]\Binary" /Y
