@@ -1,0 +1,134 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace pg_class.pg_classes
+{
+    public partial class conception
+    {
+        #region МЕТОДЫ РАБОТЫ С ПРАВИЛАМИ ПЕРЕСЧЕТА КОНЦЕПЦИИ
+        #region ДОБАВИТЬ
+        /// <summary>
+        /// Метод добавляет тип данных в список типов данных концепции
+        /// Con_prop_data_type_add
+        /// </summary>
+        public void Con_prop_data_type_add(con_prop_data_type Con_prop_data_type)
+        {
+            Manager.Con_prop_data_type_add(Con_prop_data_type);
+        }
+        /// <summary>
+        /// Проверка прав доступа к методу
+        /// </summary>
+        public Boolean Con_prop_data_type_add(out eAccess Access)
+        {
+            return Manager.Con_prop_data_type_add(out Access);
+        }
+        //*************************************************************************************
+
+        /// <summary>
+        /// Метод добавляет тип данных в список типов данных концепции
+        /// Con_prop_data_type_add
+        /// </summary>
+        public void Con_prop_data_type_add(prop_data_type Con_prop_data_type, String Alias = "", Int32 Sort = 0)
+        {
+            Manager.Con_prop_data_type_add(this, Con_prop_data_type, Alias, Sort);
+        }
+        #endregion
+
+        #region УДАЛИТЬ
+        /// <summary>
+        /// Метод удаляет тип данных из списка типов данных концепции
+        /// Con_prop_data_type_del
+        /// </summary>
+        public void Con_prop_data_type_del(con_prop_data_type Con_prop_data_type)
+        {
+            Manager.Con_prop_data_type_del(Con_prop_data_type);
+        }
+        /// <summary>
+        /// Проверка прав доступа к методу
+        /// </summary>
+        public Boolean Con_prop_data_type_del(out eAccess Access)
+        {
+            return Manager.Con_prop_data_type_del(out Access);
+        }
+        //*************************************************************************************
+        #endregion
+
+        #region ВЫБРАТЬ
+        /// <summary>
+        /// Метод возвращает полный список типов данных доступных для концепции
+        /// Con_prop_data_type_full_by_id_con
+        /// </summary>
+        public List<con_prop_data_type> Con_prop_data_type_full_list()
+        {
+            return Manager.Con_prop_data_type_full_by_id_con(this);
+        }
+        /// <summary>
+        /// Проверка прав доступа к методу
+        /// </summary>
+        public Boolean Con_prop_data_type_full_list(out eAccess Access)
+        {
+            return Manager.Con_prop_data_type_full_by_id_con(out Access);
+        }
+        //*************************************************************************************
+
+        /// <summary>
+        /// Метод возвращает назначение типа данных концепции по идентификатору
+        /// Con_prop_data_type_by_id
+        /// </summary>
+        public con_prop_data_type Con_prop_data_type_by_id(Int32 Id_con_prop_data_type)
+        {
+            return Manager.Con_prop_data_type_by_id(Id, Id_con_prop_data_type);
+        }
+        /// <summary>
+        /// Проверка прав доступа к методу
+        /// </summary>
+        public Boolean Con_prop_data_type_by_id(out eAccess Access)
+        {
+            return Manager.Con_prop_data_type_by_id(out Access);
+        }
+        //*************************************************************************************
+
+        /// <summary>
+        /// Лист типов данных свойств класса по типу свойства
+        /// Con_prop_data_type_by_id_prop_type
+        /// </summary>
+        public List<con_prop_data_type> Prop_data_type(prop_type Prop_type)
+        {
+            return Manager.Con_prop_data_type_by_id_prop_type(id, Prop_type);
+        }
+        /// <summary>
+        /// Проверка прав доступа к методу
+        /// </summary>
+        public Boolean Prop_data_type(out eAccess Access)
+        {
+            return Manager.Con_prop_data_type_by_id_prop_type(out Access);
+        }
+        //*************************************************************************************
+
+        /// <summary>
+        /// Лист типов данных свойств класса по типу свойства
+        /// Con_prop_data_type_by_id_prop_type
+        /// </summary>
+        public List<con_prop_data_type> Prop_data_type(Int32 id_prop_type)
+        {
+            return Manager.Con_prop_data_type_by_id_prop_type(id, id_prop_type);
+        }
+        //*************************************************************************************
+
+
+        /// <summary>
+        /// Лист типов данных свойств класса по типу свойства
+        /// Con_prop_data_type_by_id_prop_type
+        /// </summary>
+        public List<con_prop_data_type> Prop_data_type(ePropType PropType)
+        {
+            return Manager.Con_prop_data_type_by_id_prop_type(id, (Int32)PropType);
+        }
+        //*****************************************************************************
+        #endregion
+        #endregion
+    }
+}

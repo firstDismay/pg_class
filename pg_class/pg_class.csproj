@@ -1,0 +1,613 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{650F025C-E5DA-4E6F-81DC-88F938B086CB}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>pg_class</RootNamespace>
+    <AssemblyName>PgClass</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <DocumentationFile>bin\Debug\PgClass.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\PgClass.xml</DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>АВАТАР_пилот.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>pg_class_key.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.1.1.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Npgsql, Version=4.1.10.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Npgsql.4.1.10\lib\net461\Npgsql.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.6.0\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Encodings.Web, Version=4.0.4.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.4.6.0\lib\netstandard2.0\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=4.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Json.4.6.0\lib\net461\System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="manager\eventargs\Base\Document\DocCategoryChangeEventArgs.cs" />
+    <Compile Include="manager\eventargs\Base\Document\DocLinkChangeEventArgs.cs" />
+    <Compile Include="manager\eventargs\Base\Document\DocFileChangeEventArgs.cs" />
+    <Compile Include="manager\eventargs\Base\Document\DocumentChangeEventArgs.cs" />
+    <Compile Include="manager\eventargs\Base\GlobalProp\GlobalPropAreaValChangeEventArgs.cs" />
+    <Compile Include="manager\eventargs\Base\GlobalProp\GlobalPropLinkPosTempPropChangeEventArgs.cs" />
+    <Compile Include="manager\eventargs\Base\GlobalProp\GlobalPropLinkClassPropChangeEventArgs.cs" />
+    <Compile Include="manager\eventargs\Base\GlobalProp\GlobalPropChangeEventArgs.cs" />
+    <Compile Include="manager\eventargs\Base\ClassProp\ClassPropLinkValChangeEventArgs.cs" />
+    <Compile Include="manager\eventargs\Base\Object_nested_rule\Rulel1_Class_On_Pos_tempListChangeEventArgs.cs" />
+    <Compile Include="manager\eventargs\Base\PoolConnectEventArgs.cs" />
+    <Compile Include="manager\eventargs\Base\ObjectProp\ObjectPropLinkValChangeEventArgs.cs" />
+    <Compile Include="manager\eventargs\Base\ObjectProp\ObjectPropEnumValChangeEventArgs.cs" />
+    <Compile Include="manager\eventargs\Base\ClassProp\ClassPropEnumValChangeEventArgs.cs" />
+    <Compile Include="manager\eventargs\Base\PositionProp\PosPropLinkValChangeEventArgs.cs" />
+    <Compile Include="manager\eventargs\Base\PositionProp\PosPropObjectValChangeEventArgs.cs" />
+    <Compile Include="manager\eventargs\Base\PositionProp\PosPropEnumValChangeEventArgs.cs" />
+    <Compile Include="manager\eventargs\Base\PositionProp\PosPropUserValChangeEventArgs.cs" />
+    <Compile Include="manager\eventargs\Base\PosTempProp\PosTempPropEnumValChangeEventArgs.cs" />
+    <Compile Include="manager\eventargs\Base\PosTempProp\PosTempPropLinkValChangeEventArgs.cs" />
+    <Compile Include="manager\eventargs\Base\PosTempProp\PosTempPropObjectValChangeEventArgs.cs" />
+    <Compile Include="manager\eventargs\Base\PosTempProp\PosTempPropUserValChangeEventArgs.cs" />
+    <Compile Include="manager\eventargs\Base\ProcExport\ExportCompletedEventArgs.cs" />
+    <Compile Include="manager\eventargs\Base\PropEnumValChangeEventArgs.cs" />
+    <Compile Include="manager\eventargs\Base\PropEnumChangeEventArgs.cs" />
+    <Compile Include="manager\eventargs\Base\ObjectProp\ObjectPropUserValChangeEventArgs.cs" />
+    <Compile Include="manager\eventargs\Base\ClassProp\ClassPropUserValChangeEventArgs.cs" />
+    <Compile Include="manager\eventargs\Base\ObjectProp\ObjectPropObjectValChangeEventArgs.cs" />
+    <Compile Include="manager\eventargs\Base\ClassProp\ClassPropObjectValChangeEventArgs.cs" />
+    <Compile Include="manager\eventargs\Base\ObjectProp\ObjectPropChangeEventArgs.cs" />
+    <Compile Include="manager\eventargs\Base\Conception\Con_Prop_Data_TypeChangeEventArgs.cs" />
+    <Compile Include="manager\eventargs\Base\JournalEventArgs.cs" />
+    <Compile Include="manager\eventargs\Base\ClassProp\ClassPropChangeEventArgs.cs" />
+    <Compile Include="manager\eventargs\Base\Class\ClassUnitConversionRuleChangeEventArgs.cs" />
+    <Compile Include="manager\eventargs\Base\Conception\Con_Prop_Data_TypeListChangeEventArgs.cs" />
+    <Compile Include="manager\eventargs\Base\Role\RoleUserChangeEventArgs.cs" />
+    <Compile Include="manager\Global\gl_definitions.cs" />
+    <Compile Include="manager\eventargs\Base\UnitConversionRuleChangeEventArgs.cs" />
+    <Compile Include="manager\eventargs\Base\Object\ObjectChangeEventArgs.cs" />
+    <Compile Include="manager\eventargs\Base\Object_nested_rule\Rulel2_Class_On_PositionListChangeEventArgs.cs" />
+    <Compile Include="manager\eventargs\Base\Object_nested_rule\Rulel1_Group_On_Pos_tempListChangeEventArgs.cs" />
+    <Compile Include="manager\eventargs\Base\ManagerStateChangeEventArgs.cs" />
+    <Compile Include="manager\eventargs\Base\Conception\ConceptionChangeEventArgs.cs" />
+    <Compile Include="manager\eventargs\Base\Group\GroupChangeEventArgs.cs" />
+    <Compile Include="manager\eventargs\Base\Class\ClassChangeEventArgs.cs" />
+    <Compile Include="manager\Global\man_classes\man_command\man_command.cs" />
+    <Compile Include="manager\Global\man_classes\man_command\pg_commands\NpgsqlCommandKey_IClone.cs" />
+    <Compile Include="manager\Global\man_classes\man_command\pg_commands_export\command_export.cs" />
+    <Compile Include="manager\Global\man_classes\NPGSQL_TypeMapClass\pg_class\pg_cdoc_category.cs" />
+    <Compile Include="manager\Global\man_classes\NPGSQL_TypeMapClass\pg_enum\pg_enum_mapping.cs" />
+    <Compile Include="manager\Global\man_common\errarg_action.cs" />
+    <Compile Include="manager\Global\man_event\man_event.cs" />
+    <Compile Include="manager\Global\man_EAN13.cs" />
+    <Compile Include="manager\Global\man_pool\man_pool_session_control.cs" />
+    <Compile Include="manager\Global\man_pool\pool\pool_session_control.cs" />
+    <Compile Include="manager\Global\man_singleton\man_connect.cs" />
+    <Compile Include="manager\Global\man_exception\man_exception.cs" />
+    <Compile Include="manager\Global\man_invocation_list_clear.cs" />
+    <Compile Include="manager\Global\man_classes\NPGSQL_TypeMapClass\connect_NPGSQL_TypeMaper.cs" />
+    <Compile Include="manager\Global\man_pool\connect\connect.cs" />
+    <Compile Include="manager\Global\man_pool\man_pool.cs" />
+    <Compile Include="manager\Global\man_pool\pool\pool.cs" />
+    <Compile Include="manager\Global\man_pool\pool\pool_timer_control.cs" />
+    <Compile Include="manager\Global\man_classes\AggActionClass\errarg_object_add.cs" />
+    <Compile Include="manager\Global\man_classes\AggActionClass\errarg_object_cast.cs" />
+    <Compile Include="manager\Global\man_classes\NPGSQL_TypeMapClass\pg_class\pg_cdoc_link.cs" />
+    <Compile Include="manager\Global\man_classes\NPGSQL_TypeMapClass\pg_class\pg_cdoc_file.cs" />
+    <Compile Include="manager\Global\man_classes\NPGSQL_TypeMapClass\pg_class\pg_cobject_prop.cs" />
+    <Compile Include="manager\Global\man_classes\NPGSQL_TypeMapClass\pg_class\pg_cclass_prop.cs" />
+    <Compile Include="manager\man_doc_lib\man_document_const.cs" />
+    <Compile Include="manager\man_class\man_class_full.cs" />
+    <Compile Include="manager\man_doc_lib\man_document_ext.cs" />
+    <Compile Include="manager\man_doc_lib\man_document.cs" />
+    <Compile Include="manager\man_doc_lib\man_doc_link.cs" />
+    <Compile Include="manager\man_doc_lib\man_doc_file.cs" />
+    <Compile Include="manager\man_doc_lib\man_doc_categoty.cs" />
+    <Compile Include="manager\man_export\man_export_select_event.cs" />
+    <Compile Include="manager\man_export\man_export_class.cs" />
+    <Compile Include="manager\man_export\man_export_object.cs" />
+    <Compile Include="manager\Global\man_classes\NPGSQL_TypeMapClass\pg_class\pg_errarg2.cs" />
+    <Compile Include="manager\Global\man_classes\NPGSQL_TypeMapClass\pg_class\pg_tblcol.cs" />
+    <Compile Include="manager\Global\man_classes\NPGSQL_TypeMapClass\pg_class\pg_argument.cs" />
+    <Compile Include="manager\man_nested_rule\man_object_rule_L1\man_rulel1_class_on_pos_temp.cs" />
+    <Compile Include="manager\man_object\man_object_carrier.cs" />
+    <Compile Include="manager\man_object\man_object_patch.cs" />
+    <Compile Include="manager\man_position\man_position_sort.cs" />
+    <Compile Include="manager\man_position\man_position_sort_event.cs" />
+    <Compile Include="manager\man_propirtes\class_prop\Step1_class_prop\man_class_prop_sort_event.cs" />
+    <Compile Include="manager\man_propirtes\class_prop\Step1_class_prop\man_class_prop_sort.cs" />
+    <Compile Include="manager\man_propirtes\class_prop\Step3_object_prop_val_objects\enum\man_object_prop_enum_val_objects.cs" />
+    <Compile Include="manager\man_propirtes\class_prop\Step3_object_prop_val_objects\link\man_object_prop_link_val_objects.cs" />
+    <Compile Include="manager\man_propirtes\class_prop\Step3_object_prop_val_objects\object\man_object_prop_objetc_val_objects.cs" />
+    <Compile Include="manager\man_propirtes\class_prop\Step3_object_prop_val_objects\user\man_object_prop_user_val_objects.cs" />
+    <Compile Include="manager\man_propirtes\common\enum\man_prop_enum_val_sort.cs" />
+    <Compile Include="manager\man_propirtes\global_prop\Step2_global_prop_area_val\man_global_prop_area_val.cs" />
+    <Compile Include="manager\man_propirtes\global_prop\Step3_global_prop_link\man_global_prop_link_pos_temp_prop.cs" />
+    <Compile Include="manager\man_propirtes\global_prop\Step3_global_prop_link\man_global_prop_link_class_prop.cs" />
+    <Compile Include="manager\man_propirtes\global_prop\Step1_global_prop\man_global_prop.cs" />
+    <Compile Include="manager\man_propirtes\class_prop\Step1_class_prop\man_class_prop_snapshot.cs" />
+    <Compile Include="manager\man_propirtes\class_prop\Step2_class_prop_val\enum\man_class_prop_enum_val.cs" />
+    <Compile Include="manager\man_propirtes\common\enum\man_prop_enum_val.cs" />
+    <Compile Include="manager\man_propirtes\common\enum\man_prop_enum.cs" />
+    <Compile Include="manager\man_propirtes\class_prop\Step2_class_prop_val\link\man_class_prop_link_val.cs" />
+    <Compile Include="manager\man_propirtes\class_prop\Step3_object_prop_val\enum\man_object_prop_enum_val.cs" />
+    <Compile Include="manager\man_propirtes\class_prop\Step3_object_prop_val\link\man_object_prop_link_val.cs" />
+    <Compile Include="manager\man_propirtes\class_prop\Step3_object_prop_val\man_object_prop.cs" />
+    <Compile Include="manager\man_propirtes\class_prop\Step3_object_prop_val\user\man_object_prop_user_val.cs" />
+    <Compile Include="manager\man_propirtes\class_prop\Step2_class_prop_val\user\man_class_prop_user_val.cs" />
+    <Compile Include="manager\man_propirtes\common\man_prop.cs" />
+    <Compile Include="manager\man_propirtes\class_prop\Step3_object_prop_val\object\man_object_prop_object_val.cs" />
+    <Compile Include="manager\man_propirtes\class_prop\Step2_class_prop_val\object\man_class_prop_objetc_val.cs" />
+    <Compile Include="manager\man_entity.cs" />
+    <Compile Include="manager\man_propirtes\class_prop\Step1_class_prop\man_class_prop.cs" />
+    <Compile Include="manager\man_object\man_object.cs" />
+    <Compile Include="manager\man_class\man_class_unit_conversion_rule.cs" />
+    <Compile Include="manager\man_con_prop_data_type.cs" />
+    <Compile Include="manager\man_propirtes\global_prop\Step4_find_func\man_global_prop_find_func_object.cs" />
+    <Compile Include="manager\man_propirtes\global_prop\Step4_find_func\man_global_prop_find_func_class.cs" />
+    <Compile Include="manager\man_propirtes\global_prop\Step4_agg_func\man_global_prop_agg_func_match.cs" />
+    <Compile Include="manager\man_propirtes\global_prop\Step4_group_action\man_global_prop_group_action_class_prop.cs" />
+    <Compile Include="manager\man_class\man_class_format_name.cs" />
+    <Compile Include="manager\man_propirtes\pos_temp\Step1_pos_temp_prop\man_pos_temp_prop_sort.cs" />
+    <Compile Include="manager\man_propirtes\pos_temp\Step1_pos_temp_prop\man_pos_temp_prop_sort_event.cs" />
+    <Compile Include="manager\man_propirtes\pos_temp\Step2_pos_temp_prop_val\enum\man_pos_temp_prop_enum_val.cs" />
+    <Compile Include="manager\man_propirtes\pos_temp\Step2_pos_temp_prop_val\link\man_pos_temp_prop_link_val.cs" />
+    <Compile Include="manager\man_propirtes\pos_temp\Step2_pos_temp_prop_val\object\man_pos_temp_prop_objetc_val.cs" />
+    <Compile Include="manager\man_propirtes\pos_temp\Step2_pos_temp_prop_val\user\man_pos_temp_prop_user_val.cs" />
+    <Compile Include="manager\man_propirtes\pos_temp\Step3_position_prop_val\enum\man_pos_prop_enum_val.cs" />
+    <Compile Include="manager\man_propirtes\pos_temp\Step3_position_prop_val\link\man_pos_prop_link_val.cs" />
+    <Compile Include="manager\man_propirtes\pos_temp\Step3_position_prop_val\man_pos_prop.cs" />
+    <Compile Include="manager\man_propirtes\pos_temp\Step3_position_prop_val\object\man_pos_prop_object_val.cs" />
+    <Compile Include="manager\man_propirtes\pos_temp\Step3_position_prop_val\user\man_pos_prop_user_val.cs" />
+    <Compile Include="manager\man_role\man_role_user.cs" />
+    <Compile Include="manager\man_role\man_role_base.cs" />
+    <Compile Include="manager\man_nested_rule\man_object_rule_L2\man_rulel2_class_on_position.cs" />
+    <Compile Include="manager\man_nested_rule\man_object_rule_L1\man_rulel1_group_on_pos_temp.cs" />
+    <Compile Include="manager\man_unit_rule.cs" />
+    <Compile Include="manager\man_group\man_group.cs" />
+    <Compile Include="manager\man_group\man_group_patch.cs" />
+    <Compile Include="manager\man_class\man_class_snapshot.cs" />
+    <Compile Include="manager\man_class\man_class_patch.cs" />
+    <Compile Include="manager\man_class\man_class.cs" />
+    <Compile Include="manager\man_nested_rule\man_pos_temp_rule\man_pos_temp_nested_list.cs" />
+    <Compile Include="manager\eventargs\Base\PosTemp\PosTempNestedListChangeEventArgs.cs" />
+    <Compile Include="manager\eventargs\Base\Role\UserChangeEventArgs.cs" />
+    <Compile Include="manager\eventargs\Base\Position\PositionChangeEventArgs.cs" />
+    <Compile Include="manager\eventargs\Base\PosTempProp\PosTempPropChangeEventArgs.cs" />
+    <Compile Include="manager\eventargs\Base\PositionProp\PosPropChangeEventArgs.cs" />
+    <Compile Include="manager\eventargs\Base\PosTemp\PosTempChangeEventArgs.cs" />
+    <Compile Include="manager\Global\man_info\man_ver.cs" />
+    <Compile Include="manager\man_position\man_position_path.cs" />
+    <Compile Include="manager\man_propirtes\common\man_prop_data_type.cs" />
+    <Compile Include="manager\man_role\man_user.cs" />
+    <Compile Include="manager\man_propirtes\pos_temp\Step1_pos_temp_prop\man_pos_temp_prop.cs" />
+    <Compile Include="manager\man_conception.cs" />
+    <Compile Include="manager\Global\man_functions.cs" />
+    <Compile Include="manager\Global\man_init\man_init.cs" />
+    <Compile Include="manager\man_pos_prototype.cs" />
+    <Compile Include="manager\man_position\man_position.cs" />
+    <Compile Include="manager\man_pos_temp\man_pos_temp.cs" />
+    <Compile Include="manager\Global\man_info\man_info.cs" />
+    <Compile Include="pg_classes\class\class.cs" />
+    <Compile Include="pg_classes\class\class_class_prop.cs" />
+    <Compile Include="pg_classes\class\class_json.cs" />
+    <Compile Include="pg_classes\class\class_IComparable.cs" />
+    <Compile Include="pg_classes\class\class_global_prop.cs" />
+    <Compile Include="pg_classes\class\class_class_snapshot.cs" />
+    <Compile Include="pg_classes\class\class_nested_rule\class_rule_check_access.cs" />
+    <Compile Include="pg_classes\class\class_object_carrier.cs" />
+    <Compile Include="pg_classes\class\class_unit_conception.cs" />
+    <Compile Include="pg_classes\class\class_unit_conversion_rule.cs" />
+    <Compile Include="pg_classes\class\class_EAN13.cs" />
+    <Compile Include="pg_classes\class\class_ICloneable.cs" />
+    <Compile Include="pg_classes\class\class_entity.cs" />
+    <Compile Include="pg_classes\class\class_class_unit_conversion_rule.cs" />
+    <Compile Include="pg_classes\class\class_snapshot.cs" />
+    <Compile Include="pg_classes\class\class_path.cs" />
+    <Compile Include="pg_classes\class\class_class.cs" />
+    <Compile Include="pg_classes\class\class_object.cs" />
+    <Compile Include="pg_classes\class\class_nested_rule\class_rulel2_class_on_position.cs" />
+    <Compile Include="pg_classes\class\class_document.cs" />
+    <Compile Include="pg_classes\class\class_doc_link.cs" />
+    <Compile Include="pg_classes\class\class_nested_rule\class_rulel1_class_on_pos_temp.cs" />
+    <Compile Include="pg_classes\class\SubClass\class_name_format_builder.cs" />
+    <Compile Include="pg_classes\class\SubClass\pattern_string.cs" />
+    <Compile Include="pg_classes\conception\con_class_full.cs" />
+    <Compile Include="pg_classes\conception\con_class.cs" />
+    <Compile Include="pg_classes\conception\con_entity.cs" />
+    <Compile Include="pg_classes\conception\con_global_prop.cs" />
+    <Compile Include="pg_classes\conception\con_document.cs" />
+    <Compile Include="pg_classes\conception\con_category.cs" />
+    <Compile Include="pg_classes\conception\con_object.cs" />
+    <Compile Include="pg_classes\conception\con_prop_enum.cs" />
+    <Compile Include="pg_classes\conception\con_unit_conception.cs" />
+    <Compile Include="pg_classes\conception\con_con_prop_data_type.cs" />
+    <Compile Include="pg_classes\conception\con_unit_conversion_rules.cs" />
+    <Compile Include="pg_classes\conception\con_ICloneable.cs" />
+    <Compile Include="pg_classes\DocLib\document\document_category.cs" />
+    <Compile Include="pg_classes\DocLib\document\document_document.cs" />
+    <Compile Include="pg_classes\DocLib\document\document_link.cs" />
+    <Compile Include="pg_classes\DocLib\document\document_file.cs" />
+    <Compile Include="pg_classes\DocLib\doc_category\doc_category_document.cs" />
+    <Compile Include="pg_classes\DocLib\doc_category\doc_category.cs" />
+    <Compile Include="pg_classes\DocLib\doc_category\doc_category_entity.cs" />
+    <Compile Include="pg_classes\DocLib\doc_file\doc_file_mime_type.cs" />
+    <Compile Include="pg_classes\DocLib\doc_link\doc_link.cs" />
+    <Compile Include="pg_classes\DocLib\doc_link\doc_link_entity.cs" />
+    <Compile Include="pg_classes\DocLib\doc_file\doc_file.cs" />
+    <Compile Include="pg_classes\DocLib\doc_file\doc_file_entity.cs" />
+    <Compile Include="pg_classes\DocLib\document\document.cs" />
+    <Compile Include="pg_classes\DocLib\document\document_entity.cs" />
+    <Compile Include="pg_classes\export\doc_excel.cs" />
+    <Compile Include="pg_classes\group\group_nested_rule\group_rule_check_access.cs" />
+    <Compile Include="pg_classes\group\group_object.cs" />
+    <Compile Include="pg_classes\group\group_nested_rule\group_rulel2_class_on_position.cs" />
+    <Compile Include="pg_classes\group\group_ICloneable.cs" />
+    <Compile Include="pg_classes\group\group_document.cs" />
+    <Compile Include="pg_classes\group\group_doc_link.cs" />
+    <Compile Include="pg_classes\nested rule\object_rule_L1\rulel1_class_on_pos_temp.cs" />
+    <Compile Include="pg_classes\nested rule\object_rule_L1\rulel1_class_on_pos_temp_access.cs" />
+    <Compile Include="pg_classes\nested rule\object_rule_L1\rulel1_class_on_pos_temp_access_entity.cs" />
+    <Compile Include="pg_classes\nested rule\object_rule_L1\rulel1_group_on_pos_temp_access_entity.cs" />
+    <Compile Include="pg_classes\nested rule\object_rule_L1\rulel1_class_on_pos_temp_entity.cs" />
+    <Compile Include="pg_classes\object\object_document.cs" />
+    <Compile Include="pg_classes\object\object_object_merging.cs" />
+    <Compile Include="pg_classes\object\object_object_links.cs" />
+    <Compile Include="pg_classes\object\object_object_prop.cs" />
+    <Compile Include="pg_classes\object\object_position_prop.cs" />
+    <Compile Include="pg_classes\object\object_path.cs" />
+    <Compile Include="pg_classes\object\object_object.cs" />
+    <Compile Include="pg_classes\object\object_doc_link.cs" />
+    <Compile Include="pg_classes\object\object_quantity.cs" />
+    <Compile Include="pg_classes\object\object_ICloneable.cs" />
+    <Compile Include="pg_classes\object\object_class.cs" />
+    <Compile Include="pg_classes\object\object_rulel2_class_on_position.cs" />
+    <Compile Include="pg_classes\object\object_IComparable.cs" />
+    <Compile Include="pg_classes\nested rule\object_rule_L2\rulel2_class_snapshot_on_position_entity.cs" />
+    <Compile Include="pg_classes\nested rule\object_rule_L2\rulel2_class_on_position_entity.cs" />
+    <Compile Include="pg_classes\nested rule\object_rule_L1\rulel1_group_on_pos_temp_entity.cs" />
+    <Compile Include="pg_classes\nested rule\object_rule_L1\rulel1_group_on_pos_temp_access.cs" />
+    <Compile Include="pg_classes\nested rule\object_rule_L2\rulel2_class_snapshot_on_position.cs" />
+    <Compile Include="pg_classes\patch\object_path.cs" />
+    <Compile Include="pg_classes\position\pos_doc_link.cs" />
+    <Compile Include="pg_classes\position\pos_nested_rule\pos_rulel_check_access.cs" />
+    <Compile Include="pg_classes\position\pos_object\pos_object_merging.cs" />
+    <Compile Include="pg_classes\position\pos_object\pos_object_export.cs" />
+    <Compile Include="pg_classes\position\pos_sort.cs" />
+    <Compile Include="pg_classes\position\GroupAction\object_prop_enum_objects.cs" />
+    <Compile Include="pg_classes\position\GroupAction\object_prop_link_objects.cs" />
+    <Compile Include="pg_classes\position\GroupAction\object_prop_object_objects.cs" />
+    <Compile Include="pg_classes\position\GroupAction\object_prop_user_objects.cs" />
+    <Compile Include="pg_classes\position\GroupAction\pos_class_snapshot.cs" />
+    <Compile Include="pg_classes\position\pos_object\pos_object_agg_func_object .cs" />
+    <Compile Include="pg_classes\position\pos_pos_prop.cs" />
+    <Compile Include="pg_classes\position\pos_ICloneable.cs" />
+    <Compile Include="pg_classes\position\pos_nested_rule\pos_rulel1_group_on_pos_temp.cs" />
+    <Compile Include="pg_classes\position\pos_document.cs" />
+    <Compile Include="pg_classes\position\pos_nested_rule\pos_rulel1_class_on_pos_temp.cs" />
+    <Compile Include="pg_classes\pos_prototype\pos_prototype_ICloneable.cs" />
+    <Compile Include="pg_classes\pos_prototype\pos_prototype_pos_temp.cs" />
+    <Compile Include="pg_classes\pos_temp\pos_temp_doc_link.cs" />
+    <Compile Include="pg_classes\pos_temp\pos_temp_document.cs" />
+    <Compile Include="pg_classes\pos_temp\pos_temp_nested_rule\pos_rulel_check_access.cs" />
+    <Compile Include="pg_classes\pos_temp\pos_temp_pos_temp_prop.cs" />
+    <Compile Include="pg_classes\pos_temp\pos_temp_nested_rule_entity.cs" />
+    <Compile Include="pg_classes\pos_temp\pos_temp_ICloneable.cs" />
+    <Compile Include="pg_classes\pos_temp\pos_temp_nested_rule\pos_temp_rulel1_class_on_pos_temp.cs" />
+    <Compile Include="pg_classes\pos_temp\pos_temp_nested_rule\pos_temp_rulel1_group_on_pos_temp.cs" />
+    <Compile Include="pg_classes\pos_temp\pos_temp_group.cs" />
+    <Compile Include="pg_classes\pos_temp\pos_temp_conception.cs" />
+    <Compile Include="pg_classes\properties\class_prop\step3_object_val\object_prop_doc_link.cs" />
+    <Compile Include="pg_classes\properties\class_prop\step1_prop\class_prop_json.cs" />
+    <Compile Include="pg_classes\properties\class_prop\step1_prop\class_prop_doc_link.cs" />
+    <Compile Include="pg_classes\properties\class_prop\step3_object_val\object_prop_document.cs" />
+    <Compile Include="pg_classes\properties\class_prop\step1_prop\class_prop_document.cs" />
+    <Compile Include="pg_classes\properties\class_prop\step1_prop\class_prop_sort.cs" />
+    <Compile Include="pg_classes\properties\class_prop\step1_prop\class_prop_global_prop.cs" />
+    <Compile Include="pg_classes\properties\class_prop\step1_prop\class_prop_IComparable.cs" />
+    <Compile Include="pg_classes\properties\class_prop\step1_prop\class_prop_ICloneable.cs" />
+    <Compile Include="pg_classes\properties\class_prop\step2_class_val\enum prop\class_prop_enum.cs" />
+    <Compile Include="pg_classes\properties\class_prop\step3_object_val\object_prop_global_prop.cs" />
+    <Compile Include="pg_classes\properties\global_prop\Step1_prop\global_prop_position.cs" />
+    <Compile Include="pg_classes\properties\global_prop\Step1_prop\global_prop_pos_temp.cs" />
+    <Compile Include="pg_classes\properties\global_prop\Step1_prop\global_prop_class.cs" />
+    <Compile Include="pg_classes\properties\global_prop\Step2_area\global_prop_area_val.cs" />
+    <Compile Include="pg_classes\properties\global_prop\Step2_area\global_prop_area_val_entity.cs" />
+    <Compile Include="pg_classes\properties\global_prop\Step2_area\global_prop_area.cs" />
+    <Compile Include="pg_classes\properties\global_prop\Step4_find_func\global_prop_find_func_class.cs" />
+    <Compile Include="pg_classes\properties\global_prop\Step4_find_func\global_prop_find_func_object.cs" />
+    <Compile Include="pg_classes\properties\global_prop\Step4_agg_func\global_prop_agg_func_match.cs" />
+    <Compile Include="pg_classes\properties\global_prop\Step4_group_action\global_prop_group_action_class_prop.cs" />
+    <Compile Include="pg_classes\properties\pos_temp_prop\Step1_prop\pos_temp_prop_doc_link.cs" />
+    <Compile Include="pg_classes\properties\pos_temp_prop\Step1_prop\pos_temp_prop_document.cs" />
+    <Compile Include="pg_classes\properties\pos_temp_prop\Step1_prop\pos_temp_prop_pos_temp.cs" />
+    <Compile Include="pg_classes\properties\pos_temp_prop\Step1_prop\pos_temp_prop_global_prop.cs" />
+    <Compile Include="pg_classes\properties\pos_temp_prop\Step1_prop\pos_temp_prop_sort.cs" />
+    <Compile Include="pg_classes\properties\pos_temp_prop\Step2_pos_temp_val\enum prop\pos_temp_prop_enum.cs" />
+    <Compile Include="pg_classes\properties\pos_temp_prop\Step2_pos_temp_val\enum prop\pos_temp_prop_enum_val.cs" />
+    <Compile Include="pg_classes\properties\pos_temp_prop\Step2_pos_temp_val\enum prop\pos_temp_prop_enum_val_entity.cs" />
+    <Compile Include="pg_classes\properties\pos_temp_prop\Step2_pos_temp_val\link prop\pos_temp_prop_link.cs" />
+    <Compile Include="pg_classes\properties\pos_temp_prop\Step2_pos_temp_val\link prop\pos_temp_prop_link_val.cs" />
+    <Compile Include="pg_classes\properties\pos_temp_prop\Step2_pos_temp_val\link prop\pos_temp_prop_link_val_entity.cs" />
+    <Compile Include="pg_classes\properties\pos_temp_prop\Step2_pos_temp_val\object prop\pos_temp_prop_object.cs" />
+    <Compile Include="pg_classes\properties\pos_temp_prop\Step2_pos_temp_val\object prop\pos_temp_prop_object_val.cs" />
+    <Compile Include="pg_classes\properties\pos_temp_prop\Step2_pos_temp_val\object prop\pos_temp_prop_object_val_entity.cs" />
+    <Compile Include="pg_classes\properties\pos_temp_prop\Step2_pos_temp_val\user prop\pos_temp_prop_user.cs" />
+    <Compile Include="pg_classes\properties\pos_temp_prop\Step2_pos_temp_val\user prop\pos_temp_prop_user_val.cs" />
+    <Compile Include="pg_classes\properties\pos_temp_prop\Step2_pos_temp_val\user prop\pos_temp_prop_user_val_entity.cs" />
+    <Compile Include="pg_classes\properties\pos_temp_prop\Step3_position_val\enum prop\pos_prop_enum.cs" />
+    <Compile Include="pg_classes\properties\pos_temp_prop\Step3_position_val\enum prop\prop_prop_enum_val.cs" />
+    <Compile Include="pg_classes\properties\pos_temp_prop\Step3_position_val\enum prop\prop_prop_enum_val_entity.cs" />
+    <Compile Include="pg_classes\properties\pos_temp_prop\Step3_position_val\link_prop\pos_prop_link.cs" />
+    <Compile Include="pg_classes\properties\pos_temp_prop\Step3_position_val\link_prop\pos_prop_link_val.cs" />
+    <Compile Include="pg_classes\properties\pos_temp_prop\Step3_position_val\link_prop\pos_prop_link_val_entity.cs" />
+    <Compile Include="pg_classes\properties\pos_temp_prop\Step3_position_val\object prop\pos_prop_object.cs" />
+    <Compile Include="pg_classes\properties\pos_temp_prop\Step3_position_val\object prop\pos_prop_object_val.cs" />
+    <Compile Include="pg_classes\properties\pos_temp_prop\Step3_position_val\object prop\pos_prop_object_val_entity.cs" />
+    <Compile Include="pg_classes\properties\pos_temp_prop\Step3_position_val\pos_prop.cs" />
+    <Compile Include="pg_classes\properties\pos_temp_prop\Step3_position_val\pos_prop_global_prop.cs" />
+    <Compile Include="pg_classes\properties\pos_temp_prop\Step3_position_val\pos_prop_doc_link.cs" />
+    <Compile Include="pg_classes\properties\pos_temp_prop\Step3_position_val\user prop\pos_prop_user.cs" />
+    <Compile Include="pg_classes\properties\pos_temp_prop\Step3_position_val\user prop\pos_prop_user_val.cs" />
+    <Compile Include="pg_classes\properties\pos_temp_prop\Step3_position_val\user prop\pos_prop_user_val_entity.cs" />
+    <Compile Include="pg_classes\properties\pos_temp_prop\Step3_position_val\pos_prop_document.cs" />
+    <Compile Include="pg_classes\properties\subobject\common\object_prop_create_emded_mode.cs" />
+    <Compile Include="pg_classes\properties\subobject\con_prop_data_type\con_prop_data_type_position.cs" />
+    <Compile Include="pg_classes\properties\subobject\con_prop_data_type\con_prop_data_type_pos_temp.cs" />
+    <Compile Include="pg_classes\properties\subobject\enum\prop_enum\prop_enum_position.cs" />
+    <Compile Include="pg_classes\properties\subobject\enum\prop_enum\prop_enum_pos_temp.cs" />
+    <Compile Include="pg_classes\properties\subobject\enum\prop_enum_val\prop_enum_val_position.cs" />
+    <Compile Include="pg_classes\properties\subobject\enum\prop_enum_val\prop_enum_val_pos_temp.cs" />
+    <Compile Include="pg_classes\properties\subobject\enum\prop_enum_val\prop_enum_val_sort.cs" />
+    <Compile Include="pg_classes\properties\subobject\enum\prop_enum\prop_enum_object.cs" />
+    <Compile Include="pg_classes\properties\subobject\enum\prop_enum\prop_enum_class.cs" />
+    <Compile Include="pg_classes\properties\subobject\enum\prop_enum\prop_enum_prop_enum_val.cs" />
+    <Compile Include="pg_classes\properties\class_prop\step2_class_val\enum prop\class_prop_enum_val.cs" />
+    <Compile Include="pg_classes\properties\subobject\enum\prop_enum\prop_enum_use_area.cs" />
+    <Compile Include="pg_classes\properties\subobject\enum\prop_enum_val\prop_enum_val_object.cs" />
+    <Compile Include="pg_classes\properties\subobject\enum\prop_enum_val\prop_enum_val_class.cs" />
+    <Compile Include="pg_classes\properties\subobject\enum\prop_enum_val\prop_enum_val.cs" />
+    <Compile Include="pg_classes\properties\subobject\enum\prop_enum\prop_enum.cs" />
+    <Compile Include="pg_classes\properties\subobject\enum\prop_enum_val\prop_enum_val_entity.cs" />
+    <Compile Include="pg_classes\properties\subobject\enum\prop_enum\prop_enum_entity.cs" />
+    <Compile Include="pg_classes\properties\class_prop\step2_class_val\enum prop\class_prop_enum_val_entity.cs" />
+    <Compile Include="pg_classes\properties\class_prop\step2_class_val\link prop\class_prop_link.cs" />
+    <Compile Include="pg_classes\properties\class_prop\step2_class_val\link prop\class_prop_link_val.cs" />
+    <Compile Include="pg_classes\properties\class_prop\step2_class_val\link prop\class_prop_link_val_entity.cs" />
+    <Compile Include="pg_classes\properties\class_prop\step2_class_val\user prop\class_prop_user.cs" />
+    <Compile Include="pg_classes\properties\class_prop\step2_class_val\user prop\class_prop_user_val_entity.cs" />
+    <Compile Include="pg_classes\properties\class_prop\step2_class_val\user prop\class_prop_user_val.cs" />
+    <Compile Include="pg_classes\properties\class_prop\step3_object_val\enum prop\object_prop_enum_val.cs" />
+    <Compile Include="pg_classes\properties\class_prop\step3_object_val\enum prop\object_prop_enum_val_entity.cs" />
+    <Compile Include="pg_classes\properties\class_prop\step3_object_val\enum prop\object_prop_enum.cs" />
+    <Compile Include="pg_classes\properties\class_prop\step3_object_val\link_prop\object_prop_link.cs" />
+    <Compile Include="pg_classes\properties\class_prop\step3_object_val\link_prop\object_prop_link_val_entity.cs" />
+    <Compile Include="pg_classes\properties\class_prop\step3_object_val\link_prop\object_prop_link_val.cs" />
+    <Compile Include="pg_classes\properties\class_prop\step3_object_val\object_prop.cs" />
+    <Compile Include="pg_classes\properties\class_prop\step3_object_val\object prop\object_prop_object_val_entity.cs" />
+    <Compile Include="pg_classes\properties\class_prop\step3_object_val\object_prop_entity.cs" />
+    <Compile Include="pg_classes\properties\class_prop\step3_object_val\object_prop_IComparable.cs" />
+    <Compile Include="pg_classes\properties\class_prop\step3_object_val\user prop\object_prop_user.cs" />
+    <Compile Include="pg_classes\properties\class_prop\step3_object_val\user prop\object_prop_user_val.cs" />
+    <Compile Include="pg_classes\properties\class_prop\step3_object_val\user prop\object_prop_user_val_entity.cs" />
+    <Compile Include="pg_classes\properties\global_prop\Step3_link\global_prop_link_pos_temp_prop.cs" />
+    <Compile Include="pg_classes\properties\global_prop\Step3_link\global_prop_link_class_prop.cs" />
+    <Compile Include="pg_classes\properties\global_prop\Step1_prop\global_prop.cs" />
+    <Compile Include="pg_classes\properties\global_prop\Step1_prop\global_prop_entity.cs" />
+    <Compile Include="pg_classes\properties\global_prop\Step3_link\link_class_prop\global_prop_link_class_prop.cs" />
+    <Compile Include="pg_classes\properties\global_prop\Step3_link\link_class_prop\global_prop_link_class_prop_entity.cs" />
+    <Compile Include="pg_classes\properties\global_prop\Step3_link\link_pos_temp_prop\global_prop_link_pos_temp_prop.cs" />
+    <Compile Include="pg_classes\properties\global_prop\Step3_link\link_pos_temp_prop\global_prop_link_pos_temp_prop_entity.cs" />
+    <Compile Include="pg_classes\properties\subobject\con_prop_data_type\con_prop_data_type.cs" />
+    <Compile Include="pg_classes\properties\class_prop\step2_class_val\object prop\class_prop_object.cs" />
+    <Compile Include="pg_classes\properties\class_prop\step2_class_val\object prop\class_prop_object_val_entity.cs" />
+    <Compile Include="pg_classes\properties\class_prop\step2_class_val\object prop\class_prop_object_val.cs" />
+    <Compile Include="pg_classes\properties\class_prop\step3_object_val\object prop\object_prop_object.cs" />
+    <Compile Include="pg_classes\properties\class_prop\step3_object_val\object prop\object_prop_object_val.cs" />
+    <Compile Include="pg_classes\properties\subobject\prop_type\prop_type_entity.cs" />
+    <Compile Include="pg_classes\properties\subobject\prop_data_type\prop_data_type_entity.cs" />
+    <Compile Include="pg_classes\properties\subobject\common\prop_val_spec.cs" />
+    <Compile Include="pg_classes\properties\pos_temp_prop\Step3_position_val\pos_prop_entity.cs" />
+    <Compile Include="pg_classes\properties\pos_temp_prop\Step1_prop\pos_temp_prop_entity.cs" />
+    <Compile Include="pg_classes\unit_conversion_rules\class_unit_conversion_rule\class_unit_conversion_rule.cs" />
+    <Compile Include="pg_classes\conception\con_ientity.cs" />
+    <Compile Include="pg_classes\entity\entity.cs" />
+    <Compile Include="pg_classes\entity\iEntity.cs" />
+    <Compile Include="pg_classes\group\group_entity.cs" />
+    <Compile Include="pg_classes\object\object_unit_conversion_rule.cs" />
+    <Compile Include="pg_classes\object\object_object_inside.cs" />
+    <Compile Include="pg_classes\object\object_entity.cs" />
+    <Compile Include="pg_classes\object\object_object_prop_val.cs" />
+    <Compile Include="pg_classes\position\pos_entity.cs" />
+    <Compile Include="pg_classes\pos_prototype\pos_prototype_entity.cs" />
+    <Compile Include="pg_classes\pos_temp\pos_temp_entity.cs" />
+    <Compile Include="pg_classes\properties\class_prop\step1_prop\class_prop.cs" />
+    <Compile Include="pg_classes\conception\conception.cs" />
+    <Compile Include="pg_classes\conception\con_group.cs" />
+    <Compile Include="pg_classes\conception\con_pos.cs" />
+    <Compile Include="pg_classes\conception\con_pos_prototype.cs" />
+    <Compile Include="pg_classes\conception\con_pos_temp.cs" />
+    <Compile Include="pg_classes\exceptions\PgDataException.cs" />
+    <Compile Include="pg_classes\function\function.cs" />
+    <Compile Include="pg_classes\group\group_nested_rule\group_rulel1_group_on_pos_temp.cs" />
+    <Compile Include="pg_classes\object\object_class_snapshot.cs" />
+    <Compile Include="pg_classes\object\object.cs" />
+    <Compile Include="pg_classes\nested rule\object_rule_L2\rulel2_class_on_position.cs" />
+    <Compile Include="pg_classes\nested rule\object_rule_L1\rulel1_group_on_pos_temp.cs" />
+    <Compile Include="pg_classes\group\group.cs" />
+    <Compile Include="pg_classes\group\group_class.cs" />
+    <Compile Include="pg_classes\group\group_group.cs" />
+    <Compile Include="pg_classes\group\group_path.cs" />
+    <Compile Include="pg_classes\patch\group_path.cs" />
+    <Compile Include="pg_classes\patch\class_path.cs" />
+    <Compile Include="pg_classes\position\pos_class_allowed.cs" />
+    <Compile Include="pg_classes\position\pos_nested_rule\pos_rulel2_class_on_position.cs" />
+    <Compile Include="pg_classes\position\pos_group.cs" />
+    <Compile Include="pg_classes\position\pos_pos.cs" />
+    <Compile Include="pg_classes\position\pos_object\pos_object.cs" />
+    <Compile Include="pg_classes\patch\pos_path.cs" />
+    <Compile Include="pg_classes\position\pos_path.cs" />
+    <Compile Include="pg_classes\pos_temp\pos_temp_nested_rule\pos_temp_rulel2_class_on_position.cs" />
+    <Compile Include="pg_classes\pos_temp\pos_temp_nested_list2.cs" />
+    <Compile Include="pg_classes\pos_temp\pos_temp_nested_rule.cs" />
+    <Compile Include="pg_classes\pos_temp\pos_temp_nested_list.cs" />
+    <Compile Include="pg_classes\pos_temp\pos_temp_pos.cs" />
+    <Compile Include="pg_classes\properties\class_prop\step1_prop\class_prop_entity.cs" />
+    <Compile Include="pg_classes\properties\subobject\prop_type\prop_type.cs" />
+    <Compile Include="pg_classes\properties\subobject\prop_data_type\prop_data_type.cs" />
+    <Compile Include="pg_classes\position\pos_pos_prototype.cs" />
+    <Compile Include="pg_classes\position\pos_pos_temp.cs" />
+    <Compile Include="pg_classes\pos_prototype\pos_prototype.cs" />
+    <Compile Include="pg_classes\position\position.cs" />
+    <Compile Include="pg_classes\pos_temp\pos_temp.cs" />
+    <Compile Include="pg_classes\pos_temp\pos_temp_pos_prototype.cs" />
+    <Compile Include="pg_classes\properties\pos_temp_prop\Step1_prop\pos_temp_prop.cs" />
+    <Compile Include="pg_classes\properties\subobject\common\prop_data_bin_ext.cs" />
+    <Compile Include="pg_classes\unit_conversion_rules\units\unit_unit_conversion_rule.cs" />
+    <Compile Include="pg_classes\unit_conversion_rules\units\unit_entity.cs" />
+    <Compile Include="pg_classes\unit_conversion_rules\unit_conception\unit_conception.cs" />
+    <Compile Include="pg_classes\unit_conversion_rules\unit_conception\unit_conception_unit_conversion_rule.cs" />
+    <Compile Include="pg_classes\unit_conversion_rules\unit_conversion_rule\unit_conversion_rule_unit_conception.cs" />
+    <Compile Include="pg_classes\unit_conversion_rules\unit_conversion_rule\unit_conversion_rule_entity.cs" />
+    <Compile Include="pg_classes\unit_conversion_rules\unit_conversion_rule\unit_conversion_rule.cs" />
+    <Compile Include="pg_classes\unit_conversion_rules\units\unit.cs" />
+    <Compile Include="pg_classes\users\role_user\role_user_entity.cs" />
+    <Compile Include="pg_classes\users\role_user\role_user.cs" />
+    <Compile Include="pg_classes\users\user\user_doc_link.cs" />
+    <Compile Include="pg_classes\users\user\user_document.cs" />
+    <Compile Include="pg_classes\users\role_base\role_base.cs" />
+    <Compile Include="pg_classes\users\user_options.cs" />
+    <Compile Include="pg_classes\users\user\user_entity.cs" />
+    <Compile Include="pg_classes\users\role_base\role_base_entity.cs" />
+    <Compile Include="pg_classes\users\user\user.cs" />
+    <Compile Include="manager\Global\man_classes\man_command\pg_commands\NpgsqlCommandKey.cs" />
+    <Compile Include="manager\Global\man_exception\pg_exceptions\AccessDataBaseException.cs" />
+    <Compile Include="manager\Global\man_exception\pg_exceptions\PgDataException.cs" />
+    <Compile Include="manager\Global\man_exception\pg_exceptions\PgManagerException.cs" />
+    <Compile Include="manager\Global\man_classes\pg_settings.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Settings.cs" />
+    <Compile Include="manager\Global\man_singleton\man_sigle.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="support\message.cs" />
+    <Compile Include="support\message_prop.cs" />
+    <Compile Include="support\ticket.cs" />
+    <Compile Include="support\ticket_prop.cs" />
+    <Compile Include="support\ticket_state.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+    <None Include="pg_class_key.snk" />
+    <None Include="Properties\Settings.settings">
+      <Generator>PublicSettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="diagrams\" />
+    <Folder Include="manager\man_schedule\" />
+    <Folder Include="pg_classes\class\GroupAction\" />
+    <Folder Include="pg_classes\schedule\calendar\" />
+    <Folder Include="pg_classes\schedule\schedule\" />
+    <Folder Include="pg_classes\schedule\work_fact\" />
+    <Folder Include="pg_classes\schedule\work_plan\" />
+    <Folder Include="pg_classes\schedule\work_time\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="АВАТАР_пилот.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>rem "D:\Project\Учет 2.0\PgClass\C# [ClassPostrgeUhcet]\Source code\ClassPostrgeUhcet\copy.cmd"</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
