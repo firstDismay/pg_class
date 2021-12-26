@@ -65,7 +65,7 @@ namespace Test
 
         private void btConnect_Click(object sender, EventArgs e)
         {
-            pg_class.pg_settings Settings = new pg_class.pg_settings(tbUser.Text, tbPassword.Text, cbHost.Text, cbDataBase.Text);
+            pg_class.pg_settings Settings = new pg_class.pg_settings(tbUser.Text, tbPassword.Text, cbHost.Text, cbDataBase.Text,  Convert.ToInt32(txtPort.Text));
             NEW_pg_class = manager.Instance();
             NEW_pg_class.Pool_Create(Settings);
 
@@ -98,7 +98,7 @@ namespace Test
             //Byte[] xls = NEW_pg_class.object_by_id_position(1000, eBaseExportFormat.TableEntity);
             /// 
             ///
-            /*System.Threading.Thread tk1 = new System.Threading.Thread(task);
+            System.Threading.Thread tk1 = new System.Threading.Thread(task);
             System.Threading.Thread tk2 = new System.Threading.Thread(task);
             System.Threading.Thread tk3 = new System.Threading.Thread(task);
             System.Threading.Thread tk4 = new System.Threading.Thread(task);
@@ -109,6 +109,15 @@ namespace Test
             System.Threading.Thread tk9 = new System.Threading.Thread(task);
             System.Threading.Thread tk10 = new System.Threading.Thread(task);
             System.Threading.Thread tk11 = new System.Threading.Thread(task);
+            System.Threading.Thread tk12 = new System.Threading.Thread(task);
+            System.Threading.Thread tk13 = new System.Threading.Thread(task);
+            System.Threading.Thread tk14 = new System.Threading.Thread(task);
+            System.Threading.Thread tk15 = new System.Threading.Thread(task);
+            System.Threading.Thread tk16 = new System.Threading.Thread(task); 
+            System.Threading.Thread tk17 = new System.Threading.Thread(task);
+            System.Threading.Thread tk18 = new System.Threading.Thread(task);
+            System.Threading.Thread tk19 = new System.Threading.Thread(task);
+            System.Threading.Thread tk20 = new System.Threading.Thread(task);
 
 
             tk1.Start();
@@ -121,7 +130,16 @@ namespace Test
             tk8.Start();
             tk9.Start();
             tk10.Start();
-            tk11.Start();*/
+            tk11.Start();
+            tk12.Start();
+            tk13.Start();
+            tk14.Start();
+            tk15.Start();
+            tk16.Start();
+            tk17.Start();
+            tk18.Start();
+            tk19.Start();
+            tk20.Start();
 
             //Version v = new Version(21, 1, 1, 1);
 
@@ -160,25 +178,15 @@ namespace Test
             List<class_prop> cpl;
             Boolean chek;
 
-            Console.WriteLine(String.Format("Поток ID = {0} запущен", System.Threading.Thread.CurrentThread.ManagedThreadId));
+            Console.WriteLine(String.Format("Поток ID = {0} запущен!", System.Threading.Thread.CurrentThread.ManagedThreadId));
             if (NEW_pg_class != null)
             {
-                cl = NEW_pg_class.class_full_real_by_id_conception(99);
-
-                foreach (vclass c in cl)
+                for (Int64 i = 0; i < 900000000000000000; i++)
                 {
-                    cpl = c.Property_list_get();
-
-                    foreach (class_prop cp in cpl)
-                    {
-                        chek = cp.class_prop_check();
-                        if (!chek)
-                        {
-                            Console.WriteLine(String.Format("Свойство ИД: {2} Наименование: {1} ИД определяющего: {3} в потоке ID = {0} не прошло проверку", System.Threading.Thread.CurrentThread.ManagedThreadId, cp.Name, cp.Id, cp.Id_prop_definition));
-                        }
-                    }
+                    cl = NEW_pg_class.class_act_by_id_parent(650);
                 }
             }
+            Console.WriteLine(String.Format("Поток ID = {0} завершен!", System.Threading.Thread.CurrentThread.ManagedThreadId));
         }
 
         private void NEW_pg_class_JournalMessageReceived(object sender, JournalEventArgs e)
@@ -228,6 +236,9 @@ namespace Test
             }
         }
 
-        
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

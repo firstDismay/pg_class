@@ -47,6 +47,8 @@
             this.btnFunc_list = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.listBox1 = new System.Windows.Forms.ListBox();
+            this.txtPort = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,7 +59,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.treeView1.Location = new System.Drawing.Point(12, 102);
             this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(681, 291);
+            this.treeView1.Size = new System.Drawing.Size(855, 291);
             this.treeView1.TabIndex = 0;
             this.treeView1.TabStop = false;
             this.treeView1.BeforeSelect += new System.Windows.Forms.TreeViewCancelEventHandler(this.treeView1_BeforeSelect);
@@ -86,7 +88,7 @@
             // 
             // tbPassword
             // 
-            this.tbPassword.Location = new System.Drawing.Point(489, 25);
+            this.tbPassword.Location = new System.Drawing.Point(588, 25);
             this.tbPassword.Name = "tbPassword";
             this.tbPassword.PasswordChar = '*';
             this.tbPassword.Size = new System.Drawing.Size(123, 20);
@@ -94,7 +96,7 @@
             // 
             // tbUser
             // 
-            this.tbUser.Location = new System.Drawing.Point(360, 25);
+            this.tbUser.Location = new System.Drawing.Point(464, 25);
             this.tbUser.Name = "tbUser";
             this.tbUser.Size = new System.Drawing.Size(123, 20);
             this.tbUser.TabIndex = 3;
@@ -102,7 +104,7 @@
             // 
             // btConnect
             // 
-            this.btConnect.Location = new System.Drawing.Point(619, 24);
+            this.btConnect.Location = new System.Drawing.Point(723, 24);
             this.btConnect.Name = "btConnect";
             this.btConnect.Size = new System.Drawing.Size(77, 23);
             this.btConnect.TabIndex = 5;
@@ -115,7 +117,7 @@
             this.cbDataBase.FormattingEnabled = true;
             this.cbDataBase.Items.AddRange(new object[] {
             "Uchet"});
-            this.cbDataBase.Location = new System.Drawing.Point(232, 25);
+            this.cbDataBase.Location = new System.Drawing.Point(336, 25);
             this.cbDataBase.Name = "cbDataBase";
             this.cbDataBase.Size = new System.Drawing.Size(121, 21);
             this.cbDataBase.TabIndex = 2;
@@ -132,7 +134,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(229, 5);
+            this.label2.Location = new System.Drawing.Point(333, 5);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(75, 13);
             this.label2.TabIndex = 0;
@@ -141,7 +143,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(360, 5);
+            this.label3.Location = new System.Drawing.Point(464, 5);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(83, 13);
             this.label3.TabIndex = 0;
@@ -150,7 +152,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(486, 5);
+            this.label4.Location = new System.Drawing.Point(590, 5);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(48, 13);
             this.label4.TabIndex = 0;
@@ -158,7 +160,7 @@
             // 
             // btDisConnect
             // 
-            this.btDisConnect.Location = new System.Drawing.Point(619, 53);
+            this.btDisConnect.Location = new System.Drawing.Point(723, 53);
             this.btDisConnect.Name = "btDisConnect";
             this.btDisConnect.Size = new System.Drawing.Size(77, 23);
             this.btDisConnect.TabIndex = 7;
@@ -182,7 +184,7 @@
             this.toolStripStatusLabel2});
             this.statusStrip1.Location = new System.Drawing.Point(0, 702);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(708, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(882, 22);
             this.statusStrip1.TabIndex = 9;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -223,12 +225,32 @@
             this.listBox1.Size = new System.Drawing.Size(682, 277);
             this.listBox1.TabIndex = 12;
             // 
+            // txtPort
+            // 
+            this.txtPort.Location = new System.Drawing.Point(226, 25);
+            this.txtPort.Name = "txtPort";
+            this.txtPort.Size = new System.Drawing.Size(108, 20);
+            this.txtPort.TabIndex = 13;
+            this.txtPort.Text = "5998";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(223, 5);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(35, 13);
+            this.label5.TabIndex = 14;
+            this.label5.Text = "Порт:";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
+            // 
             // frStart
             // 
             this.AcceptButton = this.btConnect;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(708, 724);
+            this.ClientSize = new System.Drawing.Size(882, 724);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.txtPort);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.btnFunc_list);
@@ -276,6 +298,8 @@
         private System.Windows.Forms.Button btnFunc_list;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.TextBox txtPort;
+        private System.Windows.Forms.Label label5;
     }
 }
 
