@@ -15,6 +15,7 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using pg_class.pg_commands;
 using NpgsqlTypes;
+using Npgsql;
 using System.Globalization;
 
 namespace Test
@@ -75,13 +76,24 @@ namespace Test
 
             ///ИЗВРАЩАИТЬСЯ ТУТ
             ///
-            class_prop_user_val cpv = NEW_pg_class.class_prop_user_small_val_by_id_prop(77106);
+            NpgsqlCommandKey cmd = NEW_pg_class.CommandByKey("object_by_array_prop");
 
-            String t1 = cpv.ToString();
 
-            document d1 = NEW_pg_class.document_ext_by_id(182);
+            json_array_prop arg = new json_array_prop();
+            arg.ValMax = "35191";
 
-            List<doc_file> df = d1.doc_file_list_get(false);
+            
+
+            String[] sr = new string[] { System.Text.Json.JsonSerializer.Serialize(arg) };
+
+            cmd.Parameters["json_array_prop"].Value = sr;
+
+            DataTable dt = new DataTable();
+            cmd.Fill(dt);
+
+            
+            //Json[] args = new json_array_prop(){arg};
+
 
 
             //Выполнение команды: 'class_act_in_group_tree_find_by_name' с параметрами:  iid_group = 186; name_mask = bft69; | Время выполнения: 484,626мс
@@ -98,7 +110,7 @@ namespace Test
             //Byte[] xls = NEW_pg_class.object_by_id_position(1000, eBaseExportFormat.TableEntity);
             /// 
             ///
-            System.Threading.Thread tk1 = new System.Threading.Thread(task);
+           /* System.Threading.Thread tk1 = new System.Threading.Thread(task);
             System.Threading.Thread tk2 = new System.Threading.Thread(task);
             System.Threading.Thread tk3 = new System.Threading.Thread(task);
             System.Threading.Thread tk4 = new System.Threading.Thread(task);
@@ -139,7 +151,7 @@ namespace Test
             tk17.Start();
             tk18.Start();
             tk19.Start();
-            tk20.Start();
+            tk20.Start();*/
 
             //Version v = new Version(21, 1, 1, 1);
 

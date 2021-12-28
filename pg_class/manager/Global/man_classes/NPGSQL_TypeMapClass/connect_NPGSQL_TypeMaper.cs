@@ -20,6 +20,8 @@ namespace pg_class.poolcn
         {
             if (cn.State == ConnectionState.Open)
             {
+                NpgsqlConnection.GlobalTypeMapper.UseJsonNet();
+                cn.TypeMapper.UseJsonNet();
                 cn.TypeMapper.Reset();
                 cn.TypeMapper.MapComposite<pg_argument>("bpd.argument");
                 cn.TypeMapper.MapComposite<pg_tblcol2>("bpd.tblcol2");

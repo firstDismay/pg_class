@@ -148,6 +148,7 @@ namespace pg_class
             { "oid", NpgsqlDbType.Oid },
             { "bytea", NpgsqlDbType.Bytea },
             { "json", NpgsqlDbType.Json },
+            { "jsonb", NpgsqlDbType.Jsonb },
             { "array", NpgsqlDbType.Array },
             { "money", NpgsqlDbType.Money },
             { "time", NpgsqlDbType.Time },
@@ -173,6 +174,8 @@ namespace pg_class
             { "_bool", NpgsqlDbType.Array | NpgsqlDbType.Boolean },
             { "_text", NpgsqlDbType.Array | NpgsqlDbType.Text },
             { "_oid", NpgsqlDbType.Array | NpgsqlDbType.Oid },
+            { "_json", NpgsqlDbType.Array |  NpgsqlDbType.Json },
+            { "_jsonb", NpgsqlDbType.Array| NpgsqlDbType.Jsonb  },
             { "_money", NpgsqlDbType.Array | NpgsqlDbType.Money },
             { "_time", NpgsqlDbType.Array | NpgsqlDbType.Time },
             { "_float4", NpgsqlDbType.Array | NpgsqlDbType.Real },
@@ -374,7 +377,7 @@ namespace pg_class
 
         #endregion
 
-            #region Обработка ошибок методов БД
+        #region Обработка ошибок методов БД
             /// <summary>
             /// Функция определяющая базовый код ошибки сущности
             /// </summary>
