@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 namespace pg_class
 {
     /// <summary>
-    /// Класс аргумент для поиска типа подбор пр критериям преобразования в JSONB
+    /// Класс условие поиска типа подбор пр критериям преобразования в JSONB
     /// </summary>
-    public class json_array_prop
+    public class PropSearchСondition
     {
         /// <summary>
         /// Идентификатор глобального свойства
@@ -23,14 +23,13 @@ namespace pg_class
         public Int64 IdDefinitionProp { get; set; }
 
         /// <summary>
-        /// Режим поиска
-        /// strong - строое соотвествие значению
-        /// mask - поиск по маске
-        /// range - поиск в диапазоне
-        /// rangemax - поиск больше максимума
-        /// rangemin - поиск меньше минимма
+        /// Условие поиска должно содержать условный предикат переменной propval, 
+        /// условие в формате SQL с укзанием предикатов переменных содержащих значения для поиска
+        /// valmax, valmin
+        /// Пример:
+        /// propval BETWEEN valmin AND valmax; propval > valmin; propval = valmin; propval LIKE valmin || '%' 
         /// </summary>
-        public String FindType { get; set; }
+        public String SearchСondition { get; set; }
 
         /// <summary>
         /// Верхня текущая граница для поска в диапазоне, либо значение, либо маска

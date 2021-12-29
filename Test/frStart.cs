@@ -79,14 +79,12 @@ namespace Test
             NpgsqlCommandKey cmd = NEW_pg_class.CommandByKey("object_by_array_prop");
 
 
-            json_array_prop arg = new json_array_prop();
+            PropSearchСondition arg = new PropSearchСondition();
             arg.ValMax = "35191";
-
             
-
             String[] sr = new string[] { System.Text.Json.JsonSerializer.Serialize(arg) };
 
-            cmd.Parameters["json_array_prop"].Value = sr;
+            cmd.Parameters["array_prop"].Value = sr;
 
             DataTable dt = new DataTable();
             cmd.Fill(dt);
