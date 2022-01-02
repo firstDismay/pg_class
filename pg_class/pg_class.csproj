@@ -146,7 +146,7 @@
     <Compile Include="manager\Global\man_classes\man_command\man_command.cs" />
     <Compile Include="manager\Global\man_classes\man_command\pg_commands\NpgsqlCommandKey_IClone.cs" />
     <Compile Include="manager\Global\man_classes\man_command\pg_commands_export\command_export.cs" />
-    <Compile Include="manager\Global\man_classes\NPGSQL_TypeJsonClass\json_find_condition.cs" />
+    <Compile Include="manager\Global\man_classes\NPGSQL_TypeJsonClass\json_search_condition.cs" />
     <Compile Include="manager\Global\man_classes\NPGSQL_TypeMapClass\pg_class\pg_cdoc_category.cs" />
     <Compile Include="manager\Global\man_classes\NPGSQL_TypeMapClass\pg_enum\pg_enum_mapping.cs" />
     <Compile Include="manager\Global\man_common\errarg_action.cs" />
