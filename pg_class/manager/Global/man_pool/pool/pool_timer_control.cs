@@ -80,7 +80,7 @@ namespace pg_class.poolcn
                         manager.OnManagerStateChange(e2);
                         
                         //Вызов события журнала
-                        JournalEventArgs me = new JournalEventArgs(0, eEntity.manager, 0, "Все соединения менеджера закрыты по таймауту", eAction.DisConnect, eJournalMessageType.information);
+                        JournalEventArgs me = new JournalEventArgs(0, eEntity.manager, 0, "Все соединения менеджера закрыты!", eAction.DisConnect, eJournalMessageType.information);
                         manager.JournalMessageOnReceivedStatic(this, me);
                     }
                 }

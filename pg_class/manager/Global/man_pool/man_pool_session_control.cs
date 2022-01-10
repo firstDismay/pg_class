@@ -58,7 +58,6 @@ namespace pg_class
             }
         }
 
-
         /// <summary>
         /// Метод выходв пользователя при инициализированном менеджере
         /// </summary>
@@ -76,15 +75,18 @@ namespace pg_class
                 manager.Pg_ManagerSettings = null;
             }
 
-            ManagerStateInstanceSet(eManagerState.LogOff);
-            //Генерируем событие изменения состояния менеджера данных
-            ManagerStateChangeEventArgs e = new ManagerStateChangeEventArgs(eEntity.pool, eManagerState.LogOff);
-            manager.OnManagerStateChange(e);
-
-            me = new JournalEventArgs(0, eEntity.manager, 0, "Закрытие сессии пользователя", eAction.DisConnect, eJournalMessageType.information);
-            if (Me != null)
+            if (manager.StateInstance != eManagerState.LogOff)
             {
-                Me.JournalMessageOnReceived(me);
+                ManagerStateInstanceSet(eManagerState.LogOff);
+                //Генерируем событие изменения состояния менеджера данных
+                ManagerStateChangeEventArgs e = new ManagerStateChangeEventArgs(eEntity.pool, eManagerState.LogOff);
+                manager.OnManagerStateChange(e);
+
+                me = new JournalEventArgs(0, eEntity.manager, 0, "Закрытие сессии пользователя", eAction.DisConnect, eJournalMessageType.information);
+                if (Me != null)
+                {
+                    Me.JournalMessageOnReceived(me);
+                }
             }
         }
         #endregion
