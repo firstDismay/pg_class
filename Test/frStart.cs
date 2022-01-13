@@ -81,6 +81,7 @@ namespace Test
 
             PropSearchСondition arg = new PropSearchСondition();
             arg.ValMax = "35191";
+            arg.SearchСondition = "UPDATE";
             
             String[] sr = new string[] { System.Text.Json.JsonSerializer.Serialize(arg) };
 

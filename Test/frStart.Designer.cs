@@ -77,10 +77,10 @@
             // 
             this.cbHost.FormattingEnabled = true;
             this.cbHost.Items.AddRange(new object[] {
+            "bag.metrosg.ru",
             "sur-astm01.ogk.energo.local",
             "uchet.asuscomm.com",
-            "localhost",
-            "bag.metrosg.ru"});
+            "localhost"});
             this.cbHost.Location = new System.Drawing.Point(11, 25);
             this.cbHost.Name = "cbHost";
             this.cbHost.Size = new System.Drawing.Size(214, 21);
@@ -231,7 +231,7 @@
             this.txtPort.Name = "txtPort";
             this.txtPort.Size = new System.Drawing.Size(108, 20);
             this.txtPort.TabIndex = 13;
-            this.txtPort.Text = "5998";
+            this.txtPort.Text = "5999";
             // 
             // label5
             // 
