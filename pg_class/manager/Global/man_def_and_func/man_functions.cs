@@ -606,5 +606,35 @@ namespace pg_class
             return mode;
         }
         #endregion
+
+        #region Функции сопоставления методов поиска и его пользовательского представления
+
+        /// <summary>
+        /// Пользовательское представление метода поиска
+        /// </summary>    
+        public static String SearchMethodsToString(eSearchMethods SearchMethods)
+        {
+            String Result = "неопределенный метод поиска";
+            String TValue;
+            if (Dictionary_SearchMethods.TryGetValue(SearchMethods, out TValue))
+                Result = TValue;
+            return Result;
+        }
+
+        private static readonly Dictionary<eSearchMethods, string> Dictionary_SearchMethods = new Dictionary<eSearchMethods, String>()
+        {
+            { eSearchMethods.more, "<x"},
+            { eSearchMethods.more_or_equal, "<=x" },
+            { eSearchMethods.less, ">x" },
+            { eSearchMethods.less_or_equal, ">=x" },
+            { eSearchMethods.more_and_less, "<x<"},
+            { eSearchMethods.more_or_equal_and_less, "<=x<"},
+            { eSearchMethods.more_or_equal_and_less_or_equal, "<=x<="},
+            { eSearchMethods.more_and_less_or_equal, "<x<="},
+            { eSearchMethods.equal, "=x"},
+            { eSearchMethods.like, "like x"},
+            { eSearchMethods.like_lower, "like lower x"},
+        };
+        #endregion
     }
 }

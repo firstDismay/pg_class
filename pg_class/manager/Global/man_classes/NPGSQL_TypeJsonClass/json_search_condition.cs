@@ -46,14 +46,31 @@ namespace pg_class
             }
         }
 
+        private eSearchMethods _SearchMethods;
         /// <summary>
-        /// Условие поиска должно содержать условный предикат переменной propval, 
-        /// условие в формате SQL с укзанием предикатов переменных содержащих значения для поиска
-        /// valmax, valmin
-        /// Пример:
-        /// propval BETWEEN valmin AND valmax; propval > valreq; propval = valreq; propval LIKE valreq || '%' 
+        ///Метод поиска
         /// </summary>
-        public String SearchСondition { get; set; }
+        public eSearchMethods SearchMethods
+        {
+            get
+            {
+                return _SearchMethods;
+            }
+            set
+            {
+                _SearchMethods = value;
+            }
+        }
+
+        /// <summary>
+        ///Метод поиска строковое представление
+        /// </summary>
+        public String SearchMethodsToString 
+        { get
+            {
+                return _SearchMethods.ToString();
+            } 
+        }
 
         /// <summary>
         /// Верхня граница условия поиска

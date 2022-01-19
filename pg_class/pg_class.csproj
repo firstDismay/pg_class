@@ -134,7 +134,7 @@
     <Compile Include="manager\eventargs\Base\Class\ClassUnitConversionRuleChangeEventArgs.cs" />
     <Compile Include="manager\eventargs\Base\Conception\Con_Prop_Data_TypeListChangeEventArgs.cs" />
     <Compile Include="manager\eventargs\Base\Role\RoleUserChangeEventArgs.cs" />
-    <Compile Include="manager\Global\gl_definitions.cs" />
+    <Compile Include="manager\Global\man_def_and_func\gl_definitions.cs" />
     <Compile Include="manager\eventargs\Base\UnitConversionRuleChangeEventArgs.cs" />
     <Compile Include="manager\eventargs\Base\Object\ObjectChangeEventArgs.cs" />
     <Compile Include="manager\eventargs\Base\Object_nested_rule\Rulel2_Class_On_PositionListChangeEventArgs.cs" />
@@ -151,12 +151,12 @@
     <Compile Include="manager\Global\man_classes\NPGSQL_TypeMapClass\pg_enum\pg_enum_mapping.cs" />
     <Compile Include="manager\Global\man_common\errarg_action.cs" />
     <Compile Include="manager\Global\man_event\man_event.cs" />
-    <Compile Include="manager\Global\man_EAN13.cs" />
+    <Compile Include="manager\Global\man_def_and_func\man_EAN13.cs" />
     <Compile Include="manager\Global\man_pool\man_pool_session_control.cs" />
     <Compile Include="manager\Global\man_pool\pool\pool_session_control.cs" />
     <Compile Include="manager\Global\man_singleton\man_connect.cs" />
     <Compile Include="manager\Global\man_exception\man_exception.cs" />
-    <Compile Include="manager\Global\man_invocation_list_clear.cs" />
+    <Compile Include="manager\Global\man_event\man_invocation_list_clear.cs" />
     <Compile Include="manager\Global\man_classes\NPGSQL_TypeMapClass\connect_NPGSQL_TypeMaper.cs" />
     <Compile Include="manager\Global\man_pool\connect\connect.cs" />
     <Compile Include="manager\Global\man_pool\man_pool.cs" />
@@ -254,7 +254,7 @@
     <Compile Include="manager\man_role\man_user.cs" />
     <Compile Include="manager\man_propirtes\pos_temp\Step1_pos_temp_prop\man_pos_temp_prop.cs" />
     <Compile Include="manager\man_conception.cs" />
-    <Compile Include="manager\Global\man_functions.cs" />
+    <Compile Include="manager\Global\man_def_and_func\man_functions.cs" />
     <Compile Include="manager\Global\man_init\man_init.cs" />
     <Compile Include="manager\man_pos_prototype.cs" />
     <Compile Include="manager\man_position\man_position.cs" />

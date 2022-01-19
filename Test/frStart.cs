@@ -80,17 +80,25 @@ namespace Test
 
 
             PropSearchСondition arg = new PropSearchСondition();
-            arg.ValMax = "35191";
-            arg.SearchСondition = "UPDATE";
-            
-            String[] sr = new string[] { System.Text.Json.JsonSerializer.Serialize(arg) };
+            arg.IdGlobalProp = 33;
+            arg.ValReq = "lab%";
+            arg.SearchMethods = eSearchMethods.like_lower;
 
-            cmd.Parameters["array_prop"].Value = sr;
+            PropSearchСondition[] arrc = new PropSearchСondition[] { arg };
 
-            DataTable dt = new DataTable();
-            cmd.Fill(dt);
+            List<object_general> OL = NEW_pg_class.object_by_array_prop(arrc, 930);
 
-            
+
+            //String[] sr = new string[] { System.Text.Json.JsonSerializer.Serialize(arg) };
+
+            //cmd.Parameters["array_prop"].Value = sr;
+            //cmd.Parameters["iid_position"].Value = 930;
+
+            //DataTable dt = new DataTable();
+            //cmd.Fill(dt);
+
+
+
             //Json[] args = new json_array_prop(){arg};
 
 
@@ -109,48 +117,48 @@ namespace Test
             //Byte[] xls = NEW_pg_class.object_by_id_position(1000, eBaseExportFormat.TableEntity);
             /// 
             ///
-           /* System.Threading.Thread tk1 = new System.Threading.Thread(task);
-            System.Threading.Thread tk2 = new System.Threading.Thread(task);
-            System.Threading.Thread tk3 = new System.Threading.Thread(task);
-            System.Threading.Thread tk4 = new System.Threading.Thread(task);
-            System.Threading.Thread tk5 = new System.Threading.Thread(task);
-            System.Threading.Thread tk6 = new System.Threading.Thread(task);
-            System.Threading.Thread tk7 = new System.Threading.Thread(task);
-            System.Threading.Thread tk8 = new System.Threading.Thread(task);
-            System.Threading.Thread tk9 = new System.Threading.Thread(task);
-            System.Threading.Thread tk10 = new System.Threading.Thread(task);
-            System.Threading.Thread tk11 = new System.Threading.Thread(task);
-            System.Threading.Thread tk12 = new System.Threading.Thread(task);
-            System.Threading.Thread tk13 = new System.Threading.Thread(task);
-            System.Threading.Thread tk14 = new System.Threading.Thread(task);
-            System.Threading.Thread tk15 = new System.Threading.Thread(task);
-            System.Threading.Thread tk16 = new System.Threading.Thread(task); 
-            System.Threading.Thread tk17 = new System.Threading.Thread(task);
-            System.Threading.Thread tk18 = new System.Threading.Thread(task);
-            System.Threading.Thread tk19 = new System.Threading.Thread(task);
-            System.Threading.Thread tk20 = new System.Threading.Thread(task);
+            /* System.Threading.Thread tk1 = new System.Threading.Thread(task);
+             System.Threading.Thread tk2 = new System.Threading.Thread(task);
+             System.Threading.Thread tk3 = new System.Threading.Thread(task);
+             System.Threading.Thread tk4 = new System.Threading.Thread(task);
+             System.Threading.Thread tk5 = new System.Threading.Thread(task);
+             System.Threading.Thread tk6 = new System.Threading.Thread(task);
+             System.Threading.Thread tk7 = new System.Threading.Thread(task);
+             System.Threading.Thread tk8 = new System.Threading.Thread(task);
+             System.Threading.Thread tk9 = new System.Threading.Thread(task);
+             System.Threading.Thread tk10 = new System.Threading.Thread(task);
+             System.Threading.Thread tk11 = new System.Threading.Thread(task);
+             System.Threading.Thread tk12 = new System.Threading.Thread(task);
+             System.Threading.Thread tk13 = new System.Threading.Thread(task);
+             System.Threading.Thread tk14 = new System.Threading.Thread(task);
+             System.Threading.Thread tk15 = new System.Threading.Thread(task);
+             System.Threading.Thread tk16 = new System.Threading.Thread(task); 
+             System.Threading.Thread tk17 = new System.Threading.Thread(task);
+             System.Threading.Thread tk18 = new System.Threading.Thread(task);
+             System.Threading.Thread tk19 = new System.Threading.Thread(task);
+             System.Threading.Thread tk20 = new System.Threading.Thread(task);
 
 
-            tk1.Start();
-            tk2.Start();
-            tk3.Start();
-            tk4.Start();
-            tk5.Start();
-            tk6.Start();
-            tk7.Start();
-            tk8.Start();
-            tk9.Start();
-            tk10.Start();
-            tk11.Start();
-            tk12.Start();
-            tk13.Start();
-            tk14.Start();
-            tk15.Start();
-            tk16.Start();
-            tk17.Start();
-            tk18.Start();
-            tk19.Start();
-            tk20.Start();*/
+             tk1.Start();
+             tk2.Start();
+             tk3.Start();
+             tk4.Start();
+             tk5.Start();
+             tk6.Start();
+             tk7.Start();
+             tk8.Start();
+             tk9.Start();
+             tk10.Start();
+             tk11.Start();
+             tk12.Start();
+             tk13.Start();
+             tk14.Start();
+             tk15.Start();
+             tk16.Start();
+             tk17.Start();
+             tk18.Start();
+             tk19.Start();
+             tk20.Start();*/
 
             //Version v = new Version(21, 1, 1, 1);
 
