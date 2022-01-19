@@ -3535,7 +3535,7 @@ namespace pg_class
         #region ВЫБРАТЬ ПО КРИТЕРИЯМ ПОИСКА
 
         /// <summary>
-        /// Лист представлений объектов по соотвествующих набору значений глобальных/определяющих свойств (подбор по критериям)
+        /// Лист представлений объектов соотвествующих набору значений глобальных/определяющих свойств (подбор по критериям)
         /// </summary>
         public List<object_general> object_by_array_prop(PropSearchСondition[] array_prop, Int64 iid_position)
         {
@@ -3594,7 +3594,7 @@ namespace pg_class
         }
 
         /// <summary>
-        /// Лист представлений объектов по соотвествующих набору значений глобальных/определяющих свойств (подбор по критериям)
+        /// Лист представлений объектов соотвествующих набору значений глобальных/определяющих свойств (подбор по критериям)
         /// </summary>
         public List<object_general> object_by_array_prop(PropSearchСondition[] array_prop, position Position)
         {
@@ -3634,7 +3634,7 @@ namespace pg_class
 
         //*********************************************************************************************
         /// <summary>
-        /// Представление объекта по идентификатору
+        /// Расширенное представление объекта по идентификатору
         /// </summary>
         public object_general object_ext_by_id(Int64 id)
         {
@@ -5279,7 +5279,7 @@ namespace pg_class
         #region ВЫБРАТЬ ПО ССЫЛКАМ НА ОБЪЕКТ EXT
         //*********************************************************************************************
         /// <summary>
-        /// Лист представлений объектов ссылающихся на указанный объект, разрешение обратных ссылок
+        /// Лист расширенных представлений объектов ссылающихся на указанный объект, разрешение обратных ссылок
         /// </summary>
         public List<object_general> object_ext_by_link_object(Int64 iid_object, Boolean on_recursive)
         {
@@ -5333,7 +5333,7 @@ namespace pg_class
         }
 
         /// <summary>
-        /// Лист представлений объектов ссылающихся на указанный объект, разрешение обратных ссылок
+        /// Лист расширенных представлений объектов ссылающихся на указанный объект, разрешение обратных ссылок
         /// </summary>
         public List<object_general> object_ext_by_link_object(object_general Object_link, Boolean on_recursive)
         {
@@ -5369,6 +5369,100 @@ namespace pg_class
         #endregion
 
         #region ВЫБРАТЬ ПО КРИТЕРИЯМ ПОИСКА EXT
+        /// <summary>
+        /// Лист расширенных представлений объектов соотвествующих набору значений глобальных/определяющих свойств (подбор по критериям)
+        /// </summary>
+        public List<object_general> object_ext_by_array_prop(PropSearchСondition[] array_prop, Int64 iid_position)
+        {
+            List<object_general> object_list = new List<object_general>();
+
+            DataTable tbl_object = TableByName("vobject_general_ext");
+            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
+            //=======================
+            NpgsqlCommandKey cmdk;
+
+            //=======================
+            cmdk = CommandByKey("object_ext_by_array_prop");
+
+            if (cmdk != null)
+            {
+                if (!cmdk.Access)
+                {
+                    throw new AccessDataBaseException(404, String.Format(@"Отказано в доступе к методу: {0}!", cmdk.CommandText));
+                }
+            }
+            else
+            {
+                throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
+            }
+
+            String[] sarray_prop = new String[array_prop.Length];
+
+            for (Int32 i = 0; i < array_prop.Length; i++)
+            {
+                sarray_prop[i] = System.Text.Json.JsonSerializer.Serialize(array_prop[i]);
+            }
+
+            cmdk.Parameters["array_prop"].Value = sarray_prop;
+            cmdk.Parameters["iid_position"].Value = iid_position;
+
+            //DA.SelectCommand = cmdk.Cmd;
+            try
+            {
+                cmdk.Fill(tbl_object);
+            }
+            catch (Exception ex)
+            {
+                PG_exception_hadler(ex, cmdk);
+            }
+            //SetLastTimeUsing();
+            object_general og;
+            if (tbl_object.Rows.Count > 0)
+            {
+                foreach (System.Data.DataRow dr in tbl_object.Rows)
+                {
+                    og = new object_general(dr);
+                    object_list.Add(og);
+                }
+            }
+            return object_list;
+        }
+
+        /// <summary>
+        /// Лист расширенных представлений объектов соотвествующих набору значений глобальных/определяющих свойств (подбор по критериям)
+        /// </summary>
+        public List<object_general> object_ext_by_array_prop(PropSearchСondition[] array_prop, position Position)
+        {
+            return object_ext_by_array_prop(array_prop, Position.Id);
+        }
+
+        //-=ACCESS=-***********************************************************************************
+        /// <summary>
+        /// Проверка прав доступа к методу
+        /// </summary>
+        public Boolean object_ext_by_array_prop(out eAccess Access)
+        {
+            Boolean Result = false;
+            Access = eAccess.NotFound;
+            NpgsqlCommandKey cmdk;
+            //=======================
+            //=======================
+            cmdk = CommandByKey("object_ext_by_array_prop");
+            if (cmdk != null)
+            {
+                Result = cmdk.Access;
+                if (Result)
+                {
+                    Access = eAccess.Success;
+                }
+                else
+                {
+                    Access = eAccess.NotAvailable;
+                }
+            }
+            return Result;
+        }
+        //*********************************************************************************************
         #endregion
 
         #region СВОЙСТВА ПОЛУЧАЕМЫЕ ИЗ БД
