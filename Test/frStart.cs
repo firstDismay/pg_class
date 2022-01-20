@@ -79,12 +79,17 @@ namespace Test
             NpgsqlCommandKey cmd = NEW_pg_class.CommandByKey("object_by_array_prop");
 
 
-            PropSearchСondition arg = new PropSearchСondition();
-            arg.IdGlobalProp = 33;
-            arg.ValReq = "lab%";
-            arg.SearchMethods = eSearchMethods.like_lower;
+            PropSearchСondition arg1 = new PropSearchСondition();
+            arg1.IdGlobalProp = 33;
+            arg1.ValReq = "lab%";
+            arg1.SearchMethods = eSearchMethods.like_lower;
 
-            PropSearchСondition[] arrc = new PropSearchСondition[] { arg };
+            PropSearchСondition arg2 = new PropSearchСondition();
+            arg2.IdGlobalProp = 35;
+            arg2.ValReq = "%температура%";
+            arg2.SearchMethods = eSearchMethods.like_lower;
+
+            PropSearchСondition[] arrc = new PropSearchСondition[] { arg1, arg2 };
 
             List<object_general> OL = NEW_pg_class.object_by_array_prop(arrc, 930);
 

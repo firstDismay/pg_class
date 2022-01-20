@@ -1421,6 +1421,10 @@ namespace pg_class
         /// </summary>
         equal,
         /// <summary>
+        /// Не равно
+        /// </summary>
+        not_equal,
+        /// <summary>
         /// Соотвествует шаблону
         /// </summary>
         like,
