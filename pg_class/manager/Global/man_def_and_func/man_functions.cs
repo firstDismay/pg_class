@@ -623,20 +623,20 @@ namespace pg_class
 
         private static readonly Dictionary<eSearchMethods, string> Dictionary_SearchMethods = new Dictionary<eSearchMethods, String>()
         {
-            { eSearchMethods.more, "< x"},
-            { eSearchMethods.more_or_equal, "<= x" },
-            { eSearchMethods.less, "> x" },
-            { eSearchMethods.less_or_equal, ">= x" },
-            { eSearchMethods.more_and_less, "< x <"},
-            { eSearchMethods.more_or_equal_and_less, "<= x <"},
-            { eSearchMethods.more_or_equal_and_less_or_equal, "<= x <="},
-            { eSearchMethods.more_and_less_or_equal, "< x <="},
-            { eSearchMethods.equal, "= x"},
-            { eSearchMethods.not_equal, "<> x"},
-            { eSearchMethods.like, "like x"},
-            { eSearchMethods.like_lower, "like lower x"},
-            { eSearchMethods.any_array, "входит в массив"},
-            { eSearchMethods.not_any_array, "не вхоит в массив"},
+            { eSearchMethods.more, "<x"},
+            { eSearchMethods.more_or_equal, "<=x" },
+            { eSearchMethods.less, "x>" },
+            { eSearchMethods.less_or_equal, "x>=" },
+            { eSearchMethods.more_and_less, "<x<"},
+            { eSearchMethods.more_or_equal_and_less, "<=x<"},
+            { eSearchMethods.more_or_equal_and_less_or_equal, "<=x<="},
+            { eSearchMethods.more_and_less_or_equal, "<x<="},
+            { eSearchMethods.equal, "=x"},
+            { eSearchMethods.not_equal, "<>x"},
+            { eSearchMethods.like, "маска по x"},
+            { eSearchMethods.like_lower, "маска без регистра по x"},
+            { eSearchMethods.any_array, "содержится"},
+            { eSearchMethods.not_any_array, "не содержится"},
         };
         #endregion
     }

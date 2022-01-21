@@ -84,7 +84,7 @@ namespace Test
             arg1.ValReq = "3";
             arg1.ValMin = "1";
             arg1.ValMax = "2";
-            arg1.SearchMethods = eSearchMethods.more_and_less;
+            arg1.SearchMethods = eSearchMethods.more_or_equal_and_less_or_equal;
 
             PropSearchСondition arg2 = new PropSearchСondition();
             arg2.IdDefinitionProp = 77188;
@@ -102,11 +102,11 @@ namespace Test
 
             PropSearchСondition arg4 = new PropSearchСondition();
             arg4.IdDefinitionProp = 77192;
-            //arg4.ValReqArray = new String[]{"1284", "1287"};
-            arg4.ValReqArray = new String[] { "1284" };
+            arg4.ValReqArray = new String[]{"1284", "1287", "1288"};
+            //arg4.ValReqArray = new String[] { "1284" };
             arg4.ValMin = "1";
             arg4.ValMax = "2";
-            arg4.SearchMethods = eSearchMethods.not_any_array;
+            arg4.SearchMethods = eSearchMethods.any_array;
 
             PropSearchСondition arg5 = new PropSearchСondition();
             arg5.IdDefinitionProp = 77194;
