@@ -635,6 +635,8 @@ namespace pg_class
             { eSearchMethods.not_equal, "<> x"},
             { eSearchMethods.like, "like x"},
             { eSearchMethods.like_lower, "like lower x"},
+            { eSearchMethods.any_array, "входит в массив"},
+            { eSearchMethods.not_any_array, "не вхоит в массив"},
         };
         #endregion
     }

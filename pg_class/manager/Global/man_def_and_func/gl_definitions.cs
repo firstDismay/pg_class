@@ -1431,7 +1431,15 @@ namespace pg_class
         /// <summary>
         /// Соотвествует шаблону без учета регистра
         /// </summary>
-        like_lower
+        like_lower,
+        /// <summary>
+        /// Входит в массив значений
+        /// </summary>
+        any_array,
+        /// <summary>
+        /// Не входит в массив значений
+        /// </summary>
+        not_any_array
     }
     #endregion
 }

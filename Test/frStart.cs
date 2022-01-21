@@ -66,7 +66,7 @@ namespace Test
 
         private void btConnect_Click(object sender, EventArgs e)
         {
-            pg_class.pg_settings Settings = new pg_class.pg_settings(tbUser.Text, tbPassword.Text, cbHost.Text, cbDataBase.Text,  Convert.ToInt32(txtPort.Text));
+            pg_class.pg_settings Settings = new pg_class.pg_settings(tbUser.Text, tbPassword.Text, cbHost.Text, cbDataBase.Text, Convert.ToInt32(txtPort.Text));
             NEW_pg_class = manager.Instance();
             NEW_pg_class.Pool_Create(Settings);
 
@@ -80,20 +80,48 @@ namespace Test
 
 
             PropSearchСondition arg1 = new PropSearchСondition();
-            arg1.IdGlobalProp = 33;
-            arg1.ValReq = "lab%";
-            arg1.SearchMethods = eSearchMethods.like_lower;
+            arg1.IdDefinitionProp = 77186;
+            arg1.ValReq = "3";
+            arg1.ValMin = "1";
+            arg1.ValMax = "2";
+            arg1.SearchMethods = eSearchMethods.more_and_less;
 
             PropSearchСondition arg2 = new PropSearchСondition();
-            arg2.IdGlobalProp = 35;
-            arg2.ValReq = "%температура%";
-            arg2.SearchMethods = eSearchMethods.like_lower;
+            arg2.IdDefinitionProp = 77188;
+            arg2.ValReq = "3";
+            arg2.ValMin = "1";
+            arg2.ValMax = "2";
+            arg2.SearchMethods = eSearchMethods.more_and_less;
 
-            PropSearchСondition[] arrc = new PropSearchСondition[] { arg1, arg2 };
+            PropSearchСondition arg3 = new PropSearchСondition();
+            arg3.IdDefinitionProp = 77190;
+            arg3.ValReq = "3";
+            arg3.ValMin = "1";
+            arg3.ValMax = "2";
+            arg3.SearchMethods = eSearchMethods.more_and_less;
 
-            List<object_general> OL = NEW_pg_class.object_by_array_prop(arrc, 930);
+            PropSearchСondition arg4 = new PropSearchСondition();
+            arg4.IdDefinitionProp = 77192;
+            //arg4.ValReqArray = new String[]{"1284", "1287"};
+            arg4.ValReqArray = new String[] { "1284" };
+            arg4.ValMin = "1";
+            arg4.ValMax = "2";
+            arg4.SearchMethods = eSearchMethods.not_any_array;
 
+            PropSearchСondition arg5 = new PropSearchСondition();
+            arg5.IdDefinitionProp = 77194;
+            arg5.ValReq = "%желтый%";
+            arg5.ValMin = "1";
+            arg5.ValMax = "2";
+            arg5.SearchMethods = eSearchMethods.like_lower;
 
+            PropSearchСondition[] arrc = new PropSearchСondition[] { arg1, arg2, arg3, arg4 };
+
+            List<object_general> OL = NEW_pg_class.object_by_array_prop(arrc, 1557);
+
+            List<object_general> OL2 = NEW_pg_class.object_ext_by_array_prop(arrc, 1557);
+
+            arg5.SearchMethods = eSearchMethods.like_lower;
             //String[] sr = new string[] { System.Text.Json.JsonSerializer.Serialize(arg) };
 
             //cmd.Parameters["array_prop"].Value = sr;

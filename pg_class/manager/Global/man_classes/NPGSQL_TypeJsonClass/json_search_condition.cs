@@ -83,9 +83,14 @@ namespace pg_class
         public String ValMin { get; set; }
 
         /// <summary>
-        /// Запрашиваемое значение или маска
+        /// Запрашиваемое единичное значение или маска
         /// </summary>
         public String ValReq { get; set; }
+
+        /// <summary>
+        /// Запрашиваемый массив значений
+        /// </summary>
+        public String[] ValReqArray { get; set; }
     }
 }
 
