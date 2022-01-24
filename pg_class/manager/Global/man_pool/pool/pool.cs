@@ -144,7 +144,15 @@ namespace pg_class.poolcn
                             }
                             else
                             {
-                                CN.Lock();
+                                if (CN.CN != null)
+                                {
+                                    CN.Lock();
+                                }
+                                else
+                                {
+                                    CN.Open();
+                                    CN.Lock();
+                                }
                             }
                         }
                         else

@@ -31,7 +31,7 @@ namespace pg_class
                 throw (new PgDataException(101, sb.ToString()));
             }
 
-            if (e is Npgsql.NpgsqlException)
+            else if (e is Npgsql.NpgsqlException)
             {
                 StringBuilder sb = new StringBuilder();
                 sb.Append("Активное соединение разорвано, ошибка: ");
@@ -42,7 +42,7 @@ namespace pg_class
                 throw (new PgDataException(201, sb.ToString()));
             }
 
-            if (e is AccessDataBaseException)
+            else if (e is AccessDataBaseException)
             {
                 AccessDataBaseException e1 = (AccessDataBaseException)e;
                 //Вызов события журнала
@@ -51,8 +51,7 @@ namespace pg_class
                 throw (new PgDataException(e1.ErrorID, e1.ErrorDesc));
             }
 
-            //----------------------------
-            if (e is Exception)
+            else
             {
                 StringBuilder sb = new StringBuilder();
                 sb.Append("Неизвестная ошибка ошибка: ");
@@ -70,6 +69,16 @@ namespace pg_class
         private void PG_exception_hadler(Exception e, NpgsqlCommand cmd)
         {
             if (e is Npgsql.PostgresException)
+            {
+                StringBuilder sb = new StringBuilder();
+                sb.Append("Ошибка выполнения операции, сообщение сервера: ");
+                sb.Append(e.Message);
+                //Вызов события журнала
+                JournalEventArgs me = new JournalEventArgs(0, eEntity.manager, 101, e.Message, eAction.Execute, eJournalMessageType.error);
+                JournalMessageOnReceived(me);
+                throw (new PgDataException(101, sb.ToString()));
+            }
+            else
             {
                 StringBuilder sb = new StringBuilder();
                 sb.Append("Ошибка выполнения операции, сообщение сервера: ");
@@ -126,9 +135,16 @@ namespace pg_class
                         me = new JournalEventArgs(0, eEntity.manager, ResultID, ResultDesc, pe.MessageText, eAction.Connect, eJournalMessageType.error);
                         JournalMessageOnReceived(me);
                         throw new PgManagerException(ResultID, ResultDesc, pe.MessageText);
+                    default:
+                        ResultID = pe.HResult;
+                        ResultDesc = "Необработанная ошибка подключения";
+                        //Вызов события журнала
+                        me = new JournalEventArgs(0, eEntity.manager, ResultID, ResultDesc, pe.MessageText, eAction.Connect, eJournalMessageType.error);
+                        JournalMessageOnReceived(me);
+                        throw new PgManagerException(ResultID, ResultDesc, pe.MessageText);
                 }
             }
-            if (e is SocketException)
+            else if (e is SocketException)
             {
                 SocketException se = (SocketException)e;
                 switch (se.ErrorCode)
@@ -171,7 +187,7 @@ namespace pg_class
                 }
                 //0x80004005
             }
-            if (e is NpgsqlException)
+            else if (e is NpgsqlException)
             {
                 NpgsqlException ne = (NpgsqlException)e;
                 switch (ne.ErrorCode)
@@ -191,7 +207,46 @@ namespace pg_class
                         me = new JournalEventArgs(0, eEntity.manager, ResultID, ResultDesc, ne.Message, eAction.Connect, eJournalMessageType.error);
                         JournalMessageOnReceived(me);
                         throw new PgManagerException(ResultID, ResultDesc, ne.Message);
+                    
+                    default:
+                        ResultID = ne.HResult;
+                        ResultDesc = "Необработанная ошибка подключения";
+                        //Вызов события журнала
+                        me = new JournalEventArgs(0, eEntity.manager, ResultID, ResultDesc, ne.Message, eAction.Connect, eJournalMessageType.error);
+                        JournalMessageOnReceived(me);
+                        throw new PgManagerException(ResultID, ResultDesc, ne.Message);
                 }
+            }
+            else if (e is System.ArgumentException)
+            {
+                System.ArgumentException ne = (System.ArgumentException)e;
+                switch (ne.HResult)
+                {
+                    case -2147024809:
+                        ResultID = ne.HResult;
+                        ResultDesc = "Ошибка выполнения операции, неопределенность в аргументах функции сопоставления типов";
+                        //Вызов события журнала
+                        me = new JournalEventArgs(0, eEntity.manager, ResultID, ResultDesc, ne.Message, eAction.Connect, eJournalMessageType.error);
+                        JournalMessageOnReceived(me);
+                        throw new PgManagerException(ResultID, ResultDesc, ne.Message);
+
+                    default:
+                        ResultID = ne.HResult;
+                        ResultDesc = "Необработанная ошибка подключения";
+                        //Вызов события журнала
+                        me = new JournalEventArgs(0, eEntity.manager, ResultID, ResultDesc, ne.Message, eAction.Connect, eJournalMessageType.error);
+                        JournalMessageOnReceived(me);
+                        throw new PgManagerException(ResultID, ResultDesc, ne.Message);
+                }
+            }
+            else
+            {
+                ResultID = e.HResult;
+                ResultDesc = "Необработанная ошибка подключения";
+                //Вызов события журнала
+                me = new JournalEventArgs(0, eEntity.manager, ResultID, ResultDesc, e.Message, eAction.Connect, eJournalMessageType.error);
+                JournalMessageOnReceived(me);
+                throw new PgManagerException(ResultID, ResultDesc, e.Message);
             }
         }
         #endregion

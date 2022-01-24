@@ -48,27 +48,6 @@ namespace pg_class.poolcn
         {
             get
             {
-               /* if (cn == null)
-                {
-                    Open();
-                }
-                else
-                {
-                    if (!(cn.State == ConnectionState.Open || cn.FullState == ConnectionState.Open))
-                    {
-                        try
-                        {
-                            cn.Open();
-                        }
-                        catch (Exception ex)
-                        {
-                            Manager.man_exception_hadler(ex);
-                        }
-                        finally
-                        {
-                        }
-                    }
-                }*/
                 return cn;
             }
         }
@@ -127,29 +106,29 @@ namespace pg_class.poolcn
                 {
                     cn = new NpgsqlConnection(Session_Settings.NpgsqlConnectionString);
                     firstopen = true;
+
+                    //Соединение свободно и доступно для выдачи пулом
+                    isuse = false;
                 }
                 else
                 {
-                    if (cn.State != ConnectionState.Open)
-                    {
-                        cn.ConnectionString = Session_Settings.NpgsqlConnectionString;
-                    }
+                    cn.ConnectionString = Session_Settings.NpgsqlConnectionString;
                 }
+
                 if (cn.State != ConnectionState.Open)
                 {
                     cn.Open();
-                    if (firstopen)
-                    {
-                        //Сопоставление композитных типов
-                        npgsql_type_map(cn);
-                    }
                 }
-                //Соединение свободно и доступно для выдачи пулом
-                isuse = false;
-                
-                //Вызов события журнала
-                JournalEventArgs me = new JournalEventArgs(0, eEntity.connect, 0, "Свободное подключение установлено", eAction.Connect, eJournalMessageType.information);
-                manager.JournalMessageOnReceivedStatic(this, me);
+
+                if (firstopen)
+                {
+                    //Сопоставление композитных типов
+                    npgsql_type_map(cn);
+
+                    //Вызов события журнала
+                    JournalEventArgs me = new JournalEventArgs(0, eEntity.connect, 0, "Свободное подключение установлено", eAction.Connect, eJournalMessageType.information);
+                    manager.JournalMessageOnReceivedStatic(this, me);
+                }
             }
             catch (Exception ex)
             {
@@ -157,7 +136,7 @@ namespace pg_class.poolcn
                 {
                     cn.Dispose();
                     cn = null;
-                    isuse = false;
+                    UnLock();
                 }
 
                 if (manager.StateInstance == eManagerState.LogOff)
@@ -182,7 +161,7 @@ namespace pg_class.poolcn
                     manager.OnManagerStateChange(e);
                     Manager.man_exception_hadler(ex);
                 }
-            }           
+            }
         }
         #endregion
 
