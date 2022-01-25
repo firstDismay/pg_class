@@ -244,10 +244,12 @@ namespace pg_class.poolcn
         {
             lock (cn_list)
             {
-                if (cn_list.Count > 0)
+                if (cn_list != null)
                 {
-                    CN.Drop();
-                    cn_list.Remove(CN);
+                    if (cn_list.Count > 0)
+                    {
+                        cn_list.Remove(CN);
+                    }
                 }
                 
                 if (manager.StateInstance == eManagerState.Connected && cn_list.Count == 0)

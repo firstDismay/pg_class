@@ -171,6 +171,8 @@ namespace pg_class.poolcn
                 cn.CloseAsync();
                 cn.Dispose();
                 cn = null;
+                ///Сообщить в пул соединений о необхимости исключить подключение из списка соединений
+                Manager.Connect_Remove(this);
                 
                 //Вызов события журнала
                 JournalEventArgs me = new JournalEventArgs(0, eEntity.manager, 0, "Неиспользуемое подключение закрыто", eAction.Delete, eJournalMessageType.information);
