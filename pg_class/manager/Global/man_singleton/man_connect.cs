@@ -74,6 +74,17 @@ namespace pg_class
             return Result;
         }
 
+        /// <summary>
+        /// Закрытие указанного соединения сервера
+        /// </summary>
+        internal void Connect_Remove(connect CN)
+        {
+         
+            if (pool_ != null)
+            {
+                pool_.Connect_Remove(CN);
+            }
+        }
         #endregion
 
         #region ЗАКРЫТИЕ СОЕДИНЕНИЯ

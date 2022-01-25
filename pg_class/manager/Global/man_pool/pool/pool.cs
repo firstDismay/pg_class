@@ -139,7 +139,15 @@ namespace pg_class.poolcn
                                     {
                                         CN = cn_list.Find(x => !x.IsUse);
                                     }
-                                    CN.Lock();
+                                    if (CN.CN != null)
+                                    {
+                                        CN.Lock();
+                                    }
+                                    else
+                                    {
+                                        CN.Open();
+                                        CN.Lock();
+                                    }
                                 }
                             }
                             else
@@ -214,6 +222,36 @@ namespace pg_class.poolcn
                 StopControlTimer();
                 if (manager.StateInstance == eManagerState.Connected)
                 {
+                    Manager.ManagerStateInstanceSet(eManagerState.Disconnected);
+                    //Генерируем событие изменения состояния менеджера данных
+                    ManagerStateChangeEventArgs e2 = new ManagerStateChangeEventArgs(eEntity.pool, eManagerState.Disconnected);
+                    manager.OnManagerStateChange(e2);
+                    //Вызов события журнала
+                    JournalEventArgs me = new JournalEventArgs(0, eEntity.pool, 0, "Все соединения менеджера закрыты по команде менеджера данных", eAction.DisConnect, eJournalMessageType.information);
+                    manager.JournalMessageOnReceivedStatic(this, me);
+                }
+                //Вызов события изменения количества подключений
+                PoolConnectEventArgs pc = new PoolConnectEventArgs(cn_list.Count, manager.PoolConnectMaxStatic);
+                manager.PoolConnectCountOnChangeStatic(this, pc);
+            }
+        }
+
+        /// <summary>
+        /// Закрытие указанного соединения сервера
+        /// </summary>
+        internal void Connect_Remove(connect CN)
+        {
+            lock (cn_list)
+            {
+                if (cn_list.Count > 0)
+                {
+                    CN.Drop();
+                    cn_list.Remove(CN);
+                }
+                
+                if (manager.StateInstance == eManagerState.Connected && cn_list.Count == 0)
+                {
+                    StopControlTimer();
                     Manager.ManagerStateInstanceSet(eManagerState.Disconnected);
                     //Генерируем событие изменения состояния менеджера данных
                     ManagerStateChangeEventArgs e2 = new ManagerStateChangeEventArgs(eEntity.pool, eManagerState.Disconnected);

@@ -137,6 +137,10 @@ namespace pg_class.pg_commands
                     connect_.UnLock();
                     Manager.PG_exception_hadler(ex, this);
                 }
+                finally
+                { 
+                    connect_.UnLock(); 
+                }
 
                 Stop = DateTime.Now;
                 LeadTime_ms = (Stop - Start).TotalMilliseconds;
@@ -201,7 +205,11 @@ namespace pg_class.pg_commands
                     connect_.UnLock();
                     Manager.PG_exception_hadler(ex, this);
                 }
-                
+                finally
+                {
+                    connect_.UnLock();
+                }
+
                 Stop = DateTime.Now;
                 LeadTime_ms = (Stop - Start).TotalMilliseconds;
                 JournalMessageOnReceived(LeadTime_ms);
@@ -269,6 +277,10 @@ namespace pg_class.pg_commands
                     connect_.UnLock();
                     Manager.PG_exception_hadler(ex, this);
                 }
+                finally
+                {
+                    connect_.UnLock();
+                }
 
                 Stop = DateTime.Now;
                 LeadTime_ms = (Stop - Start).TotalMilliseconds;
@@ -333,6 +345,10 @@ namespace pg_class.pg_commands
                     connect_.UnLock();
                     Manager.PG_exception_hadler(ex, this);
                 }
+                finally
+                {
+                    connect_.UnLock();
+                }
 
                 Stop = DateTime.Now;
                 LeadTime_ms = (Stop - Start).TotalMilliseconds;
@@ -357,8 +373,8 @@ namespace pg_class.pg_commands
             if (cmd_ != null && access_)
             {
                 cmd_.Cancel();
-            }
 
+            }
         }
         #endregion
 

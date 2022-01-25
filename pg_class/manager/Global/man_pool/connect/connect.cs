@@ -106,9 +106,6 @@ namespace pg_class.poolcn
                 {
                     cn = new NpgsqlConnection(Session_Settings.NpgsqlConnectionString);
                     firstopen = true;
-
-                    //Соединение свободно и доступно для выдачи пулом
-                    isuse = false;
                 }
                 else
                 {
@@ -124,7 +121,6 @@ namespace pg_class.poolcn
                 {
                     //Сопоставление композитных типов
                     npgsql_type_map(cn);
-
                     //Вызов события журнала
                     JournalEventArgs me = new JournalEventArgs(0, eEntity.connect, 0, "Свободное подключение установлено", eAction.Connect, eJournalMessageType.information);
                     manager.JournalMessageOnReceivedStatic(this, me);
@@ -134,9 +130,7 @@ namespace pg_class.poolcn
             {
                 if (cn != null)
                 {
-                    cn.Dispose();
-                    cn = null;
-                    UnLock();
+                    Manager.Connect_Remove(this);
                 }
 
                 if (manager.StateInstance == eManagerState.LogOff)
@@ -177,6 +171,7 @@ namespace pg_class.poolcn
                 cn.CloseAsync();
                 cn.Dispose();
                 cn = null;
+                
                 //Вызов события журнала
                 JournalEventArgs me = new JournalEventArgs(0, eEntity.manager, 0, "Неиспользуемое подключение закрыто", eAction.Delete, eJournalMessageType.information);
                 manager.JournalMessageOnReceivedStatic(this, me);
@@ -252,6 +247,7 @@ namespace pg_class.poolcn
             Result_ = time.TotalMinutes;
             return Result_;
         }
+        
         #endregion     
         #endregion
     }
