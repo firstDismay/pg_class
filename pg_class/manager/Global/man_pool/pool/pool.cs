@@ -125,9 +125,10 @@ namespace pg_class.poolcn
                                 if (cn_list.Count < PoolConnectMax)
                                 {
                                     CN = new connect();
-                                    CN.Open();
                                     CN.Lock();
                                     cn_list.Add(CN);
+                                    CN.Open();
+                                    
                                     //Вызов события изменения количества подключений
                                     PoolConnectEventArgs pc = new PoolConnectEventArgs(cn_list.Count, manager.PoolConnectMaxStatic);
                                     manager.PoolConnectCountOnChangeStatic(this, pc);
