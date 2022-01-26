@@ -111,6 +111,7 @@ namespace pg_class
                         me = new JournalEventArgs(0, eEntity.manager, ResultID, ResultDesc, pe.MessageText, eAction.Connect, eJournalMessageType.error);
                         JournalMessageOnReceived(me);
                         throw new PgManagerException(ResultID, ResultDesc, pe.MessageText);
+                    
                     case "3D000":
                         sb = new StringBuilder();
                         sb.Append("Указанный каталог: '");
@@ -123,6 +124,7 @@ namespace pg_class
                         me = new JournalEventArgs(0, eEntity.manager, ResultID, ResultDesc, pe.MessageText, eAction.Connect, eJournalMessageType.error);
                         JournalMessageOnReceived(me);
                         throw new PgManagerException(ResultID, ResultDesc, pe.MessageText);
+                    
                     case "28000":
                         sb = new StringBuilder();
                         sb.Append("Указанный пользователь: '");
@@ -135,6 +137,7 @@ namespace pg_class
                         me = new JournalEventArgs(0, eEntity.manager, ResultID, ResultDesc, pe.MessageText, eAction.Connect, eJournalMessageType.error);
                         JournalMessageOnReceived(me);
                         throw new PgManagerException(ResultID, ResultDesc, pe.MessageText);
+                    
                     default:
                         ResultID = pe.HResult;
                         ResultDesc = "Необработанная ошибка подключения";
@@ -142,6 +145,29 @@ namespace pg_class
                         me = new JournalEventArgs(0, eEntity.manager, ResultID, ResultDesc, pe.MessageText, eAction.Connect, eJournalMessageType.error);
                         JournalMessageOnReceived(me);
                         throw new PgManagerException(ResultID, ResultDesc, pe.MessageText);
+                }
+            }
+            else if (e is PgManagerException)
+            {
+                PgManagerException pe = (PgManagerException)e;
+                switch (pe.ErrorID)
+                {
+                    case 5003:
+                        ResultID = pe.ErrorID;
+                        ResultDesc = pe.ErrorDesc;
+                        //Вызов события журнала
+                        me = new JournalEventArgs(0, eEntity.manager, ResultID, ResultDesc, pe.ErrorDesc, eAction.Connect, eJournalMessageType.error);
+                        JournalMessageOnReceived(me);
+                        throw new PgManagerException(ResultID, ResultDesc, pe.ErrorDesc);
+                        break;
+                    
+                    default:
+                        ResultID = pe.ErrorID;
+                        ResultDesc = "Необработанная ошибка подключения";
+                        //Вызов события журнала
+                        me = new JournalEventArgs(0, eEntity.manager, ResultID, ResultDesc, pe.ErrorDesc, eAction.Connect, eJournalMessageType.error);
+                        JournalMessageOnReceived(me);
+                        throw new PgManagerException(ResultID, ResultDesc, pe.ErrorDesc);
                 }
             }
             else if (e is SocketException)
@@ -207,7 +233,7 @@ namespace pg_class
                         me = new JournalEventArgs(0, eEntity.manager, ResultID, ResultDesc, ne.Message, eAction.Connect, eJournalMessageType.error);
                         JournalMessageOnReceived(me);
                         throw new PgManagerException(ResultID, ResultDesc, ne.Message);
-                    
+
                     default:
                         ResultID = ne.HResult;
                         ResultDesc = "Необработанная ошибка подключения";

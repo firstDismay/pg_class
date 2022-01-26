@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Npgsql;
 using System.Data;
+using pg_class.pg_exceptions;
 
 namespace pg_class.poolcn
 {
@@ -104,8 +105,25 @@ namespace pg_class.poolcn
             {
                 if (cn == null)
                 {
-                    cn = new NpgsqlConnection(Session_Settings.NpgsqlConnectionString);
-                    firstopen = true;
+                    if (Session_Settings.NpgsqlConnectionString != null)
+                    {
+                        cn = new NpgsqlConnection(Session_Settings.NpgsqlConnectionString);
+                        firstopen = true;
+                    }
+                    else
+                    {
+                        String Message = "Метод открытия подключения к серверу класса коннект вызвал исключение, параметры соединения не определены";
+                        manager.ManagerStateInstanceStsticSet(eManagerState.NoReady);
+                        //Вызов события журнала
+                        JournalEventArgs me = new JournalEventArgs(0, eEntity.connect, 0, Message, eAction.Connect, eJournalMessageType.error);
+                        manager.JournalMessageOnReceivedStatic(this, me);
+                        //Генерируем событие изменения состояния менеджера данных
+                        ManagerStateChangeEventArgs e = new ManagerStateChangeEventArgs(eEntity.pool, eManagerState.NoReady);
+                        manager.OnManagerStateChange(e);
+
+                        PgManagerException ex = new pg_exceptions.PgManagerException(5003, Message, Message);
+                        Manager.man_exception_hadler(ex);
+                    }
                 }
                 else
                 {

@@ -193,9 +193,9 @@ namespace pg_class.poolcn
                     break;
                 case eManagerState.LogOff:
                     //Вызов события журнала
-                    me = new JournalEventArgs(0, eEntity.manager, 0, "Сессия пользователя завершена", eAction.Connect, eJournalMessageType.error);
+                    me = new JournalEventArgs(0, eEntity.manager, 0, "Авторизующая сессия сервера завершена", eAction.Connect, eJournalMessageType.error);
                     manager.JournalMessageOnReceivedStatic(this, me);
-                    throw new PgManagerException(404, "Сессия пользователя завершена", "Сессия пользователя завершена, выполнение команд не доступно");
+                    throw new PgManagerException(404, "Авторизующая сессия сервера завершена", "Сессия сервера завершена, выполнение команд не доступно");
                 case eManagerState.NoReady:
                     //Вызов события журнала
                     me = new JournalEventArgs(0, eEntity.manager, 0, "Пул менеджера данных не создан", eAction.Connect, eJournalMessageType.error);
