@@ -21,6 +21,7 @@ namespace pg_class.poolcn
         internal connect()
         {
             isuse = false;
+            is_corupted = false;
         }
         #endregion
 
@@ -31,13 +32,26 @@ namespace pg_class.poolcn
         /// Признак доступности соединения для выполнения команд
         /// </summary>
         internal Boolean IsUse
-            {
+        {     
             get
             {
                 return isuse;
             }
         }
-        
+
+        private Boolean is_corupted;
+
+        /// <summary>
+        /// Соединение повреждено
+        /// </summary>
+        internal Boolean IsCorupted
+        {
+            get
+            {
+                return is_corupted;
+            }
+        }
+
         /// <summary>
         /// Переменная подключения к БД Учет
         /// </summary>
@@ -148,7 +162,7 @@ namespace pg_class.poolcn
             {
                 if (cn != null)
                 {
-                    Manager.Connect_Remove(this);
+                    is_corupted = true;
                 }
 
                 if (manager.StateInstance == eManagerState.LogOff)
@@ -189,9 +203,10 @@ namespace pg_class.poolcn
                 cn.CloseAsync();
                 cn.Dispose();
                 cn = null;
+
                 ///Сообщить в пул соединений о необхимости исключить подключение из списка соединений
-                Manager.Connect_Remove(this);
-                
+                is_corupted = true;
+
                 //Вызов события журнала
                 JournalEventArgs me = new JournalEventArgs(0, eEntity.manager, 0, "Неиспользуемое подключение закрыто", eAction.Delete, eJournalMessageType.information);
                 manager.JournalMessageOnReceivedStatic(this, me);

@@ -118,12 +118,6 @@
     <Compile Include="frStart.Designer.cs">
       <DependentUpon>frStart.cs</DependentUpon>
     </Compile>
-    <Compile Include="frQR_Code.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frQR_Code.Designer.cs">
-      <DependentUpon>frQR_Code.cs</DependentUpon>
-    </Compile>
     <Compile Include="FuncList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -137,9 +131,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frStart.resx">
       <DependentUpon>frStart.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frQR_Code.resx">
-      <DependentUpon>frQR_Code.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FuncList.resx">
       <DependentUpon>FuncList.cs</DependentUpon>

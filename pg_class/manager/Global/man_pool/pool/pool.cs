@@ -119,16 +119,16 @@ namespace pg_class.poolcn
                     {
                         if (cn_list.Count > 0)
                         {
-                            CN = cn_list.Find(x => !x.IsUse);
+                            CN = cn_list.Find(x => !x.IsUse && !x.IsCorupted);
                             if (CN == null)
                             {
                                 if (cn_list.Count < PoolConnectMax)
                                 {
                                     CN = new connect();
-                                    CN.Lock();
                                     cn_list.Add(CN);
                                     CN.Open();
-                                    
+                                    CN.Lock();
+
                                     //Вызов события изменения количества подключений
                                     PoolConnectEventArgs pc = new PoolConnectEventArgs(cn_list.Count, manager.PoolConnectMaxStatic);
                                     manager.PoolConnectCountOnChangeStatic(this, pc);
@@ -138,10 +138,11 @@ namespace pg_class.poolcn
                                     //Ожидание свободного подключения
                                     while (CN == null)
                                     {
-                                        CN = cn_list.Find(x => !x.IsUse);
+                                        CN = cn_list.Find(x => !x.IsUse && !x.IsCorupted);
                                     }
                                     if (CN.CN != null)
                                     {
+                                        CN.Open();
                                         CN.Lock();
                                     }
                                     else
@@ -240,7 +241,7 @@ namespace pg_class.poolcn
         /// <summary>
         /// Закрытие указанного соединения сервера
         /// </summary>
-        internal void Connect_Remove(connect CN)
+        protected void Connect_Remove(connect CN)
         {
             lock (cn_list)
             {
