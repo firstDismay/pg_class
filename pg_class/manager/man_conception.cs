@@ -13,11 +13,6 @@ namespace pg_class
 {
     public partial class manager
     {
-        private void init_conception()
-        {
-            conception_list_state = eStatus.on;
-        }
-
         #region МЕТОДЫ КЛАССА: КОНЦЕПЦИИ
 
         #region ДОБАВИТЬ

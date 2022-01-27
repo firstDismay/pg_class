@@ -30,6 +30,7 @@ namespace pg_class.poolcn
 
             connect CN = new connect();
             CN.Open();
+            CN.UnLock();
             cn_list.Add(CN);
             
             //Вызов события изменения количества подключений
