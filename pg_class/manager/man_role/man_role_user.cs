@@ -513,17 +513,8 @@ namespace pg_class
 
             cmdk.Parameters["inamesys"].Value = inamesys;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_usr);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
-
+            cmdk.Fill(tbl_usr);
+            
             if (tbl_usr .Rows.Count > 0)
             {
                 role_user = new role_user(tbl_usr.Rows[0]);
@@ -589,17 +580,8 @@ namespace pg_class
 
             cmdk.Parameters["iid"].Value = iid;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_usr);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
-
+            cmdk.Fill(tbl_usr);
+            
             if (tbl_usr.Rows.Count > 0)
             {
                 role_user = new role_user(tbl_usr.Rows[0]);
@@ -664,15 +646,8 @@ namespace pg_class
             }
             //=======================
 
-            try
-            {
-                cmdk.Fill(tbl_usr);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_usr);
+            
             role_user usr;
             if (tbl_usr.Rows.Count > 0)
             {
@@ -741,16 +716,8 @@ namespace pg_class
 
             cmdk.Parameters["ilogin"].Value = ilogin;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_rol);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_rol);
+            
             role_user rol;
             if (tbl_rol.Rows.Count > 0)
             {
@@ -818,17 +785,9 @@ namespace pg_class
             }
 
             cmdk.Parameters["irole_base"].Value = irole_base;
-
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_rol);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            
+            cmdk.Fill(tbl_rol);
+            
             role_user rol;
             if (tbl_rol.Rows.Count > 0)
             {

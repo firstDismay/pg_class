@@ -47,17 +47,8 @@ namespace pg_class
             cmdk.Parameters["iid_position_carrier"].Value = iid_position_carrier;
             cmdk.Parameters["iid_pos_temp_prop"].Value = iid_pos_temp_prop;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_position_prop);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
-
+            cmdk.Fill(tbl_position_prop);
+            
             if (tbl_position_prop.Rows.Count > 0)
             {
                 position_prop = new position_prop(tbl_position_prop.Rows[0]);
@@ -134,16 +125,8 @@ namespace pg_class
 
             cmdk.Parameters["iid_position_carrier"].Value = iid_position_carrier;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_position_prop);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_position_prop);
+            
             position_prop cp;
             if (tbl_position_prop.Rows.Count > 0)
             {
@@ -222,17 +205,8 @@ namespace pg_class
 
             cmdk.Parameters["iid_object_val"].Value = iid_object_val;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_position_prop);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
-
+            cmdk.Fill(tbl_position_prop);
+            
             if (tbl_position_prop.Rows.Count > 0)
             {
                 position_prop = new position_prop( tbl_position_prop.Rows[0]);

@@ -338,18 +338,8 @@ namespace pg_class
             cmdk.Parameters["iid_conception"].Value = iid_conception;
             cmdk.Parameters["iid_prop_data_type"].Value = iid_prop_data_type;
 
-            //DA.SelectCommand = cmdk.Cmd;
-
-            try
-            {
-                cmdk.Fill(tbl_rulel2);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
-
+            cmdk.Fill(tbl_rulel2);
+            
             if (tbl_rulel2.Rows.Count > 0)
             {
                 prop_data_type = new con_prop_data_type(tbl_rulel2.Rows[0]);
@@ -434,16 +424,8 @@ namespace pg_class
 
             cmdk.Parameters["iid_conception"].Value = iid_conception;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_rule_list);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_rule_list);
+            
             con_prop_data_type rule;
             if (tbl_rule_list.Rows.Count > 0)
             {
@@ -524,16 +506,8 @@ namespace pg_class
             cmdk.Parameters["iid_conception"].Value = iid_conception;
             cmdk.Parameters["iid_prop_type"].Value = iid_prop_type;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_rule_list);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_rule_list);
+            
             con_prop_data_type rule;
             if (tbl_rule_list.Rows.Count > 0)
             {

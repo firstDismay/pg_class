@@ -382,17 +382,8 @@ namespace pg_class
 
             cmdk.Parameters["iid_pos_temp_prop"].Value = iid_pos_temp_prop;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_entity);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
-
+            cmdk.Fill(tbl_entity);
+            
             if (tbl_entity.Rows.Count > 0)
             {
                 pos_temp_prop_link_val = new pos_temp_prop_link_val(tbl_entity.Rows[0]);

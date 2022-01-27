@@ -463,16 +463,7 @@ namespace pg_class
 
             cmdk.Parameters["iid_global_prop"].Value = iid_global_prop;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_entity);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_entity);
             
             if (tbl_entity.Rows.Count > 0)
             {

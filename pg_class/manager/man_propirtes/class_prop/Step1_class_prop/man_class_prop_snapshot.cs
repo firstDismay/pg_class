@@ -48,16 +48,7 @@ namespace pg_class
             cmdk.Parameters["iid_class_prop"].Value = iid_class_prop;
             cmdk.Parameters["itimestamp_class"].Value = itimestamp_class;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_class_prop_snapshot);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_class_prop_snapshot);
             
             if (tbl_class_prop_snapshot.Rows.Count > 0)
             {
@@ -131,17 +122,8 @@ namespace pg_class
 
             cmdk.Parameters["iid_object_val"].Value = iid_object_val;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_class_prop_snapshot);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
-
+            cmdk.Fill(tbl_class_prop_snapshot);
+            
             if (tbl_class_prop_snapshot.Rows.Count > 0)
             {
                 class_prop_snapshot = new class_prop(tbl_class_prop_snapshot.Rows[0]);
@@ -218,17 +200,8 @@ namespace pg_class
             cmdk.Parameters["itimestamp_class_snapshot"].Value = itimestamp_class_snapshot;
             cmdk.Parameters["iid_global_prop"].Value = iid_global_prop;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_vclass_prop);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
-
+            cmdk.Fill(tbl_vclass_prop);
+            
             if (tbl_vclass_prop.Rows.Count > 0)
             {
                 class_prop = new class_prop(tbl_vclass_prop.Rows[0]);
@@ -304,16 +277,8 @@ namespace pg_class
             cmdk.Parameters["iid_class_snapshot"].Value = iid_class_snapshot;
             cmdk.Parameters["itimestamp_class_snapshot"].Value = itimestamp_class_snapshot;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_class_prop_snapshot);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_class_prop_snapshot);
+            
             class_prop vcps;
             if (tbl_class_prop_snapshot.Rows.Count > 0)
             {

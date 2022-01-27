@@ -373,17 +373,8 @@ namespace pg_class
 
             cmdk.Parameters["iid_class_prop"].Value = iid_class_prop;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_entity);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
-
+            cmdk.Fill(tbl_entity);
+            
             if (tbl_entity.Rows.Count > 0)
             {
                 Class_prop_enum_val = new class_prop_enum_val(tbl_entity.Rows[0]);
@@ -462,17 +453,8 @@ namespace pg_class
             cmdk.Parameters["iid_class_prop"].Value = iid_class_prop;
             cmdk.Parameters["itimestamp_class"].Value = itimestamp_class;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_entity);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
-
+            cmdk.Fill(tbl_entity);
+            
             if (tbl_entity.Rows.Count > 0)
             {
                 Class_prop_enum_val = new class_prop_enum_val(tbl_entity.Rows[0]);

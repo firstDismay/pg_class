@@ -44,16 +44,8 @@ namespace pg_class
 
             cmdk.Parameters["iid_position"].Value = iid_position;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_pos_path);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_pos_path);
+            
             pos_path pp;
             if (tbl_pos_path.Rows.Count > 0)
             {

@@ -8,6 +8,7 @@ using pg_class.pg_exceptions;
 using System.Data;
 using System.Net.Sockets;
 using pg_class.pg_commands;
+using pg_class.pg_exceptions;
 
 namespace pg_class
 {
@@ -49,6 +50,15 @@ namespace pg_class
                 JournalEventArgs me = new JournalEventArgs(0, eEntity.manager, e1.ErrorID, e1.ErrorDesc, eAction.Execute, eJournalMessageType.error);
                 JournalMessageOnReceived(me);
                 throw (new PgDataException(e1.ErrorID, e1.ErrorDesc));
+            }
+
+            else if (e is PgManagerException)
+            {
+                PgManagerException pe = (PgManagerException)e;
+                //Вызов события журнала
+                JournalEventArgs me = new JournalEventArgs(0, eEntity.manager, pe.ErrorID, pe.ErrorDesc, eAction.Execute, eJournalMessageType.error);
+                JournalMessageOnReceived(me);
+                throw (new PgManagerException(pe.ErrorID, pe.ErrorDesc, pe.OriginalMessage));
             }
 
             else

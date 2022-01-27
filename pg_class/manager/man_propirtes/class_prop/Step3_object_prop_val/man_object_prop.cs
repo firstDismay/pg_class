@@ -47,17 +47,8 @@ namespace pg_class
             cmdk.Parameters["iid_object_carrier"].Value = iid_object_carrier;
             cmdk.Parameters["iid_class_prop"].Value = iid_class_prop;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_object_prop);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
-
+            cmdk.Fill(tbl_object_prop);
+            
             if (tbl_object_prop.Rows.Count > 0)
             {
                 object_prop = new object_prop(tbl_object_prop.Rows[0]);
@@ -133,16 +124,8 @@ namespace pg_class
 
             cmdk.Parameters["iid_object_carrier"].Value = iid_object_carrier;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_object_prop);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_object_prop);
+            
             object_prop cp;
             if (tbl_object_prop.Rows.Count > 0)
             {
@@ -221,17 +204,8 @@ namespace pg_class
 
             cmdk.Parameters["iid_object_val"].Value = iid_object_val;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_object_prop);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
-
+            cmdk.Fill(tbl_object_prop);
+            
             if (tbl_object_prop.Rows.Count > 0)
             {
                 object_prop = new object_prop( tbl_object_prop.Rows[0]);
@@ -306,17 +280,8 @@ namespace pg_class
             cmdk.Parameters["iid_object_carrier"].Value = iid_object_carrier;
             cmdk.Parameters["iid_prop_definition"].Value = iid_prop_definition;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_object_prop);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
-
+            cmdk.Fill(tbl_object_prop);
+            
             if (tbl_object_prop.Rows.Count > 0)
             {
                 object_prop = new object_prop(tbl_object_prop.Rows[0]);
@@ -393,17 +358,8 @@ namespace pg_class
             cmdk.Parameters["iid_object_carrier"].Value = iid_object_carrier;
             cmdk.Parameters["iid_global_prop"].Value = iid_global_prop;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_object_prop);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
-
+            cmdk.Fill(tbl_object_prop);
+            
             if (tbl_object_prop.Rows.Count > 0)
             {
                 object_prop = new object_prop(tbl_object_prop.Rows[0]);

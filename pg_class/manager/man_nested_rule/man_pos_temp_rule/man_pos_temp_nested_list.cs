@@ -305,18 +305,8 @@ namespace pg_class
             cmdk.Parameters["iid_pos_temp"].Value = iid_pos_temp;
             cmdk.Parameters["iid_pos_temp_nested"].Value = iid_pos_temp_nested;
 
-            //DA.SelectCommand = cmdk.Cmd;
-
-            try
-            {
-                cmdk.Fill(tbl_con);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
-
+            cmdk.Fill(tbl_con);
+            
             if (tbl_con.Rows.Count > 0)
             {
                 pos_temp_rule = new pos_temp_nested_rule(tbl_con.Rows[0]);
@@ -384,16 +374,8 @@ namespace pg_class
             cmdk.Parameters["iid_pos_temp"].Value = iid_pos_temp;
             cmdk.Parameters["iid_con"].Value = iid_con;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_rule_list);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_rule_list);
+            
             pos_temp_nested_rule rule;
             if (tbl_rule_list.Rows.Count > 0)
             {
@@ -475,16 +457,8 @@ namespace pg_class
 
             cmdk.Parameters["iid_pos_temp"].Value = iid_pos_temp;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_rule_list);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_rule_list);
+            
             pos_temp_nested_rule rule;
             if (tbl_rule_list.Rows.Count > 0)
             {

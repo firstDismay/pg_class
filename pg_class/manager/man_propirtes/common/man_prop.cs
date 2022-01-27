@@ -46,15 +46,8 @@ namespace pg_class
             }
             //=======================
 
-            try
-            {
-                cmdk.Fill(tbl_prop);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_prop);
+            
             prop_data_bin_ext prop_ext;
             if (tbl_prop.Rows.Count > 0)
             {
@@ -149,16 +142,8 @@ namespace pg_class
 
             cmdk.Parameters["iid_data_type"].Value = id_data_type;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_prop);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_prop);
+            
             prop_data_bin_ext prop_ext;
             if (tbl_prop.Rows.Count > 0)
             {
@@ -233,17 +218,8 @@ namespace pg_class
 
             cmdk.Parameters["iid"].Value = id;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_prop);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
-
+            cmdk.Fill(tbl_prop);
+            
             if (tbl_prop.Rows.Count > 0)
             {
                 prop_data_bin_ext = new prop_data_bin_ext(tbl_prop.Rows[0]);
@@ -317,15 +293,8 @@ namespace pg_class
             }
             //=======================
 
-            try
-            {
-                cmdk.Fill(tbl_data_type);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_data_type);
+            
             prop_type data_type;
             if (tbl_data_type.Rows.Count > 0)
             {
@@ -397,17 +366,8 @@ namespace pg_class
 
             cmdk.Parameters["iid"].Value = id;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_type);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
-
+            cmdk.Fill(tbl_type);
+            
             if (tbl_type.Rows.Count > 0)
             {
                 prop_type = new prop_type(tbl_type.Rows[0]);
@@ -481,15 +441,8 @@ namespace pg_class
             }
             //=======================
 
-            try
-            {
-                cmdk.Fill(tbl_data_type);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_data_type);
+            
             object_prop_create_emded_mode item;
             if (tbl_data_type.Rows.Count > 0)
             {
@@ -565,15 +518,8 @@ namespace pg_class
             }
             //=======================
 
-            try
-            {
-                cmdk.Fill(tbl_pattern_string);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_pattern_string);
+            
             pattern_string pattern_string;
             if (tbl_pattern_string.Rows.Count > 0)
             {
