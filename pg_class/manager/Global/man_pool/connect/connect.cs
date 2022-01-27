@@ -153,6 +153,10 @@ namespace pg_class.poolcn
                 {
                     //Сопоставление композитных типов
                     npgsql_type_map(cn);
+
+                    //Определение времени первичного использования
+                    SetLastTimeUsing();
+
                     //Вызов события журнала
                     JournalEventArgs me = new JournalEventArgs(0, eEntity.connect, 0, "Свободное подключение установлено", eAction.Connect, eJournalMessageType.information);
                     manager.JournalMessageOnReceivedStatic(this, me);

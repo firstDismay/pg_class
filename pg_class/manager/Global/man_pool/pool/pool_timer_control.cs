@@ -22,6 +22,7 @@ namespace pg_class.poolcn
             //ИНИЦИАЛИЗАЦИЯ ТАЙМЕРА
             if (MyTimer == null)
             {
+                
                 MyTimer = new System.Timers.Timer(10000);
                 MyTimer.Elapsed += new System.Timers.ElapsedEventHandler(MyTimer_Elapsed);
                 MyTimer.Start();
