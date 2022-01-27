@@ -40,7 +40,7 @@ namespace pg_class
                 //Вызов события журнала
                 JournalEventArgs me = new JournalEventArgs(0, eEntity.manager, 201, e.Message, eAction.Execute, eJournalMessageType.error);
                 JournalMessageOnReceived(me);
-                throw (new PgDataException(201, sb.ToString()));
+                throw (new PgDataException(2147467259, sb.ToString()));
             }
 
             else if (e is AccessDataBaseException)
