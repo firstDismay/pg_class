@@ -22,7 +22,6 @@ namespace pg_class.poolcn
         internal pool()
         {
             cn_list = new List<connect>();
-            StartControlTimer();
 
             //Вызов события журнала
             JournalEventArgs me = new JournalEventArgs(0, eEntity.pool, 0, "Пул соединений создан", eAction.Connect, eJournalMessageType.information);
@@ -40,6 +39,8 @@ namespace pg_class.poolcn
             //Вызов события журнала
             me = new JournalEventArgs(0, eEntity.manager, 0, "Менеджер данных подключен в БД", eAction.Connect, eJournalMessageType.information);
             manager.JournalMessageOnReceivedStatic(this, me);
+
+            StartControlTimer();
         }
         #endregion
         
