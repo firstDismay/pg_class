@@ -1008,17 +1008,8 @@ namespace pg_class
             //=======================
 
             cmdk.Parameters["iid"].Value = id;
-
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_vclass);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            
+            cmdk.Fill(tbl_vclass);
             
             if (tbl_vclass.Rows.Count > 0)
             {
@@ -1122,16 +1113,8 @@ namespace pg_class
 
             cmdk.Parameters["iid_parent"].Value = id_parent;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_vclass);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_vclass);
+
             vclass vc;
             if (tbl_vclass.Rows.Count > 0)
             {
@@ -1264,16 +1247,8 @@ namespace pg_class
 
             cmdk.Parameters["iid_global_prop"].Value = iid_global_prop;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_vclass);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_vclass);
+            
             vclass vc;
             if (tbl_vclass.Rows.Count > 0)
             {
@@ -1395,16 +1370,8 @@ namespace pg_class
 
             cmdk.Parameters["iid_parent"].Value = id_parent;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_vclass);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_vclass);
+            
             vclass vc;
             if (tbl_vclass.Rows.Count > 0)
             {
@@ -1553,16 +1520,8 @@ namespace pg_class
 
             cmdk.Parameters["iid_group"].Value = id_group;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_vclass);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_vclass);
+            
             vclass vc;
             if (tbl_vclass.Rows.Count > 0)
             {
@@ -1684,16 +1643,8 @@ namespace pg_class
 
             cmdk.Parameters["iid_group"].Value = id_group;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_vclass);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_vclass);
+            
             vclass vc;
             if (tbl_vclass.Rows.Count > 0)
             {
@@ -1818,16 +1769,8 @@ namespace pg_class
             cmdk.Parameters["iid_group"].Value = iid_group;
             cmdk.Parameters["iid_position"].Value = iid_position;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_vclass);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_vclass);
+            
             vclass vc;
             if (tbl_vclass.Rows.Count > 0)
             {
@@ -1909,16 +1852,8 @@ namespace pg_class
             cmdk.Parameters["iid_group"].Value = iid_group;
             cmdk.Parameters["iid_position"].Value = iid_position;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_vclass);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_vclass);
+            
             vclass vc;
             if (tbl_vclass.Rows.Count > 0)
             {
@@ -2001,17 +1936,8 @@ namespace pg_class
             cmdk.Parameters["itimestamp_class"].Value = itimestamp_class;
             cmdk.Parameters["storagetype"].Value = storagetype.ToString("G");
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_vclass);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
-
+            cmdk.Fill(tbl_vclass);
+            
             if (tbl_vclass.Rows.Count > 0)
             {
                 vclass = new vclass(tbl_vclass.Rows[0]);
@@ -2094,16 +2020,8 @@ namespace pg_class
 
             cmdk.Parameters["iid_conception"].Value = iid_conception;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_vclass);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_vclass);
+            
             vclass vc;
             if (tbl_vclass.Rows.Count > 0)
             {
@@ -2183,16 +2101,8 @@ namespace pg_class
 
             cmdk.Parameters["iid_unit_conversion_rule"].Value = iid_unit_conversion_rule;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_vclass);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_vclass);
+            
             vclass vc;
             if (tbl_vclass.Rows.Count > 0)
             {
@@ -2280,16 +2190,8 @@ namespace pg_class
 
             cmdk.Parameters["iid_prop_enum"].Value = iid_prop_enum;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_vclass);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_vclass);
+            
             vclass vc;
             if (tbl_vclass.Rows.Count > 0)
             {
@@ -2370,16 +2272,8 @@ namespace pg_class
 
             cmdk.Parameters["iid_prop_enum_val"].Value = iid_prop_enum_val;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_vclass);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_vclass);
+            
             vclass vc;
             if (tbl_vclass.Rows.Count > 0)
             {
@@ -2460,16 +2354,8 @@ namespace pg_class
             cmdk.Parameters["iid_conception"].Value = iid_conception;
             cmdk.Parameters["iid_prop_data_type"].Value = iid_prop_data_type;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_vclass);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_vclass);
+            
             vclass vc;
             if (tbl_vclass.Rows.Count > 0)
             {
@@ -2552,17 +2438,8 @@ namespace pg_class
 
             cmdk.Parameters["iid"].Value = iid;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_vclass);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
-
+            cmdk.Fill(tbl_vclass);
+            
             if (tbl_vclass.Rows.Count > 0)
             {
                 vclass = new vclass(tbl_vclass.Rows[0]);
@@ -2666,16 +2543,8 @@ namespace pg_class
 
             cmdk.Parameters["iid_parent"].Value = id_parent;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_vclass);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_vclass);
+            
             vclass vc;
             if (tbl_vclass.Rows.Count > 0)
             {
@@ -2763,16 +2632,8 @@ namespace pg_class
 
             cmdk.Parameters["iid_global_prop"].Value = iid_global_prop;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_vclass);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_vclass);
+            
             vclass vc;
             if (tbl_vclass.Rows.Count > 0)
             {
@@ -2850,17 +2711,9 @@ namespace pg_class
             //=======================
 
             cmdk.Parameters["iid_group"].Value = iid_group;
-
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_vclass);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            
+            cmdk.Fill(tbl_vclass);
+            
             vclass vc;
             if (tbl_vclass.Rows.Count > 0)
             {
@@ -2940,16 +2793,8 @@ namespace pg_class
 
             cmdk.Parameters["iid_group"].Value = id_group;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_vclass);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_vclass);
+            
             vclass vc;
             if (tbl_vclass.Rows.Count > 0)
             {
@@ -3029,16 +2874,8 @@ namespace pg_class
             cmdk.Parameters["iid_group"].Value = iid_group;
             cmdk.Parameters["iid_position"].Value = iid_position;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_vclass);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_vclass);
+            
             vclass vc;
             if (tbl_vclass.Rows.Count > 0)
             {
@@ -3119,16 +2956,8 @@ namespace pg_class
             cmdk.Parameters["iid_group"].Value = iid_group;
             cmdk.Parameters["iid_position"].Value = iid_position;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_vclass);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_vclass);
+            
             vclass vc;
             if (tbl_vclass.Rows.Count > 0)
             {
@@ -3211,16 +3040,8 @@ namespace pg_class
             cmdk.Parameters["iid_parent"].Value = iid_parent;
             cmdk.Parameters["iname"].Value = iname;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_vclass);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_vclass);
+            
             vclass vc;
             if (tbl_vclass.Rows.Count > 0)
             {
@@ -3309,16 +3130,8 @@ namespace pg_class
             cmdk.Parameters["iid_parent"].Value = iid_parent;
             cmdk.Parameters["name_mask"].Value = name_mask;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_vclass);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_vclass);
+            
             vclass vc;
             if (tbl_vclass.Rows.Count > 0)
             {
@@ -3398,16 +3211,8 @@ namespace pg_class
             cmdk.Parameters["iid_group"].Value = iid_group;
             cmdk.Parameters["name_mask"].Value = name_mask;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_vclass);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_vclass);
+            
             vclass vc;
             if (tbl_vclass.Rows.Count > 0)
             {
@@ -3487,16 +3292,8 @@ namespace pg_class
             cmdk.Parameters["iid_conception"].Value = iid_conception;
             cmdk.Parameters["name_mask"].Value = name_mask;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_vclass);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_vclass);
+            
             vclass vc;
             if (tbl_vclass.Rows.Count > 0)
             {
@@ -3578,16 +3375,8 @@ namespace pg_class
             cmdk.Parameters["iid_parent"].Value = iid_parent;
             cmdk.Parameters["iname"].Value = iname;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_vclass);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_vclass);
+            
             vclass vc;
             if (tbl_vclass.Rows.Count > 0)
             {
@@ -3676,16 +3465,8 @@ namespace pg_class
             cmdk.Parameters["iid_parent"].Value = iid_parent;
             cmdk.Parameters["name_mask"].Value = name_mask;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_vclass);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_vclass);
+            
             vclass vc;
             if (tbl_vclass.Rows.Count > 0)
             {
@@ -3765,16 +3546,8 @@ namespace pg_class
             cmdk.Parameters["iid_group"].Value = iid_group;
             cmdk.Parameters["name_mask"].Value = name_mask;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_vclass);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_vclass);
+            
             vclass vc;
             if (tbl_vclass.Rows.Count > 0)
             {
@@ -3854,16 +3627,8 @@ namespace pg_class
             cmdk.Parameters["iid_conception"].Value = iid_conception;
             cmdk.Parameters["name_mask"].Value = name_mask;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_vclass);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_vclass);
+            
             vclass vc;
             if (tbl_vclass.Rows.Count > 0)
             {

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Npgsql;
 using System.Data;
+using pg_class.pg_exceptions;
 
 namespace pg_class.poolcn
 {
@@ -20,6 +21,7 @@ namespace pg_class.poolcn
         internal connect()
         {
             isuse = false;
+            is_corupted = false;
         }
         #endregion
 
@@ -30,13 +32,26 @@ namespace pg_class.poolcn
         /// Признак доступности соединения для выполнения команд
         /// </summary>
         internal Boolean IsUse
-            {
+        {     
             get
             {
                 return isuse;
             }
         }
-        
+
+        private Boolean is_corupted;
+
+        /// <summary>
+        /// Соединение повреждено
+        /// </summary>
+        internal Boolean IsCorupted
+        {
+            get
+            {
+                return is_corupted;
+            }
+        }
+
         /// <summary>
         /// Переменная подключения к БД Учет
         /// </summary>
@@ -104,8 +119,25 @@ namespace pg_class.poolcn
             {
                 if (cn == null)
                 {
-                    cn = new NpgsqlConnection(Session_Settings.NpgsqlConnectionString);
-                    firstopen = true;
+                    if (Session_Settings.NpgsqlConnectionString != null)
+                    {
+                        cn = new NpgsqlConnection(Session_Settings.NpgsqlConnectionString);
+                        firstopen = true;
+                    }
+                    else
+                    {
+                        String Message = "Метод открытия подключения к серверу класса коннект вызвал исключение, параметры соединения не определены";
+                        manager.ManagerStateInstanceStsticSet(eManagerState.NoReady);
+                        //Вызов события журнала
+                        JournalEventArgs me = new JournalEventArgs(0, eEntity.connect, 0, Message, eAction.Connect, eJournalMessageType.error);
+                        manager.JournalMessageOnReceivedStatic(this, me);
+                        //Генерируем событие изменения состояния менеджера данных
+                        ManagerStateChangeEventArgs e = new ManagerStateChangeEventArgs(eEntity.pool, eManagerState.NoReady);
+                        manager.OnManagerStateChange(e);
+
+                        PgManagerException ex = new pg_exceptions.PgManagerException(5003, Message, Message);
+                        Manager.man_exception_hadler(ex);
+                    }
                 }
                 else
                 {
@@ -121,6 +153,10 @@ namespace pg_class.poolcn
                 {
                     //Сопоставление композитных типов
                     npgsql_type_map(cn);
+
+                    //Определение времени первичного использования
+                    SetLastTimeUsing();
+
                     //Вызов события журнала
                     JournalEventArgs me = new JournalEventArgs(0, eEntity.connect, 0, "Свободное подключение установлено", eAction.Connect, eJournalMessageType.information);
                     manager.JournalMessageOnReceivedStatic(this, me);
@@ -130,7 +166,7 @@ namespace pg_class.poolcn
             {
                 if (cn != null)
                 {
-                    Manager.Connect_Remove(this);
+                    is_corupted = true;
                 }
 
                 if (manager.StateInstance == eManagerState.LogOff)
@@ -171,9 +207,10 @@ namespace pg_class.poolcn
                 cn.CloseAsync();
                 cn.Dispose();
                 cn = null;
+
                 ///Сообщить в пул соединений о необхимости исключить подключение из списка соединений
-                Manager.Connect_Remove(this);
-                
+                is_corupted = true;
+
                 //Вызов события журнала
                 JournalEventArgs me = new JournalEventArgs(0, eEntity.manager, 0, "Неиспользуемое подключение закрыто", eAction.Delete, eJournalMessageType.information);
                 manager.JournalMessageOnReceivedStatic(this, me);

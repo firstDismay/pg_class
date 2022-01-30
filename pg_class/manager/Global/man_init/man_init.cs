@@ -50,7 +50,7 @@ namespace pg_class
             cn.UnLock();
 
             //Инициализация концепций
-            init_conception();
+            conception_list_state = eStatus.on;
 
             //Вызов события журнала
             String msg = String.Format("Инициализация команд менеджера данных завершена, загружено команд: {0}, загружено таблиц: {1}", command_list.Count, datatable_list.Count);

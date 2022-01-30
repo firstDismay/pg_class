@@ -366,17 +366,8 @@ namespace pg_class
             cmdk.Parameters["iid_object"].Value = iid_object;
             cmdk.Parameters["iid_class_prop"].Value = iid_class_prop;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_entity);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
-
+            cmdk.Fill(tbl_entity);
+            
             if (tbl_entity.Rows.Count > 0)
             {
                 object_prop_enum_val = new object_prop_enum_val(tbl_entity.Rows[0]);

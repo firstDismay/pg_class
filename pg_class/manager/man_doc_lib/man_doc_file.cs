@@ -646,16 +646,7 @@ namespace pg_class
 
             cmdk.Parameters["iid"].Value = iid;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_entity);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_entity);
             
             if (tbl_entity.Rows.Count > 0)
             {
@@ -722,16 +713,8 @@ namespace pg_class
 
             cmdk.Parameters["iid_document"].Value = iid_document;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_entity);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_entity);
+            
             doc_file ce;
             if (tbl_entity.Rows.Count > 0)
             {
@@ -803,16 +786,8 @@ namespace pg_class
             cmdk.Parameters["iid_document"].Value = iid_document;
             cmdk.Parameters["imd5"].Value = imd5;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_entity);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_entity);
+            
             doc_file ce;
             if (tbl_entity.Rows.Count > 0)
             {
@@ -1100,16 +1075,8 @@ namespace pg_class
 
             cmdk.Parameters["iid_conception"].Value = iid_conception;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_entity);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_entity);
+            
             String ext;
             if (tbl_entity.Rows.Count > 0)
             {

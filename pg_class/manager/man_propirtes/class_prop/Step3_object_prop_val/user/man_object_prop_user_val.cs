@@ -610,17 +610,8 @@ namespace pg_class
             cmdk.Parameters["iid_object"].Value = iid_object;
             cmdk.Parameters["iid_class_prop"].Value = iid_class_prop;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_vobject_prop_user_small_val);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
-
+            cmdk.Fill(tbl_vobject_prop_user_small_val);
+            
             if (tbl_vobject_prop_user_small_val.Rows.Count > 0)
             {
                 object_prop_user_val = new object_prop_user_val(tbl_vobject_prop_user_small_val.Rows[0]);
@@ -696,17 +687,8 @@ namespace pg_class
             cmdk.Parameters["iid_object"].Value = iid_object;
             cmdk.Parameters["iid_class_prop"].Value = iid_class_prop;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_vobject_prop_user_big_val);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
-
+            cmdk.Fill(tbl_vobject_prop_user_big_val);
+            
             if (tbl_vobject_prop_user_big_val.Rows.Count > 0)
             {
                 object_prop_user_val = new object_prop_user_val(tbl_vobject_prop_user_big_val.Rows[0]);

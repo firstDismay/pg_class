@@ -191,22 +191,12 @@ namespace pg_class
             }
             //=======================
 
-            try
-            {
-                cmdk.Fill(tbl_man);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
+            cmdk.Fill(tbl_man);
             
-            //SetLastTimeUsing();
-
             if (tbl_man.Rows.Count > 0)
             {
                 man_info = new man_info(tbl_man.Rows[0]);
             }
-
             return man_info;
         }
         //-=ACCESS=-***********************************************************************************

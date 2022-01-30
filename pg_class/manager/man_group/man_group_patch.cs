@@ -43,16 +43,8 @@ namespace pg_class
 
             cmdk.Parameters["iid_group"].Value = iid_group;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_group_path);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_group_path);
+            
             group_path gp;
             if (tbl_group_path.Rows.Count > 0)
             {

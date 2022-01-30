@@ -696,17 +696,8 @@ namespace pg_class
 
             cmdk.Parameters["login"].Value = login;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_usr);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
-
+            cmdk.Fill(tbl_usr);
+            
             if (tbl_usr .Rows.Count > 0)
             {
                 user = new user(tbl_usr.Rows[0]);
@@ -772,17 +763,8 @@ namespace pg_class
 
             cmdk.Parameters["iid"].Value = iid;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_usr);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
-
+            cmdk.Fill(tbl_usr);
+            
             if (tbl_usr.Rows.Count > 0)
             {
                 user = new user(tbl_usr.Rows[0]);
@@ -847,15 +829,8 @@ namespace pg_class
             }
             //=======================
 
-            try
-            {
-                cmdk.Fill(tbl_usr);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_usr);
+            
             user usr;
             if (tbl_usr.Rows.Count > 0)
             {
@@ -925,15 +900,8 @@ namespace pg_class
 
             cmdk.Parameters["roles"].Value = roles;
 
-            try
-            {
-                cmdk.Fill(tbl_usr);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_usr);
+            
             user usr;
             if (tbl_usr.Rows.Count > 0)
             {
@@ -1003,16 +971,8 @@ namespace pg_class
             }
             //=======================
 
-            try
-            {
-                cmdk.Fill(tbl_usr);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
-
+            cmdk.Fill(tbl_usr);
+            
             if (tbl_usr.Rows.Count > 0)
             {
                 user = new user(tbl_usr.Rows[0]);
@@ -1220,16 +1180,9 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_func);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            
+            cmdk.Fill(tbl_func);
+            
             function func;
             if (tbl_func.Rows.Count > 0)
             {
@@ -1299,15 +1252,9 @@ namespace pg_class
             }
 
             cmdk.Parameters["usr_rolname"].Value = usr_rolname;
-            try
-            {
-                cmdk.Fill(tbl_func);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            
+            cmdk.Fill(tbl_func);
+            
             function func;
             if (tbl_func.Rows.Count > 0)
             {
@@ -1495,17 +1442,8 @@ namespace pg_class
             }
             //=======================
 
+            cmdk.Fill(tbl_usr);
             
-            try
-            {
-                cmdk.Fill(tbl_usr);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
-
             if (tbl_usr.Rows.Count > 0)
             {
                 user_options = new user_options(tbl_usr.Rows[0]);

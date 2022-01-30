@@ -22,7 +22,8 @@ namespace pg_class.poolcn
             //ИНИЦИАЛИЗАЦИЯ ТАЙМЕРА
             if (MyTimer == null)
             {
-                MyTimer = new System.Timers.Timer(60000);
+                
+                MyTimer = new System.Timers.Timer(10000);
                 MyTimer.Elapsed += new System.Timers.ElapsedEventHandler(MyTimer_Elapsed);
                 MyTimer.Start();
             }
@@ -53,7 +54,7 @@ namespace pg_class.poolcn
             {
                 if (cn_list.Count > 0)
                 {
-                    CN = cn_list.FindAll(x => !x.IsUse & (x.GetTimeOutUsing() > Session_Settings.SessionTimeOut));
+                    CN = cn_list.FindAll(x => !x.IsUse & ((x.GetTimeOutUsing() > Session_Settings.SessionTimeOut) || (x.IsCorupted)));
                     if (CN.Count > 0)
                     {
                         foreach (connect c in CN)
