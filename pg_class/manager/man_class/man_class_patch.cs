@@ -46,16 +46,8 @@ namespace pg_class
 
             cmdk.Parameters["iid_class"].Value = iid_class;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_vclass_path);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_vclass_path);
+            
             class_path vcp;
             if (tbl_vclass_path.Rows.Count > 0)
             {
@@ -145,16 +137,8 @@ namespace pg_class
             cmdk.Parameters["iid_class"].Value = iid_class;
             cmdk.Parameters["itimestamp_class"].Value = itimestamp_class;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_vclass_path);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_vclass_path);
+            
             class_path vcp;
             if (tbl_vclass_path.Rows.Count > 0)
             {

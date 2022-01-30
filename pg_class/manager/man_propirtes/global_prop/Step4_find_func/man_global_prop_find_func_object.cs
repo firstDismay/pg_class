@@ -47,16 +47,8 @@ namespace pg_class
             cmdk.Parameters["iid_global_prop"].Value = iid_global_prop;
             cmdk.Parameters["find_mask"].Value = find_mask;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_object);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_object);
+            
             object_general og;
             if (tbl_object.Rows.Count > 0)
             {
@@ -189,16 +181,8 @@ namespace pg_class
             cmdk.Parameters["iid_global_prop"].Value = iid_global_prop;
             cmdk.Parameters["find_mask"].Value = find_mask;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_object);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_object);
+            
             object_general og;
             if (tbl_object.Rows.Count > 0)
             {
@@ -284,16 +268,8 @@ namespace pg_class
             cmdk.Parameters["iid_global_prop"].Value = iid_global_prop;
             cmdk.Parameters["find_mask"].Value = find_mask;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_object);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_object);
+            
             object_general og;
             if (tbl_object.Rows.Count > 0)
             {
@@ -426,16 +402,8 @@ namespace pg_class
             cmdk.Parameters["iid_global_prop"].Value = iid_global_prop;
             cmdk.Parameters["find_mask"].Value = find_mask;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_object);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_object);
+            
             object_general og;
             if (tbl_object.Rows.Count > 0)
             {
@@ -522,16 +490,8 @@ namespace pg_class
             cmdk.Parameters["iid_position"].Value = iid_position;
             cmdk.Parameters["find_mask"].Value = find_mask;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_object);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_object);
+            
             object_general og;
             if (tbl_object.Rows.Count > 0)
             {
@@ -669,16 +629,8 @@ namespace pg_class
             cmdk.Parameters["iid_position"].Value = iid_position;
             cmdk.Parameters["find_mask"].Value = find_mask;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_object);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_object);
+            
             object_general og;
             if (tbl_object.Rows.Count > 0)
             {

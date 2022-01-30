@@ -504,16 +504,7 @@ namespace pg_class
 
             cmdk.Parameters["iid"].Value = iid;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_vclass_prop);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_vclass_prop);
             
             if (tbl_vclass_prop.Rows.Count > 0)
             {
@@ -582,17 +573,8 @@ namespace pg_class
             cmdk.Parameters["iid_class"].Value = iid_class;
             cmdk.Parameters["iid_global_prop"].Value = iid_global_prop;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_vclass_prop);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
-
+            cmdk.Fill(tbl_vclass_prop);
+            
             if (tbl_vclass_prop.Rows.Count > 0)
             {
                 class_prop = new class_prop(tbl_vclass_prop.Rows[0]);
@@ -667,16 +649,8 @@ namespace pg_class
 
             cmdk.Parameters["iid_class"].Value = iid_class;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_class_prop);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_class_prop);
+            
             class_prop cp;
             if (tbl_class_prop.Rows.Count > 0)
             {
@@ -758,17 +732,8 @@ namespace pg_class
             cmdk.Parameters["itimestamp_class"].Value = itimestamp_class;
             cmdk.Parameters["storagetype"].Value = storagetype.ToString("G");
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_vclass_prop);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
-
+            cmdk.Fill(tbl_vclass_prop);
+            
             if (tbl_vclass_prop.Rows.Count > 0)
             {
                 class_prop = new class_prop(tbl_vclass_prop.Rows[0]);
@@ -852,17 +817,8 @@ namespace pg_class
             cmdk.Parameters["itimestamp_class"].Value = itimestamp_class;
             cmdk.Parameters["storagetype"].Value = storagetype.ToString("G");
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_vclass);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
-
+            cmdk.Fill(tbl_vclass);
+            
             if (tbl_vclass.Rows.Count > 0)
             {
                 vclass = new vclass(tbl_vclass.Rows[0]);
@@ -948,16 +904,8 @@ namespace pg_class
 
             cmdk.Parameters["iid_class"].Value = iid_class;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_class_prop);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_class_prop);
+            
             class_prop cp;
             if (tbl_class_prop.Rows.Count > 0)
             {

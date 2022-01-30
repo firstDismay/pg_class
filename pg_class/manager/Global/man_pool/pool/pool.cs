@@ -22,7 +22,6 @@ namespace pg_class.poolcn
         internal pool()
         {
             cn_list = new List<connect>();
-            StartControlTimer();
 
             //Вызов события журнала
             JournalEventArgs me = new JournalEventArgs(0, eEntity.pool, 0, "Пул соединений создан", eAction.Connect, eJournalMessageType.information);
@@ -30,6 +29,7 @@ namespace pg_class.poolcn
 
             connect CN = new connect();
             CN.Open();
+            CN.UnLock();
             cn_list.Add(CN);
             
             //Вызов события изменения количества подключений
@@ -39,6 +39,8 @@ namespace pg_class.poolcn
             //Вызов события журнала
             me = new JournalEventArgs(0, eEntity.manager, 0, "Менеджер данных подключен в БД", eAction.Connect, eJournalMessageType.information);
             manager.JournalMessageOnReceivedStatic(this, me);
+
+            StartControlTimer();
         }
         #endregion
         
@@ -119,16 +121,16 @@ namespace pg_class.poolcn
                     {
                         if (cn_list.Count > 0)
                         {
-                            CN = cn_list.Find(x => !x.IsUse);
+                            CN = cn_list.Find(x => !x.IsUse && !x.IsCorupted);
                             if (CN == null)
                             {
                                 if (cn_list.Count < PoolConnectMax)
                                 {
                                     CN = new connect();
-                                    CN.Lock();
                                     cn_list.Add(CN);
                                     CN.Open();
-                                    
+                                    CN.Lock();
+
                                     //Вызов события изменения количества подключений
                                     PoolConnectEventArgs pc = new PoolConnectEventArgs(cn_list.Count, manager.PoolConnectMaxStatic);
                                     manager.PoolConnectCountOnChangeStatic(this, pc);
@@ -138,10 +140,11 @@ namespace pg_class.poolcn
                                     //Ожидание свободного подключения
                                     while (CN == null)
                                     {
-                                        CN = cn_list.Find(x => !x.IsUse);
+                                        CN = cn_list.Find(x => !x.IsUse && !x.IsCorupted);
                                     }
                                     if (CN.CN != null)
                                     {
+                                        CN.Open();
                                         CN.Lock();
                                     }
                                     else
@@ -193,9 +196,9 @@ namespace pg_class.poolcn
                     break;
                 case eManagerState.LogOff:
                     //Вызов события журнала
-                    me = new JournalEventArgs(0, eEntity.manager, 0, "Сессия пользователя завершена", eAction.Connect, eJournalMessageType.error);
+                    me = new JournalEventArgs(0, eEntity.manager, 0, "Авторизующая сессия сервера завершена", eAction.Connect, eJournalMessageType.error);
                     manager.JournalMessageOnReceivedStatic(this, me);
-                    throw new PgManagerException(404, "Сессия пользователя завершена", "Сессия пользователя завершена, выполнение команд не доступно");
+                    throw new PgManagerException(404, "Авторизующая сессия сервера завершена", "Сессия сервера завершена, выполнение команд не доступно");
                 case eManagerState.NoReady:
                     //Вызов события журнала
                     me = new JournalEventArgs(0, eEntity.manager, 0, "Пул менеджера данных не создан", eAction.Connect, eJournalMessageType.error);
@@ -240,7 +243,7 @@ namespace pg_class.poolcn
         /// <summary>
         /// Закрытие указанного соединения сервера
         /// </summary>
-        internal void Connect_Remove(connect CN)
+        protected void Connect_Remove(connect CN)
         {
             lock (cn_list)
             {

@@ -333,18 +333,8 @@ namespace pg_class
             cmdk.Parameters["iid_class"].Value = iid_class;
             cmdk.Parameters["iid_position"].Value = iid_position;
 
-            //DA.SelectCommand = cmdk.Cmd;
-
-            try
-            {
-                cmdk.Fill(tbl_rulel2);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            ////SetLastTimeUsing();
-
+            cmdk.Fill(tbl_rulel2);
+            
             if (tbl_rulel2.Rows.Count > 0)
             {
                 rulel2 = new rulel2_class_on_position(tbl_rulel2.Rows[0]);
@@ -433,16 +423,8 @@ namespace pg_class
 
             cmdk.Parameters["iid_position"].Value = iid_position;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_rule_list);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            ////SetLastTimeUsing();
+            cmdk.Fill(tbl_rule_list);
+            
             rulel2_class_on_position rule;
             if (tbl_rule_list.Rows.Count > 0)
             {
@@ -521,17 +503,9 @@ namespace pg_class
             //=======================
 
             cmdk.Parameters["iid_position"].Value = iid_position;
-
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_rule_list);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            ////SetLastTimeUsing();
+                
+            cmdk.Fill(tbl_rule_list);
+            
             rulel2_class_on_position rule;
             if (tbl_rule_list.Rows.Count > 0)
             {
@@ -616,18 +590,8 @@ namespace pg_class
             cmdk.Parameters["iid_position"].Value = iid_position;
             cmdk.Parameters["itimestamp_class"].Value = itimestamp_class;
 
-            //DA.SelectCommand = cmdk.Cmd;
-
-            try
-            {
-                cmdk.Fill(tbl_rulel2);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            ////SetLastTimeUsing();
-
+            cmdk.Fill(tbl_rulel2);
+            
             if (tbl_rulel2.Rows.Count > 0)
             {
                 rulel2 = new rulel2_class_snapshot_on_position(tbl_rulel2.Rows[0]);
@@ -715,16 +679,8 @@ namespace pg_class
 
             cmdk.Parameters["iid_position"].Value = iid_position;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_rule_list);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            ////SetLastTimeUsing();
+            cmdk.Fill(tbl_rule_list);
+            
             rulel2_class_snapshot_on_position rule;
             if (tbl_rule_list.Rows.Count > 0)
             {
@@ -806,16 +762,8 @@ namespace pg_class
 
             cmdk.Parameters["iid_position"].Value = iid_position;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_class_list);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            ////SetLastTimeUsing();
+            cmdk.Fill(tbl_class_list);
+            
             vclass Class;
             if (tbl_class_list.Rows.Count > 0)
             {
@@ -895,16 +843,8 @@ namespace pg_class
 
             cmdk.Parameters["iid_position"].Value = iid_position;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_class_list);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            ////SetLastTimeUsing();
+            cmdk.Fill(tbl_class_list);
+            
             vclass Class;
             if (tbl_class_list.Rows.Count > 0)
             {
@@ -985,16 +925,8 @@ namespace pg_class
             cmdk.Parameters["iid_position"].Value = iid_position;
             cmdk.Parameters["iid_group"].Value = iid_group;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_class_list);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            ////SetLastTimeUsing();
+            cmdk.Fill(tbl_class_list);
+            
             vclass Class;
             if (tbl_class_list.Rows.Count > 0)
             {
@@ -1075,16 +1007,8 @@ namespace pg_class
             cmdk.Parameters["iid_position"].Value = iid_position;
             cmdk.Parameters["iid_class"].Value = iid_class;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_class_list);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            ////SetLastTimeUsing();
+            cmdk.Fill(tbl_class_list);
+            
             vclass Class;
             if (tbl_class_list.Rows.Count > 0)
             {
@@ -1166,16 +1090,8 @@ namespace pg_class
 
             cmdk.Parameters["iid_class"].Value = iid_class;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_position_list);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            ////SetLastTimeUsing();
+            cmdk.Fill(tbl_position_list);
+            
             position Position;
             if (tbl_position_list.Rows.Count > 0)
             {

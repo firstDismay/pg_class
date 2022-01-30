@@ -634,17 +634,8 @@ namespace pg_class
 
             cmdk.Parameters["iid_pos_temp_prop"].Value = iid_pos_temp_prop;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_vpos_temp_prop_obj_val_class);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
-
+            cmdk.Fill(tbl_vpos_temp_prop_obj_val_class);
+            
             if (tbl_vpos_temp_prop_obj_val_class.Rows.Count > 0)
             {
                 pos_temp_prop_user_val = new pos_temp_prop_user_val(tbl_vpos_temp_prop_obj_val_class.Rows[0]);
@@ -719,17 +710,8 @@ namespace pg_class
 
             cmdk.Parameters["iid_pos_temp_prop"].Value = iid_pos_temp_prop;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_vpos_temp_prop_obj_val_class);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
-
+            cmdk.Fill(tbl_vpos_temp_prop_obj_val_class);
+            
             if (tbl_vpos_temp_prop_obj_val_class.Rows.Count > 0)
             {
                 pos_temp_prop_user_val = new pos_temp_prop_user_val(tbl_vpos_temp_prop_obj_val_class.Rows[0]);

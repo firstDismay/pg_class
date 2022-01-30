@@ -13,11 +13,6 @@ namespace pg_class
 {
     public partial class manager
     {
-        private void init_conception()
-        {
-            conception_list_state = eStatus.on;
-        }
-
         #region МЕТОДЫ КЛАССА: КОНЦЕПЦИИ
 
         #region ДОБАВИТЬ
@@ -421,18 +416,8 @@ namespace pg_class
 
             cmdk.Parameters["iid"].Value = id;
 
-            //DA.SelectCommand = cmdk.Cmd;
-
-            try
-            {
-                cmdk.Fill(tbl_con);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
-
+            cmdk.Fill(tbl_con);
+            
             if (tbl_con .Rows.Count > 0)
             {
                 conception = new conception(tbl_con.Rows[0]);
@@ -499,16 +484,8 @@ namespace pg_class
 
             cmdk.Parameters["status"].Value = status.ToString("g");
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_con);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_con);
+            
             conception con;
             if (tbl_con.Rows.Count > 0)
             {
@@ -580,17 +557,8 @@ namespace pg_class
             }
             //=======================
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_con);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
-
+            cmdk.Fill(tbl_con);
+            
             if (tbl_con.Rows.Count > 0)
             {
                 conception = new conception(tbl_con.Rows[0]);

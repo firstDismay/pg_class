@@ -273,16 +273,7 @@ namespace pg_class
             cmdk.Parameters["iid_global_prop"].Value = iid_global_prop;
             cmdk.Parameters["iid_pos_temp_prop"].Value = iid_pos_temp_prop;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_vglobal_prop_link);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_vglobal_prop_link);
             
             if (tbl_vglobal_prop_link.Rows.Count > 0)
             {
@@ -366,16 +357,8 @@ namespace pg_class
 
             cmdk.Parameters["iid_global_prop"].Value = iid_global_prop;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_global_prop_link);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_global_prop_link);
+            
             global_prop_link_pos_temp_prop gpl;
             if (tbl_global_prop_link.Rows.Count > 0)
             {

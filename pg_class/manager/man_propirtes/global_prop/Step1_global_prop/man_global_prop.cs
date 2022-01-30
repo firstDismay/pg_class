@@ -560,16 +560,7 @@ namespace pg_class
 
             cmdk.Parameters["iid_global_prop"].Value = iid_global_prop;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_vglobal_prop);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_vglobal_prop);
             
             if (tbl_vglobal_prop.Rows.Count > 0)
             {
@@ -645,16 +636,8 @@ namespace pg_class
 
             cmdk.Parameters["iid_conception"].Value = iid_conception;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_global_prop);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_global_prop);
+            
             global_prop gp;
             if (tbl_global_prop.Rows.Count > 0)
             {
@@ -735,16 +718,8 @@ namespace pg_class
 
             cmdk.Parameters["iid_conception"].Value = iid_conception;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_global_prop);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_global_prop);
+            
             global_prop gp;
             if (tbl_global_prop.Rows.Count > 0)
             {
@@ -825,16 +800,8 @@ namespace pg_class
 
             cmdk.Parameters["iid_conception"].Value = iid_conception;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_global_prop);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_global_prop);
+            
             global_prop gp;
             if (tbl_global_prop.Rows.Count > 0)
             {
@@ -917,16 +884,8 @@ namespace pg_class
 
             cmdk.Parameters["iid_class"].Value = iid_class;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_global_prop);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_global_prop);
+            
             global_prop gp;
             if (tbl_global_prop.Rows.Count > 0)
             {
@@ -1006,17 +965,8 @@ namespace pg_class
 
             cmdk.Parameters["iid_class_prop_definition"].Value = iid_class_prop_definition;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_vglobal_prop);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
-
+            cmdk.Fill(tbl_vglobal_prop);
+            
             if (tbl_vglobal_prop.Rows.Count > 0)
             {
                 global_prop = new global_prop(tbl_vglobal_prop.Rows[0]);
@@ -1100,16 +1050,8 @@ namespace pg_class
 
             cmdk.Parameters["iid_pos_temp"].Value = iid_pos_temp;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_global_prop);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_global_prop);
+            
             global_prop gp;
             if (tbl_global_prop.Rows.Count > 0)
             {
@@ -1188,17 +1130,8 @@ namespace pg_class
 
             cmdk.Parameters["iid_pos_temp_prop"].Value = iid_pos_temp_prop;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_vglobal_prop);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
-
+            cmdk.Fill(tbl_vglobal_prop);
+            
             if (tbl_vglobal_prop.Rows.Count > 0)
             {
                 global_prop = new global_prop(tbl_vglobal_prop.Rows[0]);
@@ -1284,17 +1217,8 @@ namespace pg_class
             cmdk.Parameters["iid_conception"].Value = iid_conception;
             cmdk.Parameters["iname"].Value = iname;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_vglobal_prop);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
-
+            cmdk.Fill(tbl_vglobal_prop);
+            
             if (tbl_vglobal_prop.Rows.Count > 0)
             {
                 global_prop = new global_prop(tbl_vglobal_prop.Rows[0]);

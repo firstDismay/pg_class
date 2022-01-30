@@ -353,17 +353,8 @@ namespace pg_class
             cmdk.Parameters["iid_position"].Value = iid_position;
             cmdk.Parameters["iid_pos_temp_prop"].Value = iid_pos_temp_prop;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_entity);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
-
+            cmdk.Fill(tbl_entity);
+            
             if (tbl_entity.Rows.Count > 0)
             {
                 position_prop_enum_val = new position_prop_enum_val(tbl_entity.Rows[0]);

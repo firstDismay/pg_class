@@ -48,17 +48,8 @@ namespace pg_class
 
             cmdk.Parameters["iid"].Value = iid;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_entity);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
-
+            cmdk.Fill(tbl_entity);
+            
             if (tbl_entity.Rows.Count > 0)
             {
                 document = new document(tbl_entity.Rows[0]);
@@ -124,16 +115,8 @@ namespace pg_class
 
             cmdk.Parameters["iid_parent"].Value = iid_parent;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_entity);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_entity);
+            
             document ce;
             if (tbl_entity.Rows.Count > 0)
             {
@@ -204,16 +187,8 @@ namespace pg_class
 
             cmdk.Parameters["iid_conception"].Value = iid_conception;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_entity);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_entity);
+            
             document ce;
             if (tbl_entity.Rows.Count > 0)
             {
@@ -284,16 +259,8 @@ namespace pg_class
 
             cmdk.Parameters["iid_category"].Value = iid_category;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_entity);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_entity);
+            
             document ce;
             if (tbl_entity.Rows.Count > 0)
             {
@@ -367,16 +334,8 @@ namespace pg_class
             cmdk.Parameters["object_on"].Value = object_on;
             cmdk.Parameters["recursive_on"].Value = recursive_on;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_entity);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_entity);
+            
             document ce;
             if (tbl_entity.Rows.Count > 0)
             {
@@ -457,16 +416,8 @@ namespace pg_class
             cmdk.Parameters["object_on"].Value = object_on;
             cmdk.Parameters["recursive_on"].Value = recursive_on;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_entity);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_entity);
+            
             document ce;
             if (tbl_entity.Rows.Count > 0)
             {
@@ -545,16 +496,8 @@ namespace pg_class
 
             cmdk.Parameters["iid_entity_instatce"].Value = iid_entity_instatce;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_entity);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_entity);
+            
             document ce;
             if (tbl_entity.Rows.Count > 0)
             {
@@ -634,16 +577,8 @@ namespace pg_class
             cmdk.Parameters["iid_entity_instatce"].Value = iid_entity_instatce;
             cmdk.Parameters["iid_sub_entity_instatce"].Value = iid_sub_entity_instatce;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_entity);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_entity);
+            
             document ce;
             if (tbl_entity.Rows.Count > 0)
             {
@@ -723,16 +658,8 @@ namespace pg_class
             cmdk.Parameters["iid_entity_instatce"].Value = iid_entity_instatce;
             cmdk.Parameters["iid_sub_entity_instatce"].Value = iid_sub_entity_instatce;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_entity);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_entity);
+            
             document ce;
             if (tbl_entity.Rows.Count > 0)
             {
@@ -814,16 +741,8 @@ namespace pg_class
             cmdk.Parameters["object_on"].Value = object_on;
             cmdk.Parameters["recursive_on"].Value = recursive_on;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_entity);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_entity);
+            
             document ce;
             if (tbl_entity.Rows.Count > 0)
             {
@@ -904,16 +823,8 @@ namespace pg_class
             cmdk.Parameters["object_on"].Value = object_on;
             cmdk.Parameters["recursive_on"].Value = recursive_on;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_entity);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_entity);
+            
             document ce;
             if (tbl_entity.Rows.Count > 0)
             {
@@ -993,16 +904,8 @@ namespace pg_class
             cmdk.Parameters["iid_entity_instatce"].Value = iid_entity_instatce;
             cmdk.Parameters["iid_sub_entity_instatce"].Value = iid_sub_entity_instatce;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_entity);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_entity);
+            
             document ce;
             if (tbl_entity.Rows.Count > 0)
             {
@@ -1084,16 +987,8 @@ namespace pg_class
             cmdk.Parameters["group_on"].Value = group_on;
             cmdk.Parameters["recursive_on"].Value = recursive_on;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_entity);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_entity);
+            
             document ce;
             if (tbl_entity.Rows.Count > 0)
             {
@@ -1173,16 +1068,8 @@ namespace pg_class
             cmdk.Parameters["iid_entity_instatce"].Value = iid_entity_instatce;
             cmdk.Parameters["iid_sub_entity_instatce"].Value = iid_sub_entity_instatce;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_entity);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_entity);
+            
             document ce;
             if (tbl_entity.Rows.Count > 0)
             {
@@ -1262,16 +1149,8 @@ namespace pg_class
             cmdk.Parameters["iname"].Value = iname;
             cmdk.Parameters["iid_conception"].Value = iid_conception;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_entity);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_entity);
+            
             document ce;
             if (tbl_entity.Rows.Count > 0)
             {
@@ -1343,16 +1222,8 @@ namespace pg_class
             cmdk.Parameters["iname"].Value = iname;
             cmdk.Parameters["iid_category"].Value = iid_category;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_entity);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_entity);
+            
             document ce;
             if (tbl_entity.Rows.Count > 0)
             {

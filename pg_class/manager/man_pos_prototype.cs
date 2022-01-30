@@ -50,16 +50,8 @@ namespace pg_class
 
             cmdk.Parameters["iid_prototype"].Value = iid_prototype;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_proto);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_proto);
+            
             pos_prototype proto;
             if (tbl_proto.Rows.Count > 0)
             {
@@ -131,15 +123,8 @@ namespace pg_class
             }
             //=======================
 
-            try
-            {
-                cmdk.Fill(tbl_proto);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
+            cmdk.Fill(tbl_proto);
+            
             pos_prototype proto;
             if (tbl_proto.Rows.Count > 0)
             {
@@ -213,17 +198,8 @@ namespace pg_class
 
             cmdk.Parameters["iid"].Value = id;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_proto);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
-
+            cmdk.Fill(tbl_proto);
+            
             if (tbl_proto.Rows.Count > 0)
             {
                 pos_prototype = new pos_prototype(tbl_proto.Rows[0]);
@@ -291,17 +267,8 @@ namespace pg_class
 
             cmdk.Parameters["iid_pos_temp"].Value = id_pos_temp;
 
-            //DA.SelectCommand = cmdk.Cmd;
-            try
-            {
-                cmdk.Fill(tbl_proto);
-            }
-            catch (Exception ex)
-            {
-                PG_exception_hadler(ex, cmdk);
-            }
-            //SetLastTimeUsing();
-
+            cmdk.Fill(tbl_proto);
+            
             if (tbl_proto.Rows.Count > 0)
             {
                 pos_prototype = new pos_prototype(tbl_proto.Rows[0]);
