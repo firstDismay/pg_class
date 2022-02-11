@@ -707,11 +707,11 @@ namespace pg_class
     public enum eEntity
     {
         /// <summary>
-        /// Обобщенная сущность
+        /// Сущность
         /// </summary>
         entity = 0,
         /// <summary>
-        /// Прототип
+        /// Прототип позиции
         /// </summary>
         pos_prototype = 1,
         /// <summary>
@@ -719,7 +719,7 @@ namespace pg_class
         /// </summary>
         conception = 2,
         /// <summary>
-        /// Шаблон позиции
+        /// Шаблон
         /// </summary>
         pos_temp = 3,
         /// <summary>
@@ -727,7 +727,7 @@ namespace pg_class
         /// </summary>
         position = 4,
         /// <summary>
-        /// Вектор переноса
+        /// Вектор
         /// </summary>
         vector = 5,
         /// <summary>
@@ -735,7 +735,7 @@ namespace pg_class
         /// </summary>
         link_obj_pos = 6,
         /// <summary>
-        /// Роль базовая
+        /// Базовая роль
         /// </summary>
         role_base = 7,
         /// <summary>
@@ -747,31 +747,75 @@ namespace pg_class
         /// </summary>
         position_prop = 9,
         /// <summary>
-        /// Свойство шаблона позиции
+        /// Свойство шаблона
         /// </summary>
         pos_temp_prop = 10,
         /// <summary>
-        /// 
+        /// Перечисление значений свойства
         /// </summary>
         pos_temp_enum_prop = 11,
-        ticket = 12,
-        message = 13,
-        ticket_prop = 14,
-        mes_prop = 15,
-        property = 16,
-        group = 17,
-        vclass = 18,
-        class_prop = 19,
-        vobject = 20,
-        rulel1_group_on_pos_temp = 21,
-        rulel2_class_on_position = 22,
-        pos_temp_nested_rule = 23,
-        unit = 33,
-        unit_conversion_rule = 34,
-        class_unit_conversion_rule = 35,
-
         /// <summary>
-        /// Значение объектного свойства класса
+        /// Тема форума поддержки
+        /// </summary>
+        ticket = 12,
+        /// <summary>
+        /// Сообщение форума поддержки
+        /// </summary>
+        message = 13,
+        /// <summary>
+        /// Свойство темы форума поддержки
+        /// </summary>
+        ticket_prop = 14,
+        /// <summary>
+        /// Свойство сообщения форума поддержки
+        /// </summary>
+        mes_prop = 15,
+        /// <summary>
+        /// Свойство
+        /// </summary>
+        property = 16,
+        /// <summary>
+        /// Группа
+        /// </summary>
+        group = 17,
+        /// <summary>
+        /// Класс
+        /// </summary>
+        vclass = 18,
+        /// <summary>
+        /// Свойство класса
+        /// </summary>
+        class_prop = 19,
+        /// <summary>
+        /// Объект
+        /// </summary>
+        vobject = 20,
+        /// <summary>
+        /// Правило вложенности уровня 1 группа на шаблон позиции
+        /// </summary>
+        rulel1_group_on_pos_temp = 21,
+        /// <summary>
+        /// Правило вложенности уровня 2 класс на позицию
+        /// </summary>
+        rulel2_class_on_position = 22,
+        /// <summary>
+        /// Правило вложенности шаблонов позиций
+        /// </summary>
+        pos_temp_nested_rule = 23,
+        /// <summary>
+        /// Единицы измерения величин и правила пересчета
+        /// </summary>
+        unit = 33,
+        /// <summary>
+        /// Правило пересчета колличества объектов
+        /// </summary>
+        unit_conversion_rule = 34,
+        /// <summary>
+        /// Правило назначения правил пересчета объектов вещественного класса
+        /// </summary>
+        class_unit_conversion_rule = 35,
+        /// <summary>
+        /// Данные значение объектного свойства класса
         /// </summary>
         class_prop_object_val = 36,
         /// <summary>
@@ -782,140 +826,132 @@ namespace pg_class
         /// Разрешение правила вложенности уровня 1 группа на шаблон позиции
         /// </summary>
         rulel1_group_on_pos_temp_access = 38,
-        rulel2_class_snapshot_on_position = 39,
-        prop_data_type = 40,
-        con_prop_data_type = 41,
-        prop_type = 42,
-        prop_data_bin_ext = 43,
-        object_prop = 44,
-
         /// <summary>
-        /// Данные значения свойства-пользовательского класса
+        /// Разрешение правила вложенности уровня 2 снимок класса на позицию
+        /// </summary>
+        rulel2_class_snapshot_on_position = 39,
+        /// <summary>
+        /// Тип данных
+        /// </summary>
+        prop_data_type = 40,
+        /// <summary>
+        /// Тип данных концепции
+        /// </summary>
+        con_prop_data_type = 41,
+        /// <summary>
+        /// Тип свойства
+        /// </summary>
+        prop_type = 42,
+        /// <summary>
+        /// Расширение двоичного типа данных свойства
+        /// </summary>
+        prop_data_bin_ext = 43,
+        /// <summary>
+        /// Свойство объекта
+        /// </summary>
+        object_prop = 44,
+        /// <summary>
+        /// Данные значения пользовательского свойства класса
         /// </summary>
         class_prop_user_val = 45,
-
         /// <summary>
         /// Данные значения свойства-перечисления класса
         /// </summary>
         class_prop_enum_val = 46,
-
         /// <summary>
         /// Данные значения свойства-пользовательского объекта
         /// </summary>
         object_prop_user_val = 47,
-
         /// <summary>
         /// Данные значения свойства-перечисления объекта
         /// </summary>
         object_prop_enum_val = 48,
-
         /// <summary>
         /// Спецификатор значения свойства
         /// </summary>
         prop_val_spec = 49,
-
         /// <summary>
-        /// Перечисление значений свойства типа перечисление
+        /// Перечисление
         /// </summary>
         prop_enum = 50,
-
         /// <summary>
-        /// Значение Перечисления значений свойства типа перечисление
+        /// Элемент перечисления
         /// </summary>
         prop_enum_val = 51,
-
         /// <summary>
         /// Данные значения свойства-ссылки класса
         /// </summary>
         class_prop_link_val = 52,
-
         /// <summary>
         /// Данные значения свойства-ссылки объекта
         /// </summary>
         object_prop_link_val = 53,
-
         /// <summary>
         /// Глобальное свойство концепции
         /// </summary>
         global_prop = 54,
-
         /// <summary>
-        /// Глобальное свойство концепции ссылка на класс
+        /// Ссылка глобального свойства  на определяющее свойство класса
         /// </summary>
         global_prop_link_class_prop = 55,
-
         /// <summary>
-        /// Глобальное свойство концепции ссылка на на шаблон позиции
+        /// Ссылка глобального свойства  на свойство шаблона позиции
         /// </summary>
         global_prop_link_pos_temp_prop = 56,
-
         /// <summary>
         /// Данные значения пользовательского свойства шаблона
         /// </summary>
         pos_temp_prop_user_val = 57,
-
         /// <summary>
         /// Данные значения свойства-перечисления шаблона
         /// </summary>
         pos_temp_prop_enum_val = 58,
-
         /// <summary>
         /// Данные значение объектного свойства шаблона
         /// </summary>
         pos_temp_prop_object_val = 59,
-
         /// <summary>
         /// Данные значения свойства-ссылки шаблона
         /// </summary>
         pos_temp_prop_link_val = 60,
-
         /// <summary>
         /// Данные значения пользовательского свойства позиции
         /// </summary>
         position_prop_user_val = 61,
-
         /// <summary>
         /// Данные значения свойства-перечисления позиции
         /// </summary>
         position_prop_enum_val = 62,
-
         /// <summary>
         /// Данные значение объектного свойства позиции
         /// </summary>
         position_prop_object_val = 63,
-
         /// <summary>
         /// Данные значения свойства-ссылки позиции
         /// </summary>
         position_prop_link_val = 64,
-
         /// <summary>
         /// Данные области значения глобального свойства
         /// </summary>
         global_prop_area_val = 65,
-
         /// <summary>
-        /// Документ
+        /// Документ библиотеки документов
         /// </summary>
         document = 66,
-
         /// <summary>
         /// Файл документа
         /// </summary>
         doc_file = 67,
-
         /// <summary>
         /// Ссылка документа
         /// </summary>
         doc_link = 68,
-
         /// <summary>
         /// Категория документа
         /// </summary>
         doc_category = 69,
-
         /// <summary>
-        /// Базовый класс доступа к данным, синглетон
+        /// Базовый класс доступа к данным
         /// </summary>
         manager = 99,
         /// <summary>
@@ -927,21 +963,53 @@ namespace pg_class
         /// </summary>
         connect = 101,
         /// <summary>
-        /// Процедура экспорта данных
+        /// Процедура экспорта
         /// </summary>
         procedure_export = 102,
-
-        calendar = 103,
-        work_plan = 108,
-        work_time_link = 107,
-        work_time = 106,
-        work_fact = 110,
-        transfer_day = 112,
-        work_plan_link = 109,
-        work_fact_link = 111,
-        holiday = 113,
+        /// <summary>
+        /// Производственный календарь
+        /// </summary>
+        plan_calendar = 103,
+        /// <summary>
+        /// План
+        /// </summary>
         plan = 104,
+        /// <summary>
+        /// Ссылка плана
+        /// </summary>
         plan_link = 105,
+        /// <summary>
+        /// Диапазон плана запланированный
+        /// </summary>
+        plan_range = 106,
+        /// <summary>
+        /// Ссылка диапазона плана
+        /// </summary>
+        plan_range_link = 107,
+        /// <summary>
+        /// Выданный диапазон плана
+        /// </summary>
+        plan_given_range_plan = 108,
+        /// <summary>
+        /// Ссылка на плановый диапазон расписания на вид работы
+        /// </summary>
+        plan_given_range_plan_link = 109,
+        /// <summary>
+        /// Фактический диапазон расписания на вид работы
+        /// </summary>
+        plan_given_range_fact = 110,
+        /// <summary>
+        /// Ссылка фактический диапазон расписания на вид работы
+        /// </summary>
+        plan_given_range_fact_link = 111,
+        /// <summary>
+        /// Перенесенный по указу правителсьтва РФ день
+        /// </summary>
+        plan_transfer_day = 112,
+        /// <summary>
+        /// Праздничный день или каникулы
+        /// </summary>
+        plan_holiday = 113,
         /// <summary>
         /// Роль пользователя
         /// </summary>
@@ -951,9 +1019,25 @@ namespace pg_class
         /// </summary>
         rulel1_class_on_pos_temp = 115,
         /// <summary>
-        /// Разрешение правила вложенности уровня 1 класс на шаблон позиции
+        /// Разрешение правила вложенности уровня 1 группа на шаблон позиции
         /// </summary>
-        rulel1_class_on_pos_temp_access = 116
+        rulel1_class_on_pos_temp_access = 116,
+        /// <summary>
+        /// Правило пересечения диапазонов подчиненных планов
+        /// </summary>
+        plan_rule_crossing = 117,
+        /// <summary>
+        /// Ссылка правила пересечения диапазонов подчиненных планов
+        /// </summary>
+        plan_rule_crossing_link = 118,
+        /// <summary>
+        /// Правило вложенности диапазонов подчиненных планов
+        /// </summary>
+        plan_rule_nesting = 119,
+        /// <summary>
+        /// Ссылка правила вложенности диапазонов подчиненных планов
+        /// </summary>
+        plan_rule_nesting_link = 120
     }
 
     /// <summary>
@@ -1044,131 +1128,421 @@ namespace pg_class
     /// </summary>
     public enum eEntity_ErrID
     {
+
         /// <summary>
-        /// Обобщенная сущность
+        ///Сущность
         /// </summary>
         entity = 10000000,
+
         /// <summary>
-        /// Прототип
+        ///Прототип позиции
         /// </summary>
         pos_prototype = 10100000,
+
         /// <summary>
-        /// Концепция
+        ///Концепция
         /// </summary>
         conception = 10200000,
+
         /// <summary>
-        /// Шаблон позиции
+        ///Шаблон
         /// </summary>
         pos_temp = 10300000,
+
         /// <summary>
-        /// Позиция
+        ///Позиция
         /// </summary>
         position = 10400000,
+
         /// <summary>
-        /// Вектор переноса
+        ///Вектор
         /// </summary>
         vector = 10500000,
+
         /// <summary>
-        /// Ссылка на объект
+        ///Ссылка на объект
         /// </summary>
         link_obj_pos = 10600000,
+
         /// <summary>
-        /// Роль
+        ///Базовая роль
         /// </summary>
         role_base = 10700000,
+
         /// <summary>
-        /// Пользователь
+        ///Пользователь
         /// </summary>
         user = 10800000,
+
         /// <summary>
-        /// Свойство позиции
+        ///Свойство позиции
         /// </summary>
-        pos_prop = 10900000,
+        position_prop = 10900000,
+
         /// <summary>
-        /// Свойство шаблона позиции
+        ///Свойство шаблона
         /// </summary>
         pos_temp_prop = 11000000,
+
         /// <summary>
-        /// 
+        ///Перечисление значений свойства
         /// </summary>
         pos_temp_enum_prop = 11100000,
-        ticket = 11200000,
-        message = 11300000,
-        ticket_prop = 11400000,
-        mes_prop = 11500000,
-        property = 11600000,
-        group = 11700000,
-        vclass = 11800000,
-        class_prop = 11900000,
-        vobject = 12000000,
-        rulel1_group_on_pos_temp = 12100000,
-        rulel2_class_on_position = 12200000,
-        pos_temp_nested_rule = 12300000,
-        unit = 13300000,
-        unit_conversion_rule = 13400000,
-        class_unit_conversion_rule = 13500000,
+
         /// <summary>
-        /// Значение объектного свойства класса
+        ///Тема форума поддержки
+        /// </summary>
+        ticket = 11200000,
+
+        /// <summary>
+        ///Сообщение форума поддержки
+        /// </summary>
+        message = 11300000,
+
+        /// <summary>
+        ///Свойство темы форума поддержки
+        /// </summary>
+        ticket_prop = 11400000,
+
+        /// <summary>
+        ///Свойство сообщения форума поддержки
+        /// </summary>
+        mes_prop = 11500000,
+
+        /// <summary>
+        ///Свойство
+        /// </summary>
+        property = 11600000,
+
+        /// <summary>
+        ///Группа
+        /// </summary>
+        group = 11700000,
+
+        /// <summary>
+        ///Класс
+        /// </summary>
+        vclass = 11800000,
+
+        /// <summary>
+        ///Свойство класса
+        /// </summary>
+        class_prop = 11900000,
+
+        /// <summary>
+        ///Объект
+        /// </summary>
+        vobject = 12000000,
+
+        /// <summary>
+        ///Правило вложенности уровня 1 группа на шаблон позиции
+        /// </summary>
+        rulel1_group_on_pos_temp = 12100000,
+
+        /// <summary>
+        ///Правило вложенности уровня 2 класс на позицию
+        /// </summary>
+        rulel2_class_on_position = 12200000,
+
+        /// <summary>
+        ///Правило вложенности шаблонов позиций
+        /// </summary>
+        pos_temp_nested_rule = 12300000,
+
+        /// <summary>
+        ///Единицы измерения величин и правила пересчета
+        /// </summary>
+        unit = 13300000,
+
+        /// <summary>
+        ///Правило пересчета колличества объектов
+        /// </summary>
+        unit_conversion_rule = 13400000,
+
+        /// <summary>
+        ///Правило назначения правил пересчета объектов вещественного класса
+        /// </summary>
+        class_unit_conversion_rule = 13500000,
+
+        /// <summary>
+        ///Данные значение объектного свойства класса
         /// </summary>
         class_prop_object_val = 13600000,
+
         /// <summary>
-        /// Значение объектного свойства объекта
+        ///Значение объектного свойства объекта
         /// </summary>
         object_prop_object_val = 13700000,
-        rulel1_group_on_pos_temp_access = 13800000,
-        rulel2_class_snapshot_on_position = 13900000,
-        prop_data_type = 14000000,
-        con_prop_data_type = 14100000,
-        prop_type = 14200000,
-        prop_data_bin_ext = 14300000,
-        object_prop = 14400000,
+
         /// <summary>
-        /// Значение пользовательского свойства класса
+        ///Разрешение правила вложенности уровня 1 группа на шаблон позиции
+        /// </summary>
+        rulel1_group_on_pos_temp_access = 13800000,
+
+        /// <summary>
+        ///Разрешение правила вложенности уровня 2 снимок класса на позицию
+        /// </summary>
+        rulel2_class_snapshot_on_position = 13900000,
+
+        /// <summary>
+        ///Тип данных
+        /// </summary>
+        prop_data_type = 14000000,
+
+        /// <summary>
+        ///Тип данных концепции
+        /// </summary>
+        con_prop_data_type = 14100000,
+
+        /// <summary>
+        ///Тип свойства
+        /// </summary>
+        prop_type = 14200000,
+
+        /// <summary>
+        ///Расширение двоичного типа данных свойства
+        /// </summary>
+        prop_data_bin_ext = 14300000,
+
+        /// <summary>
+        ///Свойство объекта
+        /// </summary>
+        object_prop = 14400000,
+
+        /// <summary>
+        ///Данные значения пользовательского свойства класса
         /// </summary>
         class_prop_user_val = 14500000,
+
         /// <summary>
-        /// Значение свойства перечисления класса
+        ///Данные значения свойства-перечисления класса
         /// </summary>
         class_prop_enum_val = 14600000,
+
         /// <summary>
-        /// Значение пользовательского свойства объекта
+        ///Данные значения свойства-пользовательского объекта
         /// </summary>
         object_prop_user_val = 14700000,
+
         /// <summary>
-        /// Значение свойства перечисления объекта
+        ///Данные значения свойства-перечисления объекта
         /// </summary>
         object_prop_enum_val = 14800000,
+
         /// <summary>
-        /// Базовый класс доступа к данным, синглетон
+        ///Спецификатор значения свойства
+        /// </summary>
+        prop_val_spec = 14900000,
+
+        /// <summary>
+        ///Перечисление
+        /// </summary>
+        prop_enum = 15000000,
+
+        /// <summary>
+        ///Элемент перечисления
+        /// </summary>
+        prop_enum_val = 15100000,
+
+        /// <summary>
+        ///Данные значения свойства-ссылки класса
+        /// </summary>
+        class_prop_link_val = 15200000,
+
+        /// <summary>
+        ///Данные значения свойства-ссылки объекта
+        /// </summary>
+        object_prop_link_val = 15300000,
+
+        /// <summary>
+        ///Глобальное свойство концепции
+        /// </summary>
+        global_prop = 15400000,
+
+        /// <summary>
+        ///Ссылка глобального свойства  на определяющее свойство класса
+        /// </summary>
+        global_prop_link_class_prop = 15500000,
+
+        /// <summary>
+        ///Ссылка глобального свойства  на свойство шаблона позиции
+        /// </summary>
+        global_prop_link_pos_temp_prop = 15600000,
+
+        /// <summary>
+        ///Данные значения пользовательского свойства шаблона
+        /// </summary>
+        pos_temp_prop_user_val = 15700000,
+
+        /// <summary>
+        ///Данные значения свойства-перечисления шаблона
+        /// </summary>
+        pos_temp_prop_enum_val = 15800000,
+
+        /// <summary>
+        ///Данные значение объектного свойства шаблона
+        /// </summary>
+        pos_temp_prop_object_val = 15900000,
+
+        /// <summary>
+        ///Данные значения свойства-ссылки шаблона
+        /// </summary>
+        pos_temp_prop_link_val = 16000000,
+
+        /// <summary>
+        ///Данные значения пользовательского свойства позиции
+        /// </summary>
+        position_prop_user_val = 16100000,
+
+        /// <summary>
+        ///Данные значения свойства-перечисления позиции
+        /// </summary>
+        position_prop_enum_val = 16200000,
+
+        /// <summary>
+        ///Данные значение объектного свойства позиции
+        /// </summary>
+        position_prop_object_val = 16300000,
+
+        /// <summary>
+        ///Данные значения свойства-ссылки позиции
+        /// </summary>
+        position_prop_link_val = 16400000,
+
+        /// <summary>
+        ///Данные области значения глобального свойства
+        /// </summary>
+        global_prop_area_val = 16500000,
+
+        /// <summary>
+        ///Документ библиотеки документов
+        /// </summary>
+        document = 16600000,
+
+        /// <summary>
+        ///Файл документа
+        /// </summary>
+        doc_file = 16700000,
+
+        /// <summary>
+        ///Ссылка документа
+        /// </summary>
+        doc_link = 16800000,
+
+        /// <summary>
+        ///Категория документа
+        /// </summary>
+        doc_category = 16900000,
+
+        /// <summary>
+        ///Базовый класс доступа к данным
         /// </summary>
         manager = 19900000,
+
         /// <summary>
-        /// Пул соединений
+        ///Пул соединений менеджера данных
         /// </summary>
         pool = 20000000,
+
         /// <summary>
-        /// Соединение пула соединений
+        ///Соединение пула соединений
         /// </summary>
         connect = 20100000,
+
         /// <summary>
-        /// Процедура экспорта
+        ///Процедура экспорта
         /// </summary>
         procedure_export = 20200000,
 
-        calendar = 20300000,
-        work_plan = 20800000,
-        work_time_link = 20700000,
-        work_time = 20600000,
-        work_fact = 21000000,
-        transfer_day = 21200000,
-        work_plan_link = 20900000,
-        work_fact_link = 21100000,
-        holiday = 21300000,
+        /// <summary>
+        ///Производственный календарь
+        /// </summary>
+        plan_calendar = 20300000,
+
+        /// <summary>
+        ///План
+        /// </summary>
         plan = 20400000,
+
+        /// <summary>
+        ///Ссылка плана
+        /// </summary>
         plan_link = 20500000,
+
+        /// <summary>
+        ///Диапазон плана запланированный
+        /// </summary>
+        plan_range = 20600000,
+
+        /// <summary>
+        ///Ссылка диапазона плана
+        /// </summary>
+        plan_range_link = 20700000,
+
+        /// <summary>
+        ///Выданный диапазон плана
+        /// </summary>
+        plan_given_range_plan = 20800000,
+
+        /// <summary>
+        ///Ссылка на плановый диапазон расписания на вид работы
+        /// </summary>
+        plan_given_range_plan_link = 20900000,
+
+        /// <summary>
+        ///Фактический диапазон расписания на вид работы
+        /// </summary>
+        plan_given_range_fact = 21000000,
+
+        /// <summary>
+        ///Ссылка фактический диапазон расписания на вид работы
+        /// </summary>
+        plan_given_range_fact_link = 21100000,
+
+        /// <summary>
+        ///Перенесенный по указу правителсьтва РФ день
+        /// </summary>
+        plan_transfer_day = 21200000,
+
+        /// <summary>
+        ///Праздничный день или каникулы
+        /// </summary>
+        plan_holiday = 21300000,
+
+        /// <summary>
+        ///Роль пользователя
+        /// </summary>
         role_user = 21400000,
+
+        /// <summary>
+        ///Правило вложенности уровня 1 класс на шаблон позиции
+        /// </summary>
         rulel1_class_on_pos_temp = 21500000,
-        rulel1_class_on_pos_temp_access = 21600000
+
+        /// <summary>
+        ///Разрешение правила вложенности уровня 1 группа на шаблон позиции
+        /// </summary>
+        rulel1_class_on_pos_temp_access = 21600000,
+
+        /// <summary>
+        ///Правило пересечения диапазонов подчиненных планов
+        /// </summary>
+        plan_rule_crossing = 21700000,
+
+        /// <summary>
+        ///Ссылка правила пересечения диапазонов подчиненных планов
+        /// </summary>
+        plan_rule_crossing_link = 21800000,
+
+        /// <summary>
+        ///Правило вложенности диапазонов подчиненных планов
+        /// </summary>
+        plan_rule_nesting = 21900000,
+
+        /// <summary>
+        ///Ссылка правила вложенности диапазонов подчиненных планов
+        /// </summary>
+        plan_rule_nesting_link = 22000000
     }
 
     /// <summary>

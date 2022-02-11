@@ -98,6 +98,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="manager\eventargs\Base\Calendar\PlanLinkChangeEventArgs.cs" />
+    <Compile Include="manager\eventargs\Base\Calendar\PlanGivenRangeFactLinkChangeEventArgs.cs" />
+    <Compile Include="manager\eventargs\Base\Calendar\PlanGivenRangeFactChangeEventArgs.cs" />
+    <Compile Include="manager\eventargs\Base\Calendar\PlanGivenRangePlanLinkChangeEventArgs.cs" />
+    <Compile Include="manager\eventargs\Base\Calendar\PlanGivenRangePlanChangeEventArgs.cs" />
+    <Compile Include="manager\eventargs\Base\Calendar\PlanRangeLinkChangeEventArgs.cs" />
+    <Compile Include="manager\eventargs\Base\Calendar\PlanRangeChangeEventArgs.cs" />
+    <Compile Include="manager\eventargs\Base\Calendar\PlanChangeEventArgs.cs" />
     <Compile Include="manager\eventargs\Base\Document\DocCategoryChangeEventArgs.cs" />
     <Compile Include="manager\eventargs\Base\Document\DocLinkChangeEventArgs.cs" />
     <Compile Include="manager\eventargs\Base\Document\DocFileChangeEventArgs.cs" />
@@ -169,6 +177,7 @@
     <Compile Include="manager\Global\man_classes\NPGSQL_TypeMapClass\pg_class\pg_cdoc_file.cs" />
     <Compile Include="manager\Global\man_classes\NPGSQL_TypeMapClass\pg_class\pg_cobject_prop.cs" />
     <Compile Include="manager\Global\man_classes\NPGSQL_TypeMapClass\pg_class\pg_cclass_prop.cs" />
+    <Compile Include="manager\man_calendar\man_plan.cs" />
     <Compile Include="manager\man_doc_lib\man_document_const.cs" />
     <Compile Include="manager\man_class\man_class_full.cs" />
     <Compile Include="manager\man_doc_lib\man_document_ext.cs" />
@@ -261,6 +270,18 @@
     <Compile Include="manager\man_position\man_position.cs" />
     <Compile Include="manager\man_pos_temp\man_pos_temp.cs" />
     <Compile Include="manager\Global\man_info\man_info.cs" />
+    <Compile Include="pg_classes\calendar\plan\plan_entity.cs" />
+    <Compile Include="pg_classes\calendar\plan\plan.cs" />
+    <Compile Include="pg_classes\calendar\plan_given_range_plan\plan_given_range_plan.cs" />
+    <Compile Include="pg_classes\calendar\plan_given_range_plan\plan_given_range_plan_entity.cs" />
+    <Compile Include="pg_classes\calendar\plan_given_range_plan_link\plan_given_range_plan_link.cs" />
+    <Compile Include="pg_classes\calendar\plan_given_range_plan_link\plan_given_range_plan_link_entity.cs" />
+    <Compile Include="pg_classes\calendar\plan_link\plan_link.cs" />
+    <Compile Include="pg_classes\calendar\plan_link\plan_link_entity.cs" />
+    <Compile Include="pg_classes\calendar\plan_range\plan_range_entity.cs" />
+    <Compile Include="pg_classes\calendar\plan_range\plan_range.cs" />
+    <Compile Include="pg_classes\calendar\plan_range_link\plan_range_link.cs" />
+    <Compile Include="pg_classes\calendar\plan_range_link\plan_range_link_entity.cs" />
     <Compile Include="pg_classes\class\class.cs" />
     <Compile Include="pg_classes\class\class_class_prop.cs" />
     <Compile Include="pg_classes\class\class_json.cs" />
@@ -591,6 +612,8 @@
   <ItemGroup>
     <Folder Include="diagrams\" />
     <Folder Include="manager\man_schedule\" />
+    <Folder Include="pg_classes\calendar\plan_calendar\" />
+    <Folder Include="pg_classes\calendar\plan_given_range_fact\" />
     <Folder Include="pg_classes\class\GroupAction\" />
     <Folder Include="pg_classes\schedule\calendar\" />
     <Folder Include="pg_classes\schedule\schedule\" />

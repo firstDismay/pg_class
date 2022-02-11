@@ -829,6 +829,102 @@ namespace pg_class
             errordesc = "Успешное завершение процедуры";
             messagetype = eJournalMessageType.success;
         }
+
+        /// <summary>
+        /// Дополнительный конструктор для событий методов планов
+        /// </summary>
+        public JournalEventArgs(PlanChangeEventArgs e) : this()
+        {
+            action = e.Action;
+            if (e.Plan != null)
+            {
+                id = e.Plan.Id;
+            }
+            entityname = eEntity.plan;
+            errorid = 0;
+            errordesc = "Успешное завершение процедуры";
+            messagetype = eJournalMessageType.success;
+        }
+
+        /// <summary>
+        /// Дополнительный конструктор для событий методов ссылок планов
+        /// </summary>
+        public JournalEventArgs(PlanLinkChangeEventArgs e) : this()
+        {
+            action = e.Action;
+            if (e.Plan_link != null)
+            {
+                id = e.Plan_link.Id;
+            }
+            entityname = eEntity.plan_link;
+            errorid = 0;
+            errordesc = "Успешное завершение процедуры";
+            messagetype = eJournalMessageType.success;
+        }
+
+        /// <summary>
+        /// Дополнительный конструктор для событий методов плановых диапазонов
+        /// </summary>
+        public JournalEventArgs(PlanRangeChangeEventArgs e) : this()
+        {
+            action = e.Action;
+            if (e.Plan_range != null)
+            {
+                id = e.Plan_range.Id;
+            }
+            entityname = eEntity.plan_range;
+            errorid = 0;
+            errordesc = "Успешное завершение процедуры";
+            messagetype = eJournalMessageType.success;
+        }
+
+        /// <summary>
+        /// Дополнительный конструктор для событий методов ссылок плановых диапазонов
+        /// </summary>
+        public JournalEventArgs(PlanRangeLinkChangeEventArgs e) : this()
+        {
+            action = e.Action;
+            if (e.Plan_range_link != null)
+            {
+                id = e.Plan_range_link.Id;
+            }
+            entityname = eEntity.plan_range_link;
+            errorid = 0;
+            errordesc = "Успешное завершение процедуры";
+            messagetype = eJournalMessageType.success;
+        }
+
+        /// <summary>
+        /// Дополнительный конструктор для событий методов выделенных диапазонов планов
+        /// </summary>
+        public JournalEventArgs(PlanGivenRangePlanChangeEventArgs e) : this()
+        {
+            action = e.Action;
+            if (e.Plan_given_range_plan != null)
+            {
+                id = e.Plan_given_range_plan.Id;
+            }
+            entityname = eEntity.plan_given_range_plan;
+            errorid = 0;
+            errordesc = "Успешное завершение процедуры";
+            messagetype = eJournalMessageType.success;
+        }
+
+        /// <summary>
+        /// Дополнительный конструктор для событий методов ссылок выделенных диапазонов планов
+        /// </summary>
+        public JournalEventArgs(PlanGivenRangePlanLinkChangeEventArgs e) : this()
+        {
+            action = e.Action;
+            if (e.Plan_given_range_plan_link != null)
+            {
+                id = e.Plan_given_range_plan_link.Id;
+            }
+            entityname = eEntity.plan_given_range_plan_link;
+            errorid = 0;
+            errordesc = "Успешное завершение процедуры";
+            messagetype = eJournalMessageType.success;
+        }
         #endregion
 
         #region СВОЙСТВА КЛАССА

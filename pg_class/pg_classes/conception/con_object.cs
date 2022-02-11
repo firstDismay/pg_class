@@ -29,6 +29,25 @@ namespace pg_class.pg_classes
             }
             return Result;
         }
+
+        /// <summary>
+        /// Лист представлений объектов соотвествующих набору значений глобальных/определяющих свойств (подбор по критериям)
+        /// object_by_array_prop
+        /// object_ext_by_array_prop
+        /// </summary>
+        public List<object_general> Object_by_array_prop(PropSearchСondition[] array_prop, Int64 iid_position, Boolean Extended = false)
+        {
+            List<object_general> Result;
+            if (Extended)
+            {
+                Result = Manager.object_ext_by_array_prop(array_prop, iid_position);
+            }
+            else
+            {
+                Result = Manager.object_by_array_prop(array_prop, iid_position);
+            }
+            return Result;
+        }
         #endregion
 
         #region МЕТОДЫ ЭКСПОРТА
