@@ -13,17 +13,17 @@ using pg_class.pg_classes.calendar;
 namespace pg_class
 {
     public partial class manager
-    {/*
+    {
         #region МЕТОДЫ КЛАССА: ГРУПП
 
         #region ДОБАВИТЬ
         
         /// <summary>
-        /// Метод добавляет новую группу
+        /// Метод добавляет новый план
         /// </summary>
-        public group group_add( Int64 iid_parent, Int64 iid_con,  String iname, String idesc, Boolean ion_class, Int32 isort)
+        public plan plan_add( Int64 iid_conception, Int64 iid_parent,  String iname, String idesc, Boolean ion, Boolean ion_crossing, Int32 iplan_max, Int32 irange_max, Boolean ion_freeze)
         {
-            group group = null;
+            plan centity = null;
             Int64 id = 0;
             Int32 error;
             String desc_error;
@@ -31,7 +31,7 @@ namespace pg_class
             //**********
              
             //=======================
-            cmdk = CommandByKey("group_add");
+            cmdk = CommandByKey("plan_add");
 
             if (cmdk != null)
             {
@@ -46,12 +46,15 @@ namespace pg_class
             }
             //=======================
 
+            cmdk.Parameters["iid_conception"].Value = iid_conception;
             cmdk.Parameters["iid_parent"].Value = iid_parent;
-            cmdk.Parameters["iid_con"].Value = iid_con;
             cmdk.Parameters["iname"].Value = iname;
             cmdk.Parameters["idesc"].Value = idesc;
-            cmdk.Parameters["ion_class"].Value = ion_class;
-            cmdk.Parameters["isort"].Value = isort;
+            cmdk.Parameters["ion"].Value = ion;
+            cmdk.Parameters["ion_crossing"].Value = ion_crossing;
+            cmdk.Parameters["ion_freeze"].Value = ion_freeze;
+            cmdk.Parameters["iplan_max"].Value = iplan_max;
+            cmdk.Parameters["irange_max"].Value = irange_max;
 
             //Начало транзакции
             cmdk.ExecuteNonQuery();
@@ -66,36 +69,36 @@ namespace pg_class
                     id = Convert.ToInt64(cmdk.Parameters["outid"].Value);
                     if (id > 0)
                     {
-                        group = group_by_id(id);
+                        centity = plan_by_id(id);
                     }
                     break;
                 default:
                     //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(id, eEntity.group, error, desc_error, eAction.Insert, eJournalMessageType.error);
+                    JournalEventArgs me = new JournalEventArgs(id, eEntity.plan, error, desc_error, eAction.Insert, eJournalMessageType.error);
                     JournalMessageOnReceived(me);
                     throw new PgDataException(error, desc_error);
             }
-            if (group != null)
+            if (centity != null)
             {
                 //Генерируем событие изменения группы
-                GroupChangeEventArgs e = new GroupChangeEventArgs(group, eAction.Insert);
-                GroupOnChange(e);
+                PlanChangeEventArgs e = new PlanChangeEventArgs(centity, eAction.Insert);
+                PlanOnChange(e);
             }
             //Возвращаем Объект
-            return group;
+            return centity;
         }
         //-=ACCESS=-***********************************************************************************
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
-        public Boolean group_add(out eAccess Access)
+        public Boolean plan_add(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
             //=======================
             //=======================
-            cmdk = CommandByKey("group_add");
+            cmdk = CommandByKey("plan_add");
             if (cmdk != null)
             {
                 Result = cmdk.Access;
@@ -112,128 +115,22 @@ namespace pg_class
 
         }
         //*********************************************************************************************
-        
-        /// <summary>
-        /// Метод копирует группу в новую родительскую группу
-        /// </summary>
-        public group group_copy(Int64 iid_pattern, Int64 iid_parent)
-        {
-            group group = null;
-            Int64 id = 0;
-            Int32 error;
-            String desc_error;
-            NpgsqlCommandKey cmdk;
-            //**********
-             
-            //=======================
-            cmdk = CommandByKey("group_copy");
-
-            if (cmdk != null)
-            {
-                if (!cmdk.Access)
-                {
-                    throw new AccessDataBaseException(404, String.Format(@"Отказано в доступе к методу: {0}!", cmdk.CommandText));
-                }
-            }
-            else
-            {
-                throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
-            }
-            //=======================
-
-            cmdk.Parameters["iid_pattern"].Value = iid_pattern;
-            cmdk.Parameters["iid_parent"].Value = iid_parent;
-            cmdk.Parameters["recursivecall"].Value = false;
-
-            //Начало транзакции
-            cmdk.ExecuteNonQuery();
-            
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            //SetLastTimeUsing();
-            //=======================
-            switch (error)
-            {
-                case 0:
-                    id = Convert.ToInt64(cmdk.Parameters["outid"].Value);
-                    if (id > 0)
-                    {
-                        group = group_by_id(id);
-                    }
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(id, eEntity.group, error, desc_error, eAction.Copy, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
-            }
-            if (group != null)
-            {
-                //Генерируем событие изменения позиции
-                GroupChangeEventArgs e = new GroupChangeEventArgs(group, eAction.Move);
-                GroupOnChange(e);
-            }
-            //Возвращаем Объект
-            return group;
-        }
-
-        /// <summary>
-        /// Метод копирует группу в новую родительскую группу
-        /// </summary>
-        public group group_copy(group Pattern, group Parent)
-        {
-            if (Parent != null)
-            {
-                return group_copy(Pattern.Id, Parent.Id);
-            }
-            else
-            {
-                return group_copy(Pattern.Id, 0);
-            }
-        }
-        //-=ACCESS=-***********************************************************************************
-        /// <summary>
-        /// Проверка прав доступа к методу
-        /// </summary>
-        public Boolean group_copy(out eAccess Access)
-        {
-            Boolean Result = false;
-            Access = eAccess.NotFound;
-            NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
-            cmdk = CommandByKey("group_copy");
-            if (cmdk != null)
-            {
-                Result = cmdk.Access;
-                if (Result)
-                {
-                    Access = eAccess.Success;
-                }
-                else
-                {
-                    Access = eAccess.NotAvailable;
-                }
-            }
-            return Result;
-        }
-
         #endregion
 
         #region ИЗМЕНИТЬ
         /// <summary>
-        /// Метод изменяет указанную группу
+        /// Метод изменяет план
         /// </summary>
-        public group group_upd(Int64 id, String iname, String idesc,  Boolean ion_class, Int32 isort)
+        public plan plan_upd(Int64 iid, String iname, String idesc, Boolean ion, Boolean ion_crossing, Int32 iplan_max, Int32 irange_max, Boolean ion_freeze)
         {
-            group group = null;
+            plan centity = null;
             Int32 error;
             String desc_error;
             NpgsqlCommandKey cmdk;
             //**********
              
             //=======================
-            cmdk = CommandByKey("group_upd");
+            cmdk = CommandByKey("plan_upd");
 
             if (cmdk != null)
             {
@@ -248,11 +145,14 @@ namespace pg_class
             }
             //=======================
 
-            cmdk.Parameters["iid"].Value = id;
+            cmdk.Parameters["iid"].Value = iid;
             cmdk.Parameters["iname"].Value = iname;
             cmdk.Parameters["idesc"].Value = idesc;
-            cmdk.Parameters["ion_class"].Value = ion_class;
-            cmdk.Parameters["isort"].Value = isort;
+            cmdk.Parameters["ion"].Value = ion;
+            cmdk.Parameters["ion_crossing"].Value = ion_crossing;
+            cmdk.Parameters["ion_freeze"].Value = ion_freeze;
+            cmdk.Parameters["iplan_max"].Value = iplan_max;
+            cmdk.Parameters["irange_max"].Value = irange_max;
 
             //Начало транзакции
             cmdk.ExecuteNonQuery();
@@ -264,30 +164,30 @@ namespace pg_class
             switch (error)
             {
                 case 0:
-                    group = group_by_id(id);
+                    centity = plan_by_id(iid);
                     break;
                 default:
                     //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(id, eEntity.group, error, desc_error, eAction.Update, eJournalMessageType.error);
+                    JournalEventArgs me = new JournalEventArgs(iid, eEntity.plan, error, desc_error, eAction.Update, eJournalMessageType.error);
                     JournalMessageOnReceived(me);
                     throw new PgDataException(error, desc_error);
             }
-            if (group != null)
+            if (centity != null)
             {
                 //Генерируем событие изменения группы
-                GroupChangeEventArgs e = new GroupChangeEventArgs(group, eAction.Update);
-                GroupOnChange(e);
+                PlanChangeEventArgs e = new PlanChangeEventArgs(centity, eAction.Update);
+                PlanOnChange(e);
             }
             //Возвращаем Объект
-            return group;
+            return centity;
         }
-        
+
         /// <summary>
-        /// Метод изменяет указанную группу
+        ///  Метод изменяет план
         /// </summary>
-        public group group_upd(group Group)
+        public plan plan_upd(plan Plan)
         {
-            return group_upd(Group.Id, Group.Name, Group.Desc, Group.On_class, Group.Sort);
+            return plan_upd(Plan.Id, Plan.Name, Plan.Desc, Plan.On, Plan.On_crossing, Plan.Plan_max, Plan.Range_max, Plan.On_freeze);
         }
        
 
@@ -295,14 +195,14 @@ namespace pg_class
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
-        public Boolean group_upd(out eAccess Access)
+        public Boolean plan_upd(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
             //=======================
             //=======================
-            cmdk = CommandByKey("group_upd");
+            cmdk = CommandByKey("plan_upd");
             if (cmdk != null)
             {
                 Result = cmdk.Access;
@@ -317,120 +217,13 @@ namespace pg_class
             }
             return Result;
         }
-        //*********************************************************************************************
-
-        /// <summary>
-        /// Метод переносит группу в новую родительскую группу
-        /// </summary>
-        public group group_move(Int64 ChildGroup, Int64 ParentGroup)
-        {
-            group group = null;
-            Int32 error;
-            String desc_error;
-            NpgsqlCommandKey cmdk;
-            //**********
-             
-            //=======================
-            cmdk = CommandByKey("group_move");
-
-            if (cmdk != null)
-            {
-                if (!cmdk.Access)
-                {
-                    throw new AccessDataBaseException(404, String.Format(@"Отказано в доступе к методу: {0}!", cmdk.CommandText));
-                }
-            }
-            else
-            {
-                throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
-            }
-            //=======================
-
-            cmdk.Parameters["iid"].Value = ChildGroup;
-            cmdk.Parameters["iid_parent"].Value = ParentGroup;
-
-            //Начало транзакции
-            cmdk.ExecuteNonQuery();
-            
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            //SetLastTimeUsing();
-            //=======================
-            switch (error)
-            {
-                case 0:
-                    group = group_by_id(ChildGroup);
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(ChildGroup, eEntity.group, error, desc_error, eAction.Move, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
-            }
-            if (group != null)
-            {
-                //Генерируем событие изменения позиции
-                GroupChangeEventArgs e = new GroupChangeEventArgs(group, eAction.Move);
-                GroupOnChange(e);
-            }
-            //Возвращаем Объект
-            return group;
-        }
-        //-=ACCESS=-***********************************************************************************
-        /// <summary>
-        /// Проверка прав доступа к методу
-        /// </summary>
-        /// 
-
-        /// <summary>
-        /// Метод переносит группу в новую родительскую группу
-        /// </summary>
-        public group group_move(group ChildGroup, group ParentGroup)
-        {
-            if (ParentGroup != null)
-            {
-                return group_move(ChildGroup.Id, ParentGroup.Id);
-            }
-            else
-            {
-                return group_move(ChildGroup.Id, 0);
-            }
-        }
-
-        //-=ACCESS=-***********************************************************************************
-        /// <summary>
-        /// Проверка прав доступа к методу
-        /// </summary>
-        public Boolean group_move(out eAccess Access)
-        {
-            Boolean Result = false;
-            Access = eAccess.NotFound;
-            NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
-            cmdk = CommandByKey("group_move");
-            if (cmdk != null)
-            {
-                Result = cmdk.Access;
-                if (Result)
-                {
-                    Access = eAccess.Success;
-                }
-                else
-                {
-                    Access = eAccess.NotAvailable;
-                }
-            }
-            return Result;
-        }
-
         #endregion
 
         #region УДАЛИТЬ
         /// <summary>
-        /// Метод удаляет указанную группу
+        /// Метод удаляет план
         /// </summary>
-        public void group_del(Int64 id)
+        public void plan_del(Int64 iid)
         {
             Int32 error;
             String desc_error;
@@ -438,7 +231,7 @@ namespace pg_class
             //**********
              
             //=======================
-            cmdk = CommandByKey("group_del");
+            cmdk = CommandByKey("plan_del");
 
             if (cmdk != null)
             {
@@ -453,9 +246,9 @@ namespace pg_class
             }
             //=======================
 
-            group group = group_by_id(id);
+            plan centity= plan_by_id(iid);
 
-            cmdk.Parameters["iid"].Value = id;
+            cmdk.Parameters["iid"].Value = iid;
 
             //Начало транзакции
             cmdk.ExecuteNonQuery();
@@ -467,39 +260,39 @@ namespace pg_class
             if (error > 0)
             {
                 //Вызов события журнала
-                JournalEventArgs me = new JournalEventArgs(id, eEntity.group, error, desc_error, eAction.Delete, eJournalMessageType.error);
+                JournalEventArgs me = new JournalEventArgs(iid, eEntity.plan, error, desc_error, eAction.Delete, eJournalMessageType.error);
                 JournalMessageOnReceived(me);
                 throw new PgDataException(error, desc_error);
             }
 
             //Генерируем событие изменения концепции
-            if (group != null)
+            if (centity != null)
             {
-                GroupChangeEventArgs e = new GroupChangeEventArgs(group, eAction.Delete);
-                GroupOnChange(e);
+                PlanChangeEventArgs e = new PlanChangeEventArgs(centity, eAction.Delete);
+                PlanOnChange(e);
             }
         }
 
         /// <summary>
-        /// Метод удаляет указанную группу
+        /// Метод удаляет план
         /// </summary>
-        public void group_del(group Group)
+        public void plan_del(plan Plan)
         {
-            group_del(Group.Id);
+            plan_del(Plan.Id);
         }
 
         //-=ACCESS=-***********************************************************************************
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
-        public Boolean group_del(out eAccess Access)
+        public Boolean plan_del(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
             //=======================
             //=======================
-            cmdk = CommandByKey("group_del");
+            cmdk = CommandByKey("plan_del");
             if (cmdk != null)
             {
                 Result = cmdk.Access;
@@ -521,19 +314,19 @@ namespace pg_class
 
         //*********************************************************************************************
         /// <summary>
-        /// Группа по идентификатору
+        /// План по идентификатору
         /// </summary>
-        public group group_by_id(Int64 id)
+        public plan plan_by_id(Int64 id)
         {
-            group group = null;
+            plan plan = null;
 
-            DataTable tbl_group  = TableByName("vgroup");
+            DataTable tbl_entity  = TableByName("vplan");
             //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
             //=======================
             NpgsqlCommandKey cmdk;
 
             //=======================
-            cmdk = CommandByKey("group_by_id");
+            cmdk = CommandByKey("plan_by_id");
 
             if (cmdk != null)
             {
@@ -550,35 +343,27 @@ namespace pg_class
 
             cmdk.Parameters["iid"].Value = id;
 
-            cmdk.Fill(tbl_group);
+            cmdk.Fill(tbl_entity);
             
-            if (tbl_group.Rows.Count > 0)
+            if (tbl_entity.Rows.Count > 0)
             {
-                group = new group(tbl_group.Rows[0]);
+                plan = new plan(tbl_entity.Rows[0]);
             }
-            return group;
-        }
-
-        /// <summary>
-        /// Позиция по объекту group_path
-        /// </summary>
-        public group group_by_group_path(group_path Group_path)
-        {
-            return group_by_id(Group_path.Id);
+            return plan;
         }
 
         //-=ACCESS=-***********************************************************************************
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
-        public Boolean group_by_id(out eAccess Access)
+        public Boolean plan_by_id(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
             //=======================
             //=======================
-            cmdk = CommandByKey("group_by_id");
+            cmdk = CommandByKey("plan_by_id");
             if (cmdk != null)
             {
                 Result = cmdk.Access;
@@ -597,20 +382,20 @@ namespace pg_class
 
         //*********************************************************************************************
         /// <summary>
-        /// Лист групп по идентификатору родительской группы
+        /// Лист планов по идентификатору родительского плана
         /// </summary>
-        public List<group> group_by_id_parent(Int64 id_parent, Int64 id_con)
+        public List<plan> plan_by_id_parent(Int64 id_parent)
         {
-            List<group>  group_list = new List<group>();
+            List<plan>  entity_list = new List<plan>();
 
             
-            DataTable tbl_group  = TableByName("vgroup");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
+            DataTable tbl_entity  = TableByName("vplan");
+            
             //=======================
             NpgsqlCommandKey cmdk;
 
             //=======================
-            cmdk = CommandByKey("group_by_id_parent");
+            cmdk = CommandByKey("plan_by_id_parent");
 
             if (cmdk != null)
             {
@@ -626,43 +411,43 @@ namespace pg_class
             //=======================
 
             cmdk.Parameters["iid_parent"].Value = id_parent;
-            cmdk.Parameters["iid_con"].Value = id_con;
 
-            cmdk.Fill(tbl_group);
+            cmdk.Fill(tbl_entity);
             
-            group gt;
-            if (tbl_group.Rows.Count > 0)
+            plan  centity;
+            
+            if (tbl_entity.Rows.Count > 0)
             {
-                foreach (System.Data.DataRow dr in tbl_group.Rows)
+                foreach (System.Data.DataRow dr in tbl_entity.Rows)
                 {
-                    gt = new group(dr);
-                    group_list.Add(gt);
+                    centity = new plan(dr);
+                    entity_list.Add(centity);
                 }
             }
 
-            return group_list;
+            return entity_list;
         }
 
         /// <summary>
-        /// Лист групп по идентификатору родительской группы
+        /// Лист планов по идентификатору родительского плана
         /// </summary>
-        public List<group> group_by_id_parent(group Group)
+        public List<plan> plan_by_id_parent(plan Plan)
         {
-            return group_by_id_parent(Group.Id, Group.Id_conception);
+            return plan_by_id_parent(Plan.Id);
         }
 
         //-=ACCESS=-***********************************************************************************
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
-        public Boolean group_by_id_parent(out eAccess Access)
+        public Boolean plan_by_id_parent(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
             //=======================
             //=======================
-            cmdk = CommandByKey("group_by_id_parent");
+            cmdk = CommandByKey("plan_by_id_parent");
             if (cmdk != null)
             {
                 Result = cmdk.Access;
@@ -677,23 +462,23 @@ namespace pg_class
             }
             return Result;
         }
-        
+
         //*********************************************************************************************
         /// <summary>
-        /// Лист дочерних групп по строгому соотвествию имени
+        /// Лист планов по идентификатору концепции
         /// </summary>
-        public List<group> group_by_name(Int64 iid_parent, String iname)
+        public List<plan> plan_by_id_conception(Int64 iid_conception)
         {
-            List<group> group_list = new List<group>();
+            List<plan> entity_list = new List<plan>();
 
 
-            DataTable tbl_group  = TableByName("vgroup");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
+            DataTable tbl_entity = TableByName("vplan");
+
             //=======================
             NpgsqlCommandKey cmdk;
 
             //=======================
-            cmdk = CommandByKey("group_by_name");
+            cmdk = CommandByKey("plan_by_id_conception");
 
             if (cmdk != null)
             {
@@ -708,44 +493,44 @@ namespace pg_class
             }
             //=======================
 
-            cmdk.Parameters["iid_parent"].Value = iid_parent;
-            cmdk.Parameters["iname"].Value = iname;
+            cmdk.Parameters["iid_conception"].Value = iid_conception;
 
-            cmdk.Fill(tbl_group);
-            
-            group gt;
-            if (tbl_group.Rows.Count > 0)
+            cmdk.Fill(tbl_entity);
+
+            plan centity;
+
+            if (tbl_entity.Rows.Count > 0)
             {
-                foreach (System.Data.DataRow dr in tbl_group.Rows)
+                foreach (System.Data.DataRow dr in tbl_entity.Rows)
                 {
-                    gt = new group(dr);
-                    group_list.Add(gt);
+                    centity = new plan(dr);
+                    entity_list.Add(centity);
                 }
             }
 
-            return group_list;
+            return entity_list;
         }
 
         /// <summary>
-        /// Лист дочерних групп по строгому соотвествию имени
+        ///  Лист планов по идентификатору концепции
         /// </summary>
-        public List<group> group_by_name(group Group_parent, String iname)
+        public List<plan> plan_by_id_conception(conception Conception)
         {
-            return group_by_name(Group_parent.Id, iname);
+            return plan_by_id_conception(Conception.Id);
         }
 
         //-=ACCESS=-***********************************************************************************
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
-        public Boolean group_by_name(out eAccess Access)
+        public Boolean plan_by_id_conception(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
             //=======================
             //=======================
-            cmdk = CommandByKey("group_by_name");
+            cmdk = CommandByKey("plan_by_id_conception");
             if (cmdk != null)
             {
                 Result = cmdk.Access;
@@ -765,9 +550,9 @@ namespace pg_class
         #region СВОЙСТВА ПОЛУЧАЕМЫЕ ИЗ БД
         //*********************************************************************************************
         /// <summary>
-        /// Метод определяет актуальность состояния группы
+        /// Метод определяет актуальность состояния плана
         /// </summary>
-        public eEntityState group_is_actual(Int64 iid, DateTime itimestamp, DateTime itimestamp_child_change)
+        public eEntityState plan_is_actual(Int64 iid, DateTime itimestamp, DateTime itimestamp_child_change)
         {
             Int32 is_actual = 3;
             //=======================
@@ -775,7 +560,7 @@ namespace pg_class
             //**********
              
             //=======================
-            cmdk = CommandByKey("group_is_actual3");
+            cmdk = CommandByKey("plan_is_actual");
 
             if (cmdk != null)
             {
@@ -803,13 +588,13 @@ namespace pg_class
         /// <summary>
         /// Метод определяет актуальность состояния группы
         /// </summary>
-        public eEntityState group_is_actual(group Group)
+        public eEntityState plan_is_actual(plan Plan)
         {
-            return group_is_actual(Group.Id, Group.Timestamp, Group.Timestamp_child_change);
+            return group_is_actual(Plan.Id, Plan.Timestamp, Plan.Timestamp_child_change);
         }
         #endregion
         #endregion
-        */
+        
         #region СОБЫТИЕ ИСПОЛЬЗОВАНИЯ МЕТОДОВ УПРАВЛЕНИЯ ГРУППАМИ
 
         /// <summary>
