@@ -69,6 +69,5 @@ namespace pg_class.pg_classes
             return Manager.object_by_name_command_export(name_mask, Id, on_internal, ExportFormat);
         }
         #endregion
-
     }
 }

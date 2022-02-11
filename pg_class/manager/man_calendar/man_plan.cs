@@ -13,7 +13,7 @@ using pg_class.pg_classes.calendar;
 namespace pg_class
 {
     public partial class manager
-    {
+    {/*
         #region МЕТОДЫ КЛАССА: ГРУПП
 
         #region ДОБАВИТЬ
@@ -809,7 +809,7 @@ namespace pg_class
         }
         #endregion
         #endregion
-
+        */
         #region СОБЫТИЕ ИСПОЛЬЗОВАНИЯ МЕТОДОВ УПРАВЛЕНИЯ ГРУППАМИ
 
         /// <summary>
