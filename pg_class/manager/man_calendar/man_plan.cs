@@ -14,7 +14,7 @@ namespace pg_class
 {
     public partial class manager
     {
-        #region МЕТОДЫ КЛАССА: ГРУПП
+        #region МЕТОДЫ КЛАССА: ПЛАН
 
         #region ДОБАВИТЬ
         
@@ -80,7 +80,7 @@ namespace pg_class
             }
             if (centity != null)
             {
-                //Генерируем событие изменения группы
+                //Генерируем событие изменения плана
                 PlanChangeEventArgs e = new PlanChangeEventArgs(centity, eAction.Insert);
                 PlanOnChange(e);
             }
@@ -174,7 +174,7 @@ namespace pg_class
             }
             if (centity != null)
             {
-                //Генерируем событие изменения группы
+                //Генерируем событие изменения плана
                 PlanChangeEventArgs e = new PlanChangeEventArgs(centity, eAction.Update);
                 PlanOnChange(e);
             }
@@ -316,7 +316,7 @@ namespace pg_class
         /// <summary>
         /// План по идентификатору
         /// </summary>
-        public plan plan_by_id(Int64 id)
+        public plan plan_by_id(Int64 iid)
         {
             plan plan = null;
 
@@ -341,7 +341,7 @@ namespace pg_class
             }
             //=======================
 
-            cmdk.Parameters["iid"].Value = id;
+            cmdk.Parameters["iid"].Value = iid;
 
             cmdk.Fill(tbl_entity);
             

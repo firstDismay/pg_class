@@ -9,21 +9,22 @@ using pg_class.pg_commands;
 using pg_class.pg_exceptions;
 using pg_class.pg_classes;
 using pg_class.pg_classes.calendar;
+using NpgsqlTypes;
 
 namespace pg_class
 {
     public partial class manager
     {
-        #region МЕТОДЫ КЛАССА: ГРУПП
+        #region МЕТОДЫ КЛАССА: ПЛАНОВЫЙ ДИАПАЗОН
 
         #region ДОБАВИТЬ
         
         /// <summary>
-        /// Метод добавляет новый план
+        /// Метод добавляет новый плановый диапазон
         /// </summary>
-        public plan plan_add( Int64 iid_conception, Int64 iid_parent,  String iname, String idesc, Boolean ion, Boolean ion_crossing, Int32 iplan_max, Int32 irange_max, Boolean ion_freeze)
+        public plan_range plan_range_add(Int64 iid_plan, NpgsqlRange<DateTime> irange_plan)
         {
-            plan centity = null;
+            plan_range centity = null;
             Int64 id = 0;
             Int32 error;
             String desc_error;
@@ -31,7 +32,7 @@ namespace pg_class
             //**********
              
             //=======================
-            cmdk = CommandByKey("plan_add");
+            cmdk = CommandByKey("plan_range_add");
 
             if (cmdk != null)
             {
@@ -46,15 +47,8 @@ namespace pg_class
             }
             //=======================
 
-            cmdk.Parameters["iid_conception"].Value = iid_conception;
-            cmdk.Parameters["iid_parent"].Value = iid_parent;
-            cmdk.Parameters["iname"].Value = iname;
-            cmdk.Parameters["idesc"].Value = idesc;
-            cmdk.Parameters["ion"].Value = ion;
-            cmdk.Parameters["ion_crossing"].Value = ion_crossing;
-            cmdk.Parameters["ion_freeze"].Value = ion_freeze;
-            cmdk.Parameters["iplan_max"].Value = iplan_max;
-            cmdk.Parameters["irange_max"].Value = irange_max;
+            cmdk.Parameters["iid_plan"].Value = iid_plan;
+            cmdk.Parameters["irange_plan"].Value = irange_plan;
 
             //Начало транзакции
             cmdk.ExecuteNonQuery();
@@ -69,20 +63,20 @@ namespace pg_class
                     id = Convert.ToInt64(cmdk.Parameters["outid"].Value);
                     if (id > 0)
                     {
-                        centity = plan_by_id(id);
+                        centity = plan_range_by_id(id);
                     }
                     break;
                 default:
                     //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(id, eEntity.plan, error, desc_error, eAction.Insert, eJournalMessageType.error);
+                    JournalEventArgs me = new JournalEventArgs(id, eEntity.plan_range, error, desc_error, eAction.Insert, eJournalMessageType.error);
                     JournalMessageOnReceived(me);
                     throw new PgDataException(error, desc_error);
             }
             if (centity != null)
             {
-                //Генерируем событие изменения группы
-                PlanChangeEventArgs e = new PlanChangeEventArgs(centity, eAction.Insert);
-                PlanOnChange(e);
+                //Генерируем событие изменения планового диапазона
+                PlanRangeChangeEventArgs e = new PlanRangeChangeEventArgs(centity, eAction.Insert);
+                PlanRangeOnChange(e);
             }
             //Возвращаем Объект
             return centity;
@@ -91,14 +85,14 @@ namespace pg_class
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
-        public Boolean plan_add(out eAccess Access)
+        public Boolean plan_range_add(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
             //=======================
             //=======================
-            cmdk = CommandByKey("plan_add");
+            cmdk = CommandByKey("plan_range_add");
             if (cmdk != null)
             {
                 Result = cmdk.Access;
@@ -119,18 +113,18 @@ namespace pg_class
 
         #region ИЗМЕНИТЬ
         /// <summary>
-        /// Метод изменяет план
+        /// Метод изменяет плановый диапазон
         /// </summary>
-        public plan plan_upd(Int64 iid, String iname, String idesc, Boolean ion, Boolean ion_crossing, Int32 iplan_max, Int32 irange_max, Boolean ion_freeze)
+        public plan_range plan_range_upd(Int64 iid, NpgsqlRange<DateTime> irange_plan)
         {
-            plan centity = null;
+            plan_range centity = null;
             Int32 error;
             String desc_error;
             NpgsqlCommandKey cmdk;
             //**********
              
             //=======================
-            cmdk = CommandByKey("plan_upd");
+            cmdk = CommandByKey("plan_range_upd");
 
             if (cmdk != null)
             {
@@ -146,14 +140,8 @@ namespace pg_class
             //=======================
 
             cmdk.Parameters["iid"].Value = iid;
-            cmdk.Parameters["iname"].Value = iname;
-            cmdk.Parameters["idesc"].Value = idesc;
-            cmdk.Parameters["ion"].Value = ion;
-            cmdk.Parameters["ion_crossing"].Value = ion_crossing;
-            cmdk.Parameters["ion_freeze"].Value = ion_freeze;
-            cmdk.Parameters["iplan_max"].Value = iplan_max;
-            cmdk.Parameters["irange_max"].Value = irange_max;
-
+            cmdk.Parameters["irange_plan"].Value = irange_plan;
+            
             //Начало транзакции
             cmdk.ExecuteNonQuery();
             
@@ -164,30 +152,30 @@ namespace pg_class
             switch (error)
             {
                 case 0:
-                    centity = plan_by_id(iid);
+                    centity = plan_range_by_id(iid);
                     break;
                 default:
                     //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(iid, eEntity.plan, error, desc_error, eAction.Update, eJournalMessageType.error);
+                    JournalEventArgs me = new JournalEventArgs(iid, eEntity.plan_range, error, desc_error, eAction.Update, eJournalMessageType.error);
                     JournalMessageOnReceived(me);
                     throw new PgDataException(error, desc_error);
             }
             if (centity != null)
             {
-                //Генерируем событие изменения группы
-                PlanChangeEventArgs e = new PlanChangeEventArgs(centity, eAction.Update);
-                PlanOnChange(e);
+                //Генерируем событие изменения планового диапазона
+                PlanRangeChangeEventArgs e = new PlanRangeChangeEventArgs(centity, eAction.Update);
+                PlanRangeOnChange(e);
             }
             //Возвращаем Объект
             return centity;
         }
 
         /// <summary>
-        ///  Метод изменяет план
+        ///  Метод изменяет плановый диапазон
         /// </summary>
-        public plan plan_upd(plan Plan)
+        public plan_range plan_range_upd(plan_range Plan_range)
         {
-            return plan_upd(Plan.Id, Plan.Name, Plan.Desc, Plan.On, Plan.On_crossing, Plan.Plan_max, Plan.Range_max, Plan.On_freeze);
+            return plan_range_upd(Plan_range.Id, Plan_range.Range_plan);
         }
        
 
@@ -195,14 +183,14 @@ namespace pg_class
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
-        public Boolean plan_upd(out eAccess Access)
+        public Boolean plan_range_upd(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
             //=======================
             //=======================
-            cmdk = CommandByKey("plan_upd");
+            cmdk = CommandByKey("plan_range_upd");
             if (cmdk != null)
             {
                 Result = cmdk.Access;
@@ -221,9 +209,9 @@ namespace pg_class
 
         #region УДАЛИТЬ
         /// <summary>
-        /// Метод удаляет план
+        /// Метод удаляет плановый диапазон
         /// </summary>
-        public void plan_del(Int64 iid)
+        public void plan_range_del(Int64 iid)
         {
             Int32 error;
             String desc_error;
@@ -231,7 +219,7 @@ namespace pg_class
             //**********
              
             //=======================
-            cmdk = CommandByKey("plan_del");
+            cmdk = CommandByKey("plan_range_del");
 
             if (cmdk != null)
             {
@@ -246,7 +234,7 @@ namespace pg_class
             }
             //=======================
 
-            plan centity= plan_by_id(iid);
+            plan_range centity= plan_range_by_id(iid);
 
             cmdk.Parameters["iid"].Value = iid;
 
@@ -260,7 +248,7 @@ namespace pg_class
             if (error > 0)
             {
                 //Вызов события журнала
-                JournalEventArgs me = new JournalEventArgs(iid, eEntity.plan, error, desc_error, eAction.Delete, eJournalMessageType.error);
+                JournalEventArgs me = new JournalEventArgs(iid, eEntity.plan_range, error, desc_error, eAction.Delete, eJournalMessageType.error);
                 JournalMessageOnReceived(me);
                 throw new PgDataException(error, desc_error);
             }
@@ -268,31 +256,31 @@ namespace pg_class
             //Генерируем событие изменения концепции
             if (centity != null)
             {
-                PlanChangeEventArgs e = new PlanChangeEventArgs(centity, eAction.Delete);
-                PlanOnChange(e);
+                PlanRangeChangeEventArgs e = new PlanRangeChangeEventArgs(centity, eAction.Delete);
+                PlanRangeOnChange(e);
             }
         }
 
         /// <summary>
         /// Метод удаляет план
         /// </summary>
-        public void plan_del(plan Plan)
+        public void plan_range_del(plan_range Plan_range)
         {
-            plan_del(Plan.Id);
+            plan_range_del(Plan_range.Id);
         }
 
         //-=ACCESS=-***********************************************************************************
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
-        public Boolean plan_del(out eAccess Access)
+        public Boolean plan_range_del(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
             //=======================
             //=======================
-            cmdk = CommandByKey("plan_del");
+            cmdk = CommandByKey("plan_range_del");
             if (cmdk != null)
             {
                 Result = cmdk.Access;
@@ -314,19 +302,19 @@ namespace pg_class
 
         //*********************************************************************************************
         /// <summary>
-        /// План по идентификатору
+        /// Плановый диапазон по идентификатору
         /// </summary>
-        public plan plan_by_id(Int64 id)
+        public plan_range plan_range_by_id(Int64 iid)
         {
-            plan plan = null;
+            plan_range plan_range = null;
 
-            DataTable tbl_entity  = TableByName("vplan");
+            DataTable tbl_entity  = TableByName("vplan_range");
             //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
             //=======================
             NpgsqlCommandKey cmdk;
 
             //=======================
-            cmdk = CommandByKey("plan_by_id");
+            cmdk = CommandByKey("plan_range_by_id");
 
             if (cmdk != null)
             {
@@ -341,29 +329,29 @@ namespace pg_class
             }
             //=======================
 
-            cmdk.Parameters["iid"].Value = id;
+            cmdk.Parameters["iid"].Value = iid;
 
             cmdk.Fill(tbl_entity);
             
             if (tbl_entity.Rows.Count > 0)
             {
-                plan = new plan(tbl_entity.Rows[0]);
+                plan_range = new plan_range(tbl_entity.Rows[0]);
             }
-            return plan;
+            return plan_range;
         }
 
         //-=ACCESS=-***********************************************************************************
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
-        public Boolean plan_by_id(out eAccess Access)
+        public Boolean plan_range_by_id(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
             //=======================
             //=======================
-            cmdk = CommandByKey("plan_by_id");
+            cmdk = CommandByKey("plan_range_by_id");
             if (cmdk != null)
             {
                 Result = cmdk.Access;
@@ -382,20 +370,20 @@ namespace pg_class
 
         //*********************************************************************************************
         /// <summary>
-        /// Лист планов по идентификатору родительского плана
+        /// Лист плановых диапазонов по идентификатору плана
         /// </summary>
-        public List<plan> plan_by_id_parent(Int64 id_parent)
+        public List<plan_range> plan_range_by_id_plan(Int64 iid_plan)
         {
-            List<plan>  entity_list = new List<plan>();
+            List<plan_range>  entity_list = new List<plan_range>();
 
             
-            DataTable tbl_entity  = TableByName("vplan");
+            DataTable tbl_entity  = TableByName("vplan_range");
             
             //=======================
             NpgsqlCommandKey cmdk;
 
             //=======================
-            cmdk = CommandByKey("plan_by_id_parent");
+            cmdk = CommandByKey("plan_range_by_id_plan");
 
             if (cmdk != null)
             {
@@ -410,17 +398,17 @@ namespace pg_class
             }
             //=======================
 
-            cmdk.Parameters["iid_parent"].Value = id_parent;
+            cmdk.Parameters["iid_plan"].Value = iid_plan;
 
             cmdk.Fill(tbl_entity);
-            
-            plan  centity;
+
+            plan_range centity;
             
             if (tbl_entity.Rows.Count > 0)
             {
                 foreach (System.Data.DataRow dr in tbl_entity.Rows)
                 {
-                    centity = new plan(dr);
+                    centity = new plan_range(dr);
                     entity_list.Add(centity);
                 }
             }
@@ -429,108 +417,25 @@ namespace pg_class
         }
 
         /// <summary>
-        /// Лист планов по идентификатору родительского плана
+        /// Лист плановых диапазонов по идентификатору плана
         /// </summary>
-        public List<plan> plan_by_id_parent(plan Plan)
+        public List<plan_range> plan_range_by_id_plan(plan Plan)
         {
-            return plan_by_id_parent(Plan.Id);
+            return plan_range_by_id_plan(Plan.Id);
         }
 
         //-=ACCESS=-***********************************************************************************
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
-        public Boolean plan_by_id_parent(out eAccess Access)
+        public Boolean plan_range_by_id_plan(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
             //=======================
             //=======================
-            cmdk = CommandByKey("plan_by_id_parent");
-            if (cmdk != null)
-            {
-                Result = cmdk.Access;
-                if (Result)
-                {
-                    Access = eAccess.Success;
-                }
-                else
-                {
-                    Access = eAccess.NotAvailable;
-                }
-            }
-            return Result;
-        }
-
-        //*********************************************************************************************
-        /// <summary>
-        /// Лист планов по идентификатору концепции
-        /// </summary>
-        public List<plan> plan_by_id_conception(Int64 iid_conception)
-        {
-            List<plan> entity_list = new List<plan>();
-
-
-            DataTable tbl_entity = TableByName("vplan");
-
-            //=======================
-            NpgsqlCommandKey cmdk;
-
-            //=======================
-            cmdk = CommandByKey("plan_by_id_conception");
-
-            if (cmdk != null)
-            {
-                if (!cmdk.Access)
-                {
-                    throw new AccessDataBaseException(404, String.Format(@"Отказано в доступе к методу: {0}!", cmdk.CommandText));
-                }
-            }
-            else
-            {
-                throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
-            }
-            //=======================
-
-            cmdk.Parameters["iid_conception"].Value = iid_conception;
-
-            cmdk.Fill(tbl_entity);
-
-            plan centity;
-
-            if (tbl_entity.Rows.Count > 0)
-            {
-                foreach (System.Data.DataRow dr in tbl_entity.Rows)
-                {
-                    centity = new plan(dr);
-                    entity_list.Add(centity);
-                }
-            }
-
-            return entity_list;
-        }
-
-        /// <summary>
-        ///  Лист планов по идентификатору концепции
-        /// </summary>
-        public List<plan> plan_by_id_conception(conception Conception)
-        {
-            return plan_by_id_conception(Conception.Id);
-        }
-
-        //-=ACCESS=-***********************************************************************************
-        /// <summary>
-        /// Проверка прав доступа к методу
-        /// </summary>
-        public Boolean plan_by_id_conception(out eAccess Access)
-        {
-            Boolean Result = false;
-            Access = eAccess.NotFound;
-            NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
-            cmdk = CommandByKey("plan_by_id_conception");
+            cmdk = CommandByKey("plan_range_by_id_plan");
             if (cmdk != null)
             {
                 Result = cmdk.Access;
@@ -550,9 +455,9 @@ namespace pg_class
         #region СВОЙСТВА ПОЛУЧАЕМЫЕ ИЗ БД
         //*********************************************************************************************
         /// <summary>
-        /// Метод определяет актуальность состояния плана
+        /// Метод определяет актуальность состояния планового диапазона
         /// </summary>
-        public eEntityState plan_is_actual(Int64 iid, DateTime itimestamp, DateTime itimestamp_child_change)
+        public eEntityState plan_range_is_actual(Int64 iid, DateTime itimestamp, DateTime itimestamp_child_change)
         {
             Int32 is_actual = 3;
             //=======================
@@ -560,7 +465,7 @@ namespace pg_class
             //**********
              
             //=======================
-            cmdk = CommandByKey("plan_is_actual");
+            cmdk = CommandByKey("plan_range_is_actual");
 
             if (cmdk != null)
             {
@@ -598,22 +503,22 @@ namespace pg_class
         #region СОБЫТИЕ ИСПОЛЬЗОВАНИЯ МЕТОДОВ УПРАВЛЕНИЯ ГРУППАМИ
 
         /// <summary>
-        /// Делегат события изменения плана
+        /// Делегат события изменения планового диапазона
         /// </summary>
-        public delegate void PlanChangeEventHandler(Object sender, PlanChangeEventArgs e);
+        public delegate void PlanRangeChangeEventHandler(Object sender, PlanRangeChangeEventArgs e);
 
         /// <summary>
-        /// Событие возникает при изменении плана методом доступа к БД
+        /// Событие возникает при изменении планового диапазона методом доступа к БД
         /// </summary>
-        public event PlanChangeEventHandler PlanChange;
+        public event PlanRangeChangeEventHandler PlanRangeChange;
         //===========================================================
 
         /// <summary>
         ///  Метод вызова события изменения плана
         /// </summary>
-        protected virtual void PlanOnChange(PlanChangeEventArgs e)
+        protected virtual void PlanRangeOnChange(PlanRangeChangeEventArgs e)
         {
-            PlanChangeEventHandler temp = PlanChange;
+            PlanRangeChangeEventHandler temp = PlanRangeChange;
             if (temp != null)
             {
                 temp(this, e);
