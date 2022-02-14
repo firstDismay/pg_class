@@ -177,6 +177,8 @@
     <Compile Include="manager\Global\man_classes\NPGSQL_TypeMapClass\pg_class\pg_cdoc_file.cs" />
     <Compile Include="manager\Global\man_classes\NPGSQL_TypeMapClass\pg_class\pg_cobject_prop.cs" />
     <Compile Include="manager\Global\man_classes\NPGSQL_TypeMapClass\pg_class\pg_cclass_prop.cs" />
+    <Compile Include="manager\man_calendar\man_plan_link.cs" />
+    <Compile Include="manager\man_calendar\man_plan_given_range_plan.cs" />
     <Compile Include="manager\man_calendar\man_plan_range.cs" />
     <Compile Include="manager\man_calendar\man_plan.cs" />
     <Compile Include="manager\man_doc_lib\man_document_const.cs" />

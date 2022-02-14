@@ -493,9 +493,9 @@ namespace pg_class
         /// <summary>
         /// Метод определяет актуальность состояния группы
         /// </summary>
-        public eEntityState plan_is_actual(plan Plan)
+        public eEntityState plan_range_is_actual(plan Plan)
         {
-            return group_is_actual(Plan.Id, Plan.Timestamp, Plan.Timestamp_child_change);
+            return plan_range_is_actual(Plan.Id, Plan.Timestamp, Plan.Timestamp_child_change);
         }
         #endregion
         #endregion
