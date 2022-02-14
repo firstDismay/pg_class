@@ -365,8 +365,7 @@ namespace pg_class.pg_classes.calendar
         /// </summary>
         public eEntityState Is_actual()
         {
-            throw (new Exception("Метод не реализован!"));
-            //return Manager.document_is_actual(this);
+         return Manager.plan_is_actual(this);
         }
 
         /// <summary>
@@ -376,7 +375,7 @@ namespace pg_class.pg_classes.calendar
         {
             if (on_change)
             {             
-                //Manager.document_upd(this);
+                Manager.plan_upd(this);
                 Refresh();
                 on_change = false;
             }
@@ -387,114 +386,43 @@ namespace pg_class.pg_classes.calendar
         /// </summary>
         public Boolean Refresh()
         {
-            throw (new Exception("Метод не реализован!"));
-            /*
-            document temp;
+            plan temp;
             Boolean Result = false;
-            switch (tablename)
+            temp = Manager.plan_by_id(id);
+
+            if (temp != null)
             {
-                case "vdocument":
-                    temp = Manager.document_by_id(id);
-                    if (temp != null)
-                    {
-                        tablename = temp.Tablename;
-                        id = temp.Id;
-                        id_conception = temp.Id_conception;
-                        id_parent = temp.Id_parent;
-                        id_category = temp.Id_category;
-                        on_grouping = temp.On_grouping;
-                        package_item = temp.Package_item;
-                        name = temp.Name;
-                        desc = temp.Desc;
-                        regnum = temp.Regnum;
-                        regdate = temp.Regdate;
-                        has_link = temp.Has_link;
-                        has_doc = temp.Has_doc;
-                        has_file = temp.Has_file;
-                        timestamp = temp.Timestamp;
-                        is_inside = temp.Is_inside;
-                        Result = true;
-                        on_change = false;
-                    }
-                    else
-                    {
-                        Result = false;
-                    }
-                    break;
-                case "vdocument_ext":
-                    temp = Manager.document_ext_by_id(id);
-                    if (temp != null)
-                    {
-                        tablename = temp.Tablename;
-                        id = temp.Id;
-                        id_conception = temp.Id_conception;
-                        id_parent = temp.Id_parent;
-                        id_category = temp.Id_category;
-                        on_grouping = temp.On_grouping;
-                        package_item = temp.Package_item;
-                        name = temp.Name;
-                        desc = temp.Desc;
-                        regnum = temp.Regnum;
-                        regdate = temp.Regdate;
-                        has_link = temp.Has_link;
-                        has_doc = temp.Has_doc;
-                        has_file = temp.Has_file;
-                        timestamp = temp.Timestamp;
-                        is_inside = temp.Is_inside;
-
-                        doc_file_list = temp.Doc_file_list_get(false);
-                        doc_link_list = temp.Doc_link_list_get(false);
-                        doc_category = temp.Doc_category_get(false);
-
-                        Result = true;
-                        on_change = false;
-                    }
-                    else
-                    {
-                        Result = false;
-                    }
-                    break;
+                tablename = temp.Tablename;
+                id_root = temp.Id_root;
+                id_parent = temp.Id_parent;
+                level = temp.Level;
+                name = temp.Name;
+                desc = temp.Desc;
+                on = temp.On;
+                on_crossing = temp.On_crossing;
+                on_freeze = temp.On_freeze;
+                plan_max = temp.Plan_max;
+                range_max = temp.Range_max;
+                has_child_plan = temp.Has_child_plan;
+                timestamp = temp.Timestamp;
+                timestamp_child_change = temp.Timestamp_child_change;
+                path = temp.Path;
             }
-            return Result;*/
+            else
+            {
+                Result = false;
+            }
+            return Result;
         }
 
         /// <summary>
-        /// удаление документа и вложенных файлов
-        /// group_del
+        /// удаление плана и вложенных файлов
+        /// plan_del
         /// </summary>
         public void Del()
         {
-            Manager.document_del(id);
+            Manager.plan_del(id);
         }
-        #endregion
-
-        #region МЕТОДЫ КЛАССА ДЛЯ РАБОТЫ СО СПИСКАМИ ДОКУМЕНТА
-        List<doc_file> doc_file_list;
-        /// <summary>
-        /// Лист файлов документа
-        /// </summary>
-        public List<doc_file> Doc_file_list_get(Boolean DirectRequest = true)
-        {
-            if (DirectRequest || doc_file_list == null)
-            {
-                doc_file_list = Manager.doc_file_by_id_document(Id);
-            }
-            return doc_file_list;
-        }
-
-        List<doc_link> doc_link_list;
-        /// <summary>
-        /// Лист ссылок документа
-        /// </summary>
-        public List<doc_link> Doc_link_list_get(Boolean DirectRequest = true)
-        {
-            if (DirectRequest || doc_link_list == null)
-            {
-                doc_link_list = Manager.doc_link_by_id_document(Id);
-            }
-            return doc_link_list;
-        }
-
         #endregion
 
         #region ПЕРЕОПРЕДЕЛЕННЫЕ МЕТОДЫ КЛАССА

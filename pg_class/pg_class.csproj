@@ -177,6 +177,8 @@
     <Compile Include="manager\Global\man_classes\NPGSQL_TypeMapClass\pg_class\pg_cdoc_file.cs" />
     <Compile Include="manager\Global\man_classes\NPGSQL_TypeMapClass\pg_class\pg_cobject_prop.cs" />
     <Compile Include="manager\Global\man_classes\NPGSQL_TypeMapClass\pg_class\pg_cclass_prop.cs" />
+    <Compile Include="manager\man_calendar\man_plan_given_range_plan_link.cs" />
+    <Compile Include="manager\man_calendar\man_plan_range_link.cs" />
     <Compile Include="manager\man_calendar\man_plan_link.cs" />
     <Compile Include="manager\man_calendar\man_plan_given_range_plan.cs" />
     <Compile Include="manager\man_calendar\man_plan_range.cs" />
@@ -273,6 +275,9 @@
     <Compile Include="manager\man_position\man_position.cs" />
     <Compile Include="manager\man_pos_temp\man_pos_temp.cs" />
     <Compile Include="manager\Global\man_info\man_info.cs" />
+    <Compile Include="pg_classes\calendar\plan\plan_plan_link.cs" />
+    <Compile Include="pg_classes\calendar\plan\plan_plan_range.cs" />
+    <Compile Include="pg_classes\calendar\plan\plan_plan.cs" />
     <Compile Include="pg_classes\calendar\plan\plan_entity.cs" />
     <Compile Include="pg_classes\calendar\plan\plan.cs" />
     <Compile Include="pg_classes\calendar\plan_given_range_plan\plan_given_range_plan.cs" />
@@ -281,6 +286,8 @@
     <Compile Include="pg_classes\calendar\plan_given_range_plan_link\plan_given_range_plan_link_entity.cs" />
     <Compile Include="pg_classes\calendar\plan_link\plan_link.cs" />
     <Compile Include="pg_classes\calendar\plan_link\plan_link_entity.cs" />
+    <Compile Include="pg_classes\calendar\plan_range\plan_range_plan_given_range_plan.cs" />
+    <Compile Include="pg_classes\calendar\plan_range\plan_range_plan_range_link.cs" />
     <Compile Include="pg_classes\calendar\plan_range\plan_range_entity.cs" />
     <Compile Include="pg_classes\calendar\plan_range\plan_range.cs" />
     <Compile Include="pg_classes\calendar\plan_range_link\plan_range_link.cs" />
@@ -311,6 +318,7 @@
     <Compile Include="pg_classes\class\SubClass\pattern_string.cs" />
     <Compile Include="pg_classes\conception\con_class_full.cs" />
     <Compile Include="pg_classes\conception\con_class.cs" />
+    <Compile Include="pg_classes\conception\con_calendar.cs" />
     <Compile Include="pg_classes\conception\con_entity.cs" />
     <Compile Include="pg_classes\conception\con_global_prop.cs" />
     <Compile Include="pg_classes\conception\con_document.cs" />
