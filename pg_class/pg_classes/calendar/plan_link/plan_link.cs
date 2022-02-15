@@ -36,6 +36,8 @@ namespace pg_class.pg_classes.calendar
                 id = (Int64)row["id"];
                 id_conception = (Int64)row["id_conception"];
                 id_plan = (Int64)row["id_plan"];
+                
+                name = (String)row["name"];
 
                 id_entity = (Int32)row["id_entity"];
                 id_entity_instance = (Int64)row["id_entity_instance"];
@@ -54,6 +56,9 @@ namespace pg_class.pg_classes.calendar
         private Int64 id;
         private Int64 id_conception;
         private Int64 id_plan;
+
+        private String name;
+
         private Int32 id_entity;
         private Int64 id_entity_instance;
         private Int64 id_sub_entity_instance;
@@ -72,6 +77,35 @@ namespace pg_class.pg_classes.calendar
         /// Идентификатор плана
         /// </summary>
         public Int64 Id_plan { get => id_plan; }
+
+        /// <summary>
+        /// Наименование плана ссылки
+        /// </summary>
+        public String Name
+        {
+            get
+            {
+                return name;
+            }
+        }
+
+        /// <summary>
+        /// Максимально допустимая длинна строкового поля
+        /// </summary>
+        public static Int32 Name_len
+        {
+            get
+            {
+                Int32 result = -1;
+                DataTable tbl_pos = manager.Instance().TableByName("vplan_link");
+                if (tbl_pos != null)
+                {
+                    result = tbl_pos.Columns["name"].MaxLength;
+                }
+                return result;
+            }
+        }
+
 
         /// <summary>
         /// Перечисление ссылочной сущности определяющей тип ссылочного объекта
@@ -143,30 +177,26 @@ namespace pg_class.pg_classes.calendar
         /// </summary>
         public eEntityState Is_actual()
         {
-            return Manager.doc_link_is_actual(id);
+            return Manager.plan_link_is_actual(id);
         }
 
         
         /// <summary>
-        /// Обновление группы из БД
+        /// Обновление ссылки плана из БД
         /// </summary>
         public Boolean Refresh()
         {
-            throw (new Exception("Метод не реализован!"));
-            /*
-            doc_link temp;
+            plan_link temp;
             Boolean Result = false;
-            temp = Manager.doc_link_by_id(id);
+            temp = Manager.plan_link_by_id(id);
 
             if (temp != null)
             {
                 id = temp.Id;
                 id_conception = temp.Id_conception;
-                id_plan = temp.Id_document;
-                id_category = temp.Id_category;
+                id_plan = temp.Id_plan;
+
                 name = temp.Name;
-                regnum = temp.Regnum;
-                regdate = temp.Regdate;
 
                 id_entity = temp.Link_id_entity;
                 id_entity_instance = temp.Link_id_entity_instance;
@@ -177,17 +207,16 @@ namespace pg_class.pg_classes.calendar
             {
                 Result = false;
             }
-            return Result;*/
+            return Result;
         }
 
         /// <summary>
-        /// удаление ссылки документа
-        /// doc_link_del
+        /// удаление ссылки плана
+        /// plan_link_del
         /// </summary>
         public void Del()
         {
-            throw (new Exception("Метод не реализован!"));
-            //Manager.doc_link_del(id_document, id);
+            Manager.plan_link_del(id_plan, id);
         }
 
         /// <summary>
@@ -248,12 +277,12 @@ namespace pg_class.pg_classes.calendar
 
         #region ПЕРЕОПРЕДЕЛЕННЫЕ МЕТОДЫ КЛАССА
         /// <summary>
-        ///Переопределенный метод класса для работы с листами и списками
+        ///Переопределенный метод 
         /// </summary>
-        /*public override string ToString()
+        public override string ToString()
         {
             return name;
-        }*/
+        }
         #endregion
 
     }

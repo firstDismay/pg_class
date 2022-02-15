@@ -238,7 +238,7 @@ namespace pg_class.pg_classes.calendar
         {
             if (on_change)
             {             
-                //Manager.document_upd(this);
+                Manager.plan_range_upd(this);
                 Refresh();
                 on_change = false;
             }

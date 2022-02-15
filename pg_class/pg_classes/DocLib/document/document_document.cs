@@ -40,14 +40,18 @@ namespace pg_class.pg_classes
         #endregion
 
         #region ВЫБРАТЬ
+        List<document> document_list;
         /// <summary>
-        /// Лист документов по идентификатору концепции
+        /// Лист документов по идентификатору документа
         /// </summary>
-        public List<document> document_list_get()
+        public List<document> document_list_get(Boolean DirectRequest = true)
         {
-            return Manager.document_by_id_parent(Id);
+            if (DirectRequest || document_list == null)
+            {
+                return Manager.document_by_id_parent(Id);
+            }
+            return document_list;
         }
-        //*************************************************************************************
         #endregion
         #endregion
     }

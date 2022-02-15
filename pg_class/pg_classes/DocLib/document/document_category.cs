@@ -11,10 +11,12 @@ namespace pg_class.pg_classes
         #region МЕТОДЫ РАБОТЫ С ДОКУМЕНТАМИ
 
         #region ВЫБРАТЬ
+
+        doc_category doc_category;
         /// <summary>
         /// Категория документа
         /// </summary>
-        public doc_category category_get(Boolean DirectRequest = true)
+        public doc_category doc_category_get(Boolean DirectRequest = true)
         {
             if (DirectRequest || doc_category == null)
             {
@@ -22,7 +24,6 @@ namespace pg_class.pg_classes
             }
             return doc_category;
         }
-        //*************************************************************************************
         #endregion
         #endregion
     }

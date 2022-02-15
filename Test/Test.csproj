@@ -171,5 +171,11 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\pg_class\pg_class.csproj">
+      <Project>{650f025c-e5da-4e6f-81dc-88f938b086cb}</Project>
+      <Name>pg_class</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -537,9 +537,9 @@ namespace pg_class.pg_classes
                         timestamp = temp.Timestamp;
                         is_inside = temp.Is_inside;
 
-                        doc_file_list = temp.Doc_file_list_get(false);
-                        doc_link_list = temp.Doc_link_list_get(false);
-                        doc_category = temp.Doc_category_get(false);
+                        doc_file_list = temp.doc_file_list_get(false);
+                        doc_link_list = temp.doc_link_list_get(false);
+                        doc_category = temp.doc_category_get(false);
 
                         Result = true;
                         on_change = false;
@@ -560,47 +560,6 @@ namespace pg_class.pg_classes
         public void Del()
         {
             Manager.document_del(id);
-        }
-        #endregion
-
-        #region МЕТОДЫ КЛАССА ДЛЯ РАБОТЫ СО СПИСКАМИ ДОКУМЕНТА
-        List<doc_file> doc_file_list;
-        /// <summary>
-        /// Лист файлов документа
-        /// </summary>
-        public List<doc_file> Doc_file_list_get(Boolean DirectRequest = true)
-        {
-            if (DirectRequest || doc_file_list == null)
-            {
-                doc_file_list = Manager.doc_file_by_id_document(Id);
-            }
-            return doc_file_list;
-        }
-
-        List<doc_link> doc_link_list;
-        /// <summary>
-        /// Лист ссылок документа
-        /// </summary>
-        public List<doc_link> Doc_link_list_get(Boolean DirectRequest = true)
-        {
-            if (DirectRequest || doc_link_list == null)
-            {
-                doc_link_list = Manager.doc_link_by_id_document(Id);
-            }
-            return doc_link_list;
-        }
-
-        doc_category doc_category;
-        /// <summary>
-        /// Лист файлов документа
-        /// </summary>
-        public doc_category Doc_category_get(Boolean DirectRequest = true)
-        {
-            if (DirectRequest || doc_category == null)
-            {
-                doc_category = Manager.doc_category_by_id(Id_category);
-            }
-            return doc_category;
         }
         #endregion
 

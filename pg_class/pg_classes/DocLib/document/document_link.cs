@@ -197,6 +197,7 @@ namespace pg_class.pg_classes
         #endregion
 
         #region ВЫБРАТЬ
+        List<doc_link> doc_link_list;
         /// <summary>
         /// Лист ссылок документа по идентификатору документа
         /// </summary>

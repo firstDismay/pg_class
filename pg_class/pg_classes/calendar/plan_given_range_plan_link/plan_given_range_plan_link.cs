@@ -1,12 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
-using System.IO;
-using System.Data;
-using System.Security.Cryptography;
+using NpgsqlTypes;
 
 namespace pg_class.pg_classes.calendar
 {
@@ -36,6 +29,8 @@ namespace pg_class.pg_classes.calendar
                 id = (Int64)row["id"];
                 id_conception = (Int64)row["id_conception"];
                 id_plan_given_range_plan = (Int64)row["id_plan_given_range_plan"];
+                
+                range_plan = (NpgsqlRange<DateTime>)row["range_plan"];
 
                 id_entity = (Int32)row["id_entity"];
                 id_entity_instance = (Int64)row["id_entity_instance"];
@@ -54,6 +49,7 @@ namespace pg_class.pg_classes.calendar
         private Int64 id;
         private Int64 id_conception;
         private Int64 id_plan_given_range_plan;
+        private NpgsqlRange<DateTime> range_plan;
         private Int32 id_entity;
         private Int64 id_entity_instance;
         private Int64 id_sub_entity_instance;
@@ -71,7 +67,18 @@ namespace pg_class.pg_classes.calendar
         /// <summary>
         /// Идентификатор плана
         /// </summary>
-        public Int64 Id_plan_given_range_plann { get => id_plan_given_range_plan; }
+        public Int64 Id_plan_given_range_plan { get => id_plan_given_range_plan; }
+
+        /// <summary>
+        /// Значение выделенного диапазона планового диапазона
+        /// </summary>
+        public NpgsqlRange<DateTime> Range_plan
+        {
+            get
+            {
+                return range_plan;
+            }
+        }
 
         /// <summary>
         /// Перечисление ссылочной сущности определяющей тип ссылочного объекта
@@ -152,21 +159,17 @@ namespace pg_class.pg_classes.calendar
         /// </summary>
         public Boolean Refresh()
         {
-            throw (new Exception("Метод не реализован!"));
-            /*
-            doc_link temp;
+            plan_given_range_plan_link temp;
             Boolean Result = false;
-            temp = Manager.doc_link_by_id(id);
+            temp = Manager.plan_given_range_plan_link_by_id(id);
 
             if (temp != null)
             {
                 id = temp.Id;
                 id_conception = temp.Id_conception;
-                id_plan = temp.Id_document;
-                id_category = temp.Id_category;
-                name = temp.Name;
-                regnum = temp.Regnum;
-                regdate = temp.Regdate;
+                id_plan_given_range_plan = temp.Id_plan_given_range_plan;
+
+                range_plan = temp.Range_plan;
 
                 id_entity = temp.Link_id_entity;
                 id_entity_instance = temp.Link_id_entity_instance;
@@ -177,17 +180,16 @@ namespace pg_class.pg_classes.calendar
             {
                 Result = false;
             }
-            return Result;*/
+            return Result;
         }
 
         /// <summary>
         /// удаление ссылки документа
-        /// doc_link_del
+        /// plan_given_range_plan_link_del
         /// </summary>
         public void Del()
         {
-            throw (new Exception("Метод не реализован!"));
-            //Manager.doc_link_del(id_document, id);
+            Manager.plan_given_range_plan_link_del(id_plan_given_range_plan, id);
         }
 
         /// <summary>
@@ -243,17 +245,16 @@ namespace pg_class.pg_classes.calendar
             id_entity_instance = iid_entity_instance;
             id_sub_entity_instance = iid_sub_entity_instance;
         }
-
         #endregion
 
         #region ПЕРЕОПРЕДЕЛЕННЫЕ МЕТОДЫ КЛАССА
         /// <summary>
-        ///Переопределенный метод класса для работы с листами и списками
+        ///Переопределенный метод класса
         /// </summary>
-        /*public override string ToString()
+        public override string ToString()
         {
-            return name;
-        }*/
+            return range_plan.ToString();
+        }
         #endregion
 
     }

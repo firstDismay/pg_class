@@ -53,6 +53,7 @@ namespace pg_class.pg_classes
         #endregion
 
         #region ВЫБРАТЬ
+        List<doc_file> doc_file_list;
         /// <summary>
         /// Лист файлов документа по идентификатору документа
         /// </summary>

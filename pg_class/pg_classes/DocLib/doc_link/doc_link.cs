@@ -38,7 +38,6 @@ namespace pg_class.pg_classes
                 id_document = (Int64)row["id_document"];
                 id_category = (Int64)row["id_category"];
                 name = (String)row["name"];
-                name_len = row.Table.Columns["name"].MaxLength;
                 regnum = (String)row["regnum"];
                 regnum_len = row.Table.Columns["regnum"].MaxLength;
                 regdate = Convert.ToDateTime(row["regdate"]);
@@ -66,7 +65,6 @@ namespace pg_class.pg_classes
                 id_document = dl.id_document;
                 id_category = dl.id_category;
                 name = dl.name;
-                name_len = dl.name.Length;
                 regnum = dl.regnum;
                 regnum_len = dl.regnum.Length;
                 regdate = dl.regdate;
@@ -89,7 +87,6 @@ namespace pg_class.pg_classes
         private Int64 id_document;
         private Int64 id_category;
         private String name;
-        private Int32 name_len;
         private String regnum;
         private Int32 regnum_len;
         private DateTime regdate;
