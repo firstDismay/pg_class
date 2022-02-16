@@ -220,6 +220,29 @@ namespace pg_class.pg_classes
         #endregion
         #endregion
 
+        #region МЕТОДЫ ДЛЯ ПОЛУЧЕНИЯ СПИСКОВ СВОЙСТВ С УЧЕТОМ МЕТОДОВ СЛОЖНОГО ПОСИКА
+
+        /// <summary>
+        /// Лист свойств класса по идентификатору класса-носителя с учетом метода сложного поиска
+        /// </summary>
+        public List<class_prop> Property_list_by_search_method(eSearchMethods isearch_method)
+        {
+            List<class_prop> property_list = new List<class_prop>();
+
+            switch (StorageType)
+            {
+                case eStorageType.Active:
+                        property_list = Manager.class_prop_by_id_class_search_method(this, isearch_method);
+                    break;
+                case eStorageType.History:
+                        property_list = Manager.class_prop_snapshot_by_id_class_snapshot_search_method(this, isearch_method);
+                    break;
+            }
+            return property_list;
+        }
+
+        #endregion
+
         #region СВОЙСТВА ДЛЯ РАБОТЫ ТИПАМИ СВОЙСТВ
         /// <summary>
         /// Лист доступных типов свойств класса
