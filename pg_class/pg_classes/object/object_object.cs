@@ -25,7 +25,6 @@ namespace pg_class.pg_classes
             return Result;
         }
 
-
         /// <summary>
         /// Лист всех объектов класса без учета штампа времени
         /// </summary>
@@ -42,7 +41,5 @@ namespace pg_class.pg_classes
             }
             return Result;
         }
-
-
     }
 }

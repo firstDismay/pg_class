@@ -20,7 +20,6 @@ namespace pg_class
         public List<class_prop> class_prop_by_id_class_search_method(Int64 iid_class, eSearchMethods isearch_method)
         {
             List<class_prop> class_prop_list = new List<class_prop>();
-
             
             DataTable tbl_class_prop  = TableByName("vclass_prop");
             //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
@@ -95,7 +94,5 @@ namespace pg_class
             return Result;
         }
         #endregion
-
-       
     }
 }

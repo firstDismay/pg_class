@@ -20,7 +20,6 @@ namespace pg_class
         public List<class_prop> class_prop_snapshot_by_id_class_snapshot_search_method(Int64  iid_class_snapshot, DateTime itimestamp_class_snapshot, eSearchMethods isearch_method)
         {
             List<class_prop> class_prop_list = new List<class_prop>();
-
             
             DataTable tbl_class_prop  = TableByName("vclass_prop");
             //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
