@@ -74,6 +74,7 @@ namespace pg_class.pg_classes
                     path = (String)row["path"];
                     round = (Int32)row["round"];
                     break;
+                
                 case "vobject_general_ext":
                     viewname = row.Table.TableName;
                     id = (Int64)row["id"];
