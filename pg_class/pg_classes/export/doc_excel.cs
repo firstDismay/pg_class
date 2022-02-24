@@ -49,10 +49,6 @@ namespace pg_class.pg_classes
             }
         }
 
-
-
-
-
         #endregion
 
         #region МЕТОДЫ КЛАССА

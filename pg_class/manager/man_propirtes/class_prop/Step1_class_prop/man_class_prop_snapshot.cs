@@ -131,7 +131,6 @@ namespace pg_class
             return class_prop_snapshot;
         }
 
-
         /// <summary>
         /// Выбирает снимок свойства класса объекта носителя по идентификатору объекта значения свойства
         /// </summary>
@@ -140,7 +139,6 @@ namespace pg_class
             return class_prop_snapshot_by_id_object_val(Object_val.Id);
         }
 
-        
         //-=ACCESS=-***********************************************************************************
         /// <summary>
         /// Проверка прав доступа к методу
@@ -227,7 +225,6 @@ namespace pg_class
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
             //=======================
-            //=======================
             cmdk = CommandByKey("class_prop_snapshot_by_id_global_prop");
             if (cmdk != null)
             {
@@ -243,7 +240,6 @@ namespace pg_class
             }
             return Result;
         }
-        //*********************************************************************************************
 
         //*********************************************************************************************
         /// <summary>
@@ -325,7 +321,6 @@ namespace pg_class
             }
             return Result;
         }
-       
         #endregion
         #endregion
     }
