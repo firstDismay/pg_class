@@ -91,6 +91,19 @@ namespace pg_class
         /// Запрашиваемый массив значений
         /// </summary>
         public String[] ValReqArray { get; set; }
+
+        /// <summary>
+        /// Строковое описание условия поиска
+        /// </summary>
+        public String Description { get; set; }
+
+        /// <summary>
+        /// Строковое описание условия поиска
+        /// </summary>
+        public override string ToString()
+        {
+            return Description;
+        }
     }
 }
 
