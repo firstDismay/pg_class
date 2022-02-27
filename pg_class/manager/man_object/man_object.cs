@@ -8,6 +8,7 @@ using System.Data;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
 using pg_class.pg_classes;
+using Newtonsoft.Json;
 
 namespace pg_class
 {
@@ -3364,7 +3365,7 @@ namespace pg_class
 
             for (Int32 i = 0; i < array_prop.Length; i++)
             {
-                sarray_prop[i] = System.Text.Json.JsonSerializer.Serialize(array_prop[i]);
+                sarray_prop[i] = JsonConvert.SerializeObject(array_prop[i], Formatting.Indented);
             }
 
             cmdk.Parameters["array_prop"].Value = sarray_prop;
@@ -5038,7 +5039,7 @@ namespace pg_class
 
             for (Int32 i = 0; i < array_prop.Length; i++)
             {
-                sarray_prop[i] = System.Text.Json.JsonSerializer.Serialize(array_prop[i]);
+                sarray_prop[i] = JsonConvert.SerializeObject(array_prop[i], Formatting.Indented);
             }
 
             cmdk.Parameters["array_prop"].Value = sarray_prop;

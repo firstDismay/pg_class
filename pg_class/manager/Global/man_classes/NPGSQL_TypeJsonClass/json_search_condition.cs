@@ -4,18 +4,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace pg_class
 {
     /// <summary>
     /// Класс условие поиска типа подбор пр критериям преобразования в JSONB
     /// </summary>
+    [JsonObject(MemberSerialization.OptIn)]
     public class PropSearchСondition
     {
         private Int64 _IdGlobalProp;
         /// <summary>
         /// Идентификатор глобального свойства
         /// </summary>
+        [JsonProperty]
         public Int64 IdGlobalProp 
         { 
             get 
@@ -33,6 +36,7 @@ namespace pg_class
         /// <summary>
         /// Идентификатор определяющего свойства, может быть задан при отсуствии глобального свойства
         /// </summary>
+        [JsonProperty]
         public Int64 IdDefinitionProp 
         {
             get
@@ -50,6 +54,7 @@ namespace pg_class
         /// <summary>
         ///Метод поиска
         /// </summary>
+        [JsonProperty]
         public eSearchMethods SearchMethods
         {
             get
@@ -65,6 +70,7 @@ namespace pg_class
         /// <summary>
         ///Метод поиска строковое представление
         /// </summary>
+        [JsonProperty]
         public String SearchMethodsToString 
         { get
             {
@@ -75,21 +81,25 @@ namespace pg_class
         /// <summary>
         /// Верхня граница условия поиска
         /// </summary>
+        [JsonProperty]
         public String ValMax { get; set; }
 
         /// <summary>
         /// Нижняя граница условия поиска
         /// </summary>
+        [JsonProperty]
         public String ValMin { get; set; }
 
         /// <summary>
         /// Запрашиваемое единичное значение или маска
         /// </summary>
+        [JsonProperty]
         public String ValReq { get; set; }
 
         /// <summary>
         /// Запрашиваемый массив значений
         /// </summary>
+        [JsonProperty]
         public String[] ValReqArray { get; set; }
 
         /// <summary>
