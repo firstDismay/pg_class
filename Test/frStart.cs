@@ -102,7 +102,7 @@ namespace Test
 
             PropSearchСondition arg4 = new PropSearchСondition();
             arg4.IdDefinitionProp = 77192;
-            arg4.ValReqArray = new String[]{"1284", "1287", "1288"};
+            arg4.ValReqArray = new String[]{"1284", "1288"};
             //arg4.ValReqArray = new String[] { "1284" };
             arg4.ValMin = "1";
             arg4.ValMax = "2";

@@ -375,7 +375,7 @@
     <Compile Include="pg_classes\nested rule\object_rule_L1\rulel1_group_on_pos_temp_entity.cs" />
     <Compile Include="pg_classes\nested rule\object_rule_L1\rulel1_group_on_pos_temp_access.cs" />
     <Compile Include="pg_classes\nested rule\object_rule_L2\rulel2_class_snapshot_on_position.cs" />
-    <Compile Include="pg_classes\patch\object_path.cs" />
+    <Compile Include="pg_classes\path\object_path.cs" />
     <Compile Include="pg_classes\position\pos_doc_link.cs" />
     <Compile Include="pg_classes\position\pos_nested_rule\pos_rulel_check_access.cs" />
     <Compile Include="pg_classes\position\pos_object\pos_object_merging.cs" />
@@ -545,14 +545,14 @@
     <Compile Include="pg_classes\group\group_class.cs" />
     <Compile Include="pg_classes\group\group_group.cs" />
     <Compile Include="pg_classes\group\group_path.cs" />
-    <Compile Include="pg_classes\patch\group_path.cs" />
-    <Compile Include="pg_classes\patch\class_path.cs" />
+    <Compile Include="pg_classes\path\group_path.cs" />
+    <Compile Include="pg_classes\path\class_path.cs" />
     <Compile Include="pg_classes\position\pos_class_allowed.cs" />
     <Compile Include="pg_classes\position\pos_nested_rule\pos_rulel2_class_on_position.cs" />
     <Compile Include="pg_classes\position\pos_group.cs" />
     <Compile Include="pg_classes\position\pos_pos.cs" />
     <Compile Include="pg_classes\position\pos_object\pos_object.cs" />
-    <Compile Include="pg_classes\patch\pos_path.cs" />
+    <Compile Include="pg_classes\path\pos_path.cs" />
     <Compile Include="pg_classes\position\pos_path.cs" />
     <Compile Include="pg_classes\pos_temp\pos_temp_nested_rule\pos_temp_rulel2_class_on_position.cs" />
     <Compile Include="pg_classes\pos_temp\pos_temp_nested_list2.cs" />
