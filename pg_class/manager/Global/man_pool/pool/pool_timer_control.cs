@@ -62,8 +62,8 @@ namespace pg_class.poolcn
                             lock (c)
                             {
                                 c.Lock();
-                                c.Drop();
                                 cn_list.Remove(c);
+                                c.Drop();
                             }
                             //Вызов события изменения количества подключений
                             PoolConnectEventArgs pc = new PoolConnectEventArgs(cn_list.Count, manager.PoolConnectMaxStatic);
