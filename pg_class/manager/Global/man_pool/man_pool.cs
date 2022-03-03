@@ -4,7 +4,6 @@ using System.Text;
 using System.Data.SqlClient;
 using Npgsql;
 using System.Data;
-using System.Windows.Forms;
 using pg_class.pg_exceptions;
 using pg_class.poolcn;
 using System.Globalization;

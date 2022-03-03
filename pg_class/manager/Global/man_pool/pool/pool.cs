@@ -141,29 +141,14 @@ namespace pg_class.poolcn
                                     {
                                         CN = cn_list.Find(x => !x.IsUse && !x.IsCorupted);
                                     }
-                                    if (CN.CN != null)
-                                    {
-                                        CN.Open();
-                                        CN.Lock();
-                                    }
-                                    else
-                                    {
-                                        CN.Open();
-                                        CN.Lock();
-                                    }
+                                    CN.Open();
+                                    CN.Lock();
                                 }
                             }
                             else
                             {
-                                if (CN.CN != null)
-                                {
-                                    CN.Lock();
-                                }
-                                else
-                                {
-                                    CN.Open();
-                                    CN.Lock();
-                                }
+                                CN.Open();
+                                CN.Lock();
                             }
                         }
                         else

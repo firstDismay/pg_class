@@ -6,8 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using pg_class.pg_classes;
 using pg_class.poolcn;
-using System.Threading;
 using pg_class.pg_exceptions;
+
 
 namespace pg_class.pg_commands
 {
@@ -134,7 +134,13 @@ namespace pg_class.pg_commands
                 }
                 catch (Exception ex)
                 {
-                    cmd_.Connection = null;
+                    if (cmd_.Transaction != null)
+                    {
+                        if (!cmd_.Transaction.IsCompleted)
+                        {
+                            cmd_.Transaction.Rollback();
+                        }
+                    }
                     connect_.UnLock();
                     Manager.PG_exception_hadler(ex, this);
                 }
@@ -191,9 +197,12 @@ namespace pg_class.pg_commands
                 }
                 catch (Npgsql.PostgresException ex)
                 {
-                    if (!cmd_.Transaction.IsCompleted)
+                    if (cmd_.Transaction != null)
                     {
-                        cmd_.Transaction.Rollback();
+                        if (!cmd_.Transaction.IsCompleted)
+                        {
+                            cmd_.Transaction.Rollback();
+                        }
                     }
                     cmd_.Connection = null;
                     connect_.UnLock();
@@ -201,11 +210,12 @@ namespace pg_class.pg_commands
                 }
                 catch (Exception ex)
                 {
-                    if (!cmd_.Transaction.IsCompleted)
+                    if (cmd_.Transaction != null)
                     {
-                        cmd_.Transaction.Rollback();
-                        cmd_.Connection = null;
-                        connect_.UnLock();
+                        if (!cmd_.Transaction.IsCompleted)
+                        {
+                            cmd_.Transaction.Rollback();
+                        }
                     }
                     cmd_.Connection = null;
                     connect_.UnLock();
@@ -268,9 +278,12 @@ namespace pg_class.pg_commands
                 }
                 catch (Npgsql.PostgresException ex)
                 {
-                    if (!cmd_.Transaction.IsCompleted)
+                    if (cmd_.Transaction != null)
                     {
-                        cmd_.Transaction.Rollback();
+                        if (!cmd_.Transaction.IsCompleted)
+                        {
+                            cmd_.Transaction.Rollback();
+                        }
                     }
                     cmd_.Connection = null;
                     connect_.UnLock();
@@ -278,9 +291,12 @@ namespace pg_class.pg_commands
                 }
                 catch (Exception ex)
                 {
-                    if (!cmd_.Transaction.IsCompleted)
+                    if (cmd_.Transaction != null)
                     {
-                        cmd_.Transaction.Rollback();
+                        if (!cmd_.Transaction.IsCompleted)
+                        {
+                            cmd_.Transaction.Rollback();
+                        }
                     }
                     cmd_.Connection = null;
                     connect_.UnLock();
@@ -339,9 +355,12 @@ namespace pg_class.pg_commands
                 }
                 catch (Npgsql.PostgresException ex)
                 {
-                    if (!cmd_.Transaction.IsCompleted)
+                    if (cmd_.Transaction != null)
                     {
-                        cmd_.Transaction.Rollback();
+                        if (!cmd_.Transaction.IsCompleted)
+                        {
+                            cmd_.Transaction.Rollback();
+                        }
                     }
                     cmd_.Connection = null;
                     connect_.UnLock();
@@ -349,9 +368,12 @@ namespace pg_class.pg_commands
                 }
                 catch (Exception ex)
                 {
-                    if (!cmd_.Transaction.IsCompleted)
+                    if (cmd_.Transaction != null)
                     {
-                        cmd_.Transaction.Rollback();
+                        if (!cmd_.Transaction.IsCompleted)
+                        {
+                            cmd_.Transaction.Rollback();
+                        }
                     }
                     cmd_.Connection = null;
                     connect_.UnLock();

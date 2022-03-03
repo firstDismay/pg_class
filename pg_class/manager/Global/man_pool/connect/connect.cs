@@ -48,7 +48,7 @@ namespace pg_class.poolcn
         {
             get
             {
-                return is_corupted;
+                return is_corupted || (cn == null);
             }
         }
 
@@ -139,13 +139,10 @@ namespace pg_class.poolcn
                         Manager.man_exception_hadler(ex);
                     }
                 }
-                else
-                {
-                    cn.ConnectionString = Session_Settings.NpgsqlConnectionString;
-                }
-
+                
                 if (cn.State != ConnectionState.Open)
                 {
+                    cn.ConnectionString = Session_Settings.NpgsqlConnectionString;
                     cn.Open();
                 }
 

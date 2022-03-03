@@ -67,14 +67,26 @@ namespace pg_class.pg_commands
                 }
                 catch (Npgsql.PostgresException ex)
                 {
-                    cmd_.Transaction.Commit();
+                    if (cmd_.Transaction != null)
+                    {
+                        if (!cmd_.Transaction.IsCompleted)
+                        {
+                            cmd_.Transaction.Rollback();
+                        }
+                    }
                     connect_.UnLock();
                     cmd_.Connection = null;
                     Manager.PG_exception_hadler(ex, this);
                 }
                 catch (Exception ex)
                 {
-                    cmd_.Transaction.Commit();
+                    if (cmd_.Transaction != null)
+                    {
+                        if (!cmd_.Transaction.IsCompleted)
+                        {
+                            cmd_.Transaction.Rollback();
+                        }
+                    }
                     connect_.UnLock();
                     cmd_.Connection = null;
                     Manager.PG_exception_hadler(ex, this);
@@ -147,14 +159,26 @@ namespace pg_class.pg_commands
                 }
                 catch (Npgsql.PostgresException ex)
                 {
-                    cmd_.Transaction.Commit();
+                    if (cmd_.Transaction != null)
+                    {
+                        if (!cmd_.Transaction.IsCompleted)
+                        {
+                            cmd_.Transaction.Rollback();
+                        }
+                    }
                     connect_.UnLock();
                     cmd_.Connection = null;
                     Manager.PG_exception_hadler(ex, this);
                 }
                 catch (Exception ex)
                 {
-                    cmd_.Transaction.Commit();
+                    if (cmd_.Transaction != null)
+                    {
+                        if (!cmd_.Transaction.IsCompleted)
+                        {
+                            cmd_.Transaction.Rollback();
+                        }
+                    }
                     connect_.UnLock();
                     cmd_.Connection = null;
                     Manager.PG_exception_hadler(ex, this);
@@ -226,13 +250,25 @@ namespace pg_class.pg_commands
                 }
                 catch (Npgsql.PostgresException ex)
                 {
-                    cmd_.Transaction.Commit();
+                    if (cmd_.Transaction != null)
+                    {
+                        if (!cmd_.Transaction.IsCompleted)
+                        {
+                            cmd_.Transaction.Rollback();
+                        }
+                    }
                     connect_.UnLock();
                     Manager.PG_exception_hadler(ex, this);
                 }
                 catch (Exception ex)
                 {
-                    cmd_.Transaction.Commit();
+                    if (cmd_.Transaction != null)
+                    {
+                        if (!cmd_.Transaction.IsCompleted)
+                        {
+                            cmd_.Transaction.Rollback();
+                        }
+                    }
                     connect_.UnLock();
                     Manager.PG_exception_hadler(ex, this);
                 }
