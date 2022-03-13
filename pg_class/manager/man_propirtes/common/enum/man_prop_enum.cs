@@ -222,7 +222,6 @@ namespace pg_class
         public prop_enum prop_enum_upd(Int64 iid_prop_enum, Int64 iid_conception, String iname, String idesc, Int32 iid_prop_enum_use_area, Int32 iid_data_type)
         {
             prop_enum Prop_enum = null;
-            Int64 id = 0;
             Int32 error;
             String desc_error;
             NpgsqlCommandKey cmdk = null;

@@ -8,7 +8,6 @@ using pg_class.pg_exceptions;
 using System.Data;
 using System.Net.Sockets;
 using pg_class.pg_commands;
-using pg_class.pg_exceptions;
 
 namespace pg_class
 {
@@ -169,7 +168,6 @@ namespace pg_class
                         me = new JournalEventArgs(0, eEntity.manager, ResultID, ResultDesc, pe.ErrorDesc, eAction.Connect, eJournalMessageType.error);
                         JournalMessageOnReceived(me);
                         throw new PgManagerException(ResultID, ResultDesc, pe.ErrorDesc);
-                        break;
                     
                     default:
                         ResultID = pe.ErrorID;

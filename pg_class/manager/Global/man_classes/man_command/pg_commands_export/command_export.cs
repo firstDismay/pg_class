@@ -42,12 +42,10 @@ namespace pg_class.pg_commands
         /// </summary>
         public String CommandExportText { get => command_export_text_; }
 
-        private String desc_;
         /// <summary>
         /// Ключ/наименование команды без скобок
         /// </summary>
         public String CommandExportDesc { get => command_export_desc_;}
-
 
         private String path_;
         /// <summary>
@@ -106,7 +104,7 @@ namespace pg_class.pg_commands
         /// </summary>
         public override string ToString()
         {
-            return desc_;
+            return command_export_desc_;
         }
         #endregion
     }

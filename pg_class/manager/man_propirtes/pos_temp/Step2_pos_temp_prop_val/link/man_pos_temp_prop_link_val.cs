@@ -22,7 +22,6 @@ namespace pg_class
         public pos_temp_prop_link_val pos_temp_prop_link_val_add(Int64 iid_pos_temp_prop, Int32 iid_entity, Int64 iid_entity_instance, Int64 iid_sub_entity_instance)
         {
             pos_temp_prop_link_val pos_temp_prop_link_val = null;
-            Int64 id = 0;
             Int32 error;
             String desc_error;
             NpgsqlCommandKey cmdk = null;

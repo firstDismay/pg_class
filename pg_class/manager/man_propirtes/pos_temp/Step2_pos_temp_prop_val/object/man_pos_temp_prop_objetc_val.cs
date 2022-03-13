@@ -26,7 +26,6 @@ namespace pg_class
         {
             pos_temp_prop_object_val pos_temp_prop_object_val = null;
             pos_temp_prop pos_temp_prop = null;
-            Int64 id = 0;
             Int32 error;
             String desc_error;
             NpgsqlCommandKey cmdk;

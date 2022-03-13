@@ -15,24 +15,26 @@ namespace pg_class.pg_exceptions
         /// <summary>
         /// Конструтор исключения журнала ДЗ для функций версии 2
         /// </summary>
-        public PgDataException(eEntity Entity, eAction Action, eSubClass_ErrID SubClass_ErrID, String ErrorDesc, eSourceError SourceError = eSourceError.ClassFuncVer2) : base(ErrorDesc)
+        public PgDataException(eEntity Entity, eAction Action, eSubClass_ErrID SubClass_ErrID, String ErrorDesc) : base(ErrorDesc)
         {
             entity = Entity;
             action = Action;
             subclass_errid = SubClass_ErrID;
             errordesc = ErrorDesc;
+            sourceerror = eSourceError.ClassFuncVer2;
         }
 
         /// <summary>
         /// Конструтор исключения журнала ДЗ для функций версии 1
         /// </summary>
-        public PgDataException(Int32 ErrID, String ErrorDesc, eSourceError SourceError = eSourceError.ClassFuncVer1) : base(ErrorDesc)
+        public PgDataException(Int32 ErrID, String ErrorDesc) : base(ErrorDesc)
         {
             entity = eEntity.entity;
             action = eAction.AnyAction;
             subclass_errid = eSubClass_ErrID.SCE0_Unknown_Error;
             errorid = ErrID;
             errordesc = ErrorDesc;
+            sourceerror = eSourceError.ClassFuncVer1;
         }
         #endregion
 
@@ -134,7 +136,7 @@ namespace pg_class.pg_exceptions
             }
         }
 
-        private eSourceError sourceerror;
+       private eSourceError sourceerror;
 
         /// <summary>
         /// Источник ошибки с учетом версий функций определяемых типом аргумента результата

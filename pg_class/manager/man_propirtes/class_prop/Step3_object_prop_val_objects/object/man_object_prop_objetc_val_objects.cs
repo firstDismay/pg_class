@@ -23,7 +23,7 @@ namespace pg_class
          public position object_prop_object_val_oblects_add(position Position_parent, Int64 iid_class_prop,  DateTime itimestamp_class, 
                                 Int64 iid_class_real, Int32 iid_unit_conversion_rule, Decimal icquantity, Boolean on_internal = false)
         {
-             Int64 id = 0;
+             
              Int32 error;
              String desc_error;
              NpgsqlCommandKey cmdk;

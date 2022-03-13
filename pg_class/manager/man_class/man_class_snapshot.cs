@@ -1342,12 +1342,12 @@ namespace pg_class
             if (conception == null)
             {
                 //Подготовка исключения метода
-                PgDataException pgex = new PgDataException(eEntity.conception, eAction.Clear, eSubClass_ErrID.SCE1_NonExistent_Entity, "Указанная концепция не существует!", eSourceError.ClassFuncVer2);
+                PgDataException pgex = new PgDataException(eEntity.conception, eAction.Clear, eSubClass_ErrID.SCE1_NonExistent_Entity, "Указанная концепция не существует!");
                 //Вызов события журнала
                 JournalEventArgs me = new JournalEventArgs(iid_conception, eEntity.conception, pgex.ErrID, "Указанная концепция не существует!", eAction.Clear, eJournalMessageType.error);
                 JournalMessageOnReceived(me);
                 //Генерация исключения
-                throw new PgDataException(eEntity.conception,eAction.Clear,eSubClass_ErrID.SCE1_NonExistent_Entity, "Указанная концепция не существует!",eSourceError.ClassFuncVer2);
+                throw new PgDataException(eEntity.conception,eAction.Clear,eSubClass_ErrID.SCE1_NonExistent_Entity, "Указанная концепция не существует!");
             }
 
             //Генерируем событие изменения концепции

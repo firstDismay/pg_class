@@ -534,7 +534,7 @@ namespace pg_class.pg_classes
                 else
                 {
                 throw new PgDataException(eEntity.class_prop_user_val, eAction.Update, eSubClass_ErrID.SCE3_Violation_Rules,
-                    "Тип данных свойства не соотвествует типу данных переданного значения", eSourceError.ClassFuncVer2);
+                    "Тип данных свойства не соотвествует типу данных переданного значения");
                 }
             }
         }
@@ -559,7 +559,7 @@ namespace pg_class.pg_classes
                 else
                 {
                     throw new PgDataException(eEntity.class_prop_user_val, eAction.Update, eSubClass_ErrID.SCE3_Violation_Rules,
-                        "Тип данных свойства не соотвествует типу данных переданного значения", eSourceError.ClassFuncVer2);
+                        "Тип данных свойства не соотвествует типу данных переданного значения");
                 }
             }
         }
@@ -584,7 +584,7 @@ namespace pg_class.pg_classes
                 else
                 {
                     throw new PgDataException(eEntity.class_prop_user_val, eAction.Update, eSubClass_ErrID.SCE3_Violation_Rules,
-                        "Тип данных свойства не соотвествует типу данных переданного значения", eSourceError.ClassFuncVer2);
+                        "Тип данных свойства не соотвествует типу данных переданного значения");
                 }
             }
 
@@ -613,7 +613,7 @@ namespace pg_class.pg_classes
                 else
                 {
                     throw new PgDataException(eEntity.class_prop_user_val, eAction.Update, eSubClass_ErrID.SCE3_Violation_Rules,
-                        "Тип данных свойства не соотвествует типу данных переданного значения", eSourceError.ClassFuncVer2);
+                        "Тип данных свойства не соотвествует типу данных переданного значения");
                 }
             }
         }
@@ -638,7 +638,7 @@ namespace pg_class.pg_classes
                 else
                 {
                     throw new PgDataException(eEntity.class_prop_user_val, eAction.Update, eSubClass_ErrID.SCE3_Violation_Rules,
-                        "Тип данных свойства не соотвествует типу данных переданного значения", eSourceError.ClassFuncVer2);
+                        "Тип данных свойства не соотвествует типу данных переданного значения");
                 }
             }
         }
@@ -663,7 +663,7 @@ namespace pg_class.pg_classes
                 else
                 {
                     throw new PgDataException(eEntity.class_prop_user_val, eAction.Update, eSubClass_ErrID.SCE3_Violation_Rules,
-                        "Тип данных свойства не соотвествует типу данных переданного значения", eSourceError.ClassFuncVer2);
+                        "Тип данных свойства не соотвествует типу данных переданного значения");
                 }
             }
         }
@@ -688,7 +688,7 @@ namespace pg_class.pg_classes
                 else
                 {
                     throw new PgDataException(eEntity.class_prop_user_val, eAction.Update, eSubClass_ErrID.SCE3_Violation_Rules,
-                        "Тип данных свойства не соотвествует типу данных переданного значения", eSourceError.ClassFuncVer2);
+                        "Тип данных свойства не соотвествует типу данных переданного значения");
                 }
             }
         }
@@ -713,7 +713,7 @@ namespace pg_class.pg_classes
                 else
                 {
                     throw new PgDataException(eEntity.class_prop_user_val, eAction.Update, eSubClass_ErrID.SCE3_Violation_Rules,
-                        "Тип данных свойства не соотвествует типу данных переданного значения", eSourceError.ClassFuncVer2);
+                        "Тип данных свойства не соотвествует типу данных переданного значения");
                 }
             }
         }
@@ -738,7 +738,7 @@ namespace pg_class.pg_classes
                 else
                 {
                     throw new PgDataException(eEntity.class_prop_user_val, eAction.Update, eSubClass_ErrID.SCE3_Violation_Rules,
-                        "Тип данных свойства не соотвествует типу данных переданного значения", eSourceError.ClassFuncVer2);
+                        "Тип данных свойства не соотвествует типу данных переданного значения");
                 }
             }
         }
@@ -763,7 +763,7 @@ namespace pg_class.pg_classes
                 else
                 {
                     throw new PgDataException(eEntity.class_prop_user_val, eAction.Update, eSubClass_ErrID.SCE3_Violation_Rules,
-                        "Тип данных свойства не соотвествует типу данных переданного значения", eSourceError.ClassFuncVer2);
+                        "Тип данных свойства не соотвествует типу данных переданного значения");
                 }
             }
         }
@@ -788,7 +788,7 @@ namespace pg_class.pg_classes
                 else
                 {
                     throw new PgDataException(eEntity.class_prop_user_val, eAction.Update, eSubClass_ErrID.SCE3_Violation_Rules,
-                        "Тип данных свойства не соотвествует типу данных переданного значения", eSourceError.ClassFuncVer2);
+                        "Тип данных свойства не соотвествует типу данных переданного значения");
                 }
             }
         }
@@ -813,7 +813,7 @@ namespace pg_class.pg_classes
                 else
                 {
                     throw new PgDataException(eEntity.class_prop_user_val, eAction.Update, eSubClass_ErrID.SCE3_Violation_Rules,
-                        "Тип данных свойства не соотвествует типу данных переданного значения", eSourceError.ClassFuncVer2);
+                        "Тип данных свойства не соотвествует типу данных переданного значения");
                 }
             }
         }
@@ -838,7 +838,7 @@ namespace pg_class.pg_classes
                 else
                 {
                     throw new PgDataException(eEntity.class_prop_user_val, eAction.Update, eSubClass_ErrID.SCE3_Violation_Rules,
-                        "Тип данных свойства не соотвествует типу данных переданного значения", eSourceError.ClassFuncVer2);
+                        "Тип данных свойства не соотвествует типу данных переданного значения");
                 }
             }
         }
@@ -863,7 +863,7 @@ namespace pg_class.pg_classes
                 else
                 {
                     throw new PgDataException(eEntity.class_prop_user_val, eAction.Update, eSubClass_ErrID.SCE3_Violation_Rules,
-                        "Тип данных свойства не соотвествует типу данных переданного значения", eSourceError.ClassFuncVer2);
+                        "Тип данных свойства не соотвествует типу данных переданного значения");
                 }
             }
         }
@@ -888,7 +888,7 @@ namespace pg_class.pg_classes
                 else
                 {
                     throw new PgDataException(eEntity.class_prop_user_val, eAction.Update, eSubClass_ErrID.SCE3_Violation_Rules,
-                        "Тип данных свойства не соотвествует типу данных переданного значения", eSourceError.ClassFuncVer2);
+                        "Тип данных свойства не соотвествует типу данных переданного значения");
                 }
             }
         }

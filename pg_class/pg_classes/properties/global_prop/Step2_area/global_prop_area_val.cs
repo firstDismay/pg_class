@@ -365,7 +365,7 @@ namespace pg_class.pg_classes
             }
             else
             {
-                throw (new PgDataException(eEntity.global_prop_area_val, eAction.Select, eSubClass_ErrID.SCE3_Violation_Rules, "Сущность области значений не соотвествует типу свойства!", eSourceError.ClassFuncVer2));
+                throw (new PgDataException(eEntity.global_prop_area_val, eAction.Select, eSubClass_ErrID.SCE3_Violation_Rules, "Сущность области значений не соотвествует типу свойства!"));
             }
             return Result;
         }
@@ -382,7 +382,7 @@ namespace pg_class.pg_classes
             }
             else
             {
-                throw (new PgDataException(eEntity.global_prop_area_val, eAction.Select, eSubClass_ErrID.SCE3_Violation_Rules, "Сущность области значений не соотвествует типу свойства!", eSourceError.ClassFuncVer2));
+                throw (new PgDataException(eEntity.global_prop_area_val, eAction.Select, eSubClass_ErrID.SCE3_Violation_Rules, "Сущность области значений не соотвествует типу свойства!"));
             }
             return Result;
         }
@@ -399,7 +399,7 @@ namespace pg_class.pg_classes
             }
             else
             {
-                throw (new PgDataException(eEntity.global_prop_area_val, eAction.Select, eSubClass_ErrID.SCE3_Violation_Rules, "Сущность области значений не соотвествует типу свойства!", eSourceError.ClassFuncVer2));
+                throw (new PgDataException(eEntity.global_prop_area_val, eAction.Select, eSubClass_ErrID.SCE3_Violation_Rules, "Сущность области значений не соотвествует типу свойства!"));
             }
             return Result;
         }
@@ -416,7 +416,7 @@ namespace pg_class.pg_classes
             }
             else
             {
-                throw (new PgDataException(eEntity.global_prop_area_val, eAction.Select, eSubClass_ErrID.SCE3_Violation_Rules, "Сущность области значений не соотвествует типу свойства!", eSourceError.ClassFuncVer2));
+                throw (new PgDataException(eEntity.global_prop_area_val, eAction.Select, eSubClass_ErrID.SCE3_Violation_Rules, "Сущность области значений не соотвествует типу свойства!"));
             }
             return Result;
         }
