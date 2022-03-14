@@ -76,7 +76,12 @@ namespace Test
 
             ///ИЗВРАЩАИТЬСЯ ТУТ
             ///
-            NpgsqlCommandKey cmd = NEW_pg_class.CommandByKey("object_by_array_prop");
+
+            List<String> sm = NEW_pg_class.class_search_method_by_id_class_prop(77186);
+
+            List<eSearchMethods> sm2 = NEW_pg_class.class_search_method_by_id_class_prop2(77186);
+
+
 
 
             PropSearchСondition arg1 = new PropSearchСondition();
