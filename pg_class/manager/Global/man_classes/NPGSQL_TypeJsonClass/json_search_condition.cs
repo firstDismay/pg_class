@@ -112,7 +112,7 @@ namespace pg_class
         /// </summary>
         public override string ToString()
         {
-            return Description;
+            return manager.SearchMethodsToString(_SearchMethods);
         }
     }
 }

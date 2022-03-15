@@ -77,12 +77,20 @@ namespace Test
             ///ИЗВРАЩАИТЬСЯ ТУТ
             ///
 
-            List<String> sm = NEW_pg_class.class_search_method_by_id_class_prop(77186);
 
-            List<eSearchMethods> sm2 = NEW_pg_class.class_search_method_by_id_class_prop2(77186);
+            List<object_general> og = NEW_pg_class.object_ext_by_id_position(1314);
+
+            List<String> ogj = new List<string>();
+
+            foreach (object_general o in og)
+            { 
+                ogj.Add(o.ToJson());
+            }
 
 
+            List<String> sm = NEW_pg_class.class_prop_search_method_by_id_class_prop(77186);
 
+            List<eSearchMethods> sm2 = NEW_pg_class.class_prop_search_method_by_id_class_prop2(77194);
 
             PropSearchСondition arg1 = new PropSearchСondition();
             arg1.IdDefinitionProp = 77186;
