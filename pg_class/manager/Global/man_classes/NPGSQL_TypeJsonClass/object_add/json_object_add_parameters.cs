@@ -35,6 +35,44 @@ namespace pg_class
         }
 
         /// <summary>
+        /// Публичный конструктор класса Значения свойства
+        /// </summary>
+        public json_object_parameters(vclass iClass)
+        {
+            //IdPosition = iIdPosition;
+            //IdObject = iObject.Id;
+            NameObject = iClass.Name;
+            IdClass = iClass.Id;
+            IdUnitConversionRule = iClass.Id_unit_conversion_rule;
+            //СQuantity = iCQuantity;
+            ObjectPropertyList = new List<json_object_prop_val>();
+
+            foreach (class_prop cp in iClass.Property_list_get(false))
+            {
+                ObjectPropertyList.Add(new json_object_prop_val(cp));
+            }
+        }
+
+        /// <summary>
+        /// Публичный конструктор класса Значения свойства
+        /// </summary>
+        public json_object_parameters(vclass iClass, Int64 iIdPosition, Int32 iIdUnitConversionRule, Decimal iCQuantity)
+        {
+            IdPosition = iIdPosition;
+            //IdObject = iObject.Id;
+            NameObject = iClass.Name;
+            IdClass = iClass.Id;
+            IdUnitConversionRule = iIdUnitConversionRule;
+            СQuantity = iCQuantity;
+            ObjectPropertyList = new List<json_object_prop_val>();
+
+            foreach (class_prop cp in iClass.Property_list_get(false))
+            {
+                ObjectPropertyList.Add(new json_object_prop_val(cp));
+            }
+        }
+
+        /// <summary>
         /// Идентификатор позиции объекта 
         /// </summary>
         [JsonProperty]

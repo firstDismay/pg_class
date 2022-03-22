@@ -15,9 +15,9 @@ namespace pg_class.pg_classes
         /// Метод возвращает список методов сложного поиска по идентификатору свойства
         /// class_search_method_by_id_class_prop
         /// </summary>
-        public List<eSearchMethods> search_method_list_get()
+        public List<SearchMetodObject> search_method_list_get()
         {
-            return Manager.class_prop_search_method_by_id_class_prop2(id);
+            return Manager.class_prop_search_method_by_id_class_prop3(id);
         }
     }
 }

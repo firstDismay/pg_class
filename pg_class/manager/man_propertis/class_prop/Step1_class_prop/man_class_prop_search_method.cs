@@ -185,6 +185,22 @@ namespace pg_class
             return search_method;
         }
 
+        /// <summary>
+        /// Метод возвращает список методов сложного поиска по идентификатору свойства
+        /// </summary>
+        public List<SearchMetodObject> class_prop_search_method_by_id_class_prop3(Int64 iid_class_prop)
+        {
+            List<SearchMetodObject> Result = new List<SearchMetodObject>();
+
+            List<eSearchMethods> sm_list = class_prop_search_method_by_id_class_prop2(iid_class_prop);
+
+            foreach (eSearchMethods sm in sm_list)
+            {
+                Result.Add(new SearchMetodObject(sm));
+            }
+            return Result;
+        }
+
         //-=ACCESS=-***********************************************************************************
         /// <summary>
         /// Проверка прав доступа к методу

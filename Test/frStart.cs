@@ -78,6 +78,32 @@ namespace Test
             ///
 
 
+            vclass c = NEW_pg_class.class_act_by_id(6415);
+
+            json_object_parameters cop;
+
+            json_object_parameters[] acop = new json_object_parameters[10000];
+
+            for (Int32 i = 0; i < acop.Length; i++)
+            {
+                cop = c.ToJsonObjectParameters();
+
+                cop.IdPosition = 1558;
+                cop.IdUnitConversionRule = 272;
+                cop.СQuantity = 1;
+
+                cop.ObjectPropertyList[0].ValueObjectProp = i.ToString();
+                cop.ObjectPropertyList[1].ValueObjectProp = (10000-i).ToString();
+                cop.ObjectPropertyList[2].ValueObjectProp = (i + 10).ToString();
+                cop.ObjectPropertyList[3].ValueObjectProp = "1287";
+
+                acop[i] = cop;
+            }
+            DateTime n1 = DateTime.Now;
+            List<errarg_object_add> eoa = NEW_pg_class.object_add_for_array_object_parameter(acop);
+            DateTime n2 = DateTime.Now;
+            TimeSpan ts = n2 - n1;
+
             List<object_general> og = NEW_pg_class.object_ext_by_id_position(1314);
 
             List<String> ogj = new List<string>();

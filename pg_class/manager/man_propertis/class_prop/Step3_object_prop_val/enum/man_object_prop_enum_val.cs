@@ -49,6 +49,7 @@ namespace pg_class
 
                 cmdk.Parameters["iid_object"].Value = newObjectPropEnumVal.Id_object;
                 cmdk.Parameters["iid_class_prop"].Value = newObjectPropEnumVal.Id_class_prop;
+                cmdk.Parameters["setname"].Value = true;
 
                 if (newObjectPropEnumVal.Id_prop_enum_val <= 0)
                 {

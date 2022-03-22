@@ -145,6 +145,7 @@
     <Compile Include="manager\Global\man_classes\man_command\pg_commands\NpgsqlCommandKey_SetRole.cs" />
     <Compile Include="manager\Global\man_classes\NPGSQL_TypeJsonClass\object_add\json_object_prop_val.cs" />
     <Compile Include="manager\Global\man_classes\NPGSQL_TypeJsonClass\object_add\json_object_add_parameters.cs" />
+    <Compile Include="manager\Global\man_classes\NPGSQL_TypeJsonClass\SearchObjectMethod\json_search_metod_object.cs" />
     <Compile Include="manager\Global\man_declaration\gl_definitions.cs" />
     <Compile Include="manager\eventargs\Base\UnitConversionRuleChangeEventArgs.cs" />
     <Compile Include="manager\eventargs\Base\Object\ObjectChangeEventArgs.cs" />
@@ -157,7 +158,7 @@
     <Compile Include="manager\Global\man_classes\man_command\man_command.cs" />
     <Compile Include="manager\Global\man_classes\man_command\pg_commands\NpgsqlCommandKey_IClone.cs" />
     <Compile Include="manager\Global\man_classes\man_command\pg_commands_export\command_export.cs" />
-    <Compile Include="manager\Global\man_classes\NPGSQL_TypeJsonClass\json_search_condition.cs" />
+    <Compile Include="manager\Global\man_classes\NPGSQL_TypeJsonClass\SearchObjectMethod\json_search_condition.cs" />
     <Compile Include="manager\Global\man_classes\NPGSQL_TypeMapClass\pg_class\pg_cdoc_category.cs" />
     <Compile Include="manager\Global\man_classes\NPGSQL_TypeMapClass\pg_enum\pg_enum_mapping.cs" />
     <Compile Include="manager\Global\man_common\errarg_action.cs" />
@@ -318,6 +319,7 @@
     <Compile Include="pg_classes\class\class_document.cs" />
     <Compile Include="pg_classes\class\class_doc_link.cs" />
     <Compile Include="pg_classes\class\class_nested_rule\class_rulel1_class_on_pos_temp.cs" />
+    <Compile Include="pg_classes\class\class_to_json.cs" />
     <Compile Include="pg_classes\class\SubClass\class_name_format_builder.cs" />
     <Compile Include="pg_classes\class\SubClass\pattern_string.cs" />
     <Compile Include="pg_classes\conception\con_class_full.cs" />

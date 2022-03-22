@@ -112,7 +112,59 @@ namespace pg_class
         /// </summary>
         public override string ToString()
         {
-            return manager.SearchMethodsToString(_SearchMethods);
+            String Result = manager.SearchMethodsToString(_SearchMethods);
+
+            switch(_SearchMethods)
+            {
+
+                case eSearchMethods.equal:
+                    Result = String.Format("{0}{1}", Result, ValReq);
+                    break;
+                case eSearchMethods.not_equal:
+                    Result = String.Format("{0}{1}", Result, ValReq);
+                    break;
+                case eSearchMethods.less:
+                    Result = String.Format("{0}{1}", Result, ValReq);
+                    break;
+                case eSearchMethods.less_or_equal:
+                    Result = String.Format("{0}{1}", Result, ValReq);
+                    break;
+                case eSearchMethods.more:
+                    Result = String.Format("{0}{1}", Result, ValReq);
+                    break;
+                case eSearchMethods.more_or_equal:
+                    Result = String.Format("{0}{1}", Result, ValReq);
+                    break;
+
+                case eSearchMethods.more_and_less:
+                    Result = String.Format("{0}{1}{2}",ValMin , Result, ValMax);
+                    break;
+                case eSearchMethods.more_and_less_or_equal:
+                    Result = String.Format("{0}{1}{2}", ValMin, Result, ValMax);
+                    break;
+                case eSearchMethods.more_or_equal_and_less:
+                    Result = String.Format("{0}{1}{2}", ValMin, Result, ValMax);
+                    break;
+                case eSearchMethods.more_or_equal_and_less_or_equal:
+                    Result = String.Format("{0}{1}{2}", ValMin, Result, ValMax);
+                    break;
+
+                case eSearchMethods.like:
+                    Result = String.Format("{0}{1}", Result, ValReq);
+                    break;
+                case eSearchMethods.like_lower:
+                    Result = String.Format("{0}{1}", Result, ValReq);
+                    break;
+
+                case eSearchMethods.any_array:
+                    Result = String.Format("{0}{1}", Result, Description);
+                    break;
+                case eSearchMethods.not_any_array:
+                    Result = String.Format("{0}{1}", Result, Description);
+                    break;
+            }
+            return Result;
+
         }
     }
 }

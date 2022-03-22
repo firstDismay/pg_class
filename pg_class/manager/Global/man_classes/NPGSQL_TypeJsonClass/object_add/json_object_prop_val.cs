@@ -21,10 +21,28 @@ namespace pg_class
         /// </summary>
         public json_object_prop_val(object_prop ObjectProp)
         {
+            IdDefinitionProp = ObjectProp.Id_prop_definition;
             IdClassProp = ObjectProp.Id_class_prop;
             NameClassProp = ObjectProp.Name;
             ValueObjectProp = ObjectProp.String_val;
         }
+
+        /// <summary>
+        /// Публичный конструктор класса Значения свойства
+        /// </summary>
+        public json_object_prop_val(class_prop ClassProp)
+        {
+            IdDefinitionProp = ClassProp.Id_prop_definition;
+            IdClassProp = ClassProp.Id;
+            NameClassProp = ClassProp.Name;
+            ValueObjectProp = ClassProp.String_val;
+        }
+
+        /// <summary>
+        /// Идентификатор определяющего свойства класса
+        /// </summary>
+        [JsonProperty]
+        public Int64 IdDefinitionProp { get; set; }
 
         /// <summary>
         /// Идентификатор свойства класса

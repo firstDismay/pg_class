@@ -51,6 +51,7 @@ namespace pg_class
 
                         cmdk.Parameters["iid_object"].Value = newObjectPropUserVal.Id_object_carrier;
                         cmdk.Parameters["iid_class_prop"].Value = newObjectPropUserVal.Id_class_prop;
+                        cmdk.Parameters["setname"].Value = true;
 
                         cmdk.Parameters["ival_text"].Value = DBNull.Value;
                         cmdk.Parameters["ival_bytea"].Value = DBNull.Value;
@@ -97,6 +98,7 @@ namespace pg_class
 
                         cmdk.Parameters["iid_object"].Value = newObjectPropUserVal.Id_object_carrier;
                         cmdk.Parameters["iid_class_prop"].Value = newObjectPropUserVal.Id_class_prop;
+                        cmdk.Parameters["setname"].Value = true;
 
                         cmdk.Parameters["ival_varchar"].Value = DBNull.Value;
                         cmdk.Parameters["ival_int"].Value = DBNull.Value;
