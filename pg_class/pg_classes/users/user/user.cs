@@ -42,6 +42,7 @@ namespace pg_class.pg_classes
                 rolcreaterole = (Boolean)row["rolcreaterole"];
                 rolcreatedb = (Boolean)row["rolcreatedb"];
                 rolcanlogin = (Boolean)row["rolcanlogin"];
+                rolcanweblogin = (Boolean)row["rolcanweblogin"];
                 rolbypassrls = (Boolean)row["rolbypassrls"];
                 timestamp = (DateTime)row["timestamp"];
                 iscurrent = (Boolean)row["iscurrent"];
@@ -67,6 +68,7 @@ namespace pg_class.pg_classes
         private Boolean rolcreaterole;
         private Boolean rolcreatedb;
         private Boolean rolcanlogin;
+        private Boolean rolcanweblogin;
         private Boolean rolbypassrls;
         private DateTime timestamp;
         private Boolean iscurrent;
@@ -275,6 +277,25 @@ namespace pg_class.pg_classes
                 if (rolcanlogin != value)
                 {
                     rolcanlogin = value;
+                    on_change = true;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Флаг определяющий право входа на сервер посредством Web-доступа
+        /// </summary>
+        public Boolean RolCanWebLogin
+        {
+            get
+            {
+                return rolcanweblogin;
+            }
+            set
+            {
+                if (rolcanweblogin != value)
+                {
+                    rolcanweblogin = value;
                     on_change = true;
                 }
             }

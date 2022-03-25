@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using pg_class.pg_exceptions;
 
 namespace pg_class.pg_classes
 {
@@ -16,6 +17,10 @@ namespace pg_class.pg_classes
         /// </summary>
         public json_object_parameters ToJsonObjectParameters()
         {
+            if (On_abstraction)
+            {
+                throw new PgDataException(eEntity.vclass, eAction.Cast,eSubClass_ErrID.SCE3_Violation_Rules, "Абстрактный класс не допускает извлечение классов представления объектов в JSON!");
+            }
             return new json_object_parameters(this);
         }
 

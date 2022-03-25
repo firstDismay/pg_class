@@ -23,7 +23,7 @@ namespace pg_class
         /// </summary>
         public user user_add( String usr_name, String usr_otchestvo, String usr_familiya, String usr_rolname, String usr_pwd,
             Boolean usr_rolsuper,Boolean usr_rolinherit,  Boolean usr_rolcreaterole, Boolean usr_rolcreatedb,
-            Boolean usr_rolcanlogin, Boolean usr_bypassrls)
+            Boolean usr_rolcanlogin, Boolean usr_rolcanweblogin, Boolean usr_bypassrls)
         {
             user user = null;
             String  login;
@@ -59,6 +59,7 @@ namespace pg_class
             cmdk.Parameters["usr_rolcreaterole"].Value = usr_rolcreaterole;
             cmdk.Parameters["usr_rolcreatedb"].Value = usr_rolcreatedb;
             cmdk.Parameters["usr_rolcanlogin"].Value = usr_rolcanlogin;
+            cmdk.Parameters["usr_rolcanweblogin"].Value = usr_rolcanweblogin;
             cmdk.Parameters["usr_bypassrls"].Value = usr_bypassrls;
 
             //Начало транзакции
@@ -125,7 +126,7 @@ namespace pg_class
         /// </summary>
         public user user_upd(String usr_name, String usr_otchestvo, String usr_familiya, String usr_login, String usr_newlogin,
             Boolean usr_rolsuper, Boolean usr_rolinherit, Boolean usr_rolcreaterole, Boolean usr_rolcreatedb,
-            Boolean usr_rolcanlogin, Boolean usr_bypassrls)
+            Boolean usr_rolcanlogin, Boolean usr_rolcanweblogin, Boolean usr_bypassrls)
         {
             user user = null;
             Int32 error;
@@ -160,6 +161,7 @@ namespace pg_class
             cmdk.Parameters["usr_rolcreaterole"].Value = usr_rolcreaterole;
             cmdk.Parameters["usr_rolcreatedb"].Value = usr_rolcreatedb;
             cmdk.Parameters["usr_rolcanlogin"].Value = usr_rolcanlogin;
+            cmdk.Parameters["usr_rolcanweblogin"].Value = usr_rolcanweblogin;
             cmdk.Parameters["usr_bypassrls"].Value = usr_bypassrls;
 
             //Начало транзакции
@@ -192,11 +194,11 @@ namespace pg_class
         /// </summary>
         public user user_upd(String usr_name, String usr_otchestvo, String usr_familiya, String usr_login,
             Boolean usr_rolsuper, Boolean usr_rolinherit, Boolean usr_rolcreaterole, Boolean usr_rolcreatedb,
-            Boolean usr_rolcanlogin, Boolean usr_bypassrls)
+            Boolean usr_rolcanlogin, Boolean usr_rolcanweblogin, Boolean usr_bypassrls)
         {
             return user_upd(usr_name, usr_otchestvo, usr_familiya, usr_login, usr_login,
             usr_rolsuper, usr_rolinherit, usr_rolcreaterole, usr_rolcreatedb,
-            usr_rolcanlogin, usr_bypassrls);
+            usr_rolcanlogin, usr_rolcanweblogin, usr_bypassrls);
         }
 
         /// <summary>
@@ -207,7 +209,7 @@ namespace pg_class
             //Int64 iid, String iname, String idesc, Boolean ion
             return user_upd(user.UserName, user.UserOtchestvo, user.UserFamiliya, user.Login,
             user.RolSuper, user.RolInherit, user.RolCreaterole, user.RolCreatedb,
-            user.RolCanLogin, user.RolBypassRLS);
+            user.RolCanLogin, user.RolCanWebLogin, user.RolBypassRLS);
         }
 
         /// <summary>
@@ -218,7 +220,7 @@ namespace pg_class
             //Int64 iid, String iname, String idesc, Boolean ion
             return user_upd(user.UserName, user.UserOtchestvo, user.UserFamiliya, user.Login, usr_newlogin,
             user.RolSuper, user.RolInherit, user.RolCreaterole, user.RolCreatedb,
-            user.RolCanLogin, user.RolBypassRLS);
+            user.RolCanLogin, user.RolCanWebLogin, user.RolBypassRLS);
         }
 
         //-=ACCESS=-***********************************************************************************

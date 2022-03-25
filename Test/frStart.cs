@@ -113,7 +113,6 @@ namespace Test
                 ogj.Add(o.ToJson());
             }
 
-
             List<String> sm = NEW_pg_class.class_prop_search_method_by_id_class_prop(77186);
 
             List<eSearchMethods> sm2 = NEW_pg_class.class_prop_search_method_by_id_class_prop2(77194);
