@@ -59,6 +59,7 @@ namespace pg_class.pg_classes
                 pos_temp_name = (String)row["pos_temp_name"];
                 path = (String)row["path"];
                 in_recycle = (Boolean)row["in_recycle"];
+                include_position = (Boolean)row["include_position"];
             }
             else
             {
@@ -88,6 +89,7 @@ namespace pg_class.pg_classes
         private Boolean on_rulel2_class_on_position;
         private DateTime timestamp;
         private Boolean include_object;
+        private Boolean include_position;
         private eStatus child_status;
         private DateTime timestamp_child_change;
 
@@ -299,6 +301,18 @@ namespace pg_class.pg_classes
             {
                 //Refresh();
                 return   include_object;
+            }
+        }
+
+        /// <summary>
+        /// Признак наличия вложенных позиций
+        /// </summary>
+        public Boolean Include_position
+        {
+            get
+            {
+                //Refresh();
+                return include_position;
             }
         }
 
