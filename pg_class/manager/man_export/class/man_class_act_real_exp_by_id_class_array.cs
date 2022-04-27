@@ -15,16 +15,16 @@ namespace pg_class
     public partial class manager
     {
         /// <summary>
-        /// Метод экспорта объектов по массиву идентификаторов в файл Excel
+        /// Метод экспорта объектов в Excel для указанной позиции носителя
         /// </summary>
-        public Byte[] exp_object_by_id_object_array_to_excel(Int64[] iobject_array, eExportMode imode, Boolean iquantity_show)
+        public Byte[] exp_class_act_real_by_id_class_array_to_excel(Int64[] iclass_array, eExportMode imode, Boolean iquantity_show)
         {
             Byte[] Result = null;
             //=======================
             NpgsqlCommandKey cmdk;
             //**********
             //=======================
-            cmdk = CommandByKey("exp_object_by_id_object_array_to_excel");
+            cmdk = CommandByKey("exp_class_act_real_by_id_class_array_to_excel");
 
             if (cmdk != null)
             {
@@ -39,7 +39,7 @@ namespace pg_class
             }
             //=======================
 
-            cmdk.Parameters["iobject_array"].Value = iobject_array;
+            cmdk.Parameters["iclass_array"].Value = iclass_array;
             cmdk.Parameters["imode"].Value = (Int32)imode;
             cmdk.Parameters["iquantity_show"].Value = iquantity_show;
             object tmp = cmdk.ExecuteScalar();
@@ -49,7 +49,7 @@ namespace pg_class
                 Result = (Byte[])tmp;
             }
 
-            String command_export = String.Format(@"SELECT bpd.exp_object_by_id_object_array_to_excel({0},{1},{2})", "Array", imode.ToString(), iquantity_show.ToString());
+            String command_export = String.Format(@"SELECT bpd.exp_class_act_real_by_id_class_array_to_excel({0},{1},{2})", "Array", imode.ToString(), iquantity_show.ToString());
             //Генерируем событие завершения процедуры экспорта
             ExportCompletedEventArgs e = new ExportCompletedEventArgs(command_export, Result);
             ExportOnCompleted(e);
@@ -60,13 +60,13 @@ namespace pg_class
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
-        public Boolean exp_object_by_id_object_array_to_excel(out eAccess Access)
+        public Boolean exp_class_act_real_by_id_class_array_to_excel(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
             //=======================
-            cmdk = CommandByKey("exp_object_by_id_object_array_to_excel");
+            cmdk = CommandByKey("exp_class_act_real_by_id_class_array_to_excel");
             if (cmdk != null)
             {
                 Result = cmdk.Access;
@@ -84,14 +84,14 @@ namespace pg_class
 
         #region ПРОЦЕДУРА СОЗДАНИЯ КОМАНДЫ ОТЛОЖЕННОГО ЭКСПОРТА В EXCEL
         /// <summary>
-        /// Метод создания команды экспорта объектов по массиву идентификаторов в файл Excel
+        /// Метод создания команды экспорта объектов в Excel для указанной позиции носителя
         /// </summary>
-        public command_export exp_object_by_id_object_array_to_excel_get_command(Int64[] iobject_array, eExportMode imode, Boolean iquantity_show)
+        public command_export exp_class_act_real_by_id_class_array_to_excel_get_command(Int64[] iclass_array, eExportMode imode, Boolean iquantity_show)
         {
             NpgsqlCommandKey cmdk;
             //**********
             //=======================
-            cmdk = CommandByKey("exp_object_by_id_object_array_to_excel", true);
+            cmdk = CommandByKey("exp_class_act_real_by_id_class_array_to_excel", true);
 
             if (cmdk != null)
             {
@@ -106,12 +106,12 @@ namespace pg_class
             }
             //=======================
 
-            cmdk.Parameters["iobject_array"].Value = iobject_array;
+            cmdk.Parameters["iclass_array"].Value = iclass_array;
             cmdk.Parameters["imode"].Value = (Int32)imode;
             cmdk.Parameters["iquantity_show"].Value = iquantity_show;
 
-            String command_export = String.Format(@"SELECT bpd.exp_object_by_id_object_array_to_excel({0},{1},{2})", "Array", imode.ToString(), iquantity_show.ToString());
-            String Desc = String.Format(@"Отчет: Объекты по массиву: {0} | Режим: {1}", "Array", manager.ExportMode(imode));
+            String command_export = String.Format(@"SELECT bpd.exp_class_act_real_by_id_class_array_to_excel({0},{1},{2})", "Array", imode.ToString(), iquantity_show.ToString());
+            String Desc = String.Format(@"Отчет: Классы по массиву: {0} | Режим: {1}", "Array", manager.ExportMode(imode));
             command_export cm = new command_export(cmdk, command_export, Desc);
             return cm;
         }
