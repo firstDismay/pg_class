@@ -543,22 +543,25 @@ namespace pg_class
         /// <summary>
         /// Описание режима базового экспорта данных
         /// </summary>
-        public static String ExportMode(eBaseExportFormat ExportFormat)
+        public static String ExportMode(eExportMode ExportMode)
         {
             String mode = "Таблица";
-            switch (ExportFormat)
+            switch (ExportMode)
             {
-                case eBaseExportFormat.TableEntity:
-                    mode = "Таблица БД";
+                case eExportMode.ImportReport:
+                    mode = "Экспорт в формате доступном для импорта";
                     break;
-                case eBaseExportFormat.ViewEntity:
-                    mode = "Представление БД";
+                case eExportMode.SimplyReport:
+                    mode = "Экспорт в формате простого списка";
                     break;
-                case eBaseExportFormat.ReportEntity:
-                    mode = "Представление обобщенное";
+                case eExportMode.AdvancedReport:
+                    mode = "Экспорт в формаие расширенного списка со свойствами";
                     break;
-                case eBaseExportFormat.ReportEntityWithProp:
-                    mode = "Представление со свойствами";
+                case eExportMode.TableReport:
+                    mode = "Экспорт в формате таблицы";
+                    break;
+                case eExportMode.ViewReport:
+                    mode = "Экспорт в формате представления";
                     break;
             }
             return mode;

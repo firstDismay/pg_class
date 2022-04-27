@@ -14,6 +14,7 @@ namespace pg_class
 {
     public partial class manager
     {
+        /*
         #region EXPORT object_by_id_position
         //-=EXPORT TO EXCEL=-**************************************************************************
         /// <summary>
@@ -524,5 +525,6 @@ namespace pg_class
         }
         #endregion
         //*****************************************************************************************
+        */
     }
 }

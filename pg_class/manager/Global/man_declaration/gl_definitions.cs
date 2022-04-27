@@ -1624,24 +1624,28 @@ namespace pg_class
     /// <summary>
     /// Перечисление базовых форматов экспорта данных сущностей
     /// </summary>
-    public enum eBaseExportFormat
+    public enum eExportMode
     {
         /// <summary>
-        /// Экспорт в формате таблицы сущности
+        /// Экспорт в формате доступном для импорта
         /// </summary>
-        TableEntity = 1,
+        ImportReport = 0,
         /// <summary>
-        /// Экспорт в формате представления сущности
+        /// Экспорт в формате простого списка
         /// </summary>
-        ViewEntity = 2,
+        SimplyReport = 1,
         /// <summary>
-        /// Пользовательский режим обобщенный
+        /// Экспорт в формаие расширенного списка со свойствами
         /// </summary>
-        ReportEntity = 3,
+        AdvancedReport = 2,
         /// <summary>
-        /// Пользовательский режим со свойствами
+        /// Экспорт в формате табличного представления
         /// </summary>
-        ReportEntityWithProp = 4
+        TableReport = 3,
+        /// <summary>
+        /// Экспорт в формате представления
+        /// </summary>
+        ViewReport = 4
     }
 
     /// <summary>

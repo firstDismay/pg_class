@@ -194,8 +194,9 @@
     <Compile Include="manager\man_doc_lib\man_doc_file.cs" />
     <Compile Include="manager\man_doc_lib\man_doc_categoty.cs" />
     <Compile Include="manager\man_export\man_export_select_event.cs" />
-    <Compile Include="manager\man_export\man_export_class.cs" />
-    <Compile Include="manager\man_export\man_export_object.cs" />
+    <Compile Include="manager\man_export\class\man_export_class.cs" />
+    <Compile Include="manager\man_export\object\man_object_exp_shell.cs" />
+    <Compile Include="manager\man_export\object\man_object_exp_method.cs" />
     <Compile Include="manager\Global\man_classes\NPGSQL_TypeMapClass\pg_class\pg_errarg2.cs" />
     <Compile Include="manager\Global\man_classes\NPGSQL_TypeMapClass\pg_class\pg_tblcol.cs" />
     <Compile Include="manager\Global\man_classes\NPGSQL_TypeMapClass\pg_class\pg_argument.cs" />
