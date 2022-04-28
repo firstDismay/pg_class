@@ -1817,51 +1817,6 @@ namespace pg_class
             return object_by_id_position_full(Position.Id);
         }
 
-        //-=EXPORT TO EXCEL=-**************************************************************************
-        /// <summary>
-        /// Лист представлений объектов по идентификатору позиции рекурсивно
-        /// </summary>
-        public Byte[] object_by_id_position_full(Int64 iid_position, eBaseExportFormat ExportFormat)
-        {
-            Byte[] Result = null;
-            String command_export = "";
-
-            switch (ExportFormat)
-            {
-                case eBaseExportFormat.ViewEntity:
-                    command_export = String.Format(@"SELECT * FROM bpd.object_by_id_position_full({0})", iid_position);
-                    break;
-                case eBaseExportFormat.TableEntity:
-                    command_export = String.Format(@"SELECT o.* FROM bpd.object o  JOIN bpd.object_by_id_position_full({0}) f ON f.id = o.id", iid_position);
-                    break;
-            }
-            Result = export_to_excel(command_export);
-            return Result;
-        }
-
-        /// <summary>
-        /// команда экспорта листа представлений объектов по id позиции рекурсивно
-        /// </summary>
-        public command_export object_by_id_position_full_command_export(Int64 iid_position, eBaseExportFormat ExportFormat)
-        {
-            command_export Result = null;
-            String command_export = "";
-
-            switch (ExportFormat)
-            {
-                case eBaseExportFormat.ViewEntity:
-                    command_export = String.Format(@"SELECT * FROM bpd.object_by_id_position_full({0})", iid_position);
-                    break;
-                case eBaseExportFormat.TableEntity:
-                    command_export = String.Format(@"SELECT o.* FROM bpd.object o  JOIN bpd.object_by_id_position_full({0}) f ON f.id = o.id", iid_position);
-                    break;
-            }
-
-            String desc = String.Format(@"Экпорт: Объекты позиции: {0} | Режим: {1}", pos_by_id(iid_position).NamePosition, manager.ExportMode(ExportFormat));
-            Result = export_to_excel_get_command(command_export, desc);
-            return Result;
-        }
-
         //-=ACCESS=-***********************************************************************************
         /// <summary>
         /// Проверка прав доступа к методу
@@ -1943,52 +1898,6 @@ namespace pg_class
             return object_by_id_object_carrier(Object_parent.Id);
         }
 
-        //-=EXPORT TO EXCEL=-**************************************************************************
-        /// <summary>
-        /// Лист представлений объектов по id объекта носителя
-        /// </summary>
-        public Byte[] object_by_id_object_carrier(Int64 iid_object_carrier, eBaseExportFormat ExportFormat)
-        {
-            Byte[] Result = null;
-            String command_export = "";
-
-            switch (ExportFormat)
-            {
-                case eBaseExportFormat.ViewEntity:
-                    command_export = String.Format(@"SELECT * FROM bpd.object_by_id_object_carrier({0})", iid_object_carrier);
-                    break;
-                case eBaseExportFormat.TableEntity:
-                    command_export = String.Format(@"SELECT o.* FROM bpd.object o  JOIN bpd.object_by_id_object_carrier({0}) f ON f.id = o.id", iid_object_carrier);
-                    break;
-            }
-            Result = export_to_excel(command_export);
-            return Result;
-        }
-
-        //-=EXPORT TO EXCEL=-**************************************************************************
-        /// <summary>
-        /// Команда экспорта лист представлений объектов по id объекта носителя
-        /// </summary>
-        public command_export object_by_id_object_carrier_command_export(Int64 iid_object_carrier, eBaseExportFormat ExportFormat)
-        {
-            command_export Result = null;
-            String command_export = "";
-
-            switch (ExportFormat)
-            {
-                case eBaseExportFormat.ViewEntity:
-                    command_export = String.Format(@"SELECT * FROM bpd.object_by_id_object_carrier({0})", iid_object_carrier);
-                    break;
-                case eBaseExportFormat.TableEntity:
-                    command_export = String.Format(@"SELECT o.* FROM bpd.object o  JOIN bpd.object_by_id_object_carrier({0}) f ON f.id = o.id", iid_object_carrier);
-                    break;
-            }
-            
-            String desc = String.Format(@"Экпорт: Встроенные объекты объекта носителя: {0} | Режим: {1}", object_by_id(iid_object_carrier).Name, manager.ExportMode(ExportFormat));
-            Result = export_to_excel_get_command(command_export, desc);
-            return Result;
-        }
-
         //-=ACCESS=-***********************************************************************************
         /// <summary>
         /// Проверка прав доступа к методу
@@ -2065,54 +1974,6 @@ namespace pg_class
             return object_list;
         }
 
-        //-=EXPORT TO EXCEL=-**************************************************************************
-        /// <summary>
-        /// Лист представлений объектов по маске имени объекта в указанной позиции рекурсивно
-        /// </summary>
-        public Byte[] object_by_name_id_pos(String iname, Int64 iid_position, Boolean on_inside, eBaseExportFormat ExportFormat)
-        {
-            Byte[] Result = null;
-            String command_export = "";
-
-            switch (ExportFormat)
-            {
-                case eBaseExportFormat.ViewEntity:
-                    command_export = String.Format(@"SELECT * FROM bpd.object_by_name_id_pos('{0}', {1}, {2})", iname, iid_position, on_inside);
-                    break;
-                case eBaseExportFormat.TableEntity:
-                    command_export = String.Format(@"SELECT o.* FROM bpd.object o  JOIN bpd.object_by_name_id_pos('{0}', {1}, {2}) f ON f.id = o.id", iname, iid_position, on_inside);
-                    break;
-                default:
-                    command_export = String.Format(@"SELECT * FROM bpd.object_by_name_id_pos('{0}', {1}, {2})", iname, iid_position, on_inside);
-                    break;
-            }
-            Result = export_to_excel(command_export);
-            return Result;
-        }
-
-        //-=EXPORT TO EXCEL=-**************************************************************************
-        /// <summary>
-        /// Команда экспорта лист представлений объектов по id объекта носителя
-        /// </summary>
-        public command_export object_by_name_id_pos_command_export(String iname, Int64 iid_position, Boolean on_inside, eBaseExportFormat ExportFormat)
-        {
-            command_export Result = null;
-            String command_export = "";
-
-            switch (ExportFormat)
-            {
-                case eBaseExportFormat.ViewEntity:
-                    command_export = String.Format(@"SELECT * FROM bpd.object_by_name_id_pos('{0}', {1}, {2})", iname, iid_position, on_inside);
-                    break;
-                case eBaseExportFormat.TableEntity:
-                    command_export = String.Format(@"SELECT o.* FROM bpd.object o  JOIN bpd.object_by_name_id_pos('{0}', {1}, {2}) f ON f.id = o.id", iname, iid_position, on_inside);
-                    break;
-            }
-            String desc = String.Format(@"Экпорт: Объекты позиции: {0} по маске имени: {1}| Режим: {2}", pos_by_id(iid_position).NamePosition, iname,  manager.ExportMode(ExportFormat));
-            Result = export_to_excel_get_command(command_export, desc);
-            return Result;
-        }
-
         //-=ACCESS=-***********************************************************************************
         /// <summary>
         /// Проверка прав доступа к методу
@@ -2187,51 +2048,6 @@ namespace pg_class
                 }
             }
             return object_list;
-        }
-
-        //-=EXPORT TO EXCEL=-**************************************************************************
-        /// <summary>
-        /// Лист представлений объектов по маске имени объекта в указанной концепции
-        /// </summary>
-        public Byte[] object_by_name(String iname, Int64 iid_conception, Boolean on_inside, eBaseExportFormat ExportFormat)
-        {
-            Byte[] Result = null;
-            String command_export = "";
-
-            switch (ExportFormat)
-            {
-                case eBaseExportFormat.ViewEntity:
-                    command_export = String.Format(@"SELECT * FROM bpd.object_by_name('{0}', {1}, {2})", iname, iid_conception, on_inside);
-                    break;
-                case eBaseExportFormat.TableEntity:
-                    command_export = String.Format(@"SELECT o.* FROM bpd.object o  JOIN bpd.object_by_name('{0}', {1}, {2}) f ON f.id = o.id", iname, iid_conception, on_inside);
-                    break;
-            }
-            Result = export_to_excel(command_export);
-            return Result;
-        }
-
-        //-=EXPORT TO EXCEL=-**************************************************************************
-        /// <summary>
-        /// Команда экспорта лист представлений объектов по маске имени объекта в указанной концепции
-        /// </summary>
-        public command_export object_by_name_command_export(String iname, Int64 iid_conception, Boolean on_inside, eBaseExportFormat ExportFormat)
-        {
-            command_export Result = null;
-            String command_export = "";
-
-            switch (ExportFormat)
-            {
-                case eBaseExportFormat.ViewEntity:
-                    command_export = String.Format(@"SELECT * FROM bpd.object_by_name('{0}', {1}, {2})", iname, iid_conception, on_inside);
-                    break;
-                case eBaseExportFormat.TableEntity:
-                    command_export = String.Format(@"SELECT o.* FROM bpd.object o  JOIN bpd.object_by_name('{0}', {1}, {2}) f ON f.id = o.id", iname, iid_conception, on_inside);
-                    break;
-            }
-            String desc = String.Format(@"Экпорт: Объекты концепции: {0} по маске имени: {1}| Режим: {2}", pos_by_id(iid_conception).NamePosition, iname, manager.ExportMode(ExportFormat));
-            Result = export_to_excel_get_command(command_export, desc);
-            return Result;
         }
 
         //-=ACCESS=-***********************************************************************************
@@ -3341,51 +3157,6 @@ namespace pg_class
         public List<object_general> object_by_link_object(object_general Object_link, Boolean on_recursive)
         {
             return object_by_link_object(Object_link.Id, on_recursive);
-        }
-
-        //-=EXPORT TO EXCEL=-**************************************************************************
-        /// <summary>
-        /// Лист представлений объектов ссылающихся на указанный объект, разрешение обратных ссылок
-        /// </summary>
-        public Byte[] object_by_link_object(Int64 iid_object, Boolean on_recursive, eBaseExportFormat ExportFormat)
-        {
-            Byte[] Result = null;
-            String command_export = "";
-
-            switch (ExportFormat)
-            {
-                case eBaseExportFormat.ViewEntity:
-                    command_export = String.Format(@"SELECT * FROM bpd.object_by_link_object({0}, {1})", iid_object, on_recursive);
-                    break;
-                case eBaseExportFormat.TableEntity:
-                    command_export = String.Format(@"SELECT o.* FROM bpd.object o  JOIN bpd.object_by_link_object({0}, {1}) f ON f.id = o.id", iid_object, on_recursive);
-                    break;
-            }
-            Result = export_to_excel(command_export);
-            return Result;
-        }
-
-        /// <summary>
-        /// Команда листа представлений объектов ссылающихся на указанный объект, разрешение обратных ссылок
-        /// </summary>
-        public command_export object_by_link_object_command_export(Int64 iid_object, Boolean on_recursive, eBaseExportFormat ExportFormat)
-        {
-            command_export Result = null;
-            String command_export = "";
-
-            switch (ExportFormat)
-            {
-                case eBaseExportFormat.ViewEntity:
-                    command_export = String.Format(@"SELECT * FROM bpd.object_by_link_object({0}, {1})", iid_object, on_recursive);
-                    break;
-                case eBaseExportFormat.TableEntity:
-                    command_export = String.Format(@"SELECT o.* FROM bpd.object o  JOIN bpd.object_by_link_object({0}, {1}) f ON f.id = o.id", iid_object, on_recursive);
-                    break;
-            }
-            
-            String desc = String.Format(@"Экпорт: Объекты по ссылкам на объект: {0} | Режим: {1}", object_by_id(iid_object).Name, manager.ExportMode(ExportFormat));
-            Result = export_to_excel_get_command(command_export, desc);
-            return Result;
         }
 
         //-=ACCESS=-***********************************************************************************

@@ -50,24 +50,5 @@ namespace pg_class.pg_classes
         }
         #endregion
 
-        #region МЕТОДЫ ЭКСПОРТА
-        /// <summary>
-        /// Экспорт объектов по шаблону имени объекта в указанной концепции
-        /// object_ext_in_conception_find_by_name
-        /// </summary>
-        public Byte[] Object_by_name(String name_mask, Boolean on_internal, eBaseExportFormat ExportFormat)
-        {
-            return Manager.object_by_name(name_mask, Id, on_internal, ExportFormat);
-        }
-
-        /// <summary>
-        /// Команда экспорта объектов по шаблону имени объекта в указанной концепции
-        /// object_by_name
-        /// </summary>
-        public command_export Object_in_conception_find_by_name_command_export(String name_mask, Boolean on_internal, eBaseExportFormat ExportFormat)
-        {
-            return Manager.object_by_name_command_export(name_mask, Id, on_internal, ExportFormat);
-        }
-        #endregion
     }
 }

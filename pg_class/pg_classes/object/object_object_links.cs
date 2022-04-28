@@ -30,14 +30,6 @@ namespace pg_class.pg_classes
             }
             return Result;
         }
-
-        /// <summary>
-        /// Экспорт в Excel внутренних объектов объекта используемых в качестве значений объектных свойств
-        /// </summary>
-        public Byte[] Object_by_link_object_list_get(Boolean on_recursive, eBaseExportFormat ExportFormat)
-        {
-            return manager.Instance().object_by_link_object(Id, on_recursive, ExportFormat);
-        }
         #endregion
 
     }

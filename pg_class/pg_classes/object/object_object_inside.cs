@@ -48,22 +48,5 @@ namespace pg_class.pg_classes
         }
         #endregion
 
-        #region МЕТОДЫ ЭКСПОРТА
-        /// <summary>
-        /// Экспорт в Excel внутренних объектов объекта используемых в качестве значений объектных свойств
-        /// </summary>
-        public Byte[] Object_inside_list_get(eBaseExportFormat ExportFormat)
-        {
-            return Manager.object_by_id_object_carrier(Id, ExportFormat);
-        }
-
-        /// <summary>
-        /// Команда экспорта внутренних объектов объекта используемых в качестве значений объектных свойств
-        /// </summary>
-        public pg_commands.command_export Object_inside_list_command_export(eBaseExportFormat ExportFormat)
-        {
-            return Manager.object_by_id_object_carrier_command_export(Id, ExportFormat);
-        }
-        #endregion
     }
 }

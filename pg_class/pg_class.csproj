@@ -389,7 +389,6 @@
     <Compile Include="pg_classes\position\pos_doc_link.cs" />
     <Compile Include="pg_classes\position\pos_nested_rule\pos_rulel_check_access.cs" />
     <Compile Include="pg_classes\position\pos_object\pos_object_merging.cs" />
-    <Compile Include="pg_classes\position\pos_object\pos_object_export.cs" />
     <Compile Include="pg_classes\position\pos_sort.cs" />
     <Compile Include="pg_classes\position\GroupAction\object_prop_enum_objects.cs" />
     <Compile Include="pg_classes\position\GroupAction\object_prop_link_objects.cs" />

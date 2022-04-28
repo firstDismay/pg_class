@@ -1144,50 +1144,6 @@ namespace pg_class
             return Result;
         }
 
-        //-=EXPORT TO EXCEL=-**************************************************************************
-        /// <summary>
-        /// Экспорт представлений объектов по id объекта носителя
-        /// </summary>
-        public Byte[] class_act_by_id_parent(Int64 id_parent, eBaseExportFormat ExportFormat)
-        {
-            Byte[] Result = null;
-            String command_export = "";
-
-            switch (ExportFormat)
-            {
-                case eBaseExportFormat.ViewEntity:
-                    command_export = String.Format(@"SELECT * FROM bpd.class_act_by_id_parent({0})", id_parent);
-                    break;
-                case eBaseExportFormat.TableEntity:
-                    command_export = String.Format(@"SELECT c.* FROM ONLY bpd.class c JOIN bpd.class_act_by_id_parent({0}) f ON f.id = c.id", id_parent);
-                    break;
-            }
-            Result = export_to_excel(command_export);
-            return Result;
-        }
-
-        /// <summary>
-        /// Команда экспорта представлений объектов по id объекта носителя
-        /// </summary>
-        public command_export class_act_by_id_parent_command_export(Int64 id_parent, eBaseExportFormat ExportFormat)
-        {
-            command_export Result = null;
-            String command_export = "";
-            switch (ExportFormat)
-            {
-                case eBaseExportFormat.ViewEntity:
-                    command_export = String.Format(@"SELECT * FROM bpd.class_act_by_id_parent({0})", id_parent);
-                    break;
-                case eBaseExportFormat.TableEntity:
-                    command_export = String.Format(@"SELECT c.* FROM ONLY bpd.class c JOIN bpd.class_act_by_id_parent({0}) f ON f.id = c.id", id_parent);
-                    break;
-            }
-            
-            String desc = String.Format(@"Экпорт: Активные классы абстрактного класса: {0} | Режим: {1}", class_act_by_id(id_parent).Name, manager.ExportMode(ExportFormat));
-            Result = export_to_excel_get_command(command_export, desc);
-            return Result;
-        }
-
         //-=ACCESS=-***********************************************************************************
         /// <summary>
         /// Проверка прав доступа к методу
@@ -1267,50 +1223,6 @@ namespace pg_class
         public List<vclass> class_act_by_id_global_prop(global_prop Global_prop)
         {
             return class_act_by_id_global_prop(Global_prop.Id); 
-        }
-
-        //-=EXPORT TO EXCEL=-**************************************************************************
-        /// <summary>
-        /// Экспорт представлений объектов по id объекта носителя
-        /// </summary>
-        public Byte[] class_act_by_id_global_prop(Int64 iid_global_prop, eBaseExportFormat ExportFormat)
-        {
-            Byte[] Result = null;
-            String command_export = "";
-
-            switch (ExportFormat)
-            {
-                case eBaseExportFormat.ViewEntity:
-                    command_export = String.Format(@"SELECT * FROM bpd.class_act_by_id_global_prop({0})", iid_global_prop);
-                    break;
-                case eBaseExportFormat.TableEntity:
-                    command_export = String.Format(@"SELECT c.* FROM ONLY bpd.class c JOIN bpd.class_act_by_id_global_prop({0}) f ON f.id = c.id", iid_global_prop);
-                    break;
-            }
-            Result = export_to_excel(command_export);
-            return Result;
-        }
-
-        /// <summary>
-        /// Команда экспорта представлений объектов по id объекта носителя
-        /// </summary>
-        public command_export class_act_by_id_global_prop_command_export(Int64 iid_global_prop, eBaseExportFormat ExportFormat)
-        {
-            command_export Result = null;
-            String command_export = "";
-            switch (ExportFormat)
-            {
-                case eBaseExportFormat.ViewEntity:
-                    command_export = String.Format(@"SELECT * FROM bpd.class_act_by_id_global_prop({0})", iid_global_prop);
-                    break;
-                case eBaseExportFormat.TableEntity:
-                    command_export = String.Format(@"SELECT c.* FROM ONLY bpd.class c JOIN bpd.class_act_by_id_global_prop({0}) f ON f.id = c.id", iid_global_prop);
-                    break;
-            }
-
-            String desc = String.Format(@"Экпорт: Активные классы глобального свойства: {0} | Режим: {1}", global_prop_by_id(iid_global_prop).Name, manager.ExportMode(ExportFormat));
-            Result = export_to_excel_get_command(command_export, desc);
-            return Result;
         }
 
         //-=ACCESS=-***********************************************************************************
@@ -1428,66 +1340,6 @@ namespace pg_class
             return Result;
         }
 
-        //-=EXPORT TO EXCEL=-**************************************************************************
-        /// <summary>
-        /// Экспорт представлений объектов по id объекта носителя
-        /// </summary>
-        public Byte[] class_act_real_by_id_parent(Int64 id_parent, eBaseExportFormat ExportFormat)
-        {
-            Byte[] Result = null;
-            String command_export = "";
-
-            switch (ExportFormat)
-            {
-                case eBaseExportFormat.ViewEntity:
-                    command_export = String.Format(@"SELECT * FROM bpd.class_act_real_by_id_parent({0})", id_parent);
-                    break;
-                case eBaseExportFormat.TableEntity:
-                    command_export = String.Format(@"SELECT c.* FROM ONLY bpd.class c JOIN bpd.class_act_real_by_id_parent({0}) f ON f.id = c.id", id_parent);
-                    break;
-                case eBaseExportFormat.ReportEntity:
-                case eBaseExportFormat.ReportEntityWithProp:
-                    Result = export_class_act_real_with_prop_by_id_parent_to_excel(id_parent);
-                    break;
-            }
-            Result = export_to_excel(command_export);
-            return Result;
-        }
-
-        /// <summary>
-        /// Команда экспорта представлений объектов по id объекта носителя
-        /// </summary>
-        public command_export class_act_real_by_id_parent_command_export(Int64 id_parent, eBaseExportFormat ExportFormat)
-        {
-            command_export Result = null;
-            String command_export = "";
-            String desc = "";
-            switch (ExportFormat)
-            {
-                case eBaseExportFormat.ViewEntity:
-                    command_export = String.Format(@"SELECT * FROM bpd.class_act_real_by_id_parent({0})", id_parent);
-                    desc = String.Format(@"Экпорт: Активные вещественные классы абстрактного класса: {0} | Режим: {1}", class_act_by_id(id_parent).Name, manager.ExportMode(ExportFormat));
-                    Result = export_to_excel_get_command(command_export, desc);
-                    break;
-                case eBaseExportFormat.TableEntity:
-                    command_export = String.Format(@"SELECT c.* FROM ONLY bpd.class c JOIN bpd.class_act_real_by_id_parent({0}) f ON f.id = c.id", id_parent);
-                    desc = String.Format(@"Экпорт: Активные вещественные классы абстрактного класса: {0} | Режим: {1}", class_act_by_id(id_parent).Name, manager.ExportMode(ExportFormat));
-                    Result = export_to_excel_get_command(command_export, desc);
-                    break;
-                case eBaseExportFormat.ReportEntity:
-                case eBaseExportFormat.ReportEntityWithProp:
-                    vclass cp = class_act_by_id(id_parent);
-                    if (cp != null)
-                    {
-                        Result = export_class_act_real_with_prop_by_id_parent_to_excel_get_command(cp);
-                    }
-                    break;
-            }
-            return Result;
-        }
-
-
-
         //*********************************************************************************************
         /// <summary>
         /// Лист представлений активных базовых классов по идентификатору группы
@@ -1542,49 +1394,6 @@ namespace pg_class
             return class_act_by_id_group(Group.Id);
         }
 
-        //-=EXPORT TO EXCEL=-**************************************************************************
-        /// <summary>
-        /// Экспорт представлений активных базовых классов по id группы
-        /// </summary>
-        public Byte[] class_act_by_id_group(Int64 id_group, eBaseExportFormat ExportFormat)
-        {
-            Byte[] Result = null;
-            String command_export = "";
-
-            switch (ExportFormat)
-            {
-                case eBaseExportFormat.ViewEntity:
-                    command_export = String.Format(@"SELECT * FROM bpd.class_act_by_id_group({0})", id_group);
-                    break;
-                case eBaseExportFormat.TableEntity:
-                    command_export = String.Format(@"SELECT c.* FROM ONLY bpd.class c JOIN bpd.class_act_by_id_group({0}) f ON f.id = c.id", id_group);
-                    break;
-            }
-            Result = export_to_excel(command_export);
-            return Result;
-        }
-
-        /// <summary>
-        /// Команда экспорта представлений активных базовых классов по id группы
-        /// </summary>
-        public command_export class_act_by_id_group_command_export(Int64 id_group, eBaseExportFormat ExportFormat)
-        {
-            command_export Result = null;
-            String command_export = "";
-            switch (ExportFormat)
-            {
-                case eBaseExportFormat.ViewEntity:
-                    command_export = String.Format(@"SELECT * FROM bpd.class_act_by_id_group({0})", id_group);
-                    break;
-                case eBaseExportFormat.TableEntity:
-                    command_export = String.Format(@"SELECT c.* FROM ONLY bpd.class c JOIN bpd.class_act_by_id_group({0}) f ON f.id = c.id", id_group);
-                    break;
-            }
-           
-            String desc = String.Format(@"Экпорт: Активные базовые классы группы: {0} | Режим: {1}", group_by_id(id_group).Name, manager.ExportMode(ExportFormat));
-            Result = export_to_excel_get_command(command_export, desc);
-            return Result;
-        }
         //-=ACCESS=-***********************************************************************************
         /// <summary>
         /// Проверка прав доступа к методу
@@ -1664,51 +1473,7 @@ namespace pg_class
         {
             return class_act_real_by_id_group(Group.Id);
         }
-
-        //-=EXPORT TO EXCEL=-**************************************************************************
-        /// <summary>
-        /// Экспорт представлений объектов по id объекта носителя
-        /// </summary>
-        public Byte[] class_act_real_by_id_group(Int64 id_group, eBaseExportFormat ExportFormat)
-        {
-            Byte[] Result = null;
-            String command_export = "";
-
-            switch (ExportFormat)
-            {
-                case eBaseExportFormat.ViewEntity:
-                    command_export = String.Format(@"SELECT * FROM bpd.class_act_real_by_id_group({0})", id_group);
-                    break;
-                case eBaseExportFormat.TableEntity:
-                    command_export = String.Format(@"SELECT c.* FROM ONLY bpd.class c JOIN bpd.class_act_real_by_id_group({0}) f ON f.id = c.id", id_group);
-                    break;
-            }
-            Result = export_to_excel(command_export);
-            return Result;
-        }
-
-        /// <summary>
-        /// Команда экспорта представлений объектов по id объекта носителя
-        /// </summary>
-        public command_export class_act_real_by_id_group_command_export(Int64 id_group, eBaseExportFormat ExportFormat)
-        {
-            command_export Result = null;
-            String command_export = "";
-            switch (ExportFormat)
-            {
-                case eBaseExportFormat.ViewEntity:
-                    command_export = String.Format(@"SELECT * FROM bpd.class_act_real_by_id_group({0})", id_group);
-                    break;
-                case eBaseExportFormat.TableEntity:
-                    command_export = String.Format(@"SELECT c.* FROM ONLY bpd.class c JOIN bpd.class_act_real_by_id_group({0}) f ON f.id = c.id", id_group);
-                    break;
-            }
-            
-            String desc = String.Format(@"Экпорт: Активные вещественные классы группы: {0} | Режим: {1}", group_by_id(id_group).Name, manager.ExportMode(ExportFormat));
-            Result = export_to_excel_get_command(command_export, desc);
-            return Result;
-        }
-
+        
         //-=ACCESS=-***********************************************************************************
         /// <summary>
         /// Проверка прав доступа к методу

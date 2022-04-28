@@ -70,51 +70,6 @@ namespace pg_class
             return class_act_by_msk_global_prop(Global_prp.Id, find_mask, class_real_only);
         }
 
-        //-=EXPORT TO EXCEL=-**************************************************************************
-        /// <summary>
-        /// Экспорт представлений активных классов по маске значения глобального свойства
-        /// </summary>
-        public Byte[] class_act_by_msk_global_prop(Int64 iid_global_prop, String find_mask, Boolean class_real_only, eBaseExportFormat ExportFormat)
-        {
-            Byte[] Result = null;
-            String command_export = "";
-
-            switch (ExportFormat)
-            {
-                case eBaseExportFormat.ViewEntity:
-                    command_export = String.Format(@"SELECT * FROM bpd.class_act_by_msk_global_prop({0}, '{1}', {2})", iid_global_prop, find_mask, class_real_only);
-                    break;
-                case eBaseExportFormat.TableEntity:
-                    command_export = String.Format(@"SELECT c.* FROM ONLY bpd.class c JOIN bpd.class_act_by_msk_global_prop({0}, '{1}', {2}) f ON f.id = c.id", iid_global_prop, find_mask, class_real_only);
-                    break;
-            }
-            Result = export_to_excel(command_export);
-            return Result;
-        }
-
-        /// <summary>
-        /// Команда экспорта представлений активных классов по маске значения глобального свойства
-        /// </summary>
-        public command_export class_act_by_msk_global_prop_command_export(Int64 iid_global_prop, String find_mask, Boolean class_real_only, eBaseExportFormat ExportFormat)
-        {
-            command_export Result = null;
-            String command_export = "";
-
-            switch (ExportFormat)
-            {
-                case eBaseExportFormat.ViewEntity:
-                    command_export = String.Format(@"SELECT * FROM bpd.class_act_by_msk_global_prop({0}, '{1}', {2})", iid_global_prop, find_mask, class_real_only);
-                    break;
-                case eBaseExportFormat.TableEntity:
-                    command_export = String.Format(@"SELECT c.* FROM ONLY bpd.class c JOIN bpd.class_act_by_msk_global_prop({0}, '{1}', {2}) f ON f.id = c.id", iid_global_prop, find_mask, class_real_only);
-                    break;
-            }
-            
-            String desc = String.Format(@"Экпорт: Активные классы по маске значения глобального свойства: {0} | Маска значения: {1} | Режим: {2}", global_prop_by_id(iid_global_prop).Name, find_mask, manager.ExportMode(ExportFormat));
-            Result = export_to_excel_get_command(command_export, desc);
-            return Result;
-        }
-
         //-=ACCESS=-***********************************************************************************
         /// <summary>
         /// Проверка прав доступа к методу
@@ -285,51 +240,6 @@ namespace pg_class
         public List<vclass> class_act_by_msk_global_prop_from_class(global_prop Global_prp, vclass Class, String find_mask, Boolean class_real_only)
         {
             return class_act_by_msk_global_prop_from_class(Global_prp.Id, Class.Id, find_mask, class_real_only);
-        }
-
-        //-=EXPORT TO EXCEL=-**************************************************************************
-        /// <summary>
-        /// Экспорт представлений активных классов по маске значения глобального свойства
-        /// </summary>
-        public Byte[] class_act_by_msk_global_prop_from_class(Int64 iid_global_prop, Int64 iid_class, String find_mask, Boolean class_real_only, eBaseExportFormat ExportFormat)
-        {
-            Byte[] Result = null;
-            String command_export = "";
-
-            switch (ExportFormat)
-            {
-                case eBaseExportFormat.ViewEntity:
-                    command_export = String.Format(@"SELECT * FROM bpd.class_act_by_msk_global_prop_from_class({0}, {1}, '{2}', {3})", iid_global_prop, iid_class, find_mask, class_real_only);
-                    break;
-                case eBaseExportFormat.TableEntity:
-                    command_export = String.Format(@"SELECT c.* FROM ONLY bpd.class c JOIN bpd.class_act_by_msk_global_prop_from_class({0}, {1}, '{2}', {3}) f ON f.id = c.id", iid_global_prop, iid_class, find_mask, class_real_only);
-                    break;
-            }
-            Result = export_to_excel(command_export);
-            return Result;
-        }
-
-        /// <summary>
-        /// Команда экспорта представлений активных классов по маске значения глобального свойства
-        /// </summary>
-        public command_export class_act_by_msk_global_prop_from_class_command_export(Int64 iid_global_prop, Int64 iid_class, String find_mask, Boolean class_real_only, eBaseExportFormat ExportFormat)
-        {
-            command_export Result = null;
-            String command_export = "";
-
-            switch (ExportFormat)
-            {
-                case eBaseExportFormat.ViewEntity:
-                    command_export = String.Format(@"SELECT * FROM bpd.class_act_by_msk_global_prop_from_class({0}, {1}, '{2}', {3})", iid_global_prop, iid_class, find_mask, class_real_only);
-                    break;
-                case eBaseExportFormat.TableEntity:
-                    command_export = String.Format(@"SELECT c.* FROM ONLY bpd.class c JOIN bpd.class_act_by_msk_global_prop_from_class({0}, {1}, '{2}', {3}) f ON f.id = c.id", iid_global_prop, iid_class, find_mask, class_real_only);
-                    break;
-            }
-
-            String desc = String.Format(@"Экпорт: Активные классы по маске значения глобального свойства: {0} | Маска значения: {1} | Режим: {2}", global_prop_by_id(iid_global_prop).Name, find_mask, manager.ExportMode(ExportFormat));
-            Result = export_to_excel_get_command(command_export, desc);
-            return Result;
         }
 
         //-=ACCESS=-***********************************************************************************
@@ -503,51 +413,6 @@ namespace pg_class
         public List<vclass> class_act_by_msk_global_prop_from_group(global_prop Global_prp, group Group, String find_mask, Boolean class_real_only)
         {
             return class_act_by_msk_global_prop_from_group(Global_prp.Id, Group.Id, find_mask, class_real_only);
-        }
-
-        //-=EXPORT TO EXCEL=-**************************************************************************
-        /// <summary>
-        /// Экспорт представлений активных классов по маске значения глобального свойства
-        /// </summary>
-        public Byte[] class_act_by_msk_global_prop_from_group(Int64 iid_global_prop, Int64 iid_group, String find_mask, Boolean class_real_only, eBaseExportFormat ExportFormat)
-        {
-            Byte[] Result = null;
-            String command_export = "";
-
-            switch (ExportFormat)
-            {
-                case eBaseExportFormat.ViewEntity:
-                    command_export = String.Format(@"SELECT * FROM bpd.class_act_by_msk_global_prop_from_group({0}, {1}, '{2}', {3})", iid_global_prop, iid_group, find_mask, class_real_only);
-                    break;
-                case eBaseExportFormat.TableEntity:
-                    command_export = String.Format(@"SELECT c.* FROM ONLY bpd.class c JOIN bpd.class_act_by_msk_global_prop_from_group({0}, {1}, '{2}', {3}) f ON f.id = c.id", iid_global_prop, iid_group, find_mask, class_real_only);
-                    break;
-            }
-            Result = export_to_excel(command_export);
-            return Result;
-        }
-
-        /// <summary>
-        /// Команда экспорта представлений активных классов по маске значения глобального свойства
-        /// </summary>
-        public command_export class_act_by_msk_global_prop_from_group_command_export(Int64 iid_global_prop, Int64 iid_group, String find_mask, Boolean class_real_only, eBaseExportFormat ExportFormat)
-        {
-            command_export Result = null;
-            String command_export = "";
-
-            switch (ExportFormat)
-            {
-                case eBaseExportFormat.ViewEntity:
-                    command_export = String.Format(@"SELECT * FROM bpd.class_act_by_msk_global_prop_from_group({0}, {1}, '{2}', {3})", iid_global_prop, iid_group, find_mask, class_real_only);
-                    break;
-                case eBaseExportFormat.TableEntity:
-                    command_export = String.Format(@"SELECT c.* FROM ONLY bpd.class c JOIN bpd.class_act_by_msk_global_prop_from_group({0}, {1}, '{2}', {3}) f ON f.id = c.id", iid_global_prop, iid_group, find_mask, class_real_only);
-                    break;
-            }
-
-            String desc = String.Format(@"Экпорт: Активные классы по маске значения глобального свойства: {0} | Маска значения: {1} | Режим: {2}", global_prop_by_id(iid_global_prop).Name, find_mask, manager.ExportMode(ExportFormat));
-            Result = export_to_excel_get_command(command_export, desc);
-            return Result;
         }
 
         //-=ACCESS=-***********************************************************************************

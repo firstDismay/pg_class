@@ -239,57 +239,6 @@ namespace pg_class
             return object_carrier_by_msk_global_prop(Global_prp.Id, find_mask);
         }
 
-        //-=EXPORT TO EXCEL=-**************************************************************************
-        /// <summary>
-        /// Экспорт Лист объектов носителей по маске значения глобального свойства объекта значения объектного свойства
-        /// </summary>
-        public Byte[] object_carrier_by_msk_global_prop(Int64 iid_global_prop, String find_mask, eBaseExportFormat ExportFormat)
-        {
-            Byte[] Result = null;
-            String command_export = "";
-
-            switch (ExportFormat)
-            {
-                case eBaseExportFormat.ViewEntity:
-                    command_export = String.Format(@"SELECT * FROM bpd.object_carrier_by_msk_global_prop({0}, '{1}')", iid_global_prop, find_mask);
-                    break;
-                case eBaseExportFormat.TableEntity:
-                    command_export = String.Format(@"SELECT o.* FROM bpd.object o  JOIN bpd.object_carrier_by_msk_global_prop({0}, '{1}') f ON f.id = o.id", iid_global_prop, find_mask);
-                    break;
-                default:
-                    command_export = String.Format(@"SELECT * FROM bpd.object_carrier_by_msk_global_prop({0}, '{1}')", iid_global_prop, find_mask);
-                    break;
-            }
-            Result = export_to_excel(command_export);
-            return Result;
-        }
-
-        /// <summary>
-        /// Команда экспорта Лист объектов носителей по маске значения глобального свойства объекта значения объектного свойства
-        /// </summary>
-        public command_export object_carrier_by_msk_global_prop_command_export(Int64 iid_global_prop, String find_mask, eBaseExportFormat ExportFormat)
-        {
-            command_export Result = null;
-            String command_export = "";
-
-            switch (ExportFormat)
-            {
-                case eBaseExportFormat.ViewEntity:
-                    command_export = String.Format(@"SELECT * FROM bpd.object_carrier_by_msk_global_prop({0}, '{1}')", iid_global_prop, find_mask);
-                    break;
-                case eBaseExportFormat.TableEntity:
-                    command_export = String.Format(@"SELECT o.* FROM bpd.object o  JOIN bpd.object_carrier_by_msk_global_prop({0}, '{1}') f ON f.id = o.id", iid_global_prop, find_mask);
-                    break;
-                default:
-                    command_export = String.Format(@"SELECT * FROM bpd.object_carrier_by_msk_global_prop({0}, '{1}')", iid_global_prop, find_mask);
-                    break;
-            }
-
-            String desc = String.Format(@"Экпорт: Объекты по маске значения глобального свойства: {0} | Маска значения: {1} | Режим: {2}", global_prop_by_id(iid_global_prop).Name, find_mask, manager.ExportMode(ExportFormat));
-            Result = export_to_excel_get_command(command_export, desc);
-            return Result;
-        }
-
         //-=ACCESS=-***********************************************************************************
         /// <summary>
         /// Проверка прав доступа к методу
