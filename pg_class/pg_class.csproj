@@ -193,9 +193,9 @@
     <Compile Include="manager\man_doc_lib\man_doc_link.cs" />
     <Compile Include="manager\man_doc_lib\man_doc_file.cs" />
     <Compile Include="manager\man_doc_lib\man_doc_categoty.cs" />
+    <Compile Include="manager\man_export\class\man_class_act_real_exp_by_id_group.cs" />
     <Compile Include="manager\man_export\class\man_class_act_real_exp_by_id_class_array.cs" />
     <Compile Include="manager\man_export\man_export_select_event.cs" />
-    <Compile Include="manager\man_export\class\man_export_class.cs" />
     <Compile Include="manager\man_export\object\man_object_exp_by_id_object_array.cs" />
     <Compile Include="manager\man_export\object\man_object_exp_by_id_position_msk_global_prop.cs" />
     <Compile Include="manager\man_export\object\man_object_exp_by_mask_global_prop.cs" />

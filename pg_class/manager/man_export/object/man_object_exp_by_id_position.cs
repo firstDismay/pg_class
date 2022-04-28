@@ -15,7 +15,7 @@ namespace pg_class
     public partial class manager
     {
         /// <summary>
-        /// Метод экспорта объектов в Excel для указанной позиции носителя
+        /// Метод экспорта объектов в Excel по идентификатору позиции
         /// </summary>
         public Byte[] exp_object_by_id_position_to_excel(Int64 iid_position, eExportMode imode, Boolean iquantity_show, Boolean irecursively)
         {
@@ -82,10 +82,10 @@ namespace pg_class
             }
             return Result;
         }
-       
+
         #region ПРОЦЕДУРА СОЗДАНИЯ КОМАНДЫ ОТЛОЖЕННОГО ЭКСПОРТА В EXCEL
         /// <summary>
-        /// Метод создания команды экспорта объектов в Excel для указанной позиции носителя
+        /// Метод экспорта объектов в Excel по идентификатору позиции
         /// </summary>
         public command_export exp_object_by_id_position_to_excel_get_command(Int64 iid_position, eExportMode imode, Boolean iquantity_show, Boolean irecursively)
         {
