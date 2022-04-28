@@ -31,18 +31,18 @@ namespace pg_class.pg_classes
 
         /// <summary>
         ///  Лист объектов указанной позиции по маске значения глобального свойства
-        /// object_by_msk_global_prop_from_pos
+        /// object_by_id_position_msk_global_prop
         /// </summary>
-        public List<object_general> Object_by_msk_global_prop_from_pos(String find_mask, position Position, Boolean Extended = false)
+        public List<object_general> object_by_id_position_msk_global_prop(position Position, String find_mask, Boolean Extended = false)
         {
             List<object_general> Result;
             if (Extended)
             {
-                Result = Manager.object_ext_by_msk_global_prop_from_pos(this, Position, find_mask);
+                Result = Manager.object_ext_by_id_position_msk_global_prop(Position, this,  find_mask);
             }
             else
             {
-                Result = Manager.object_by_msk_global_prop_from_pos(this, Position, find_mask);
+                Result = Manager.object_by_id_position_msk_global_prop(Position, this, find_mask);
             }
             return Result;
         }
