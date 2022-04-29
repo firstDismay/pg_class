@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using pg_class.pg_commands;
-using pg_class.pg_classes;
 using Npgsql;
 using System.Data;
+using pg_class.pg_commands;
 using pg_class.pg_exceptions;
+using pg_class.pg_classes;
 
 namespace pg_class
 {
@@ -15,17 +15,17 @@ namespace pg_class
     {
         //*********************************************************************************************
         /// <summary>
-        /// Лист объектов path определяющих путь до группы
+        /// Метод определяет актуальность состояния группы
         /// </summary>
-        public List<group_path> group_path_by_id_group(Int64 iid_group)
+        public eEntityState group_is_actual(Int64 iid, DateTime itimestamp, DateTime itimestamp_child_change)
         {
-            List<group_path> group_path_list = new List<group_path>();
-            DataTable tbl_group_path  = TableByName("path");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
+            Int32 is_actual = 3;
             //=======================
             NpgsqlCommandKey cmdk;
+            //**********
+             
             //=======================
-            cmdk = CommandByKey("group_path");
+            cmdk = CommandByKey("group_is_actual3");
 
             if (cmdk != null)
             {
@@ -40,43 +40,35 @@ namespace pg_class
             }
             //=======================
 
-            cmdk.Parameters["iid_group"].Value = iid_group;
+            cmdk.Parameters["iid"].Value = iid;
+            cmdk.Parameters["itimestamp"].Value = itimestamp;
+            cmdk.Parameters["itimestamp_child_change"].Value = itimestamp_child_change;
 
-            cmdk.Fill(tbl_group_path);
+            //Начало транзакции
+            is_actual = (Int32)cmdk.ExecuteScalar();
             
-            group_path gp;
-            if (tbl_group_path.Rows.Count > 0)
-            {
-                foreach (System.Data.DataRow dr in tbl_group_path.Rows)
-                {
-                    gp = new group_path(dr);
-                    group_path_list.Add(gp);
-                }
-            }
-
-            return group_path_list;
+            return (eEntityState)is_actual;
         }
 
         /// <summary>
-        /// Лист объектов path определяющих путь до группы
+        /// Метод определяет актуальность состояния группы
         /// </summary>
-        public List<group_path> group_path_by_id_group(group Group)
+        public eEntityState group_is_actual(group Group)
         {
-            return group_path_by_id_group(Group.Id);
+            return group_is_actual(Group.Id, Group.Timestamp, Group.Timestamp_child_change);
         }
 
         //-=ACCESS=-***********************************************************************************
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
-        public Boolean group_path_by_id_group(out eAccess Access)
+        public Boolean group_is_actual(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
             //=======================
-            //=======================
-            cmdk = CommandByKey("group_path");
+            cmdk = CommandByKey("group_is_actual3");
             if (cmdk != null)
             {
                 Result = cmdk.Access;

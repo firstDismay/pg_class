@@ -205,6 +205,11 @@
     <Compile Include="manager\Global\man_classes\NPGSQL_TypeMapClass\pg_class\pg_errarg2.cs" />
     <Compile Include="manager\Global\man_classes\NPGSQL_TypeMapClass\pg_class\pg_tblcol.cs" />
     <Compile Include="manager\Global\man_classes\NPGSQL_TypeMapClass\pg_class\pg_argument.cs" />
+    <Compile Include="manager\man_group\man_group_is_actual.cs" />
+    <Compile Include="manager\man_group\man_group_sel.cs" />
+    <Compile Include="manager\man_group\man_group_del.cs" />
+    <Compile Include="manager\man_group\man_group_upd.cs" />
+    <Compile Include="manager\man_group\man_group_add.cs" />
     <Compile Include="manager\man_nested_rule\man_object_rule_L1\man_rulel1_class_on_pos_temp.cs" />
     <Compile Include="manager\man_object\man_object_carrier.cs" />
     <Compile Include="manager\man_object\man_object_patch.cs" />
@@ -262,7 +267,7 @@
     <Compile Include="manager\man_nested_rule\man_object_rule_L2\man_rulel2_class_on_position.cs" />
     <Compile Include="manager\man_nested_rule\man_object_rule_L1\man_rulel1_group_on_pos_temp.cs" />
     <Compile Include="manager\man_class\man_unit_rule.cs" />
-    <Compile Include="manager\man_group\man_group.cs" />
+    <Compile Include="manager\man_group\man_group_event.cs" />
     <Compile Include="manager\man_group\man_group_patch.cs" />
     <Compile Include="manager\man_class\man_class_snapshot.cs" />
     <Compile Include="manager\man_class\man_class_patch.cs" />

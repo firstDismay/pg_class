@@ -3,29 +3,28 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using pg_class.pg_commands;
-using pg_class.pg_classes;
 using Npgsql;
 using System.Data;
+using pg_class.pg_commands;
 using pg_class.pg_exceptions;
+using pg_class.pg_classes;
 
 namespace pg_class
 {
     public partial class manager
     {
-        //*********************************************************************************************
         /// <summary>
-        /// Лист объектов path определяющих путь до группы
+        /// Метод удаляет указанную группу
         /// </summary>
-        public List<group_path> group_path_by_id_group(Int64 iid_group)
+        public void group_del(Int64 id)
         {
-            List<group_path> group_path_list = new List<group_path>();
-            DataTable tbl_group_path  = TableByName("path");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
+            Int32 error;
+            String desc_error;
             NpgsqlCommandKey cmdk;
+            //**********
+             
             //=======================
-            cmdk = CommandByKey("group_path");
+            cmdk = CommandByKey("group_del");
 
             if (cmdk != null)
             {
@@ -40,43 +39,53 @@ namespace pg_class
             }
             //=======================
 
-            cmdk.Parameters["iid_group"].Value = iid_group;
+            group group = group_by_id(id);
 
-            cmdk.Fill(tbl_group_path);
+            cmdk.Parameters["iid"].Value = id;
+
+            //Начало транзакции
+            cmdk.ExecuteNonQuery();
             
-            group_path gp;
-            if (tbl_group_path.Rows.Count > 0)
+            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
+            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
+            //SetLastTimeUsing();
+            //=======================
+            if (error > 0)
             {
-                foreach (System.Data.DataRow dr in tbl_group_path.Rows)
-                {
-                    gp = new group_path(dr);
-                    group_path_list.Add(gp);
-                }
+                //Вызов события журнала
+                JournalEventArgs me = new JournalEventArgs(id, eEntity.group, error, desc_error, eAction.Delete, eJournalMessageType.error);
+                JournalMessageOnReceived(me);
+                throw new PgDataException(error, desc_error);
             }
 
-            return group_path_list;
+            //Генерируем событие изменения концепции
+            if (group != null)
+            {
+                GroupChangeEventArgs e = new GroupChangeEventArgs(group, eAction.Delete);
+                GroupOnChange(e);
+            }
         }
 
         /// <summary>
-        /// Лист объектов path определяющих путь до группы
+        /// Метод удаляет указанную группу
         /// </summary>
-        public List<group_path> group_path_by_id_group(group Group)
+        public void group_del(group Group)
         {
-            return group_path_by_id_group(Group.Id);
+            group_del(Group.Id);
         }
 
         //-=ACCESS=-***********************************************************************************
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
-        public Boolean group_path_by_id_group(out eAccess Access)
+        public Boolean group_del(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
             //=======================
             //=======================
-            cmdk = CommandByKey("group_path");
+            cmdk = CommandByKey("group_del");
             if (cmdk != null)
             {
                 Result = cmdk.Access;
