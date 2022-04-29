@@ -8,24 +8,24 @@ using System.Data;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
 using pg_class.pg_classes;
+using Newtonsoft.Json;
 
 namespace pg_class
 {
     public partial class manager
     {
-        //*********************************************************************************************
         /// <summary>
-        /// Метод определяет актуальность состояния группы
+        /// Метод уничтожает объект минуя корзину
         /// </summary>
-        public eEntityState group_is_actual(Int64 iid, DateTime itimestamp, DateTime itimestamp_child_change)
+        public void object_destroy(Int64 iid)
         {
-            Int32 is_actual = 3;
-            //=======================
+            Int32 error;
+            String desc_error;
             NpgsqlCommandKey cmdk;
             //**********
              
             //=======================
-            cmdk = CommandByKey("group_is_actual3");
+            cmdk = CommandByKey("object_destroy");
 
             if (cmdk != null)
             {
@@ -41,34 +41,55 @@ namespace pg_class
             //=======================
 
             cmdk.Parameters["iid"].Value = iid;
-            cmdk.Parameters["itimestamp"].Value = itimestamp;
-            cmdk.Parameters["itimestamp_child_change"].Value = itimestamp_child_change;
+
+            //Запрос удаляемой сущности
+            object_general Object = object_by_id(iid);
 
             //Начало транзакции
-            is_actual = (Int32)cmdk.ExecuteScalar();
+            cmdk.ExecuteNonQuery();
             
-            return (eEntityState)is_actual;
+            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
+            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
+            //SetLastTimeUsing();
+            //=======================
+            if (error > 0)
+            {
+                //Вызов события журнала
+                JournalEventArgs me = new JournalEventArgs(iid, eEntity.vobject, error, desc_error, eAction.Delete, eJournalMessageType.error);
+                JournalMessageOnReceived(me);
+                throw new PgDataException(error, desc_error);
+            }
+
+            //Генерируем событие удаления представления класса
+            if (Object != null)
+            {
+                ObjectChangeEventArgs e = new ObjectChangeEventArgs(Object, eAction.Delete);
+                ObjectOnChange(e);
+            }
         }
 
+
         /// <summary>
-        /// Метод определяет актуальность состояния группы
+        /// Метод уничтожает объект минуя корзину
         /// </summary>
-        public eEntityState group_is_actual(group Group)
+        public void object_destroy(object_general Object)
         {
-            return group_is_actual(Group.Id, Group.Timestamp, Group.Timestamp_child_change);
+            object_destroy(Object.Id);
         }
+
 
         //-=ACCESS=-***********************************************************************************
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
-        public Boolean group_is_actual(out eAccess Access)
+        public Boolean object_destroy(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
             //=======================
-            cmdk = CommandByKey("group_is_actual3");
+            //=======================
+            cmdk = CommandByKey("object_destroy");
             if (cmdk != null)
             {
                 Result = cmdk.Access;

@@ -8,24 +8,27 @@ using System.Data;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
 using pg_class.pg_classes;
+using Newtonsoft.Json;
 
 namespace pg_class
 {
     public partial class manager
     {
-        //*********************************************************************************************
         /// <summary>
-        /// Метод определяет актуальность состояния группы
+        ///  Метод добавляет список объектов по массиву параметров объектов
         /// </summary>
-        public eEntityState group_is_actual(Int64 iid, DateTime itimestamp, DateTime itimestamp_child_change)
+        public List<errarg_object_add> object_add_for_array_object_parameter(json_object_parameters[] array_object_parameter)
         {
-            Int32 is_actual = 3;
+            List<errarg_object_add> object_list = new List<errarg_object_add>();
+            //object_general o;
+
+            DataTable tbl_result = TableByName("errarg_object_add");
+            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
             //=======================
             NpgsqlCommandKey cmdk;
-            //**********
-             
+
             //=======================
-            cmdk = CommandByKey("group_is_actual3");
+            cmdk = CommandByKey("object_add_for_array_object_parameter");
 
             if (cmdk != null)
             {
@@ -40,35 +43,42 @@ namespace pg_class
             }
             //=======================
 
-            cmdk.Parameters["iid"].Value = iid;
-            cmdk.Parameters["itimestamp"].Value = itimestamp;
-            cmdk.Parameters["itimestamp_child_change"].Value = itimestamp_child_change;
+            String[] sarray_object_parameter = new String[array_object_parameter.Length];
 
-            //Начало транзакции
-            is_actual = (Int32)cmdk.ExecuteScalar();
+            for (Int32 i = 0; i < array_object_parameter.Length; i++)
+            {
+                sarray_object_parameter[i] = JsonConvert.SerializeObject(array_object_parameter[i], Formatting.Indented);
+            }
+
+            cmdk.Parameters["array_object_parameter"].Value = sarray_object_parameter;
             
-            return (eEntityState)is_actual;
-        }
 
-        /// <summary>
-        /// Метод определяет актуальность состояния группы
-        /// </summary>
-        public eEntityState group_is_actual(group Group)
-        {
-            return group_is_actual(Group.Id, Group.Timestamp, Group.Timestamp_child_change);
-        }
+            cmdk.Fill(tbl_result);
 
+            errarg_object_add og;
+            if (tbl_result.Rows.Count > 0)
+            {
+                foreach (System.Data.DataRow dr in tbl_result.Rows)
+                {
+                    og = new errarg_object_add(dr);
+                    object_list.Add(og);
+                }
+            }
+            return object_list;
+        }
+       
         //-=ACCESS=-***********************************************************************************
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
-        public Boolean group_is_actual(out eAccess Access)
+        public Boolean object_add_for_array_object_parameter(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
             //=======================
-            cmdk = CommandByKey("group_is_actual3");
+            //=======================
+            cmdk = CommandByKey("object_add_for_array_object_parameter");
             if (cmdk != null)
             {
                 Result = cmdk.Access;

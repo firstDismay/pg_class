@@ -8,16 +8,16 @@ using System.Data;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
 using pg_class.pg_classes;
+using Newtonsoft.Json;
 
 namespace pg_class
 {
     public partial class manager
     {
-        //*********************************************************************************************
         /// <summary>
-        /// Метод определяет актуальность состояния группы
+        /// Метод определяет актуальность состояния объекта
         /// </summary>
-        public eEntityState group_is_actual(Int64 iid, DateTime itimestamp, DateTime itimestamp_child_change)
+        public eEntityState object_is_actual(Int64 iid, DateTime mytimestamp)
         {
             Int32 is_actual = 3;
             //=======================
@@ -25,7 +25,7 @@ namespace pg_class
             //**********
              
             //=======================
-            cmdk = CommandByKey("group_is_actual3");
+            cmdk = CommandByKey("object_is_actual");
 
             if (cmdk != null)
             {
@@ -41,8 +41,7 @@ namespace pg_class
             //=======================
 
             cmdk.Parameters["iid"].Value = iid;
-            cmdk.Parameters["itimestamp"].Value = itimestamp;
-            cmdk.Parameters["itimestamp_child_change"].Value = itimestamp_child_change;
+            cmdk.Parameters["mytimestamp"].Value = mytimestamp;
 
             //Начало транзакции
             is_actual = (Int32)cmdk.ExecuteScalar();
@@ -51,24 +50,24 @@ namespace pg_class
         }
 
         /// <summary>
-        /// Метод определяет актуальность состояния группы
+        /// Метод определяет актуальность состояния объекта
         /// </summary>
-        public eEntityState group_is_actual(group Group)
+        public eEntityState object_is_actual(object_general Object)
         {
-            return group_is_actual(Group.Id, Group.Timestamp, Group.Timestamp_child_change);
+            return object_is_actual(Object.Id, Object.Timestamp);
         }
 
         //-=ACCESS=-***********************************************************************************
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
-        public Boolean group_is_actual(out eAccess Access)
+        public Boolean object_is_actual(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
             //=======================
-            cmdk = CommandByKey("group_is_actual3");
+            cmdk = CommandByKey("object_is_actual");
             if (cmdk != null)
             {
                 Result = cmdk.Access;

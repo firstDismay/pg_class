@@ -13,7 +13,6 @@ namespace pg_class
 {
     public partial class manager
     {
-        #region ВЫБРАТЬ
         //*********************************************************************************************
         /// <summary>
         /// Лист объектов path определяющих путь до активного представления класса
@@ -128,6 +127,5 @@ namespace pg_class
             Result = (String)cmdk.ExecuteScalar();
             return Result;
         }
-        #endregion
     }
 }

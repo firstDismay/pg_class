@@ -13,19 +13,21 @@ namespace pg_class
 {
     public partial class manager
     {
-        //*********************************************************************************************
         /// <summary>
-        /// Метод определяет актуальность состояния группы
+        /// Лист расширенных объектов носителей объектов класса по идентификатору класса
         /// </summary>
-        public eEntityState group_is_actual(Int64 iid, DateTime itimestamp, DateTime itimestamp_child_change)
+        public List<object_general> object_carrier_ext_by_object_class_full(Int64 iid_class)
         {
-            Int32 is_actual = 3;
+            List<object_general> object_list = new List<object_general>();
+
+
+            DataTable tbl_object = TableByName("vobject_general_ext");
+            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
             //=======================
             NpgsqlCommandKey cmdk;
-            //**********
-             
+
             //=======================
-            cmdk = CommandByKey("group_is_actual3");
+            cmdk = CommandByKey("object_carrier_ext_by_object_class_full");
 
             if (cmdk != null)
             {
@@ -40,35 +42,42 @@ namespace pg_class
             }
             //=======================
 
-            cmdk.Parameters["iid"].Value = iid;
-            cmdk.Parameters["itimestamp"].Value = itimestamp;
-            cmdk.Parameters["itimestamp_child_change"].Value = itimestamp_child_change;
+            cmdk.Parameters["iid_class"].Value = iid_class;
 
-            //Начало транзакции
-            is_actual = (Int32)cmdk.ExecuteScalar();
+            cmdk.Fill(tbl_object);
             
-            return (eEntityState)is_actual;
+            object_general og;
+            if (tbl_object.Rows.Count > 0)
+            {
+                foreach (System.Data.DataRow dr in tbl_object.Rows)
+                {
+                    og = new object_general(dr);
+                    object_list.Add(og);
+                }
+            }
+            return object_list;
         }
 
         /// <summary>
-        /// Метод определяет актуальность состояния группы
+        /// Лист расширенных объектов носителей объектов класса по идентификатору класса
         /// </summary>
-        public eEntityState group_is_actual(group Group)
+        public List<object_general> object_carrier_ext_by_object_class_full(vclass Class)
         {
-            return group_is_actual(Group.Id, Group.Timestamp, Group.Timestamp_child_change);
+            return object_carrier_ext_by_object_class_full(Class.Id);
         }
 
         //-=ACCESS=-***********************************************************************************
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
-        public Boolean group_is_actual(out eAccess Access)
+        public Boolean object_carrier_ext_by_object_class_full(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
             //=======================
-            cmdk = CommandByKey("group_is_actual3");
+            //=======================
+            cmdk = CommandByKey("object_carrier_ext_by_object_class_full");
             if (cmdk != null)
             {
                 Result = cmdk.Access;
