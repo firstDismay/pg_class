@@ -15,23 +15,20 @@ namespace pg_class
 {
     public partial class manager
     {
-        #region МЕТОДЫ КЛАССА: ФАЙЛЫ ДОКУМЕНТА
-        #region ВЫБРАТЬ EXT
-        //*********************************************************************************************
         /// <summary>
         /// Документ по идентификатору
         /// </summary>
-        public document document_ext_by_id(Int64 iid)
+        public document document_by_id(Int64 iid)
         {
             document document = null;
 
-            DataTable tbl_entity = new DataTable("vdocument_ext"); //TableByName("vdocument_ext");
+            DataTable tbl_entity  = TableByName("vdocument");
             //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
             //=======================
             NpgsqlCommandKey cmdk;
 
             //=======================
-            cmdk = CommandByKey("document_ext_by_id");
+            cmdk = CommandByKey("document_by_id");
 
             if (cmdk != null)
             {
@@ -61,14 +58,14 @@ namespace pg_class
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
-        public Boolean document_ext_by_id(out eAccess Access)
+        public Boolean document_by_id(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
             //=======================
             //=======================
-            cmdk = CommandByKey("document_ext_by_id");
+            cmdk = CommandByKey("document_by_id");
             if (cmdk != null)
             {
                 Result = cmdk.Access;
@@ -88,17 +85,17 @@ namespace pg_class
         /// <summary>
         /// Лист документов по идентификатору пакета документов документа
         /// </summary>
-        public List<document> document_ext_by_id_parent(Int64 iid_parent)
+        public List<document> document_by_id_parent(Int64 iid_parent)
         {
-            List<document> entity_list = new List<document>();
-
-            DataTable tbl_entity = TableByName("vdocument_ext");
+            List<document>  entity_list = new List<document>();
+            
+            DataTable tbl_entity  = TableByName("vdocument");
             //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
             //=======================
             NpgsqlCommandKey cmdk;
 
             //=======================
-            cmdk = CommandByKey("document_ext_by_id_parent");
+            cmdk = CommandByKey("document_by_id_parent");
 
             if (cmdk != null)
             {
@@ -133,14 +130,14 @@ namespace pg_class
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
-        public Boolean document_ext_by_id_parent(out eAccess Access)
+        public Boolean document_by_id_parent(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
             //=======================
             //=======================
-            cmdk = CommandByKey("document_ext_by_id_parent");
+            cmdk = CommandByKey("document_by_id_parent");
             if (cmdk != null)
             {
                 Result = cmdk.Access;
@@ -160,17 +157,17 @@ namespace pg_class
         /// <summary>
         /// Лист документов по идентификатору концепции
         /// </summary>
-        public List<document> document_ext_by_id_conception(Int64 iid_conception)
+        public List<document> document_by_id_conception(Int64 iid_conception)
         {
             List<document> entity_list = new List<document>();
 
-            DataTable tbl_entity = TableByName("vdocument_ext");
+            DataTable tbl_entity = TableByName("vdocument");
             //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
             //=======================
             NpgsqlCommandKey cmdk;
 
             //=======================
-            cmdk = CommandByKey("document_ext_by_id_conception");
+            cmdk = CommandByKey("document_by_id_conception");
 
             if (cmdk != null)
             {
@@ -205,14 +202,14 @@ namespace pg_class
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
-        public Boolean document_ext_by_id_conception(out eAccess Access)
+        public Boolean document_by_id_conception(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
             //=======================
             //=======================
-            cmdk = CommandByKey("document_ext_by_id_conception");
+            cmdk = CommandByKey("document_by_id_conception");
             if (cmdk != null)
             {
                 Result = cmdk.Access;
@@ -228,21 +225,22 @@ namespace pg_class
             return Result;
         }
 
-        //*********************************************************************************************
+        
+         //*********************************************************************************************
         /// <summary>
         /// Лист документов по идентификатору категории документов
         /// </summary>
-        public List<document> document_ext_by_id_category(Int64 iid_category)
+        public List<document> document_by_id_category(Int64 iid_category)
         {
             List<document> entity_list = new List<document>();
 
-            DataTable tbl_entity = TableByName("vdocument_ext");
+            DataTable tbl_entity = TableByName("vdocument");
             //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
             //=======================
             NpgsqlCommandKey cmdk;
 
             //=======================
-            cmdk = CommandByKey("document_ext_by_id_category");
+            cmdk = CommandByKey("document_by_id_category");
 
             if (cmdk != null)
             {
@@ -277,14 +275,14 @@ namespace pg_class
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
-        public Boolean document_ext_by_id_category(out eAccess Access)
+        public Boolean document_by_id_category(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
             //=======================
             //=======================
-            cmdk = CommandByKey("document_ext_by_id_category");
+            cmdk = CommandByKey("document_by_id_category");
             if (cmdk != null)
             {
                 Result = cmdk.Access;
@@ -304,17 +302,17 @@ namespace pg_class
         /// <summary>
         /// Лист документов по идентификатору шаблона позиции
         /// </summary>
-        public List<document> document_ext_by_id_pos_temp(Int64 iid_entity_instatce, Boolean position_on, Boolean object_on, Boolean recursive_on)
+        public List<document> document_by_id_pos_temp(Int64 iid_entity_instatce, Boolean position_on, Boolean object_on, Boolean recursive_on)
         {
             List<document> entity_list = new List<document>();
 
-            DataTable tbl_entity = TableByName("vdocument_ext");
+            DataTable tbl_entity = TableByName("vdocument");
             //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
             //=======================
             NpgsqlCommandKey cmdk;
 
             //=======================
-            cmdk = CommandByKey("document_ext_by_id_pos_temp");
+            cmdk = CommandByKey("document_by_id_pos_temp");
 
             if (cmdk != null)
             {
@@ -351,23 +349,23 @@ namespace pg_class
         /// <summary>
         /// Лист документов по идентификатору шаблона позиции
         /// </summary>
-        public List<document> document_ext_by_id_pos_temp(pos_temp Pos_temp, Boolean position_on, Boolean object_on, Boolean recursive_on)
+        public List<document> document_by_id_pos_temp(pos_temp Pos_temp, Boolean position_on, Boolean object_on, Boolean recursive_on)
         {
-            return document_ext_by_id_pos_temp(Pos_temp.Id, position_on, object_on, recursive_on);
+            return document_by_id_pos_temp(Pos_temp.Id, position_on, object_on, recursive_on);
         }
-
+        
         //-=ACCESS=-***********************************************************************************
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
-        public Boolean document_ext_by_id_pos_temp(out eAccess Access)
+        public Boolean document_by_id_pos_temp(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
             //=======================
             //=======================
-            cmdk = CommandByKey("document_ext_by_id_pos_temp");
+            cmdk = CommandByKey("document_by_id_pos_temp");
             if (cmdk != null)
             {
                 Result = cmdk.Access;
@@ -382,22 +380,22 @@ namespace pg_class
             }
             return Result;
         }
-
+        
         //*********************************************************************************************
         /// <summary>
         /// Лист документов по идентификатору позиции
         /// </summary>
-        public List<document> document_ext_by_id_position(Int64 iid_entity_instatce, Boolean object_on, Boolean recursive_on)
+        public List<document> document_by_id_position(Int64 iid_entity_instatce, Boolean object_on, Boolean recursive_on)
         {
             List<document> entity_list = new List<document>();
 
-            DataTable tbl_entity = TableByName("vdocument_ext");
+            DataTable tbl_entity = TableByName("vdocument");
             //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
             //=======================
             NpgsqlCommandKey cmdk;
 
             //=======================
-            cmdk = CommandByKey("document_ext_by_id_position");
+            cmdk = CommandByKey("document_by_id_position");
 
             if (cmdk != null)
             {
@@ -433,23 +431,23 @@ namespace pg_class
         /// <summary>
         /// Лист документов по идентификатору позиции
         /// </summary>
-        public List<document> document_ext_by_id_position(position Position, Boolean object_on, Boolean recursive_on)
+        public List<document> document_by_id_position(position Position, Boolean object_on, Boolean recursive_on)
         {
-            return document_ext_by_id_position(Position.Id, object_on, recursive_on);
+            return document_by_id_position(Position.Id, object_on, recursive_on);
         }
 
         //-=ACCESS=-***********************************************************************************
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
-        public Boolean document_ext_by_id_position(out eAccess Access)
+        public Boolean document_by_id_position(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
             //=======================
             //=======================
-            cmdk = CommandByKey("document_ext_by_id_position");
+            cmdk = CommandByKey("document_by_id_position");
             if (cmdk != null)
             {
                 Result = cmdk.Access;
@@ -464,22 +462,22 @@ namespace pg_class
             }
             return Result;
         }
-
+        
         //*********************************************************************************************
         /// <summary>
         /// Лист документов по идентификатору пользователя
         /// </summary>
-        public List<document> document_ext_by_id_user(Int64 iid_entity_instatce)
+        public List<document> document_by_id_user(Int64 iid_entity_instatce)
         {
             List<document> entity_list = new List<document>();
 
-            DataTable tbl_entity = TableByName("vdocument_ext");
+            DataTable tbl_entity = TableByName("vdocument");
             //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
             //=======================
             NpgsqlCommandKey cmdk;
 
             //=======================
-            cmdk = CommandByKey("document_ext_by_id_user");
+            cmdk = CommandByKey("document_by_id_user");
 
             if (cmdk != null)
             {
@@ -495,7 +493,7 @@ namespace pg_class
             //=======================
 
             cmdk.Parameters["iid_entity_instatce"].Value = iid_entity_instatce;
-
+            
             cmdk.Fill(tbl_entity);
             
             document ce;
@@ -513,23 +511,23 @@ namespace pg_class
         /// <summary>
         /// Лист документов по идентификатору пользователя
         /// </summary>
-        public List<document> document_ext_by_id_user(user User)
+        public List<document> document_by_id_user(user User)
         {
-            return document_ext_by_id_user(User.Id);
+            return document_by_id_user(User.Id);
         }
 
         //-=ACCESS=-***********************************************************************************
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
-        public Boolean document_ext_by_id_user(out eAccess Access)
+        public Boolean document_by_id_user(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
             //=======================
             //=======================
-            cmdk = CommandByKey("document_ext_by_id_user");
+            cmdk = CommandByKey("document_by_id_user");
             if (cmdk != null)
             {
                 Result = cmdk.Access;
@@ -544,22 +542,22 @@ namespace pg_class
             }
             return Result;
         }
-
+        
         //*********************************************************************************************
         /// <summary>
         /// Лист документов по идентификатору свойства позиции
         /// </summary>
-        public List<document> document_ext_by_id_position_prop(Int64 iid_entity_instatce, Int64 iid_sub_entity_instatce)
+        public List<document> document_by_id_position_prop(Int64 iid_entity_instatce, Int64 iid_sub_entity_instatce)
         {
             List<document> entity_list = new List<document>();
 
-            DataTable tbl_entity = TableByName("vdocument_ext");
+            DataTable tbl_entity = TableByName("vdocument");
             //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
             //=======================
             NpgsqlCommandKey cmdk;
 
             //=======================
-            cmdk = CommandByKey("document_ext_by_id_position_prop");
+            cmdk = CommandByKey("document_by_id_position_prop");
 
             if (cmdk != null)
             {
@@ -594,23 +592,23 @@ namespace pg_class
         /// <summary>
         /// Лист документов по идентификатору свойства позиции
         /// </summary>
-        public List<document> document_ext_by_id_position_prop(position_prop Position_prop)
+        public List<document> document_by_id_position_prop(position_prop Position_prop)
         {
-            return document_ext_by_id_position_prop(Position_prop.Id_position_prop, Position_prop.Id_position_carrier);
+            return document_by_id_position_prop(Position_prop.Id_position_prop, Position_prop.Id_position_carrier);
         }
 
         //-=ACCESS=-***********************************************************************************
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
-        public Boolean document_ext_by_id_position_prop(out eAccess Access)
+        public Boolean document_by_id_position_prop(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
             //=======================
             //=======================
-            cmdk = CommandByKey("document_ext_by_id_position_prop");
+            cmdk = CommandByKey("document_by_id_position_prop");
             if (cmdk != null)
             {
                 Result = cmdk.Access;
@@ -625,22 +623,22 @@ namespace pg_class
             }
             return Result;
         }
-
+        
         //*********************************************************************************************
         /// <summary>
         /// Лист документов по идентификатору свойства шаблона позиции
         /// </summary>
-        public List<document> document_ext_by_id_pos_temp_prop(Int64 iid_entity_instatce, Int64 iid_sub_entity_instatce)
+        public List<document> document_by_id_pos_temp_prop(Int64 iid_entity_instatce)
         {
             List<document> entity_list = new List<document>();
 
-            DataTable tbl_entity = TableByName("vdocument_ext");
+            DataTable tbl_entity = TableByName("vdocument");
             //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
             //=======================
             NpgsqlCommandKey cmdk;
 
             //=======================
-            cmdk = CommandByKey("document_ext_by_id_pos_temp_prop");
+            cmdk = CommandByKey("document_by_id_pos_temp_prop");
 
             if (cmdk != null)
             {
@@ -656,7 +654,6 @@ namespace pg_class
             //=======================
 
             cmdk.Parameters["iid_entity_instatce"].Value = iid_entity_instatce;
-            cmdk.Parameters["iid_sub_entity_instatce"].Value = iid_sub_entity_instatce;
 
             cmdk.Fill(tbl_entity);
             
@@ -675,23 +672,23 @@ namespace pg_class
         /// <summary>
         /// Лист документов по идентификатору свойства шаблона позиции
         /// </summary>
-        public List<document> document_ext_by_id_pos_temp_prop(pos_temp_prop Pos_temp_prop)
+        public List<document> document_by_id_pos_temp_prop(pos_temp_prop Pos_temp_prop)
         {
-            return document_ext_by_id_pos_temp_prop(Pos_temp_prop.Id, Pos_temp_prop.Id_pos_temp);
+            return document_by_id_pos_temp_prop(Pos_temp_prop.Id);
         }
 
         //-=ACCESS=-***********************************************************************************
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
-        public Boolean document_ext_by_id_pos_temp_prop(out eAccess Access)
+        public Boolean document_by_id_pos_temp_prop(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
             //=======================
             //=======================
-            cmdk = CommandByKey("document_ext_by_id_pos_temp_prop");
+            cmdk = CommandByKey("document_by_id_pos_temp_prop");
             if (cmdk != null)
             {
                 Result = cmdk.Access;
@@ -706,22 +703,22 @@ namespace pg_class
             }
             return Result;
         }
-
+        
         //*********************************************************************************************
         /// <summary>
         /// Лист документов по идентификатору группы классов
         /// </summary>
-        public List<document> document_ext_by_id_group(Int64 iid_entity_instatce, Boolean class_on, Boolean object_on, Boolean recursive_on)
+        public List<document> document_by_id_group(Int64 iid_entity_instatce, Boolean class_on, Boolean object_on , Boolean recursive_on)
         {
             List<document> entity_list = new List<document>();
 
-            DataTable tbl_entity = TableByName("vdocument_ext");
+            DataTable tbl_entity = TableByName("vdocument");
             //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
             //=======================
             NpgsqlCommandKey cmdk;
 
             //=======================
-            cmdk = CommandByKey("document_ext_by_id_group");
+            cmdk = CommandByKey("document_by_id_group");
 
             if (cmdk != null)
             {
@@ -758,23 +755,23 @@ namespace pg_class
         /// <summary>
         /// Лист документов по идентификатору группы классов
         /// </summary>
-        public List<document> document_ext_by_id_group(group Group, Boolean class_on, Boolean object_on, Boolean recursive_on)
+        public List<document> document_by_id_group(group Group, Boolean class_on, Boolean object_on, Boolean recursive_on)
         {
-            return document_ext_by_id_group(Group.Id, class_on, object_on, recursive_on);
+            return document_by_id_group(Group.Id, class_on, object_on, recursive_on);
         }
 
         //-=ACCESS=-***********************************************************************************
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
-        public Boolean document_ext_by_id_group(out eAccess Access)
+        public Boolean document_by_id_group(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
             //=======================
             //=======================
-            cmdk = CommandByKey("document_ext_by_id_group");
+            cmdk = CommandByKey("document_by_id_group");
             if (cmdk != null)
             {
                 Result = cmdk.Access;
@@ -794,17 +791,17 @@ namespace pg_class
         /// <summary>
         /// Лист документов по идентификатору класса
         /// </summary>
-        public List<document> document_ext_by_id_class(Int64 iid_entity_instatce, Boolean object_on, Boolean recursive_on)
+        public List<document> document_by_id_class(Int64 iid_entity_instatce, Boolean object_on, Boolean recursive_on)
         {
             List<document> entity_list = new List<document>();
 
-            DataTable tbl_entity = TableByName("vdocument_ext");
+            DataTable tbl_entity = TableByName("vdocument");
             //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
             //=======================
             NpgsqlCommandKey cmdk;
 
             //=======================
-            cmdk = CommandByKey("document_ext_by_id_class");
+            cmdk = CommandByKey("document_by_id_class");
 
             if (cmdk != null)
             {
@@ -840,23 +837,23 @@ namespace pg_class
         /// <summary>
         /// Лист документов по идентификатору класса
         /// </summary>
-        public List<document> document_ext_by_id_class(vclass Class, Boolean object_on, Boolean recursive_on)
+        public List<document> document_by_id_class(vclass Class, Boolean object_on, Boolean recursive_on)
         {
-            return document_ext_by_id_class(Class.Id, object_on, recursive_on);
+            return document_by_id_class(Class.Id, object_on, recursive_on);
         }
 
         //-=ACCESS=-***********************************************************************************
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
-        public Boolean document_ext_by_id_class(out eAccess Access)
+        public Boolean document_by_id_class(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
             //=======================
             //=======================
-            cmdk = CommandByKey("document_ext_by_id_class");
+            cmdk = CommandByKey("document_by_id_class");
             if (cmdk != null)
             {
                 Result = cmdk.Access;
@@ -876,17 +873,17 @@ namespace pg_class
         /// <summary>
         /// Лист документов по идентификатору свойства класса
         /// </summary>
-        public List<document> document_ext_by_id_class_prop(Int64 iid_entity_instatce, Int64 iid_sub_entity_instatce)
+        public List<document> document_by_id_class_prop(Int64 iid_entity_instatce)
         {
             List<document> entity_list = new List<document>();
 
-            DataTable tbl_entity = TableByName("vdocument_ext");
+            DataTable tbl_entity = TableByName("vdocument");
             //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
             //=======================
             NpgsqlCommandKey cmdk;
 
             //=======================
-            cmdk = CommandByKey("document_ext_by_id_class_prop");
+            cmdk = CommandByKey("document_by_id_class_prop");
 
             if (cmdk != null)
             {
@@ -902,7 +899,6 @@ namespace pg_class
             //=======================
 
             cmdk.Parameters["iid_entity_instatce"].Value = iid_entity_instatce;
-            cmdk.Parameters["iid_sub_entity_instatce"].Value = iid_sub_entity_instatce;
 
             cmdk.Fill(tbl_entity);
             
@@ -921,23 +917,23 @@ namespace pg_class
         /// <summary>
         /// Лист документов по идентификатору свойства класса
         /// </summary>
-        public List<document> document_ext_by_id_class_prop(class_prop Class_prop)
+        public List<document> document_by_id_class_prop(class_prop Class_prop)
         {
-            return document_ext_by_id_class_prop(Class_prop.Id, Class_prop.Id_class);
+            return document_by_id_class_prop(Class_prop.Id);
         }
 
         //-=ACCESS=-***********************************************************************************
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
-        public Boolean document_ext_by_id_class_prop(out eAccess Access)
+        public Boolean document_by_id_class_prop(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
             //=======================
             //=======================
-            cmdk = CommandByKey("document_ext_by_id_class_prop");
+            cmdk = CommandByKey("document_by_id_class_prop");
             if (cmdk != null)
             {
                 Result = cmdk.Access;
@@ -957,17 +953,17 @@ namespace pg_class
         /// <summary>
         /// Лист документов по идентификатору объекта
         /// </summary>
-        public List<document> document_ext_by_id_object(Int64 iid_entity_instatce, Boolean class_on, Boolean group_on, Boolean recursive_on)
+        public List<document> document_by_id_object(Int64 iid_entity_instatce, Boolean class_on, Boolean group_on, Boolean recursive_on)
         {
             List<document> entity_list = new List<document>();
 
-            DataTable tbl_entity = TableByName("vdocument_ext");
+            DataTable tbl_entity = TableByName("vdocument");
             //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
             //=======================
             NpgsqlCommandKey cmdk;
 
             //=======================
-            cmdk = CommandByKey("document_ext_by_id_object");
+            cmdk = CommandByKey("document_by_id_object");
 
             if (cmdk != null)
             {
@@ -1004,23 +1000,23 @@ namespace pg_class
         /// <summary>
         /// Лист документов по идентификатору объекта
         /// </summary>
-        public List<document> document_ext_by_id_object(object_general Object_general, Boolean class_on, Boolean group_on, Boolean recursive_on)
+        public List<document> document_by_id_object(object_general Object_general, Boolean class_on, Boolean group_on, Boolean recursive_on)
         {
-            return document_ext_by_id_object(Object_general.Id, class_on, group_on, recursive_on);
+            return document_by_id_object(Object_general.Id, class_on, group_on, recursive_on);
         }
 
         //-=ACCESS=-***********************************************************************************
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
-        public Boolean document_ext_by_id_object(out eAccess Access)
+        public Boolean document_by_id_object(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
             //=======================
             //=======================
-            cmdk = CommandByKey("document_ext_by_id_object");
+            cmdk = CommandByKey("document_by_id_object");
             if (cmdk != null)
             {
                 Result = cmdk.Access;
@@ -1040,17 +1036,17 @@ namespace pg_class
         /// <summary>
         /// Лист документов по идентификатору свойства объекта
         /// </summary>
-        public List<document> document_ext_by_id_object_prop(Int64 iid_entity_instatce, Int64 iid_sub_entity_instatce)
+        public List<document> document_by_id_object_prop(Int64 iid_entity_instatce, Int64 iid_sub_entity_instatce)
         {
             List<document> entity_list = new List<document>();
 
-            DataTable tbl_entity = TableByName("vdocument_ext");
+            DataTable tbl_entity = TableByName("vdocument");
             //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
             //=======================
             NpgsqlCommandKey cmdk;
 
             //=======================
-            cmdk = CommandByKey("document_ext_by_id_object_prop");
+            cmdk = CommandByKey("document_by_id_object_prop");
 
             if (cmdk != null)
             {
@@ -1085,23 +1081,23 @@ namespace pg_class
         /// <summary>
         /// Лист документов по идентификатору свойства класса
         /// </summary>
-        public List<document> document_ext_by_id_object_prop(object_prop Object_prop)
+        public List<document> document_by_id_object_prop(object_prop Object_prop)
         {
-            return document_ext_by_id_object_prop(Object_prop.Id_class_prop, Object_prop.Id_object_carrier);
+            return document_by_id_object_prop(Object_prop.Id_class_prop, Object_prop.Id_object_carrier);
         }
 
         //-=ACCESS=-***********************************************************************************
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
-        public Boolean document_ext_by_id_object_prop(out eAccess Access)
+        public Boolean document_by_id_object_prop(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
             //=======================
             //=======================
-            cmdk = CommandByKey("document_ext_by_id_object_prop");
+            cmdk = CommandByKey("document_by_id_object_prop");
             if (cmdk != null)
             {
                 Result = cmdk.Access;
@@ -1116,22 +1112,22 @@ namespace pg_class
             }
             return Result;
         }
-
+        
         //*********************************************************************************************
         /// <summary>
         /// Лист документов концепции по маске имени документа
         /// </summary>
-        public List<document> document_ext_by_msk_name_from_conception(String iname, Int64 iid_conception)
+        public List<document> document_by_msk_name_from_conception(String iname, Int64 iid_conception)
         {
             List<document> entity_list = new List<document>();
 
-            DataTable tbl_entity = TableByName("vdocument_ext");
+            DataTable tbl_entity = TableByName("vdocument");
             //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
             //=======================
             NpgsqlCommandKey cmdk;
 
             //=======================
-            cmdk = CommandByKey("document_ext_by_msk_name_from_conception");
+            cmdk = CommandByKey("document_by_msk_name_from_conception");
 
             if (cmdk != null)
             {
@@ -1167,14 +1163,14 @@ namespace pg_class
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
-        public Boolean document_ext_by_msk_name_from_conception(out eAccess Access)
+        public Boolean document_by_msk_name_from_conception(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
             //=======================
             //=======================
-            cmdk = CommandByKey("document_ext_by_msk_name_from_conception");
+            cmdk = CommandByKey("document_by_msk_name_from_conception");
             if (cmdk != null)
             {
                 Result = cmdk.Access;
@@ -1189,22 +1185,22 @@ namespace pg_class
             }
             return Result;
         }
-
+        
         //*********************************************************************************************
         /// <summary>
         /// Лист документов категории по маске имени документа
         /// </summary>
-        public List<document> document_ext_by_msk_name_from_category(String iname, Int64 iid_category)
+        public List<document> document_by_msk_name_from_category(String iname, Int64 iid_category)
         {
             List<document> entity_list = new List<document>();
 
-            DataTable tbl_entity = TableByName("vdocument_ext");
+            DataTable tbl_entity = TableByName("vdocument");
             //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
             //=======================
             NpgsqlCommandKey cmdk;
 
             //=======================
-            cmdk = CommandByKey("document_ext_by_msk_name_from_category");
+            cmdk = CommandByKey("document_by_msk_name_from_category");
 
             if (cmdk != null)
             {
@@ -1240,14 +1236,14 @@ namespace pg_class
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
-        public Boolean document_ext_by_msk_name_from_category(out eAccess Access)
+        public Boolean document_by_msk_name_from_category(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
             //=======================
             //=======================
-            cmdk = CommandByKey("document_ext_by_msk_name_from_category");
+            cmdk = CommandByKey("document_by_msk_name_from_category");
             if (cmdk != null)
             {
                 Result = cmdk.Access;
@@ -1262,8 +1258,5 @@ namespace pg_class
             }
             return Result;
         }
-
-        #endregion
-        #endregion
     }
 }
