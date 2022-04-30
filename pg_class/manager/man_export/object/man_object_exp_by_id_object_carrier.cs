@@ -17,14 +17,14 @@ namespace pg_class
         /// <summary>
         /// Метод экспорта объектов в Excel по идентификатору объекта носителя
         /// </summary>
-        public Byte[] exp_object_by_id_object_carrier(Int64 iid_object_carrier, eExportMode imode, Boolean iquantity_show)
+        public Byte[] exp_object_by_id_object_carrier_to_excel(Int64 iid_object_carrier, eExportMode imode, Boolean iquantity_show)
         {
             Byte[] Result = null;
             //=======================
             NpgsqlCommandKey cmdk;
             //**********
             //=======================
-            cmdk = CommandByKey("exp_object_by_id_object_carrier");
+            cmdk = CommandByKey("exp_object_by_id_object_carrier_to_excel");
 
             if (cmdk != null)
             {
@@ -49,7 +49,7 @@ namespace pg_class
                 Result = (Byte[])tmp;
             }
 
-            String command_export = String.Format(@"SELECT bpd.exp_object_by_id_object_carrier({0}, {1}, {2})", iid_object_carrier, imode.ToString(), iquantity_show.ToString());
+            String command_export = String.Format(@"SELECT bpd.exp_object_by_id_object_carrier_to_excel({0}, {1}, {2})", iid_object_carrier, imode.ToString(), iquantity_show.ToString());
             //Генерируем событие завершения процедуры экспорта
             ExportCompletedEventArgs e = new ExportCompletedEventArgs(command_export, Result);
             ExportOnCompleted(e);
@@ -66,7 +66,7 @@ namespace pg_class
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
             //=======================
-            cmdk = CommandByKey("exp_object_by_id_object_carrier");
+            cmdk = CommandByKey("exp_object_by_id_object_carrier_to_excel");
             if (cmdk != null)
             {
                 Result = cmdk.Access;
@@ -86,12 +86,12 @@ namespace pg_class
         /// <summary>
         /// Метод экспорта объектов в Excel по идентификатору объекта носителя
         /// </summary>
-        public command_export exp_object_by_id_object_carrier_get_command(Int64 iid_object_carrier, eExportMode imode, Boolean iquantity_show)
+        public command_export exp_object_by_id_object_carrier_to_excel_get_command(Int64 iid_object_carrier, eExportMode imode, Boolean iquantity_show)
         {
             NpgsqlCommandKey cmdk;
             //**********
             //=======================
-            cmdk = CommandByKey("exp_object_by_id_object_carrier", true);
+            cmdk = CommandByKey("exp_object_by_id_object_carrier_to_excel", true);
 
             if (cmdk != null)
             {
@@ -110,7 +110,7 @@ namespace pg_class
             cmdk.Parameters["imode"].Value = (Int32)imode;
             cmdk.Parameters["iquantity_show"].Value = iquantity_show;
 
-            String command_export = String.Format(@"SELECT bpd.exp_object_by_id_object_carrier({0}, {1}, {2}, {3})", iid_object_carrier, imode.ToString(), iquantity_show.ToString());
+            String command_export = String.Format(@"SELECT bpd.exp_object_by_id_object_carrier_to_excel({0}, {1}, {2}, {3})", iid_object_carrier, imode.ToString(), iquantity_show.ToString());
             String Desc = String.Format(@"Отчет: Объекты по идентификатору объекта носителя: {0} | Режим: {1}", iid_object_carrier, manager.ExportMode(imode));
             command_export cm = new command_export(cmdk, command_export, Desc);
             return cm;
