@@ -446,7 +446,7 @@ namespace pg_class.pg_classes
         /// </summary>
         public position position_carrier_get()
         {
-            return Manager.pos_by_id(id_position_carrier);
+            return Manager.position_by_id(id_position_carrier);
         }
 
         /// <summary>

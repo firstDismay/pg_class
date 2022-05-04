@@ -22,7 +22,7 @@ namespace pg_class.pg_classes
         public object Clone()
         {
             object result = null;
-            result = Manager.pos_by_id(id);
+            result = Manager.position_by_id(id);
             return result;
         }
 
@@ -32,7 +32,7 @@ namespace pg_class.pg_classes
         public position CloneExt()
         {
             position result = null;
-            result = Manager.pos_by_id(id);
+            result = Manager.position_by_id(id);
             return result;
         }
     }

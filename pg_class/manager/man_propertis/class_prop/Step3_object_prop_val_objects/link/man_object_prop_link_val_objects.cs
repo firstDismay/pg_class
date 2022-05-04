@@ -232,7 +232,7 @@ namespace pg_class
             cmdk.Parameters["on_internal"].Value = on_internal;
 
             //Предварительный запрос данных
-            position Position_parent = pos_by_id(iid_position);
+            position Position_parent = position_by_id(iid_position);
 
             //Начало транзакции
             cmdk.ExecuteNonQuery();

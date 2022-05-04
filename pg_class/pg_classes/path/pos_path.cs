@@ -104,7 +104,7 @@ namespace pg_class.pg_classes
         /// <returns></returns>
         public position GetPosition()
         {
-            return Manager.pos_by_pos_path(this);
+            return Manager.position_by_pos_path(this);
         }
 
         /// <summary>

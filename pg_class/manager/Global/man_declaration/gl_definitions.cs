@@ -1647,50 +1647,6 @@ namespace pg_class
         /// </summary>
         ViewReport = 4
     }
-
-    /// <summary>
-    /// Перечисление команд экспорта данных
-    /// </summary>
-    internal enum eCommandExport
-    {
-        /// <summary>
-        /// Обобщенная строковая команда экспорта
-        /// </summary>
-        ExportStringCommand,
-        /// <summary>
-        /// Команда экспорта активных классов со свойствами по абстрактному классу носителю
-        /// </summary>
-        ExportClassActWithProp_by_id_parent,
-        /// <summary>
-        /// Команда экспорта активных классов со свойствами по группе носителю
-        /// </summary>
-        ExportClassActWithProp_by_id_group,
-        /// <summary>
-        /// Рекурсивная команда экспорта активных вещественных классов со свойствами по абстрактному классу носителю
-        /// </summary>
-        ExportClassActRealWithProp_by_id_parent,
-        /// <summary>
-        /// Рекурсивная команда экспорта активных вещественных классов со свойствами по группе носителю
-        /// </summary>
-        ExportClassActRealWithProp_by_id_group,
-        /// <summary>
-        /// Команда экспорта обобщенного представления вложенных объектов по позиции носителю
-        /// </summary>
-        ExportObjectGeneral_by_id_pos,
-        /// <summary>
-        /// Команда экспорта расширенного представления вложенных объектов по позиции носителю
-        /// </summary>
-        ExportObjectWithProp_by_id_pos,
-
-        /// <summary>
-        /// Команда экспорта расширенного представления вложенных объектов концепции по маске значения глобального свойства
-        /// </summary>
-        ExportObjectWithProp_by_global_prop_from_con,
-        /// <summary>
-        /// Команда экспорта расширенного представления вложенных объектов позиции по маске значения глобального свойства
-        /// </summary>
-        ExportObjectWithProp_by_global_prop_from_pos
-    }
     #endregion
 
     #region Режимы работы менеджера

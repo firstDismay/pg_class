@@ -403,18 +403,18 @@ namespace pg_class.pg_classes
 
         /// <summary>
         /// Позиция корзины концепции
-        /// pos_by_id
+        /// position_by_id
         /// </summary>
         public position Pos_recycle_get()
         {
-            return Manager.pos_by_id(id_pos_recycle);
+            return Manager.position_by_id(id_pos_recycle);
         }
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
         public Boolean Pos_recycle_get(out eAccess Access)
         {
-            return Manager.pos_by_id(out Access);
+            return Manager.position_by_id(out Access);
         }
         //*************************************************************************************
 

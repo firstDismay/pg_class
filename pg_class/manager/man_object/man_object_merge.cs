@@ -91,7 +91,7 @@ namespace pg_class
                 }
                 else
                 {
-                    position position_carrier = pos_by_id(Object_merging.Id_position);
+                    position position_carrier = position_by_id(Object_merging.Id_position);
                     if (position_carrier != null)
                     {
                         PositionChangeEventArgs pc = new PositionChangeEventArgs(position_carrier, eAction.Update);

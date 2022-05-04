@@ -434,7 +434,7 @@ namespace pg_class.pg_classes
         /// </summary>
         public eEntityState Is_actual()
         {
-            return manager.Instance().pos_is_actual(this);
+            return manager.Instance().position_is_actual(this);
         }
 
         /// <summary>
@@ -444,7 +444,7 @@ namespace pg_class.pg_classes
         {
             if (on_change)
             {           
-                Manager.pos_upd(this);
+                Manager.position_upd(this);
                 Refresh();
                 on_change = false;
             }
@@ -455,7 +455,7 @@ namespace pg_class.pg_classes
         /// </summary>
         public void Move(position ParentPos)
         {
-            Manager.pos_move(this, ParentPos);
+            Manager.position_move(this, ParentPos);
         }
 
         /// <summary>
@@ -463,7 +463,7 @@ namespace pg_class.pg_classes
         /// </summary>
         public void MoveRoot()
         {
-            Manager.pos_move_root(this);
+            Manager.position_move_root(this);
            
         }
 
@@ -472,7 +472,7 @@ namespace pg_class.pg_classes
         /// </summary>
         public position Pos_move(position ParentPos, position ChildPos)
         {
-            return Manager.pos_move(ParentPos, ChildPos);
+            return Manager.position_move(ParentPos, ChildPos);
         }
 
             /// <summary>
@@ -482,7 +482,7 @@ namespace pg_class.pg_classes
         {
             if (lockdel!= onlock)
             {
-                Manager.pos_changelock(this.id, onlock);
+                Manager.position_changelock(this.id, onlock);
                 lockdel = onlock;
             }
         }
@@ -494,7 +494,7 @@ namespace pg_class.pg_classes
         {
             position temp;
             Boolean Result = false;
-            temp = Manager.pos_by_id(id);
+            temp = Manager.position_by_id(id);
 
             if (temp !=null)
             {
@@ -562,7 +562,7 @@ namespace pg_class.pg_classes
         /// </summary>
         public void Del()
         {
-            Manager.pos_del(this);
+            Manager.position_del(this);
         }
         #endregion
 

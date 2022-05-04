@@ -133,7 +133,7 @@ namespace pg_class.pg_classes
                     Result = Manager.pos_temp_by_id(Entity_instance_id);
                     break;
                 case eEntity.position:
-                    Result = Manager.pos_by_id(Entity_instance_id);
+                    Result = Manager.position_by_id(Entity_instance_id);
                     break;
                 case eEntity.pos_temp_prop:
                     Result = Manager.pos_temp_prop_by_id(Entity_instance_id);

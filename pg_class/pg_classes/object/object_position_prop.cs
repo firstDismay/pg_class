@@ -70,11 +70,9 @@ namespace pg_class.pg_classes
         {
             get
             {
-                return Manager.pos_by_id(this.id_position);
+                return Manager.position_by_id(this.id_position);
             }
         }
         #endregion
-
-
     }
 }

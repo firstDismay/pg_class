@@ -17,7 +17,7 @@ namespace pg_class.pg_classes
         {
             get
             {
-                return manager.Instance().pos_by_id_parent(this);
+                return manager.Instance().position_by_id_parent(this);
             }
         }
         #endregion
@@ -28,14 +28,14 @@ namespace pg_class.pg_classes
         /// <summary>
         /// Метод добавляет новую позицию
         /// </summary>
-        public position pos_add(pos_temp pos_temp, String iname, String idesc, Int32 isort)
+        public position position_add(pos_temp pos_temp, String iname, String idesc, Int32 isort)
         {
             position pos = null;
             if (pos_temp != null)
             {
                 if (this.Id_conception == pos_temp.Id_conception)
                 {
-                    pos = Manager.pos_add(this.id, pos_temp.Id, iname, idesc, isort);
+                    pos = Manager.position_add(this.id, pos_temp.Id, iname, idesc, isort);
                 }
                 else
                 {
@@ -51,17 +51,17 @@ namespace pg_class.pg_classes
         /// <summary>
         /// Метод удаляет указанную позицию
         /// </summary>
-        public void Pos_del(position pos)
+        public void Position_del(position pos)
         {
-            Manager.pos_del(pos);
+            Manager.position_del(pos);
         }
 
         /// <summary>
         /// Метод удаляет текущую позицию
         /// </summary>
-        public void Pos_del()
+        public void Position_del()
         {
-            Manager.pos_del(this);
+            Manager.position_del(this);
         }
         #endregion
 
@@ -80,7 +80,7 @@ namespace pg_class.pg_classes
         /// </summary>
         public List<position> Position_by_id_pos_temp(Int64 id_pos_temp)
         {
-            return Manager.pos_by_id_parent(Id, Id_conception, id_pos_temp);
+            return Manager.position_by_id_parent(Id, Id_conception, id_pos_temp);
         }
 
         /// <summary>
@@ -89,7 +89,7 @@ namespace pg_class.pg_classes
         /// </summary>
         public List<position> Position_by_id_pos_temp(pos_temp Pos_temp)
         {
-            return Manager.pos_by_id_parent(this, Pos_temp);
+            return Manager.position_by_id_parent(this, Pos_temp);
         }
         #endregion
         #endregion

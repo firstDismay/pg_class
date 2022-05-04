@@ -13,16 +13,16 @@ namespace pg_class.pg_classes
 
         /// <summary>
         /// Метод добавляет новую позиций
-        /// pos_add
+        /// position_add
         /// </summary>
-        public position pos_add(pos_temp pos_temp, String iname, String idesc, Int32 isort)
+        public position position_add(pos_temp pos_temp, String iname, String idesc, Int32 isort)
         {
             position pos = null;
             if (pos_temp != null)
             {
                 if (this.id == pos_temp.Id_conception)
                 {
-                    pos = Manager.pos_add(0, pos_temp.Id, iname, idesc, isort);
+                    pos = Manager.position_add(0, pos_temp.Id, iname, idesc, isort);
                 }
                 else
                 {
@@ -34,9 +34,9 @@ namespace pg_class.pg_classes
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
-        public Boolean pos_add(out eAccess Access)
+        public Boolean position_add(out eAccess Access)
         {
-            return Manager.pos_add(out Access);
+            return Manager.position_add(out Access);
         }
         //*************************************************************************************
 
@@ -56,18 +56,18 @@ namespace pg_class.pg_classes
         #region УДАЛИТЬ
         /// <summary>
         /// Метод удаляет указанный указанный позиций
-        /// pos_del
+        /// position_del
         /// </summary>
-        public void Pos_del(position pos)
+        public void Position_del(position pos)
         {
-            Manager.pos_del(pos);
+            Manager.position_del(pos);
         }
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
-        public Boolean Pos_del(out eAccess Access)
+        public Boolean Position_del(out eAccess Access)
         {
-            return Manager.pos_del(out Access);
+            return Manager.position_del(out Access);
         }
         //*************************************************************************************
         #endregion
@@ -75,18 +75,18 @@ namespace pg_class.pg_classes
         #region ВЫБРАТЬ
         /// <summary>
         /// Лист позиции концепции
-        /// pos_by_id_parent
+        /// position_by_id_parent
         /// </summary>
         public List<position> Position_list_get()
         {
-            return Manager.pos_by_id_parent(0, id);
+            return Manager.position_by_id_parent(0, id);
         }
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
         public Boolean Position_list_get(out eAccess Access)
         {
-            return Manager.pos_by_id_parent(out Access);
+            return Manager.position_by_id_parent(out Access);
         }
         //*************************************************************************************
         #endregion

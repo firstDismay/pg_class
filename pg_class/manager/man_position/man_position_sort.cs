@@ -54,10 +54,10 @@ namespace pg_class
             switch (error)
             {
                 case 0:
-                    position = pos_by_id(iid_position);
+                    position = position_by_id(iid_position);
                     if (position.Id_parent > 0)
                     {
-                        position = pos_by_id(position.Id_parent);
+                        position = position_by_id(position.Id_parent);
                     }
                     break;
                 default:
@@ -153,10 +153,10 @@ namespace pg_class
             switch (error)
             {
                 case 0:
-                    position = pos_by_id(iid_position);
+                    position = position_by_id(iid_position);
                     if (position.Id_parent > 0)
                     {
-                        position = pos_by_id(position.Id_parent);
+                        position = position_by_id(position.Id_parent);
                     }
                     break;
                 default:
@@ -252,10 +252,10 @@ namespace pg_class
             switch (error)
             {
                 case 0:
-                    position = pos_by_id(iid_position);
+                    position = position_by_id(iid_position);
                     if (position.Id_parent > 0)
                     {
-                        position = pos_by_id(position.Id_parent);
+                        position = position_by_id(position.Id_parent);
                     }
                     break;
                 default:
@@ -351,10 +351,10 @@ namespace pg_class
             switch (error)
             {
                 case 0:
-                    position = pos_by_id(iid_position);
+                    position = position_by_id(iid_position);
                     if (position.Id_parent > 0)
                     {
-                        position = pos_by_id(position.Id_parent);
+                        position = position_by_id(position.Id_parent);
                     }
                     break;
                 default:
@@ -450,10 +450,10 @@ namespace pg_class
             switch (error)
             {
                 case 0:
-                    position = pos_by_id(iid_position_parent);
+                    position = position_by_id(iid_position_parent);
                     if (position.Id_parent > 0)
                     {
-                        position = pos_by_id(position.Id_parent);
+                        position = position_by_id(position.Id_parent);
                     }
                     break;
                 default:

@@ -52,16 +52,16 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.1.1.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.1.1.1\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="Npgsql, Version=4.1.10.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
-      <HintPath>..\packages\Npgsql.4.1.10\lib\net461\Npgsql.dll</HintPath>
+    <Reference Include="Npgsql, Version=4.1.11.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Npgsql.4.1.11\lib\net461\Npgsql.dll</HintPath>
     </Reference>
-    <Reference Include="Npgsql.Json.NET, Version=4.1.9.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
-      <HintPath>..\packages\Npgsql.Json.NET.4.1.9\lib\net461\Npgsql.Json.NET.dll</HintPath>
+    <Reference Include="Npgsql.Json.NET, Version=4.1.11.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Npgsql.Json.NET.4.1.11\lib\net461\Npgsql.Json.NET.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -76,14 +76,14 @@
     <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
     </Reference>
-    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.6.0\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.7.1\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
-    <Reference Include="System.Text.Encodings.Web, Version=4.0.4.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Text.Encodings.Web.4.6.0\lib\netstandard2.0\System.Text.Encodings.Web.dll</HintPath>
+    <Reference Include="System.Text.Encodings.Web, Version=4.0.5.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.4.7.2\lib\net461\System.Text.Encodings.Web.dll</HintPath>
     </Reference>
-    <Reference Include="System.Text.Json, Version=4.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Text.Json.4.6.0\lib\net461\System.Text.Json.dll</HintPath>
+    <Reference Include="System.Text.Json, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Json.4.7.2\lib\net461\System.Text.Json.dll</HintPath>
     </Reference>
     <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
@@ -186,6 +186,15 @@
     <Compile Include="manager\man_calendar\man_plan_given_range_plan.cs" />
     <Compile Include="manager\man_calendar\man_plan_range.cs" />
     <Compile Include="manager\man_calendar\man_plan.cs" />
+    <Compile Include="manager\man_class\man_class_event.cs" />
+    <Compile Include="manager\man_class\man_class_is_actual.cs" />
+    <Compile Include="manager\man_class\man_class_ext_find.cs" />
+    <Compile Include="manager\man_class\man_class_find.cs" />
+    <Compile Include="manager\man_class\man_class_ext_sel.cs" />
+    <Compile Include="manager\man_class\man_class_sel.cs" />
+    <Compile Include="manager\man_class\man_class_del.cs" />
+    <Compile Include="manager\man_class\man_class_upd.cs" />
+    <Compile Include="manager\man_class\man_class_add.cs" />
     <Compile Include="manager\man_doc_lib\categoty\man_doc_categoty_is_actual.cs" />
     <Compile Include="manager\man_doc_lib\categoty\man_doc_categoty_sel.cs" />
     <Compile Include="manager\man_doc_lib\categoty\man_doc_categoty_del.cs" />
@@ -248,6 +257,11 @@
     <Compile Include="manager\man_object\man_object_ext_carrier_sel.cs" />
     <Compile Include="manager\man_object\man_object_carrier_sel.cs" />
     <Compile Include="manager\man_object\man_object_patch.cs" />
+    <Compile Include="manager\man_position\man_position_is_actula.cs" />
+    <Compile Include="manager\man_position\man_position_sel.cs" />
+    <Compile Include="manager\man_position\man_position_del.cs" />
+    <Compile Include="manager\man_position\man_position_upd.cs" />
+    <Compile Include="manager\man_position\man_position_add.cs" />
     <Compile Include="manager\man_position\man_position_sort.cs" />
     <Compile Include="manager\man_position\man_position_sort_event.cs" />
     <Compile Include="manager\man_propertis\class_prop\Step1_class_prop\man_class_prop_snapshot_search_method.cs" />
@@ -306,7 +320,6 @@
     <Compile Include="manager\man_group\man_group_patch.cs" />
     <Compile Include="manager\man_class\man_class_snapshot.cs" />
     <Compile Include="manager\man_class\man_class_patch.cs" />
-    <Compile Include="manager\man_class\man_class.cs" />
     <Compile Include="manager\man_nested_rule\man_pos_temp_rule\man_pos_temp_nested_list.cs" />
     <Compile Include="manager\eventargs\Base\PosTemp\PosTempNestedListChangeEventArgs.cs" />
     <Compile Include="manager\eventargs\Base\Role\UserChangeEventArgs.cs" />

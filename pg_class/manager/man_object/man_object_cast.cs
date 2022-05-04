@@ -402,7 +402,7 @@ namespace pg_class
                 }
             }
             //Генерируем событие изменения представления класса
-            /*position position = pos_by_id(iid_position);
+            /*position position = position_by_id(iid_position);
             PositionChangeEventArgs e = new PositionChangeEventArgs(position, eAction.Cast);
             PositionOnChange(e);*/
             return object_cast_list;

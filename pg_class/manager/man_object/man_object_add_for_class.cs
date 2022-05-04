@@ -58,7 +58,7 @@ namespace pg_class
                 }
             }
 
-            position p = pos_by_id(iid_position_target);
+            position p = position_by_id(iid_position_target);
             if (p != null)
             {
                 //Генерируем событие изменения остава объектов позиции

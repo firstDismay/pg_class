@@ -17,7 +17,7 @@ namespace pg_class.pg_classes
             {
                 get
                 {
-                    return Manager.pos_by_id_pos_temp(this.Id);
+                    return Manager.position_by_id_pos_temp(this.Id);
                 }
             }
         #endregion
@@ -28,7 +28,7 @@ namespace pg_class.pg_classes
         /// </summary>
         public List<position> Pos_inheritance_list_get()
         {
-            return Manager.pos_by_id_pos_temp(this);
+            return Manager.position_by_id_pos_temp(this);
         }
 
 

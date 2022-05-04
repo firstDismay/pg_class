@@ -393,7 +393,7 @@ namespace pg_class.pg_classes
                     Result = Manager.pos_temp_by_id(Link_id_entity_instance);
                     break;
                 case eEntity.position:
-                    Result = Manager.pos_by_id(Link_id_entity_instance);
+                    Result = Manager.position_by_id(Link_id_entity_instance);
                     break;
                 case eEntity.position_prop:
                     Result = Manager.position_prop_by_id(Link_id_entity_instance, Link_id_sub_entity_instance);
@@ -475,7 +475,7 @@ namespace pg_class.pg_classes
                     break;
 
                 case eEntity.position:
-                    position position = Manager.pos_by_id(Link_id_entity_instance);
+                    position position = Manager.position_by_id(Link_id_entity_instance);
                     if (position != null)
                     {
                         entity_instance = position.NamePosition;
@@ -581,7 +581,7 @@ namespace pg_class.pg_classes
                         break;
 
                     case eEntity.position:
-                        position position = Manager.pos_by_id(Link_id_entity_instance);
+                        position position = Manager.position_by_id(Link_id_entity_instance);
                         if (position != null)
                         {
                             entity_instance = position.NamePosition;
@@ -691,7 +691,7 @@ namespace pg_class.pg_classes
                     break;
 
                 case eEntity.position:
-                    position position = Manager.pos_by_id(Link_id_entity_instance);
+                    position position = Manager.position_by_id(Link_id_entity_instance);
                     if (position != null)
                     {
                         entity_instance = position.NamePosition;

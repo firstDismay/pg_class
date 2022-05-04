@@ -234,7 +234,7 @@ namespace pg_class.pg_classes.calendar
                     Result = Manager.pos_temp_by_id(id_entity_instance);
                     break;
                 case eEntity.position:
-                    Result = Manager.pos_by_id(id_entity_instance);
+                    Result = Manager.position_by_id(id_entity_instance);
                     break;
                 case eEntity.position_prop:
                     Result = Manager.position_prop_by_id(id_entity_instance, id_sub_entity_instance);
