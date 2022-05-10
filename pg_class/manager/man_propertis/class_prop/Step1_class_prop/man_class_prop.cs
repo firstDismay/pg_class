@@ -13,6 +13,10 @@ namespace pg_class
 {
     public partial class manager
     {
+     
+        
+        
+        
         #region МЕТОДЫ КЛАССА: УПРАВЛЕНИЕ СВОЙСТВАМИ КЛАССОВ ШАГ №01
 
         #region ДОБАВИТЬ
