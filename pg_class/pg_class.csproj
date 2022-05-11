@@ -321,6 +321,11 @@
     <Compile Include="manager\man_position\man_position_add.cs" />
     <Compile Include="manager\man_position\man_position_sort.cs" />
     <Compile Include="manager\man_position\man_position_sort_event.cs" />
+    <Compile Include="manager\man_pos_temp\man_pos_temp_is_actual.cs" />
+    <Compile Include="manager\man_pos_temp\man_pos_temp_sel.cs" />
+    <Compile Include="manager\man_pos_temp\man_pos_temp_del.cs" />
+    <Compile Include="manager\man_pos_temp\man_pos_temp_upd.cs" />
+    <Compile Include="manager\man_pos_temp\man_pos_temp_add.cs" />
     <Compile Include="manager\man_propertis\class_prop\Step1_class_prop\man_class_prop_snapshot_search_method.cs" />
     <Compile Include="manager\man_propertis\class_prop\Step1_class_prop\man_class_prop_search_method.cs" />
     <Compile Include="manager\man_propertis\class_prop\Step1_class_prop\man_class_prop_sort_event.cs" />
@@ -393,8 +398,8 @@
     <Compile Include="manager\Global\man_declaration\man_functions.cs" />
     <Compile Include="manager\Global\man_init\man_init.cs" />
     <Compile Include="manager\man_class\man_pos_prototype.cs" />
-    <Compile Include="manager\man_position\man_position.cs" />
-    <Compile Include="manager\man_pos_temp\man_pos_temp.cs" />
+    <Compile Include="manager\man_position\man_position_event.cs" />
+    <Compile Include="manager\man_pos_temp\man_pos_temp_event.cs" />
     <Compile Include="manager\Global\man_info\man_info.cs" />
     <Compile Include="pg_classes\calendar\plan\plan_plan_link.cs" />
     <Compile Include="pg_classes\calendar\plan\plan_plan_range.cs" />
