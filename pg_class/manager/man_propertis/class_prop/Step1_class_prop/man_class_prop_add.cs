@@ -1,0 +1,134 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Npgsql;
+using System.Data;
+using pg_class.pg_commands;
+using pg_class.pg_exceptions;
+using pg_class.pg_classes;
+
+namespace pg_class
+{
+    public partial class manager
+    {
+        /// <summary>
+        /// Метод добавляет новое свойство класса
+        /// </summary>
+        public class_prop class_prop_add( Int64 iid_class, Int32 iid_prop_type, Boolean ion_override, Int32 iid_data_type, String iname, String idesc, String itag, Int32 isort)
+        {
+            class_prop class_prop = null;
+            Int64 id = 0;
+            Int32 error;
+            String desc_error;
+            NpgsqlCommandKey cmdk;
+            //**********
+             
+            //=======================
+            cmdk = CommandByKey("class_prop_add2");
+
+            if (cmdk != null)
+            {
+                if (!cmdk.Access)
+                {
+                    throw new AccessDataBaseException(404, String.Format(@"Отказано в доступе к методу: {0}!", cmdk.CommandText));
+                }
+            }
+            else
+            {
+                throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
+            }
+            //=======================
+
+            cmdk.Parameters["iid_class"].Value = iid_class;
+            cmdk.Parameters["iid_prop_type"].Value = iid_prop_type;
+            cmdk.Parameters["ion_override"].Value = ion_override;
+            cmdk.Parameters["iid_data_type"].Value = iid_data_type;
+            cmdk.Parameters["iname"].Value = iname;
+            cmdk.Parameters["idesc"].Value = idesc;
+            cmdk.Parameters["itag"].Value = itag;
+            cmdk.Parameters["isort"].Value = isort;
+
+            //Начало транзакции
+            cmdk.ExecuteNonQuery();
+            
+            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
+            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
+            //SetLastTimeUsing();
+            //=======================
+            switch (error)
+            {
+                case 0:
+                    id = Convert.ToInt64(cmdk.Parameters["outid"].Value);
+                    if (id > 0)
+                    {
+                        class_prop = class_prop_by_id(id);
+                    }
+                    break;
+                default:
+                    //Вызов события журнала
+                    JournalEventArgs me = new JournalEventArgs(id, eEntity.class_prop, error, desc_error, eAction.Insert, eJournalMessageType.error);
+                    JournalMessageOnReceived(me);
+                    throw new PgDataException(error, desc_error);
+            }
+            if (class_prop != null)
+            {
+                //Генерируем событие изменения свойства класса
+                ClassPropChangeEventArgs e = new ClassPropChangeEventArgs(class_prop, eAction.Insert);
+                ClassPropOnChange(e);
+            }
+            //Возвращаем Объект
+            return class_prop;
+        }
+
+        /// <summary>
+        /// Метод добавляет новое свойство класса
+        /// </summary>
+        public class_prop class_prop_add(vclass Class, prop_type Prop_type, Boolean On_Override, con_prop_data_type Data_type, String iname, String idesc, String itag, Int32 isort)
+        {
+            class_prop Result = null;
+            if (Class != null)
+            {
+                if (Class.StorageType == eStorageType.Active)
+                {
+                    Result = class_prop_add(Class.Id, Prop_type.Id, On_Override, Data_type.Id, iname, idesc, itag, isort);
+                }
+                else
+                {
+                    throw new PgDataException(eEntity.class_prop, eAction.Insert, eSubClass_ErrID.SCE3_Violation_Rules,
+                        "Метод обновления данных класса не применим к историческому представлению класса!");
+                }
+            }
+            return Result;
+        }
+
+
+        //-=ACCESS=-***********************************************************************************
+        /// <summary>
+        /// Проверка прав доступа к методу
+        /// </summary>
+        public Boolean class_prop_add(out eAccess Access)
+        {
+            Boolean Result = false;
+            Access = eAccess.NotFound;
+            NpgsqlCommandKey cmdk;
+            //=======================
+            
+            cmdk = CommandByKey("class_prop_add2");
+            if (cmdk != null)
+            {
+                Result = cmdk.Access;
+                if (Result)
+                {
+                    Access = eAccess.Success;
+                }
+                else
+                {
+                    Access = eAccess.NotAvailable;
+                }
+            }
+            return Result;
+        }
+    }
+}
