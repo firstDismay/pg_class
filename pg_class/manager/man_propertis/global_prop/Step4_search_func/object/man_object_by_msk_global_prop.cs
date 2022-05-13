@@ -14,17 +14,20 @@ namespace pg_class
     public partial class manager
     {
         /// <summary>
-        /// Агрегатная функция определяет сумму значений глобальных числовых свойств агрегатных объектов с учетом количества
+        /// Лист объектов по маске значения глобального свойства
         /// </summary>
-        public Decimal object_prop_user_small_agg_func_sum(Int64 iid_global_prop, Int64 iid_object, Boolean on_quantity = true)
+        public List<object_general> object_by_msk_global_prop(Int64 iid_global_prop, String find_mask)
         {
-            Decimal Result = 0;
+            List<object_general> object_list = new List<object_general>();
+
+
+            DataTable tbl_object = TableByName("vobject_general");
+            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
             //=======================
             NpgsqlCommandKey cmdk;
-            //**********
-             
+
             //=======================
-            cmdk = CommandByKey("object_prop_user_small_agg_func_sum");
+            cmdk = CommandByKey("object_by_msk_global_prop");
 
             if (cmdk != null)
             {
@@ -40,41 +43,42 @@ namespace pg_class
             //=======================
 
             cmdk.Parameters["iid_global_prop"].Value = iid_global_prop;
-            cmdk.Parameters["iid_object"].Value = iid_object;
-            cmdk.Parameters["on_quantity"].Value = on_quantity;
+            cmdk.Parameters["find_mask"].Value = find_mask;
 
-            //Начало транзакции
-            Result = (Decimal)cmdk.ExecuteScalar();
+            cmdk.Fill(tbl_object);
             
-            return Result;
+            object_general og;
+            if (tbl_object.Rows.Count > 0)
+            {
+                foreach (System.Data.DataRow dr in tbl_object.Rows)
+                {
+                    og = new object_general(dr);
+                    object_list.Add(og);
+                }
+            }
+            return object_list;
         }
 
         /// <summary>
-        /// Агрегатная функция определяет сумму значений глобальных числовых свойств агрегатных объектов с учетом количества
+        /// Лист объектов по маске значения глобального свойства
         /// </summary>
-        public Decimal object_prop_user_small_agg_func_sum(global_prop GlobalProp, object_general Object, Boolean on_quantity = true)
+        public List<object_general> object_by_msk_global_prop(global_prop Global_prp, String find_mask)
         {
-            Decimal Result = 0;
-            //=======================
-            if (GlobalProp!=null && Object!=null)
-            {
-                Result = object_prop_user_small_agg_func_sum(GlobalProp.Id, Object.Id, on_quantity);
-            }
-            return Result;
+            return object_by_msk_global_prop(Global_prp.Id, find_mask);
         }
 
         //-=ACCESS=-***********************************************************************************
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
-        public Boolean object_prop_user_small_agg_func_sum(out eAccess Access)
+        public Boolean object_by_msk_global_prop(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
             //=======================
             //=======================
-            cmdk = CommandByKey("object_prop_user_small_agg_func_sum");
+            cmdk = CommandByKey("object_by_msk_global_prop");
             if (cmdk != null)
             {
                 Result = cmdk.Access;

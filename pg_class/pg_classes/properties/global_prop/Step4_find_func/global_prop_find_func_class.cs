@@ -40,12 +40,12 @@ namespace pg_class.pg_classes
             List<vclass> Result;
             if (Extended)
             {
-                Result = Manager.class_act_ext_by_msk_global_prop_from_class(id, iid_class, find_mask, class_real_only);
+                Result = Manager.class_act_ext_by_msk_global_prop_id_class(id, iid_class, find_mask, class_real_only);
                 
             }
             else
             {
-                Result = Manager.class_act_by_msk_global_prop_from_class(id, iid_class, find_mask, class_real_only);
+                Result = Manager.class_act_by_msk_global_prop_id_class(id, iid_class, find_mask, class_real_only);
             }
             return Result;
         }
@@ -59,12 +59,12 @@ namespace pg_class.pg_classes
             List<vclass> Result;
             if (Extended)
             {
-                Result = Manager.class_act_ext_by_msk_global_prop_from_group(id, iid_group, find_mask, class_real_only);
+                Result = Manager.class_act_ext_by_msk_global_prop_id_group(id, iid_group, find_mask, class_real_only);
                 
             }
             else
             {
-                Result = Manager.class_act_by_msk_global_prop_from_group(id, iid_group, find_mask, class_real_only);
+                Result = Manager.class_act_by_msk_global_prop_id_group(id, iid_group, find_mask, class_real_only);
             }
             return Result;
         }

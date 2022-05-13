@@ -14,18 +14,19 @@ namespace pg_class
     public partial class manager
     {
         /// <summary>
-        /// Метод переопределяет тэг для всех связанных свойств класса
+        /// Метод изменяет сортировку свойства активного класса поднимая указанное свойство вверх
         /// </summary>
-        public global_prop global_prop_set_tag_class_prop(Int64 iid_global_prop, String itag)
+        public class_prop class_prop_sort_top(Int64 iid_class_prop)
         {
-            global_prop global_prop = null;
+            class_prop class_prop = null;
+            vclass class_sort = null;
             Int32 error;
             String desc_error;
             NpgsqlCommandKey cmdk;
             //**********
-            
+             
             //=======================
-            cmdk = CommandByKey("global_prop_set_tag_class_prop");
+            cmdk = CommandByKey("class_prop_sort_top");
 
             if (cmdk != null)
             {
@@ -40,47 +41,55 @@ namespace pg_class
             }
             //=======================
 
-            cmdk.Parameters["iid_global_prop"].Value = iid_global_prop;
-            cmdk.Parameters["itag"].Value = itag;
-            
+            cmdk.Parameters["iid_class_prop"].Value = iid_class_prop;
             //=======================
-
             //Начало транзакции
             cmdk.ExecuteNonQuery();
-            
+
             error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
             desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            //SetLastTimeUsing();
             //=======================
             switch (error)
             {
                 case 0:
-                    global_prop = global_prop_by_id(iid_global_prop);
+                    class_prop = class_prop_by_id(iid_class_prop);
+                    class_sort = class_act_by_id(class_prop.Id_class);
                     break;
                 default:
                     //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(iid_global_prop, eEntity.global_prop, error, desc_error, eAction.Update, eJournalMessageType.error);
+                    JournalEventArgs me = new JournalEventArgs(iid_class_prop, eEntity.class_prop, error, desc_error, eAction.Update, eJournalMessageType.error);
                     JournalMessageOnReceived(me);
                     throw new PgDataException(error, desc_error);
             }
-            //Генерируем событие изменения свойства класса
-            GlobalPropChangeEventArgs e = new GlobalPropChangeEventArgs(global_prop, eAction.Update);
-            GlobalPropOnChange(e);
+            //Генерируем событие применения метода сортировки
+            if (class_sort != null)
+            {
+                ClassChangeEventArgs e = new ClassChangeEventArgs(class_sort, eAction.Update);
+                ClassPropSortOnChange(e);
+            }
             //Возвращаем Объект
-            return global_prop;
+            return class_prop;
         }
 
         /// <summary>
-        /// Метод изменяет свойство активного представления класса
+        /// Метод изменяет сортировку свойства активного класса поднимая указанное свойство вверх
         /// </summary>
-        public global_prop global_prop_set_tag_class_prop(global_prop Global_prop, String itag)
+        public class_prop class_prop_sort_top(class_prop Class_prop)
         {
 
-            global_prop Result = null;
-            if (Global_prop != null)
+            class_prop Result = null;
+            if (Class_prop != null)
             {
-                Result = global_prop_set_tag_class_prop(Global_prop.Id, itag);
-            } 
+                if (Class_prop.StorageType == eStorageType.Active)
+                {
+                    Result = class_prop_sort_top(Class_prop.Id);
+                }
+                else
+                {
+                    throw new PgDataException(eEntity.class_prop, eAction.Update, eSubClass_ErrID.SCE3_Violation_Rules,
+                        "Метод обновления данных свойства класса не применим к историческому представлению класса!");
+                }
+            }
             return Result;
         }
 
@@ -88,14 +97,14 @@ namespace pg_class
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
-        public Boolean global_prop_set_tag_class_prop(out eAccess Access)
+        public Boolean class_prop_sort_top(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
             //=======================
             //=======================
-            cmdk = CommandByKey("global_prop_set_tag_class_prop");
+            cmdk = CommandByKey("class_prop_sort_top");
             if (cmdk != null)
             {
                 Result = cmdk.Access;

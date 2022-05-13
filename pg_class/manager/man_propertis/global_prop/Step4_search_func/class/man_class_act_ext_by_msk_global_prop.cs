@@ -14,17 +14,20 @@ namespace pg_class
     public partial class manager
     {
         /// <summary>
-        /// Агрегатная функция определяет сумму значений глобальных числовых свойств агрегатных объектов с учетом количества
+        /// Лист представлений активных классов по маске значения глобального свойства
         /// </summary>
-        public Decimal object_prop_user_small_agg_func_sum(Int64 iid_global_prop, Int64 iid_object, Boolean on_quantity = true)
+        public List<vclass> class_act_ext_by_msk_global_prop(Int64 iid_global_prop, String find_mask, Boolean class_real_only)
         {
-            Decimal Result = 0;
+            List<vclass> vclass_list = new List<vclass>();
+
+
+            DataTable tbl_vclass = TableByName("vclass_ext");
+            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
             //=======================
             NpgsqlCommandKey cmdk;
-            //**********
-             
+
             //=======================
-            cmdk = CommandByKey("object_prop_user_small_agg_func_sum");
+            cmdk = CommandByKey("class_act_ext_by_msk_global_prop");
 
             if (cmdk != null)
             {
@@ -40,41 +43,43 @@ namespace pg_class
             //=======================
 
             cmdk.Parameters["iid_global_prop"].Value = iid_global_prop;
-            cmdk.Parameters["iid_object"].Value = iid_object;
-            cmdk.Parameters["on_quantity"].Value = on_quantity;
+            cmdk.Parameters["find_mask"].Value = find_mask;
+            cmdk.Parameters["class_real_only"].Value = class_real_only;
 
-            //Начало транзакции
-            Result = (Decimal)cmdk.ExecuteScalar();
+            cmdk.Fill(tbl_vclass);
             
-            return Result;
+            vclass vc;
+            if (tbl_vclass.Rows.Count > 0)
+            {
+                foreach (System.Data.DataRow dr in tbl_vclass.Rows)
+                {
+                    vc = new vclass(dr);
+                    vclass_list.Add(vc);
+                }
+            }
+            return vclass_list;
         }
 
         /// <summary>
-        /// Агрегатная функция определяет сумму значений глобальных числовых свойств агрегатных объектов с учетом количества
+        /// Лист представлений активных классов по маске значения глобального свойства
         /// </summary>
-        public Decimal object_prop_user_small_agg_func_sum(global_prop GlobalProp, object_general Object, Boolean on_quantity = true)
+        public List<vclass> class_act_ext_by_msk_global_prop(global_prop Global_prp, String find_mask, Boolean class_real_only)
         {
-            Decimal Result = 0;
-            //=======================
-            if (GlobalProp!=null && Object!=null)
-            {
-                Result = object_prop_user_small_agg_func_sum(GlobalProp.Id, Object.Id, on_quantity);
-            }
-            return Result;
+            return class_act_ext_by_msk_global_prop(Global_prp.Id, find_mask, class_real_only);
         }
 
         //-=ACCESS=-***********************************************************************************
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
-        public Boolean object_prop_user_small_agg_func_sum(out eAccess Access)
+        public Boolean class_ext_by_msk_global_prop(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
             //=======================
             //=======================
-            cmdk = CommandByKey("object_prop_user_small_agg_func_sum");
+            cmdk = CommandByKey("class_act_ext_by_msk_global_prop");
             if (cmdk != null)
             {
                 Result = cmdk.Access;
