@@ -13,8 +13,6 @@ namespace pg_class
 {
     public partial class manager
     {
-        #region СОБЫТИЕ ИСПОЛЬЗОВАНИЯ МЕТОДОВ СОРТИРОВКИ СВОЙСТВ ШАБЛОНА ПОЗИЦИИ
-
         /// <summary>
         /// Делегат событие применения методов сортировки свойств шаблона позиции
         /// </summary>
@@ -41,6 +39,5 @@ namespace pg_class
             JournalEventArgs me = new JournalEventArgs(e);
             JournalMessageOnReceived(me);
         }
-        #endregion
     }
 }

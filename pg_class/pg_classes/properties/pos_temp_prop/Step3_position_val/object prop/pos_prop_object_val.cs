@@ -285,7 +285,7 @@ namespace pg_class.pg_classes
             List<object_general> Result;
             if (Extended)
             {
-                Result = Manager.object_object_prop_by_id_position_carrier_ext(id_position_carrier, id_pos_temp_prop_position_carrier); 
+                Result = Manager.object_ext_object_prop_by_id_object_carrier(id_position_carrier, id_pos_temp_prop_position_carrier); 
             }
             else
             {
