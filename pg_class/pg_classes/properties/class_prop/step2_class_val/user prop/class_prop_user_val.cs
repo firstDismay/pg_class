@@ -521,8 +521,6 @@ namespace pg_class.pg_classes
             return Result;
         }
 
-
-
         private String val_text;
         /// <summary>
         /// Значение свойства типа Text

@@ -13,9 +13,6 @@ namespace pg_class
 {
     public partial class manager
     {
-        #region МЕТОДЫ КЛАССА: БАЗОВЫЕ РОЛИ
-        #region ВЫБРАТЬ
-
         /// <summary>
         /// Лист базовых ролей пользователя
         /// </summary>
@@ -152,19 +149,5 @@ namespace pg_class
             }
             return Result;
         }
-        //*********************************************************************************************
-
-        #endregion
-        #endregion
-
-        #region ПОЛЯ И ПЕРЕМЕННЫЕ КЛАССА: ПОЛЬЗОВАТЕЛИ
-        /// <summary>
-        /// Лист базовых ролей сервера
-        /// </summary>
-        public List<role_base> User_role_base_all_get()
-        {
-            return user_role_base_by_all();
-        }
-        #endregion
     }
 }

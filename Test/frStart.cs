@@ -11,8 +11,6 @@ using System.Windows.Forms;
 using pg_class.pg_classes;
 using pg_class;
 using System.IO;
-using System.Text.Json;
-using System.Text.Json.Serialization;
 using pg_class.pg_commands;
 using NpgsqlTypes;
 using Npgsql;

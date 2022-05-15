@@ -82,9 +82,6 @@
     <Reference Include="System.Text.Encodings.Web, Version=4.0.5.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Text.Encodings.Web.4.7.2\lib\net461\System.Text.Encodings.Web.dll</HintPath>
     </Reference>
-    <Reference Include="System.Text.Json, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Text.Json.4.7.2\lib\net461\System.Text.Json.dll</HintPath>
-    </Reference>
     <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
@@ -539,8 +536,9 @@
     <Compile Include="manager\man_propertis\pos_temp\Step3_position_prop_val\user\man_pos_prop_user_val_upd.cs" />
     <Compile Include="manager\man_propertis\pos_temp\Step3_position_prop_val\user\man_pos_prop_user_val_add.cs" />
     <Compile Include="manager\man_propertis\pos_temp\Step3_position_prop_val\user\man_pos_prop_user_val_event.cs" />
-    <Compile Include="manager\man_role\man_role_user.cs" />
-    <Compile Include="manager\man_role\man_role_base.cs" />
+    <Compile Include="manager\man_role\role_base\man_role_base_sel.cs" />
+    <Compile Include="manager\man_role\role_user\man_role_user.cs" />
+    <Compile Include="manager\man_role\role_base\man_role_base_current.cs" />
     <Compile Include="manager\man_nested_rule\man_object_rule_L2\man_rulel2_class_on_position_event.cs" />
     <Compile Include="manager\man_nested_rule\man_object_rule_L1\man_rulel1_group\man_rulel1_group_on_pos_temp_event.cs" />
     <Compile Include="manager\man_class\man_unit_rule.cs" />
@@ -558,7 +556,7 @@
     <Compile Include="manager\Global\man_info\man_ver.cs" />
     <Compile Include="manager\man_position\man_position_path.cs" />
     <Compile Include="manager\man_propertis\common\man_prop_data_type.cs" />
-    <Compile Include="manager\man_role\man_user.cs" />
+    <Compile Include="manager\man_role\user\man_user.cs" />
     <Compile Include="manager\man_propertis\pos_temp\Step1_pos_temp_prop\man_pos_temp_prop_event.cs" />
     <Compile Include="manager\man_class\man_conception.cs" />
     <Compile Include="manager\Global\man_declaration\man_functions.cs" />

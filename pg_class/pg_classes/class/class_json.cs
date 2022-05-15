@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Text.Json;
 using System.Data;
-using System.Text.Json.Serialization;
+using Newtonsoft.Json;
+
 
 namespace pg_class.pg_classes
 {
@@ -19,8 +19,7 @@ namespace pg_class.pg_classes
         public String ToJsonString()
         {
             Object[] oa = crow.ItemArray;
-            return JsonSerializer.Serialize(oa);
+            return JsonConvert.SerializeObject(oa, Formatting.Indented);
         }
     }
-
 }
