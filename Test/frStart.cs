@@ -70,13 +70,13 @@ namespace Test
 
 
             comboBox1.DataSource = NEW_pg_class.Conception_list;
-            NEW_pg_class.Info.Current_Configurator = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
+            NEW_pg_class.Info.Current_Configurator = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version; 
 
             ///ИЗВРАЩАИТЬСЯ ТУТ
             ///
 
-
-            vclass c = NEW_pg_class.class_act_by_id(6415);
+            
+            /* vclass c = NEW_pg_class.class_act_by_id(6415);
 
             json_object_parameters cop;
 
@@ -168,7 +168,7 @@ namespace Test
 
 
 
-            //Json[] args = new json_array_prop(){arg};
+            //Json[] args = new json_array_prop(){arg}; /*
 
 
 
@@ -205,7 +205,7 @@ namespace Test
              System.Threading.Thread tk17 = new System.Threading.Thread(task);
              System.Threading.Thread tk18 = new System.Threading.Thread(task);
              System.Threading.Thread tk19 = new System.Threading.Thread(task);
-             System.Threading.Thread tk20 = new System.Threading.Thread(task);*/
+             System.Threading.Thread tk20 = new System.Threading.Thread(task); /*
 
 
             /*tk1.Start();
@@ -251,7 +251,7 @@ namespace Test
             //listBox1.DataSource = we;
             //List<errarg_object_add> we = NEW_pg_class.object_add_for_class_act(650, 1160);
 
-
+            //
 
             foreach (eDataType t in  (eDataType[])Enum.GetValues(typeof(eDataType)))
             {
