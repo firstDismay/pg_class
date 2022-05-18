@@ -319,7 +319,7 @@ namespace pg_class.pg_classes
         /// </summary>
         public eEntityState Is_actual()
         {
-            return Manager.con_is_actual(this);
+            return Manager.conception_is_actual(this);
         }
 
         /// <summary>
@@ -456,7 +456,7 @@ namespace pg_class.pg_classes
         /// </summary>
         public Boolean Is_actual(out eAccess Access)
         {
-            return Manager.con_is_actual(out Access);
+            return Manager.conception_is_actual(out Access);
         }
         //*************************************************************************************
 

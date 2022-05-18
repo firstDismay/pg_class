@@ -30,7 +30,7 @@ namespace pg_class
             //**********
              
             //=======================
-            cmdk = CommandByKey("con_add");
+            cmdk = CommandByKey("conception_add");
 
             if (cmdk != null)
             {
@@ -88,7 +88,7 @@ namespace pg_class
             NpgsqlCommandKey cmdk;
             //=======================
             //=======================
-            cmdk = CommandByKey("con_add");
+            cmdk = CommandByKey("conception_add");
             if (cmdk != null)
             {
                 Result =  cmdk.Access;
@@ -119,7 +119,7 @@ namespace pg_class
             //**********
              
             //=======================
-            cmdk = CommandByKey("con_upd2");
+            cmdk = CommandByKey("conception_upd");
 
             if (cmdk != null)
             {
@@ -185,7 +185,7 @@ namespace pg_class
             NpgsqlCommandKey cmdk;
             //=======================
             //=======================
-            cmdk = CommandByKey("con_upd2");
+            cmdk = CommandByKey("conception_upd");
             if (cmdk != null)
             {
                 Result = cmdk.Access;
@@ -214,7 +214,7 @@ namespace pg_class
             //**********
 
             //=======================
-            cmdk = CommandByKey("con_restore");
+            cmdk = CommandByKey("conception_restore");
 
             if (cmdk != null)
             {
@@ -275,7 +275,7 @@ namespace pg_class
             NpgsqlCommandKey cmdk;
             //=======================
             //=======================
-            cmdk = CommandByKey("con_restore");
+            cmdk = CommandByKey("conception_restore");
             if (cmdk != null)
             {
                 Result = cmdk.Access;
@@ -305,7 +305,7 @@ namespace pg_class
             //**********
              
             //=======================
-            cmdk = CommandByKey("con_del");
+            cmdk = CommandByKey("conception_del");
 
             if (cmdk != null)
             {
@@ -365,7 +365,7 @@ namespace pg_class
             NpgsqlCommandKey cmdk;
             //=======================
             //=======================
-            cmdk = CommandByKey("con_del");
+            cmdk = CommandByKey("conception_del");
             if (cmdk != null)
             {
                 Result = cmdk.Access;
@@ -399,7 +399,7 @@ namespace pg_class
             NpgsqlCommandKey cmdk;
 
             //=======================
-            cmdk = CommandByKey("con_by_id");
+            cmdk = CommandByKey("conception_by_id");
 
             if (cmdk != null)
             {
@@ -436,7 +436,7 @@ namespace pg_class
             NpgsqlCommandKey cmdk;
             //=======================
             //=======================
-            cmdk = CommandByKey("con_by_id");
+            cmdk = CommandByKey("conception_by_id");
             if (cmdk != null)
             {
                 Result = cmdk.Access;
@@ -467,7 +467,7 @@ namespace pg_class
             NpgsqlCommandKey cmdk;
 
             //=======================
-            cmdk = CommandByKey("con_by_all");
+            cmdk = CommandByKey("conception_by_all");
 
             if (cmdk != null)
             {
@@ -511,7 +511,7 @@ namespace pg_class
             NpgsqlCommandKey cmdk;
             //=======================
             //=======================
-            cmdk = CommandByKey("con_by_all");
+            cmdk = CommandByKey("conception_by_all");
             if (cmdk != null)
             {
                 Result = cmdk.Access;
@@ -542,7 +542,7 @@ namespace pg_class
             NpgsqlCommandKey cmdk;
 
             //=======================
-            cmdk = CommandByKey("con_by_default");
+            cmdk = CommandByKey("conception_by_default");
 
             if (cmdk != null)
             {
@@ -579,7 +579,7 @@ namespace pg_class
             NpgsqlCommandKey cmdk;
             //=======================
             //=======================
-            cmdk = CommandByKey("con_by_defaul");
+            cmdk = CommandByKey("conception_by_default");
             if (cmdk != null)
             {
                 Result = cmdk.Access;
@@ -603,7 +603,7 @@ namespace pg_class
         /// <summary>
         /// Метод определяет актуальность состояния концепции
         /// </summary>
-        public eEntityState con_is_actual(Int64 iid, DateTime mytimestamp)
+        public eEntityState conception_is_actual(Int64 iid, DateTime mytimestamp)
         {
             Int32 is_actual = 3;
             //=======================
@@ -611,7 +611,7 @@ namespace pg_class
             //**********
              
             //=======================
-            cmdk = CommandByKey("con_is_actual2");
+            cmdk = CommandByKey("conception_is_actual");
 
             if (cmdk != null)
             {
@@ -638,23 +638,23 @@ namespace pg_class
         /// <summary>
         /// Метод определяет актуальность состояния концепции
         /// </summary>
-        public eEntityState con_is_actual(conception Conception)
+        public eEntityState conception_is_actual(conception Conception)
         {
-            return con_is_actual(Conception.Id, Conception.Timestamp);
+            return conception_is_actual(Conception.Id, Conception.Timestamp);
         }
 
         //-=ACCESS=-***********************************************************************************
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
-        public Boolean con_is_actual(out eAccess Access)
+        public Boolean conception_is_actual(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
             //=======================
             //=======================
-            cmdk = CommandByKey("con_is_actual2");
+            cmdk = CommandByKey("conception_is_actual");
             if (cmdk != null)
             {
                 Result = cmdk.Access;

@@ -25,7 +25,7 @@ namespace pg_class
             //**********
              
             //=======================
-            cmdk = CommandByKey("class_prop_upd2");
+            cmdk = CommandByKey("class_prop_upd");
 
             if (cmdk != null)
             {
@@ -112,7 +112,7 @@ namespace pg_class
             NpgsqlCommandKey cmdk;
             //=======================
             //=======================
-            cmdk = CommandByKey("class_prop_upd2");
+            cmdk = CommandByKey("class_prop_upd");
             if (cmdk != null)
             {
                 Result = cmdk.Access;
