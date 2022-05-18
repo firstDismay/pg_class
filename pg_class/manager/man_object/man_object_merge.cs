@@ -33,7 +33,7 @@ namespace pg_class
             }
 
             //=======================
-            cmdk = CommandByKey("object_merging2");
+            cmdk = CommandByKey("object_merging");
 
             if (cmdk != null)
             {
@@ -136,7 +136,7 @@ namespace pg_class
             NpgsqlCommandKey cmdk;
             //=======================
             //=======================
-            cmdk = CommandByKey("object_merging2");
+            cmdk = CommandByKey("object_merging");
             if (cmdk != null)
             {
                 Result = cmdk.Access;
