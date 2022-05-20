@@ -500,17 +500,17 @@ namespace pg_class.pg_classes
         /// <summary>
         /// Лист ролей пользователя
         /// </summary>
-        public List<role_user> Role_user_list_get()
+        public List<role_user> Role_user_list_get(Boolean recursive)
         {
-            return Manager.user_role_user_by_login(rolname);
+            return Manager.user_role_user_by_login(rolname, recursive);
         }
 
         /// <summary>
         /// Лист ролей базовых пользователя
         /// </summary>
-        public List<role_base> Role_base_list_get()
+        public List<role_base> Role_base_list_get(Boolean recursive)
         {
-            return Manager.user_role_base_by_login(rolname);
+            return Manager.user_role_base_by_login(rolname, recursive);
         }
 
         /// <summary>
