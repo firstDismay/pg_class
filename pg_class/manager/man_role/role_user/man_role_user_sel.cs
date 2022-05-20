@@ -221,7 +221,7 @@ namespace pg_class
         /// <summary>
         /// Лист ролей пользователя
         /// </summary>
-        public List<role_user> user_role_user_by_login(String ilogin)
+        public List<role_user> user_role_user_by_login(String ilogin, Boolean irecursive)
         {
             List<role_user> rol_list = new List<role_user>();
 
@@ -231,7 +231,7 @@ namespace pg_class
             NpgsqlCommandKey cmdk;
 
             //=======================
-            cmdk = CommandByKey("usr_role_user_by_login");
+            cmdk = CommandByKey("usr_role_user_by_login2");
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -245,6 +245,7 @@ namespace pg_class
             }
 
             cmdk.Parameters["ilogin"].Value = ilogin;
+            cmdk.Parameters["irecursive"].Value = irecursive;
 
             cmdk.Fill(tbl_rol);
             
@@ -271,7 +272,7 @@ namespace pg_class
             NpgsqlCommandKey cmdk;
             //=======================
             //=======================
-            cmdk = CommandByKey("usr_role_user_by_login");
+            cmdk = CommandByKey("usr_role_user_by_login2");
             if (cmdk != null)
             {
                 Result = cmdk.Access;

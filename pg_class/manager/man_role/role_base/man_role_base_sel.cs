@@ -16,7 +16,7 @@ namespace pg_class
         /// <summary>
         /// Лист базовых ролей пользователя
         /// </summary>
-        public List<role_base> user_role_base_by_login(String login)
+        public List<role_base> user_role_base_by_login(String ilogin, Boolean irecursive)
         {
             List<role_base> rol_list = new List<role_base>();
 
@@ -26,7 +26,7 @@ namespace pg_class
             NpgsqlCommandKey cmdk;
 
             //=======================
-            cmdk = CommandByKey("usr_role_base_by_login");
+            cmdk = CommandByKey("usr_role_base_by_login2");
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -39,7 +39,8 @@ namespace pg_class
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
 
-            cmdk.Parameters["login"].Value = login;
+            cmdk.Parameters["ilogin"].Value = ilogin;
+            cmdk.Parameters["irecursive"].Value = irecursive;
 
             cmdk.Fill(tbl_rol);
             
@@ -66,7 +67,7 @@ namespace pg_class
             NpgsqlCommandKey cmdk;
             //=======================
             //=======================
-            cmdk = CommandByKey("usr_role_base_by_login");
+            cmdk = CommandByKey("usr_role_base_by_login2");
             if (cmdk != null)
             {
                 Result = cmdk.Access;

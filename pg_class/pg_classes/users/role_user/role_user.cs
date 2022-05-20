@@ -366,9 +366,9 @@ namespace pg_class.pg_classes
         /// <summary>
         /// Лист ролей пользователя
         /// </summary>
-        public List<role_base> Roles_base_list_get()
+        public List<role_base> Roles_base_list_get(Boolean recursive)
         {
-            return Manager.user_role_base_by_login(namesys);
+            return Manager.user_role_base_by_login(namesys, recursive);
         }
 
         /// <summary>
