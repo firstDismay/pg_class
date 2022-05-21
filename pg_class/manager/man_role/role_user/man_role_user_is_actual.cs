@@ -24,7 +24,7 @@ namespace pg_class
             //**********
              
             //=======================
-            cmdk = CommandByKey("usr_role_user_is_actual");
+            cmdk = CommandByKey("user_role_user_is_actual");
 
             if (cmdk != null)
             {
@@ -59,14 +59,14 @@ namespace pg_class
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
-        public Boolean usr_role_user_is_actual(out eAccess Access)
+        public Boolean user_role_user_is_actual(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
             //=======================
             //=======================
-            cmdk = CommandByKey("usr_role_user_is_actual");
+            cmdk = CommandByKey("user_role_user_is_actual");
 
             if (cmdk != null)
             {

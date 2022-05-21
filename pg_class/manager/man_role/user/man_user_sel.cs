@@ -29,7 +29,7 @@ namespace pg_class
             NpgsqlCommandKey cmdk;
 
             //=======================
-            cmdk = CommandByKey("usr_by_login");
+            cmdk = CommandByKey("user_by_login");
 
             if (cmdk != null)
             {
@@ -66,7 +66,7 @@ namespace pg_class
             NpgsqlCommandKey cmdk;
             //=======================
             //=======================
-            cmdk = CommandByKey("usr_by_login");
+            cmdk = CommandByKey("user_by_login");
             if (cmdk != null)
             {
                 Result = cmdk.Access;
@@ -96,7 +96,7 @@ namespace pg_class
             NpgsqlCommandKey cmdk;
 
             //=======================
-            cmdk = CommandByKey("usr_by_id");
+            cmdk = CommandByKey("user_by_id");
 
             if (cmdk != null)
             {
@@ -133,7 +133,7 @@ namespace pg_class
             NpgsqlCommandKey cmdk;
             //=======================
             //=======================
-            cmdk = CommandByKey("usr_by_id");
+            cmdk = CommandByKey("user_by_id");
             if (cmdk != null)
             {
                 Result = cmdk.Access;
@@ -164,7 +164,7 @@ namespace pg_class
             NpgsqlCommandKey cmdk;
 
             //=======================
-            cmdk = CommandByKey("usr_by_all");
+            cmdk = CommandByKey("user_by_all");
 
             if (cmdk != null)
             {
@@ -204,7 +204,7 @@ namespace pg_class
             NpgsqlCommandKey cmdk;
             //=======================
             //=======================
-            cmdk = CommandByKey("usr_by_all");
+            cmdk = CommandByKey("user_by_all");
             if (cmdk != null)
             {
                 Result = cmdk.Access;
@@ -234,7 +234,7 @@ namespace pg_class
             NpgsqlCommandKey cmdk;
 
             //=======================
-            cmdk = CommandByKey("usr_by_roles");
+            cmdk = CommandByKey("user_by_roles");
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -275,7 +275,7 @@ namespace pg_class
             NpgsqlCommandKey cmdk;
             //=======================
             //=======================
-            cmdk = CommandByKey("usr_by_roles");
+            cmdk = CommandByKey("user_by_roles");
             if (cmdk != null)
             {
                 Result = cmdk.Access;
@@ -306,7 +306,7 @@ namespace pg_class
             NpgsqlCommandKey cmdk;
 
             //=======================
-            cmdk = CommandByKey("usr_by_current");
+            cmdk = CommandByKey("user_by_current");
 
             if (cmdk != null)
             {
@@ -341,7 +341,7 @@ namespace pg_class
             NpgsqlCommandKey cmdk;
             //=======================
             //=======================
-            cmdk = CommandByKey("usr_by_current");
+            cmdk = CommandByKey("user_by_current");
             if (cmdk != null)
             {
                 Result = cmdk.Access;
@@ -375,7 +375,7 @@ namespace pg_class
             NpgsqlCommandKey cmdk;
 
             //=======================
-            cmdk = CommandByKey("usr_base_function_by_current");
+            cmdk = CommandByKey("user_base_function_by_current");
 
             if (cmdk != null)
             {
@@ -414,7 +414,7 @@ namespace pg_class
             NpgsqlCommandKey cmdk;
             //=======================
             //=======================
-            cmdk = CommandByKey("usr_base_function_by_current");
+            cmdk = CommandByKey("user_base_function_by_current");
             if (cmdk != null)
             {
                 Result = cmdk.Access;
@@ -445,7 +445,7 @@ namespace pg_class
             NpgsqlCommandKey cmdk;
 
             //=======================
-            cmdk = CommandByKey("usr_base_function_by_login");
+            cmdk = CommandByKey("user_base_function_by_login");
 
             if (cmdk != null)
             {
@@ -486,7 +486,7 @@ namespace pg_class
             NpgsqlCommandKey cmdk;
             //=======================
             //=======================
-            cmdk = CommandByKey("usr_base_function_by_login");
+            cmdk = CommandByKey("user_base_function_by_login");
             if (cmdk != null)
             {
                 Result = cmdk.Access;

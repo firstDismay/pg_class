@@ -28,7 +28,7 @@ namespace pg_class
             //**********
              
             //=======================
-            cmdk = CommandByKey("usr_add");
+            cmdk = CommandByKey("user_add");
 
             if (cmdk != null)
             {
@@ -97,7 +97,7 @@ namespace pg_class
             NpgsqlCommandKey cmdk;
             //=======================
             //=======================
-            cmdk = CommandByKey("usr_add");
+            cmdk = CommandByKey("user_add");
             if (cmdk != null)
             {
                 Result = cmdk.Access;
