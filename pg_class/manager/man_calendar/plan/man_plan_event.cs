@@ -23,8 +23,7 @@ namespace pg_class
         /// Событие возникает при изменении плана методом доступа к БД
         /// </summary>
         public event PlanChangeEventHandler PlanChange;
-        //===========================================================
-
+        
         /// <summary>
         ///  Метод вызова события изменения плана
         /// </summary>

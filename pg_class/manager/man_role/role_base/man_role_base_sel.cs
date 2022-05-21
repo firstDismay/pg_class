@@ -20,12 +20,10 @@ namespace pg_class
         {
             List<role_base> rol_list = new List<role_base>();
 
-            DataTable tbl_rol =  TableByName("vrole_base"); //TableByName("roles");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
+            DataTable tbl_rol =  TableByName("vrole_base");
             NpgsqlCommandKey cmdk;
 
-            //=======================
+
             cmdk = CommandByKey("usr_role_base_by_login2");
             if (cmdk != null)
             {
@@ -65,8 +63,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+
             cmdk = CommandByKey("usr_role_base_by_login2");
             if (cmdk != null)
             {
@@ -82,7 +79,6 @@ namespace pg_class
             }
             return Result;
         }
-        //*********************************************************************************************
         
         /// <summary>
         /// Лист базовых ролей
@@ -91,12 +87,9 @@ namespace pg_class
         {
             List<role_base> rol_list = new List<role_base>();
 
-            DataTable tbl_rol =  TableByName("vrole_base"); //TableByName("roles");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
+            DataTable tbl_rol =  TableByName("vrole_base");
             NpgsqlCommandKey cmdk;
 
-            //=======================
             cmdk = CommandByKey("usr_role_base_by_all");
             if (cmdk != null)
             {
@@ -133,8 +126,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+
             cmdk = CommandByKey("usr_role_base_by_all");
             if (cmdk != null)
             {

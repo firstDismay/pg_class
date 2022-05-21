@@ -158,7 +158,7 @@ namespace pg_class
         /// <summary>
         /// Метод определяет членство учетной записи в указанной роли
         /// </summary>
-        public Boolean user_is_member_role(String ilogin, String irole)
+        public Boolean user_is_member_role(String ilogin, String irole, Boolean irecursive)
         {
             Boolean Result = false;
             //=======================
@@ -166,7 +166,7 @@ namespace pg_class
             //**********
              
             //=======================
-            cmdk = CommandByKey("usr_is_member_role");
+            cmdk = CommandByKey("usr_is_member_role2");
 
             if (cmdk != null)
             {
@@ -182,6 +182,7 @@ namespace pg_class
 
             cmdk.Parameters["ilogin"].Value = ilogin;
             cmdk.Parameters["irole"].Value = irole;
+            cmdk.Parameters["irecursive"].Value = irecursive;
 
             //Начало транзакции
             Result = (Boolean)cmdk.ExecuteScalar();
@@ -192,17 +193,17 @@ namespace pg_class
         /// <summary>
         /// Метод определяет членство пользователя в указанной роли
         /// </summary>
-        public Boolean user_is_member_role(user login, role_user role)
+        public Boolean user_is_member_role(user login, role_user role, Boolean irecursive)
         {
-            return user_is_member_role(login.Login, role.NameSystem);
+            return user_is_member_role(login.Login, role.NameSystem, irecursive);
         }
 
         /// <summary>
         /// Метод определяет членство пользователя в указанной роли
         /// </summary>
-        public Boolean user_is_member_role(user login, role_base role)
+        public Boolean user_is_member_role(user login, role_base role, Boolean irecursive)
         {
-            return user_is_member_role(login.Login, role.NameSystem);
+            return user_is_member_role(login.Login, role.NameSystem, irecursive);
         }
 
         //-=ACCESS=-***********************************************************************************
@@ -216,7 +217,7 @@ namespace pg_class
             NpgsqlCommandKey cmdk;
             //=======================
             //=======================
-            cmdk = CommandByKey("usr_is_member_role");
+            cmdk = CommandByKey("usr_is_member_role2");
 
             if (cmdk != null)
             {
