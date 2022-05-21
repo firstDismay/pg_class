@@ -347,9 +347,9 @@ namespace pg_class.pg_classes
         /// <summary>
         /// Метод определяет членство пользователя в указанной роли
         /// </summary>
-        public Boolean is_member_role(role_base vrole)
+        public Boolean is_member_role(role_base vrole, Boolean irecursive)
         {
-            return Manager.user_is_member_role(NameSystem, vrole.NameSystem);
+            return Manager.user_is_member_role(NameSystem, vrole.NameSystem, irecursive);
         }
 
         

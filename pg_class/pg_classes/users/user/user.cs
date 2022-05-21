@@ -467,17 +467,17 @@ namespace pg_class.pg_classes
         /// <summary>
         /// Метод определяет членство пользователя в указанной роли
         /// </summary>
-        public Boolean is_member_role(role_base vrole)
+        public Boolean is_member_role(role_base vrole, Boolean irecursive)
         {
-            return Manager.user_is_member_role(this, vrole);
+            return Manager.user_is_member_role(this, vrole, irecursive);
         }
 
         /// <summary>
         /// Метод определяет членство пользователя в указанной роли
         /// </summary>
-        public Boolean is_member_role(role_user vrole)
+        public Boolean is_member_role(role_user vrole, Boolean irecursive)
         {
-            return Manager.user_is_member_role(this, vrole);
+            return Manager.user_is_member_role(this, vrole, irecursive);
         }
 
         /// <summary>
