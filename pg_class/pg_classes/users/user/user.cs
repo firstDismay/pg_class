@@ -459,9 +459,9 @@ namespace pg_class.pg_classes
         /// <summary>
         /// Установить пароль пользователя
         /// </summary>
-        public void Set_Pwd(String newpwd1, String newpwd2)
+        public void Set_Pwd(String oldpwd, String newpwd)
         {
-                Manager.user_set_pwd(this, newpwd1, newpwd2);
+                Manager.user_pwd_set(Login, oldpwd, newpwd);
         }
 
         /// <summary>
