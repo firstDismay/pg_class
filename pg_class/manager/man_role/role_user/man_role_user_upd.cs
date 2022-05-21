@@ -25,7 +25,7 @@ namespace pg_class
             //**********
              
             //=======================
-            cmdk = CommandByKey("usr_role_user_upd");
+            cmdk = CommandByKey("user_role_user_upd");
 
             if (cmdk != null)
             {
@@ -106,7 +106,7 @@ namespace pg_class
             NpgsqlCommandKey cmdk;
             //=======================
             //=======================
-            cmdk = CommandByKey("usr_role_user_upd");
+            cmdk = CommandByKey("user_role_user_upd");
             if (cmdk != null)
             {
                 Result = cmdk.Access;
@@ -134,7 +134,7 @@ namespace pg_class
             NpgsqlCommandKey cmdk;
             //**********
             //=======================
-            cmdk = CommandByKey("usr_role_base_grant");
+            cmdk = CommandByKey("user_role_base_grant");
 
             if (cmdk != null)
             {
@@ -195,7 +195,7 @@ namespace pg_class
             NpgsqlCommandKey cmdk;
             //=======================
             //=======================
-            cmdk = CommandByKey("usr_role_base_grant");
+            cmdk = CommandByKey("user_role_base_grant");
             if (cmdk != null)
             {
                 Result = cmdk.Access;
@@ -224,7 +224,7 @@ namespace pg_class
             //**********
              
             //=======================
-            cmdk = CommandByKey("usr_role_base_revoke");
+            cmdk = CommandByKey("user_role_base_revoke");
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -277,7 +277,7 @@ namespace pg_class
             NpgsqlCommandKey cmdk;
             //=======================
             //=======================
-            cmdk = CommandByKey("usr_role_base_revoke");
+            cmdk = CommandByKey("user_role_base_revoke");
             if (cmdk != null)
             {
                 Result = cmdk.Access;

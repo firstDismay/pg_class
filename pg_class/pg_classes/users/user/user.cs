@@ -461,7 +461,7 @@ namespace pg_class.pg_classes
         /// </summary>
         public void Set_Pwd(String oldpwd, String newpwd)
         {
-                Manager.user_pwd_set(Login, oldpwd, newpwd);
+            Manager.user_pwd_set(Login, oldpwd, newpwd);
         }
 
         /// <summary>
@@ -485,7 +485,7 @@ namespace pg_class.pg_classes
         /// </summary>
         public Boolean can_change_pwd(user usr_change_login)
         {
-            return Manager.user_can_change_pwd(this, usr_change_login);
+            return Manager.user_pwd_can_change(this, usr_change_login);
         }
 
         /// <summary>

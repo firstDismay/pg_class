@@ -24,7 +24,7 @@ namespace pg_class
             NpgsqlCommandKey cmdk;
 
 
-            cmdk = CommandByKey("usr_role_base_by_login2");
+            cmdk = CommandByKey("user_role_base_by_login");
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -64,7 +64,7 @@ namespace pg_class
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
 
-            cmdk = CommandByKey("usr_role_base_by_login2");
+            cmdk = CommandByKey("user_role_base_by_login");
             if (cmdk != null)
             {
                 Result = cmdk.Access;
@@ -90,7 +90,7 @@ namespace pg_class
             DataTable tbl_rol =  TableByName("vrole_base");
             NpgsqlCommandKey cmdk;
 
-            cmdk = CommandByKey("usr_role_base_by_all");
+            cmdk = CommandByKey("user_role_base_by_all");
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -127,7 +127,7 @@ namespace pg_class
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
 
-            cmdk = CommandByKey("usr_role_base_by_all");
+            cmdk = CommandByKey("user_role_base_by_all");
             if (cmdk != null)
             {
                 Result = cmdk.Access;

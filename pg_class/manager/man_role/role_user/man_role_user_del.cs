@@ -24,7 +24,7 @@ namespace pg_class
             //**********
              
             //=======================
-            cmdk = CommandByKey("usr_role_user_del");
+            cmdk = CommandByKey("user_role_user_del");
 
             if (cmdk != null)
             {
@@ -84,7 +84,7 @@ namespace pg_class
             NpgsqlCommandKey cmdk;
             //=======================
             //=======================
-            cmdk = CommandByKey("usr_role_user_del");
+            cmdk = CommandByKey("user_role_user_del");
 
             if (cmdk != null)
             {

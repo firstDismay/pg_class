@@ -25,7 +25,7 @@ namespace pg_class
             //**********
              
             //=======================
-            cmdk = CommandByKey("usr_options_upd");
+            cmdk = CommandByKey("user_options_upd");
 
             if (cmdk != null)
             {
@@ -85,7 +85,7 @@ namespace pg_class
             NpgsqlCommandKey cmdk;
             //=======================
             //=======================
-            cmdk = CommandByKey("usr_options_upd");
+            cmdk = CommandByKey("user_options_upd");
             if (cmdk != null)
             {
                 Result = cmdk.Access;

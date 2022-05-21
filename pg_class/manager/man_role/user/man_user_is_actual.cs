@@ -24,7 +24,7 @@ namespace pg_class
             //**********
              
             //=======================
-            cmdk = CommandByKey("usr_is_actual");
+            cmdk = CommandByKey("user_is_actual");
 
             if (cmdk != null)
             {
@@ -59,14 +59,14 @@ namespace pg_class
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
-        public Boolean usr_is_actual(out eAccess Access)
+        public Boolean user_is_actual(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
             //=======================
             //=======================
-            cmdk = CommandByKey("usr_is_actual");
+            cmdk = CommandByKey("user_is_actual");
 
             if (cmdk != null)
             {
@@ -87,7 +87,7 @@ namespace pg_class
         /// <summary>
         /// Метод определяет доступность изменения пароля указанной учетной записи для указанной изменяемой учетной записи
         /// </summary>
-        public Boolean user_can_change_pwd(String usr_login, String usr_change_login)
+        public Boolean user_pwd_can_change(String usr_login, String usr_change_login)
         {
             Boolean Result = false;
             //=======================
@@ -95,7 +95,7 @@ namespace pg_class
             //**********
              
             //=======================
-            cmdk = CommandByKey("usr_can_change_pwd");
+            cmdk = CommandByKey("user_pwd_can_change");
 
             if (cmdk != null)
             {
@@ -121,23 +121,23 @@ namespace pg_class
         /// <summary>
         /// Метод определяет доступность изменения пароля указанной учетной записи для указанной изменяемой учетной записи
         /// </summary>
-        public Boolean user_can_change_pwd(user usr_login, user usr_change_login)
+        public Boolean user_pwd_can_change(user usr_login, user usr_change_login)
         {
-            return user_can_change_pwd(usr_login.Login, usr_change_login.Login);
+            return user_pwd_can_change(usr_login.Login, usr_change_login.Login);
         }
 
         //-=ACCESS=-***********************************************************************************
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
-        public Boolean usr_can_change_pwd(out eAccess Access)
+        public Boolean user_pwd_can_change(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
             //=======================
             //=======================
-            cmdk = CommandByKey("usr_can_change_pwd");
+            cmdk = CommandByKey("user_pwd_can_change");
 
             if (cmdk != null)
             {
@@ -166,7 +166,7 @@ namespace pg_class
             //**********
              
             //=======================
-            cmdk = CommandByKey("usr_is_member_role2");
+            cmdk = CommandByKey("user_is_member_role");
 
             if (cmdk != null)
             {
@@ -217,7 +217,7 @@ namespace pg_class
             NpgsqlCommandKey cmdk;
             //=======================
             //=======================
-            cmdk = CommandByKey("usr_is_member_role2");
+            cmdk = CommandByKey("user_is_member_role");
 
             if (cmdk != null)
             {
