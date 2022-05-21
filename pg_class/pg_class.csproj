@@ -566,8 +566,10 @@
     <Compile Include="manager\man_role\user\man_user_options_sel.cs" />
     <Compile Include="manager\man_role\user\man_user_options_upd.cs" />
     <Compile Include="manager\man_role\user\man_user_is_actual.cs" />
+    <Compile Include="manager\man_role\user\man_user_role.cs" />
     <Compile Include="manager\man_role\user\man_user_sel.cs" />
     <Compile Include="manager\man_role\user\man_user_del.cs" />
+    <Compile Include="manager\man_role\user\man_user_pwd.cs" />
     <Compile Include="manager\man_role\user\man_user_upd.cs" />
     <Compile Include="manager\man_role\user\man_user_add.cs" />
     <Compile Include="manager\man_role\user\man_user_event.cs" />
