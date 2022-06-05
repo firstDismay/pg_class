@@ -15,6 +15,7 @@ namespace pg_class
     [JsonObject(MemberSerialization.OptIn)]
     public class json_object_parameters
     {
+        #region КОНСТРУКТОРЫ КЛАССА
         /// <summary>
         /// Публичный конструктор класса Значения свойства
         /// </summary>
@@ -71,6 +72,7 @@ namespace pg_class
                 ObjectPropertyList.Add(new json_object_prop_val(cp));
             }
         }
+        #endregion
 
         /// <summary>
         /// Идентификатор позиции объекта 

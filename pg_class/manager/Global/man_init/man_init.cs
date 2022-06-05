@@ -220,7 +220,12 @@ namespace pg_class
             }
             catch (Exception ex)
             {
-                trans.Rollback();
+                try
+                {
+                    trans.Rollback();
+                }
+                finally { }
+
                 StringBuilder sb = new StringBuilder();
                 sb.Append("Сбой процедуры инициализации команд менеджера данных, дополнительные сведения: ");
                 sb.Append(ex.Message);

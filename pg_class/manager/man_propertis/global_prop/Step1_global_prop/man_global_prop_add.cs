@@ -25,7 +25,7 @@ namespace pg_class
             NpgsqlCommandKey cmdk;
             //**********
             //=======================
-            cmdk = CommandByKey("global_prop_add2");
+            cmdk = CommandByKey("global_prop_add");
 
             if (cmdk != null)
             {
@@ -98,9 +98,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
-            cmdk = CommandByKey("global_prop_add2");
+            
+            cmdk = CommandByKey("global_prop_add");
             if (cmdk != null)
             {
                 Result = cmdk.Access;
@@ -116,7 +115,6 @@ namespace pg_class
             return Result;
 
         }
-        //*********************************************************************************************
 
         /// <summary>
         /// Метод добавляет новое глобальное свойство по свойству класса
@@ -128,10 +126,8 @@ namespace pg_class
             Int32 error;
             String desc_error;
             NpgsqlCommandKey cmdk;
-            //**********
-            //=======================
-            cmdk = CommandByKey("global_prop_add_as_class_prop");
 
+            cmdk = CommandByKey("global_prop_add_as_class_prop");
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -143,18 +139,13 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iid_conception"].Value = iid_conception;
             cmdk.Parameters["iid_class_prop"].Value = iid_class_prop;
-
-            //Начало транзакции
             cmdk.ExecuteNonQuery();
             
             error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
             desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            //SetLastTimeUsing();
-            //=======================
             switch (error)
             {
                 case 0:

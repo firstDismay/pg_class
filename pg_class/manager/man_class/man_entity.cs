@@ -16,17 +16,12 @@ namespace pg_class
         #region МЕТОДЫ КЛАССА: ПРЕДСТАВЛЕНИЯ КЛАССА
 
         #region ВЫБРАТЬ
-
-        //*********************************************************************************************
         /// <summary>
         /// Выбор сущности по идентификатору
         /// </summary>
         public entity entity_by_id(Int32 iid)
-        {
-
-            
+        {   
             entity entity = null;
-
             DataTable tbl_entity  = TableByName("ventity");
             //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
             //=======================
