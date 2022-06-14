@@ -250,7 +250,9 @@
     <Compile Include="manager\man_export\class\man_class_act_real_exp_by_id_class_parent.cs" />
     <Compile Include="manager\man_export\class\man_class_act_real_exp_by_id_group.cs" />
     <Compile Include="manager\man_export\class\man_class_act_real_exp_by_id_class_array.cs" />
-    <Compile Include="manager\man_export\man_export_select_event.cs" />
+    <Compile Include="manager\man_export\man_export_common_command.cs" />
+    <Compile Include="manager\man_export\man_export_common.cs" />
+    <Compile Include="manager\man_export\man_export_event.cs" />
     <Compile Include="manager\man_export\object\man_object_exp_by_id_object_array.cs" />
     <Compile Include="manager\man_export\object\man_object_exp_by_id_object_carrier.cs" />
     <Compile Include="manager\man_export\object\man_object_exp_by_id_position_msk_global_prop.cs" />
