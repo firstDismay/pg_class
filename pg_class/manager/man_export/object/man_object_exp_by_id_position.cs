@@ -20,12 +20,9 @@ namespace pg_class
         public Byte[] exp_object_by_id_position_to_excel(Int64 iid_position, eExportMode imode, Boolean iquantity_show, Boolean irecursively)
         {
             Byte[] Result = null;
-            //=======================
             NpgsqlCommandKey cmdk;
-            //**********
-            //=======================
-            cmdk = CommandByKey("exp_object_by_id_position_to_excel");
 
+            cmdk = CommandByKey("exp_object_by_id_position_to_excel");
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -37,7 +34,6 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iid_position"].Value = iid_position;
             cmdk.Parameters["imode"].Value = (Int32)imode;
@@ -66,7 +62,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
+
             cmdk = CommandByKey("exp_object_by_id_position_to_excel");
             if (cmdk != null)
             {
@@ -90,10 +86,8 @@ namespace pg_class
         public command_export exp_object_by_id_position_to_excel_get_command(Int64 iid_position, eExportMode imode, Boolean iquantity_show, Boolean irecursively)
         {
             NpgsqlCommandKey cmdk;
-            //**********
-            //=======================
+            
             cmdk = CommandByKey("exp_object_by_id_position_to_excel", true);
-
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -105,7 +99,6 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iid_position"].Value = iid_position;
             cmdk.Parameters["imode"].Value = (Int32)imode;
