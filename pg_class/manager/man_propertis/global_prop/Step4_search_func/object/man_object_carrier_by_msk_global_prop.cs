@@ -16,6 +16,13 @@ namespace pg_class
         /// <summary>
         /// Лист объектов носителей по маске значения глобального свойства объекта значения объектного свойства
         /// </summary>
+        /// <param name="Global_prp">Идентификатор глобального свойства</param>
+        /// <param name="search_method">Строкое представление метода поиска</param>
+        /// <param name="valreq">Значение, маска поиска, для методов поиска по массивам идентификаторы критериев через запятую</param>
+        /// <param name="valmin">Минимальное значение поиска при поиске в диапазоне</param>
+        /// <param name="valmax">Максимальное значение поиска при поиске в диапазоне</param>
+        /// <returns>Лист объектов</returns>
+        /// <exception cref="AccessDataBaseException"></exception>
         public List<object_general> object_carrier_by_msk_global_prop(Int64 iid_global_prop,
                                                                         eSearchMethods search_method, String valreq, String valmin, String valmax)
         {
@@ -58,6 +65,13 @@ namespace pg_class
         /// <summary>
         /// Лист объектов носителей по маске значения глобального свойства объекта значения объектного свойства
         /// </summary>
+        /// <param name="Global_prp">Идентификатор глобального свойства</param>
+        /// <param name="search_method">Строкое представление метода поиска</param>
+        /// <param name="valreq">Значение, маска поиска, для методов поиска по массивам идентификаторы критериев через запятую</param>
+        /// <param name="valmin">Минимальное значение поиска при поиске в диапазоне</param>
+        /// <param name="valmax">Максимальное значение поиска при поиске в диапазоне</param>
+        /// <returns>Лист объектов</returns>
+        /// <exception cref="AccessDataBaseException"></exception>
         public List<object_general> object_carrier_by_msk_global_prop(global_prop Global_prp,
                                                                         eSearchMethods search_method, String valreq, String valmin, String valmax)
         {

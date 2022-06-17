@@ -76,9 +76,11 @@ namespace Test
             ///
 
             
-            /* vclass c = NEW_pg_class.class_act_by_id(6415);
+            List<object_general> o = NEW_pg_class.object_ext_by_msk_global_prop(187,eSearchMethods.any_array,"1287,1284","","");
 
-            json_object_parameters cop;
+            o = NEW_pg_class.object_ext_by_msk_global_prop(33, eSearchMethods.like_lower, "lab%", "", "");
+
+            /* json_object_parameters cop;
 
             json_object_parameters[] acop = new json_object_parameters[10000];
 

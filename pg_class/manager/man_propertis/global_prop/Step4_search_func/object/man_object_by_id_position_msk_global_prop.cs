@@ -14,9 +14,17 @@ namespace pg_class
 {
     public partial class manager
     {
-/// <summary>
-/// Лист объектов указанной позиции по маске значения глобального свойства 
-/// </summary>
+        /// <summary>
+        /// Лист объектов указанной позиции по маске значения глобального свойства
+        /// </summary>
+        /// <param name="iid_position">Идентификатор позиции</param>
+        /// <param name="iid_global_prop">Идентификатор глобального свойства</param>
+        /// <param name="search_method">Строкое представление метода поиска</param>
+        /// <param name="valreq">Значение, маска поиска, для методов поиска по массивам идентификаторы критериев через запятую</param>
+        /// <param name="valmin">Минимальное значение поиска при поиске в диапазоне</param>
+        /// <param name="valmax">Максимальное значение поиска при поиске в диапазоне</param>
+        /// <returns>Лист объектов</returns>
+        /// <exception cref="AccessDataBaseException"></exception>
         public List<object_general> object_by_id_position_msk_global_prop(Int64 iid_position, Int64 iid_global_prop, 
                                                                         eSearchMethods search_method, String valreq, String valmin, String valmax)
         {
@@ -60,6 +68,14 @@ namespace pg_class
         /// <summary>
         /// Лист объектов указанной позиции по маске значения глобального свойства 
         /// </summary>
+        /// <param name="Position">Идентификатор позиции</param>
+        /// <param name="Global_prp">Идентификатор глобального свойства</param>
+        /// <param name="search_method">Строкое представление метода поиска</param>
+        /// <param name="valreq">Значение, маска поиска, для методов поиска по массивам идентификаторы критериев через запятую</param>
+        /// <param name="valmin">Минимальное значение поиска при поиске в диапазоне</param>
+        /// <param name="valmax">Максимальное значение поиска при поиске в диапазоне</param>
+        /// <returns>Лист объектов</returns>
+        /// <exception cref="AccessDataBaseException"></exception>
         public List<object_general> object_by_id_position_msk_global_prop(position Position, global_prop Global_prp,
                                                                         eSearchMethods search_method, String valreq, String valmin, String valmax)
         {
