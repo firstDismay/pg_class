@@ -14,21 +14,16 @@ namespace pg_class
     public partial class manager
     {
         /// <summary>
-        /// Лист объектов по маске значения глобального свойства
+        /// Лист объектов указанной позиции по маске значения глобального свойства 
         /// </summary>
-        public List<object_general> object_ext_by_msk_global_prop(Int64 iid_global_prop, String find_mask)
+        public List<object_general> object_ext_by_id_position_msk_global_prop(Int64 iid_position, Int64 iid_global_prop,
+                                                                        eSearchMethods search_method, String valreq, String valmin, String valmax)
         {
             List<object_general> object_list = new List<object_general>();
-
-
             DataTable tbl_object = TableByName("vobject_general_ext");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
             NpgsqlCommandKey cmdk;
 
-            //=======================
-            cmdk = CommandByKey("object_ext_by_msk_global_prop");
-
+            cmdk = CommandByKey("object_ext_by_id_position_msk_global_prop");
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -40,11 +35,13 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
+            cmdk.Parameters["iid_position"].Value = iid_position;
             cmdk.Parameters["iid_global_prop"].Value = iid_global_prop;
-            cmdk.Parameters["find_mask"].Value = find_mask;
-
+            cmdk.Parameters["search_method"].Value = search_method.ToString();
+            cmdk.Parameters["valreq"].Value = valreq;
+            cmdk.Parameters["valmin"].Value = valmin;
+            cmdk.Parameters["valmax"].Value = valmax;
             cmdk.Fill(tbl_object);
             
             object_general og;
@@ -60,27 +57,25 @@ namespace pg_class
         }
 
         /// <summary>
-        /// Лист объектов по маске значения глобального свойства
+        /// Лист объектов указанной позиции по маске значения глобального свойства 
         /// </summary>
-        public List<object_general> object_ext_by_msk_global_prop(global_prop Global_prp, String find_mask)
+        public List<object_general> object_ext_by_id_position_msk_global_prop(position Position, global_prop Global_prp,
+                                                                        eSearchMethods search_method, String valreq, String valmin, String valmax)
         {
-            return object_ext_by_msk_global_prop(Global_prp.Id, find_mask);
+            return object_ext_by_id_position_msk_global_prop(Position.Id, Global_prp.Id, search_method, valreq, valmin, valmax);
         }
-
-        
 
         //-=ACCESS=-***********************************************************************************
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
-        public Boolean object_ext_by_msk_global_prop(out eAccess Access)
+        public Boolean object_ext_by_id_position_msk_global_prop(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
-            cmdk = CommandByKey("object_ext_by_msk_global_prop");
+            
+            cmdk = CommandByKey("object_ext_by_id_position_msk_global_prop");
             if (cmdk != null)
             {
                 Result = cmdk.Access;

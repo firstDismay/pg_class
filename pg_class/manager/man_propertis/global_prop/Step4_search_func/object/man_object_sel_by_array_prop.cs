@@ -8,27 +8,22 @@ using System.Data;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
 using pg_class.pg_classes;
+using Newtonsoft.Json;
 
 namespace pg_class
 {
     public partial class manager
     {
         /// <summary>
-        /// Лист расширенных объектов носителей по маске значения глобального свойства объекта значения объектного свойства
+        /// Лист представлений объектов соотвествующих набору значений глобальных/определяющих свойств (подбор по критериям)
         /// </summary>
-        public List<object_general> object_ext_carrier_by_msk_global_prop(Int64 iid_global_prop, String find_mask)
+        public List<object_general> object_by_array_prop(PropSearchСondition[] array_prop, Int64 iid_position)
         {
             List<object_general> object_list = new List<object_general>();
-
-
-            DataTable tbl_object = TableByName("vobject_general_ext");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
+            DataTable tbl_object = TableByName("vobject_general");
             NpgsqlCommandKey cmdk;
 
-            //=======================
-            cmdk = CommandByKey("object_ext_carrier_by_msk_global_prop");
-
+            cmdk = CommandByKey("object_by_array_prop");
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -40,10 +35,15 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
+            String[] sarray_prop = new String[array_prop.Length];
 
-            cmdk.Parameters["iid_global_prop"].Value = iid_global_prop;
-            cmdk.Parameters["find_mask"].Value = find_mask;
+            for (Int32 i = 0; i < array_prop.Length; i++)
+            {
+                sarray_prop[i] = JsonConvert.SerializeObject(array_prop[i], Formatting.Indented);
+            }
+
+            cmdk.Parameters["array_prop"].Value = sarray_prop;
+            cmdk.Parameters["iid_position"].Value = iid_position;
 
             cmdk.Fill(tbl_object);
             
@@ -60,27 +60,24 @@ namespace pg_class
         }
 
         /// <summary>
-        /// Лист расширенных объектов носителей по маске значения глобального свойства объекта значения объектного свойства
+        /// Лист представлений объектов соотвествующих набору значений глобальных/определяющих свойств (подбор по критериям)
         /// </summary>
-        public List<object_general> object_ext_carrier_by_msk_global_prop(global_prop Global_prp, String find_mask)
+        public List<object_general> object_by_array_prop(PropSearchСondition[] array_prop, position Position)
         {
-            return object_ext_carrier_by_msk_global_prop(Global_prp.Id, find_mask);
+            return object_by_array_prop(array_prop, Position.Id);
         }
-
-
 
         //-=ACCESS=-***********************************************************************************
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
-        public Boolean object_ext_carrier_by_msk_global_prop(out eAccess Access)
+        public Boolean object_by_array_prop(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
-            cmdk = CommandByKey("object_ext_carrier_by_msk_global_prop");
+
+            cmdk = CommandByKey("object_by_array_prop");
             if (cmdk != null)
             {
                 Result = cmdk.Access;
