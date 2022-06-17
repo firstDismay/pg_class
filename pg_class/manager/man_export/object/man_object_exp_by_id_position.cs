@@ -78,38 +78,5 @@ namespace pg_class
             }
             return Result;
         }
-
-        #region ПРОЦЕДУРА СОЗДАНИЯ КОМАНДЫ ОТЛОЖЕННОГО ЭКСПОРТА В EXCEL
-        /// <summary>
-        /// Метод экспорта объектов в Excel по идентификатору позиции
-        /// </summary>
-        public command_export exp_object_by_id_position_to_excel_get_command(Int64 iid_position, eExportMode imode, Boolean iquantity_show, Boolean irecursively)
-        {
-            NpgsqlCommandKey cmdk;
-            
-            cmdk = CommandByKey("exp_object_by_id_position_to_excel", true);
-            if (cmdk != null)
-            {
-                if (!cmdk.Access)
-                {
-                    throw new AccessDataBaseException(404, String.Format(@"Отказано в доступе к методу: {0}!", cmdk.CommandText));
-                }
-            }
-            else
-            {
-                throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
-            }
-
-            cmdk.Parameters["iid_position"].Value = iid_position;
-            cmdk.Parameters["imode"].Value = (Int32)imode;
-            cmdk.Parameters["iquantity_show"].Value = iquantity_show;
-            cmdk.Parameters["irecursively"].Value = irecursively;
-
-            String command_export = String.Format(@"SELECT bpd.exp_object_by_id_position_to_excel({0}, {1}, {2}, {3})", iid_position, imode.ToString(), iquantity_show.ToString(), irecursively.ToString());
-            String Desc = String.Format(@"Отчет: Объекты позиции носителя: {0} | Режим: {1}", iid_position, manager.ExportMode(imode));
-            command_export cm = new command_export(cmdk, command_export, Desc);
-            return cm;
-        }
-        #endregion
     }
 }

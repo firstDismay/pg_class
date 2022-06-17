@@ -156,7 +156,6 @@
     <Compile Include="manager\eventargs\Base\Class\ClassChangeEventArgs.cs" />
     <Compile Include="manager\Global\man_classes\man_command\man_command.cs" />
     <Compile Include="manager\Global\man_classes\man_command\pg_commands\NpgsqlCommandKey_IClone.cs" />
-    <Compile Include="manager\Global\man_classes\man_command\pg_commands_export\command_export.cs" />
     <Compile Include="manager\Global\man_classes\NPGSQL_TypeJsonClass\SearchObjectMethod\json_search_condition.cs" />
     <Compile Include="manager\Global\man_classes\NPGSQL_TypeMapClass\pg_class\pg_cdoc_category.cs" />
     <Compile Include="manager\Global\man_classes\NPGSQL_TypeMapClass\pg_enum\pg_enum_mapping.cs" />
@@ -251,7 +250,6 @@
     <Compile Include="manager\man_export\class\man_class_act_real_exp_by_id_group.cs" />
     <Compile Include="manager\man_export\class\man_class_act_real_exp_by_id_class_array.cs" />
     <Compile Include="manager\man_export\man_export_common.cs" />
-    <Compile Include="manager\man_export\man_export_common_command.cs" />
     <Compile Include="manager\man_export\man_export_event.cs" />
     <Compile Include="manager\man_export\object\man_object_exp_by_id_object_array.cs" />
     <Compile Include="manager\man_export\object\man_object_exp_by_id_object_carrier.cs" />

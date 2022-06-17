@@ -79,40 +79,5 @@ namespace pg_class
             }
             return Result;
         }
-
-        #region ПРОЦЕДУРА СОЗДАНИЯ КОМАНДЫ ОТЛОЖЕННОГО ЭКСПОРТА В EXCEL
-        /// <summary>
-        /// Метод создания команды экспорта объектов в Excel по маске значения глобального свойства и указанной позиции рекурсивно
-        /// </summary>
-        public command_export exp_object_by_id_position_msk_global_prop_to_excel_get_command(Int64 iid_position, Int64 iid_global_prop, String find_mask, eExportMode imode, Boolean iquantity_show)
-        {
-            NpgsqlCommandKey cmdk;
-            
-            cmdk = CommandByKey("exp_object_by_id_position_msk_global_prop_to_excel", true);
-
-            if (cmdk != null)
-            {
-                if (!cmdk.Access)
-                {
-                    throw new AccessDataBaseException(404, String.Format(@"Отказано в доступе к методу: {0}!", cmdk.CommandText));
-                }
-            }
-            else
-            {
-                throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
-            }
-
-            cmdk.Parameters["iid_position"].Value = iid_position;
-            cmdk.Parameters["iid_global_prop"].Value = iid_global_prop;
-            cmdk.Parameters["find_mask"].Value = find_mask;
-            cmdk.Parameters["imode"].Value = (Int32)imode;
-            cmdk.Parameters["iquantity_show"].Value = iquantity_show;
-
-            String command_export = String.Format(@"SELECT bpd.exp_object_by_id_position_msk_global_prop_to_excel({0}, {1}, {2}, {3}, {4})", iid_position, iid_global_prop, find_mask, imode.ToString(), iquantity_show.ToString());
-            String Desc = String.Format(@"Отчет: Объекты по маске глобального свойства и ИД позиции рекурсивно: {0}/{1}:'{2}' | Режим: {3}", iid_position, iid_global_prop, find_mask, manager.ExportMode(imode));
-            command_export cm = new command_export(cmdk, command_export, Desc);
-            return cm;
-        }
-        #endregion
     }
 }
