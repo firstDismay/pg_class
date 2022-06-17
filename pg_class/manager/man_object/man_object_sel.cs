@@ -23,13 +23,9 @@ namespace pg_class
             object_general object_general = null;
 
             DataTable tbl_object  = TableByName("vobject_general");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
             NpgsqlCommandKey cmdk;
 
-            //=======================
             cmdk = CommandByKey("object_by_id");
-
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -41,12 +37,9 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iid"].Value = id;
-
             cmdk.Fill(tbl_object);
-            
             if (tbl_object.Rows.Count > 0)
             {
                 object_general = new object_general(tbl_object.Rows[0]);
@@ -80,8 +73,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
             cmdk = CommandByKey("object_by_id");
             if (cmdk != null)
             {
@@ -97,7 +89,6 @@ namespace pg_class
             }
             return Result;
         }
-        //*********************************************************************************************
         
         /// <summary>
         /// Лист представлений объектов по идентификатору позиции
@@ -105,16 +96,10 @@ namespace pg_class
         public List<object_general> object_by_id_position(Int64 iid_position)
         {
             List<object_general> object_list = new List<object_general>();
-
-            
             DataTable tbl_object  = TableByName("vobject_general");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
             NpgsqlCommandKey cmdk;
 
-            //=======================
             cmdk = CommandByKey("object_by_id_position");
-
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -126,12 +111,9 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iid_position"].Value = iid_position;
-
             cmdk.Fill(tbl_object);
-            
             object_general og;
             if (tbl_object.Rows.Count > 0)
             {
@@ -161,8 +143,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+
             cmdk = CommandByKey("object_by_id_position");
             if (cmdk != null)
             {
@@ -178,7 +159,6 @@ namespace pg_class
             }
             return Result;
         }
-        //*********************************************************************************************
 
         /// <summary>
         /// Лист представлений объектов по идентификатору позиции рекурсивно
@@ -186,16 +166,10 @@ namespace pg_class
         public List<object_general> object_by_id_position_full(Int64 iid_position)
         {
             List<object_general> object_list = new List<object_general>();
-
-
             DataTable tbl_object = TableByName("vobject_general");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
             NpgsqlCommandKey cmdk;
 
-            //=======================
             cmdk = CommandByKey("object_by_id_position_full");
-
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -207,12 +181,9 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iid_position"].Value = iid_position;
-
             cmdk.Fill(tbl_object);
-            
             object_general og;
             if (tbl_object.Rows.Count > 0)
             {
@@ -242,8 +213,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+
             cmdk = CommandByKey("object_by_id_position_full");
             if (cmdk != null)
             {
@@ -260,23 +230,16 @@ namespace pg_class
             return Result;
         }
         
-        //*********************************************************************************************
         /// <summary>
         /// Лист представлений объектов по id объекта носителя
         /// </summary>
         public List<object_general> object_by_id_object_carrier(Int64 iid_object_carrier)
         {
             List<object_general> object_list = new List<object_general>();
-
-
             DataTable tbl_object  = TableByName("vobject_general");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
             NpgsqlCommandKey cmdk;
 
-            //=======================
             cmdk = CommandByKey("object_by_id_object_carrier");
-
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -288,12 +251,9 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iid_object_carrier"].Value = iid_object_carrier;
-
             cmdk.Fill(tbl_object);
-            
             object_general og;
             if (tbl_object.Rows.Count > 0)
             {
@@ -323,8 +283,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+
             cmdk = CommandByKey("object_by_id_object_carrier");
             if (cmdk != null)
             {
@@ -341,24 +300,16 @@ namespace pg_class
             return Result;
         }
         
-
-        //*********************************************************************************************
         /// <summary>
         /// Лист представлений объектов по маске имени объекта в указанной позиции рекурсивно
         /// </summary>
         public List<object_general> object_by_name_id_pos(String iname, Int64 iid_position, Boolean on_inside)
         {
             List<object_general> object_list = new List<object_general>();
-
-
             DataTable tbl_object = TableByName("vobject_general");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
             NpgsqlCommandKey cmdk;
 
-            //=======================
             cmdk = CommandByKey("object_by_name_id_pos");
-
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -370,12 +321,10 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iname"].Value = iname;
             cmdk.Parameters["iid_position"].Value = iid_position;
             cmdk.Parameters["on_inside"].Value = on_inside;
-
             cmdk.Fill(tbl_object);
             
             object_general og;
@@ -399,8 +348,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+
             cmdk = CommandByKey("object_by_name_id_pos");
             if (cmdk != null)
             {
@@ -417,24 +365,16 @@ namespace pg_class
             return Result;
         }
 
-        
-        //*********************************************************************************************
         /// <summary>
         /// Лист представлений объектов по маске имени объекта в указанной концепции
         /// </summary>
         public List<object_general> object_by_name(String iname, Int64 iid_conception, Boolean on_inside)
         {
             List<object_general> object_list = new List<object_general>();
-
-
             DataTable tbl_object = TableByName("vobject_general");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
             NpgsqlCommandKey cmdk;
 
-            //=======================
             cmdk = CommandByKey("object_by_name");
-
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -446,12 +386,10 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iname"].Value = iname;
             cmdk.Parameters["iid_conception"].Value = iid_conception;
             cmdk.Parameters["on_inside"].Value = on_inside;
-
             cmdk.Fill(tbl_object);
             
             object_general og;
@@ -475,8 +413,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+
             cmdk = CommandByKey("object_by_name");
             if (cmdk != null)
             {
@@ -493,24 +430,16 @@ namespace pg_class
             return Result;
         }
 
-
-        //*********************************************************************************************
         /// <summary>
         /// Лист объектов активного представления класса по идентификатору класса
         /// </summary>
         public List<object_general> object_by_id_class_act(Int64 iid_class)
         {
             List<object_general> object_list = new List<object_general>();
-
-
             DataTable tbl_object  = TableByName("vobject_general");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
             NpgsqlCommandKey cmdk;
 
-            //=======================
             cmdk = CommandByKey("object_by_id_class_act");
-
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -522,10 +451,8 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iid_class"].Value = iid_class;
-
             cmdk.Fill(tbl_object);
             
             object_general og;
@@ -557,8 +484,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
             cmdk = CommandByKey("object_by_id_class_act");
             if (cmdk != null)
             {
@@ -574,25 +500,17 @@ namespace pg_class
             }
             return Result;
         }
-
-        //*********************************************************************************************
-        
+                
         /// <summary>
         /// Лист объектов всех представления класса по идентификатору класса
         /// </summary>
         public List<object_general> object_by_id_class_full(Int64 iid_class)
         {
             List<object_general> object_list = new List<object_general>();
-
-
             DataTable tbl_object  = TableByName("vobject_general");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
             NpgsqlCommandKey cmdk;
 
-            //=======================
             cmdk = CommandByKey("object_by_id_class_full");
-
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -604,10 +522,8 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iid_class"].Value = iid_class;
-
             cmdk.Fill(tbl_object);
             
             object_general og;
@@ -647,8 +563,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+
             cmdk = CommandByKey("object_by_id_class_full");
             if (cmdk != null)
             {
@@ -665,23 +580,16 @@ namespace pg_class
             return Result;
         }
 
-        //*********************************************************************************************
         /// <summary>
         /// Лист объектов снимка класса по идентификатору класса
         /// </summary>
         public List<object_general> object_by_id_class_snapshot(Int64 iid_class, DateTime itimestamp)
         {
             List<object_general> object_list = new List<object_general>();
-
-
             DataTable tbl_object  = TableByName("vobject_general");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
             NpgsqlCommandKey cmdk;
 
-            //=======================
             cmdk = CommandByKey("object_by_id_class_snapshot");
-
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -693,11 +601,9 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iid_class"].Value = iid_class;
             cmdk.Parameters["itimestamp"].Value = itimestamp;
-
             cmdk.Fill(tbl_object);
             
             object_general og;
@@ -737,8 +643,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
             cmdk = CommandByKey("object_by_id_class_snapshot");
             if (cmdk != null)
             {
@@ -755,23 +660,16 @@ namespace pg_class
             return Result;
         }
 
-        //*********************************************************************************************
         /// <summary>
         /// Лист объектов снимка класса по идентификатору класса и содержащей позиции
         /// </summary>
         public List<object_general> object_by_id_class_snapshot_id_pos(Int64 iid_class, DateTime itimestamp, Int64 iid_position)
         {
             List<object_general> object_list = new List<object_general>();
-
-
             DataTable tbl_object = TableByName("vobject_general");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
             NpgsqlCommandKey cmdk;
 
-            //=======================
             cmdk = CommandByKey("object_by_id_class_snapshot_id_pos");
-
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -783,12 +681,10 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iid_class"].Value = iid_class;
             cmdk.Parameters["itimestamp"].Value = itimestamp;
             cmdk.Parameters["iid_position"].Value = iid_position;
-
             cmdk.Fill(tbl_object);
             
             object_general og;
@@ -836,8 +732,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+
             cmdk = CommandByKey("object_by_id_class_snapshot_id_pos");
             if (cmdk != null)
             {
@@ -854,24 +749,16 @@ namespace pg_class
             return Result;
         }
 
-        
-        //*********************************************************************************************
         /// <summary>
         /// Лист объектов класса по идентификатору класса рекурсивно и содержащей позиции
         /// </summary>
         public List<object_general> object_by_id_class_id_pos(Int64 iid_class, Int64 iid_position)
         {
             List<object_general> object_list = new List<object_general>();
-
-
             DataTable tbl_object = TableByName("vobject_general");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
             NpgsqlCommandKey cmdk;
 
-            //=======================
             cmdk = CommandByKey("object_by_id_class_id_pos");
-
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -883,11 +770,9 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iid_class"].Value = iid_class;
             cmdk.Parameters["iid_position"].Value = iid_position;
-
             cmdk.Fill(tbl_object);
             
             object_general og;
@@ -920,8 +805,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+
             cmdk = CommandByKey("object_by_id_class_id_pos");
             if (cmdk != null)
             {
@@ -944,16 +828,10 @@ namespace pg_class
         public List<object_general> object_by_id_class_root(Int64 iid_class_root)
         {
             List<object_general> object_list = new List<object_general>();
-
-
             DataTable tbl_object  = TableByName("vobject_general");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
             NpgsqlCommandKey cmdk;
 
-            //=======================
             cmdk = CommandByKey("object_by_id_class_root");
-
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -965,10 +843,8 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iid_class_root"].Value = iid_class_root;
-
             cmdk.Fill(tbl_object);
             
             object_general og;
@@ -1000,8 +876,6 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
             cmdk = CommandByKey("object_by_id_class_root");
             if (cmdk != null)
             {
@@ -1018,22 +892,14 @@ namespace pg_class
             return Result;
         }
 
-        
-        //*********************************************************************************************
         /// <summary>
         /// Лист представлений объектов по идентификатору группы
         /// </summary>
         public List<object_general> object_by_id_group(Int64 iid_group)
         {
             List<object_general> object_list = new List<object_general>();
-
-
             DataTable tbl_object  = TableByName("vobject_general");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
             NpgsqlCommandKey cmdk;
-
-            //=======================
             cmdk = CommandByKey("object_by_id_group");
 
             if (cmdk != null)
@@ -1047,10 +913,8 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iid_group"].Value = iid_group;
-
             cmdk.Fill(tbl_object);
             
             object_general og;
@@ -1082,8 +946,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+
             cmdk = CommandByKey("object_by_id_group");
             if (cmdk != null)
             {
@@ -1100,23 +963,16 @@ namespace pg_class
             return Result;
         }
 
-        //*********************************************************************************************
         /// <summary>
         /// Лист представлений объектов по идентификатору группы
         /// </summary>
         public List<object_general> object_by_id_group_root(Int64 iid_group_root)
         {
             List<object_general> object_list = new List<object_general>();
-
-
             DataTable tbl_object  = TableByName("vobject_general");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
             NpgsqlCommandKey cmdk;
 
-            //=======================
             cmdk = CommandByKey("object_by_id_group_root");
-
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -1128,10 +984,8 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iid_group_root"].Value = iid_group_root;
-
             cmdk.Fill(tbl_object);
             
             object_general og;
@@ -1163,8 +1017,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+
             cmdk = CommandByKey("object_by_id_group_root");
             if (cmdk != null)
             {
@@ -1187,16 +1040,9 @@ namespace pg_class
         public List<object_general> object_by_id_unit_conversion_rule(Int32 iid_unit_conversion_rule)
         {
             List<object_general> object_list = new List<object_general>();
-
-
             DataTable tbl_vclass  = TableByName("vobject_general");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
             NpgsqlCommandKey cmdk;
-
-            //=======================
             cmdk = CommandByKey("object_by_id_unit_conversion_rule");
-
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -1208,10 +1054,8 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iid_unit_conversion_rule"].Value = iid_unit_conversion_rule;
-
             cmdk.Fill(tbl_vclass);
             
             object_general o;
@@ -1251,8 +1095,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
             cmdk = CommandByKey("object_by_id_unit_conversion_rule");
             if (cmdk != null)
             {
@@ -1276,16 +1119,10 @@ namespace pg_class
         public List<object_general> object_by_id_prop_enum(Int64 iid_prop_enum)
         {
             List<object_general> object_list = new List<object_general>();
-
-
             DataTable tbl_vclass  = TableByName("vobject_general");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
             NpgsqlCommandKey cmdk;
 
-            //=======================
             cmdk = CommandByKey("object_by_id_prop_enum");
-
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -1297,10 +1134,8 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iid_prop_enum"].Value = iid_prop_enum;
-
             cmdk.Fill(tbl_vclass);
             
             object_general o;
@@ -1332,8 +1167,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+
             cmdk = CommandByKey("object_by_id_prop_enum");
             if (cmdk != null)
             {
@@ -1349,7 +1183,6 @@ namespace pg_class
             }
             return Result;
         }
-        //*********************************************************************************************
         
         /// <summary>
         /// Лист объектов по идентификатору элемента перечисления
@@ -1357,17 +1190,10 @@ namespace pg_class
         public List<object_general> object_by_id_prop_enum_val(Int64 iid_prop_enum_val)
         {
             List<object_general> object_list = new List<object_general>();
-
-
             DataTable tbl_vclass  = TableByName("vobject_general");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
             NpgsqlCommandKey cmdk;
 
-            //=======================
             cmdk = CommandByKey("object_by_id_prop_enum_val");
-
-
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -1379,10 +1205,8 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iid_prop_enum_val"].Value = iid_prop_enum_val;
-
             cmdk.Fill(tbl_vclass);
             
             object_general o;
@@ -1414,8 +1238,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+
             cmdk = CommandByKey("object_by_id_prop_enum_val");
             if (cmdk != null)
             {
@@ -1431,8 +1254,6 @@ namespace pg_class
             }
             return Result;
         }
-        //*********************************************************************************************
-        
             
         /// <summary>
         /// Лист объектов по идентификатору типа данных свойств концепции
@@ -1440,17 +1261,10 @@ namespace pg_class
         public List<object_general> object_by_id_prop_data_type( Int64 iid_conception, Int64 iid_prop_data_type)
         {
             List<object_general> object_list = new List<object_general>();
-
-
             DataTable tbl_vclass  = TableByName("vobject_general");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
             NpgsqlCommandKey cmdk;
 
-            //=======================
             cmdk = CommandByKey("object_by_id_prop_data_type");
-
-
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -1462,7 +1276,6 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iid_conception"].Value = iid_conception;
             cmdk.Parameters["iid_prop_data_type"].Value = iid_prop_data_type;
@@ -1498,8 +1311,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+
             cmdk = CommandByKey("object_by_id_prop_data_type");
             if (cmdk != null)
             {
@@ -1518,23 +1330,17 @@ namespace pg_class
         #endregion
 
         #region ВЫБРАТЬ ПО ССЫЛКАМ НА ОБЪЕКТ
-        //*********************************************************************************************
+
         /// <summary>
         /// Лист представлений объектов ссылающихся на указанный объект, разрешение обратных ссылок
         /// </summary>
         public List<object_general> object_by_link_object(Int64 iid_object, Boolean on_recursive)
         {
             List<object_general> object_list = new List<object_general>();
-
-
             DataTable tbl_object = TableByName("vobject_general");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
             NpgsqlCommandKey cmdk;
 
-            //=======================
             cmdk = CommandByKey("object_by_link_object");
-
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -1546,11 +1352,9 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iid_object"].Value = iid_object;
             cmdk.Parameters["on_recursive"].Value = on_recursive;
-
             cmdk.Fill(tbl_object);
 
             object_general og;
@@ -1582,8 +1386,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+
             cmdk = CommandByKey("object_by_link_object");
             if (cmdk != null)
             {
