@@ -78,39 +78,5 @@ namespace pg_class
             }
             return Result;
         }
-
-        #region ПРОЦЕДУРА СОЗДАНИЯ КОМАНДЫ ОТЛОЖЕННОГО ЭКСПОРТА В EXCEL
-        /// <summary>
-        /// Метод экспорта активных представлений вещественных классов в Excel по идентификатору родительского класса
-        /// </summary>
-        public command_export exp_class_act_real_by_id_class_parent_to_excel_get_command(Int64 iid_class_parent, eExportMode imode, Boolean iquantity_show, Boolean irecursively)
-        {
-            NpgsqlCommandKey cmdk;
-            
-            cmdk = CommandByKey("exp_class_act_real_by_id_class_parent_to_excel", true);
-            if (cmdk != null)
-            {
-                if (!cmdk.Access)
-                {
-                    throw new AccessDataBaseException(404, String.Format(@"Отказано в доступе к методу: {0}!", cmdk.CommandText));
-                }
-            }
-            else
-            {
-                throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
-            }
-            
-            cmdk.Parameters["iid_class_parent"].Value = iid_class_parent;
-            cmdk.Parameters["imode"].Value = (Int32)imode;
-            cmdk.Parameters["iquantity_show"].Value = iquantity_show;
-            cmdk.Parameters["irecursively"].Value = irecursively;
-            object tmp = cmdk.ExecuteScalar();
-
-            String command_export = String.Format(@"SELECT bpd.exp_class_act_real_by_id_class_parent_to_excel({0}, {1}, {2}, {3})", iid_class_parent, imode.ToString(), iquantity_show.ToString(), irecursively.ToString());
-            String Desc = String.Format(@"Отчет: Классы по идентификатору родительского класса: {0} | Режим: {1}", "Array", manager.ExportMode(imode));
-            command_export cm = new command_export(cmdk, command_export, Desc);
-            return cm;
-        }
-        #endregion
     }
 }

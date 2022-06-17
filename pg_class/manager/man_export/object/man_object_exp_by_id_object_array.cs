@@ -77,37 +77,5 @@ namespace pg_class
             }
             return Result;
         }
-
-        #region ПРОЦЕДУРА СОЗДАНИЯ КОМАНДЫ ОТЛОЖЕННОГО ЭКСПОРТА В EXCEL
-        /// <summary>
-        /// Метод создания команды экспорта объектов по массиву идентификаторов в файл Excel
-        /// </summary>
-        public command_export exp_object_by_id_object_array_to_excel_get_command(Int64[] iobject_array, eExportMode imode, Boolean iquantity_show)
-        {
-            NpgsqlCommandKey cmdk;
-            
-            cmdk = CommandByKey("exp_object_by_id_object_array_to_excel", true);
-            if (cmdk != null)
-            {
-                if (!cmdk.Access)
-                {
-                    throw new AccessDataBaseException(404, String.Format(@"Отказано в доступе к методу: {0}!", cmdk.CommandText));
-                }
-            }
-            else
-            {
-                throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
-            }
-
-            cmdk.Parameters["iobject_array"].Value = iobject_array;
-            cmdk.Parameters["imode"].Value = (Int32)imode;
-            cmdk.Parameters["iquantity_show"].Value = iquantity_show;
-
-            String command_export = String.Format(@"SELECT bpd.exp_object_by_id_object_array_to_excel({0},{1},{2})", "Array", imode.ToString(), iquantity_show.ToString());
-            String Desc = String.Format(@"Отчет: Объекты по массиву: {0} | Режим: {1}", "Array", manager.ExportMode(imode));
-            command_export cm = new command_export(cmdk, command_export, Desc);
-            return cm;
-        }
-        #endregion
     }
 }
