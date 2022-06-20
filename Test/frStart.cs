@@ -70,11 +70,12 @@ namespace Test
 
 
             comboBox1.DataSource = NEW_pg_class.Conception_list;
-            NEW_pg_class.Info.Current_Configurator = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version; 
+            NEW_pg_class.Info.Current_Configurator = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
 
             ///ИЗВРАЩАИТЬСЯ ТУТ
             ///
 
+<<<<<<< HEAD
             
             /* vclass c = NEW_pg_class.class_act_by_id(6415);
 
