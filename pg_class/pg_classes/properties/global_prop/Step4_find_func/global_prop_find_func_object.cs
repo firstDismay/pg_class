@@ -14,7 +14,7 @@ namespace pg_class.pg_classes
         ///  Лист объектов по маске значения глобального свойства
         /// object_by_msk_global_prop
         /// </summary>
-        public List<object_general> Object_by_msk_global_prop(String find_mask, eSearchMethods search_method, String valreq, String valmin, String valmax, Boolean Extended = false)
+        public List<object_general> Object_by_msk_global_prop(eSearchMethods search_method, String valreq, String valmin, String valmax, Boolean Extended = false)
         {
             List<object_general> Result;
             if (Extended)
