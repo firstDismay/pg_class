@@ -425,7 +425,7 @@ namespace pg_class.pg_commands
                 Message = String.Format("Выполнение команды: {0} с параметрами: ", cmd_.CommandText);
                 foreach (NpgsqlParameter p in cmd_.Parameters)
                 {
-                    if (p.NpgsqlValue != null)
+                    if (p.NpgsqlValue != null && p.NpgsqlValue != DBNull.Value)
                     {
                         switch (p.NpgsqlDbType)
                         {
@@ -455,6 +455,9 @@ namespace pg_class.pg_commands
                                     ParamVal = "Тип Json";
                                 }
                                 break;
+                            case NpgsqlTypes.NpgsqlDbType.Timestamp:
+                                ParamVal = Convert.ToDateTime(p.NpgsqlValue).ToString("yyyy-MM-dd HH:mm:ss.fff");
+                                break;
                             default:
                                 ParamVal = p.NpgsqlValue.ToString();
                                 break;
@@ -483,7 +486,7 @@ namespace pg_class.pg_commands
                 Message = String.Format("Выполнение команды: '{0}' с параметрами: ", cmd_.CommandText);
                 foreach (NpgsqlParameter p in cmd_.Parameters)
                 {
-                    if (p.NpgsqlValue != null)
+                    if (p.NpgsqlValue != null && p.NpgsqlValue != DBNull.Value)
                     {
                         switch (p.NpgsqlDbType)
                         {

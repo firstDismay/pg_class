@@ -70,12 +70,16 @@ namespace Test
 
 
             comboBox1.DataSource = NEW_pg_class.Conception_list;
-            NEW_pg_class.Info.Current_Configurator = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version; 
+            NEW_pg_class.Info.Current_Configurator = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
 
             ///ИЗВРАЩАИТЬСЯ ТУТ
             ///
 
-            
+            class_prop_user_val cv = NEW_pg_class.class_prop_user_small_val_by_id_prop(77188);
+
+            cv.value_set(100);
+            cv.Update();
+
             List<object_general> o = NEW_pg_class.object_ext_by_msk_global_prop(187,eSearchMethods.any_array,"1287,1284","","");
 
             o = NEW_pg_class.object_ext_by_msk_global_prop(33, eSearchMethods.like_lower, "lab%", "", "");
