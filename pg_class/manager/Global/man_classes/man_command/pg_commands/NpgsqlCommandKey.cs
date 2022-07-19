@@ -455,8 +455,13 @@ namespace pg_class.pg_commands
                                     ParamVal = "Тип Json";
                                 }
                                 break;
+<<<<<<< HEAD
                             case NpgsqlTypes.NpgsqlDbType.Timestamp:
                                 ParamVal = Convert.ToDateTime(p.NpgsqlValue).ToString("yyyy-MM-dd HH:mm:ss.fff");
+=======
+                            case NpgsqlTypes.NpgsqlDbType.Timestamp: 
+                                ParamVal = Convert.ToDateTime(p).ToString("yyyy-MM-dd HH:mm:ss.fff");
+>>>>>>> 439f840 (Нстроен формат штампа времени для событий команд)
                                 break;
                             default:
                                 ParamVal = p.NpgsqlValue.ToString();
