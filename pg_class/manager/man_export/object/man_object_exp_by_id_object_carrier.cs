@@ -20,12 +20,9 @@ namespace pg_class
         public Byte[] exp_object_by_id_object_carrier_to_excel(Int64 iid_object_carrier, eExportMode imode, Boolean iquantity_show)
         {
             Byte[] Result = null;
-            //=======================
             NpgsqlCommandKey cmdk;
-            //**********
-            //=======================
-            cmdk = CommandByKey("exp_object_by_id_object_carrier_to_excel");
 
+            cmdk = CommandByKey("exp_object_by_id_object_carrier_to_excel");
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -37,7 +34,6 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iid_object_carrier"].Value = iid_object_carrier;
             cmdk.Parameters["imode"].Value = (Int32)imode;
@@ -65,7 +61,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
+
             cmdk = CommandByKey("exp_object_by_id_object_carrier_to_excel");
             if (cmdk != null)
             {
@@ -81,40 +77,5 @@ namespace pg_class
             }
             return Result;
         }
-
-        #region ПРОЦЕДУРА СОЗДАНИЯ КОМАНДЫ ОТЛОЖЕННОГО ЭКСПОРТА В EXCEL
-        /// <summary>
-        /// Метод экспорта объектов в Excel по идентификатору объекта носителя
-        /// </summary>
-        public command_export exp_object_by_id_object_carrier_to_excel_get_command(Int64 iid_object_carrier, eExportMode imode, Boolean iquantity_show)
-        {
-            NpgsqlCommandKey cmdk;
-            //**********
-            //=======================
-            cmdk = CommandByKey("exp_object_by_id_object_carrier_to_excel", true);
-
-            if (cmdk != null)
-            {
-                if (!cmdk.Access)
-                {
-                    throw new AccessDataBaseException(404, String.Format(@"Отказано в доступе к методу: {0}!", cmdk.CommandText));
-                }
-            }
-            else
-            {
-                throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
-            }
-            //=======================
-
-            cmdk.Parameters["iid_object_carrier"].Value = iid_object_carrier;
-            cmdk.Parameters["imode"].Value = (Int32)imode;
-            cmdk.Parameters["iquantity_show"].Value = iquantity_show;
-
-            String command_export = String.Format(@"SELECT bpd.exp_object_by_id_object_carrier_to_excel({0}, {1}, {2}, {3})", iid_object_carrier, imode.ToString(), iquantity_show.ToString());
-            String Desc = String.Format(@"Отчет: Объекты по идентификатору объекта носителя: {0} | Режим: {1}", iid_object_carrier, manager.ExportMode(imode));
-            command_export cm = new command_export(cmdk, command_export, Desc);
-            return cm;
-        }
-        #endregion
     }
 }

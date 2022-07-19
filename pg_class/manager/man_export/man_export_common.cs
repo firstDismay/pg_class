@@ -15,14 +15,14 @@ namespace pg_class
     public partial class manager
     {
         /// <summary>
-        /// Метод экспорта объектов по массиву идентификаторов в файл Excel
+        /// Метод экспорта данных в Excel для произвольного запроса
         /// </summary>
-        public Byte[] exp_object_by_id_object_array_to_excel(Int64[] iobject_array, eExportMode imode, Boolean iquantity_show)
+        internal Byte[] export_to_excel(String command_export)
         {
             Byte[] Result = null;
             NpgsqlCommandKey cmdk;
 
-            cmdk = CommandByKey("exp_object_by_id_object_array_to_excel");
+            cmdk = CommandByKey("exp_base_entity_to_excel");
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -35,34 +35,30 @@ namespace pg_class
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
 
-            cmdk.Parameters["iobject_array"].Value = iobject_array;
-            cmdk.Parameters["imode"].Value = (Int32)imode;
-            cmdk.Parameters["iquantity_show"].Value = iquantity_show;
+            cmdk.Parameters["command_export"].Value = command_export;
             object tmp = cmdk.ExecuteScalar();
-
             if (tmp != DBNull.Value)
             {
                 Result = (Byte[])tmp;
             }
 
-            String command_export = String.Format(@"SELECT bpd.exp_object_by_id_object_array_to_excel({0},{1},{2})", "Array", imode.ToString(), iquantity_show.ToString());
             //Генерируем событие завершения процедуры экспорта
             ExportCompletedEventArgs e = new ExportCompletedEventArgs(command_export, Result);
             ExportOnCompleted(e);
             return Result;
         }
-        
+
         //-=ACCESS=-***********************************************************************************
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
-        public Boolean exp_object_by_id_object_array_to_excel(out eAccess Access)
+        internal Boolean export_to_excel(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
 
-            cmdk = CommandByKey("exp_object_by_id_object_array_to_excel");
+            cmdk = CommandByKey("exp_base_entity_to_excel");
             if (cmdk != null)
             {
                 Result = cmdk.Access;

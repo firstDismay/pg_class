@@ -16,19 +16,21 @@ namespace pg_class
         /// <summary>
         /// Лист объектов по маске значения глобального свойства
         /// </summary>
-        public List<object_general> object_by_msk_global_prop(Int64 iid_global_prop, String find_mask)
+        /// <param name="iid_global_prop">Идентификатор глобального свойства</param>
+        /// <param name="search_method">Строкое представление метода поиска</param>
+        /// <param name="valreq">Значение, маска поиска, для методов поиска по массивам идентификаторы критериев через запятую</param>
+        /// <param name="valmin">Минимальное значение поиска при поиске в диапазоне</param>
+        /// <param name="valmax">Максимальное значение поиска при поиске в диапазоне</param>
+        /// <returns>Лист объектов</returns>
+        /// <exception cref="AccessDataBaseException"></exception>
+        public List<object_general> object_by_msk_global_prop(Int64 iid_global_prop,
+                                                                        eSearchMethods search_method, String valreq, String valmin, String valmax)
         {
             List<object_general> object_list = new List<object_general>();
-
-
             DataTable tbl_object = TableByName("vobject_general");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
             NpgsqlCommandKey cmdk;
 
-            //=======================
             cmdk = CommandByKey("object_by_msk_global_prop");
-
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -40,11 +42,12 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iid_global_prop"].Value = iid_global_prop;
-            cmdk.Parameters["find_mask"].Value = find_mask;
-
+            cmdk.Parameters["search_method"].Value = search_method.ToString();
+            cmdk.Parameters["valreq"].Value = valreq;
+            cmdk.Parameters["valmin"].Value = valmin;
+            cmdk.Parameters["valmax"].Value = valmax;
             cmdk.Fill(tbl_object);
             
             object_general og;
@@ -62,9 +65,17 @@ namespace pg_class
         /// <summary>
         /// Лист объектов по маске значения глобального свойства
         /// </summary>
-        public List<object_general> object_by_msk_global_prop(global_prop Global_prp, String find_mask)
+        /// <param name="Global_prp">Идентификатор глобального свойства</param>
+        /// <param name="search_method">Строкое представление метода поиска</param>
+        /// <param name="valreq">Значение, маска поиска, для методов поиска по массивам идентификаторы критериев через запятую</param>
+        /// <param name="valmin">Минимальное значение поиска при поиске в диапазоне</param>
+        /// <param name="valmax">Максимальное значение поиска при поиске в диапазоне</param>
+        /// <returns>Лист объектов</returns>
+        /// <exception cref="AccessDataBaseException"></exception>
+        public List<object_general> object_by_msk_global_prop(global_prop Global_prp,
+                                                                        eSearchMethods search_method, String valreq, String valmin, String valmax)
         {
-            return object_by_msk_global_prop(Global_prp.Id, find_mask);
+            return object_by_msk_global_prop(Global_prp.Id, search_method, valreq, valmin, valmax);
         }
 
         //-=ACCESS=-***********************************************************************************
@@ -76,8 +87,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
             cmdk = CommandByKey("object_by_msk_global_prop");
             if (cmdk != null)
             {

@@ -15,20 +15,16 @@ namespace pg_class
     public partial class manager
     {
         /// <summary>
-        /// Лист представлений объектов соотвествующих набору значений глобальных/определяющих свойств (подбор по критериям)
+        /// Лист расширенных представлений объектов соотвествующих набору значений глобальных/определяющих свойств (подбор по критериям)
         /// </summary>
-        public List<object_general> object_by_array_prop(PropSearchСondition[] array_prop, Int64 iid_position)
+        public List<object_general> object_ext_by_array_prop(PropSearchСondition[] array_prop, Int64 iid_position)
         {
             List<object_general> object_list = new List<object_general>();
 
-            DataTable tbl_object = TableByName("vobject_general");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
+            DataTable tbl_object = TableByName("vobject_general_ext");
             NpgsqlCommandKey cmdk;
 
-            //=======================
-            cmdk = CommandByKey("object_by_array_prop");
-
+            cmdk = CommandByKey("object_ext_by_array_prop");
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -66,25 +62,24 @@ namespace pg_class
         }
 
         /// <summary>
-        /// Лист представлений объектов соотвествующих набору значений глобальных/определяющих свойств (подбор по критериям)
+        /// Лист расширенных представлений объектов соотвествующих набору значений глобальных/определяющих свойств (подбор по критериям)
         /// </summary>
-        public List<object_general> object_by_array_prop(PropSearchСondition[] array_prop, position Position)
+        public List<object_general> object_ext_by_array_prop(PropSearchСondition[] array_prop, position Position)
         {
-            return object_by_array_prop(array_prop, Position.Id);
+            return object_ext_by_array_prop(array_prop, Position.Id);
         }
 
         //-=ACCESS=-***********************************************************************************
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
-        public Boolean object_by_array_prop(out eAccess Access)
+        public Boolean object_ext_by_array_prop(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
-            cmdk = CommandByKey("object_by_array_prop");
+            
+            cmdk = CommandByKey("object_ext_by_array_prop");
             if (cmdk != null)
             {
                 Result = cmdk.Access;
