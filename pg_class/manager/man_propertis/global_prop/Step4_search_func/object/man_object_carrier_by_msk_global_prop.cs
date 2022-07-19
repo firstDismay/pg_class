@@ -23,14 +23,14 @@ namespace pg_class
         /// <param name="valmax">Максимальное значение поиска при поиске в диапазоне</param>
         /// <returns>Лист объектов</returns>
         /// <exception cref="AccessDataBaseException"></exception>
-        public List<object_general> object_carrier_by_msk_global_prop(Int64 iid_global_prop,
+        public List<object_general> object_carrier_by_global_prop(Int64 iid_global_prop,
                                                                         eSearchMethods search_method, String valreq, String valmin, String valmax)
         {
             List<object_general> object_list = new List<object_general>();
             DataTable tbl_object = TableByName("vobject_general");
             NpgsqlCommandKey cmdk;
 
-            cmdk = CommandByKey("object_carrier_by_msk_global_prop");
+            cmdk = CommandByKey("object_carrier_by_global_prop");
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -72,23 +72,23 @@ namespace pg_class
         /// <param name="valmax">Максимальное значение поиска при поиске в диапазоне</param>
         /// <returns>Лист объектов</returns>
         /// <exception cref="AccessDataBaseException"></exception>
-        public List<object_general> object_carrier_by_msk_global_prop(global_prop Global_prp,
+        public List<object_general> object_carrier_by_global_prop(global_prop Global_prp,
                                                                         eSearchMethods search_method, String valreq, String valmin, String valmax)
         {
-            return object_carrier_by_msk_global_prop(Global_prp.Id, search_method, valreq, valmin, valmax);
+            return object_carrier_by_global_prop(Global_prp.Id, search_method, valreq, valmin, valmax);
         }
 
         //-=ACCESS=-***********************************************************************************
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
-        public Boolean object_carrier_by_msk_global_prop(out eAccess Access)
+        public Boolean object_carrier_by_global_prop(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
             
-            cmdk = CommandByKey("object_carrier_by_msk_global_prop");
+            cmdk = CommandByKey("object_carrier_by_global_prop");
             if (cmdk != null)
             {
                 Result = cmdk.Access;

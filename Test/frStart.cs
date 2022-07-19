@@ -80,9 +80,9 @@ namespace Test
             cv.value_set(100);
             cv.Update();
 
-            List<object_general> o = NEW_pg_class.object_ext_by_msk_global_prop(187,eSearchMethods.any_array,"1287,1284","","");
+            List<object_general> o = NEW_pg_class.object_ext_by_global_prop(187,eSearchMethods.any_array,"1287,1284","","");
 
-            o = NEW_pg_class.object_ext_by_msk_global_prop(33, eSearchMethods.like_lower, "lab%", "", "");
+            o = NEW_pg_class.object_ext_by_global_prop(33, eSearchMethods.like_lower, "lab%", "", "");
 
             /* json_object_parameters cop;
 

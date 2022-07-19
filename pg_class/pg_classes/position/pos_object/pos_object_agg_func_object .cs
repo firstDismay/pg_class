@@ -11,18 +11,18 @@ namespace pg_class.pg_classes
         #region МЕТОДЫ ДЛЯ РАБОТЫ С ОБЪЕКТАМИ
         /// <summary>
         ///  Лист объектов указанной позиции по маске значения глобального свойства
-        /// object_by_msk_global_prop_from_pos
+        /// object_by_global_prop_from_pos
         /// </summary>
-        public List<object_general> Object_by_id_position_msk_global_prop(global_prop Global_prop, eSearchMethods search_method, String valreq, String valmin, String valmax, Boolean Extended = false)
+        public List<object_general> Object_by_id_position_global_prop(global_prop Global_prop, eSearchMethods search_method, String valreq, String valmin, String valmax, Boolean Extended = false)
         {
             List<object_general> Result;
             if (Extended)
             {
-                Result = Manager.object_ext_by_id_position_msk_global_prop(this, Global_prop, search_method, valreq, valmin, valmax);
+                Result = Manager.object_ext_by_id_position_global_prop(this, Global_prop, search_method, valreq, valmin, valmax);
             }
             else
             {
-                Result = Manager.object_by_id_position_msk_global_prop(this, Global_prop, search_method, valreq, valmin, valmax);
+                Result = Manager.object_by_id_position_global_prop(this, Global_prop, search_method, valreq, valmin, valmax);
             }
             return Result;
         }
