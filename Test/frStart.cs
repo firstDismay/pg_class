@@ -74,7 +74,6 @@ namespace Test
 
             ///ИЗВРАЩАИТЬСЯ ТУТ
             ///
-
             /*cv.value_set(100);
             /*cv.Update();
 
