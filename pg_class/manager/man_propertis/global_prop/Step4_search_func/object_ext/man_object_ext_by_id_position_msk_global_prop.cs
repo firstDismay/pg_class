@@ -16,9 +16,6 @@ namespace pg_class
         /// <summary>
         /// Лист объектов указанной позиции по маске значения глобального свойства 
         /// </summary>
-<<<<<<< HEAD
-        public List<object_general> object_ext_by_id_position_msk_global_prop(Int64 iid_position, Int64 iid_global_prop,
-=======
         /// <param name="iid_position">Идентификатор позиции</param>
         /// <param name="iid_global_prop">Идентификатор глобального свойства</param>
         /// <param name="search_method">Строкое представление метода поиска</param>
@@ -28,7 +25,6 @@ namespace pg_class
         /// <returns>Лист объектов</returns>
         /// <exception cref="AccessDataBaseException"></exception>
         public List<object_general> object_ext_by_id_position_global_prop(Int64 iid_position, Int64 iid_global_prop,
->>>>>>> e7d329e (Изменение наименований методов поиска объектов по глобальным свойствам с аргументом метода поиска)
                                                                         eSearchMethods search_method, String valreq, String valmin, String valmax)
         {
             List<object_general> object_list = new List<object_general>();
@@ -71,9 +67,6 @@ namespace pg_class
         /// <summary>
         /// Лист объектов указанной позиции по маске значения глобального свойства 
         /// </summary>
-<<<<<<< HEAD
-        public List<object_general> object_ext_by_id_position_msk_global_prop(position Position, global_prop Global_prp,
-=======
         /// <param name="Position">Идентификатор позиции</param>
         /// <param name="Global_prp">Идентификатор глобального свойства</param>
         /// <param name="search_method">Строкое представление метода поиска</param>
@@ -83,7 +76,6 @@ namespace pg_class
         /// <returns>Лист объектов</returns>
         /// <exception cref="AccessDataBaseException"></exception>
         public List<object_general> object_ext_by_id_position_global_prop(position Position, global_prop Global_prp,
->>>>>>> e7d329e (Изменение наименований методов поиска объектов по глобальным свойствам с аргументом метода поиска)
                                                                         eSearchMethods search_method, String valreq, String valmin, String valmax)
         {
             return object_ext_by_id_position_global_prop(Position.Id, Global_prp.Id, search_method, valreq, valmin, valmax);

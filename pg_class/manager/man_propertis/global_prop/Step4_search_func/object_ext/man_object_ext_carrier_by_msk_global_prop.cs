@@ -16,9 +16,6 @@ namespace pg_class
         /// <summary>
         /// Лист расширенных объектов носителей по маске значения глобального свойства объекта значения объектного свойства
         /// </summary>
-<<<<<<< HEAD
-        public List<object_general> object_ext_carrier_by_msk_global_prop(Int64 iid_global_prop,
-=======
         /// <param name="iid_global_prop">Идентификатор глобального свойства</param>
         /// <param name="search_method">Строкое представление метода поиска</param>
         /// <param name="valreq">Значение, маска поиска, для методов поиска по массивам идентификаторы критериев через запятую</param>
@@ -27,7 +24,6 @@ namespace pg_class
         /// <returns>Лист объектов</returns>
         /// <exception cref="AccessDataBaseException"></exception>
         public List<object_general> object_ext_carrier_by_global_prop(Int64 iid_global_prop,
->>>>>>> e7d329e (Изменение наименований методов поиска объектов по глобальным свойствам с аргументом метода поиска)
                                                                         eSearchMethods search_method, String valreq, String valmin, String valmax)
         {
             List<object_general> object_list = new List<object_general>();
@@ -69,9 +65,6 @@ namespace pg_class
         /// <summary>
         /// Лист расширенных объектов носителей по маске значения глобального свойства объекта значения объектного свойства
         /// </summary>
-<<<<<<< HEAD
-        public List<object_general> object_ext_carrier_by_msk_global_prop(global_prop Global_prp,
-=======
         /// <param name="Global_prp">Идентификатор глобального свойства</param>
         /// <param name="search_method">Строкое представление метода поиска</param>
         /// <param name="valreq">Значение, маска поиска, для методов поиска по массивам идентификаторы критериев через запятую</param>
@@ -80,7 +73,6 @@ namespace pg_class
         /// <returns>Лист объектов</returns>
         /// <exception cref="AccessDataBaseException"></exception>
         public List<object_general> object_ext_carrier_by_global_prop(global_prop Global_prp,
->>>>>>> e7d329e (Изменение наименований методов поиска объектов по глобальным свойствам с аргументом метода поиска)
                                                                         eSearchMethods search_method, String valreq, String valmin, String valmax)
         {
             return object_ext_carrier_by_global_prop(Global_prp.Id, search_method, valreq, valmin, valmax);
