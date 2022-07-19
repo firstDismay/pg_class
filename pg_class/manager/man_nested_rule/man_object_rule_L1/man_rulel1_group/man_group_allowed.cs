@@ -17,15 +17,10 @@ namespace pg_class
         public List<group> group_allowed_rl1_by_id_position(Int64 iid_position)
         {
             List<group> group_list = new List<group>();
-
             DataTable tbl_group  = TableByName("vgroup");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
             NpgsqlCommandKey cmdk;
 
-            //=======================
             cmdk = CommandByKey("group_allowed_rl1_by_id_position");
-
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -37,10 +32,8 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iid_position"].Value = iid_position;
-
             cmdk.Fill(tbl_group);
             
             group gt;
@@ -73,8 +66,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
             cmdk = CommandByKey("group_allowed_rl1_by_id_position");
             if (cmdk != null)
             {
@@ -90,7 +82,6 @@ namespace pg_class
             }
             return Result;
         }
-        //*********************************************************************************************
 
         /// <summary>
         /// Лист разрешенных групп на основе разрешения уровня 1 группа на шаблон по идентификатору шаблона позиции
@@ -98,16 +89,10 @@ namespace pg_class
         public List<group> group_allowed_rl1_by_id_pos_temp(Int64 iid_pos_temp)
         {
             List<group> group_list = new List<group>();
-
-
             DataTable tbl_group  = TableByName("vgroup");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
             NpgsqlCommandKey cmdk;
 
-            //=======================
             cmdk = CommandByKey("group_allowed_rl1_by_id_pos_temp");
-
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -119,10 +104,8 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iid_pos_temp"].Value = iid_pos_temp;
-
             cmdk.Fill(tbl_group);
             
             group gt;
@@ -156,8 +139,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
             cmdk = CommandByKey("group_allowed_rl1_by_id_pos_temp");
             if (cmdk != null)
             {

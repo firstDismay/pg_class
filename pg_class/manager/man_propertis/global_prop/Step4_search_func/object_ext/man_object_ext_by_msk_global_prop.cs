@@ -16,14 +16,25 @@ namespace pg_class
         /// <summary>
         /// Лист объектов по маске значения глобального свойства
         /// </summary>
+<<<<<<< HEAD
         public List<object_general> object_ext_by_msk_global_prop(Int64 iid_global_prop,
+=======
+        /// <param name="iid_global_prop">Идентификатор глобального свойства</param>
+        /// <param name="search_method">Строкое представление метода поиска</param>
+        /// <param name="valreq">Значение, маска поиска, для методов поиска по массивам идентификаторы критериев через запятую</param>
+        /// <param name="valmin">Минимальное значение поиска при поиске в диапазоне</param>
+        /// <param name="valmax">Максимальное значение поиска при поиске в диапазоне</param>
+        /// <returns>Лист объектов</returns>
+        /// <exception cref="AccessDataBaseException"></exception>
+        public List<object_general> object_ext_by_global_prop(Int64 iid_global_prop,
+>>>>>>> e7d329e (Изменение наименований методов поиска объектов по глобальным свойствам с аргументом метода поиска)
                                                                         eSearchMethods search_method, String valreq, String valmin, String valmax)
         {
             List<object_general> object_list = new List<object_general>();
             DataTable tbl_object = TableByName("vobject_general_ext");
             NpgsqlCommandKey cmdk;
 
-            cmdk = CommandByKey("object_ext_by_msk_global_prop");
+            cmdk = CommandByKey("object_ext_by_global_prop");
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -58,10 +69,21 @@ namespace pg_class
         /// <summary>
         /// Лист объектов по маске значения глобального свойства
         /// </summary>
+<<<<<<< HEAD
         public List<object_general> object_ext_by_msk_global_prop(global_prop Global_prp,
+=======
+        /// <param name="Global_prp">Идентификатор глобального свойства</param>
+        /// <param name="search_method">Строкое представление метода поиска</param>
+        /// <param name="valreq">Значение, маска поиска, для методов поиска по массивам идентификаторы критериев через запятую</param>
+        /// <param name="valmin">Минимальное значение поиска при поиске в диапазоне</param>
+        /// <param name="valmax">Максимальное значение поиска при поиске в диапазоне</param>
+        /// <returns>Лист объектов</returns>
+        /// <exception cref="AccessDataBaseException"></exception>
+        public List<object_general> object_ext_by_global_prop(global_prop Global_prp,
+>>>>>>> e7d329e (Изменение наименований методов поиска объектов по глобальным свойствам с аргументом метода поиска)
                                                                         eSearchMethods search_method, String valreq, String valmin, String valmax)
         {
-            return object_ext_by_msk_global_prop(Global_prp.Id, search_method, valreq, valmin, valmax);
+            return object_ext_by_global_prop(Global_prp.Id, search_method, valreq, valmin, valmax);
         }
 
         
@@ -70,13 +92,13 @@ namespace pg_class
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
-        public Boolean object_ext_by_msk_global_prop(out eAccess Access)
+        public Boolean object_ext_by_global_prop(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
             
-            cmdk = CommandByKey("object_ext_by_msk_global_prop");
+            cmdk = CommandByKey("object_ext_by_global_prop");
             if (cmdk != null)
             {
                 Result = cmdk.Access;

@@ -19,11 +19,8 @@ namespace pg_class
             Int32 error;
             String desc_error;
             NpgsqlCommandKey cmdk;
-            //**********
-             
-            //=======================
-            cmdk = CommandByKey("rulel1_group_on_pos_temp_del");
 
+            cmdk = CommandByKey("rulel1_group_on_pos_temp_del");
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -35,7 +32,6 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iid_group"].Value = iid_group;
             cmdk.Parameters["iid_pos_temp"].Value = iid_pos_temp;
@@ -45,8 +41,7 @@ namespace pg_class
             
             error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
             desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            //SetLastTimeUsing();
-            //=======================
+
             switch (error)
             {
                 case 0:
@@ -63,8 +58,6 @@ namespace pg_class
             e = new Rulel1_Group_On_Pos_tempListChangeEventArgs(iid_group, iid_pos_temp, eActionRuleList.delrule);
             OnRulel1_Group_On_Pos_tempListChange(e);
         }
-
-
 
         /// <summary>
         /// Метод удаляет разрешающее правило уровня 1 группа на шаблон
@@ -92,8 +85,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+
             cmdk = CommandByKey("rulel1_group_on_pos_temp_del");
             if (cmdk != null)
             {

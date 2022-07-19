@@ -79,7 +79,18 @@ namespace Test
             
             /* vclass c = NEW_pg_class.class_act_by_id(6415);
 
+<<<<<<< HEAD
             json_object_parameters cop;
+=======
+            cv.value_set(100);
+            cv.Update();
+
+            List<object_general> o = NEW_pg_class.object_ext_by_global_prop(187,eSearchMethods.any_array,"1287,1284","","");
+
+            o = NEW_pg_class.object_ext_by_global_prop(33, eSearchMethods.like_lower, "lab%", "", "");
+
+            /* json_object_parameters cop;
+>>>>>>> e7d329e (Изменение наименований методов поиска объектов по глобальным свойствам с аргументом метода поиска)
 
             json_object_parameters[] acop = new json_object_parameters[10000];
 
