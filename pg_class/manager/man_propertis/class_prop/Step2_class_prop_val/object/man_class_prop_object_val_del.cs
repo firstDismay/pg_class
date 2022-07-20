@@ -22,11 +22,8 @@ namespace pg_class
             String desc_error;
             NpgsqlCommandKey cmdk;
             class_prop_object_val class_prop_object_val = null;
-            //**********
-             
-            //=======================
+            
             cmdk = CommandByKey("class_prop_object_val_del");
-
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -38,20 +35,16 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
-
-            cmdk.Parameters["iid_class_prop"].Value = iid_class_prop;
 
             //Предварительный запрос данных
             class_prop_object_val = class_prop_object_val_by_id_prop(iid_class_prop);
 
-            //Начало транзакции
+            cmdk.Parameters["iid_class_prop"].Value = iid_class_prop;
             cmdk.ExecuteNonQuery();
 
             error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
             desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            //SetLastTimeUsing();
-            //=======================
+
             class_prop class_prop = class_prop_by_id(iid_class_prop);
             if (error > 0)
             {
@@ -124,8 +117,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+
             cmdk = CommandByKey("class_prop_object_val_del");
             if (cmdk != null)
             {

@@ -21,11 +21,8 @@ namespace pg_class
             Int32 error;
             String desc_error;
             NpgsqlCommandKey cmdk;
-            //**********
-             
-            //=======================
+            
             cmdk = CommandByKey("class_prop_user_val_del");
-
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -37,22 +34,16 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
-
-            cmdk.Parameters["iid_class_prop"].Value = iid_class_prop;
 
             //Предварительный запрос данных
             class_prop class_prop = class_prop_by_id(iid_class_prop);
             class_prop_user_val class_prop_user_val = class_prop_user_val_by_id_prop(class_prop);
 
-            //Начало транзакции
+            cmdk.Parameters["iid_class_prop"].Value = iid_class_prop;
             cmdk.ExecuteNonQuery();
             
             error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
             desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            //SetLastTimeUsing();
-            //=======================
-            
             if (error > 0)
             {
                 //Вызов события журнала
@@ -69,7 +60,6 @@ namespace pg_class
                 ClassPropUserValOnChange(e);
             }
         }
-
 
         /// <summary>
         /// Удалить значение пользовательского свойства активного представления класса
@@ -96,8 +86,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+
             cmdk = CommandByKey("class_prop_user_val_del");
             if (cmdk != null)
             {

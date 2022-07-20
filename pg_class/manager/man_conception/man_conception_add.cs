@@ -14,17 +14,17 @@ namespace pg_class
     public partial class manager
     {
         /// <summary>
-        /// Метод изменяет сортировку свойства шаблона позиции опуская указанное свойство вниз
+        /// Метод добавляет новую концепцию
         /// </summary>
-        public pos_temp_prop pos_temp_prop_sort_bottom(Int64 iid_pos_temp_prop)
+        public conception conception_add(String iname, String idesc)
         {
-            pos_temp_prop pos_temp_prop = null;
-            pos_temp pos_temp_sort = null;
+            conception conception = null;
+            Int64 id = 0;
             Int32 error;
             String desc_error;
             NpgsqlCommandKey cmdk;
             
-            cmdk = CommandByKey("pos_temp_prop_sort_bottom");
+            cmdk = CommandByKey("conception_add");
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -37,55 +37,48 @@ namespace pg_class
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
 
-            cmdk.Parameters["iid_pos_temp_prop"].Value = iid_pos_temp_prop;
+            cmdk.Parameters["iname"].Value = iname;
+            cmdk.Parameters["idesc"].Value = idesc;
             cmdk.ExecuteNonQuery();
-
+            
             error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
             desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
             switch (error)
             {
                 case 0:
-                    pos_temp_prop = pos_temp_prop_by_id(iid_pos_temp_prop);
-                    pos_temp_sort = pos_temp_by_id(pos_temp_prop.Id_pos_temp);
+                    id = Convert.ToInt64(cmdk.Parameters["outid"].Value);
+                    if (id > 0)
+                    {
+                        conception = conception_by_id(id);
+                    }
                     break;
                 default:
                     //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(iid_pos_temp_prop, eEntity.pos_temp_prop, error, desc_error, eAction.Update, eJournalMessageType.error);
+                    JournalEventArgs me = new JournalEventArgs(id, eEntity.conception, error, desc_error, eAction.Insert, eJournalMessageType.error);
                     JournalMessageOnReceived(me);
                     throw new PgDataException(error, desc_error);
             }
-            //Генерируем событие применения метода сортировки
-            if (pos_temp_sort != null)
-            {
-                PosTempChangeEventArgs e = new PosTempChangeEventArgs(pos_temp_sort, eAction.Update);
-                PosTempPropSortOnChange(e);
-            }
+
+            //Генерируем событие изменения концепции
+            ConceptionChangeEventArgs e = new ConceptionChangeEventArgs(conception, eAction.Insert);
+            ConceptionOnChange(e);
             //Возвращаем Объект
-            return pos_temp_prop;
+            return conception;
         }
-
-        /// <summary>
-        /// Метод изменяет сортировку свойства шаблона позиции опуская указанное свойство вниз
-        /// </summary>
-        public pos_temp_prop pos_temp_prop_sort_bottom(pos_temp_prop Pos_temp_prop)
-        {
-            return pos_temp_prop_sort_bottom(Pos_temp_prop.Id); ;
-        }
-
         //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
-        public Boolean pos_temp_prop_sort_bottom(out eAccess Access)
+        public Boolean conception_add(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-
-            cmdk = CommandByKey("pos_temp_prop_sort_bottom");
+            
+            cmdk = CommandByKey("conception_add");
             if (cmdk != null)
             {
-                Result = cmdk.Access;
+                Result =  cmdk.Access;
                 if (Result)
                 {
                     Access = eAccess.Success;

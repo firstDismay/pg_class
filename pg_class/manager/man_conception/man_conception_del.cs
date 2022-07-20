@@ -9,27 +9,20 @@ using pg_class.pg_commands;
 using pg_class.pg_exceptions;
 using pg_class.pg_classes;
 
-
 namespace pg_class
 {
     public partial class manager
     {
         /// <summary>
-        /// Лист доступных строковых паттернов для имен объектов
+        /// Метод удаляет указаную концепцию
         /// </summary>
-        public List<pattern_string> class_name_format_pattern_string_by_all()
+        public void conception_del(Int64 id)
         {
-            List<pattern_string> pattern_string_list = new List<pattern_string>();
-
-
-            DataTable tbl_pattern_string  = TableByName("vpattern_string");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
+            Int32 error;
+            String desc_error;
             NpgsqlCommandKey cmdk;
 
-            //=======================
-            cmdk = CommandByKey("class_name_format_pattern_string_by_all");
-
+            cmdk = CommandByKey("conception_del");
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -41,34 +34,48 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
-            cmdk.Fill(tbl_pattern_string);
+            conception conception = conception_by_id(id);
+            cmdk.Parameters["iid"].Value = id;
+            cmdk.ExecuteNonQuery();
             
-            pattern_string pattern_string;
-            if (tbl_pattern_string.Rows.Count > 0)
+            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
+            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
+            if (error > 0)
             {
-                foreach (System.Data.DataRow dr in tbl_pattern_string.Rows)
-                {
-                    pattern_string = new pattern_string(dr);
-                    pattern_string_list.Add(pattern_string);
-                }
+                //Вызов события журнала
+                JournalEventArgs me = new JournalEventArgs(id, eEntity.conception, error, desc_error, eAction.Delete, eJournalMessageType.error);
+                JournalMessageOnReceived(me);
+                throw new PgDataException(error, desc_error);
             }
-            return pattern_string_list;
+
+            //Генерируем событие изменения концепции
+            if (conception != null)
+            {
+                ConceptionChangeEventArgs e = new ConceptionChangeEventArgs(conception, eAction.Delete);
+                ConceptionOnChange(e);
+            }
+        }
+
+        /// <summary>
+        /// Метод удаляет указаную концепцию
+        /// </summary>
+        public void conception_del(conception Conception)
+        {
+             conception_del(Conception);
         }
 
         //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
-        public Boolean class_name_format_pattern_string_by_all(out eAccess Access)
+        public Boolean conception_del(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
-            cmdk = CommandByKey("class_name_format_pattern_string_by_all");
+
+            cmdk = CommandByKey("conception_del");
             if (cmdk != null)
             {
                 Result = cmdk.Access;

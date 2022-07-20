@@ -19,13 +19,9 @@ namespace pg_class
         public eEntityState class_prop_object_val_is_actual(Int64 iid, DateTime timestamp_class)
         {
             Int32 is_actual = 3;
-            //=======================
             NpgsqlCommandKey cmdk;
-            //**********
-             
-            //=======================
-            cmdk = CommandByKey("class_prop_object_val_is_actual");
 
+            cmdk = CommandByKey("class_prop_object_val_is_actual");
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -37,12 +33,9 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iid"].Value = iid;
             cmdk.Parameters["timestamp_class"].Value = timestamp_class;
-
-            //Начало транзакции
             is_actual = (Int32)cmdk.ExecuteScalar();
             
             return (eEntityState)is_actual;          
@@ -70,8 +63,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+
             cmdk = CommandByKey("class_prop_object_val_is_actual");
             if (cmdk != null)
             {
