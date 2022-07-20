@@ -85,7 +85,7 @@ namespace pg_class
             return document_upd(Document.Id, Document.Id_category, Document.Name, Document.Desc, Document.Regnum, Document.Regdate);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -178,7 +178,7 @@ namespace pg_class
             return document_include_in_pack(DocumentPack.Id, Document.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -280,7 +280,7 @@ namespace pg_class
             return document_exclude_from_pack(Document.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

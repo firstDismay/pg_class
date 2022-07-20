@@ -88,7 +88,7 @@ namespace pg_class
             object_prop_link_val_objects_del(Position_parent.Id, Class_prop_link_val.Id_class_prop, Class_prop_link_val.Timestamp_class, on_internal);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

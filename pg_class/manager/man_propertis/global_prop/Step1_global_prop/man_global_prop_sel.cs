@@ -60,7 +60,7 @@ namespace pg_class
             return global_prop_by_id(GlobalProp.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -141,7 +141,7 @@ namespace pg_class
             return global_prop_by_id_conception(Сonception.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -223,7 +223,7 @@ namespace pg_class
             return global_prop_visible_by_id_conception(Сonception.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Лист глобальных свойств по идентификатору концепции с учетом видимости
         /// </summary>
@@ -305,7 +305,7 @@ namespace pg_class
             return global_prop_for_search_by_id_conception(Сonception.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Лист глобальных свойств по идентификатору концепции с учетом видимости и допустимых для поиска
         /// </summary>
@@ -389,7 +389,7 @@ namespace pg_class
             return global_prop_by_id_class(Class.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -474,7 +474,7 @@ namespace pg_class
             return global_prop_by_id_class_prop_definition(ObjectProp.Id_prop_definition);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -555,7 +555,7 @@ namespace pg_class
             return global_prop_by_id_pos_temp(PosTemp.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -639,7 +639,7 @@ namespace pg_class
             return global_prop_by_id_pos_temp_prop(PositionProp.Id_pos_temp_prop);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

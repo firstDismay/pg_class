@@ -79,7 +79,7 @@ namespace pg_class
         {
             Rulel2_class_on_position_add(RuleL2.Id_class, RuleL2.Id_position);
         }
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

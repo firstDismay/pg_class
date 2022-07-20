@@ -85,7 +85,7 @@ namespace pg_class
             return object_upd(Object.Id, Object.Id_unit_conversion_rule, Object.Quantity_curent);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -197,7 +197,7 @@ namespace pg_class
             return object_move(Object.Id, Position.Id, icuantity);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

@@ -159,7 +159,7 @@ namespace pg_class
             return doc_link_add(iid_document, Class_prop.EntityID, Class_prop.Id, -1);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

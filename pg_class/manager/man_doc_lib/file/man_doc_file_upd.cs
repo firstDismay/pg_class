@@ -94,7 +94,7 @@ namespace pg_class
             return doc_file_upd(Doc_file.Id, Doc_file.Name, Doc_file.Version, Doc_file.Versiondate, Doc_file.Extension, Doc_file.Fulltxtsrch_on);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -290,7 +290,7 @@ namespace pg_class
             return Result;
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

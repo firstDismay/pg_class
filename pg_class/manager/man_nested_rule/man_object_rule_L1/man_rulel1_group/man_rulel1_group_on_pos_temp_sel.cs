@@ -52,7 +52,7 @@ namespace pg_class
         {
             return rulel1_group_on_pos_temp_by_id(Group.Id, Pos_temp.Id);
         }
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -123,7 +123,7 @@ namespace pg_class
             return rulel1_group_on_pos_temp_by_id_group(Group.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -202,7 +202,7 @@ namespace pg_class
             return rulel1_group_on_pos_temp_by_id_pos_temp(Position.Id_pos_temp);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

@@ -89,7 +89,7 @@ namespace pg_class
         {
             return prop_enum_upd(iid_prop_enum, iid_conception, iname, idesc, iprop_enum_use_area.Id, iid_data_type);
         }
-            //-=ACCESS=-***********************************************************************************
+            //ACCESS
             /// <summary>
             /// Проверка прав доступа к методу
             /// </summary>

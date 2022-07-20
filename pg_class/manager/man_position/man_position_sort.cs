@@ -84,7 +84,7 @@ namespace pg_class
             return position_sort_top(Position.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -183,7 +183,7 @@ namespace pg_class
             return position_sort_up(Position.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -282,7 +282,7 @@ namespace pg_class
             return position_sort_down(Position.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -381,7 +381,7 @@ namespace pg_class
             return position_sort_bottom(Position.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -480,7 +480,7 @@ namespace pg_class
             return position_sort_by_name(Position.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -574,7 +574,7 @@ namespace pg_class
             return position_root_sort_by_name(Conception.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

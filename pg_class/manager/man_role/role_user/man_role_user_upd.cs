@@ -95,7 +95,7 @@ namespace pg_class
             return user_role_user_upd(RoleUser.Name, RoleUser.Desc, RoleUser.NameSystem, role_newnamesys);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -184,7 +184,7 @@ namespace pg_class
             return Result;
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -266,7 +266,7 @@ namespace pg_class
             return Result;
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

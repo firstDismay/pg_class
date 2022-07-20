@@ -57,7 +57,7 @@ namespace pg_class
             return global_prop_link_class_prop_is_actual(GlobalPropLinkClassProp.Id_global_prop, GlobalPropLinkClassProp.Id_class_prop_definition); ;
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

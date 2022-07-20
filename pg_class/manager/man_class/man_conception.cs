@@ -77,7 +77,7 @@ namespace pg_class
             //Возвращаем Объект
             return conception;
         }
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -174,7 +174,7 @@ namespace pg_class
             //Int64 iid, String iname, String idesc, Boolean ion
             return conception_upd(Conception.Id, Conception.Name, Conception.Desc, Conception.On, Conception.On_root_create, Conception.Default_Conception);
         }
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -264,7 +264,7 @@ namespace pg_class
             //Int64 iid, String iname, String idesc, Boolean ion
             return conception_restore(Conception.Id);
         }
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -354,7 +354,7 @@ namespace pg_class
              conception_del(Conception);
         }
 
-            //-=ACCESS=-***********************************************************************************
+            //ACCESS
             /// <summary>
             /// Проверка прав доступа к методу
             /// </summary>
@@ -425,7 +425,7 @@ namespace pg_class
 
             return conception;
         }
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -500,7 +500,7 @@ namespace pg_class
         }
 
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -568,7 +568,7 @@ namespace pg_class
         }
 
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -643,7 +643,7 @@ namespace pg_class
             return conception_is_actual(Conception.Id, Conception.Timestamp);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

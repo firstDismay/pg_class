@@ -78,7 +78,7 @@ namespace pg_class
             return pos_temp_prop_sort_by_name(Pos_temp.Id); ;
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

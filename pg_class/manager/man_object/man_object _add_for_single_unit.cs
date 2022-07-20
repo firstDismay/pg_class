@@ -41,20 +41,15 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iid_class"].Value = iid_class;
             cmdk.Parameters["iid_position"].Value = iid_position;
             cmdk.Parameters["iid_unit_conversion_rule"].Value = iid_unit_conversion_rule;
             cmdk.Parameters["icquantity"].Value = icquantity;
-
-            //Начало транзакции
             cmdk.ExecuteNonQuery();
            
             error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
             desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            //SetLastTimeUsing();
-            //=======================
             switch (error)
             {
                 case 0:
@@ -93,7 +88,7 @@ namespace pg_class
             return object_add_by_single_unit(Class.Id, Position.Id, Unit_conversion_rule.Id, icquantity);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

@@ -83,7 +83,7 @@ namespace pg_class
                                newClass_prop_object_val.Id_class_val, newClass_prop_object_val.Id_unit_conversion_rule, icquantity, on_internal);
         }
 
-            //-=ACCESS=-***********************************************************************************
+            //ACCESS
             /// <summary>
             /// Проверка прав доступа к методу
             /// </summary>

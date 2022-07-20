@@ -57,7 +57,7 @@ namespace pg_class
             return object_is_actual(Object.Id, Object.Timestamp);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

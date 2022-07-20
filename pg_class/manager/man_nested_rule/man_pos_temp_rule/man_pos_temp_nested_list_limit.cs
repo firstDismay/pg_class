@@ -54,7 +54,7 @@ namespace pg_class
         {
             return pos_temp_nested_limit_curent(position.Id, pos_temp.Id);
         }
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -126,7 +126,7 @@ namespace pg_class
         {
             return pos_temp_nested_limit_max(pos_temp.Id, pos_temp_nested.Id);
         }
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -197,7 +197,7 @@ namespace pg_class
         {
             return pos_temp_nested_limit_curent(pos_temp.Id, pos_temp_nested.Id);
         }
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -268,7 +268,7 @@ namespace pg_class
         {
             return pos_nested_limit_control(position_parent.Id, pos_temp_nested.Id);
         }
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

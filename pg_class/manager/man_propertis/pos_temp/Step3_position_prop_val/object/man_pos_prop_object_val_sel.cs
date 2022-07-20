@@ -69,7 +69,7 @@ namespace pg_class
             return position_prop_object_val_by_id_prop(Position_carrier.Id, Pos_prop.Id_pos_temp_prop);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

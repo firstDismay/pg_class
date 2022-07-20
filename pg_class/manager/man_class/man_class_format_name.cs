@@ -23,11 +23,8 @@ namespace pg_class
             Int32 error;
             String desc_error;
             NpgsqlCommandKey cmdk;
-            //**********
-             
-            //=======================
+            
             cmdk = CommandByKey("class_act_name_format_set");
-
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -39,19 +36,13 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iid_class"].Value = iid_class;
             cmdk.Parameters["iname_format"].Value = iname_format;
-            //=======================
-
-            //Начало транзакции
             cmdk.ExecuteNonQuery();
             
             error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
             desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            //SetLastTimeUsing();
-            //=======================
             switch (error)
             {
                 case 0:
@@ -92,7 +83,6 @@ namespace pg_class
             return Result;
         }
 
-
         /// <summary>
         /// Метод определяет формат имен объектов классов
         /// </summary>
@@ -115,8 +105,7 @@ namespace pg_class
             return Result;
         }
 
-
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -125,8 +114,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+
             cmdk = CommandByKey("class_act_name_format_set");
             if (cmdk != null)
             {
@@ -142,7 +130,6 @@ namespace pg_class
             }
             return Result;
         }
-        //*********************************************************************************************
 
         /// <summary>
         /// Метод устанавливает значение флага отображения количества в имени объектов
@@ -153,11 +140,8 @@ namespace pg_class
             Int32 error;
             String desc_error;
             NpgsqlCommandKey cmdk;
-            //**********
-             
-            //=======================
-            cmdk = CommandByKey("class_quantity_show_set");
 
+            cmdk = CommandByKey("class_quantity_show_set");
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -169,19 +153,13 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iid_class"].Value = iid_class;
             cmdk.Parameters["iquantity_show"].Value = iquantity_show;
-            //=======================
-
-            //Начало транзакции
             cmdk.ExecuteNonQuery();
             
             error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
             desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            //SetLastTimeUsing();
-            //=======================
             switch (error)
             {
                 case 0:
@@ -222,7 +200,6 @@ namespace pg_class
             return Result;
         }
 
-
         /// <summary>
         /// Метод устанавливает значение флага отображения количества в имени объектов
         /// </summary>
@@ -245,8 +222,7 @@ namespace pg_class
             return Result;
         }
 
-
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -255,8 +231,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+
             cmdk = CommandByKey("class_quantity_show_set");
             if (cmdk != null)
             {
@@ -272,7 +247,6 @@ namespace pg_class
             }
             return Result;
         }
-        //*********************************************************************************************
         #endregion
 
         #region ПРОВЕРИТЬ ТЕКУЩЕЕ СОСТОЯНИЕ ФОРМАТА ИМЕНИ ОБЪЕКТА
@@ -282,13 +256,9 @@ namespace pg_class
         public Boolean class_act_name_format_check(Int64 iid_class)
         {
             Boolean Result = false;
-            //=======================
             NpgsqlCommandKey cmdk;
-            //**********
-
-            //=======================
+            
             cmdk = CommandByKey("class_act_name_format_check");
-
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -300,11 +270,8 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iid_class"].Value = iid_class;
-
-            //Начало транзакции
             Result = (Boolean)cmdk.ExecuteScalar();
 
             return Result;
@@ -316,13 +283,9 @@ namespace pg_class
         public Boolean class_snapshot_name_format_check(Int64 iid_class, DateTime itimestamp_class)
         {
             Boolean Result = false;
-            //=======================
             NpgsqlCommandKey cmdk;
-            //**********
 
-            //=======================
             cmdk = CommandByKey("class_snapshot_name_format_check");
-
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -334,12 +297,9 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iid_class"].Value = iid_class;
             cmdk.Parameters["itimestamp_class"].Value = itimestamp_class;
-
-            //Начало транзакции
             Result = (Boolean)cmdk.ExecuteScalar();
 
             return Result;

@@ -47,13 +47,10 @@ namespace pg_class
             cmdk.Parameters["ion_freeze"].Value = ion_freeze;
             cmdk.Parameters["iplan_max"].Value = iplan_max;
             cmdk.Parameters["irange_max"].Value = irange_max;
-
-            //Начало транзакции
             cmdk.ExecuteNonQuery();
 
             error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
             desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-
             switch (error)
             {
                 case 0:
@@ -78,7 +75,7 @@ namespace pg_class
             //Возвращаем Объект
             return centity;
         }
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

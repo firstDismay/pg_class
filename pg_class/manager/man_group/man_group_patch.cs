@@ -65,7 +65,7 @@ namespace pg_class
             return group_path_by_id_group(Group.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

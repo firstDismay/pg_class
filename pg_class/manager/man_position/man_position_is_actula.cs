@@ -59,7 +59,7 @@ namespace pg_class
             return position_is_actual(Position.Id, Position.Timestamp, Position.Timestamp_child_change);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

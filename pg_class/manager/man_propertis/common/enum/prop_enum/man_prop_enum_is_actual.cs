@@ -56,7 +56,7 @@ namespace pg_class
             return prop_enum_is_actual(Prop_enum.Id_prop_enum, Prop_enum.Timestamp);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -128,7 +128,7 @@ namespace pg_class
             return prop_enum_count_val_by_id(Prop_enum.Id_prop_enum);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

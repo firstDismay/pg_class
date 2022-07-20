@@ -57,7 +57,7 @@ namespace pg_class
             return doc_link_is_actual(Doc_file.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

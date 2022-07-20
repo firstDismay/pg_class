@@ -58,7 +58,7 @@ namespace pg_class
             return document_is_actual(Document.Id, Document.Timestamp);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

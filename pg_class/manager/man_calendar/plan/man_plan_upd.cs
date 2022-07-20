@@ -23,11 +23,8 @@ namespace pg_class
             Int32 error;
             String desc_error;
             NpgsqlCommandKey cmdk;
-            //**********
-             
-            //=======================
+            
             cmdk = CommandByKey("plan_upd");
-
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -39,7 +36,6 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iid"].Value = iid;
             cmdk.Parameters["iname"].Value = iname;
@@ -49,14 +45,10 @@ namespace pg_class
             cmdk.Parameters["ion_freeze"].Value = ion_freeze;
             cmdk.Parameters["iplan_max"].Value = iplan_max;
             cmdk.Parameters["irange_max"].Value = irange_max;
-
-            //Начало транзакции
             cmdk.ExecuteNonQuery();
             
             error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
             desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            //SetLastTimeUsing();
-            //=======================
             switch (error)
             {
                 case 0:
@@ -85,9 +77,8 @@ namespace pg_class
         {
             return plan_upd(Plan.Id, Plan.Name, Plan.Desc, Plan.On, Plan.On_crossing, Plan.Plan_max, Plan.Range_max, Plan.On_freeze);
         }
-       
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -96,8 +87,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+
             cmdk = CommandByKey("plan_upd");
             if (cmdk != null)
             {

@@ -76,7 +76,7 @@ namespace pg_class
              class_unit_conversion_rules_add(Class.Id, Rule.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -175,7 +175,7 @@ namespace pg_class
             class_unit_conversion_rules_del(ClassRule.Id_class, ClassRule.Id_unit_conversion_rule);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -246,7 +246,7 @@ namespace pg_class
 
             return class_unit_conversion_rule;
         }
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -329,7 +329,7 @@ namespace pg_class
             return class_unit_conversion_rules(Class.Id);
         }
 
-            //-=ACCESS=-***********************************************************************************
+            //ACCESS
             /// <summary>
             /// Проверка прав доступа к методу
             /// </summary>
@@ -411,7 +411,7 @@ namespace pg_class
             return class_unit_conversion_rules_full(Class.Id);
         }
 
-            //-=ACCESS=-***********************************************************************************
+            //ACCESS
             /// <summary>
             /// Проверка прав доступа к методу
             /// </summary>
@@ -494,7 +494,7 @@ namespace pg_class
             return class_unit_conversion_rules_by_unit(Unit.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

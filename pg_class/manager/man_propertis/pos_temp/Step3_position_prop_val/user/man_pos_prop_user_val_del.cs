@@ -85,7 +85,7 @@ namespace pg_class
             position_prop_user_val_del(ObjectPropUserVal.Id_position_carrier, ObjectPropUserVal.Id_pos_temp_prop);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

@@ -74,7 +74,7 @@ namespace pg_class
             return position_path_by_id_position(object_general.Id_position);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

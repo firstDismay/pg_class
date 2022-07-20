@@ -65,7 +65,7 @@ namespace pg_class
             return group_assigned_rl1_by_id_pos_temp(Position.Id_pos_temp);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -137,7 +137,7 @@ namespace pg_class
             return group_assigned_rl1_by_id_position(Position.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

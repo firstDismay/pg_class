@@ -91,7 +91,7 @@ namespace pg_class
             return position_prop_link_val;
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

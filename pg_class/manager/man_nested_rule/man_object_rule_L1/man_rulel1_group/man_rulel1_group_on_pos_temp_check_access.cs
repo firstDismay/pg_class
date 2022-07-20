@@ -34,7 +34,6 @@ namespace pg_class
             cmdk.Parameters["iid_pos_temp"].Value = iid_pos_temp;
             cmdk.Parameters["iid_group"].Value = iid_group;
 
-            //Начало транзакции
             return (Boolean)cmdk.ExecuteScalar();
         }
 
@@ -46,7 +45,7 @@ namespace pg_class
             return rulel1_group_on_pos_temp_check_access(Pos_temp.Id, Group.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

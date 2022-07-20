@@ -82,7 +82,7 @@ namespace pg_class
             return pos_temp_prop_upd(PosTempProp.Id, PosTempProp.Id_prop_type, PosTempProp.On_override, PosTempProp.Id_data_type, PosTempProp.Name, PosTempProp.Desc, PosTempProp.Sort);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

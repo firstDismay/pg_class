@@ -77,7 +77,7 @@ namespace pg_class
             prop_enum_del(Prop_enum.Id_prop_enum, Prop_enum.Id_conception);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

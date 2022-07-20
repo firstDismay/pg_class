@@ -54,7 +54,7 @@ namespace pg_class
             return document;
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -126,7 +126,7 @@ namespace pg_class
             return entity_list;
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -198,7 +198,7 @@ namespace pg_class
             return entity_list;
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -271,7 +271,7 @@ namespace pg_class
             return entity_list;
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -354,7 +354,7 @@ namespace pg_class
             return document_by_id_pos_temp(Pos_temp.Id, position_on, object_on, recursive_on);
         }
         
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -436,7 +436,7 @@ namespace pg_class
             return document_by_id_position(Position.Id, object_on, recursive_on);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -516,7 +516,7 @@ namespace pg_class
             return document_by_id_user(User.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -597,7 +597,7 @@ namespace pg_class
             return document_by_id_position_prop(Position_prop.Id_position_prop, Position_prop.Id_position_carrier);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -677,7 +677,7 @@ namespace pg_class
             return document_by_id_pos_temp_prop(Pos_temp_prop.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -760,7 +760,7 @@ namespace pg_class
             return document_by_id_group(Group.Id, class_on, object_on, recursive_on);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -842,7 +842,7 @@ namespace pg_class
             return document_by_id_class(Class.Id, object_on, recursive_on);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -922,7 +922,7 @@ namespace pg_class
             return document_by_id_class_prop(Class_prop.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -1005,7 +1005,7 @@ namespace pg_class
             return document_by_id_object(Object_general.Id, class_on, group_on, recursive_on);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -1086,7 +1086,7 @@ namespace pg_class
             return document_by_id_object_prop(Object_prop.Id_class_prop, Object_prop.Id_object_carrier);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -1159,7 +1159,7 @@ namespace pg_class
             return entity_list;
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -1232,7 +1232,7 @@ namespace pg_class
             return entity_list;
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

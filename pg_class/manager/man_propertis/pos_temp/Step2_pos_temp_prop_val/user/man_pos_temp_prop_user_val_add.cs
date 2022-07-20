@@ -203,7 +203,7 @@ namespace pg_class
             return PosTempPropUserVal;
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

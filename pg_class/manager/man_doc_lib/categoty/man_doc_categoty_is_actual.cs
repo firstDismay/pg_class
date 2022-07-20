@@ -57,7 +57,7 @@ namespace pg_class
             return doc_category_is_actual(Doc_category.Id, Doc_category.Timestamp);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

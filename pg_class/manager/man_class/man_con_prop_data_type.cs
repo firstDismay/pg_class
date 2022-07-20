@@ -86,7 +86,7 @@ namespace pg_class
             Con_prop_data_type_add(Conception.Id, Con_prop_data_type.Id, Alias, Sort);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -183,7 +183,7 @@ namespace pg_class
             con_prop_data_type_upd(Con_prop_data_type.Id_conception, Con_prop_data_type.Id, Con_prop_data_type.Alias, Con_prop_data_type.Sort);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -276,7 +276,7 @@ namespace pg_class
         }
 
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -365,7 +365,7 @@ namespace pg_class
             return Con_prop_data_type_by_id(Object_prop.Id_conception, Object_prop.Id_data_type);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -446,7 +446,7 @@ namespace pg_class
             return Con_prop_data_type_full_by_id_con(Conception.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -536,7 +536,7 @@ namespace pg_class
             return Con_prop_data_type_by_id_prop_type(iid_conception, Prop_type.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

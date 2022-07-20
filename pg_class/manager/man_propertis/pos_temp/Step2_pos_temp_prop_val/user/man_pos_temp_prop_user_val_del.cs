@@ -86,7 +86,7 @@ namespace pg_class
             pos_temp_prop_user_val_del(PosTempPropUserVal.Id_pos_temp_prop);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

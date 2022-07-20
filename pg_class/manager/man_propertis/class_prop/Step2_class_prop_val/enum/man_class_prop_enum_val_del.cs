@@ -21,11 +21,8 @@ namespace pg_class
             Int32 error;
             String desc_error;
             NpgsqlCommandKey cmdk;
-            //**********
-             
-            //=======================
+            
             cmdk = CommandByKey("class_prop_enum_val_del");
-
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -37,20 +34,16 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
-            cmdk.Parameters["iid_class_prop"].Value = iid_class_prop;
-
-            //Начало транзакции
-            cmdk.ExecuteNonQuery();
             //Запрос удаляемой сущности
             class_prop_enum_val Class_prop_enum_val = class_prop_enum_val_by_id_prop(iid_class_prop);
+
+            cmdk.Parameters["iid_class_prop"].Value = iid_class_prop;
+            cmdk.ExecuteNonQuery();
+
             
             error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
             desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            //SetLastTimeUsing();
-            //=======================
-            
             if (error > 0)
             {
                 //Вызов события журнала
@@ -67,7 +60,6 @@ namespace pg_class
             }
         }
 
-
         /// <summary>
         /// Удалить новое перечисление для свойств
         /// </summary>
@@ -75,7 +67,6 @@ namespace pg_class
         {
             class_prop_enum_val_del(Class_prop_enum_val.Id_class_prop);
         }
-
 
         /// <summary>
         /// Удалить новое перечисление для свойств
@@ -85,7 +76,7 @@ namespace pg_class
             class_prop_enum_val_del(Class_prop.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -94,8 +85,6 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
             cmdk = CommandByKey("class_prop_enum_val_del");
             if (cmdk != null)
             {

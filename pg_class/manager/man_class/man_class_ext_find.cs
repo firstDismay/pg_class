@@ -76,7 +76,7 @@ namespace pg_class
             return Result;
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -157,7 +157,7 @@ namespace pg_class
             return class_act_ext_by_id_parent_msk_name(Vclass_parent.Id, name_mask);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -238,7 +238,7 @@ namespace pg_class
             return class_act_ext_by_id_group_msk_name(Group.Id, name_mask);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -319,7 +319,7 @@ namespace pg_class
             return class_act_ext_by_id_conception_msk_name(Conception.Id, name_mask);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

@@ -88,7 +88,7 @@ namespace pg_class
             return object_add(Class.Id, Position.Id, Unit_conversion_rule.Id, icquantity);
         }
         
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

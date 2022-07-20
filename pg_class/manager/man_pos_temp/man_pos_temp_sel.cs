@@ -53,7 +53,7 @@ namespace pg_class
 
             return pos_temp;
         }
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -137,7 +137,7 @@ namespace pg_class
             return pos_temp_nestedlist_by_id(pos_temp.Id, pos_temp.Id_conception, pos_temp.Nested_status, ignore_nested_limit);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -217,7 +217,7 @@ namespace pg_class
             return pos_temp_white_nestedlist_by_id(pos_temp.Id, pos_temp.Id_conception);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -291,7 +291,7 @@ namespace pg_class
             return pos_temp_list;
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -373,7 +373,7 @@ namespace pg_class
             return pos_temp_by_id_prototype_all(Prototype.Id);
         }
 
-            //-=ACCESS=-***********************************************************************************
+            //ACCESS
             /// <summary>
             /// Проверка прав доступа к методу
             /// </summary>
@@ -449,7 +449,7 @@ namespace pg_class
             return pos_temp_list;
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -524,7 +524,7 @@ namespace pg_class
             return pos_temp_list;
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -606,7 +606,7 @@ namespace pg_class
             return pos_temp_by_id_prop_enum(Prop_enum.Id_prop_enum);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -687,7 +687,7 @@ namespace pg_class
             return pos_temp_by_id_global_prop(Global_prop.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -768,7 +768,7 @@ namespace pg_class
             return pos_temp_by_id_prop_enum_val(Prop_enum_val.Id_prop_enum_val);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -850,7 +850,7 @@ namespace pg_class
             return pos_temp_by_id_prop_data_type(Con_prop_data_type.Id_conception, Con_prop_data_type.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

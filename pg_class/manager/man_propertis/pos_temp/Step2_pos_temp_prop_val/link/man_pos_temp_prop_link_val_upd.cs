@@ -96,7 +96,7 @@ namespace pg_class
             return pos_temp_prop_link_val_upd(PosTemp_prop_link_val.Id_pos_temp_prop, PosTemp_prop_link_val.Link_id_entity, PosTemp_prop_link_val.Link_id_entity_instance, PosTemp_prop_link_val.Link_id_sub_entity_instance);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

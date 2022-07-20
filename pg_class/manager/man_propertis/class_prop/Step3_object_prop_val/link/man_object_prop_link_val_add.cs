@@ -95,7 +95,7 @@ namespace pg_class
             return ObjectPropLinkVal;
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

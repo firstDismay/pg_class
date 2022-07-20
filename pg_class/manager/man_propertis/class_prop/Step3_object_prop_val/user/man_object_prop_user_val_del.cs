@@ -90,7 +90,7 @@ namespace pg_class
             object_prop_user_val_del(ObjectPropUserVal.Id_object_carrier, ObjectPropUserVal.Id_class_prop);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

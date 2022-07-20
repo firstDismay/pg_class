@@ -56,7 +56,7 @@ namespace pg_class
             return plan_range_link_is_actual(Plan.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

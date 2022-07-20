@@ -78,7 +78,7 @@ namespace pg_class
             //Возвращаем Объект
             return position;
         }
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -187,7 +187,7 @@ namespace pg_class
         {
             return position_copy(Pos_pattern.Id, Pos_pattern.Id_parent, on_object);
         }
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

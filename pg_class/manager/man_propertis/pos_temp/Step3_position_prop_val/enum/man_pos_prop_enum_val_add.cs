@@ -82,7 +82,7 @@ namespace pg_class
             return position_prop_enum_val;
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

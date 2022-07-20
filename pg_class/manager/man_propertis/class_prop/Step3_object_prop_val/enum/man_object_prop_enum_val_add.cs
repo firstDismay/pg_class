@@ -86,7 +86,7 @@ namespace pg_class
             return ObjectPropEnumVal;
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

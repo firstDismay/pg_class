@@ -79,7 +79,7 @@ namespace pg_class
             return prop_enum_val_sort_by_name(PropEnum.Id_prop_enum); ;
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

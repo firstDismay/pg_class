@@ -84,7 +84,7 @@ namespace pg_class
             pos_temp_prop_enum_val_del(PosTemp_prop.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

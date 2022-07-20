@@ -67,7 +67,7 @@ namespace pg_class
             return class_prop_by_id_class_search_method(Class.Id, isearch_method);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -201,7 +201,7 @@ namespace pg_class
             return Result;
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

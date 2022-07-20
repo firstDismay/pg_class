@@ -86,7 +86,7 @@ namespace pg_class
             return pos_temp_prop_add(PosTemp.Id, Prop_type.Id, On_Override, Data_type.Id, iname, idesc, isort);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

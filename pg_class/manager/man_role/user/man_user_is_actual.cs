@@ -40,8 +40,6 @@ namespace pg_class
 
             cmdk.Parameters["login"].Value = login;
             cmdk.Parameters["mytimestamp"].Value = mytimestamp;
-           
-            //Начало транзакции
             is_actual = (Int32)cmdk.ExecuteScalar();
             
             return (eEntityState)is_actual;
@@ -55,7 +53,7 @@ namespace pg_class
             return user_is_actual(User.Login, User.Timestamp);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -64,10 +62,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
-            cmdk = CommandByKey("user_is_actual");
 
+            cmdk = CommandByKey("user_is_actual");
             if (cmdk != null)
             {
                 Result = cmdk.Access;
@@ -83,20 +79,14 @@ namespace pg_class
             return Result;
         }
 
-        //*********************************************************************************************
         /// <summary>
         /// Метод определяет доступность изменения пароля указанной учетной записи для указанной изменяемой учетной записи
         /// </summary>
         public Boolean user_pwd_can_change(String usr_login, String usr_change_login)
         {
-            Boolean Result = false;
-            //=======================
             NpgsqlCommandKey cmdk;
-            //**********
-             
-            //=======================
-            cmdk = CommandByKey("user_pwd_can_change");
 
+            cmdk = CommandByKey("user_pwd_can_change");
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -112,10 +102,7 @@ namespace pg_class
             cmdk.Parameters["usr_login"].Value = usr_login;
             cmdk.Parameters["usr_change_login"].Value = usr_change_login;
 
-            //Начало транзакции
-            Result = (Boolean)cmdk.ExecuteScalar();
-            
-            return Result;
+            return (Boolean)cmdk.ExecuteScalar();
         }
 
         /// <summary>
@@ -126,7 +113,7 @@ namespace pg_class
             return user_pwd_can_change(usr_login.Login, usr_change_login.Login);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -161,13 +148,9 @@ namespace pg_class
         public Boolean user_is_member_role(String ilogin, String irole, Boolean irecursive)
         {
             Boolean Result = false;
-            //=======================
             NpgsqlCommandKey cmdk;
-            //**********
-             
-            //=======================
-            cmdk = CommandByKey("user_is_member_role");
 
+            cmdk = CommandByKey("user_is_member_role");
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -183,11 +166,8 @@ namespace pg_class
             cmdk.Parameters["ilogin"].Value = ilogin;
             cmdk.Parameters["irole"].Value = irole;
             cmdk.Parameters["irecursive"].Value = irecursive;
-
-            //Начало транзакции
-            Result = (Boolean)cmdk.ExecuteScalar();
             
-            return Result;
+            return (Boolean)cmdk.ExecuteScalar();
         }
 
         /// <summary>
@@ -206,7 +186,7 @@ namespace pg_class
             return user_is_member_role(login.Login, role.NameSystem, irecursive);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

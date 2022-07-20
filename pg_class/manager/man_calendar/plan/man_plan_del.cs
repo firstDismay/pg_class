@@ -39,13 +39,10 @@ namespace pg_class
             plan centity= plan_by_id(iid);
 
             cmdk.Parameters["iid"].Value = iid;
-
-            //Начало транзакции
             cmdk.ExecuteNonQuery();
             
             error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
             desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-
             if (error > 0)
             {
                 //Вызов события журнала
@@ -70,7 +67,7 @@ namespace pg_class
             plan_del(Plan.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

@@ -82,7 +82,7 @@ namespace pg_class
             return doc_category_upd(Doc_category.Id, Doc_category.Name, Doc_category.Desc, Doc_category.On_grouping, Doc_category.On);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

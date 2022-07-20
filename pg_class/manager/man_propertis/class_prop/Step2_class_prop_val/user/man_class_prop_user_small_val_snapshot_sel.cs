@@ -61,7 +61,7 @@ namespace pg_class
         {
             return class_prop_user_small_val_snapshot_by_id_prop(Class_prop.Id, Class_prop.Timestamp_class);
         }
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

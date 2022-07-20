@@ -73,7 +73,7 @@ namespace pg_class
             user_role_user_del(RoleUser.NameSystem);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

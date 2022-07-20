@@ -80,7 +80,7 @@ namespace pg_class
             return object_cast(Object.Id, Class_target.Timestamp);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -164,7 +164,7 @@ namespace pg_class
         {
             return object_cast_for_class(Class_target.Id, Class_target.Timestamp);
         }
-            //-=ACCESS=-***********************************************************************************
+            //ACCESS
             /// <summary>
             /// Проверка прав доступа к методу
             /// </summary>
@@ -248,7 +248,7 @@ namespace pg_class
         {
             return object_cast_for_class_act(Class_target.Id);
         }
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -330,7 +330,7 @@ namespace pg_class
         {
             return object_cast_for_class_act_by_id_group(Group_target.Id);
         }
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -413,7 +413,7 @@ namespace pg_class
         {
             return object_cast_for_class_act_by_id_position(Position_target.Id);
         }
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

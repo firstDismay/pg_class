@@ -82,7 +82,7 @@ namespace pg_class
         {
             return pos_temp_upd(pos_temp.Id, pos_temp.Name_pos_temp, pos_temp.On, pos_temp.Nested_limit, pos_temp.Desc);
         }
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

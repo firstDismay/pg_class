@@ -104,7 +104,7 @@ namespace pg_class
             return object_copy(Object_pattern.Id, Object_prop_target.EntityID, Object_prop_target.Id_class_prop, Object_prop_target.Id_object_carrier);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

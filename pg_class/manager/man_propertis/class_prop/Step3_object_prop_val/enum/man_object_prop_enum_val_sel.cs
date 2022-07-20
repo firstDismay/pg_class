@@ -71,7 +71,7 @@ namespace pg_class
             return object_prop_enum_val_by_id_prop(ObjectPropEnum_val.Id_object, ObjectPropEnum_val.Id_class_prop);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

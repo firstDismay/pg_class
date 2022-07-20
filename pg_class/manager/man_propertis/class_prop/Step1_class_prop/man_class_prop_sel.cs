@@ -53,7 +53,7 @@ namespace pg_class
         }
 
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -129,7 +129,7 @@ namespace pg_class
             return class_prop_by_id_global_prop(Class.Id, Global_prop.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -210,7 +210,7 @@ namespace pg_class
             return class_prop_by_id_class(Class.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -290,7 +290,7 @@ namespace pg_class
             return class_prop_for_format_by_id_class(Class.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Лист свойств представления активного класса по идентификатору класса
         /// </summary>

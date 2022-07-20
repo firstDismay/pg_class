@@ -73,7 +73,7 @@ namespace pg_class
         }
 
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -154,7 +154,7 @@ namespace pg_class
             return Rulel2_class_on_position_by_id_position(Position.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -235,7 +235,7 @@ namespace pg_class
             return Rulel2_class_on_position_full_by_id_position(Position.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

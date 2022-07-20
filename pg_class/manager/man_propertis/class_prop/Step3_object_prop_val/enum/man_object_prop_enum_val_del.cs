@@ -91,7 +91,7 @@ namespace pg_class
             object_prop_enum_val_del(ObjectPropEnumVal.Id_object, ObjectPropEnumVal.Id_class_prop);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

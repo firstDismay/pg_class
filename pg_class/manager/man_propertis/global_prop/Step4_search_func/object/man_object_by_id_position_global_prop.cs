@@ -83,7 +83,7 @@ namespace pg_class
             return object_by_id_position_global_prop(Position.Id, Global_prp.Id, search_method, valreq, valmin, valmax);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

@@ -59,7 +59,7 @@ namespace pg_class
             return plan_range_is_actual(Plan_range.Id, Plan_range.Timestamp, Plan_range.Timestamp_child_change);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

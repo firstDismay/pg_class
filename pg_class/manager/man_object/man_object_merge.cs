@@ -125,7 +125,7 @@ namespace pg_class
             return object_merging(id_array);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

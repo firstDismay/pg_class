@@ -64,7 +64,7 @@ namespace pg_class
             return Class_assigned_rl2_by_id_position(Position.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -146,7 +146,7 @@ namespace pg_class
             return Class_allowed_rl2_for_group_by_id_position(Position.Id, Group.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -228,7 +228,7 @@ namespace pg_class
             return class_allowed_rl2_for_class_by_id_position(Position.Id, Class.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

@@ -88,7 +88,7 @@ namespace pg_class
             position_prop_enum_val_del(PositionPropEnumVal.Id_position_carrier, PositionPropEnumVal.Id_pos_temp_prop);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

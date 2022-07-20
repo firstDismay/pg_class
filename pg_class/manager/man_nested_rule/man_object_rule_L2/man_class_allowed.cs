@@ -64,7 +64,7 @@ namespace pg_class
             return Class_allowed_rl2_by_id_position(Position.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

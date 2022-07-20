@@ -61,7 +61,7 @@ namespace pg_class
             return class_pos_temp_prop_object_by_id_pos_temp_prop(PosTemp_prop.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

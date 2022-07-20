@@ -58,7 +58,7 @@ namespace pg_class
             return pos_temp_assigned_rl1_by_id_group(Class.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

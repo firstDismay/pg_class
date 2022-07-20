@@ -54,7 +54,7 @@ namespace pg_class
             return doc_link;
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -205,7 +205,7 @@ namespace pg_class
             return doc_link_by_entity(iid_document, Class_prop.EntityID, Class_prop.Id, -1);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -277,7 +277,7 @@ namespace pg_class
             return entity_list;
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

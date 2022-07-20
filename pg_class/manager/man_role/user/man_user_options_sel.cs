@@ -49,7 +49,7 @@ namespace pg_class
             }
             return user_options;
         }
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -102,16 +102,12 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["ilogin"].Value = login;
             cmdk.Parameters["imytimestamp"].Value = mytimestamp;
-
-            //Начало транзакции
             is_actual = (Int32)cmdk.ExecuteScalar();
             
             return (eEntityState)is_actual;
-            ;
         }
 
         /// <summary>
@@ -122,7 +118,7 @@ namespace pg_class
             return user_options_is_actual(UserOptions.Login, UserOptions.Timestamp);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

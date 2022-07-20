@@ -53,7 +53,7 @@ namespace pg_class
         }
 
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -130,7 +130,7 @@ namespace pg_class
             return pos_temp_prop_by_id_global_prop(Pos_temp.Id, Global_prop.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -210,7 +210,7 @@ namespace pg_class
             return pos_temp_prop_by_id_pos_temp(PosTemp.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

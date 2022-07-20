@@ -61,7 +61,7 @@ namespace pg_class
             return group_by_id(Group_path.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -145,7 +145,7 @@ namespace pg_class
             return group_by_id_parent(Group.Id, Group.Id_conception);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -228,7 +228,7 @@ namespace pg_class
             return group_by_name(Group_parent.Id, iname);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

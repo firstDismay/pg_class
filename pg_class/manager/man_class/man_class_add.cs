@@ -24,9 +24,8 @@ namespace pg_class
             Int32 error;
             String desc_error;
             NpgsqlCommandKey cmdk;
-            //**********
-            cmdk = CommandByKey("class_add");
 
+            cmdk = CommandByKey("class_add");
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -38,7 +37,6 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iid_group"].Value = iid_group;
             cmdk.Parameters["iid_parent"].Value = iid_parent;
@@ -50,14 +48,10 @@ namespace pg_class
             cmdk.Parameters["iid_unit"].Value = iid_unit;
             cmdk.Parameters["iid_unit_conversion_rule"].Value = iid_unit_conversion_rule;
             cmdk.Parameters["ibarcode_manufacturer"].Value = ibarcode_manufacturer;
-            
-            //Выполнение основной команды в контексте транзакции
             cmdk.ExecuteNonQuery();
 
             error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
             desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            //SetLastTimeUsing();
-            //=======================
             switch (error)
             {
                 case 0:
@@ -103,7 +97,7 @@ namespace pg_class
             return class_add(group_parent.Id, 0, iname, idesc, ion,
             ion_extensible, ion_abstraction, iid_unit, iid_unit_conversion_rule, ibarcode_manufacturer);
         }
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -112,8 +106,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+
             cmdk = CommandByKey("class_add");
             if (cmdk != null)
             {
@@ -140,11 +133,8 @@ namespace pg_class
             Int64 id = 0;
             String desc_error;
             NpgsqlCommandKey cmdk;
-            //**********
-             
-            //=======================
-            cmdk = CommandByKey("class_copy_to_class");
 
+            cmdk = CommandByKey("class_copy_to_class");
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -156,19 +146,14 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iid_pattern"].Value = iid_pattern;
             cmdk.Parameters["iid_target"].Value = iid_target;
             cmdk.Parameters["on_nested"].Value = on_nested;
-
-            //Начало транзакции
             cmdk.ExecuteNonQuery();
             
             error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
             desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            //SetLastTimeUsing();
-            //=======================
             switch (error)
             {
                 case 0:
@@ -202,7 +187,7 @@ namespace pg_class
             return class_copy_to_class(Class_pattern.Id, Class_target.Id, on_nested);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -211,8 +196,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+
             cmdk = CommandByKey("class_copy_to_class");
             if (cmdk != null)
             {
@@ -239,11 +223,8 @@ namespace pg_class
             Int64 id = 0;
             String desc_error;
             NpgsqlCommandKey cmdk;
-            //**********
-             
-            //=======================
-            cmdk = CommandByKey("class_copy_to_group");
 
+            cmdk = CommandByKey("class_copy_to_group");
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -255,19 +236,14 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iid_pattern"].Value = iid_pattern;
             cmdk.Parameters["iid_target"].Value = iid_target;
             cmdk.Parameters["on_nested"].Value = on_nested;
-
-            //Начало транзакции
             cmdk.ExecuteNonQuery();
            
             error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
             desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            //SetLastTimeUsing();
-            //=======================
             switch (error)
             {
                 case 0:
@@ -301,7 +277,7 @@ namespace pg_class
             return class_copy_to_class(Class_pattern.Id, Group_target.Id, on_nested);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -310,8 +286,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+
             cmdk = CommandByKey("class_copy_to_group");
             if (cmdk != null)
             {
@@ -327,7 +302,6 @@ namespace pg_class
             }
             return Result;
         }
-        //*********************************************************************************************
 
         /// <summary>
         /// Метод восстанавливает активное представлние вещественного класса объекта и всю цепь наследования до корневого класса
@@ -339,11 +313,8 @@ namespace pg_class
             Int64 id = 0;
             String desc_error;
             NpgsqlCommandKey cmdk;
-            //**********
 
-            //=======================
             cmdk = CommandByKey("class_act_restore");
-
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -355,17 +326,12 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iid_object"].Value = iid_object;
-            
-            //Начало транзакции
             cmdk.ExecuteNonQuery();
 
             error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
             desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            //SetLastTimeUsing();
-            //=======================
             switch (error)
             {
                 case 0:
@@ -399,7 +365,7 @@ namespace pg_class
             return class_act_restore(Object.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -408,8 +374,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+
             cmdk = CommandByKey("class_act_restore");
             if (cmdk != null)
             {

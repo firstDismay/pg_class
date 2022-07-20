@@ -75,7 +75,7 @@ namespace pg_class
         {
             rulel1_group_on_pos_temp_add(RuleL1.Id_group, RuleL1.Id_pos_temp);
         }
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

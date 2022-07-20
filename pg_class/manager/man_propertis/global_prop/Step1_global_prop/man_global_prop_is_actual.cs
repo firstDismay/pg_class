@@ -55,7 +55,7 @@ namespace pg_class
             return global_prop_is_actual(GlobalProp.Id, GlobalProp.Timestamp); ;
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

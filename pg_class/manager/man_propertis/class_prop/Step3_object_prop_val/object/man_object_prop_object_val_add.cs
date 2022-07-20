@@ -97,7 +97,7 @@ namespace pg_class
         }
 
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -225,7 +225,7 @@ namespace pg_class
             return object_prop_object_val_add(Object_prop.Id_object_carrier, Object_prop.Id_class_prop, Object_Val.Id, icquantity);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

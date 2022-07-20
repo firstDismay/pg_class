@@ -86,7 +86,7 @@ namespace pg_class
             return prop_enum_val_upd(Prop_enum_val.Id_prop_enum_val, Prop_enum_val.Val_numeric, Prop_enum_val.Val_varchar, Prop_enum_val.Id_object_reference, Prop_enum_val.Sort);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

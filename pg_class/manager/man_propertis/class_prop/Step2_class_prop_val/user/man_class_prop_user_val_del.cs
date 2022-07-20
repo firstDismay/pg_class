@@ -87,7 +87,7 @@ namespace pg_class
             class_prop_user_val_del(ClassPropUserVal.Id_class_prop);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

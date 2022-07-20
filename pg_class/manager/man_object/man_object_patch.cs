@@ -66,7 +66,7 @@ namespace pg_class
             return object_path_by_id_object(Object.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

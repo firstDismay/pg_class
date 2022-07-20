@@ -58,7 +58,7 @@ namespace pg_class
             return group_is_actual(Group.Id, Group.Timestamp, Group.Timestamp_child_change);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
