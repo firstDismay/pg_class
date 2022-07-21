@@ -24,11 +24,8 @@ namespace pg_class
             Int32 error;
             String desc_error;
             NpgsqlCommandKey cmdk;
-            //**********
-             
-            //=======================
-            cmdk = CommandByKey("pos_temp_add");
 
+            cmdk = CommandByKey("pos_temp_add");
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -40,21 +37,16 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iname"].Value = iname;
             cmdk.Parameters["iid_con"].Value = iid_con;
             cmdk.Parameters["iid_prototype"].Value = iid_prototype;
             cmdk.Parameters["inested_limit"].Value = inested_limit;
             cmdk.Parameters["idesc"].Value = idesc;
-
-            //Начало транзакции
             cmdk.ExecuteNonQuery();
             
             error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
             desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            //SetLastTimeUsing();
-            //=======================
             switch (error)
             {
                 case 0:
@@ -79,6 +71,7 @@ namespace pg_class
             //Возвращаем Объект
             return pos_temp;
         }
+
         //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
@@ -88,8 +81,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
             cmdk = CommandByKey("pos_temp_add");
             if (cmdk != null)
             {
@@ -105,7 +97,7 @@ namespace pg_class
             }
             return Result;
         }
-        //*********************************************************************************************
+
         /// <summary>
         /// Метод копирует указанный шаблон позиций
         /// </summary>
@@ -116,11 +108,8 @@ namespace pg_class
             Int32 error;
             String desc_error;
             NpgsqlCommandKey cmdk;
-            //**********
              
-            //=======================
             cmdk = CommandByKey("pos_temp_copy");
-
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -132,17 +121,12 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iid_pattern"].Value = iid_pattern;
-
-            //Начало транзакции
             cmdk.ExecuteNonQuery();
             
             error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
             desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            //SetLastTimeUsing();
-            //=======================
             switch (error)
             {
                 case 0:
@@ -175,6 +159,7 @@ namespace pg_class
         {
             return pos_temp_copy(pos_temp_pattern.Id);
         }
+
         //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
@@ -184,8 +169,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+
             cmdk = CommandByKey("pos_temp_copy");
             if (cmdk != null)
             {

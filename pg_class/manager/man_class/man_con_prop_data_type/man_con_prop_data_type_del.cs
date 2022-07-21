@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using Npgsql;
 using System.Data;
+using Npgsql;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
 using pg_class.pg_classes;
@@ -14,16 +12,15 @@ namespace pg_class
 	public partial class manager
 	{
 		/// <summary>
-		/// Метод переопределяет тэг для всех связанных свойств класса
+		/// Метод удаляет назначение типа данных из указанной концепции
 		/// </summary>
-		public global_prop global_prop_set_tag_class_prop(Int64 iid_global_prop, String itag)
+		public void Con_prop_data_type_del(Int64 iid_conception, Int32 iid_prop_data_type)
 		{
-			global_prop global_prop = null;
 			Int32 error;
 			String desc_error;
 			NpgsqlCommandKey cmdk;
-	
-			cmdk = CommandByKey("global_prop_set_tag_class_prop");
+
+			cmdk = CommandByKey("con_prop_data_type_del");
 			if (cmdk != null)
 			{
 				if (!cmdk.Access)
@@ -36,8 +33,8 @@ namespace pg_class
 				throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
 			}
 
-			cmdk.Parameters["iid_global_prop"].Value = iid_global_prop;
-			cmdk.Parameters["itag"].Value = itag;
+			cmdk.Parameters["iid_conception"].Value = iid_conception;
+			cmdk.Parameters["iid_prop_data_type"].Value = iid_prop_data_type;
 			cmdk.ExecuteNonQuery();
 
 			error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
@@ -45,45 +42,39 @@ namespace pg_class
 			switch (error)
 			{
 				case 0:
-					global_prop = global_prop_by_id(iid_global_prop);
 					break;
 				default:
 					//Вызов события журнала
-					JournalEventArgs me = new JournalEventArgs(iid_global_prop, eEntity.global_prop, error, desc_error, eAction.Update, eJournalMessageType.error);
+					JournalEventArgs me = new JournalEventArgs(iid_prop_data_type, eEntity.con_prop_data_type, error, desc_error, eAction.Delete, eJournalMessageType.error);
 					JournalMessageOnReceived(me);
 					throw new PgDataException(error, desc_error);
 			}
-			//Генерируем событие изменения свойства класса
-			GlobalPropChangeEventArgs e = new GlobalPropChangeEventArgs(global_prop, eAction.Update);
-			GlobalPropOnChange(e);
-			//Возвращаем Объект
-			return global_prop;
+
+			//Вызов события изменения списка вложенности
+			Con_Prop_Data_TypeListChangeEventArgs e;
+			e = new Con_Prop_Data_TypeListChangeEventArgs(iid_conception, iid_prop_data_type, eActionRuleList.delrule);
+			OnCon_Prop_Data_TypeListChange(e);
 		}
 
 		/// <summary>
-		/// Метод изменяет свойство активного представления класса
+		/// Метод удаляет назначение типа данных из указанной концепции
 		/// </summary>
-		public global_prop global_prop_set_tag_class_prop(global_prop Global_prop, String itag)
+		public void Con_prop_data_type_del(con_prop_data_type Con_prop_data_type)
 		{
-			global_prop Result = null;
-			if (Global_prop != null)
-			{
-				Result = global_prop_set_tag_class_prop(Global_prop.Id, itag);
-			}
-			return Result;
+			Con_prop_data_type_del(Con_prop_data_type.Id_conception, Con_prop_data_type.Id);
 		}
 
 		//ACCESS
 		/// <summary>
 		/// Проверка прав доступа к методу
 		/// </summary>
-		public Boolean global_prop_set_tag_class_prop(out eAccess Access)
+		public Boolean Con_prop_data_type_del(out eAccess Access)
 		{
 			Boolean Result = false;
 			Access = eAccess.NotFound;
 			NpgsqlCommandKey cmdk;
 
-			cmdk = CommandByKey("global_prop_set_tag_class_prop");
+			cmdk = CommandByKey("con_prop_data_type_del");
 			if (cmdk != null)
 			{
 				Result = cmdk.Access;
