@@ -11,597 +11,543 @@ using pg_class.pg_classes;
 
 namespace pg_class
 {
-    public partial class manager
-    {
-        #region ИЗМЕНИТЬ СОРТИРОВКУ ЭЕЛЕМНТОВ СПИСКА
-        #region ПОДНЯТЬ ВВЕРХ
-        /// <summary>
-        /// Метод изменяет сортировку позиций поднимая указанную позицию вверх
-        /// </summary>
-        public position position_sort_top(Int64 iid_position)
-        {
-            position position = null;
-            
-            Int32 error;
-            String desc_error;
-            NpgsqlCommandKey cmdk;
-            //**********
-             
-            //=======================
-            cmdk = CommandByKey("position_sort_top");
+	public partial class manager
+	{
+		#region ИЗМЕНИТЬ СОРТИРОВКУ ЭЕЛЕМНТОВ СПИСКА
+		#region ПОДНЯТЬ ВВЕРХ
+		/// <summary>
+		/// Метод изменяет сортировку позиций поднимая указанную позицию вверх
+		/// </summary>
+		public position position_sort_top(Int64 iid_position)
+		{
+			position position = null;
+			Int32 error;
+			String desc_error;
+			NpgsqlCommandKey cmdk;
 
-            if (cmdk != null)
-            {
-                if (!cmdk.Access)
-                {
-                    throw new AccessDataBaseException(404, String.Format(@"Отказано в доступе к методу: {0}!", cmdk.CommandText));
-                }
-            }
-            else
-            {
-                throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
-            }
-            //=======================
+			cmdk = CommandByKey("position_sort_top");
+			if (cmdk != null)
+			{
+				if (!cmdk.Access)
+				{
+					throw new AccessDataBaseException(404, String.Format(@"Отказано в доступе к методу: {0}!", cmdk.CommandText));
+				}
+			}
+			else
+			{
+				throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
+			}
 
-            cmdk.Parameters["iid_position"].Value = iid_position;
-            //=======================
-            //Начало транзакции
-            cmdk.ExecuteNonQuery();
+			cmdk.Parameters["iid_position"].Value = iid_position;
+			cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            //=======================
-            switch (error)
-            {
-                case 0:
-                    position = position_by_id(iid_position);
-                    if (position.Id_parent > 0)
-                    {
-                        position = position_by_id(position.Id_parent);
-                    }
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(iid_position, eEntity.position, error, desc_error, eAction.Update, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
-            }
-            //Генерируем событие применения метода сортировки
-            if (position != null)
-            {
-                PositionChangeEventArgs e = new PositionChangeEventArgs(position, eAction.Update);
-                PositionSortOnChange(e);
-            }
-            //Возвращаем Объект
-            return position;
-        }
+			error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
+			desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
+			switch (error)
+			{
+				case 0:
+					position = position_by_id(iid_position);
+					if (position.Id_parent > 0)
+					{
+						position = position_by_id(position.Id_parent);
+					}
+					//Генерируем событие применения метода сортировки
+					if (position != null)
+					{
+						PositionChangeEventArgs e = new PositionChangeEventArgs(position, eAction.Update);
+						PositionSortOnChange(e);
+					}
+					break;
+				default:
+					//Вызов события журнала
+					JournalEventArgs me = new JournalEventArgs(iid_position, eEntity.position, error, desc_error, eAction.Update, eJournalMessageType.error);
+					JournalMessageOnReceived(me);
+					throw new PgDataException(error, desc_error);
+			}
+			
+			//Возвращаем Объект
+			return position;
+		}
 
-        /// <summary>
-        /// Метод изменяет сортировку позиций поднимая указанную позицию вверх
-        /// </summary>
-        public position position_sort_top(position Position)
-        {
-            return position_sort_top(Position.Id);
-        }
+		/// <summary>
+		/// Метод изменяет сортировку позиций поднимая указанную позицию вверх
+		/// </summary>
+		public position position_sort_top(position Position)
+		{
+			return position_sort_top(Position.Id);
+		}
 
-        //ACCESS
-        /// <summary>
-        /// Проверка прав доступа к методу
-        /// </summary>
-        public Boolean position_sort_top(out eAccess Access)
-        {
-            Boolean Result = false;
-            Access = eAccess.NotFound;
-            NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
-            cmdk = CommandByKey("position_sort_top");
-            if (cmdk != null)
-            {
-                Result = cmdk.Access;
-                if (Result)
-                {
-                    Access = eAccess.Success;
-                }
-                else
-                {
-                    Access = eAccess.NotAvailable;
-                }
-            }
-            return Result;
-        }
-        //*********************************************************************************************
-        #endregion
+		//ACCESS
+		/// <summary>
+		/// Проверка прав доступа к методу
+		/// </summary>
+		public Boolean position_sort_top(out eAccess Access)
+		{
+			Boolean Result = false;
+			Access = eAccess.NotFound;
+			NpgsqlCommandKey cmdk;
 
-        #region ПОДНЯТЬ ВВЕРХ НА ОДИН
-        /// <summary>
-        /// Метод изменяет сортировку позициb поднимая указанную позицию на один пункт вверх
-        /// </summary>
-        public position position_sort_up(Int64 iid_position)
-        {
-            position position = null;
+			cmdk = CommandByKey("position_sort_top");
+			if (cmdk != null)
+			{
+				Result = cmdk.Access;
+				if (Result)
+				{
+					Access = eAccess.Success;
+				}
+				else
+				{
+					Access = eAccess.NotAvailable;
+				}
+			}
+			return Result;
+		}
+		#endregion
 
-            Int32 error;
-            String desc_error;
-            NpgsqlCommandKey cmdk;
-            //**********
+		#region ПОДНЯТЬ ВВЕРХ НА ОДИН
+		/// <summary>
+		/// Метод изменяет сортировку позициb поднимая указанную позицию на один пункт вверх
+		/// </summary>
+		public position position_sort_up(Int64 iid_position)
+		{
+			position position = null;
+			Int32 error;
+			String desc_error;
+			NpgsqlCommandKey cmdk;
 
-            //=======================
-            cmdk = CommandByKey("position_sort_up");
+			cmdk = CommandByKey("position_sort_up");
+			if (cmdk != null)
+			{
+				if (!cmdk.Access)
+				{
+					throw new AccessDataBaseException(404, String.Format(@"Отказано в доступе к методу: {0}!", cmdk.CommandText));
+				}
+			}
+			else
+			{
+				throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
+			}
 
-            if (cmdk != null)
-            {
-                if (!cmdk.Access)
-                {
-                    throw new AccessDataBaseException(404, String.Format(@"Отказано в доступе к методу: {0}!", cmdk.CommandText));
-                }
-            }
-            else
-            {
-                throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
-            }
-            //=======================
+			cmdk.Parameters["iid_position"].Value = iid_position;
+			cmdk.ExecuteNonQuery();
 
-            cmdk.Parameters["iid_position"].Value = iid_position;
-            //=======================
-            //Начало транзакции
-            cmdk.ExecuteNonQuery();
+			error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
+			desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
+			switch (error)
+			{
+				case 0:
+					position = position_by_id(iid_position);
+					if (position.Id_parent > 0)
+					{
+						position = position_by_id(position.Id_parent);
+					}
+					//Генерируем событие применения метода сортировки
+					if (position != null)
+					{
+						PositionChangeEventArgs e = new PositionChangeEventArgs(position, eAction.Update);
+						PositionSortOnChange(e);
+					}
+					break;
+				default:
+					//Вызов события журнала
+					JournalEventArgs me = new JournalEventArgs(iid_position, eEntity.position, error, desc_error, eAction.Update, eJournalMessageType.error);
+					JournalMessageOnReceived(me);
+					throw new PgDataException(error, desc_error);
+			}
+			
+			//Возвращаем Объект
+			return position;
+		}
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            //=======================
-            switch (error)
-            {
-                case 0:
-                    position = position_by_id(iid_position);
-                    if (position.Id_parent > 0)
-                    {
-                        position = position_by_id(position.Id_parent);
-                    }
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(iid_position, eEntity.position, error, desc_error, eAction.Update, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
-            }
-            //Генерируем событие применения метода сортировки
-            if (position != null)
-            {
-                PositionChangeEventArgs e = new PositionChangeEventArgs(position, eAction.Update);
-                PositionSortOnChange(e);
-            }
-            //Возвращаем Объект
-            return position;
-        }
+		/// <summary>
+		/// Метод изменяет сортировку позициb поднимая указанную позицию на один пункт вверх
+		/// </summary>
+		public position position_sort_up(position Position)
+		{
+			return position_sort_up(Position.Id);
+		}
 
-        /// <summary>
-        /// Метод изменяет сортировку позициb поднимая указанную позицию на один пункт вверх
-        /// </summary>
-        public position position_sort_up(position Position)
-        {
-            return position_sort_up(Position.Id);
-        }
+		//ACCESS
+		/// <summary>
+		/// Проверка прав доступа к методу
+		/// </summary>
+		public Boolean position_sort_up(out eAccess Access)
+		{
+			Boolean Result = false;
+			Access = eAccess.NotFound;
+			NpgsqlCommandKey cmdk;
 
-        //ACCESS
-        /// <summary>
-        /// Проверка прав доступа к методу
-        /// </summary>
-        public Boolean position_sort_up(out eAccess Access)
-        {
-            Boolean Result = false;
-            Access = eAccess.NotFound;
-            NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
-            cmdk = CommandByKey("position_sort_up");
-            if (cmdk != null)
-            {
-                Result = cmdk.Access;
-                if (Result)
-                {
-                    Access = eAccess.Success;
-                }
-                else
-                {
-                    Access = eAccess.NotAvailable;
-                }
-            }
-            return Result;
-        }
-        //*********************************************************************************************
-        #endregion
+			cmdk = CommandByKey("position_sort_up");
+			if (cmdk != null)
+			{
+				Result = cmdk.Access;
+				if (Result)
+				{
+					Access = eAccess.Success;
+				}
+				else
+				{
+					Access = eAccess.NotAvailable;
+				}
+			}
+			return Result;
+		}
+		#endregion
 
-        #region ОПУСТИТЬ ВНИЗ НА ОДИН
-        /// <summary>
-        /// Метод изменяет сортировку позиции опуская указанную позицию на один пункт вниз
-        /// </summary>
-        public position position_sort_down(Int64 iid_position)
-        {
-            position position = null;
+		#region ОПУСТИТЬ ВНИЗ НА ОДИН
+		/// <summary>
+		/// Метод изменяет сортировку позиции опуская указанную позицию на один пункт вниз
+		/// </summary>
+		public position position_sort_down(Int64 iid_position)
+		{
+			position position = null;
+			Int32 error;
+			String desc_error;
+			NpgsqlCommandKey cmdk;
 
-            Int32 error;
-            String desc_error;
-            NpgsqlCommandKey cmdk;
-            //**********
+			cmdk = CommandByKey("position_sort_down");
+			if (cmdk != null)
+			{
+				if (!cmdk.Access)
+				{
+					throw new AccessDataBaseException(404, String.Format(@"Отказано в доступе к методу: {0}!", cmdk.CommandText));
+				}
+			}
+			else
+			{
+				throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
+			}
 
-            //=======================
-            cmdk = CommandByKey("position_sort_down");
+			cmdk.Parameters["iid_position"].Value = iid_position;
+			cmdk.ExecuteNonQuery();
 
-            if (cmdk != null)
-            {
-                if (!cmdk.Access)
-                {
-                    throw new AccessDataBaseException(404, String.Format(@"Отказано в доступе к методу: {0}!", cmdk.CommandText));
-                }
-            }
-            else
-            {
-                throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
-            }
-            //=======================
+			error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
+			desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
+			switch (error)
+			{
+				case 0:
+					position = position_by_id(iid_position);
+					if (position.Id_parent > 0)
+					{
+						position = position_by_id(position.Id_parent);
+					}
+					//Генерируем событие применения метода сортировки
+					if (position != null)
+					{
+						PositionChangeEventArgs e = new PositionChangeEventArgs(position, eAction.Update);
+						PositionSortOnChange(e);
+					}
+					break;
+				default:
+					//Вызов события журнала
+					JournalEventArgs me = new JournalEventArgs(iid_position, eEntity.position, error, desc_error, eAction.Update, eJournalMessageType.error);
+					JournalMessageOnReceived(me);
+					throw new PgDataException(error, desc_error);
+			}
+			
+			//Возвращаем Объект
+			return position;
+		}
 
-            cmdk.Parameters["iid_position"].Value = iid_position;
-            //=======================
-            //Начало транзакции
-            cmdk.ExecuteNonQuery();
+		/// <summary>
+		/// Метод изменяет сортировку позиции опуская указанную позицию на один пункт вниз
+		/// </summary>
+		public position position_sort_down(position Position)
+		{
+			return position_sort_down(Position.Id);
+		}
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            //=======================
-            switch (error)
-            {
-                case 0:
-                    position = position_by_id(iid_position);
-                    if (position.Id_parent > 0)
-                    {
-                        position = position_by_id(position.Id_parent);
-                    }
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(iid_position, eEntity.position, error, desc_error, eAction.Update, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
-            }
-            //Генерируем событие применения метода сортировки
-            if (position != null)
-            {
-                PositionChangeEventArgs e = new PositionChangeEventArgs(position, eAction.Update);
-                PositionSortOnChange(e);
-            }
-            //Возвращаем Объект
-            return position;
-        }
+		//ACCESS
+		/// <summary>
+		/// Проверка прав доступа к методу
+		/// </summary>
+		public Boolean position_sort_down(out eAccess Access)
+		{
+			Boolean Result = false;
+			Access = eAccess.NotFound;
+			NpgsqlCommandKey cmdk;
 
-        /// <summary>
-        /// Метод изменяет сортировку позиции опуская указанную позицию на один пункт вниз
-        /// </summary>
-        public position position_sort_down(position Position)
-        {
-            return position_sort_down(Position.Id);
-        }
+			cmdk = CommandByKey("position_sort_down");
+			if (cmdk != null)
+			{
+				Result = cmdk.Access;
+				if (Result)
+				{
+					Access = eAccess.Success;
+				}
+				else
+				{
+					Access = eAccess.NotAvailable;
+				}
+			}
+			return Result;
+		}
+		#endregion
 
-        //ACCESS
-        /// <summary>
-        /// Проверка прав доступа к методу
-        /// </summary>
-        public Boolean position_sort_down(out eAccess Access)
-        {
-            Boolean Result = false;
-            Access = eAccess.NotFound;
-            NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
-            cmdk = CommandByKey("position_sort_down");
-            if (cmdk != null)
-            {
-                Result = cmdk.Access;
-                if (Result)
-                {
-                    Access = eAccess.Success;
-                }
-                else
-                {
-                    Access = eAccess.NotAvailable;
-                }
-            }
-            return Result;
-        }
-        //*********************************************************************************************
-        #endregion
+		#region ОПУСТИТЬ ВНИЗ
+		/// <summary>
+		/// Метод изменяет сортировку позиций опуская указанную позицию вниз
+		/// </summary>
+		public position position_sort_bottom(Int64 iid_position)
+		{
+			position position = null;
+			Int32 error;
+			String desc_error;
+			NpgsqlCommandKey cmdk;
 
-        #region ОПУСТИТЬ ВНИЗ
-        /// <summary>
-        /// Метод изменяет сортировку позиций опуская указанную позицию вниз
-        /// </summary>
-        public position position_sort_bottom(Int64 iid_position)
-        {
-            position position = null;
+			cmdk = CommandByKey("position_sort_bottom");
+			if (cmdk != null)
+			{
+				if (!cmdk.Access)
+				{
+					throw new AccessDataBaseException(404, String.Format(@"Отказано в доступе к методу: {0}!", cmdk.CommandText));
+				}
+			}
+			else
+			{
+				throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
+			}
 
-            Int32 error;
-            String desc_error;
-            NpgsqlCommandKey cmdk;
-            //**********
+			cmdk.Parameters["iid_position"].Value = iid_position;
+			cmdk.ExecuteNonQuery();
 
-            //=======================
-            cmdk = CommandByKey("position_sort_bottom");
+			error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
+			desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
+			switch (error)
+			{
+				case 0:
+					position = position_by_id(iid_position);
+					if (position.Id_parent > 0)
+					{
+						position = position_by_id(position.Id_parent);
+					}
+					//Генерируем событие применения метода сортировки
+					if (position != null)
+					{
+						PositionChangeEventArgs e = new PositionChangeEventArgs(position, eAction.Update);
+						PositionSortOnChange(e);
+					}
 
-            if (cmdk != null)
-            {
-                if (!cmdk.Access)
-                {
-                    throw new AccessDataBaseException(404, String.Format(@"Отказано в доступе к методу: {0}!", cmdk.CommandText));
-                }
-            }
-            else
-            {
-                throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
-            }
-            //=======================
+					break;
+				default:
+					//Вызов события журнала
+					JournalEventArgs me = new JournalEventArgs(iid_position, eEntity.position, error, desc_error, eAction.Update, eJournalMessageType.error);
+					JournalMessageOnReceived(me);
+					throw new PgDataException(error, desc_error);
+			}
 
-            cmdk.Parameters["iid_position"].Value = iid_position;
-            //=======================
-            //Начало транзакции
-            cmdk.ExecuteNonQuery();
+			//Возвращаем Объект
+			return position;
+		}
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            //=======================
-            switch (error)
-            {
-                case 0:
-                    position = position_by_id(iid_position);
-                    if (position.Id_parent > 0)
-                    {
-                        position = position_by_id(position.Id_parent);
-                    }
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(iid_position, eEntity.position, error, desc_error, eAction.Update, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
-            }
-            //Генерируем событие применения метода сортировки
-            if (position != null)
-            {
-                PositionChangeEventArgs e = new PositionChangeEventArgs(position, eAction.Update);
-                PositionSortOnChange(e);
-            }
-            //Возвращаем Объект
-            return position;
-        }
+		/// <summary>
+		/// Метод изменяет сортировку позиций опуская указанную позицию вниз
+		/// </summary>
+		public position position_sort_bottom(position Position)
+		{
+			return position_sort_bottom(Position.Id);
+		}
 
-        /// <summary>
-        /// Метод изменяет сортировку позиций опуская указанную позицию вниз
-        /// </summary>
-        public position position_sort_bottom(position Position)
-        {
-            return position_sort_bottom(Position.Id);
-        }
+		//ACCESS
+		/// <summary>
+		/// Проверка прав доступа к методу
+		/// </summary>
+		public Boolean position_sort_bottom(out eAccess Access)
+		{
+			Boolean Result = false;
+			Access = eAccess.NotFound;
+			NpgsqlCommandKey cmdk;
 
-        //ACCESS
-        /// <summary>
-        /// Проверка прав доступа к методу
-        /// </summary>
-        public Boolean position_sort_bottom(out eAccess Access)
-        {
-            Boolean Result = false;
-            Access = eAccess.NotFound;
-            NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
-            cmdk = CommandByKey("position_sort_bottom");
-            if (cmdk != null)
-            {
-                Result = cmdk.Access;
-                if (Result)
-                {
-                    Access = eAccess.Success;
-                }
-                else
-                {
-                    Access = eAccess.NotAvailable;
-                }
-            }
-            return Result;
-        }
-        //*********************************************************************************************
-        #endregion
+			cmdk = CommandByKey("position_sort_bottom");
+			if (cmdk != null)
+			{
+				Result = cmdk.Access;
+				if (Result)
+				{
+					Access = eAccess.Success;
+				}
+				else
+				{
+					Access = eAccess.NotAvailable;
+				}
+			}
+			return Result;
+		}
+		#endregion
 
-        #region СОРТИРОВКА ПО ИМЕНИ
-        /// <summary>
-        /// Метод изменяет сортировку позиций на сортировку по имени
-        /// </summary>
-        public position position_sort_by_name(Int64 iid_position_parent)
-        {
-            position position = null;
+		#region СОРТИРОВКА ПО ИМЕНИ
+		/// <summary>
+		/// Метод изменяет сортировку позиций на сортировку по имени
+		/// </summary>
+		public position position_sort_by_name(Int64 iid_position_parent)
+		{
+			position position = null;
+			Int32 error;
+			String desc_error;
+			NpgsqlCommandKey cmdk;
 
-            Int32 error;
-            String desc_error;
-            NpgsqlCommandKey cmdk;
-            //**********
+			cmdk = CommandByKey("position_sort_by_name");
+			if (cmdk != null)
+			{
+				if (!cmdk.Access)
+				{
+					throw new AccessDataBaseException(404, String.Format(@"Отказано в доступе к методу: {0}!", cmdk.CommandText));
+				}
+			}
+			else
+			{
+				throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
+			}
 
-            //=======================
-            cmdk = CommandByKey("position_sort_by_name");
+			cmdk.Parameters["iid_position_parent"].Value = iid_position_parent;
+			cmdk.ExecuteNonQuery();
 
-            if (cmdk != null)
-            {
-                if (!cmdk.Access)
-                {
-                    throw new AccessDataBaseException(404, String.Format(@"Отказано в доступе к методу: {0}!", cmdk.CommandText));
-                }
-            }
-            else
-            {
-                throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
-            }
-            //=======================
+			error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
+			desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
+			switch (error)
+			{
+				case 0:
+					position = position_by_id(iid_position_parent);
+					if (position.Id_parent > 0)
+					{
+						position = position_by_id(position.Id_parent);
+					}
+					//Генерируем событие применения метода сортировки
+					if (position != null)
+					{
+						PositionChangeEventArgs e = new PositionChangeEventArgs(position, eAction.Update);
+						PositionSortOnChange(e);
+					}
+					break;
+				default:
+					//Вызов события журнала
+					JournalEventArgs me = new JournalEventArgs(iid_position_parent, eEntity.position, error, desc_error, eAction.Update, eJournalMessageType.error);
+					JournalMessageOnReceived(me);
+					throw new PgDataException(error, desc_error);
+			}
+			
+			//Возвращаем Объект
+			return position;
+		}
 
-            cmdk.Parameters["iid_position_parent"].Value = iid_position_parent;
-            //=======================
-            //Начало транзакции
-            cmdk.ExecuteNonQuery();
+		/// <summary>
+		/// Метод изменяет сортировку позиций опуская указанную позицию вниз
+		/// </summary>
+		public position position_sort_by_name(position Position)
+		{
+			return position_sort_by_name(Position.Id);
+		}
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            //=======================
-            switch (error)
-            {
-                case 0:
-                    position = position_by_id(iid_position_parent);
-                    if (position.Id_parent > 0)
-                    {
-                        position = position_by_id(position.Id_parent);
-                    }
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(iid_position_parent, eEntity.position, error, desc_error, eAction.Update, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
-            }
-            //Генерируем событие применения метода сортировки
-            if (position != null)
-            {
-                PositionChangeEventArgs e = new PositionChangeEventArgs(position, eAction.Update);
-                PositionSortOnChange(e);
-            }
-            //Возвращаем Объект
-            return position;
-        }
+		//ACCESS
+		/// <summary>
+		/// Проверка прав доступа к методу
+		/// </summary>
+		public Boolean position_sort_by_name(out eAccess Access)
+		{
+			Boolean Result = false;
+			Access = eAccess.NotFound;
+			NpgsqlCommandKey cmdk;
 
-        /// <summary>
-        /// Метод изменяет сортировку позиций опуская указанную позицию вниз
-        /// </summary>
-        public position position_sort_by_name(position Position)
-        {
-            return position_sort_by_name(Position.Id);
-        }
+			cmdk = CommandByKey("position_sort_by_name");
+			if (cmdk != null)
+			{
+				Result = cmdk.Access;
+				if (Result)
+				{
+					Access = eAccess.Success;
+				}
+				else
+				{
+					Access = eAccess.NotAvailable;
+				}
+			}
+			return Result;
+		}
 
-        //ACCESS
-        /// <summary>
-        /// Проверка прав доступа к методу
-        /// </summary>
-        public Boolean position_sort_by_name(out eAccess Access)
-        {
-            Boolean Result = false;
-            Access = eAccess.NotFound;
-            NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
-            cmdk = CommandByKey("position_sort_by_name");
-            if (cmdk != null)
-            {
-                Result = cmdk.Access;
-                if (Result)
-                {
-                    Access = eAccess.Success;
-                }
-                else
-                {
-                    Access = eAccess.NotAvailable;
-                }
-            }
-            return Result;
-        }
-        //*********************************************************************************************
+		/// <summary>
+		/// Метод изменяет сортировку позиций на сортировку по имени
+		/// </summary>
+		public conception position_root_sort_by_name(Int64 iid_conception)
+		{
+			conception conception = null;
+			Int32 error;
+			String desc_error;
+			NpgsqlCommandKey cmdk;
 
-        /// <summary>
-        /// Метод изменяет сортировку позиций на сортировку по имени
-        /// </summary>
-        public conception position_root_sort_by_name(Int64 iid_conception)
-        {
-            conception conception = null;
+			cmdk = CommandByKey("position_root_sort_by_name");
+			if (cmdk != null)
+			{
+				if (!cmdk.Access)
+				{
+					throw new AccessDataBaseException(404, String.Format(@"Отказано в доступе к методу: {0}!", cmdk.CommandText));
+				}
+			}
+			else
+			{
+				throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
+			}
 
-            Int32 error;
-            String desc_error;
-            NpgsqlCommandKey cmdk;
-            //**********
+			cmdk.Parameters["iid_conception"].Value = iid_conception;
+			cmdk.ExecuteNonQuery();
 
-            //=======================
-            cmdk = CommandByKey("position_root_sort_by_name");
+			error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
+			desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
+			switch (error)
+			{
+				case 0:
+					conception = conception_by_id(iid_conception);
+					//Генерируем событие применения метода сортировки
+					if (conception != null)
+					{
+						ConceptionChangeEventArgs e = new ConceptionChangeEventArgs(conception, eAction.Update);
+						PositionSortOnChange(e);
+					}
+					break;
+				default:
+					//Вызов события журнала
+					JournalEventArgs me = new JournalEventArgs(iid_conception, eEntity.conception, error, desc_error, eAction.Update, eJournalMessageType.error);
+					JournalMessageOnReceived(me);
+					throw new PgDataException(error, desc_error);
+			}
+			
+			//Возвращаем Объект
+			return conception;
+		}
 
-            if (cmdk != null)
-            {
-                if (!cmdk.Access)
-                {
-                    throw new AccessDataBaseException(404, String.Format(@"Отказано в доступе к методу: {0}!", cmdk.CommandText));
-                }
-            }
-            else
-            {
-                throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
-            }
-            //=======================
+		/// <summary>
+		/// Метод изменяет сортировку позиций опуская указанную позицию вниз
+		/// </summary>
+		public conception position_root_sort_by_name(conception Conception)
+		{
+			return position_root_sort_by_name(Conception.Id);
+		}
 
-            cmdk.Parameters["iid_conception"].Value = iid_conception;
-            //=======================
-            //Начало транзакции
-            cmdk.ExecuteNonQuery();
+		//ACCESS
+		/// <summary>
+		/// Проверка прав доступа к методу
+		/// </summary>
+		public Boolean position_root_sort_by_name(out eAccess Access)
+		{
+			Boolean Result = false;
+			Access = eAccess.NotFound;
+			NpgsqlCommandKey cmdk;
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            //=======================
-            switch (error)
-            {
-                case 0:
-                    conception = conception_by_id(iid_conception);
-                    
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(iid_conception, eEntity.conception, error, desc_error, eAction.Update, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
-            }
-            //Генерируем событие применения метода сортировки
-            if (conception != null)
-            {
-                ConceptionChangeEventArgs e = new ConceptionChangeEventArgs(conception, eAction.Update);
-                PositionSortOnChange(e);
-            }
-            //Возвращаем Объект
-            return conception;
-        }
-
-        /// <summary>
-        /// Метод изменяет сортировку позиций опуская указанную позицию вниз
-        /// </summary>
-        public conception position_root_sort_by_name(conception Conception)
-        {
-            return position_root_sort_by_name(Conception.Id);
-        }
-
-        //ACCESS
-        /// <summary>
-        /// Проверка прав доступа к методу
-        /// </summary>
-        public Boolean position_root_sort_by_name(out eAccess Access)
-        {
-            Boolean Result = false;
-            Access = eAccess.NotFound;
-            NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
-            cmdk = CommandByKey("position_root_sort_by_name");
-            if (cmdk != null)
-            {
-                Result = cmdk.Access;
-                if (Result)
-                {
-                    Access = eAccess.Success;
-                }
-                else
-                {
-                    Access = eAccess.NotAvailable;
-                }
-            }
-            return Result;
-        }
-        //*********************************************************************************************
-        #endregion
-        #endregion
-    }
+			cmdk = CommandByKey("position_root_sort_by_name");
+			if (cmdk != null)
+			{
+				Result = cmdk.Access;
+				if (Result)
+				{
+					Access = eAccess.Success;
+				}
+				else
+				{
+					Access = eAccess.NotAvailable;
+				}
+			}
+			return Result;
+		}
+		#endregion
+		#endregion
+	}
 }

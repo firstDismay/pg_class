@@ -60,19 +60,20 @@ namespace pg_class
                     {
                         vclass = class_act_by_id(id);
                     }
-                    break;
+					if (vclass != null)
+					{
+						//Генерируем событие изменения представления класса
+						ClassChangeEventArgs e = new ClassChangeEventArgs(vclass, eAction.Insert);
+						ClassOnChange(e);
+					}
+					break;
                 default:
                     //Вызов события журнала
                     JournalEventArgs me = new JournalEventArgs(id, eEntity.vclass, error, desc_error, eAction.Insert, eJournalMessageType.error);
                     JournalMessageOnReceived(me);
                     throw new PgDataException(error, desc_error);
             }
-            if (vclass != null)
-            {
-                //Генерируем событие изменения представления класса
-                ClassChangeEventArgs e = new ClassChangeEventArgs(vclass, eAction.Insert);
-                ClassOnChange(e);
-            }
+            
             //Возвращаем Объект
             return vclass;
         }
