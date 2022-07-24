@@ -435,7 +435,7 @@
     <Compile Include="manager\man_propertis\common\man_object_prop_emded_mode_sel.cs" />
     <Compile Include="manager\man_propertis\common\man_prop_type_sel.cs" />
     <Compile Include="manager\man_propertis\common\man_prop_data_bin_ext_sel.cs" />
-    <Compile Include="manager\man_propertis\global_prop\Step1_global_prop\man_class_prop_search_method_sel.cs" />
+    <Compile Include="manager\man_propertis\global_prop\Step1_global_prop\man_global_prop_search_method_sel.cs" />
     <Compile Include="manager\man_propertis\global_prop\Step1_global_prop\man_global_prop_is_actual.cs" />
     <Compile Include="manager\man_propertis\global_prop\Step1_global_prop\man_global_prop_search.cs" />
     <Compile Include="manager\man_propertis\global_prop\Step1_global_prop\man_global_prop_sel.cs" />

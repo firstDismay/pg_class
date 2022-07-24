@@ -74,7 +74,18 @@ namespace Test
 
             ///ИЗВРАЩАИТЬСЯ ТУТ
             ///
-            /*cv.value_set(100);
+
+            global_prop gp = NEW_pg_class.global_prop_by_id(33);
+
+            List<SearchMetodObject> sm = gp.search_method_list_get();
+
+            List<String> sms = NEW_pg_class.class_prop_search_method_by_id_global_prop(33);
+
+			List<eSearchMethods>  sme = NEW_pg_class.class_prop_search_method_by_id_global_prop2(33);
+
+			List<SearchMetodObject> smo = NEW_pg_class.class_prop_search_method_by_id_global_prop3(33);
+
+			/*cv.value_set(100);
             /*cv.Update();
 
             List<object_general> o = NEW_pg_class.object_ext_by_global_prop(187,eSearchMethods.any_array,"1287,1284","","");
@@ -232,31 +243,31 @@ namespace Test
             tk19.Start();
             tk20.Start();*/
 
-            //Version v = new Version(21, 1, 1, 1);
+			//Version v = new Version(21, 1, 1, 1);
 
-            //NEW_pg_class.Info.Update(true);
+			//NEW_pg_class.Info.Update(true);
 
-            //object_general o = NEW_pg_class.object_ext_by_id(1210);
-            //global_prop gp = NEW_pg_class.global_prop_by_id(70);
+			//object_general o = NEW_pg_class.object_ext_by_id(1210);
+			//global_prop gp = NEW_pg_class.global_prop_by_id(70);
 
-            //object_prop op = o.Property_by_global_prop(gp);
+			//object_prop op = o.Property_by_global_prop(gp);
 
-            //global_prop gp = NEW_pg_class.global_prop_by_id(70);
-            //position p = NEW_pg_class.pos_by_id(1304);
-
-
+			//global_prop gp = NEW_pg_class.global_prop_by_id(70);
+			//position p = NEW_pg_class.pos_by_id(1304);
 
 
 
-            //vclass c = NEW_pg_class.class_act_by_id(650);
 
-            //List<errarg_object_add> we = p.Object_add_for_class_act(c);
-            //listBox1.DataSource = we;
-            //List<errarg_object_add> we = NEW_pg_class.object_add_for_class_act(650, 1160);
 
-            //
+			//vclass c = NEW_pg_class.class_act_by_id(650);
 
-            foreach (eDataType t in  (eDataType[])Enum.GetValues(typeof(eDataType)))
+			//List<errarg_object_add> we = p.Object_add_for_class_act(c);
+			//listBox1.DataSource = we;
+			//List<errarg_object_add> we = NEW_pg_class.object_add_for_class_act(650, 1160);
+
+			//
+
+			foreach (eDataType t in  (eDataType[])Enum.GetValues(typeof(eDataType)))
             {
                 Console.WriteLine(t.ToString("g"));
             }

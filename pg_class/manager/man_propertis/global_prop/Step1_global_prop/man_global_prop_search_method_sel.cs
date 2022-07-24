@@ -98,7 +98,7 @@ namespace pg_class
         {
             List<SearchMetodObject> Result = new List<SearchMetodObject>();
 
-            List<eSearchMethods> sm_list = class_prop_search_method_by_id_class_prop2(iid_global_prop);
+            List<eSearchMethods> sm_list = class_prop_search_method_by_id_global_prop2(iid_global_prop);
 
             foreach (eSearchMethods sm in sm_list)
             {
