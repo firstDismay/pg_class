@@ -21,11 +21,8 @@ namespace pg_class
             Int32 error;
             String desc_error;
             NpgsqlCommandKey cmdk;
-            //**********
-             
-            //=======================
-            cmdk = CommandByKey("pos_temp_prop_link_val_del");
 
+            cmdk = CommandByKey("pos_temp_prop_link_val_del");
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -37,35 +34,31 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
-            cmdk.Parameters["iid_pos_temp_prop"].Value = iid_pos_temp_prop;
+			//Запрос удаляемой сущности
+			pos_temp_prop_link_val pos_temp_prop_link_val = pos_temp_prop_link_val_by_id_prop(iid_pos_temp_prop);
 
-            //Запрос удаляемой сущности
-            pos_temp_prop_link_val pos_temp_prop_link_val = pos_temp_prop_link_val_by_id_prop(iid_pos_temp_prop);
-
-            //Начало транзакции
+			cmdk.Parameters["iid_pos_temp_prop"].Value = iid_pos_temp_prop;
             cmdk.ExecuteNonQuery();
           
             error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
             desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            //SetLastTimeUsing();
-            //=======================
-            
-            if (error > 0)
-            {
-                //Вызов события журнала
-                JournalEventArgs me = new JournalEventArgs(iid_pos_temp_prop, eEntity.pos_temp_prop_link_val, error, desc_error, eAction.Delete, eJournalMessageType.error);
-                JournalMessageOnReceived(me);
-                throw new PgDataException(error, desc_error);
-            }
-
-            //Генерируем событие удаления свойства класса
-            if (pos_temp_prop_link_val != null)
-            {
-                PosTempPropLinkValChangeEventArgs e = new PosTempPropLinkValChangeEventArgs(pos_temp_prop_link_val, eAction.Delete);
-                PosTempPropLinkValOnChange(e);
-            }
+			switch (error)
+			{
+				case 0:
+					//Генерируем событие удаления свойства класса
+					if (pos_temp_prop_link_val != null)
+					{
+						PosTempPropLinkValChangeEventArgs e = new PosTempPropLinkValChangeEventArgs(pos_temp_prop_link_val, eAction.Delete);
+						PosTempPropLinkValOnChange(e);
+					}
+					break;
+				default:
+					//Вызов события журнала
+					JournalEventArgs me = new JournalEventArgs(iid_pos_temp_prop, eEntity.pos_temp_prop_link_val, error, desc_error, eAction.Delete, eJournalMessageType.error);
+					JournalMessageOnReceived(me);
+					throw new PgDataException(error, desc_error);
+			}
         }
 
         /// <summary>
@@ -75,7 +68,6 @@ namespace pg_class
         {
             pos_temp_prop_link_val_del(PosTemp_prop_link_val.Id_pos_temp_prop);
         }
-
 
         /// <summary>
         /// Удалить новое перечисление для свойств
@@ -94,8 +86,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+
             cmdk = CommandByKey("pos_temp_prop_link_val_del");
             if (cmdk != null)
             {

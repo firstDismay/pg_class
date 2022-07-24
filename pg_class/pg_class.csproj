@@ -351,7 +351,7 @@
     <Compile Include="manager\man_propertis\class_prop\Step1_class_prop\man_class_prop_upd.cs" />
     <Compile Include="manager\man_propertis\class_prop\Step1_class_prop\man_class_prop_add.cs" />
     <Compile Include="manager\man_propertis\class_prop\Step1_class_prop\man_class_prop_snapshot_search_method.cs" />
-    <Compile Include="manager\man_propertis\class_prop\Step1_class_prop\man_class_prop_search_method.cs" />
+    <Compile Include="manager\man_propertis\class_prop\Step1_class_prop\man_class_prop_search_method_sel.cs" />
     <Compile Include="manager\man_propertis\class_prop\Step1_class_prop\class_prop_sort\man_class_prop_sort_event.cs" />
     <Compile Include="manager\man_propertis\class_prop\Step1_class_prop\class_prop_sort\man_class_prop_sort_name.cs" />
     <Compile Include="manager\man_propertis\class_prop\Step2_class_prop_val\enum\man_class_prop_enum_val_is_actual.cs" />
@@ -435,6 +435,7 @@
     <Compile Include="manager\man_propertis\common\man_object_prop_emded_mode_sel.cs" />
     <Compile Include="manager\man_propertis\common\man_prop_type_sel.cs" />
     <Compile Include="manager\man_propertis\common\man_prop_data_bin_ext_sel.cs" />
+    <Compile Include="manager\man_propertis\global_prop\Step1_global_prop\man_class_prop_search_method_sel.cs" />
     <Compile Include="manager\man_propertis\global_prop\Step1_global_prop\man_global_prop_is_actual.cs" />
     <Compile Include="manager\man_propertis\global_prop\Step1_global_prop\man_global_prop_search.cs" />
     <Compile Include="manager\man_propertis\global_prop\Step1_global_prop\man_global_prop_sel.cs" />
@@ -737,6 +738,7 @@
     <Compile Include="pg_classes\properties\class_prop\step1_prop\class_prop_ICloneable.cs" />
     <Compile Include="pg_classes\properties\class_prop\step2_class_val\enum prop\class_prop_enum.cs" />
     <Compile Include="pg_classes\properties\class_prop\step3_object_val\object_prop_global_prop.cs" />
+    <Compile Include="pg_classes\properties\global_prop\Step1_prop\global_prop_search_method.cs" />
     <Compile Include="pg_classes\properties\global_prop\Step1_prop\global_prop_position.cs" />
     <Compile Include="pg_classes\properties\global_prop\Step1_prop\global_prop_pos_temp.cs" />
     <Compile Include="pg_classes\properties\global_prop\Step1_prop\global_prop_class.cs" />
