@@ -44,7 +44,6 @@ namespace pg_class
             return rulel1;
         }
 
-
         /// <summary>
         /// Правило уровня 1 класс на шаблон по идентификатору правила
         /// </summary>
