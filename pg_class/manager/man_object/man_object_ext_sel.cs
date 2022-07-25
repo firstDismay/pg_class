@@ -64,7 +64,7 @@ namespace pg_class
             return object_ext_by_id(Object_path.Id_object);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -146,7 +146,7 @@ namespace pg_class
             return object_ext_by_id_position(Position.Id);
         }
                
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -227,7 +227,7 @@ namespace pg_class
             return object_ext_by_id_position_full(Position.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -308,7 +308,7 @@ namespace pg_class
             return object_ext_by_id_object_carrier(Object_parent.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -383,7 +383,7 @@ namespace pg_class
             return object_list;
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -459,7 +459,7 @@ namespace pg_class
             return object_list;
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -541,7 +541,7 @@ namespace pg_class
             return object_ext_by_id_class_act(Class.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -631,7 +631,7 @@ namespace pg_class
             return object_ext_by_id_class_full(Object_general.Id_class);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -722,7 +722,7 @@ namespace pg_class
             return object_ext_by_id_class_snapshot(Object_general.Id_class, Object_general.Timestamp_class);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -821,7 +821,7 @@ namespace pg_class
             return object_ext_by_id_class_snapshot_id_pos(Object_general.Id_class, Object_general.Timestamp_class, Position_parent.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -906,7 +906,7 @@ namespace pg_class
             return object_ext_by_id_class_id_pos(Class.Id, Position_parent.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -988,7 +988,7 @@ namespace pg_class
             return object_ext_by_id_class_root(Class.Id_root);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -1070,7 +1070,7 @@ namespace pg_class
             return object_ext_by_id_group(Group.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -1151,7 +1151,7 @@ namespace pg_class
             return object_ext_by_id_group_root(Group.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -1239,7 +1239,7 @@ namespace pg_class
             return object_ext_by_id_unit_conversion_rule(Unit_conversion_rule.Id_unit_conversion_rule);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -1320,7 +1320,7 @@ namespace pg_class
             return object_by_id_prop_enum(Prop_enum.Id_prop_enum);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -1402,7 +1402,7 @@ namespace pg_class
             return object_ext_by_id_prop_enum_val(Prop_enum_val.Id_prop_enum_val);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -1485,7 +1485,7 @@ namespace pg_class
             return object_ext_by_id_prop_data_type(Con_prop_data_type.Id_conception, Con_prop_data_type.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -1571,7 +1571,7 @@ namespace pg_class
             return object_ext_by_link_object(Object_link.Id, on_recursive);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

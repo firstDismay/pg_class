@@ -38,9 +38,8 @@ namespace pg_class
             cmdk.Parameters["iid"].Value = iid;
             cmdk.Parameters["itimestamp"].Value = itimestamp;
             cmdk.Parameters["itimestamp_child_change"].Value = itimestamp_child_change;
-
-            //Начало транзакции
             is_actual = (Int32)cmdk.ExecuteScalar();
+
             return (eEntityState)is_actual;
         }
 
@@ -52,7 +51,7 @@ namespace pg_class
             return plan_is_actual(Plan.Id, Plan.Timestamp, Plan.Timestamp_child_change);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

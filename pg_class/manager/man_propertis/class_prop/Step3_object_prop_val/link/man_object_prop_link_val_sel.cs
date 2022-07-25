@@ -72,7 +72,7 @@ namespace pg_class
             return object_prop_link_val_by_id_prop(ObjectPropLink_val.Id_object, ObjectPropLink_val.Id_class_prop);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

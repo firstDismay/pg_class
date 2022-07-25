@@ -19,10 +19,8 @@ namespace pg_class
         public List<role_base> user_role_base_by_login(String ilogin, Boolean irecursive)
         {
             List<role_base> rol_list = new List<role_base>();
-
             DataTable tbl_rol =  TableByName("vrole_base");
             NpgsqlCommandKey cmdk;
-
 
             cmdk = CommandByKey("user_role_base_by_login");
             if (cmdk != null)
@@ -54,7 +52,7 @@ namespace pg_class
             return rol_list;
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -117,7 +115,7 @@ namespace pg_class
             return rol_list;
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

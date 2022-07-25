@@ -51,7 +51,7 @@ namespace pg_class
 
             return pos_temp_rule;
         }
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -134,7 +134,7 @@ namespace pg_class
         {
             return pos_temp_nested_whitelist_full(Pos_temp.Id, Pos_temp.Id_conception);
         }
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -217,7 +217,7 @@ namespace pg_class
             return pos_temp_nested_whitelist(Pos_temp.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

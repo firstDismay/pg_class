@@ -80,7 +80,7 @@ namespace pg_class
             return pos_temp_prop_enum_val_by_id_prop(PosTemp_prop_enum_val.Id_pos_temp_prop);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

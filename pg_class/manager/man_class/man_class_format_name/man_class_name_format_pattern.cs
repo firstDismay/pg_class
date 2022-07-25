@@ -20,16 +20,10 @@ namespace pg_class
         public List<pattern_string> class_name_format_pattern_string_by_all()
         {
             List<pattern_string> pattern_string_list = new List<pattern_string>();
-
-
             DataTable tbl_pattern_string  = TableByName("vpattern_string");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
             NpgsqlCommandKey cmdk;
 
-            //=======================
             cmdk = CommandByKey("class_name_format_pattern_string_by_all");
-
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -41,7 +35,6 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Fill(tbl_pattern_string);
             
@@ -57,7 +50,7 @@ namespace pg_class
             return pattern_string_list;
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -66,8 +59,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+
             cmdk = CommandByKey("class_name_format_pattern_string_by_all");
             if (cmdk != null)
             {

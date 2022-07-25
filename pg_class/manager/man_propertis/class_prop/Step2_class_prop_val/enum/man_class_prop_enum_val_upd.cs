@@ -22,11 +22,8 @@ namespace pg_class
             Int32 error;
             String desc_error;
             NpgsqlCommandKey cmdk = null;
-            //**********
-           
-            //=======================
+            
             cmdk = CommandByKey("class_prop_enum_val_upd");
-
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -38,7 +35,6 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iid_class_prop"].Value = iid_class_prop;
             cmdk.Parameters["iid_prop_enum"].Value = iid_prop_enum;
@@ -51,14 +47,10 @@ namespace pg_class
             {
                 cmdk.Parameters["iid_prop_enum_val"].Value = iid_prop_enum_val;
             }
-
-            //Начало транзакции
             cmdk.ExecuteNonQuery();
            
             error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
             desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            //SetLastTimeUsing();
-            //=======================     
             switch (error)
             {
                 case 0:
@@ -89,7 +81,7 @@ namespace pg_class
             return class_prop_enum_val_upd(Class_prop_enum_val.Id_class_prop, Class_prop_enum_val.Id_prop_enum, Class_prop_enum_val.Id_prop_enum_val);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -98,8 +90,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+
             cmdk = CommandByKey("class_prop_enum_val_upd");
             if (cmdk != null)
             {

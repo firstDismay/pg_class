@@ -22,11 +22,8 @@ namespace pg_class
             Int32 error;
             String desc_error;
             NpgsqlCommandKey cmdk;
-            //**********
-             
-            //=======================
+            
             cmdk = CommandByKey("pos_temp_prop_upd");
-
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -38,7 +35,6 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iid"].Value = iid;
             cmdk.Parameters["iid_prop_type"].Value = iid_prop_type;
@@ -47,30 +43,29 @@ namespace pg_class
             cmdk.Parameters["iname"].Value = iname;
             cmdk.Parameters["idesc"].Value = idesc;
             cmdk.Parameters["isort"].Value = isort;
-            //=======================
-
-            //Начало транзакции
             cmdk.ExecuteNonQuery();
             
             error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
             desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            //SetLastTimeUsing();
-            //=======================
             switch (error)
             {
                 case 0:
                     pos_temp_prop = pos_temp_prop_by_id(iid);
-                    break;
+                    if (pos_temp_prop != null)
+                    {
+                        //Генерируем событие изменения свойства
+                        PosTempPropChangeEventArgs e = new PosTempPropChangeEventArgs(pos_temp_prop, eAction.Update);
+                        PosTempPropOnChange(e);
+                    }
+					break;
                 default:
                     //Вызов события журнала
                     JournalEventArgs me = new JournalEventArgs(iid, eEntity.pos_temp_prop, error, desc_error, eAction.Update, eJournalMessageType.error);
                     JournalMessageOnReceived(me);
                     throw new PgDataException(error, desc_error);
             }
-            //Генерируем событие изменения свойства
-            PosTempPropChangeEventArgs e = new PosTempPropChangeEventArgs(pos_temp_prop, eAction.Update);
-            PosTempPropOnChange(e);
-            //Возвращаем Объект
+            
+            //Возвращаем сущность
             return pos_temp_prop;
         }
 
@@ -82,7 +77,7 @@ namespace pg_class
             return pos_temp_prop_upd(PosTempProp.Id, PosTempProp.Id_prop_type, PosTempProp.On_override, PosTempProp.Id_data_type, PosTempProp.Name, PosTempProp.Desc, PosTempProp.Sort);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -91,8 +86,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
             cmdk = CommandByKey("pos_temp_prop_upd");
             if (cmdk != null)
             {

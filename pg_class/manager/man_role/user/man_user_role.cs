@@ -70,11 +70,11 @@ namespace pg_class
             //Генерируем событие изменения концепции
             UserChangeEventArgs e = new UserChangeEventArgs(user, eAction.Update);
             UserOnChange(e);
-            //Возвращаем Объект
+            //Возвращаем сущность
             return Result;
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -125,18 +125,13 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
-
+            
             cmdk.Parameters["ilogin"].Value = user.Login;
             cmdk.Parameters["irole_user"].Value = role.NameSystem;
-
-            //Начало транзакции
             cmdk.ExecuteNonQuery();
             
             error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
             desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            //SetLastTimeUsing();
-            //=======================
             switch (error)
             {
                 case 0:
@@ -151,11 +146,11 @@ namespace pg_class
             //Генерируем событие изменения концепции
             UserChangeEventArgs e = new UserChangeEventArgs(user, eAction.Update);
             UserOnChange(e);
-            //Возвращаем Объект
+            //Возвращаем сущность
             return Result;
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

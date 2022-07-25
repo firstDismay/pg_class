@@ -22,11 +22,8 @@ namespace pg_class
             Int32 error;
             String desc_error;
             NpgsqlCommandKey cmdk;
-            //**********
-
-            //=======================
+            
             cmdk = CommandByKey("plan_link_del");
-
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -38,20 +35,14 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             plan_link plan_link = plan_link_by_id(iid_plan_link);
-
             cmdk.Parameters["iid_plan"].Value = iid_plan;
             cmdk.Parameters["iid_plan_link"].Value = iid_plan_link;
-
-            //Начало транзакции
             cmdk.ExecuteNonQuery();
 
             error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
             desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            //SetLastTimeUsing();
-            //=======================
             if (error > 0)
             {
                 //Вызов события журнала
@@ -68,7 +59,7 @@ namespace pg_class
             }
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -77,8 +68,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+
             cmdk = CommandByKey("plan_link_del");
             if (cmdk != null)
             {
@@ -94,7 +84,6 @@ namespace pg_class
             }
             return Result;
         }
-        //*********************************************************************************************
 
         /// <summary>
         /// Метод удаляет указаную ссылку плана по идентификатору сущности
@@ -105,11 +94,8 @@ namespace pg_class
             String desc_error;
             NpgsqlCommandKey cmdk;
             Int64 iid_doc_link = -1;
-            //**********
 
-            //=======================
             cmdk = CommandByKey("plan_link_del_by_entity");
-
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -121,7 +107,6 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             plan_link plan_link = plan_link_by_entity(iid_plan, iid_entity, iid_entity_instance, iid_sub_entity_instance);
             if (plan_link != null)
@@ -133,14 +118,11 @@ namespace pg_class
             cmdk.Parameters["iid_entity"].Value = iid_entity;
             cmdk.Parameters["iid_entity_instance"].Value = iid_entity_instance;
             cmdk.Parameters["iid_sub_entity_instance"].Value = iid_sub_entity_instance;
-
-            //Начало транзакции
             cmdk.ExecuteNonQuery();
 
             error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
             desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            //SetLastTimeUsing();
-            //=======================
+
             if (error > 0)
             {
                 //Вызов события журнала
@@ -237,7 +219,7 @@ namespace pg_class
             plan_link_del_by_entity(iid_plan, Class_prop.EntityID, Class_prop.Id, -1);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -246,8 +228,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+
             cmdk = CommandByKey("plan_link_del_by_entity");
             if (cmdk != null)
             {
@@ -263,7 +244,6 @@ namespace pg_class
             }
             return Result;
         }
-        //*********************************************************************************************
 
         /// <summary>
         /// Метод удаляет все ссылки плана
@@ -273,11 +253,8 @@ namespace pg_class
             Int32 error;
             String desc_error;
             NpgsqlCommandKey cmdk;
-            //**********
 
-            //=======================
             cmdk = CommandByKey("plan_link_del_all");
-
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -289,18 +266,13 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iid_plan"].Value = iid_plan;
-
-
-            //Начало транзакции
             cmdk.ExecuteNonQuery();
 
             error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
             desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            //SetLastTimeUsing();
-            //=======================
+
             if (error > 0)
             {
                 //Вызов события журнала
@@ -310,7 +282,7 @@ namespace pg_class
             }
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -319,8 +291,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
             cmdk = CommandByKey("plan_link_del_all");
             if (cmdk != null)
             {

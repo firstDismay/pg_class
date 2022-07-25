@@ -20,15 +20,10 @@ namespace pg_class
         public plan plan_by_id(Int64 iid)
         {
             plan plan = null;
-
             DataTable tbl_entity  = TableByName("vplan");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
             NpgsqlCommandKey cmdk;
 
-            //=======================
             cmdk = CommandByKey("plan_by_id");
-
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -40,10 +35,8 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iid"].Value = iid;
-
             cmdk.Fill(tbl_entity);
             
             if (tbl_entity.Rows.Count > 0)
@@ -53,7 +46,7 @@ namespace pg_class
             return plan;
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -62,8 +55,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+
             cmdk = CommandByKey("plan_by_id");
             if (cmdk != null)
             {
@@ -86,16 +78,10 @@ namespace pg_class
         public List<plan> plan_by_id_parent(Int64 id_parent)
         {
             List<plan>  entity_list = new List<plan>();
-
-            
             DataTable tbl_entity  = TableByName("vplan");
-            
-            //=======================
             NpgsqlCommandKey cmdk;
 
-            //=======================
             cmdk = CommandByKey("plan_by_id_parent");
-
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -107,14 +93,11 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iid_parent"].Value = id_parent;
-
             cmdk.Fill(tbl_entity);
             
             plan  centity;
-            
             if (tbl_entity.Rows.Count > 0)
             {
                 foreach (System.Data.DataRow dr in tbl_entity.Rows)
@@ -123,7 +106,6 @@ namespace pg_class
                     entity_list.Add(centity);
                 }
             }
-
             return entity_list;
         }
 
@@ -135,7 +117,7 @@ namespace pg_class
             return plan_by_id_parent(Plan.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -144,8 +126,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+
             cmdk = CommandByKey("plan_by_id_parent");
             if (cmdk != null)
             {
@@ -162,23 +143,16 @@ namespace pg_class
             return Result;
         }
 
-        //*********************************************************************************************
         /// <summary>
         /// Лист планов по идентификатору концепции
         /// </summary>
         public List<plan> plan_by_id_conception(Int64 iid_conception)
         {
             List<plan> entity_list = new List<plan>();
-
-
             DataTable tbl_entity = TableByName("vplan");
-
-            //=======================
             NpgsqlCommandKey cmdk;
 
-            //=======================
             cmdk = CommandByKey("plan_by_id_conception");
-
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -190,14 +164,11 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iid_conception"].Value = iid_conception;
-
             cmdk.Fill(tbl_entity);
 
             plan centity;
-
             if (tbl_entity.Rows.Count > 0)
             {
                 foreach (System.Data.DataRow dr in tbl_entity.Rows)
@@ -206,7 +177,6 @@ namespace pg_class
                     entity_list.Add(centity);
                 }
             }
-
             return entity_list;
         }
 
@@ -218,7 +188,7 @@ namespace pg_class
             return plan_by_id_conception(Conception.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -227,8 +197,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+
             cmdk = CommandByKey("plan_by_id_conception");
             if (cmdk != null)
             {

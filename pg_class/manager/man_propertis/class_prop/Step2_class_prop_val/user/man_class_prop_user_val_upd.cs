@@ -23,11 +23,9 @@ namespace pg_class
             Int32 error;
             String desc_error;
             NpgsqlCommandKey cmdk = null;
-            //**********
              
             if (newClassPropUserVal != null)
             {
-                //=======================
                 switch (newClassPropUserVal.DataSize)
                 {
                     case eDataSize.BigData:
@@ -44,14 +42,12 @@ namespace pg_class
                         {
                             throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
                         }
-                        //=======================
 
                         cmdk.Parameters["iid_class_prop"].Value = newClassPropUserVal.Id_class_prop;
                         cmdk.Parameters["imin_val"].Value = newClassPropUserVal.Min_val;
                         cmdk.Parameters["imin_on"].Value = newClassPropUserVal.Min_on;
                         cmdk.Parameters["imax_val"].Value = newClassPropUserVal.Max_val;
                         cmdk.Parameters["imax_on"].Value = newClassPropUserVal.Max_on;
-
                         cmdk.Parameters["ival_text"].Value = DBNull.Value;
                         cmdk.Parameters["ival_bytea"].Value = DBNull.Value;
                         cmdk.Parameters["ival_json"].Value = DBNull.Value;
@@ -95,7 +91,6 @@ namespace pg_class
                         {
                             throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
                         }
-                        //=======================
 
                         cmdk.Parameters["iid_class_prop"].Value = newClassPropUserVal.Id_class_prop;
                         cmdk.Parameters["imin_val"].Value = newClassPropUserVal.Min_val;
@@ -104,7 +99,6 @@ namespace pg_class
                         cmdk.Parameters["imax_on"].Value = newClassPropUserVal.Max_on;
                         cmdk.Parameters["iround"].Value = newClassPropUserVal.Round_val;
                         cmdk.Parameters["iround_on"].Value = newClassPropUserVal.Round_on;
-
                         cmdk.Parameters["ival_varchar"].Value = DBNull.Value;
                         cmdk.Parameters["ival_int"].Value = DBNull.Value;
                         cmdk.Parameters["ival_numeric"].Value = DBNull.Value;
@@ -165,14 +159,10 @@ namespace pg_class
                         }
                         break;
                 }
-
-                //Начало транзакции
                 cmdk.ExecuteNonQuery();
                 
                 error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
                 desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-                //SetLastTimeUsing();
-                //=======================
                 switch (error)
                 {
                     case 0:
@@ -193,12 +183,12 @@ namespace pg_class
                 }
 
             }
-            //Возвращаем Объект
+            //Возвращаем сущность
             return class_prop_user_val;
         }
 
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -207,8 +197,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+
             cmdk = CommandByKey("class_prop_user_small_val_upd");
             if (cmdk != null)
             {

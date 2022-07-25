@@ -24,11 +24,8 @@ namespace pg_class
             Int32 error;
             String desc_error;
             NpgsqlCommandKey cmdk;
-            //**********
-             
-            //=======================
+            
             cmdk = CommandByKey("doc_link_add");
-
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -40,20 +37,15 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iid_document"].Value = iid_document;
             cmdk.Parameters["iid_entity"].Value = iid_entity;
             cmdk.Parameters["iid_entity_instance"].Value = iid_entity_instance;
             cmdk.Parameters["iid_sub_entity_instance"].Value = iid_sub_entity_instance;
-
-            //Начало транзакции
             cmdk.ExecuteNonQuery();
 
             error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
             desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            //SetLastTimeUsing();
-            //=======================
             switch (error)
             {
                 case 0:
@@ -75,7 +67,7 @@ namespace pg_class
                 DocLinkChangeEventArgs e = new DocLinkChangeEventArgs(doc_link, eAction.Insert);
                 DocLinkOnChange(e);
             }
-            //Возвращаем Объект
+            //Возвращаем сущность
             return doc_link;
         }
 
@@ -159,7 +151,7 @@ namespace pg_class
             return doc_link_add(iid_document, Class_prop.EntityID, Class_prop.Id, -1);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -168,8 +160,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+
             cmdk = CommandByKey("doc_link_add");
             if (cmdk != null)
             {

@@ -40,7 +40,6 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["usr_name"].Value = usr_name;
             cmdk.Parameters["usr_otchestvo"].Value = usr_otchestvo;
@@ -55,14 +54,10 @@ namespace pg_class
             cmdk.Parameters["usr_rolcanlogin"].Value = usr_rolcanlogin;
             cmdk.Parameters["usr_rolcanweblogin"].Value = usr_rolcanweblogin;
             cmdk.Parameters["usr_bypassrls"].Value = usr_bypassrls;
-
-            //Начало транзакции
             cmdk.ExecuteNonQuery();
             
             error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
             desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            //SetLastTimeUsing();
-            //=======================
             switch (error)
             {
                 case 0:
@@ -77,7 +72,7 @@ namespace pg_class
             //Генерируем событие изменения концепции
             UserChangeEventArgs e = new UserChangeEventArgs(user, eAction.Update);
             UserOnChange(e);
-            //Возвращаем Объект
+            //Возвращаем сущность
             return user;
         }
 
@@ -115,7 +110,7 @@ namespace pg_class
             user.RolCanLogin, user.RolCanWebLogin, user.RolBypassRLS);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

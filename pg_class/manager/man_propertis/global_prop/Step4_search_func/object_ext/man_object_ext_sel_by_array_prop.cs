@@ -69,7 +69,7 @@ namespace pg_class
             return object_ext_by_array_prop(array_prop, Position.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

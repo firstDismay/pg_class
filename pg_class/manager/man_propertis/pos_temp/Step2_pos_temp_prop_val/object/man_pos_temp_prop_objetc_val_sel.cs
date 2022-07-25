@@ -52,7 +52,7 @@ namespace pg_class
             return pos_temp_prop_object_val;
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -127,7 +127,7 @@ namespace pg_class
             return pos_temp_prop_object_val_by_id_prop(PosTemp_prop.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

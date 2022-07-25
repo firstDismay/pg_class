@@ -60,7 +60,7 @@ namespace pg_class
             return position_by_id(pos_path.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -164,7 +164,7 @@ namespace pg_class
             return position_by_id_parent(Position.Id, Position.Id_conception, Pos_temp.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// position_by_id_parent
@@ -245,7 +245,7 @@ namespace pg_class
             return position_by_id_pos_temp(pos_temp.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -324,7 +324,7 @@ namespace pg_class
             return position_by_id_global_prop(Global_prop.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -405,7 +405,7 @@ namespace pg_class
             return position_by_id_prop_data_type(Con_prop_data_type.Id_conception, Con_prop_data_type.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -485,7 +485,7 @@ namespace pg_class
             return position_by_id_prop_enum(Prop_enum.Id_prop_enum);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -565,7 +565,7 @@ namespace pg_class
             return position_by_id_prop_enum_val(Prop_enum_val.Id_prop_enum_val);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -645,7 +645,7 @@ namespace pg_class
             return position_name_layout_by_id_pos_temp(pos_temp.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -729,7 +729,7 @@ namespace pg_class
             return position_by_name(Position.Id, iname);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

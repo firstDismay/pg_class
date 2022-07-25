@@ -66,7 +66,7 @@ namespace pg_class
             return object_carrier_by_object_class_full(Class.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

@@ -23,10 +23,8 @@ namespace pg_class
             Int32 error;
             String desc_error;
             NpgsqlCommandKey cmdk;
-            //**********
-            //=======================
-            cmdk = CommandByKey("prop_enum_val_sort_top");
 
+            cmdk = CommandByKey("prop_enum_val_sort_top");
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -38,37 +36,32 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iid_prop_enum_val"].Value = iid_prop_enum_val;
-            //=======================
-
-            //Начало транзакции
             cmdk.ExecuteNonQuery();
             
             error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
             desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            //SetLastTimeUsing();
-            //=======================
             switch (error)
             {
                 case 0:
                     prop_enum_val = prop_enum_val_by_id(iid_prop_enum_val);
                     SortList = prop_enum_val_by_id_prop_enum(prop_enum_val.Id_prop_enum);
-                    break;
+					foreach (prop_enum_val item in SortList)
+					{
+						//Генерируем события изменения сортировки элементов перечисления
+						PropEnumValChangeEventArgs e = new PropEnumValChangeEventArgs(item, eAction.Update);
+						PropEnumValOnChange(e);
+					}
+					break;
                 default:
                     //Вызов события журнала
                     JournalEventArgs me = new JournalEventArgs(iid_prop_enum_val, eEntity.prop_enum_val, error, desc_error, eAction.Update, eJournalMessageType.error);
                     JournalMessageOnReceived(me);
                     throw new PgDataException(error, desc_error);
             }
-            //Генерируем события изменения сортировки элементов перечисления
-            foreach (prop_enum_val item in SortList)
-            {
-                PropEnumValChangeEventArgs e = new PropEnumValChangeEventArgs(item, eAction.Update);
-                PropEnumValOnChange(e);
-            }
-            //Возвращаем Объект
+            
+            //Возвращаем сущность
             return prop_enum_val;
         }
 
@@ -85,7 +78,7 @@ namespace pg_class
             return Result;
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -94,8 +87,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
             cmdk = CommandByKey("prop_enum_val_sort_top");
             if (cmdk != null)
             {

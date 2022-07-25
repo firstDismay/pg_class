@@ -24,7 +24,6 @@ namespace pg_class
         /// Событие возникает при изменении ссылки плана методом доступа к БД
         /// </summary>
         public event PlanGivenRangePlanLinkChangeEventHandler PlanGivenRangePlanLinkChange;
-        //===========================================================
 
         /// <summary>
         ///  Метод вызова события изменения ссылки плана

@@ -60,7 +60,7 @@ namespace pg_class
             return global_prop_area_val_by_id_prop(GlobalProp.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

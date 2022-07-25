@@ -67,7 +67,7 @@ namespace pg_class
             return class_prop_by_id_class_search_method(Class.Id, isearch_method);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -96,7 +96,6 @@ namespace pg_class
         #endregion
 
         #region МЕТОДЫ СЛОЖНОГО ПОИСКА ПОЛУЧАЕМЫЕ ИЗ БД
-        //*********************************************************************************************
         /// <summary>
         /// Метод возвращает список методов сложного поиска по идентификатору свойства
         /// </summary>
@@ -104,13 +103,10 @@ namespace pg_class
         {
             DataTable tsearch_method;
             List<String> search_method = new List<String>();
-            //=======================
             NpgsqlCommandKey cmdk;
-            //**********
             tsearch_method = new DataTable();
-            //=======================
-            cmdk = CommandByKey("class_prop_search_method_by_id_class_prop");
 
+            cmdk = CommandByKey("class_prop_search_method_by_id_class_prop");
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -122,11 +118,8 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iid_class_prop"].Value = iid_class_prop;
-
-            //Начало транзакции
             cmdk.Fill(tsearch_method);
 
             String sm;
@@ -148,13 +141,10 @@ namespace pg_class
         {
             DataTable tsearch_method;
             List<eSearchMethods> search_method = new List<eSearchMethods>();
-            //=======================
             NpgsqlCommandKey cmdk;
-            //**********
             tsearch_method = new DataTable();
-            //=======================
-            cmdk = CommandByKey("class_prop_search_method_by_id_class_prop");
 
+            cmdk = CommandByKey("class_prop_search_method_by_id_class_prop");
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -166,11 +156,8 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iid_class_prop"].Value = iid_class_prop;
-
-            //Начало транзакции
             cmdk.Fill(tsearch_method);
 
             String sm;
@@ -201,7 +188,7 @@ namespace pg_class
             return Result;
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -210,8 +197,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+
             cmdk = CommandByKey("class_prop_search_method_by_id_class_prop");
             if (cmdk != null)
             {

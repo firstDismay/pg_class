@@ -73,7 +73,7 @@ namespace pg_class
             return Rulel2_class_snapshot_on_position_by_id(Object.Id_class, Object.Timestamp_class, Object.Id_position);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -154,7 +154,7 @@ namespace pg_class
             return Rulel2_class_snapshot_on_position_by_id_position(Position.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

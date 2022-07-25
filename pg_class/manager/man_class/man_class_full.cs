@@ -69,7 +69,7 @@ namespace pg_class
             return class_full_real_by_id_conception(Conception.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -149,7 +149,7 @@ namespace pg_class
             return class_full_real_by_id_group(Group.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -230,7 +230,7 @@ namespace pg_class
             return class_full_real_by_id_parent(Class_parent.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

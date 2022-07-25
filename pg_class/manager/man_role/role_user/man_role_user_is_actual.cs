@@ -19,13 +19,9 @@ namespace pg_class
         public eEntityState user_role_user_is_actual(String irole_user, DateTime mytimestamp)
         {
             Int32 is_actual = 3;
-            //=======================
             NpgsqlCommandKey cmdk;
-            //**********
-             
-            //=======================
-            cmdk = CommandByKey("user_role_user_is_actual");
 
+            cmdk = CommandByKey("user_role_user_is_actual");
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -40,8 +36,6 @@ namespace pg_class
 
             cmdk.Parameters["irole_user"].Value = irole_user;
             cmdk.Parameters["mytimestamp"].Value = mytimestamp;
-           
-            //Начало транзакции
             is_actual = (Int32)cmdk.ExecuteScalar();
             
             return (eEntityState)is_actual;
@@ -55,7 +49,7 @@ namespace pg_class
             return user_is_actual(RoleUser.NameSystem, RoleUser.Timestamp);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -64,8 +58,6 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
             cmdk = CommandByKey("user_role_user_is_actual");
 
             if (cmdk != null)

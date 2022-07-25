@@ -17,15 +17,10 @@ namespace pg_class
         public rulel1_group_on_pos_temp rulel1_group_on_pos_temp_by_id(Int64 iid_group, Int64 iid_pos_temp)
         {
             rulel1_group_on_pos_temp rulel1 = null;
-            
             DataTable tbl_rl1  = TableByName("vrulel1_group_on_pos_temp");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
             NpgsqlCommandKey cmdk;
 
-            //=======================
             cmdk = CommandByKey("rulel1_group_on_pos_temp_by_id");
-
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -37,11 +32,9 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iid_group"].Value = iid_group;
             cmdk.Parameters["iid_pos_temp"].Value = iid_pos_temp;
-
             cmdk.Fill(tbl_rl1);
             
             if (tbl_rl1.Rows.Count > 0)
@@ -59,7 +52,7 @@ namespace pg_class
         {
             return rulel1_group_on_pos_temp_by_id(Group.Id, Pos_temp.Id);
         }
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -68,8 +61,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+
             cmdk = CommandByKey("rulel1_group_on_pos_temp_by_id");
             if (cmdk != null)
             {
@@ -85,8 +77,6 @@ namespace pg_class
             }
             return Result;
         }
-        //*********************************************************************************************
-
 
         /// <summary>
         /// Лист правил уровня 1 группа на шаблон по идентификатору группы
@@ -94,16 +84,10 @@ namespace pg_class
         public List<rulel1_group_on_pos_temp> rulel1_group_on_pos_temp_by_id_group(Int64 iid_group)
         {
             List<rulel1_group_on_pos_temp> rulel1_list = new List<rulel1_group_on_pos_temp>();
-
-
             DataTable tbl_rulel1  = TableByName("vrulel1_group_on_pos_temp");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
             NpgsqlCommandKey cmdk;
 
-            //=======================
             cmdk = CommandByKey("rulel1_group_on_pos_temp_by_id_group");
-
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -115,10 +99,8 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iid_group"].Value = iid_group;
-
             cmdk.Fill(tbl_rulel1);
             
             rulel1_group_on_pos_temp rl1;
@@ -141,7 +123,7 @@ namespace pg_class
             return rulel1_group_on_pos_temp_by_id_group(Group.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -150,8 +132,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+
             cmdk = CommandByKey("rulel1_group_on_pos_temp_by_id_group");
             if (cmdk != null)
             {
@@ -167,7 +148,6 @@ namespace pg_class
             }
             return Result;
         }
-        //*********************************************************************************************
 
         /// <summary>
         /// Лист правил уровня 1 группа на шаблон по идентификатору шаблона позиции
@@ -175,15 +155,10 @@ namespace pg_class
         public List<rulel1_group_on_pos_temp> rulel1_group_on_pos_temp_by_id_pos_temp(Int64 iid_pos_temp)
         {
             List<rulel1_group_on_pos_temp> rulel1_list = new List<rulel1_group_on_pos_temp>();
-
             DataTable tbl_rulel1  = TableByName("vrulel1_group_on_pos_temp");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
             NpgsqlCommandKey cmdk;
 
-            //=======================
             cmdk = CommandByKey("rulel1_group_on_pos_temp_by_id_pos_temp");
-
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -195,10 +170,8 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iid_pos_temp"].Value = iid_pos_temp;
-
             cmdk.Fill(tbl_rulel1);
             
             rulel1_group_on_pos_temp rl1;
@@ -229,7 +202,7 @@ namespace pg_class
             return rulel1_group_on_pos_temp_by_id_pos_temp(Position.Id_pos_temp);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -238,8 +211,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+
             cmdk = CommandByKey("rulel1_group_on_pos_temp_by_id_pos_temp");
             if (cmdk != null)
             {

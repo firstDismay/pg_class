@@ -12,8 +12,6 @@ namespace pg_class
     public partial class manager
     {
         //УПРАВЛЕНИЕ ПРАВИЛАМИ НАЗНАЧЕНИЯ ПРАВИЛ ПЕРЕСЧЕТА КОЛЛИЧЕСТВА ОБЪЕКТОВ
-        #region МЕТОДЫ КЛАССА: УПРАВЛЕНИЯ СПИСКОМ ПРАВИЛ ВЛОЖЕННОСТИ
-
         #region ВКЛЮЧИТЬ
         /// <summary>
         /// Метод добавляет правило пресчета к списку правил вещественного класса
@@ -23,11 +21,8 @@ namespace pg_class
             Int32 error;
             String desc_error;
             NpgsqlCommandKey cmdk;
-            //**********
-             
-            //=======================
+            
             cmdk = CommandByKey("class_unit_conversion_rules_add");
-
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -39,18 +34,13 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iid_class"].Value = iid_class;
             cmdk.Parameters["iid_unit_conversion_rule"].Value = iid_unit_conversion_rule;
-
-            //Начало транзакции
             cmdk.ExecuteNonQuery();
             
             error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
             desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            //SetLastTimeUsing();
-            //=======================
             switch (error)
             {
                 case 0:
@@ -76,7 +66,7 @@ namespace pg_class
              class_unit_conversion_rules_add(Class.Id, Rule.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -85,8 +75,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+
             cmdk = CommandByKey("class_unit_conversion_rules_add");
             if (cmdk != null)
             {
@@ -102,7 +91,6 @@ namespace pg_class
             }
             return Result;
         }
-        //*********************************************************************************************
         #endregion
 
         #region ИСКЛЮЧИТЬ
@@ -114,11 +102,8 @@ namespace pg_class
             Int32 error;
             String desc_error;
             NpgsqlCommandKey cmdk;
-            //**********
-             
-            //=======================
+            
             cmdk = CommandByKey("class_unit_conversion_rules_del");
-
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -130,18 +115,13 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iid_class"].Value = iid_class;
             cmdk.Parameters["iid_unit_conversion_rule"].Value = iid_unit_conversion_rule;
-
-            //Начало транзакции
             cmdk.ExecuteNonQuery();
             
             error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
             desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            //SetLastTimeUsing();
-            //=======================
             switch (error)
             {
                 case 0:
@@ -175,7 +155,7 @@ namespace pg_class
             class_unit_conversion_rules_del(ClassRule.Id_class, ClassRule.Id_unit_conversion_rule);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -184,8 +164,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+
             cmdk = CommandByKey("class_unit_conversion_rules_del");
             if (cmdk != null)
             {
@@ -201,26 +180,19 @@ namespace pg_class
             }
             return Result;
         }
-        //*********************************************************************************************
         #endregion
 
         #region ВЫБРАТЬ
-        //*********************************************************************************************
         /// <summary>
         /// Правило назначения правила пересчета объектов вещественного класса по ключу
         /// </summary>
         public class_unit_conversion_rule class_unit_conversion_rules_by_id(Int64 iid_class, Int32 iid_unit_conversion_rule)
         {
             class_unit_conversion_rule class_unit_conversion_rule = null;
-
             DataTable tbl_rule  = TableByName("vclass_unit_conversion_rules");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
             NpgsqlCommandKey cmdk;
 
-            //=======================
             cmdk = CommandByKey("class_unit_conversion_rules_by_id");
-
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -232,11 +204,9 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iid_class"].Value = iid_class;
             cmdk.Parameters["iid_unit_conversion_rule"].Value = iid_unit_conversion_rule;
-
             cmdk.Fill(tbl_rule);
             
             if (tbl_rule.Rows.Count > 0)
@@ -246,7 +216,8 @@ namespace pg_class
 
             return class_unit_conversion_rule;
         }
-        //-=ACCESS=-***********************************************************************************
+
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -255,8 +226,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
             cmdk = CommandByKey("class_unit_conversion_rules_by_id");
             if (cmdk != null)
             {
@@ -272,8 +242,6 @@ namespace pg_class
             }
             return Result;
         }
-        //*********************************************************************************************
-
 
         /// <summary>
         /// Лист правил назначения правил пересчета объектов вещественного класса
@@ -281,16 +249,10 @@ namespace pg_class
         public List<class_unit_conversion_rule> class_unit_conversion_rules(Int64 iid_class)
         {
             List<class_unit_conversion_rule> rule_list = new List<class_unit_conversion_rule>();
-
-
             DataTable tbl_rule_list  = TableByName("vclass_unit_conversion_rules");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
             NpgsqlCommandKey cmdk;
 
-            //=======================
             cmdk = CommandByKey("class_unit_conversion_rules");
-
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -302,10 +264,8 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iid_class"].Value = iid_class;
-
             cmdk.Fill(tbl_rule_list);
             
             class_unit_conversion_rule rule;
@@ -317,7 +277,6 @@ namespace pg_class
                     rule_list.Add(rule);
                 }
             }
-
             return rule_list;
         }
 
@@ -329,17 +288,16 @@ namespace pg_class
             return class_unit_conversion_rules(Class.Id);
         }
 
-            //-=ACCESS=-***********************************************************************************
-            /// <summary>
-            /// Проверка прав доступа к методу
-            /// </summary>
-            public Boolean class_unit_conversion_rules(out eAccess Access)
+        //ACCESS
+        /// <summary>
+        /// Проверка прав доступа к методу
+        /// </summary>
+        public Boolean class_unit_conversion_rules(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+
             cmdk = CommandByKey("class_unit_conversion_rules");
             if (cmdk != null)
             {
@@ -355,24 +313,17 @@ namespace pg_class
             }
             return Result;
         }
-        //*********************************************************************************************
-        
+
         /// <summary>
         /// Полный список доступных назначений правил пересчета объектов вещественного класса
         /// </summary>
         public List<class_unit_conversion_rule> class_unit_conversion_rules_full(Int64 iid_class )
         {
             List<class_unit_conversion_rule> rule_list = new List<class_unit_conversion_rule>();
-
-
             DataTable tbl_rule_list  = TableByName("vclass_unit_conversion_rules");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
             NpgsqlCommandKey cmdk;
 
-            //=======================
             cmdk = CommandByKey("class_unit_conversion_rules_full");
-
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -384,10 +335,8 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iid_class"].Value = iid_class;
-
             cmdk.Fill(tbl_rule_list);
             
             class_unit_conversion_rule rule;
@@ -399,7 +348,6 @@ namespace pg_class
                     rule_list.Add(rule);
                 }
             }
-
             return rule_list;
         }
 
@@ -411,17 +359,16 @@ namespace pg_class
             return class_unit_conversion_rules_full(Class.Id);
         }
 
-            //-=ACCESS=-***********************************************************************************
-            /// <summary>
-            /// Проверка прав доступа к методу
-            /// </summary>
-            public Boolean class_unit_conversion_rules_full(out eAccess Access)
+        //ACCESS
+        /// <summary>
+        /// Проверка прав доступа к методу
+        /// </summary>
+        public Boolean class_unit_conversion_rules_full(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
             cmdk = CommandByKey("class_unit_conversion_rules_full");
             if (cmdk != null)
             {
@@ -437,8 +384,6 @@ namespace pg_class
             }
             return Result;
         }
-        //*********************************************************************************************
-        
 
         /// <summary>
         /// Полный список доступных назначений правил пересчета объектов вещественного класса по идентификатору измеряемой величины
@@ -446,16 +391,10 @@ namespace pg_class
         public List<class_unit_conversion_rule> class_unit_conversion_rules_by_unit(Int32 iid_unit )
         {
             List<class_unit_conversion_rule> rule_list = new List<class_unit_conversion_rule>();
-
-
             DataTable tbl_rule_list  = TableByName("vclass_unit_conversion_rules");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
             NpgsqlCommandKey cmdk;
 
-            //=======================
             cmdk = CommandByKey("class_unit_conversion_rules_by_unit");
-
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -467,10 +406,8 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iid_unit"].Value = iid_unit;
-
             cmdk.Fill(tbl_rule_list);
             
             class_unit_conversion_rule rule;
@@ -482,7 +419,6 @@ namespace pg_class
                     rule_list.Add(rule);
                 }
             }
-
             return rule_list;
         }
 
@@ -494,7 +430,7 @@ namespace pg_class
             return class_unit_conversion_rules_by_unit(Unit.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -503,8 +439,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+
             cmdk = CommandByKey("class_unit_conversion_rules_by_unit");
             if (cmdk != null)
             {
@@ -520,39 +455,6 @@ namespace pg_class
             }
             return Result;
         }
-        //*********************************************************************************************
-        #endregion
-        #endregion
-
-        #region СОБЫТИЕ ИЗМЕНЕНИЯ СПИСКА ОГРАНИЧЕНИЯ ВЛОЖЕННОСТИ
-
-        /// <summary>
-        /// Делегат события изменения
-        /// </summary>
-        public delegate void ClassUnitConversionRuleChangeEventHandler(Object sender, ClassUnitConversionRuleChangeEventArgs e);
-
-        /// <summary>
-        /// Событие возникает при изменении списка правил назначения вещественному классу правил пересчета колличества объектов
-        /// </summary>
-        public event ClassUnitConversionRuleChangeEventHandler ClassUnitConversionRuleListChange;
-        //===========================================================
-
-        /// <summary>
-        ///  Метод вызова события изменения списка правил
-        /// </summary>
-        protected virtual void OnClassUnitConversionRuleListChange(ClassUnitConversionRuleChangeEventArgs e)
-        {
-            ClassUnitConversionRuleChangeEventHandler temp = this.ClassUnitConversionRuleListChange;
-
-            if (temp != null)
-            {
-                temp(this, e);
-            }
-            //Вызов события журнала
-            JournalEventArgs me = new JournalEventArgs(e);
-            JournalMessageOnReceived(me);
-        }
-
         #endregion
     }
 }

@@ -53,7 +53,7 @@ namespace pg_class
             return plan_range_link;
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -137,7 +137,7 @@ namespace pg_class
             return plan_range_link_by_id_plan_range(Plan_range.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -207,7 +207,7 @@ namespace pg_class
             return plan_range_link;
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

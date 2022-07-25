@@ -18,15 +18,10 @@ namespace pg_class
         public List<pos_temp> pos_temp_assigned_rl1_by_id_class(Int64 iid_class)
         {
             List<pos_temp> pos_temp_list = new List<pos_temp>();
-
             DataTable tbl_pos_temp  = TableByName("vpos_temp");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
             NpgsqlCommandKey cmdk;
 
-            //=======================
             cmdk = CommandByKey("pos_temp_assigned_rl1_by_id_class");
-
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -38,10 +33,8 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iid_class"].Value = iid_class;
-
             cmdk.Fill(tbl_pos_temp);
             
             pos_temp pt;
@@ -65,7 +58,7 @@ namespace pg_class
             return pos_temp_assigned_rl1_by_id_group(Class.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -74,8 +67,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+
             cmdk = CommandByKey("pos_temp_assigned_rl1_by_id_class");
             if (cmdk != null)
             {

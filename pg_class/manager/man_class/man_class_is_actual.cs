@@ -13,20 +13,15 @@ namespace pg_class
 {
     public partial class manager
     {
-        //*********************************************************************************************
         /// <summary>
         /// Метод определяет актуальность состояния класса
         /// </summary>
         public eEntityState class_is_actual(Int64 iid, DateTime itimestamp, DateTime itimestamp_child_change)
         {
             Int32 is_actual = 3;
-            //=======================
             NpgsqlCommandKey cmdk;
-            //**********
-             
-            //=======================
-            cmdk = CommandByKey("class_is_actual");
 
+            cmdk = CommandByKey("class_is_actual");
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -38,13 +33,10 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iid"].Value = iid;
             cmdk.Parameters["itimestamp"].Value = itimestamp;
             cmdk.Parameters["itimestamp_child_change"].Value = itimestamp_child_change;
-
-            //Начало транзакции
             is_actual = (Int32)cmdk.ExecuteScalar();
             
             return (eEntityState)is_actual;
@@ -63,7 +55,7 @@ namespace pg_class
             return Result;
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -72,8 +64,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+
             cmdk = CommandByKey("class_is_actual");
             if (cmdk != null)
             {
@@ -96,13 +87,9 @@ namespace pg_class
         public Boolean class_act_prop_check(Int64 iid_class)
         {
             Boolean Result = false;
-            //=======================
             NpgsqlCommandKey cmdk;
-            //**********
-             
-            //=======================
-            cmdk = CommandByKey("class_act_prop_check");
 
+            cmdk = CommandByKey("class_act_prop_check");
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -114,11 +101,8 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iid_class"].Value = iid_class;
-
-            //Начало транзакции
             Result = (Boolean)cmdk.ExecuteScalar();
             
             return Result;
@@ -137,7 +121,7 @@ namespace pg_class
             return Result;
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -146,8 +130,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+
             cmdk = CommandByKey("class_act_prop_check");
             if (cmdk != null)
             {
@@ -170,13 +153,9 @@ namespace pg_class
         public Boolean class_act_ready_check(Int64 iid_class)
         {
             Boolean Result = false;
-            //=======================
             NpgsqlCommandKey cmdk;
-            //**********
-             
-            //=======================
-            cmdk = CommandByKey("class_act_ready_check");
 
+            cmdk = CommandByKey("class_act_ready_check");
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -188,11 +167,8 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iid_class"].Value = iid_class;
-
-            //Начало транзакции
             Result = (Boolean)cmdk.ExecuteScalar();
             
             return Result;
@@ -211,7 +187,7 @@ namespace pg_class
             return Result;
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -220,8 +196,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+
             cmdk = CommandByKey("class_act_ready_check");
             if (cmdk != null)
             {

@@ -52,7 +52,7 @@ namespace pg_class
             return prop_enum;
         }
         
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -132,7 +132,7 @@ namespace pg_class
             return prop_enum_by_id_conception(Conception.Id);
         }
         
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -221,7 +221,7 @@ namespace pg_class
             return prop_enum_by_id_conception_use_area(Conception.Id, (Int32)Prop_enum_use_area);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -311,7 +311,7 @@ namespace pg_class
             return prop_enum_by_id_conception_use_area_data_type(Conception.Id, (Int32)Prop_enum_use_area, (Int32)DataType);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -391,7 +391,7 @@ namespace pg_class
             return prop_enum_by_id_conception_data_type(Conception.Id, Data_type.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -481,7 +481,7 @@ namespace pg_class
             return prop_enum_for_object_by_id_conception_data_type(Conception.Id, (Int32)DataType);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -571,7 +571,7 @@ namespace pg_class
             return prop_enum_for_position_by_id_conception_data_type(Conception.Id, (Int32)DataType);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

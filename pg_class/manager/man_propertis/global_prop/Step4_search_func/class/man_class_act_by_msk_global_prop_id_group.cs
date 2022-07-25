@@ -69,7 +69,7 @@ namespace pg_class
             return class_act_by_msk_global_prop_id_group(Global_prp.Id, Group.Id, find_mask, class_real_only);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

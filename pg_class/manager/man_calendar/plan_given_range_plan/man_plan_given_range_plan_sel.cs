@@ -15,26 +15,16 @@ namespace pg_class
 {
     public partial class manager
     {
-        
-
-        #region ВЫБРАТЬ
-
-        //*********************************************************************************************
         /// <summary>
         /// Выделенный диапазон плана по идентификатору
         /// </summary>
         public plan_given_range_plan plan_given_range_plan_by_id(Int64 iid)
         {
             plan_given_range_plan plan_given_range_plan = null;
-
             DataTable tbl_entity  = TableByName("vplan_given_range_plan");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
             NpgsqlCommandKey cmdk;
 
-            //=======================
             cmdk = CommandByKey("plan_given_range_plan_by_id");
-
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -46,10 +36,8 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iid"].Value = iid;
-
             cmdk.Fill(tbl_entity);
             
             if (tbl_entity.Rows.Count > 0)
@@ -59,7 +47,7 @@ namespace pg_class
             return plan_given_range_plan;
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -68,8 +56,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+
             cmdk = CommandByKey("plan_given_range_plan_by_id");
             if (cmdk != null)
             {
@@ -85,25 +72,17 @@ namespace pg_class
             }
             return Result;
         }
-        //*********************************************************************************************
 
-        //*********************************************************************************************
         /// <summary>
         /// Лист выделенных диапазонов планового диапаона плана по идентификатору планового диапазона
         /// </summary>
         public List<plan_given_range_plan> plan_given_range_plan_by_id_plan_range(Int64 iid_plan_range)
         {
             List<plan_given_range_plan>  entity_list = new List<plan_given_range_plan>();
-
-            
             DataTable tbl_entity  = TableByName("vplan_given_range_plan");
-            
-            //=======================
             NpgsqlCommandKey cmdk;
 
-            //=======================
             cmdk = CommandByKey("plan_given_range_plan_by_id_plan_range");
-
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -115,14 +94,11 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iid_plan_range"].Value = iid_plan_range;
-
             cmdk.Fill(tbl_entity);
 
             plan_given_range_plan centity;
-            
             if (tbl_entity.Rows.Count > 0)
             {
                 foreach (System.Data.DataRow dr in tbl_entity.Rows)
@@ -131,7 +107,6 @@ namespace pg_class
                     entity_list.Add(centity);
                 }
             }
-
             return entity_list;
         }
 
@@ -143,7 +118,7 @@ namespace pg_class
             return plan_given_range_plan_by_id_plan_range(Plan_range.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -152,8 +127,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+
             cmdk = CommandByKey("plan_given_range_plan_by_id_plan_range");
             if (cmdk != null)
             {
@@ -169,8 +143,5 @@ namespace pg_class
             }
             return Result;
         }
-        #endregion
-
-        
     }
 }

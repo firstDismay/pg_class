@@ -75,7 +75,7 @@ namespace pg_class
         {
             return object_add_for_class_act(Class.Id, Position_target.Id);
         }
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

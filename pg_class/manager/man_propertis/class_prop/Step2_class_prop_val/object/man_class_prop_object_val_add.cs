@@ -26,11 +26,8 @@ namespace pg_class
             Int32 error;
             String desc_error;
             NpgsqlCommandKey cmdk;
-            //**********
-             
-            //=======================
+            
             cmdk = CommandByKey("class_prop_object_val_add");
-
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -42,25 +39,19 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iid_class_prop"].Value = iid_class_prop;
             cmdk.Parameters["iid_class_val"].Value = iid_class_val;
             cmdk.Parameters["ibquantity_min"].Value = ibquantity_min;
             cmdk.Parameters["ibquantity_max"].Value = ibquantity_max;
-
             cmdk.Parameters["iembed_mode"].Value = (Int32)iembed_mode;
             cmdk.Parameters["iembed_single"].Value = iembed_single;
             cmdk.Parameters["iembed_class_real_id"].Value = iembed_class_real_id;
             cmdk.Parameters["iid_unit_conversion_rule"].Value = iid_unit_conversion_rule;
-
-            //Начало транзакции
             cmdk.ExecuteNonQuery();
             
             error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
             desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            //SetLastTimeUsing();
-            //=======================
             switch (error)
             {
                 case 0:
@@ -90,7 +81,7 @@ namespace pg_class
                 ClassPropObjectValChangeEventArgs e2 = new ClassPropObjectValChangeEventArgs(class_prop_obj_val_class, eAction.Insert);
                 ClassPropObjectValOnChange(e2);
             }
-            //Возвращаем Объект
+            //Возвращаем сущность
             return class_prop_obj_val_class;
         }
 
@@ -139,7 +130,7 @@ namespace pg_class
             }
             return Result;
         }
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -148,8 +139,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+
             cmdk = CommandByKey("class_prop_object_val_add");
             if (cmdk != null)
             {

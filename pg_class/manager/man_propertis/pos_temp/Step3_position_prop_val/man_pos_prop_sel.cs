@@ -62,7 +62,7 @@ namespace pg_class
             return position_prop_by_id(Position_carrier.Id, iid_pos_temp_prop);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -144,7 +144,7 @@ namespace pg_class
             return position_prop_by_id_position(Position.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -218,7 +218,7 @@ namespace pg_class
         {
             return position_prop_by_id_object_val(Object_val.Id);
         }
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

@@ -20,7 +20,6 @@ namespace pg_class
         /// Событие возникает при изменении списка разрешений уровня 1 класс на шаблон
         /// </summary>
         public event Rulel1_Class_On_Pos_tempListChangeEventHandler Rulel1_Class_On_Pos_tempListChange;
-        //===========================================================
 
         /// <summary>
         ///  Метод вызова события списка правил вложенности объектов

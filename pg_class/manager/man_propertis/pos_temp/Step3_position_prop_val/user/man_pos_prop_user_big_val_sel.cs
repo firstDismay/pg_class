@@ -61,7 +61,7 @@ namespace pg_class
         {
             return position_prop_user_big_val_by_id_prop(PositionProp.Id_position_carrier, PositionProp.Id_pos_temp_prop);
         }
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

@@ -24,11 +24,8 @@ namespace pg_class
             Int32 error;
             String desc_error;
             NpgsqlCommandKey cmdk;
-            //**********
-             
-            //=======================
+            
             cmdk = CommandByKey("plan_given_range_plan_upd");
-
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -40,18 +37,13 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iid"].Value = iid;
             cmdk.Parameters["irange_plan"].Value = irange_plan;
-            
-            //Начало транзакции
             cmdk.ExecuteNonQuery();
             
             error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
             desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            //SetLastTimeUsing();
-            //=======================
             switch (error)
             {
                 case 0:
@@ -69,7 +61,7 @@ namespace pg_class
                 PlanGivenRangePlanChangeEventArgs e = new PlanGivenRangePlanChangeEventArgs(centity, eAction.Update);
                 PlanGivenRangePlanOnChange(e);
             }
-            //Возвращаем Объект
+            //Возвращаем сущность
             return centity;
         }
 
@@ -82,7 +74,7 @@ namespace pg_class
         }
        
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -91,8 +83,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+
             cmdk = CommandByKey("plan_given_range_plan_upd");
             if (cmdk != null)
             {

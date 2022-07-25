@@ -19,11 +19,7 @@ namespace pg_class
         public eEntityState class_prop_is_actual(Int64 iid, DateTime timestamp_class)
         {
             Int32 is_actual = 3;
-            //=======================
             NpgsqlCommandKey cmdk;
-            //**********
-             
-            //=======================
             cmdk = CommandByKey("class_prop_is_actual");
 
             if (cmdk != null)
@@ -37,12 +33,9 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iid"].Value = iid;
             cmdk.Parameters["timestamp_class"].Value = timestamp_class;
-
-            //Начало транзакции
             is_actual = (Int32)cmdk.ExecuteScalar();
             
             return (eEntityState)is_actual;
@@ -61,7 +54,7 @@ namespace pg_class
             return Result;
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -70,7 +63,6 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
 
             cmdk = CommandByKey("class_prop_is_actual");
             if (cmdk != null)
@@ -88,20 +80,15 @@ namespace pg_class
             return Result;
         }
 
-
         /// <summary>
         /// Метод определяет готовность свойства к линковке с глобальными свойствами
         /// </summary>
         public ePropStateForGlobalPropLink class_prop_state_for_global_prop_link(Int64 iid_class_prop)
         {
             Int32 class_prop_state = 0;
-            //=======================
             NpgsqlCommandKey cmdk;
-            //**********
-             
-            //=======================
-            cmdk = CommandByKey("class_prop_state_for_global_prop_link");
 
+            cmdk = CommandByKey("class_prop_state_for_global_prop_link");
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -113,11 +100,8 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iid_class_prop"].Value = iid_class_prop;
-
-            //Начало транзакции
             class_prop_state = (Int32)cmdk.ExecuteScalar();
             
             return (ePropStateForGlobalPropLink)class_prop_state;
@@ -136,7 +120,7 @@ namespace pg_class
             return Result;
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -145,7 +129,6 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
 
             cmdk = CommandByKey("class_prop_state_for_global_prop_link");
             if (cmdk != null)
@@ -169,13 +152,9 @@ namespace pg_class
         public Boolean class_prop_has_object_prop_override_by_id_pos(Int64 iid_position, Int64 iid_class_prop, DateTime itimestamp_class, Boolean on_internal = false)
         {
             Boolean Result = false;
-            //=======================
             NpgsqlCommandKey cmdk;
-            //**********
 
-            //=======================
             cmdk = CommandByKey("class_prop_has_object_prop_override_by_id_pos");
-
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -187,14 +166,11 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iid_position"].Value = iid_position;
             cmdk.Parameters["iid_class_prop"].Value = iid_class_prop;
             cmdk.Parameters["itimestamp_class"].Value = itimestamp_class;
             cmdk.Parameters["on_internal"].Value = on_internal;
-
-            //Начало транзакции
             Result = (Boolean)cmdk.ExecuteScalar();
 
             return Result;
@@ -216,7 +192,7 @@ namespace pg_class
             return class_prop_has_object_prop_override_by_id_pos(Id_position_parent, Class_prop.Id, Class_prop.Timestamp_class, on_internal);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -225,7 +201,6 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
 
             cmdk = CommandByKey("class_prop_has_object_prop_override_by_id_pos");
             if (cmdk != null)

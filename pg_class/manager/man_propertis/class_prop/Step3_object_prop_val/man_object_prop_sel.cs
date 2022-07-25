@@ -62,7 +62,7 @@ namespace pg_class
             return object_prop_by_id(Object_carrier.Id, iid_class_prop);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -143,7 +143,7 @@ namespace pg_class
             return object_prop_by_id_object(Object.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -217,7 +217,7 @@ namespace pg_class
         {
             return object_prop_by_id_object_val(Object_val.Id);
         }
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -295,7 +295,7 @@ namespace pg_class
             return object_prop_by_id_prop_definition(Object_carrier.Id, iid_class_prop);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -381,7 +381,7 @@ namespace pg_class
             return object_prop_by_id_global_prop(Object_carrier.Id, Global_prop.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

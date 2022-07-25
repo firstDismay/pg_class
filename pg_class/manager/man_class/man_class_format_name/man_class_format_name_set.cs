@@ -13,7 +13,6 @@ namespace pg_class
 {
     public partial class manager
     {
-        #region ОПРЕДЕЛИТЬ ФОРМАТ И ПРИЗНАКИ КОЛИЧЕСТВА ОБЪЕКТОВ
         /// <summary>
         /// Метод определяет формат имен объектов классов
         /// </summary>
@@ -23,11 +22,8 @@ namespace pg_class
             Int32 error;
             String desc_error;
             NpgsqlCommandKey cmdk;
-            //**********
-             
-            //=======================
+            
             cmdk = CommandByKey("class_act_name_format_set");
-
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -39,19 +35,13 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iid_class"].Value = iid_class;
             cmdk.Parameters["iname_format"].Value = iname_format;
-            //=======================
-
-            //Начало транзакции
             cmdk.ExecuteNonQuery();
             
             error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
             desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            //SetLastTimeUsing();
-            //=======================
             switch (error)
             {
                 case 0:
@@ -66,7 +56,7 @@ namespace pg_class
             //Генерируем событие изменения представления класса
             ClassChangeEventArgs e = new ClassChangeEventArgs(vclass, eAction.Update);
             ClassOnChange(e);
-            //Возвращаем Объект
+            //Возвращаем сущность
             return vclass;
         }
 
@@ -92,7 +82,6 @@ namespace pg_class
             return Result;
         }
 
-
         /// <summary>
         /// Метод определяет формат имен объектов классов
         /// </summary>
@@ -115,8 +104,7 @@ namespace pg_class
             return Result;
         }
 
-
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -125,8 +113,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+
             cmdk = CommandByKey("class_act_name_format_set");
             if (cmdk != null)
             {
@@ -142,7 +129,6 @@ namespace pg_class
             }
             return Result;
         }
-        //*********************************************************************************************
 
         /// <summary>
         /// Метод устанавливает значение флага отображения количества в имени объектов
@@ -153,11 +139,8 @@ namespace pg_class
             Int32 error;
             String desc_error;
             NpgsqlCommandKey cmdk;
-            //**********
-             
-            //=======================
-            cmdk = CommandByKey("class_quantity_show_set");
 
+            cmdk = CommandByKey("class_quantity_show_set");
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -169,19 +152,13 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iid_class"].Value = iid_class;
             cmdk.Parameters["iquantity_show"].Value = iquantity_show;
-            //=======================
-
-            //Начало транзакции
             cmdk.ExecuteNonQuery();
             
             error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
             desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            //SetLastTimeUsing();
-            //=======================
             switch (error)
             {
                 case 0:
@@ -196,7 +173,7 @@ namespace pg_class
             //Генерируем событие изменения представления класса
             ClassChangeEventArgs e = new ClassChangeEventArgs(vclass, eAction.Update);
             ClassOnChange(e);
-            //Возвращаем Объект
+            //Возвращаем сущность
             return vclass;
         }
 
@@ -222,7 +199,6 @@ namespace pg_class
             return Result;
         }
 
-
         /// <summary>
         /// Метод устанавливает значение флага отображения количества в имени объектов
         /// </summary>
@@ -245,8 +221,7 @@ namespace pg_class
             return Result;
         }
 
-
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -255,8 +230,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+
             cmdk = CommandByKey("class_quantity_show_set");
             if (cmdk != null)
             {
@@ -272,96 +246,5 @@ namespace pg_class
             }
             return Result;
         }
-        //*********************************************************************************************
-        #endregion
-
-        #region ПРОВЕРИТЬ ТЕКУЩЕЕ СОСТОЯНИЕ ФОРМАТА ИМЕНИ ОБЪЕКТА
-        /// <summary>
-        /// Метод проверяет поле формата для редактируемого класса на готовность к созданию объектов
-        /// </summary>
-        public Boolean class_act_name_format_check(Int64 iid_class)
-        {
-            Boolean Result = false;
-            //=======================
-            NpgsqlCommandKey cmdk;
-            //**********
-
-            //=======================
-            cmdk = CommandByKey("class_act_name_format_check");
-
-            if (cmdk != null)
-            {
-                if (!cmdk.Access)
-                {
-                    throw new AccessDataBaseException(404, String.Format(@"Отказано в доступе к методу: {0}!", cmdk.CommandText));
-                }
-            }
-            else
-            {
-                throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
-            }
-            //=======================
-
-            cmdk.Parameters["iid_class"].Value = iid_class;
-
-            //Начало транзакции
-            Result = (Boolean)cmdk.ExecuteScalar();
-
-            return Result;
-        }
-
-        /// <summary>
-        /// Метод проверяет поле формата для снимка класса на готовность к созданию имени объектов
-        /// </summary>
-        public Boolean class_snapshot_name_format_check(Int64 iid_class, DateTime itimestamp_class)
-        {
-            Boolean Result = false;
-            //=======================
-            NpgsqlCommandKey cmdk;
-            //**********
-
-            //=======================
-            cmdk = CommandByKey("class_snapshot_name_format_check");
-
-            if (cmdk != null)
-            {
-                if (!cmdk.Access)
-                {
-                    throw new AccessDataBaseException(404, String.Format(@"Отказано в доступе к методу: {0}!", cmdk.CommandText));
-                }
-            }
-            else
-            {
-                throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
-            }
-            //=======================
-
-            cmdk.Parameters["iid_class"].Value = iid_class;
-            cmdk.Parameters["itimestamp_class"].Value = itimestamp_class;
-
-            //Начало транзакции
-            Result = (Boolean)cmdk.ExecuteScalar();
-
-            return Result;
-        }
-
-        /// <summary>
-        /// Метод проверяет поле формата для редактируемого класса на готовность к созданию объектов
-        /// </summary>
-        public Boolean class_name_format_check(vclass Class)
-        {
-            Boolean Result = false;
-            if (Class.StorageType == eStorageType.Active)
-            {
-                Result = class_act_name_format_check(Class.Id);
-            }
-
-            if (Class.StorageType == eStorageType.History)
-            {
-                Result = class_snapshot_name_format_check(Class.Id, Class.Timestamp);
-            }
-            return Result;
-        }
-        #endregion
     }
 }

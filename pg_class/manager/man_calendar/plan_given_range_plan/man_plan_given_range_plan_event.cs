@@ -24,7 +24,6 @@ namespace pg_class
         /// Событие возникает при изменении выделенного диапазона плана методом доступа к БД
         /// </summary>
         public event PlanGivenRangePlanChangeEventHandler PlanGivenRangePlanChange;
-        //===========================================================
 
         /// <summary>
         ///  Метод вызова события изменения плана

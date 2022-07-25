@@ -14,27 +14,16 @@ namespace pg_class
 {
     public partial class manager
     {
-        #region МЕТОДЫ КЛАССА: ПРОТОТИПЫ ПОЗИЦИЙ
-
-        #region ВЫБРАТЬ
-
-      
         /// <summary>
         /// Лист доступных к вложению прототипов позиций  
         /// </summary>
         public List<pos_prototype> pos_prototype_nested_by_id_prototype( Int32 iid_prototype)
         {
             List<pos_prototype> proto_list = new List<pos_prototype>();
-
-            
             DataTable tbl_proto  = TableByName("vpos_prototype");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
             NpgsqlCommandKey cmdk;
 
-            //=======================
             cmdk = CommandByKey("pos_prototype_nested_by_id_prototype");
-
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -46,10 +35,8 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iid_prototype"].Value = iid_prototype;
-
             cmdk.Fill(tbl_proto);
             
             pos_prototype proto;
@@ -61,12 +48,11 @@ namespace pg_class
                     proto_list.Add(proto);
                 }
             }
-
             return proto_list;
         }
 
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -75,8 +61,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+
             cmdk = CommandByKey("pos_prototype_nested_by_id_prototype");
             if (cmdk != null)
             {
@@ -92,7 +77,6 @@ namespace pg_class
             }
             return Result;
         }
-        //*********************************************************************************************
 
         /// <summary>
         /// Лист доступных к вложению прототипов позиций  
@@ -100,16 +84,10 @@ namespace pg_class
         public List<pos_prototype> pos_prototype_by_all()
         {
             List<pos_prototype> proto_list = new List<pos_prototype>();
-
-
             DataTable tbl_proto  = TableByName("vpos_prototype");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
             NpgsqlCommandKey cmdk;
 
-            //=======================
             cmdk = CommandByKey("pos_prototype_by_all");
-
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -121,8 +99,6 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
-
             cmdk.Fill(tbl_proto);
             
             pos_prototype proto;
@@ -138,8 +114,7 @@ namespace pg_class
             return proto_list;
         }
 
-
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -148,8 +123,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+
             cmdk = CommandByKey("pos_prototype_by_all");
             if (cmdk != null)
             {
@@ -165,24 +139,17 @@ namespace pg_class
             }
             return Result;
         }
-        //*********************************************************************************************
 
-         //*********************************************************************************************
         /// <summary>
         /// Прототип позиции по идентификатору
         /// </summary>
         public pos_prototype pos_prototype_by_id(Int32 id)
         {
             pos_prototype pos_prototype = null;
-
             DataTable tbl_proto  = TableByName("vpos_prototype");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
             NpgsqlCommandKey cmdk;
 
-            //=======================
             cmdk = CommandByKey("pos_prototype_by_id");
-
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -194,10 +161,8 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iid"].Value = id;
-
             cmdk.Fill(tbl_proto);
             
             if (tbl_proto.Rows.Count > 0)
@@ -207,7 +172,8 @@ namespace pg_class
 
             return pos_prototype;
         }
-        //-=ACCESS=-***********************************************************************************
+
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -216,8 +182,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+
             cmdk = CommandByKey("pos_prototype_by_id");
             if (cmdk != null)
             {
@@ -234,24 +199,16 @@ namespace pg_class
             return Result;
         }
 
-        
-        #endregion
-          //*********************************************************************************************
         /// <summary>
         /// Прототип позиции по идентификатору шаблона позиции
         /// </summary>
         public pos_prototype pos_prototype_by_id_pos_temp(Int64 id_pos_temp)
         {
             pos_prototype pos_prototype = null;
-
             DataTable tbl_proto  = TableByName("vpos_prototype");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
             NpgsqlCommandKey cmdk;
 
-            //=======================
             cmdk = CommandByKey("pos_prototype_by_id_pos_temp");
-
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -263,10 +220,8 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iid_pos_temp"].Value = id_pos_temp;
-
             cmdk.Fill(tbl_proto);
             
             if (tbl_proto.Rows.Count > 0)
@@ -276,7 +231,8 @@ namespace pg_class
 
             return pos_prototype;
         }
-        //-=ACCESS=-***********************************************************************************
+
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -285,8 +241,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+
             cmdk = CommandByKey("pos_prototype_by_id_pos_temp");
             if (cmdk != null)
             {
@@ -302,8 +257,5 @@ namespace pg_class
             }
             return Result;
         }
-        #endregion
-
-
     }
 }

@@ -60,7 +60,7 @@ namespace pg_class
         {
             return class_prop_user_small_val_by_id_prop(ClassProp.Id);
         }
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

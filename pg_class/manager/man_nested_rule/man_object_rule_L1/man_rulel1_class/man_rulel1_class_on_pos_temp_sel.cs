@@ -11,23 +11,16 @@ namespace pg_class
 {
     public partial class manager
     {
-        #region ВЫБРАТЬ ПРАВИЛА ВЛОЖЕННОСТИ УРОВНЯ 1 КЛАСС НА ШАБЛОН
-        //*********************************************************************************************
         /// <summary>
         /// Правило уровня 1 класс на шаблон по идентификатору правила
         /// </summary>
         public rulel1_class_on_pos_temp rulel1_class_on_pos_temp_by_id(Int64 iid_class, Int64 iid_pos_temp)
         {
             rulel1_class_on_pos_temp rulel1 = null;
-            
             DataTable tbl_rl1  = TableByName("vrulel1_class_on_pos_temp");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
             NpgsqlCommandKey cmdk;
 
-            //=======================
             cmdk = CommandByKey("rulel1_class_on_pos_temp_by_id");
-
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -39,11 +32,9 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iid_class"].Value = iid_class;
             cmdk.Parameters["iid_pos_temp"].Value = iid_pos_temp;
-
             cmdk.Fill(tbl_rl1);
             
             if (tbl_rl1.Rows.Count > 0)
@@ -53,7 +44,6 @@ namespace pg_class
             return rulel1;
         }
 
-
         /// <summary>
         /// Правило уровня 1 класс на шаблон по идентификатору правила
         /// </summary>
@@ -61,7 +51,7 @@ namespace pg_class
         {
             return rulel1_class_on_pos_temp_by_id(Class.Id, Pos_temp.Id);
         }
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -70,8 +60,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+
             cmdk = CommandByKey("rulel1_class_on_pos_temp_by_id");
             if (cmdk != null)
             {
@@ -87,8 +76,6 @@ namespace pg_class
             }
             return Result;
         }
-        //*********************************************************************************************
-
 
         /// <summary>
         /// Лист правил уровня 1 класс на шаблон по идентификатору класса
@@ -96,16 +83,10 @@ namespace pg_class
         public List<rulel1_class_on_pos_temp> rulel1_class_on_pos_temp_by_id_class(Int64 iid_class)
         {
             List<rulel1_class_on_pos_temp> rulel1_list = new List<rulel1_class_on_pos_temp>();
-
-
             DataTable tbl_rulel1  = TableByName("vrulel1_class_on_pos_temp");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
             NpgsqlCommandKey cmdk;
 
-            //=======================
             cmdk = CommandByKey("rulel1_class_on_pos_temp_by_id_class");
-
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -117,10 +98,8 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iid_class"].Value = iid_class;
-
             cmdk.Fill(tbl_rulel1);
             
             rulel1_class_on_pos_temp rl1;
@@ -143,7 +122,7 @@ namespace pg_class
             return rulel1_class_on_pos_temp_by_id_class(Class.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -152,8 +131,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+
             cmdk = CommandByKey("rulel1_class_on_pos_temp_by_id_class");
             if (cmdk != null)
             {
@@ -169,7 +147,6 @@ namespace pg_class
             }
             return Result;
         }
-        //*********************************************************************************************
 
         /// <summary>
         /// Лист правил уровня 1 класс на шаблон по идентификатору шаблона позиции
@@ -177,15 +154,10 @@ namespace pg_class
         public List<rulel1_class_on_pos_temp> rulel1_class_on_pos_temp_by_id_pos_temp(Int64 iid_pos_temp)
         {
             List<rulel1_class_on_pos_temp> rulel1_list = new List<rulel1_class_on_pos_temp>();
-
             DataTable tbl_rulel1  = TableByName("vrulel1_class_on_pos_temp");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
             NpgsqlCommandKey cmdk;
 
-            //=======================
             cmdk = CommandByKey("rulel1_class_on_pos_temp_by_id_pos_temp");
-
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -197,10 +169,8 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iid_pos_temp"].Value = iid_pos_temp;
-
             cmdk.Fill(tbl_rulel1);
             
             rulel1_class_on_pos_temp rl1;
@@ -231,7 +201,7 @@ namespace pg_class
             return rulel1_class_on_pos_temp_by_id_pos_temp(Position.Id_pos_temp);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -240,8 +210,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+
             cmdk = CommandByKey("rulel1_class_on_pos_temp_by_id_pos_temp");
             if (cmdk != null)
             {
@@ -257,7 +226,5 @@ namespace pg_class
             }
             return Result;
         }
-        //*********************************************************************************************
-        #endregion
     }
 }

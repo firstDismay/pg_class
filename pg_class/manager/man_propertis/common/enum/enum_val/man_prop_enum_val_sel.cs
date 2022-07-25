@@ -52,7 +52,7 @@ namespace pg_class
             return prop_enum_val;
         }
         
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -133,7 +133,7 @@ namespace pg_class
             return prop_enum_val_by_id_prop_enum(Prop_enum.Id_prop_enum);
         }
         
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

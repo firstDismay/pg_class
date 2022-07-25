@@ -61,7 +61,7 @@ namespace pg_class
             return global_prop_by_name(Conception.Id, iname);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

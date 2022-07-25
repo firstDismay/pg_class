@@ -69,7 +69,7 @@ namespace pg_class
             return global_prop_link_class_prop_by_id(GlobalPropLink.Id_global_prop, GlobalPropLink.Id_class_prop_definition);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -150,7 +150,7 @@ namespace pg_class
             return global_prop_link_class_prop_by_id_global_prop(GlobalProp.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

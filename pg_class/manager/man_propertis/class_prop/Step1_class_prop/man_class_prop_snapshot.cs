@@ -64,7 +64,7 @@ namespace pg_class
         {
             return class_prop_snapshot_by_id(ObjectProp.Id_class_prop, ObjectProp.Timestamp_class);
         }
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -139,7 +139,7 @@ namespace pg_class
             return class_prop_snapshot_by_id_object_val(Object_val.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -215,7 +215,7 @@ namespace pg_class
             return class_prop_snapshot_by_id_global_prop(Class.Id, Class.Timestamp, Global_prop.Id);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -295,7 +295,7 @@ namespace pg_class
             return class_prop_snapshot_by_id_class_snapshot(Vclass.Id, Vclass.Timestamp);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>

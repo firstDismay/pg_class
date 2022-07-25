@@ -19,11 +19,8 @@ namespace pg_class
             Int32 error;
             String desc_error;
             NpgsqlCommandKey cmdk;
-            //**********
-             
-            //=======================
-            cmdk = CommandByKey("rulel1_class_on_pos_temp_add");
 
+            cmdk = CommandByKey("rulel1_class_on_pos_temp_add");
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -35,33 +32,27 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iid_class"].Value = iid_class;
             cmdk.Parameters["iid_pos_temp"].Value = iid_pos_temp;
-
-            //Начало транзакции
             cmdk.ExecuteNonQuery();
             
             error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
             desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            //SetLastTimeUsing();
-            //=======================
             switch (error)
             {
                 case 0:
-                    break;
+					//Вызов события изменения списка правил вложенности вложенности
+					Rulel1_Class_On_Pos_tempListChangeEventArgs e;
+					e = new Rulel1_Class_On_Pos_tempListChangeEventArgs(iid_class, iid_pos_temp, eActionRuleList.addrule);
+					OnRulel1_Class_On_Pos_tempListChange(e);
+					break;
                 default:
                     //Вызов события журнала
                     JournalEventArgs me = new JournalEventArgs(iid_class, eEntity.rulel1_class_on_pos_temp, error, desc_error, eAction.Insert, eJournalMessageType.error);
                     JournalMessageOnReceived(me);
                     throw new PgDataException(error, desc_error);
             }
-
-            //Вызов события изменения списка правил вложенности вложенности
-            Rulel1_Class_On_Pos_tempListChangeEventArgs e;
-            e = new Rulel1_Class_On_Pos_tempListChangeEventArgs(iid_class, iid_pos_temp, eActionRuleList.addrule);
-            OnRulel1_Class_On_Pos_tempListChange(e);
         }
 
         /// <summary>
@@ -79,7 +70,7 @@ namespace pg_class
         {
             rulel1_class_on_pos_temp_add(RuleL1.Id_class, RuleL1.Id_pos_temp);
         }
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -88,8 +79,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
             cmdk = CommandByKey("rulel1_class_on_pos_temp_add");
             if (cmdk != null)
             {

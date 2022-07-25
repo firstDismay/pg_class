@@ -13,9 +13,6 @@ namespace pg_class
 {
     public partial class manager
     {
-        #region МЕТОДЫ КЛАССА: ПРЕДСТАВЛЕНИЯ КЛАССА
-
-        #region ВЫБРАТЬ
         /// <summary>
         /// Выбор сущности по идентификатору
         /// </summary>
@@ -23,13 +20,9 @@ namespace pg_class
         {   
             entity entity = null;
             DataTable tbl_entity  = TableByName("ventity");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
             NpgsqlCommandKey cmdk;
 
-            //=======================
             cmdk = CommandByKey("entity_by_id");
-
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -41,10 +34,8 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iid"].Value = iid;
-            
             cmdk.Fill(tbl_entity);
             
             if (tbl_entity.Rows.Count > 0)
@@ -62,7 +53,7 @@ namespace pg_class
             return entity_by_id((Int32)Entity);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -71,8 +62,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+
             cmdk = CommandByKey("entity_by_id");
             if (cmdk != null)
             {
@@ -88,8 +78,6 @@ namespace pg_class
             }
             return Result;
         }
-        //*********************************************************************************************
-
         
         /// <summary>
         /// Лист всех сущностей БД
@@ -97,16 +85,10 @@ namespace pg_class
         public List<entity> entity_by_all()
         {
             List<entity> entity_list = new List<entity>();
-
-            
             DataTable tbl_entity  = TableByName("ventity");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
             NpgsqlCommandKey cmdk;
 
-            //=======================
             cmdk = CommandByKey("entity_by_all");
-
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -118,7 +100,6 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Fill(tbl_entity);
             
@@ -134,8 +115,7 @@ namespace pg_class
             return entity_list;
         }
 
-
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -144,8 +124,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+
             cmdk = CommandByKey("entity_by_all");
             if (cmdk != null)
             {
@@ -161,7 +140,6 @@ namespace pg_class
             }
             return Result;
         }
-        //*********************************************************************************************
 
         /// <summary>
         /// Лист сущностей допускающих линковкуБД
@@ -169,16 +147,10 @@ namespace pg_class
         public List<entity> entity_by_can_link()
         {
             List<entity> entity_list = new List<entity>();
-
-
             DataTable tbl_entity  = TableByName("ventity");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
             NpgsqlCommandKey cmdk;
 
-            //=======================
             cmdk = CommandByKey("entity_by_can_link");
-
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -190,7 +162,6 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Fill(tbl_entity);
             
@@ -206,8 +177,7 @@ namespace pg_class
             return entity_list;
         }
 
-
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -216,8 +186,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+
             cmdk = CommandByKey("entity_by_can_link");
             if (cmdk != null)
             {
@@ -233,7 +202,5 @@ namespace pg_class
             }
             return Result;
         }
-        #endregion
-        #endregion
     }
 }

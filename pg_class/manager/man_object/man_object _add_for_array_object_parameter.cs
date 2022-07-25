@@ -20,16 +20,10 @@ namespace pg_class
         public List<errarg_object_add> object_add_for_array_object_parameter(json_object_parameters[] array_object_parameter)
         {
             List<errarg_object_add> object_list = new List<errarg_object_add>();
-            //object_general o;
-
             DataTable tbl_result = TableByName("errarg_object_add");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
             NpgsqlCommandKey cmdk;
 
-            //=======================
             cmdk = CommandByKey("object_add_for_array_object_parameter");
-
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -41,18 +35,14 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             String[] sarray_object_parameter = new String[array_object_parameter.Length];
-
             for (Int32 i = 0; i < array_object_parameter.Length; i++)
             {
                 sarray_object_parameter[i] = JsonConvert.SerializeObject(array_object_parameter[i], Formatting.Indented);
             }
 
             cmdk.Parameters["array_object_parameter"].Value = sarray_object_parameter;
-            
-
             cmdk.Fill(tbl_result);
 
             errarg_object_add og;
@@ -67,7 +57,7 @@ namespace pg_class
             return object_list;
         }
        
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
@@ -76,8 +66,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+
             cmdk = CommandByKey("object_add_for_array_object_parameter");
             if (cmdk != null)
             {

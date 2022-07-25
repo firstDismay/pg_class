@@ -68,7 +68,7 @@ namespace pg_class
             return class_prop_snapshot_by_id_class_snapshot_search_method(Class.Id, Class.Timestamp, isearch_method);
         }
 
-        //-=ACCESS=-***********************************************************************************
+        //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
