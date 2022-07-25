@@ -60,7 +60,7 @@ namespace pg_class
 				ObjectChangeEventArgs e = new ObjectChangeEventArgs(Object, eAction.Cast);
 				ObjectOnChange(e);
 			}
-			//Возвращаем Объект
+			//Возвращаем сущность
 			return Object;
 		}
 

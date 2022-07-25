@@ -55,7 +55,7 @@ namespace pg_class
             //Генерируем событие изменения пользователя
             UserChangeEventArgs e = new UserChangeEventArgs(User_current, eAction.Update);
             UserOnChange(e);
-            //Возвращаем Объект
+            //Возвращаем сущность
             return user_options;
         }
 

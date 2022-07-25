@@ -82,7 +82,7 @@ namespace pg_class
 					ObjectPropLinkValOnChange(e);
 				}
 			}
-			//Возвращаем Объект
+			//Возвращаем сущность
 			return ObjectPropLinkVal;
 		}
 

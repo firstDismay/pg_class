@@ -60,7 +60,7 @@ namespace pg_class
 				//Генерируем событие изменения данных привязки глобального свойства
 				GlobalPropLinkClassPropChangeEventArgs e = new GlobalPropLinkClassPropChangeEventArgs(global_prop_link_class_prop, eAction.Include);
 				GlobalPropLinkClassPropOnChange(e);
-				//Возвращаем Объект
+				//Возвращаем сущность
 			}
 
 			if (prop_link != null)
@@ -69,7 +69,7 @@ namespace pg_class
 				ClassPropChangeEventArgs e2 = new ClassPropChangeEventArgs(prop_link, eAction.Update);
 				ClassPropOnChange(e2);
 			}
-			//Возвращаем Объект
+			//Возвращаем сущность
 			return global_prop_link_class_prop;
 		}
 

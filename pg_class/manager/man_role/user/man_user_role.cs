@@ -70,7 +70,7 @@ namespace pg_class
             //Генерируем событие изменения концепции
             UserChangeEventArgs e = new UserChangeEventArgs(user, eAction.Update);
             UserOnChange(e);
-            //Возвращаем Объект
+            //Возвращаем сущность
             return Result;
         }
 
@@ -146,7 +146,7 @@ namespace pg_class
             //Генерируем событие изменения концепции
             UserChangeEventArgs e = new UserChangeEventArgs(user, eAction.Update);
             UserOnChange(e);
-            //Возвращаем Объект
+            //Возвращаем сущность
             return Result;
         }
 

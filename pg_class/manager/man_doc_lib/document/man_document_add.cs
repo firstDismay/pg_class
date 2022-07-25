@@ -75,7 +75,7 @@ namespace pg_class
 				DocumentChangeEventArgs e = new DocumentChangeEventArgs(document, eAction.Insert);
 				DocumentOnChange(e);
 			}
-			//Возвращаем Объект
+			//Возвращаем сущность
 			return document;
 		}
 

@@ -67,7 +67,7 @@ namespace pg_class
                 DocLinkChangeEventArgs e = new DocLinkChangeEventArgs(doc_link, eAction.Insert);
                 DocLinkOnChange(e);
             }
-            //Возвращаем Объект
+            //Возвращаем сущность
             return doc_link;
         }
 

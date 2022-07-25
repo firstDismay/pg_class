@@ -62,7 +62,7 @@ namespace pg_class
                 ClassPropSortOnChange(e);
             }
             
-            //Возвращаем Объект
+            //Возвращаем сущность
             return class_prop;
         }
 

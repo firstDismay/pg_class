@@ -56,7 +56,7 @@ namespace pg_class
             //Генерируем событие изменения представления класса
             ClassChangeEventArgs e = new ClassChangeEventArgs(vclass, eAction.Update);
             ClassOnChange(e);
-            //Возвращаем Объект
+            //Возвращаем сущность
             return vclass;
         }
 
@@ -173,7 +173,7 @@ namespace pg_class
             //Генерируем событие изменения представления класса
             ClassChangeEventArgs e = new ClassChangeEventArgs(vclass, eAction.Update);
             ClassOnChange(e);
-            //Возвращаем Объект
+            //Возвращаем сущность
             return vclass;
         }
 

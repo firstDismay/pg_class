@@ -90,7 +90,7 @@ namespace pg_class
 					}
 				}
 			}
-			//Возвращаем Объект
+			//Возвращаем сущность
 			return Object_merging;
 		}
 

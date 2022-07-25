@@ -61,7 +61,7 @@ namespace pg_class
                 ClassChangeEventArgs e = new ClassChangeEventArgs(class_sort, eAction.Update);
                 ClassPropSortOnChange(e);
             }
-            //Возвращаем Объект
+            //Возвращаем сущность
             return class_prop;
         }
 

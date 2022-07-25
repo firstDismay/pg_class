@@ -22,11 +22,8 @@ namespace pg_class
 			Int32 error;
 			String desc_error;
 			NpgsqlCommandKey cmdk = null;
-			//**********
 
-			//=======================
 			cmdk = CommandByKey("pos_temp_prop_link_val_upd");
-
 			if (cmdk != null)
 			{
 				if (!cmdk.Access)
@@ -38,7 +35,6 @@ namespace pg_class
 			{
 				throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
 			}
-			//=======================
 
 			cmdk.Parameters["iid_pos_temp_prop"].Value = iid_pos_temp_prop;
 			cmdk.Parameters["iid_entity"].Value = iid_entity;
@@ -60,18 +56,20 @@ namespace pg_class
 			{
 				cmdk.Parameters["iid_sub_entity_instance"].Value = iid_sub_entity_instance;
 			}
-
-			//Начало транзакции
 			cmdk.ExecuteNonQuery();
 
 			error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
 			desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-			//SetLastTimeUsing();
-			//=======================     
 			switch (error)
 			{
 				case 0:
 					pos_temp_prop_link_val = pos_temp_prop_link_val_by_id_prop(iid_pos_temp_prop);
+					if (pos_temp_prop_link_val!=null)
+					{
+						//Генерируем событие изменения свойства шаблона
+						PosTempPropLinkValChangeEventArgs e = new PosTempPropLinkValChangeEventArgs(pos_temp_prop_link_val, eAction.Update);
+						PosTempPropLinkValOnChange(e);
+					}
 					break;
 				default:
 					//Вызов события журнала
@@ -79,14 +77,10 @@ namespace pg_class
 					JournalMessageOnReceived(me);
 					throw new PgDataException(error, desc_error);
 			}
-			//Генерируем событие изменения свойства шаблона
-			PosTempPropLinkValChangeEventArgs e = new PosTempPropLinkValChangeEventArgs(pos_temp_prop_link_val, eAction.Update);
-			PosTempPropLinkValOnChange(e);
 
 			//Возвращаем Сущность
 			return pos_temp_prop_link_val;
 		}
-
 
 		/// <summary>
 		/// Изменить данные значения свойства-ссылки
@@ -105,8 +99,7 @@ namespace pg_class
 			Boolean Result = false;
 			Access = eAccess.NotFound;
 			NpgsqlCommandKey cmdk;
-			//=======================
-			//=======================
+
 			cmdk = CommandByKey("pos_temp_prop_link_val_upd");
 			if (cmdk != null)
 			{

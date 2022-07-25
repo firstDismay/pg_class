@@ -60,7 +60,7 @@ namespace pg_class
                 PosTempChangeEventArgs e = new PosTempChangeEventArgs(pos_temp_sort, eAction.Update);
                 PosTempPropSortOnChange(e);
             }
-            //Возвращаем Объект
+            //Возвращаем сущность
             return pos_temp_prop;
         }
 

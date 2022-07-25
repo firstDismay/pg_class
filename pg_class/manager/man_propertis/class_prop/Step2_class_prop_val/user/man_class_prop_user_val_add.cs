@@ -189,7 +189,7 @@ namespace pg_class
                     ClassPropUserValOnChange(e2);
                 }
             }
-            //Возвращаем Объект
+            //Возвращаем сущность
             return ClassPropUserVal;
         }
 

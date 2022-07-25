@@ -74,7 +74,7 @@ namespace pg_class
 				DocFileChangeEventArgs e = new DocFileChangeEventArgs(doc_file, eAction.Update);
 				DocFileOnChange(e);
 			}
-			//Возвращаем Объект
+			//Возвращаем сущность
 			return doc_file;
 		}
 
@@ -241,7 +241,7 @@ namespace pg_class
 				DocFileChangeEventArgs e = new DocFileChangeEventArgs(doc_file, eAction.Update);
 				DocFileOnChange(e);
 			}
-			//Возвращаем Объект
+			//Возвращаем сущность
 			return doc_file;
 		}
 

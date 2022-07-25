@@ -59,7 +59,7 @@ namespace pg_class
 					throw new PgDataException(error, desc_error);
 			}
 			
-			//Возвращаем Объект
+			//Возвращаем сущность
 			return pos_temp;
 		}
 		//ACCESS
@@ -135,7 +135,7 @@ namespace pg_class
 					throw new PgDataException(error, desc_error);
 			}
 
-			//Возвращаем Объект
+			//Возвращаем сущность
 			return pos_temp;
 		}
 		//ACCESS

@@ -59,7 +59,7 @@ namespace pg_class
 			{
 				GlobalPropAreaValChangeEventArgs e = new GlobalPropAreaValChangeEventArgs(global_prop_area_val, eAction.Update);
 				GlobalPropAreaValOnChange(e);
-				//Возвращаем Объект
+				//Возвращаем сущность
 			}
 			return global_prop_area_val;
 		}

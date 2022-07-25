@@ -76,7 +76,7 @@ namespace pg_class
                     }
                 }
             }
-            //Возвращаем Объекты
+            //Возвращаем сущностьы
             return Object_list;
         }
 

@@ -67,7 +67,7 @@ namespace pg_class
 				//Генерируем событие изменения 
 				ObjectChangeEventArgs e = new ObjectChangeEventArgs(Object_copy, eAction.Copy);
 				ObjectOnChange(e);
-				//Возвращаем Объект
+				//Возвращаем сущность
 			}
 			return Object_copy;
 		}

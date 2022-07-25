@@ -62,7 +62,7 @@ namespace pg_class
 				DocCategoryChangeEventArgs e = new DocCategoryChangeEventArgs(doc_category, eAction.Update);
 				DocCategoryOnChange(e);
 			}
-			//Возвращаем Объект
+			//Возвращаем сущность
 			return doc_category;
 		}
 

@@ -70,7 +70,7 @@ namespace pg_class
 				PosTempPropChangeEventArgs e2 = new PosTempPropChangeEventArgs(prop_link, eAction.Update);
 				PosTempPropOnChange(e2);
 			}
-			//Возвращаем Объект
+			//Возвращаем сущность
 			return global_prop_link_pos_temp_prop;
 		}
 

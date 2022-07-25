@@ -62,7 +62,7 @@ namespace pg_class
 					throw new PgDataException(error, desc_error);
 			}
 			
-			//Возвращаем Объект
+			//Возвращаем сущность
 			return position;
 		}
 
@@ -147,7 +147,7 @@ namespace pg_class
 					throw new PgDataException(error, desc_error);
 			}
 			
-			//Возвращаем Объект
+			//Возвращаем сущность
 			return position;
 		}
 
@@ -233,7 +233,7 @@ namespace pg_class
 					throw new PgDataException(error, desc_error);
 			}
 
-			//Возвращаем Объект
+			//Возвращаем сущность
 			return position;
 		}
 
@@ -326,7 +326,7 @@ namespace pg_class
 					throw new PgDataException(error, desc_error);
 			}
 
-			//Возвращаем Объект
+			//Возвращаем сущность
 			return position;
 		}
 

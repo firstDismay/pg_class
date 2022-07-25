@@ -68,7 +68,7 @@ namespace pg_class
                 PosTempChangeEventArgs e = new PosTempChangeEventArgs(pos_temp, eAction.Insert);
                 PosTempOnChange(e);
             }
-            //Возвращаем Объект
+            //Возвращаем сущность
             return pos_temp;
         }
 
@@ -148,7 +148,7 @@ namespace pg_class
                 PosTempChangeEventArgs e = new PosTempChangeEventArgs(pos_temp, eAction.Insert);
                 PosTempOnChange(e);
             }
-            //Возвращаем Объект
+            //Возвращаем сущность
             return pos_temp;
         }
 

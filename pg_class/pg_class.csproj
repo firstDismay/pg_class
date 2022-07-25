@@ -565,7 +565,7 @@
     <Compile Include="manager\man_role\role_base\man_role_base_current.cs" />
     <Compile Include="manager\man_nested_rule\man_object_rule_L2\man_rulel2_class_on_position_event.cs" />
     <Compile Include="manager\man_nested_rule\man_object_rule_L1\man_rulel1_group\man_rulel1_group_on_pos_temp_event.cs" />
-    <Compile Include="manager\man_unit_rule\man_unit_rule.cs" />
+    <Compile Include="manager\man_unit\man_unit_sel.cs" />
     <Compile Include="manager\man_group\man_group_event.cs" />
     <Compile Include="manager\man_group\man_group_patch.cs" />
     <Compile Include="manager\man_class\man_class_snapshot\man_class_snapshot_sel.cs" />
@@ -598,6 +598,12 @@
     <Compile Include="manager\man_position\man_position_event.cs" />
     <Compile Include="manager\man_pos_temp\man_pos_temp_event.cs" />
     <Compile Include="manager\Global\man_info\man_info.cs" />
+    <Compile Include="manager\man_unit_conversion_rule\man_unit_conversion_rule_event.cs" />
+    <Compile Include="manager\man_unit_conversion_rule\man_unit_conversion_rule_is_actual.cs" />
+    <Compile Include="manager\man_unit_conversion_rule\man_unit_conversion_rule_sel.cs" />
+    <Compile Include="manager\man_unit_conversion_rule\man_unit_conversion_rule_del.cs" />
+    <Compile Include="manager\man_unit_conversion_rule\man_unit_conversion_rule_upd.cs" />
+    <Compile Include="manager\man_unit_conversion_rule\man_unit_conversion_rule_add.cs" />
     <Compile Include="pg_classes\calendar\plan\plan_plan_link.cs" />
     <Compile Include="pg_classes\calendar\plan\plan_plan_range.cs" />
     <Compile Include="pg_classes\calendar\plan\plan_plan.cs" />

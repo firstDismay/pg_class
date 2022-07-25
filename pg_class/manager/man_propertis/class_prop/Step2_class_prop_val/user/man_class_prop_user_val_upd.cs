@@ -183,7 +183,7 @@ namespace pg_class
                 }
 
             }
-            //Возвращаем Объект
+            //Возвращаем сущность
             return class_prop_user_val;
         }
 

@@ -161,7 +161,7 @@ namespace pg_class
 				DocFileChangeEventArgs e = new DocFileChangeEventArgs(doc_file, eAction.Insert);
 				DocFileOnChange(e);
 			}
-			//Возвращаем Объект
+			//Возвращаем сущность
 			return doc_file;
 		}
 

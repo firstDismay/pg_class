@@ -70,7 +70,7 @@ namespace pg_class
                 ClassPropChangeEventArgs e = new ClassPropChangeEventArgs(class_prop, eAction.Insert);
                 ClassPropOnChange(e);
             }
-            //Возвращаем Объект
+            //Возвращаем сущность
             return class_prop;
         }
 

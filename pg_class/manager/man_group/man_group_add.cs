@@ -68,7 +68,7 @@ namespace pg_class
 				GroupChangeEventArgs e = new GroupChangeEventArgs(group, eAction.Insert);
 				GroupOnChange(e);
 			}
-			//Возвращаем Объект
+			//Возвращаем сущность
 			return group;
 		}
 
@@ -150,7 +150,7 @@ namespace pg_class
 				GroupChangeEventArgs e = new GroupChangeEventArgs(group, eAction.Move);
 				GroupOnChange(e);
 			}
-			//Возвращаем Объект
+			//Возвращаем сущность
 			return group;
 		}
 

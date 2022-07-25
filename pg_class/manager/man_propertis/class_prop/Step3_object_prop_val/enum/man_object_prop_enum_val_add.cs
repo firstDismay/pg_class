@@ -73,7 +73,7 @@ namespace pg_class
 					ObjectPropEnumValOnChange(e);
 				}
 			}
-			//Возвращаем Объект
+			//Возвращаем сущность
 			return ObjectPropEnumVal;
 		}
 

@@ -68,7 +68,7 @@ namespace pg_class
 				ClassChangeEventArgs e = new ClassChangeEventArgs(vclass, eAction.Update);
 				ClassOnChange(e);
 			}
-			//Возвращаем Объект
+			//Возвращаем сущность
 			return vclass;
 		}
 
@@ -166,7 +166,7 @@ namespace pg_class
 				ClassChangeEventArgs e = new ClassChangeEventArgs(vclass, eAction.Move);
 				ClassOnChange(e);
 			}
-			//Возвращаем Объект
+			//Возвращаем сущность
 			return vclass;
 		}
 
@@ -279,7 +279,7 @@ namespace pg_class
 				ClassChangeEventArgs e2 = new ClassChangeEventArgs(vclass_del, eAction.Delete);
 				ClassOnChange(e2);
 			}
-			//Возвращаем Объект
+			//Возвращаем сущность
 			return vclass;
 		}
 
@@ -364,7 +364,7 @@ namespace pg_class
 				ClassChangeEventArgs e = new ClassChangeEventArgs(vclass, eAction.Move);
 				ClassOnChange(e);
 			}
-			//Возвращаем Объект
+			//Возвращаем сущность
 			return vclass;
 		}
 

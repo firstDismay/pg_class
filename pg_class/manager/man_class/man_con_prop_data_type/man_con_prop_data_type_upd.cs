@@ -58,7 +58,7 @@ namespace pg_class
 			Con_Prop_Data_TypeChangeEventArgs e;
 			e = new Con_Prop_Data_TypeChangeEventArgs(iid_conception, iid_prop_data_type, eActionRuleList.updaterule);
 			OnCon_Prop_Data_TypeChange(e);
-			//Возвращаем Объект
+			//Возвращаем сущность
 			return con_prop_data_type;
 		}
 

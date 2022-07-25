@@ -56,7 +56,7 @@ namespace pg_class
 			//Генерируем событие изменения свойства класса
 			GlobalPropChangeEventArgs e = new GlobalPropChangeEventArgs(global_prop, eAction.Update);
 			GlobalPropOnChange(e);
-			//Возвращаем Объект
+			//Возвращаем сущность
 			return global_prop;
 		}
 

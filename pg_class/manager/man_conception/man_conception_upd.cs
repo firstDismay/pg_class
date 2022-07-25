@@ -61,7 +61,7 @@ namespace pg_class
             //Генерируем событие изменения концепции
             ConceptionChangeEventArgs e = new ConceptionChangeEventArgs(conception, eAction.Update);
             ConceptionOnChange(e);
-            //Возвращаем Объект
+            //Возвращаем сущность
             return conception;
         }
 
@@ -139,7 +139,7 @@ namespace pg_class
                     throw new PgDataException(error, desc_error);
             }
 
-            //Возвращаем Объект
+            //Возвращаем сущность
             return conception;
         }
 

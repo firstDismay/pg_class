@@ -65,7 +65,7 @@ namespace pg_class
 			//Генерируем событие изменения свойства класса
 			GlobalPropChangeEventArgs e = new GlobalPropChangeEventArgs(global_prop, eAction.Insert);
 			GlobalPropOnChange(e);
-			//Возвращаем Объект
+			//Возвращаем сущность
 			return global_prop;
 		}
 
@@ -157,7 +157,7 @@ namespace pg_class
 			//Генерируем событие изменения свойства класса
 			GlobalPropChangeEventArgs e = new GlobalPropChangeEventArgs(global_prop, eAction.Insert);
 			GlobalPropOnChange(e);
-			//Возвращаем Объект
+			//Возвращаем сущность
 			return global_prop;
 		}
 
@@ -249,7 +249,7 @@ namespace pg_class
 			//Генерируем событие изменения свойства класса
 			GlobalPropChangeEventArgs e = new GlobalPropChangeEventArgs(global_prop, eAction.Insert);
 			GlobalPropOnChange(e);
-			//Возвращаем Объект
+			//Возвращаем сущность
 			return global_prop;
 		}
 

@@ -82,7 +82,7 @@ namespace pg_class
 						throw new PgDataException(error, desc_error);
 				}
 			}
-			//Возвращаем Объект
+			//Возвращаем сущность
 			return position_prop_link_val;
 		}
 

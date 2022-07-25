@@ -25,11 +25,8 @@ namespace pg_class
             Int32 error;
             String desc_error;
             NpgsqlCommandKey cmdk;
-            //**********
-             
-            //=======================
-            cmdk = CommandByKey("pos_temp_prop_object_val_add");
 
+            cmdk = CommandByKey("pos_temp_prop_object_val_add");
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -41,30 +38,37 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iid_pos_temp_prop"].Value = iid_pos_temp_prop;
             cmdk.Parameters["iid_class_val"].Value = iid_class_val;
             cmdk.Parameters["ibquantity_min"].Value = ibquantity_min;
             cmdk.Parameters["ibquantity_max"].Value = ibquantity_max;
-
             cmdk.Parameters["iembed_mode"].Value = (Int32)iembed_mode;
             cmdk.Parameters["iembed_single"].Value = iembed_single;
             cmdk.Parameters["iembed_class_real_id"].Value = iembed_class_real_id;
             cmdk.Parameters["iid_unit_conversion_rule"].Value = iid_unit_conversion_rule;
-
-            //Начало транзакции
             cmdk.ExecuteNonQuery();
             
             error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
             desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            //SetLastTimeUsing();
-            //=======================
             switch (error)
             {
                 case 0:
                     pos_temp_prop = pos_temp_prop_by_id(iid_pos_temp_prop);
+                    if(pos_temp_prop!=null)
+                    {
+						//Генерируем событие изменения свойства шаблона позиции
+						PosTempPropChangeEventArgs e = new PosTempPropChangeEventArgs(pos_temp_prop, eAction.Update);
+						PosTempPropOnChange(e);
+					}
+
                     pos_temp_prop_object_val = pos_temp_prop.object_data_get();
+                    if (pos_temp_prop_object_val!=null)
+                    {
+						//Генерируем событие изменения значения объектного свойства класса
+						PosTempPropObjectValChangeEventArgs e2 = new PosTempPropObjectValChangeEventArgs(pos_temp_prop_object_val, eAction.Insert);
+						PosTempPropObjectValOnChange(e2);
+					}
                     break;
                 default:
                     //Вызов события журнала
@@ -72,14 +76,7 @@ namespace pg_class
                     JournalMessageOnReceived(me);
                     throw new PgDataException(error, desc_error);
             }
-            //Генерируем событие изменения свойства класса
-            PosTempPropChangeEventArgs e = new PosTempPropChangeEventArgs(pos_temp_prop, eAction.Update);
-            PosTempPropOnChange(e);
-            
-            //Генерируем событие изменения значения объектного свойства класса
-            PosTempPropObjectValChangeEventArgs e2 = new PosTempPropObjectValChangeEventArgs(pos_temp_prop_object_val, eAction.Insert);
-            PosTempPropObjectValOnChange(e2);
-            //Возвращаем Объект
+            //Возвращаем сущность
             return pos_temp_prop_object_val;
         }
 

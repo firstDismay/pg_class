@@ -81,7 +81,7 @@ namespace pg_class
                 ClassPropObjectValChangeEventArgs e2 = new ClassPropObjectValChangeEventArgs(class_prop_obj_val_class, eAction.Update);
                 ClassPropObjectValOnChange(e2);
             }
-            //Возвращаем Объект
+            //Возвращаем сущность
             return class_prop_obj_val_class;
         }
 

@@ -65,7 +65,7 @@ namespace pg_class
 				DocumentChangeEventArgs e = new DocumentChangeEventArgs(document, eAction.Update);
 				DocumentOnChange(e);
 			}
-			//Возвращаем Объект
+			//Возвращаем сущность
 			return document;
 		}
 
@@ -149,7 +149,7 @@ namespace pg_class
 				DocumentChangeEventArgs e = new DocumentChangeEventArgs(document, eAction.Include);
 				DocumentOnChange(e);
 			}
-			//Возвращаем Объект
+			//Возвращаем сущность
 			return document;
 		}
 
@@ -241,7 +241,7 @@ namespace pg_class
 				DocumentChangeEventArgs e = new DocumentChangeEventArgs(document_old, eAction.Delete);
 				DocumentOnChange(e);
 			}
-			//Возвращаем Объект
+			//Возвращаем сущность
 			return document;
 		}
 

@@ -63,7 +63,7 @@ namespace pg_class
 				ObjectChangeEventArgs e = new ObjectChangeEventArgs(Object, eAction.Update);
 				ObjectOnChange(e);
 			}
-			//Возвращаем Объект
+			//Возвращаем сущность
 			return Object;
 		}
 
@@ -165,7 +165,7 @@ namespace pg_class
 				ObjectChangeEventArgs e3 = new ObjectChangeEventArgs(Object_change, eAction.Update);
 				ObjectOnChange(e3);
 			}
-			//Возвращаем Объект
+			//Возвращаем сущность
 			return Object_move;
 		}
 

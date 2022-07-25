@@ -61,7 +61,7 @@ namespace pg_class
                 PlanGivenRangePlanChangeEventArgs e = new PlanGivenRangePlanChangeEventArgs(centity, eAction.Update);
                 PlanGivenRangePlanOnChange(e);
             }
-            //Возвращаем Объект
+            //Возвращаем сущность
             return centity;
         }
 
