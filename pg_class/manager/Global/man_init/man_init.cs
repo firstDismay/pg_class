@@ -96,7 +96,7 @@ namespace pg_class
                     base_build_date = Convert.ToDateTime(drbd["date"]);
                 }
                 //Запрос списка процедур API
-                NCM.CommandText = String.Format("SELECT * FROM cfg_v_initproc_base_{0};", ExpectedVerBD);
+                NCM.CommandText = String.Format("SELECT * FROM cfg_m_initproc_base_{0};", ExpectedVerBD);
                 proc_DT = new DataTable();
                 NDA = new NpgsqlDataAdapter();
                 NDA.SelectCommand = NCM;
@@ -169,16 +169,13 @@ namespace pg_class
                         command_list.Add(cmdk);
                     }
                 }
-                //**********************************************************
-                //**********************************************************
-                //**********************************************************
                 //ИНИЦИАЛИЗАЦИЯ ТАБЛИЦ КВАНТОВЫХ КЛАССОВ
 
                 //Инициализация листа квантовых таблиц данных
                 datatable_list = new List<DataTable>();
 
                 //NCM.CommandType = CommandType.Text;
-                NCM.CommandText = String.Format("SELECT * FROM cfg_v_inittable_base_{0};", ExpectedVerBD);
+                NCM.CommandText = String.Format("SELECT * FROM cfg_m_inittable_base_{0};", ExpectedVerBD);
                 proc_DT = new DataTable();
                 NDA.SelectCommand = NCM;
                 NDA.Fill(proc_DT);
@@ -217,6 +214,22 @@ namespace pg_class
                     }
                 }
                 trans.Commit();
+            }
+            catch (Npgsql.PostgresException pex)
+            {
+                if (pex.SqlState == "42P01" && (pex.Message.Contains("cfg_m_initproc_base_") || pex.Message.Contains("cfg_m_inittable_base")))
+                {
+                    String sb = String.Format("Затребованная клиентом версия API: {0} не поддерживается сервером, дополнительные сведения: {1}", ExpectedVerBD, pex.Message);
+                    
+                    throw new PgManagerException(404, sb, pex.Message);
+                }
+                else
+                {
+					StringBuilder sb = new StringBuilder();
+					sb.Append("Сбой процедуры инициализации команд менеджера данных, дополнительные сведения: ");
+					sb.Append(pex.Message);
+					throw new PgManagerException(1101, sb.ToString(), pex.Message);
+				}
             }
             catch (Exception ex)
             {
