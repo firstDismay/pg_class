@@ -96,7 +96,7 @@ namespace pg_class
                     base_build_date = Convert.ToDateTime(drbd["date"]);
                 }
                 //Запрос списка процедур API
-                NCM.CommandText = "SELECT * FROM cfg_v_initproc_base;";
+                NCM.CommandText = String.Format("SELECT * FROM cfg_v_initproc_base_{0};", ExpectedVerBD);
                 proc_DT = new DataTable();
                 NDA = new NpgsqlDataAdapter();
                 NDA.SelectCommand = NCM;
@@ -178,7 +178,7 @@ namespace pg_class
                 datatable_list = new List<DataTable>();
 
                 //NCM.CommandType = CommandType.Text;
-                NCM.CommandText = "SELECT * FROM cfg_v_inittable_base;";
+                NCM.CommandText = String.Format("SELECT * FROM cfg_v_inittable_base_{0};", ExpectedVerBD);
                 proc_DT = new DataTable();
                 NDA.SelectCommand = NCM;
                 NDA.Fill(proc_DT);

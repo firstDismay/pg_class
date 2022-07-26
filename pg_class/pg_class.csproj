@@ -953,7 +953,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="diagrams\" />
     <Folder Include="manager\man_schedule\" />
     <Folder Include="pg_classes\calendar\plan_calendar\" />
     <Folder Include="pg_classes\calendar\plan_given_range_fact\" />

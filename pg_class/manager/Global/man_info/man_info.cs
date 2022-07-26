@@ -325,10 +325,5 @@ namespace pg_class.pg_classes
             return Result;
         }
         #endregion
-
-        #region ПЕРЕОПРЕДЕЛЕННЫЕ МЕТОДЫ КЛАССА
-
-        #endregion
-
     }
 }
