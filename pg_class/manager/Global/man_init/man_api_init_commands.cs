@@ -14,53 +14,6 @@ namespace pg_class
 {
     public partial class manager
     {
-        #region СТРУКТУРЫ ДЛЯ ВЗАИМОДЕЙСТВИЯ С БД
-
-        /// <summary>
-        /// Лист команд взаимодействия с сервером PostgreSQL
-        /// </summary>
-        private List<NpgsqlCommandKey> command_list;
-
-        /// <summary>
-        /// Лист таблиц команд взаимодействия с сервером PostgreSQL
-        /// </summary>
-        private List<DataTable> datatable_list;
-
-        #endregion
-
-        #region ИНИЦИАЛИЗАЦИЯ КЛАССА ДОСТУПА К ДАННЫМ
-
-        /// <summary>
-        /// Метод инициализации класса
-        /// </summary>
-        protected void InitCommands()
-        {
-            //Вызов события журнала
-            JournalEventArgs me = new JournalEventArgs(0, eEntity.manager, 0, "Инициализация менеджера данных", eAction.Init, eJournalMessageType.information);
-            JournalMessageOnReceived(me);
-
-            //Инициализация подключения к БД конфигурации
-            connect cn = pool_.Connect_Get(true);
-
-            //Вызов события журнала
-            me = new JournalEventArgs(0, eEntity.manager, 0, "Инициализация команд менеджера данных", eAction.Init, eJournalMessageType.information);
-            JournalMessageOnReceived(me);
-            //Инициализация команд работы с БД
-            InitCommand2(cn.CN);
-            cn.UnLock();
-
-            //Инициализация концепций
-            conception_list_state = eStatus.on;
-
-            //Вызов события журнала
-            String msg = String.Format("Инициализация команд менеджера данных завершена, загружено команд: {0}, загружено таблиц: {1}", command_list.Count, datatable_list.Count);
-            me = new JournalEventArgs(0, eEntity.manager, 0, msg, eAction.Init, eJournalMessageType.information);
-            JournalMessageOnReceived(me);
-        }
-
-        #endregion
-
-        #region ИНИЦИАЛИЗАЦИЯ КОМАНД КЛАССА ВЕРСИЯ 4
         /// <summary>
         /// Инициализация команд и таблиц данных менеджера доступа к БД
         /// </summary>
@@ -245,6 +198,5 @@ namespace pg_class
                 throw new PgManagerException(1101, sb.ToString(), ex.Message);
             }
         }
-        #endregion
     }
 }

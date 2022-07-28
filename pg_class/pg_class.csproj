@@ -162,6 +162,8 @@
     <Compile Include="manager\Global\man_common\errarg_action.cs" />
     <Compile Include="manager\Global\man_event\man_event.cs" />
     <Compile Include="manager\Global\man_declaration\man_EAN13.cs" />
+    <Compile Include="manager\Global\man_init\man_api_init_commands.cs" />
+    <Compile Include="manager\Global\man_init\man_api_init.cs" />
     <Compile Include="manager\Global\man_pool\man_pool_session_control.cs" />
     <Compile Include="manager\Global\man_pool\pool\pool_session_control.cs" />
     <Compile Include="manager\Global\man_singleton\man_connect.cs" />
@@ -593,7 +595,7 @@
     <Compile Include="manager\man_propertis\pos_temp\Step1_pos_temp_prop\man_pos_temp_prop_event.cs" />
     <Compile Include="manager\man_conception\man_conception_upd.cs" />
     <Compile Include="manager\Global\man_declaration\man_functions.cs" />
-    <Compile Include="manager\Global\man_init\man_init.cs" />
+    <Compile Include="manager\Global\man_init\man_api.cs" />
     <Compile Include="manager\man_pos_prototype\man_pos_prototype_sel.cs" />
     <Compile Include="manager\man_position\man_position_event.cs" />
     <Compile Include="manager\man_pos_temp\man_pos_temp_event.cs" />

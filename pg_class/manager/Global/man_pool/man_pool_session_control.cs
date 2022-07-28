@@ -31,8 +31,8 @@ namespace pg_class
                 {                   
                     pool_.LogOn(Session_Settings);
 
-                    //Повторная инициализация команд с новыми учетными данными
-                    InitCommands();
+					//Повторная инициализация команд с новыми учетными данными
+					InitAPI();
 
                     //Генерируем событие изменения состояния менеджера данных
                     ManagerStateChangeEventArgs e = new ManagerStateChangeEventArgs(eEntity.pool, eManagerState.Connected);
