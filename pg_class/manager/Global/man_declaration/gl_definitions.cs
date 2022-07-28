@@ -528,14 +528,35 @@ namespace pg_class
         /// </summary>
         unit_undefined = 8
     }
-    #endregion
 
-    #region Перечисления типов свойств Шаг №1
+	/// <summary>
+	/// Метод команды используемый для вызова внутренней функции
+	/// </summary>
+	public enum eCommandMetod
+	{
+		/// <summary>
+		/// Вызов функции не возвращающей значение (все методы менящие данные)
+		/// </summary>
+		ExecuteNonQuery,
 
-    /// <summary>
-    /// Перечисление допустимых типов свойств
-    /// </summary>
-    public enum ePropType
+		/// <summary>
+		/// Вызов фуркция возвраающих кортежи (все методы возвращающие данные кроме is_actual)
+		/// </summary>
+		Fill,
+
+		/// <summary>
+		/// Вызов функции возвращающей скалярное значение (методы is_actual и им подобные возвращающие единичное значение)
+		/// </summary>
+		ExecuteScalar
+	}
+	#endregion
+
+	#region Перечисления типов свойств Шаг №1
+
+	/// <summary>
+	/// Перечисление допустимых типов свойств
+	/// </summary>
+	public enum ePropType
     {
         /// <summary>
         /// Свободно определяемое свойство

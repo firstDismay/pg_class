@@ -62,8 +62,11 @@ namespace pg_class
                     Int32 proc_args;
                     pg_argument[] proc_args_list;
                     String proc_argsignature;
+					UInt32 prorettype;
+                    String prorettypename;
+                    Boolean proretset;				  
                     Boolean proc_access;
-
+					
                     NpgsqlCommand cmd;
                     NpgsqlCommandKey cmdk;
 
@@ -84,6 +87,9 @@ namespace pg_class
                         proc_args = Convert.ToInt32(dr["proargs"]);
                         proc_args_list = (pg_argument[])dr["proargslist"];
                         proc_argsignature = Convert.ToString(dr["argsignature"]);
+						prorettype = Convert.ToUInt32(dr["prorettype"]); ;
+                        prorettypename = Convert.ToString(dr["prorettypename"]);
+                        proretset =  Convert.ToBoolean(dr["proretset"]);
                         proc_access = Convert.ToBoolean(dr["access"]);
                         cmd = new NpgsqlCommand();
                         cmd.Connection = CN_local;
@@ -117,7 +123,7 @@ namespace pg_class
                                 }
                             }
                         }
-                        cmdk = new NpgsqlCommandKey(proc_oid, cmd, proc_name, proc_args, proc_argsignature, proc_access);
+                        cmdk = new NpgsqlCommandKey(proc_oid, cmd, proc_name, proc_args, proc_argsignature, prorettype, prorettypename, proretset, proc_access);
                         //cmdk.Prepare();
                         command_list.Add(cmdk);
                     }
