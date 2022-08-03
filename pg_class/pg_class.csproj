@@ -571,7 +571,7 @@
     <Compile Include="manager\man_group\man_group_event.cs" />
     <Compile Include="manager\man_group\man_group_patch.cs" />
     <Compile Include="manager\man_class\man_class_snapshot\man_class_snapshot_sel.cs" />
-    <Compile Include="manager\man_class\man_class_patch.cs" />
+    <Compile Include="manager\man_class\man_class_path.cs" />
     <Compile Include="manager\man_nested_rule\man_pos_temp_rule\man_pos_temp_nested_list_event.cs" />
     <Compile Include="manager\eventargs\Base\PosTemp\PosTempNestedListChangeEventArgs.cs" />
     <Compile Include="manager\eventargs\Base\Role\UserChangeEventArgs.cs" />
