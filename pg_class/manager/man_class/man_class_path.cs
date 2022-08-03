@@ -14,23 +14,16 @@ namespace pg_class
     public partial class manager
     {
         #region ВЫБРАТЬ
-        //*********************************************************************************************
         /// <summary>
         /// Лист объектов path определяющих путь до активного представления класса
         /// </summary>
         public List<class_path> class_act_path_by_id_class(Int64 iid_class)
         {
-
-
             List<class_path> vclass_path_list = new List<class_path>();
             DataTable tbl_vclass_path = TableByName("path2");
-
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
             NpgsqlCommandKey cmdk;
-            //=======================
-            cmdk = CommandByKey("class_act_path");
 
+            cmdk = CommandByKey("class_act_path");
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -42,10 +35,8 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iid_class"].Value = iid_class;
-
             cmdk.Fill(tbl_vclass_path);
             
             class_path vcp;
@@ -87,8 +78,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
             cmdk = CommandByKey("class_act_path");
             if (cmdk != null)
             {
@@ -104,9 +94,7 @@ namespace pg_class
             }
             return Result;
         }
-        //*********************************************************************************************
-
- //*********************************************************************************************
+        
         /// <summary>
         /// Лист объектов path определяющих путь до исторического представления класса
         /// </summary>
@@ -114,11 +102,8 @@ namespace pg_class
         {
             List<class_path> vclass_path_list = new List<class_path>();
             DataTable tbl_vclass_path = TableByName("path2");
-
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
             NpgsqlCommandKey cmdk;
-            //=======================
+
             cmdk = CommandByKey("class_snapshot_path");
 
             if (cmdk != null)
@@ -132,11 +117,9 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iid_class"].Value = iid_class;
             cmdk.Parameters["itimestamp_class"].Value = itimestamp_class;
-
             cmdk.Fill(tbl_vclass_path);
             
             class_path vcp;
@@ -177,8 +160,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+
             cmdk = CommandByKey("class_snapshot_path");
             if (cmdk != null)
             {
@@ -194,7 +176,6 @@ namespace pg_class
             }
             return Result;
         }
-        //*********************************************************************************************
         #endregion
     }
 }

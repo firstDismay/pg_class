@@ -162,6 +162,8 @@
     <Compile Include="manager\Global\man_common\errarg_action.cs" />
     <Compile Include="manager\Global\man_event\man_event.cs" />
     <Compile Include="manager\Global\man_declaration\man_EAN13.cs" />
+    <Compile Include="manager\Global\man_init\man_api_init_commands.cs" />
+    <Compile Include="manager\Global\man_init\man_api_init.cs" />
     <Compile Include="manager\Global\man_pool\man_pool_session_control.cs" />
     <Compile Include="manager\Global\man_pool\pool\pool_session_control.cs" />
     <Compile Include="manager\Global\man_singleton\man_connect.cs" />
@@ -569,7 +571,7 @@
     <Compile Include="manager\man_group\man_group_event.cs" />
     <Compile Include="manager\man_group\man_group_patch.cs" />
     <Compile Include="manager\man_class\man_class_snapshot\man_class_snapshot_sel.cs" />
-    <Compile Include="manager\man_class\man_class_patch.cs" />
+    <Compile Include="manager\man_class\man_class_path.cs" />
     <Compile Include="manager\man_nested_rule\man_pos_temp_rule\man_pos_temp_nested_list_event.cs" />
     <Compile Include="manager\eventargs\Base\PosTemp\PosTempNestedListChangeEventArgs.cs" />
     <Compile Include="manager\eventargs\Base\Role\UserChangeEventArgs.cs" />
@@ -593,7 +595,7 @@
     <Compile Include="manager\man_propertis\pos_temp\Step1_pos_temp_prop\man_pos_temp_prop_event.cs" />
     <Compile Include="manager\man_conception\man_conception_upd.cs" />
     <Compile Include="manager\Global\man_declaration\man_functions.cs" />
-    <Compile Include="manager\Global\man_init\man_init.cs" />
+    <Compile Include="manager\Global\man_init\man_api.cs" />
     <Compile Include="manager\man_pos_prototype\man_pos_prototype_sel.cs" />
     <Compile Include="manager\man_position\man_position_event.cs" />
     <Compile Include="manager\man_pos_temp\man_pos_temp_event.cs" />
@@ -953,7 +955,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="diagrams\" />
     <Folder Include="manager\man_schedule\" />
     <Folder Include="pg_classes\calendar\plan_calendar\" />
     <Folder Include="pg_classes\calendar\plan_given_range_fact\" />

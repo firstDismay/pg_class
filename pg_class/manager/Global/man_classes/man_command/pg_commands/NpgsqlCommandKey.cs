@@ -20,13 +20,16 @@ namespace pg_class.pg_commands
 		/// <summary>
 		/// Основной конструктор класса
 		/// </summary>
-		public NpgsqlCommandKey(UInt32 ProcOID, NpgsqlCommand cmd, String key, Int32 pronargs, String argsignature, Boolean access)
+		public NpgsqlCommandKey(UInt32 ProcOID, NpgsqlCommand cmd, String key, Int32 pronargs, String argsignature, UInt32 prorettype, String prorettypename, Boolean proretset, Boolean access)
 		{
 			procoid_ = ProcOID;
 			cmd_ = cmd;
 			key_ = key;
 			pronargs_ = pronargs;
 			argsignature_ = argsignature;
+			prorettype_ = prorettype;
+			prorettypename_ = prorettypename;
+			proretset_ = proretset;
 			access_ = access;
 		}
 		#endregion
@@ -38,7 +41,49 @@ namespace pg_class.pg_commands
 		private String argsignature_;
 		private Boolean access_;
 		private UInt32 procoid_;
+		private UInt32 prorettype_;
+		private String prorettypename_;
+		private Boolean proretset_;
 
+		/// <summary>
+		/// OID возвращаемого командой типа данных
+		/// </summary>
+		public UInt32 ProRetType { get => prorettype_; }
+
+		/// <summary>
+		/// Наименование возвращаемого командой типа данных
+		/// </summary>
+		public String ProRetTypeName { get => prorettypename_; }
+
+		/// <summary>
+		/// Признак функции возвращающей кортежи зачений
+		/// </summary>
+		public Boolean ProRetSet { get => proretset_; }
+
+
+		/// <summary>
+		/// Метод команды используемый для вызова внутренней функции
+		/// </summary>
+		public eCommandMetod CommandMetod
+		{
+			get
+			{
+				eCommandMetod Result = eCommandMetod.ExecuteScalar;
+
+				if (ProRetSet)
+				{
+					Result = eCommandMetod.Fill;
+				}
+				else
+				{
+					if (ProRetTypeName == "record")
+					{
+						Result = eCommandMetod.ExecuteNonQuery;
+					}
+				}
+				return Result;
+			}
+		}
 
 		/// <summary>
 		/// OID процедуры 

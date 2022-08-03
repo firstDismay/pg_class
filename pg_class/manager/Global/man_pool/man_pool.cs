@@ -35,8 +35,8 @@ namespace pg_class
                     pool_ = new pool();
                     //
                     ManagerStateInstanceSet(eManagerState.Connected);
-                    //
-                    InitCommands();
+					//
+					InitAPI();
                     //Генерируем событие изменения состояния менеджера данных
                     ManagerStateChangeEventArgs e = new ManagerStateChangeEventArgs(eEntity.manager, eManagerState.Connected);
                     manager.OnManagerStateChange(e);

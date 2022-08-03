@@ -14,53 +14,6 @@ namespace pg_class
 {
     public partial class manager
     {
-        #region СТРУКТУРЫ ДЛЯ ВЗАИМОДЕЙСТВИЯ С БД
-
-        /// <summary>
-        /// Лист команд взаимодействия с сервером PostgreSQL
-        /// </summary>
-        private List<NpgsqlCommandKey> command_list;
-
-        /// <summary>
-        /// Лист таблиц команд взаимодействия с сервером PostgreSQL
-        /// </summary>
-        private List<DataTable> datatable_list;
-
-        #endregion
-
-        #region ИНИЦИАЛИЗАЦИЯ КЛАССА ДОСТУПА К ДАННЫМ
-
-        /// <summary>
-        /// Метод инициализации класса
-        /// </summary>
-        protected void InitCommands()
-        {
-            //Вызов события журнала
-            JournalEventArgs me = new JournalEventArgs(0, eEntity.manager, 0, "Инициализация менеджера данных", eAction.Init, eJournalMessageType.information);
-            JournalMessageOnReceived(me);
-
-            //Инициализация подключения к БД конфигурации
-            connect cn = pool_.Connect_Get(true);
-
-            //Вызов события журнала
-            me = new JournalEventArgs(0, eEntity.manager, 0, "Инициализация команд менеджера данных", eAction.Init, eJournalMessageType.information);
-            JournalMessageOnReceived(me);
-            //Инициализация команд работы с БД
-            InitCommand2(cn.CN);
-            cn.UnLock();
-
-            //Инициализация концепций
-            conception_list_state = eStatus.on;
-
-            //Вызов события журнала
-            String msg = String.Format("Инициализация команд менеджера данных завершена, загружено команд: {0}, загружено таблиц: {1}", command_list.Count, datatable_list.Count);
-            me = new JournalEventArgs(0, eEntity.manager, 0, msg, eAction.Init, eJournalMessageType.information);
-            JournalMessageOnReceived(me);
-        }
-
-        #endregion
-
-        #region ИНИЦИАЛИЗАЦИЯ КОМАНД КЛАССА ВЕРСИЯ 4
         /// <summary>
         /// Инициализация команд и таблиц данных менеджера доступа к БД
         /// </summary>
@@ -96,7 +49,7 @@ namespace pg_class
                     base_build_date = Convert.ToDateTime(drbd["date"]);
                 }
                 //Запрос списка процедур API
-                NCM.CommandText = "SELECT * FROM cfg_v_initproc_base;";
+                NCM.CommandText = String.Format("SELECT * FROM cfg_m_initproc_base_{0};", ExpectedVerBD);
                 proc_DT = new DataTable();
                 NDA = new NpgsqlDataAdapter();
                 NDA.SelectCommand = NCM;
@@ -109,8 +62,11 @@ namespace pg_class
                     Int32 proc_args;
                     pg_argument[] proc_args_list;
                     String proc_argsignature;
+					UInt32 prorettype;
+                    String prorettypename;
+                    Boolean proretset;				  
                     Boolean proc_access;
-
+					
                     NpgsqlCommand cmd;
                     NpgsqlCommandKey cmdk;
 
@@ -131,6 +87,9 @@ namespace pg_class
                         proc_args = Convert.ToInt32(dr["proargs"]);
                         proc_args_list = (pg_argument[])dr["proargslist"];
                         proc_argsignature = Convert.ToString(dr["argsignature"]);
+						prorettype = Convert.ToUInt32(dr["prorettype"]); ;
+                        prorettypename = Convert.ToString(dr["prorettypename"]);
+                        proretset =  Convert.ToBoolean(dr["proretset"]);
                         proc_access = Convert.ToBoolean(dr["access"]);
                         cmd = new NpgsqlCommand();
                         cmd.Connection = CN_local;
@@ -164,21 +123,18 @@ namespace pg_class
                                 }
                             }
                         }
-                        cmdk = new NpgsqlCommandKey(proc_oid, cmd, proc_name, proc_args, proc_argsignature, proc_access);
+                        cmdk = new NpgsqlCommandKey(proc_oid, cmd, proc_name, proc_args, proc_argsignature, prorettype, prorettypename, proretset, proc_access);
                         //cmdk.Prepare();
                         command_list.Add(cmdk);
                     }
                 }
-                //**********************************************************
-                //**********************************************************
-                //**********************************************************
                 //ИНИЦИАЛИЗАЦИЯ ТАБЛИЦ КВАНТОВЫХ КЛАССОВ
 
                 //Инициализация листа квантовых таблиц данных
                 datatable_list = new List<DataTable>();
 
                 //NCM.CommandType = CommandType.Text;
-                NCM.CommandText = "SELECT * FROM cfg_v_inittable_base;";
+                NCM.CommandText = String.Format("SELECT * FROM cfg_m_inittable_base_{0};", ExpectedVerBD);
                 proc_DT = new DataTable();
                 NDA.SelectCommand = NCM;
                 NDA.Fill(proc_DT);
@@ -218,6 +174,22 @@ namespace pg_class
                 }
                 trans.Commit();
             }
+            catch (Npgsql.PostgresException pex)
+            {
+                if (pex.SqlState == "42P01" && (pex.Message.Contains("cfg_m_initproc_base_") || pex.Message.Contains("cfg_m_inittable_base")))
+                {
+                    String sb = String.Format("Затребованная клиентом версия API: {0} не поддерживается сервером, дополнительные сведения: {1}", ExpectedVerBD, pex.Message);
+                    
+                    throw new PgManagerException(404, sb, pex.Message);
+                }
+                else
+                {
+					StringBuilder sb = new StringBuilder();
+					sb.Append("Сбой процедуры инициализации команд менеджера данных, дополнительные сведения: ");
+					sb.Append(pex.Message);
+					throw new PgManagerException(1101, sb.ToString(), pex.Message);
+				}
+            }
             catch (Exception ex)
             {
                 try
@@ -232,6 +204,5 @@ namespace pg_class
                 throw new PgManagerException(1101, sb.ToString(), ex.Message);
             }
         }
-        #endregion
     }
 }
