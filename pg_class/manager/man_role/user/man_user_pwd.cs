@@ -16,7 +16,7 @@ namespace pg_class
         /// <summary>
         /// Метод сбрасывает пароль указанного пользователя доступен для администратора
         /// </summary>
-        public user user_pwd_reset(String login, String newpwd)
+        public user user_pwd_reset(String login, String inewpwd1, String inewpwd2)
         {
             user user = null;
             Int32 error;
@@ -37,8 +37,9 @@ namespace pg_class
             }
 
             cmdk.Parameters["ilogin"].Value = login;
-            cmdk.Parameters["inewpwd"].Value = newpwd;
-            cmdk.ExecuteNonQuery();
+            cmdk.Parameters["inewpwd1"].Value = inewpwd1;
+			cmdk.Parameters["inewpwd2"].Value = inewpwd2;
+			cmdk.ExecuteNonQuery();
             
             error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
             desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
@@ -89,7 +90,7 @@ namespace pg_class
         /// <summary>
         /// Метод меняет пароль пользователя доступен для пользователей
         /// </summary>
-        public user user_pwd_set(String login, String oldpwd, String newpwd)
+        public user user_pwd_set(String login, String oldpwd, String inewpwd1, String inewpwd2)
         {
             user user = null;
             Int32 error;
@@ -111,8 +112,9 @@ namespace pg_class
 
             cmdk.Parameters["ilogin"].Value = login;
             cmdk.Parameters["ioldpwd"].Value = oldpwd;
-            cmdk.Parameters["inewpwd"].Value = newpwd;
-            cmdk.ExecuteNonQuery();
+            cmdk.Parameters["inewpwd1"].Value = inewpwd1;
+			cmdk.Parameters["inewpwd2"].Value = inewpwd2;
+			cmdk.ExecuteNonQuery();
 
             error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
             desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
