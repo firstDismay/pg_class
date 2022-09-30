@@ -983,6 +983,8 @@
     <Compile Include="pg_classes\unit_conversion_rules\units\unit.cs" />
     <Compile Include="pg_classes\users\role_user\role_user_entity.cs" />
     <Compile Include="pg_classes\users\role_user\role_user.cs" />
+    <Compile Include="pg_classes\users\user\user_role.cs" />
+    <Compile Include="pg_classes\users\user\user_pwd.cs" />
     <Compile Include="pg_classes\users\user\user_doc_link.cs" />
     <Compile Include="pg_classes\users\user\user_document.cs" />
     <Compile Include="pg_classes\users\role_base\role_base.cs" />
