@@ -455,23 +455,35 @@ namespace pg_class.pg_classes
             }
             return Result;
         }
-
         /// <summary>
         /// Установить пароль пользователя
         /// </summary>
-        public void Set_Pwd(String oldpwd, String newpwd1, String newpwd2)
+        public void pwd_set(String oldpwd, String newpwd1, String newpwd2)
         {
             Manager.user_pwd_set(Login, oldpwd, newpwd1, newpwd1);
         }
+		/// <summary>
+		/// Сбросить пароль пользователя
+		/// </summary>
+		public void pwd_reset( String newpwd1, String newpwd2)
+		{
+			Manager.user_pwd_reset(Login, newpwd1, newpwd1);
+		}
+		/// <summary>
+		/// Метод определяет доступномть смены пароля для указанного пользователя
+		/// </summary>
+		public Boolean pwd_can_change(user usr_change_login)
+		{
+			return Manager.user_pwd_can_change(this, usr_change_login);
+		}
 
-        /// <summary>
-        /// Метод определяет членство пользователя в указанной роли
-        /// </summary>
-        public Boolean is_member_role(role_base vrole, Boolean irecursive)
+		/// <summary>
+		/// Метод определяет членство пользователя в указанной роли
+		/// </summary>
+		public Boolean is_member_role(role_base vrole, Boolean irecursive)
         {
             return Manager.user_is_member_role(this, vrole, irecursive);
         }
-
         /// <summary>
         /// Метод определяет членство пользователя в указанной роли
         /// </summary>
@@ -479,15 +491,6 @@ namespace pg_class.pg_classes
         {
             return Manager.user_is_member_role(this, vrole, irecursive);
         }
-
-        /// <summary>
-        /// Метод определяет доступномть смены пароля для указанного пользователя
-        /// </summary>
-        public Boolean can_change_pwd(user usr_change_login)
-        {
-            return Manager.user_pwd_can_change(this, usr_change_login);
-        }
-
         /// <summary>
         /// Метод удаляет текущую позицию
         /// user_del
