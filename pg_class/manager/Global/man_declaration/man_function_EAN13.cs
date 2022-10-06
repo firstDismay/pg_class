@@ -48,7 +48,6 @@ namespace pg_class
             return Result;
         }
 
-
         /// <summary>
         /// Проверка валидности баркода EAN13
         /// </summary>
@@ -175,8 +174,6 @@ namespace pg_class
 
             return Result;
         }
-
-
         #endregion
     }
 }
