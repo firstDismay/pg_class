@@ -49,8 +49,9 @@ namespace pg_class
                     base_build_date = Convert.ToDateTime(drbd["date"]);
                 }
                 //Запрос списка процедур API
-                NCM.CommandText = String.Format("SELECT * FROM cfg_m_initproc_base_{0};", ExpectedVerBD);
-                proc_DT = new DataTable();
+                //NCM.CommandText = String.Format("SELECT * FROM cfg_m_initproc_base_{0};", ExpectedVerBD);
+				NCM.CommandText = String.Format("SELECT * FROM cfg_v_initproc_base;", ExpectedVerBD);
+				proc_DT = new DataTable();
                 NDA = new NpgsqlDataAdapter();
                 NDA.SelectCommand = NCM;
                 NDA.Fill(proc_DT);
@@ -133,9 +134,9 @@ namespace pg_class
                 //Инициализация листа квантовых таблиц данных
                 datatable_list = new List<DataTable>();
 
-                //NCM.CommandType = CommandType.Text;
-                NCM.CommandText = String.Format("SELECT * FROM cfg_m_inittable_base_{0};", ExpectedVerBD);
-                proc_DT = new DataTable();
+                //NCM.CommandText = String.Format("SELECT * FROM cfg_m_inittable_base_{0};", ExpectedVerBD);
+				NCM.CommandText = String.Format("SELECT * FROM cfg_v_inittable_base;", ExpectedVerBD);
+				proc_DT = new DataTable();
                 NDA.SelectCommand = NCM;
                 NDA.Fill(proc_DT);
                 if (proc_DT.Rows.Count > 0)
