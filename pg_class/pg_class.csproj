@@ -176,10 +176,10 @@
     <Compile Include="manager\eventargs\Base\Calendar\PlanRangeLinkChangeEventArgs.cs" />
     <Compile Include="manager\eventargs\Base\Calendar\PlanRangeChangeEventArgs.cs" />
     <Compile Include="manager\eventargs\Base\Calendar\PlanChangeEventArgs.cs" />
-    <Compile Include="manager\eventargs\Base\Document\DocCategoryChangeEventArgs.cs" />
-    <Compile Include="manager\eventargs\Base\Document\DocLinkChangeEventArgs.cs" />
-    <Compile Include="manager\eventargs\Base\Document\DocFileChangeEventArgs.cs" />
-    <Compile Include="manager\eventargs\Base\Document\DocumentChangeEventArgs.cs" />
+    <Compile Include="manager\eventargs\Base\DocLib\DocCategoryChangeEventArgs.cs" />
+    <Compile Include="manager\eventargs\Base\DocLib\DocFileChangeEventArgs.cs" />
+    <Compile Include="manager\eventargs\Base\DocLib\DocLinkChangeEventArgs.cs" />
+    <Compile Include="manager\eventargs\Base\DocLib\DocumentChangeEventArgs.cs" />
     <Compile Include="manager\eventargs\Base\GlobalProp\GlobalPropAreaValChangeEventArgs.cs" />
     <Compile Include="manager\eventargs\Base\GlobalProp\GlobalPropLinkPosTempPropChangeEventArgs.cs" />
     <Compile Include="manager\eventargs\Base\GlobalProp\GlobalPropLinkClassPropChangeEventArgs.cs" />
