@@ -17,7 +17,7 @@ namespace pg_class
 		/// <summary>
 		/// Метод удаляет указаную ссылку документа
 		/// </summary>
-		public void doc_link_del(Int64 iid_document, Int64 iid_doc_link)
+		public void doc_link_del( Int64 iid_doc_link)
 		{
 			Int32 error;
 			String desc_error;
@@ -37,8 +37,7 @@ namespace pg_class
 			}
 
 			doc_link doc_link = doc_link_by_id(iid_doc_link);
-
-			cmdk.Parameters["iid_document"].Value = iid_document;
+			
 			cmdk.Parameters["iid_doc_link"].Value = iid_doc_link;
 			cmdk.ExecuteNonQuery();
 

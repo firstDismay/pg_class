@@ -288,7 +288,7 @@ namespace pg_class.pg_classes
         /// </summary>
         public void Del()
         {
-            Manager.doc_link_del(id_document, id);
+            Manager.doc_link_del(id);
         }
 
         /// <summary>
