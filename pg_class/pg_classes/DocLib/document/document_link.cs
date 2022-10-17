@@ -104,7 +104,7 @@ namespace pg_class.pg_classes
         /// </summary>
         public void doc_link_del(Int64 iid_doc_link)
         {
-            Manager.doc_link_del(Id, iid_doc_link);
+            Manager.doc_link_del(iid_doc_link);
         }
 
         /// <summary>
@@ -112,7 +112,7 @@ namespace pg_class.pg_classes
         /// </summary>
         public void doc_link_del(doc_link Doc_link)
         {
-            Manager.doc_link_del(Id, Doc_link.Id);
+            Manager.doc_link_del(Doc_link.Id);
         }
 
         /// <summary>
