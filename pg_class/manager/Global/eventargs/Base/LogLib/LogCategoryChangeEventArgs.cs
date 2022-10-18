@@ -1,0 +1,43 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using pg_class.pg_classes;
+
+namespace pg_class
+{
+    /// <summary>
+    /// Аргумент событий изменения категории записей журнала
+    /// </summary>
+    public class LogCategoryChangeEventArgs : EventArgs
+    {
+        #region КОНСТРУКТОРЫ КЛАССА
+        /// <summary>
+        /// Основной конструктор класса аргумента события
+        /// </summary>
+        public LogCategoryChangeEventArgs(log_category LogCategory, eAction Action) : base()
+        {
+            action = Action;
+            if (LogCategory != null)
+            {
+                log_category = LogCategory;
+            }
+        }
+        #endregion
+
+        #region СВОЙСТВА КЛАССА
+        eAction action;
+		log_category log_category;
+
+        /// <summary>
+        /// Перечисление определяющее тип действия выполняемого методом доступа к БД
+        /// </summary>
+        public eAction Action { get => action;}
+        /// <summary>
+        /// Объект подвергшийся модификации
+        /// </summary>
+        public log_category LogCategory { get => log_category; }
+        #endregion
+    }
+}
