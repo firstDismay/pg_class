@@ -176,6 +176,9 @@
     <Compile Include="manager\eventargs\Base\Calendar\PlanRangeLinkChangeEventArgs.cs" />
     <Compile Include="manager\eventargs\Base\Calendar\PlanRangeChangeEventArgs.cs" />
     <Compile Include="manager\eventargs\Base\Calendar\PlanChangeEventArgs.cs" />
+    <Compile Include="manager\eventargs\Base\LogLib\LogCategoryChangeEventArgs.cs" />
+    <Compile Include="manager\eventargs\Base\LogLib\LogLinkChangeEventArgs.cs" />
+    <Compile Include="manager\eventargs\Base\LogLib\LogChangeEventArgs.cs" />
     <Compile Include="manager\eventargs\Base\DocLib\DocCategoryChangeEventArgs.cs" />
     <Compile Include="manager\eventargs\Base\DocLib\DocFileChangeEventArgs.cs" />
     <Compile Include="manager\eventargs\Base\DocLib\DocLinkChangeEventArgs.cs" />
@@ -216,6 +219,8 @@
     <Compile Include="manager\Global\man_classes\NPGSQL_TypeJsonClass\object_add\json_object_prop_val.cs" />
     <Compile Include="manager\Global\man_classes\NPGSQL_TypeJsonClass\object_add\json_object_add_parameters.cs" />
     <Compile Include="manager\Global\man_classes\NPGSQL_TypeJsonClass\SearchObjectMethod\json_search_metod_object.cs" />
+    <Compile Include="manager\Global\man_classes\NPGSQL_TypeMapClass\pg_class\pg_clog_category.cs" />
+    <Compile Include="manager\Global\man_classes\NPGSQL_TypeMapClass\pg_class\pg_clog_link.cs" />
     <Compile Include="manager\Global\man_declaration\man_def_doc_lib.cs" />
     <Compile Include="manager\Global\man_declaration\man_def_manager.cs" />
     <Compile Include="manager\Global\man_declaration\man_def_export.cs" />
@@ -748,6 +753,15 @@
     <Compile Include="pg_classes\conception\con_con_prop_data_type.cs" />
     <Compile Include="pg_classes\conception\con_unit_conversion_rules.cs" />
     <Compile Include="pg_classes\conception\con_ICloneable.cs" />
+    <Compile Include="pg_classes\log\log\log.cs" />
+    <Compile Include="pg_classes\log\log\log_category.cs" />
+    <Compile Include="pg_classes\log\log\log_entity.cs" />
+    <Compile Include="pg_classes\log\log\log_link.cs" />
+    <Compile Include="pg_classes\log\log_category\log_category.cs" />
+    <Compile Include="pg_classes\log\log_category\log_category_log.cs" />
+    <Compile Include="pg_classes\log\log_category\log_category_entity.cs" />
+    <Compile Include="pg_classes\log\log_link\log_link.cs" />
+    <Compile Include="pg_classes\log\log_link\log_link_entity.cs" />
     <Compile Include="pg_classes\DocLib\document\document_category.cs" />
     <Compile Include="pg_classes\DocLib\document\document_document.cs" />
     <Compile Include="pg_classes\DocLib\document\document_link.cs" />
