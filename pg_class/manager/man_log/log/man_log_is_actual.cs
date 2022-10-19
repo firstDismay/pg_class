@@ -9,20 +9,21 @@ using pg_class.pg_commands;
 using pg_class.pg_exceptions;
 using pg_class.pg_classes;
 using System.Security.Cryptography;
+using System.IO;
 
 namespace pg_class
 {
 	public partial class manager
 	{
 		/// <summary>
-		/// Метод определяет актуальность состояния ссылки документа
+		/// Метод определяет актуальность состояния записи журнала
 		/// </summary>
-		public eEntityState doc_link_is_actual(Int64 iid)
+		public eEntityState log_is_actual(Int64 iid, DateTime itimestamp)
 		{
 			Int32 is_actual = 3;
 			NpgsqlCommandKey cmdk;
 
-			cmdk = CommandByKey("doc_link_is_actual");
+			cmdk = CommandByKey("log_is_actual");
 			if (cmdk != null)
 			{
 				if (!cmdk.Access)
@@ -36,30 +37,31 @@ namespace pg_class
 			}
 
 			cmdk.Parameters["iid"].Value = iid;
+			cmdk.Parameters["itimestamp"].Value = itimestamp;
 			is_actual = (Int32)cmdk.ExecuteScalar();
 
 			return (eEntityState)is_actual;
 		}
 
 		/// <summary>
-		/// Метод определяет актуальность состояния категории документов
+		/// Метод определяет актуальность состояния категории записей журнала
 		/// </summary>
-		public eEntityState doc_link_is_actual(doc_link Doc_link)
+		public eEntityState log_is_actual(log Log)
 		{
-			return doc_link_is_actual(Doc_link.Id);
+			return log_is_actual(Log.Id, Log.Timestamp);
 		}
 
 		//ACCESS
 		/// <summary>
 		/// Проверка прав доступа к методу
 		/// </summary>
-		public Boolean doc_link_is_actual(out eAccess Access)
+		public Boolean log_is_actual(out eAccess Access)
 		{
 			Boolean Result = false;
 			Access = eAccess.NotFound;
 			NpgsqlCommandKey cmdk;
 
-			cmdk = CommandByKey("doc_link_is_actual");
+			cmdk = CommandByKey("log_is_actual");
 			if (cmdk != null)
 			{
 				Result = cmdk.Access;

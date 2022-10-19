@@ -830,10 +830,58 @@ namespace pg_class
             messagetype = eJournalMessageType.success;
         }
 
-        /// <summary>
-        /// Дополнительный конструктор для событий методов планов
-        /// </summary>
-        public JournalEventArgs(PlanChangeEventArgs e) : this()
+		/// <summary>
+		/// Дополнительный конструктор для событий методов категории документов
+		/// </summary>
+		public JournalEventArgs(LogCategoryChangeEventArgs e) : this()
+		{
+			action = e.Action;
+			if (e.LogCategory != null)
+			{
+				id = e.LogCategory.Id;
+			}
+			entityname = eEntity.log_category;
+			errorid = 0;
+			errordesc = "Успешное завершение процедуры";
+			messagetype = eJournalMessageType.success;
+		}
+
+		/// <summary>
+		/// Дополнительный конструктор для событий методов записей журнала
+		/// </summary>
+		public JournalEventArgs(LogChangeEventArgs e) : this()
+		{
+			action = e.Action;
+			if (e.Log != null)
+			{
+				id = e.Log.Id;
+			}
+			entityname = eEntity.log;
+			errorid = 0;
+			errordesc = "Успешное завершение процедуры";
+			messagetype = eJournalMessageType.success;
+		}
+		
+		/// <summary>
+		/// Дополнительный конструктор для событий методов ссылок записей журнала
+		/// </summary>
+		public JournalEventArgs(LogLinkChangeEventArgs e) : this()
+		{
+			action = e.Action;
+			if (e.LogLink != null)
+			{
+				id = e.LogLink.Id;
+			}
+			entityname = eEntity.log_link;
+			errorid = 0;
+			errordesc = "Успешное завершение процедуры";
+			messagetype = eJournalMessageType.success;
+		}
+
+		/// <summary>
+		/// Дополнительный конструктор для событий методов планов
+		/// </summary>
+		public JournalEventArgs(PlanChangeEventArgs e) : this()
         {
             action = e.Action;
             if (e.Plan != null)
