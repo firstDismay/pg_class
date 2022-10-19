@@ -53,7 +53,7 @@ namespace pg_class.pg_classes
         }
 
         /// <summary>
-        /// Полный конструктор класса для возврата данных существующих записей через сурогатный класс
+        /// Полный конструктор класса для возврата данных существующих записей через класс композитного типа
         /// </summary>
         public doc_link(pg_vdoc_link dl) : this()
         {
@@ -178,7 +178,7 @@ namespace pg_class.pg_classes
 
 
         /// <summary>
-        /// Перечисление ссылочной сущности определяющей тип ссылочного объекта
+        /// Перечисление ссылающейся сущности определяющей тип ссылочного объекта
         /// </summary>
         public eEntity Link_e_entity
         {
@@ -189,17 +189,17 @@ namespace pg_class.pg_classes
         }
 
         /// <summary>
-        /// Идентификатор ссылочной сущности
+        /// Идентификатор ссылающейся сущности
         /// </summary>
         public Int32 Link_id_entity { get => id_entity; }
 
         /// <summary>
-        /// Идентификатор экземпляра ссылочной сущности
+        /// Идентификатор экземпляра ссылающейся сущности
         /// </summary>
         public Int64 Link_id_entity_instance { get => id_entity_instance; }
 
         /// <summary>
-        /// Дополнительный идентификатор ссылочной сущности
+        /// Дополнительный идентификатор ссылающейся сущности
         /// </summary>
         public Int64 Link_id_sub_entity_instance { get => id_sub_entity_instance; }
 

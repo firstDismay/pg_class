@@ -9,20 +9,22 @@ using pg_class.pg_commands;
 using pg_class.pg_exceptions;
 using pg_class.pg_classes;
 using System.Security.Cryptography;
+using System.IO;
 
 namespace pg_class
 {
 	public partial class manager
 	{
 		/// <summary>
-		/// Метод определяет актуальность состояния ссылки документа
+		/// Метод удаляет запись журнала указанный по идентификатору
 		/// </summary>
-		public eEntityState doc_link_is_actual(Int64 iid)
+		public void log_del(Int64 iid_log)
 		{
-			Int32 is_actual = 3;
+			Int32 error;
+			String desc_error;
 			NpgsqlCommandKey cmdk;
-
-			cmdk = CommandByKey("doc_link_is_actual");
+			
+			cmdk = CommandByKey("log_del");
 			if (cmdk != null)
 			{
 				if (!cmdk.Access)
@@ -35,31 +37,41 @@ namespace pg_class
 				throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
 			}
 
-			cmdk.Parameters["iid"].Value = iid;
-			is_actual = (Int32)cmdk.ExecuteScalar();
+			//Запрос удаляемой сущности
+			log log = log_by_id(iid_log);
 
-			return (eEntityState)is_actual;
-		}
+			cmdk.Parameters["iid_log"].Value = iid_log;
+			cmdk.ExecuteNonQuery();
 
-		/// <summary>
-		/// Метод определяет актуальность состояния категории документов
-		/// </summary>
-		public eEntityState doc_link_is_actual(doc_link Doc_link)
-		{
-			return doc_link_is_actual(Doc_link.Id);
+			error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
+			desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
+			if (error > 0)
+			{
+				//Вызов события журнала
+				JournalEventArgs me = new JournalEventArgs(iid_log, eEntity.log, error, desc_error, eAction.Delete, eJournalMessageType.error);
+				JournalMessageOnReceived(me);
+				throw new PgDataException(error, desc_error);
+			}
+
+			//Генерируем событие изменения концепции
+			if (log != null)
+			{
+				LogChangeEventArgs e = new LogChangeEventArgs(log, eAction.Delete);
+				LogOnChange(e);
+			}
 		}
 
 		//ACCESS
 		/// <summary>
 		/// Проверка прав доступа к методу
 		/// </summary>
-		public Boolean doc_link_is_actual(out eAccess Access)
+		public Boolean log_del(out eAccess Access)
 		{
 			Boolean Result = false;
 			Access = eAccess.NotFound;
 			NpgsqlCommandKey cmdk;
 
-			cmdk = CommandByKey("doc_link_is_actual");
+			cmdk = CommandByKey("log_del");
 			if (cmdk != null)
 			{
 				Result = cmdk.Access;

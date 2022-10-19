@@ -193,11 +193,11 @@ namespace pg_class.pg_classes
         {
             if (Extended)
             {
-                return Manager.document_ext_by_msk_name_from_conception(iname, Id);
+                return Manager.document_ext_by_msk_name_id_conception(iname, Id);
             }
             else
             {
-                return Manager.document_by_msk_name_from_conception(iname, Id);
+                return Manager.document_by_msk_name_id_conception(iname, Id);
             }
         }
         //*************************************************************************************

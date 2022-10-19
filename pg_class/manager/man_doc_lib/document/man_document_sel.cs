@@ -1117,7 +1117,7 @@ namespace pg_class
         /// <summary>
         /// Лист документов концепции по маске имени документа
         /// </summary>
-        public List<document> document_by_msk_name_from_conception(String iname, Int64 iid_conception)
+        public List<document> document_by_msk_name_id_conception(String iname, Int64 iid_conception)
         {
             List<document> entity_list = new List<document>();
 
@@ -1127,7 +1127,7 @@ namespace pg_class
             NpgsqlCommandKey cmdk;
 
             //=======================
-            cmdk = CommandByKey("document_by_msk_name_from_conception");
+            cmdk = CommandByKey("document_by_msk_name_id_conception");
 
             if (cmdk != null)
             {
@@ -1163,14 +1163,14 @@ namespace pg_class
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
-        public Boolean document_by_msk_name_from_conception(out eAccess Access)
+        public Boolean document_by_msk_name_id_conception(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
             //=======================
             //=======================
-            cmdk = CommandByKey("document_by_msk_name_from_conception");
+            cmdk = CommandByKey("document_by_msk_name_id_conception");
             if (cmdk != null)
             {
                 Result = cmdk.Access;
@@ -1190,7 +1190,7 @@ namespace pg_class
         /// <summary>
         /// Лист документов категории по маске имени документа
         /// </summary>
-        public List<document> document_by_msk_name_from_category(String iname, Int64 iid_category)
+        public List<document> document_by_msk_name_id_category(String iname, Int64 iid_category)
         {
             List<document> entity_list = new List<document>();
 
@@ -1200,7 +1200,7 @@ namespace pg_class
             NpgsqlCommandKey cmdk;
 
             //=======================
-            cmdk = CommandByKey("document_by_msk_name_from_category");
+            cmdk = CommandByKey("document_by_msk_name_id_category");
 
             if (cmdk != null)
             {
@@ -1236,14 +1236,14 @@ namespace pg_class
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
-        public Boolean document_by_msk_name_from_category(out eAccess Access)
+        public Boolean document_by_msk_name_id_category(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
             //=======================
             //=======================
-            cmdk = CommandByKey("document_by_msk_name_from_category");
+            cmdk = CommandByKey("document_by_msk_name_id_category");
             if (cmdk != null)
             {
                 Result = cmdk.Access;
