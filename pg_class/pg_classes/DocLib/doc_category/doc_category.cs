@@ -11,7 +11,7 @@ using System.Security.Cryptography;
 namespace pg_class.pg_classes
 {
     /// <summary>
-    /// Класс файла документов 
+    /// Класс категории документов
     /// </summary>
     public partial class doc_category
     {
@@ -92,17 +92,17 @@ namespace pg_class.pg_classes
         private DateTime timestamp;
 
         /// <summary>
-        /// Идентификатор категории документов
+        /// Идентификатор категории
         /// </summary>
         public Int64 Id { get => id; }
 
         /// <summary>
-        /// Идентификатор концепции документа
+        /// Идентификатор концепции
         /// </summary>
         public Int64 Id_conception { get => id_conception; }
         
         /// <summary>
-        /// Наименование категории документов
+        /// Наименование категории
         /// </summary>
         public String Name
         {
@@ -142,7 +142,7 @@ namespace pg_class.pg_classes
         }
 
         /// <summary>
-        /// Описание категории документв
+        /// Описание категории
         /// </summary>
         public String Desc
         {
@@ -160,11 +160,9 @@ namespace pg_class.pg_classes
                     }
                     desc = value;
                     on_change = true;
-
                 }
             }
         }
-
 
         /// <summary>
         /// Максимально допустимая длинна строкового поля
@@ -192,7 +190,6 @@ namespace pg_class.pg_classes
             {
                 return on;
             }
-            
             set
             {
                 if (on != value)
@@ -339,7 +336,7 @@ namespace pg_class.pg_classes
         #region МЕТОДЫ КЛАССА
 
         /// <summary>
-        /// Свойство определяет актуальность текущего состояния категории документа
+        /// Свойство определяет актуальность текущего состояния категории
         /// </summary>
         public eEntityState Is_actual()
         {
@@ -348,7 +345,7 @@ namespace pg_class.pg_classes
 
 
         /// <summary>
-        /// Обновление категории документа в БД
+        /// Обновление категории документов в БД
         /// </summary>
         public void Update()
         {
@@ -392,8 +389,7 @@ namespace pg_class.pg_classes
         }
 
         /// <summary>
-        /// удаление документа и вложенных файлов
-        /// group_del
+        /// Удаление категории
         /// </summary>
         public void Del()
         {
@@ -429,6 +425,5 @@ namespace pg_class.pg_classes
             return name;
         }
         #endregion
-
     }
 }

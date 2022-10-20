@@ -124,12 +124,12 @@ namespace pg_class.pg_classes
         public String Md5 { get => md5; }
 
         /// <summary>
-        /// Идентификатор концепции документа
+        /// Идентификатор концепции
         /// </summary>
         public Int64 Id_conception { get => id_conception; }
 
         /// <summary>
-        /// Каталог документа в структуре концепции
+        /// Каталог документа в каталоге концепции
         /// </summary>
         public Int32 Catalog { get => catalog; }
 
@@ -329,7 +329,6 @@ namespace pg_class.pg_classes
                 return selectedimagekey;
             }
         }
-
         #endregion
 
         #region МЕТОДЫ КЛАССА

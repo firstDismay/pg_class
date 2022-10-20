@@ -11,7 +11,7 @@ using System.Security.Cryptography;
 namespace pg_class.pg_classes
 {
     /// <summary>
-    /// Класс файла документов 
+    /// Класс ссылка документа
     /// </summary>
     public partial class doc_link
     {
@@ -100,7 +100,7 @@ namespace pg_class.pg_classes
         public Int64 Id { get => id; }
 
         /// <summary>
-        /// Идентификатор концепции документа
+        /// Идентификатор концепции
         /// </summary>
         public Int64 Id_conception { get => id_conception; }
 
@@ -110,7 +110,7 @@ namespace pg_class.pg_classes
         public Int64 Id_document { get => id_document; }
 
         /// <summary>
-        /// Каталог документа в структуре концепции
+        /// Идентификатор категории документа
         /// </summary>
         public Int64 Id_category { get => id_category; }
 
@@ -141,7 +141,6 @@ namespace pg_class.pg_classes
                 return result;
             }
         }
-        
 
         /// <summary>
         /// Регистрационный номер документа
@@ -241,18 +240,16 @@ namespace pg_class.pg_classes
         #endregion
 
         #region МЕТОДЫ КЛАССА
-
         /// <summary>
-        /// Свойство определяет актуальность текущего состояния документа
+        /// Свойство определяет актуальность текущего состояния ссылки
         /// </summary>
         public eEntityState Is_actual()
         {
             return Manager.doc_link_is_actual(id);
         }
-
         
         /// <summary>
-        /// Обновление группы из БД
+        /// Обновление ссылки из БД
         /// </summary>
         public Boolean Refresh()
         {
@@ -283,8 +280,7 @@ namespace pg_class.pg_classes
         }
 
         /// <summary>
-        /// удаление ссылки документа
-        /// doc_link_del
+        /// удаление ссылки
         /// </summary>
         public void Del()
         {
@@ -335,16 +331,6 @@ namespace pg_class.pg_classes
             }
             return Result;
         }
-
-        /// <summary>
-        /// Значение свойства типа ссылка установить
-        /// </summary>
-        public void value_set_instance(Int64 iid_entity_instance, Int64 iid_sub_entity_instance)
-        {
-            id_entity_instance = iid_entity_instance;
-            id_sub_entity_instance = iid_sub_entity_instance;
-        }
-
         #endregion
 
         #region МЕТОДЫ ДЛЯ РАБОТЫ С ФАЙЛАМИ ДОКУМЕНТА
@@ -374,6 +360,5 @@ namespace pg_class.pg_classes
             return name;
         }
         #endregion
-
     }
 }

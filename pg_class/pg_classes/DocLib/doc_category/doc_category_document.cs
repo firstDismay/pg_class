@@ -10,10 +10,10 @@ using System.Security.Cryptography;
 
 namespace pg_class.pg_classes
 {
-    /// <summary>
-    /// Класс файла документов 
-    /// </summary>
-    public partial class doc_category
+	/// <summary>
+	/// Класс категории документов
+	/// </summary>
+	public partial class doc_category
     {
         #region МЕТОДЫ РАБОТЫ С ДОКУМЕНТАМИ
 
@@ -150,7 +150,6 @@ namespace pg_class.pg_classes
                                      iname, idesc, iregnum, iregdate,
                                      Class_prop);
         }
-        //*********************************************************************************************
         #endregion
 
         #region УДАЛИТЬ
@@ -169,14 +168,11 @@ namespace pg_class.pg_classes
         {
             Manager.document_del(Document.Id);
         }
-        //*************************************************************************************
         #endregion
 
         #region ВЫБРАТЬ
         /// <summary>
-        /// Лист документов по идентификатору концепции
-        /// document_ext_by_id_conception
-        /// document_by_id_conception
+        /// Лист документов категории
         /// </summary>
         public List<document> document_list_get(Boolean Extended = false)
         {
@@ -189,14 +185,11 @@ namespace pg_class.pg_classes
                 return Manager.document_by_id_category(Id);
             }
         }
-        //*************************************************************************************
 
-        /// <summary>
-        /// Лист документов концепции по маске имени документов
-        /// document_ext_by_name
-        /// document_by_name
-        /// </summary>
-        public List<document> document_by_name(String iname, Boolean Extended = false)
+		/// <summary>
+		/// Лист документов категории по маске имени документов
+		/// </summary>
+		public List<document> document_by_name(String iname, Boolean Extended = false)
         {
             if (Extended)
             {
@@ -207,7 +200,6 @@ namespace pg_class.pg_classes
                 return Manager.document_by_msk_name_id_category(iname, Id);
             }
         }
-        //*************************************************************************************
         #endregion
 
         #region СЛУЖЕБНЫЕ МЕТОДЫ БИБЛИОТЕКИ ДОКУМЕНТОВ
