@@ -49,7 +49,14 @@ namespace pg_class
 			cmdk.Parameters["ititle"].Value = ititle;
 			cmdk.Parameters["imessage"].Value = imessage;
 			cmdk.Parameters["iclass_body"].Value = iclass_body;
-			cmdk.Parameters["ibody"].Value = ibody;
+			if (ibody != null)
+			{
+				cmdk.Parameters["ibody"].Value = ibody;
+			}
+			else
+			{
+				cmdk.Parameters["ibody"].Value = DBNull.Value;
+			}
 			cmdk.ExecuteNonQuery();
 
 			error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);

@@ -43,13 +43,10 @@ namespace pg_class.pg_classes
                     id_conception = (Int64)row["id_conception"];
                     id_category = (Int64)row["id_category"];
 					name_category = (String)row["name_category"];
-					name_category_len = row.Table.Columns["name_category"].MaxLength;
-					level_category = (Int32)row["level"];
+					level_category = (Int32)row["level_category"];
 
 					title = (String)row["title"];
-					title_len = row.Table.Columns["title"].MaxLength;
 					message = (String)row["message"];
-					message_len = row.Table.Columns["message"].MaxLength;
 					class_body = (String)row["class_body"];
 					if (!DBNull.Value.Equals(row["body"]))
                     {
@@ -74,13 +71,10 @@ namespace pg_class.pg_classes
         private Int64 id_conception = 0;
         private Int64 id_category;
 		private String name_category;
-		private Int32 name_category_len;
 		private Int32 level_category;
 
         private String title;
-        private Int32 title_len;
         private String message;
-		private Int32 message_len;
 		private String class_body;
         private String body;
 
@@ -130,11 +124,6 @@ namespace pg_class.pg_classes
 		public String Name_category { get => name_category; }
 
 		/// <summary>
-		/// Максимально допустимая длинна строкового поля
-		/// </summary>
-		public Int32 Name_category_len { get => name_category_len; }
-
-		/// <summary>
 		/// Уровень категории записи журнала
 		/// </summary>
 		public Int32 Level_category { get => level_category; }
@@ -152,21 +141,12 @@ namespace pg_class.pg_classes
             {
                 if (title != value)
                 {
-                    if (value.Length > title_len)
-                    {
-                        value = value.Substring(0, title_len);
-                    }
 					title = value;
                     on_change = true;
                 }
             }
         }
 
-        /// <summary>
-        /// Максимально допустимая длинна строкового поля
-        /// </summary>
-        public Int32 Title_len { get => title_len; }
-        
         /// <summary>
         /// Сообщение записи журнала
         /// </summary>
@@ -180,20 +160,11 @@ namespace pg_class.pg_classes
             {
                 if (message != value)
                 {
-                    if (value.Length > message_len)
-                    {
-                        value = value.Substring(0, message_len);
-                    }
 					message = value;
                     on_change = true;
                 }
             }
         }
-
-        /// <summary>
-        /// Максимально допустимая длинна строкового поля
-        /// </summary>
-        public Int32 Message_len { get => message_len; }
 
 		/// <summary>
 		/// Класс сообщения
@@ -326,7 +297,6 @@ namespace pg_class.pg_classes
                 Manager.log_upd(this);
                 Refresh();
                 on_change = false;
-
             }
         }
 
@@ -349,12 +319,9 @@ namespace pg_class.pg_classes
 						id_conception = temp.Id_conception;
 						id_category = temp.Id_category;
 						name_category = temp.Name_category;
-						name_category_len = temp.Name_category_len;
 						level_category = temp.Level_category;
 						title = temp.Title;
-						title_len = temp.Title_len;
 						message = temp.Message;
-						message_len = temp.Message_len;
 						class_body = temp.Class_body;
 						body = temp.Body;
 						user_author = temp.User_author;

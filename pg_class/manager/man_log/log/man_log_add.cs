@@ -47,8 +47,16 @@ namespace pg_class
 			cmdk.Parameters["idatetime"].Value = idatetime;
 
 			cmdk.Parameters["ititle"].Value = ititle;
+			cmdk.Parameters["imessage"].Value = imessage;
 			cmdk.Parameters["iclass_body"].Value = iclass_body;
-			cmdk.Parameters["ibody"].Value = ibody;
+			if (ibody != null)
+			{
+				cmdk.Parameters["ibody"].Value = ibody;
+			}
+			else
+			{
+				cmdk.Parameters["ibody"].Value = DBNull.Value;
+			}
 			
 			cmdk.Parameters["iid_entity"].Value = iid_entity;
 			cmdk.Parameters["iid_entity_instance"].Value = iid_entity_instance;

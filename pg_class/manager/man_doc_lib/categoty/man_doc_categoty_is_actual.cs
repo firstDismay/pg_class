@@ -14,7 +14,7 @@ namespace pg_class
 	public partial class manager
 	{
 		/// <summary>
-		/// Метод определяет актуальность состояния категории документов
+		/// Метод определяет актуальность состояния категории
 		/// </summary>
 		public eEntityState doc_category_is_actual(Int64 iid, DateTime itimestamp)
 		{

@@ -72,10 +72,36 @@ namespace Test
             comboBox1.DataSource = NEW_pg_class.Conception_list;
             NEW_pg_class.Info.Current_Configurator = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
 
-            ///ИЗВРАЩАИТЬСЯ ТУТ
-            ///
+			///ИЗВРАЩАИТЬСЯ ТУТ
+			///
 
-            global_prop gp = NEW_pg_class.global_prop_by_id(33);
+			//log_category lg = NEW_pg_class.log_category_add(107, "Тестовая категория сообщений3", "Тестовая категория сообщений", 0, true);
+
+			log_category lg = NEW_pg_class.log_category_by_id(2);
+            object_general oj = NEW_pg_class.object_by_id(83212);
+
+            object_general oj2 = NEW_pg_class.object_by_id(62674);
+
+
+			DateTime dt = DateTime.Now;
+
+			log l = lg.log_add("Иванов Д.Ю.", dt, "Test", "Тестовое сообщение журнала", "first", null, oj);
+
+            l.log_link_add(oj2);
+			l.log_link_del(oj2);
+
+
+			l.Title = "Тестовая категория номер 5";
+            l.Update();
+            l.Refresh();
+            
+
+            lg.Refresh();
+            lg.Name = "Тестовая категория сообщений30";
+            lg.Update();
+            
+
+			global_prop gp = NEW_pg_class.global_prop_by_id(33);
 
             List<SearchMetodObject> sm = gp.search_method_list_get();
 

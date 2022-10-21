@@ -13,18 +13,18 @@ namespace pg_class.pg_classes
     /// <summary>
     /// Класс файла документов 
     /// </summary>
-    public partial class doc_category
+    public partial class log_category
     {
 		#region ДОБАВИТЬ
 
 		/// <summary>
 		/// Метод добавляет новую запись журнала
 		/// </summary>
-		public log log_add(Int64 iid_category, String iuser_author, DateTime idatetime,
+		public log log_add(String iuser_author, DateTime idatetime,
 									 String ititle, String imessage, String iclass_body, String ibody,
 									 Int64 iid_entity, Int64 iid_entity_instance, Int64 iid_sub_entity_instance)
         {
-            return Manager.log_add(iid_category, iuser_author, idatetime,
+            return Manager.log_add(id, iuser_author, idatetime,
 									 ititle, imessage, iclass_body, ibody,
 									 iid_entity, iid_entity_instance, iid_sub_entity_instance);
         }
@@ -32,11 +32,11 @@ namespace pg_class.pg_classes
 		/// <summary>
 		/// Метод добавляет новую запись журнала
 		/// </summary>
-		public log log_add(Int64 iid_category, String iuser_author, DateTime idatetime,
+		public log log_add(String iuser_author, DateTime idatetime,
 									 String ititle, String imessage, String iclass_body, String ibody,
 									 user User)
 		{
-			return Manager.log_add(iid_category, iuser_author, idatetime,
+			return Manager.log_add(id, iuser_author, idatetime,
 									 ititle, imessage, iclass_body, ibody,
 									 User.EntityID, User.Id, -1);
 		}
@@ -44,11 +44,11 @@ namespace pg_class.pg_classes
 		/// <summary>
 		/// Метод добавляет новую запись журнала
 		/// </summary>
-		public log log_add(Int64 iid_category, String iuser_author, DateTime idatetime,
+		public log log_add(String iuser_author, DateTime idatetime,
 									 String ititle, String imessage, String iclass_body, String ibody,
 									 pos_temp Pos_temp)
 		{
-			return Manager.log_add(iid_category, iuser_author, idatetime,
+			return Manager.log_add(id, iuser_author, idatetime,
 									 ititle, imessage, iclass_body, ibody,
 									 Pos_temp.EntityID, Pos_temp.Id, -1);
 		}
@@ -56,11 +56,11 @@ namespace pg_class.pg_classes
 		/// <summary>
 		/// Метод добавляет новую запись журнала
 		/// </summary>
-		public log log_add(Int64 iid_category, String iuser_author, DateTime idatetime,
+		public log log_add(String iuser_author, DateTime idatetime,
 									 String ititle, String imessage, String iclass_body, String ibody,
 									 pos_temp_prop Pos_temp_prop)
 		{
-			return Manager.log_add(iid_category, iuser_author, idatetime,
+			return Manager.log_add(id, iuser_author, idatetime,
 									 ititle, imessage, iclass_body, ibody,
 									 Pos_temp_prop.EntityID, Pos_temp_prop.Id, -1);
 		}
@@ -68,11 +68,11 @@ namespace pg_class.pg_classes
 		/// <summary>
 		/// Метод добавляет новую запись журнала
 		/// </summary>
-		public log log_add(Int64 iid_category, String iuser_author, DateTime idatetime,
+		public log log_add(String iuser_author, DateTime idatetime,
 									 String ititle, String imessage, String iclass_body, String ibody,
 									 position Position)
 		{
-			return Manager.log_add(iid_category, iuser_author, idatetime,
+			return Manager.log_add(id, iuser_author, idatetime,
 									 ititle, imessage, iclass_body, ibody,
 									 Position.EntityID, Position.Id, -1);
 		}
@@ -80,11 +80,11 @@ namespace pg_class.pg_classes
 		/// <summary>
 		/// Метод добавляет новую запись журнала
 		/// </summary>
-		public log log_add(Int64 iid_category, String iuser_author, DateTime idatetime,
+		public log log_add(String iuser_author, DateTime idatetime,
 									 String ititle, String imessage, String iclass_body, String ibody,
 									 position_prop Position_prop)
 		{
-			return Manager.log_add(iid_category, iuser_author, idatetime,
+			return Manager.log_add(id, iuser_author, idatetime,
 									 ititle, imessage, iclass_body, ibody,
 									 Position_prop.EntityID, Position_prop.Id_position_prop, Position_prop.Id_position_carrier);
 		}
@@ -92,11 +92,11 @@ namespace pg_class.pg_classes
 		/// <summary>
 		/// Метод добавляет новую запись журнала
 		/// </summary>
-		public log log_add(Int64 iid_category, String iuser_author, DateTime idatetime,
+		public log log_add(String iuser_author, DateTime idatetime,
 									 String ititle, String imessage, String iclass_body, String ibody,
 									 object_general Object_general)
 		{
-			return Manager.log_add(iid_category, iuser_author, idatetime,
+			return Manager.log_add(id, iuser_author, idatetime,
 									 ititle, imessage, iclass_body, ibody,
 									 Object_general.EntityID, Object_general.Id, -1);
 		}
@@ -104,11 +104,11 @@ namespace pg_class.pg_classes
 		/// <summary>
 		/// Метод добавляет новую запись журнала
 		/// </summary>
-		public log log_add(Int64 iid_category, String iuser_author, DateTime idatetime,
+		public log log_add(String iuser_author, DateTime idatetime,
 									 String ititle, String imessage, String iclass_body, String ibody,
 									 object_prop Object_prop)
 		{
-			return Manager.log_add(iid_category, iuser_author, idatetime,
+			return Manager.log_add(id, iuser_author, idatetime,
 									 ititle, imessage, iclass_body, ibody,
 									 Object_prop.EntityID, Object_prop.Id_class_prop, Object_prop.Id_object_carrier);
 		}
@@ -116,11 +116,11 @@ namespace pg_class.pg_classes
 		/// <summary>
 		/// Метод добавляет новую запись журнала
 		/// </summary>
-		public log log_add(Int64 iid_category, String iuser_author, DateTime idatetime,
+		public log log_add(String iuser_author, DateTime idatetime,
 									 String ititle, String imessage, String iclass_body, String ibody,
 									 group Group)
 		{
-			return Manager.log_add(iid_category, iuser_author, idatetime,
+			return Manager.log_add(id, iuser_author, idatetime,
 									 ititle, imessage, iclass_body, ibody,
 									 Group.EntityID, Group.Id, -1);
 		}
@@ -128,11 +128,11 @@ namespace pg_class.pg_classes
 		/// <summary>
 		/// Метод добавляет новую запись журнала
 		/// </summary>
-		public log log_add(Int64 iid_category, String iuser_author, DateTime idatetime,
+		public log log_add(String iuser_author, DateTime idatetime,
 									 String ititle, String imessage, String iclass_body, String ibody,
 									 vclass Class)
 		{
-			return Manager.log_add(iid_category, iuser_author, idatetime,
+			return Manager.log_add(id, iuser_author, idatetime,
 									 ititle, imessage, iclass_body, ibody,
 									 Class.EntityID, Class.Id, -1);
 		}
@@ -140,11 +140,11 @@ namespace pg_class.pg_classes
 		/// <summary>
 		/// Метод добавляет новую запись журнала
 		/// </summary>
-		public log log_add(Int64 iid_category, String iuser_author, DateTime idatetime,
+		public log log_add(String iuser_author, DateTime idatetime,
 									 String ititle, String imessage, String iclass_body, String ibody,
 									 class_prop Class_prop)
 		{
-			return Manager.log_add(iid_category, iuser_author, idatetime,
+			return Manager.log_add(id, iuser_author, idatetime,
 									 ititle, imessage, iclass_body, ibody,
 									 Class_prop.EntityID, Class_prop.Id, -1);
 		}
@@ -152,11 +152,11 @@ namespace pg_class.pg_classes
 		/// <summary>
 		/// Метод добавляет новую запись журнала
 		/// </summary>
-		public log log_add(Int64 iid_category, String iuser_author, DateTime idatetime,
+		public log log_add(String iuser_author, DateTime idatetime,
 									 String ititle, String imessage, String iclass_body, String ibody,
 									 document Document)
 		{
-			return Manager.log_add(iid_category, iuser_author, idatetime,
+			return Manager.log_add(id, iuser_author, idatetime,
 									 ititle, imessage, iclass_body, ibody,
 									 Document.EntityID, Document.Id, -1);
 		}

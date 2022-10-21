@@ -38,7 +38,6 @@ namespace pg_class.pg_classes
                 id_log = (Int64)row["id_log"];
                 id_category = (Int64)row["id_category"];
                 message  = (String)row["message"];
-				message_len = row.Table.Columns["message"].MaxLength;
 				datetime = (DateTime)row["datetime"];
                 
                 id_entity = (Int32)row["id_entity"];
@@ -64,7 +63,6 @@ namespace pg_class.pg_classes
 				id_log = ll.id_log;
 				id_category = ll.id_category;
 				message = ll.message;
-				message_len = ll.message.Length;
 				datetime = ll.datetime;
 
 				id_entity = ll.id_entity;
@@ -84,7 +82,6 @@ namespace pg_class.pg_classes
         private Int64 id_log;
         private Int64 id_category;
         private String message;
-		private Int32 message_len;
 		private DateTime datetime;
         private Int32 id_entity;
         private Int64 id_entity_instance;
@@ -120,11 +117,6 @@ namespace pg_class.pg_classes
                 return message;
             } 
         }
-
-        /// <summary>
-        /// Максимально допустимая длинна строкового поля
-        /// </summary>
-        public Int32 Message_len { get => message_len; }
 
         /// <summary>
         /// Дата записи журнала
@@ -220,7 +212,6 @@ namespace pg_class.pg_classes
                 id_log = temp.Id_log;
                 id_category = temp.Id_category;
                 message = temp.Message;
-				message_len = temp.Message_len;
 				datetime = temp.Datetime;
 
                 id_entity = temp.Link_id_entity;

@@ -14,7 +14,7 @@ namespace pg_class
 	public partial class manager
 	{
 		/// <summary>
-		/// Метод удаляет указанную категорию документов
+		/// Метод удаляет указанную категорию
 		/// </summary>
 		public void doc_category_del(Int64 iid)
 		{

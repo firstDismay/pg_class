@@ -19,15 +19,10 @@ namespace pg_class
         public doc_category doc_category_by_id(Int64 iid)
         {
             doc_category doc_category = null;
-
             DataTable tbl_entity  = TableByName("vdoc_category");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
             NpgsqlCommandKey cmdk;
 
-            //=======================
             cmdk = CommandByKey("doc_category_by_id");
-
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -39,10 +34,8 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iid"].Value = iid;
-
             cmdk.Fill(tbl_entity);
             
             if (tbl_entity.Rows.Count > 0)
@@ -51,8 +44,6 @@ namespace pg_class
             }
             return doc_category;
         }
-
-       
 
         //ACCESS
         /// <summary>
@@ -63,8 +54,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+
             cmdk = CommandByKey("doc_category_by_id");
             if (cmdk != null)
             {
@@ -80,24 +70,17 @@ namespace pg_class
             }
             return Result;
         }
-        //*********************************************************************************************
 
-        //*********************************************************************************************
         /// <summary>
         /// Лист категорий документов концепции по идентификатору концепции
         /// </summary>
         public List<doc_category> doc_category_by_id_conception(Int64 iid_conception)
         {
             List<doc_category>  entity_list = new List<doc_category>();
-            
             DataTable tbl_entity  = TableByName("vdoc_category");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
             NpgsqlCommandKey cmdk;
 
-            //=======================
             cmdk = CommandByKey("doc_category_by_id_conception");
-
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -109,10 +92,8 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
 
             cmdk.Parameters["iid_conception"].Value = iid_conception;
-
             cmdk.Fill(tbl_entity);
             
             doc_category ce;
@@ -149,8 +130,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
             cmdk = CommandByKey("doc_category_by_id_conception");
             if (cmdk != null)
             {

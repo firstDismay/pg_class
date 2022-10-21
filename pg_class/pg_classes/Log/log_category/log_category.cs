@@ -36,9 +36,7 @@ namespace pg_class.pg_classes
                 id = (Int64)row["id"];
                 id_conception = (Int64)row["id_conception"];
                 name = (String)row["name"];
-                name_len = row.Table.Columns["name"].MaxLength;
                 desc = (String)row["desc"];
-                desc_len = row.Table.Columns["desc"].MaxLength;
                 on = (Boolean)row["on"];
                 level= (Int32)row["level"];
                 timestamp = Convert.ToDateTime(row["timestamp"]);
@@ -60,9 +58,7 @@ namespace pg_class.pg_classes
 				id = lc.id;
 				id_conception = lc.id_conception;
 				name = lc.name;
-				name_len = lc.name.Length;
 				desc = lc.desc;
-				desc_len = lc.desc.Length;
 				on = lc.on;
 				level = lc.level;
                 timestamp = lc.timestamp;
@@ -78,9 +74,7 @@ namespace pg_class.pg_classes
         private Int64 id;
         private Int64 id_conception;
         private String name;
-        private Int32 name_len;
         private String desc;
-        private Int32 desc_len;
 		private Int32 level;
 		private Boolean on;
         private DateTime timestamp;
@@ -108,10 +102,6 @@ namespace pg_class.pg_classes
             {
                 if (name != value)
                 {
-                    if (value.Length > name_len)
-                    {
-                        value = value.Substring(0, name_len);
-                    }
                     name = value;
                     on_change = true;
                 }
@@ -148,10 +138,6 @@ namespace pg_class.pg_classes
             {
                 if (desc != value)
                 {
-                    if (value.Length > desc_len)
-                    {
-                        value = value.Substring(0, desc_len);
-                    }
                     desc = value;
                     on_change = true;
 
@@ -339,9 +325,7 @@ namespace pg_class.pg_classes
 				id = temp.Id;
 				id_conception = temp.id_conception;
 				name = temp.name;
-				name_len = temp.name_len;
 				desc = temp.desc;
-				desc_len = temp.desc_len;
 				on = temp.on;
 				level = temp.level;
 				timestamp = temp.timestamp;

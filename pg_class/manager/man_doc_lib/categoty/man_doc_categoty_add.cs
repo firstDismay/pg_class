@@ -14,7 +14,7 @@ namespace pg_class
 	public partial class manager
 	{
 		/// <summary>
-		/// Метод добавляет новую категорию документов
+		/// Метод добавляет новую категорию
 		/// </summary>
 		public doc_category doc_category_add(Int64 iid_conception, String iname, String idesc, Boolean ion_grouping, Boolean ion)
 		{
