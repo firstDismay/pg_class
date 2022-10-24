@@ -14,8 +14,6 @@ namespace pg_class
         private void InvocationListClear()
         {
             //Обнуление подписок на события 
-
-            //***************************************************************************
             if (ConceptionChange != null)
             {
                 foreach (ConceptionChangeEventHandler d in ConceptionChange.GetInvocationList())
@@ -23,7 +21,7 @@ namespace pg_class
                     ConceptionChange -= d;
                 }
             }
-            //***************************************************************************
+
             if (GroupChange != null)
             {
                 foreach (GroupChangeEventHandler d in GroupChange.GetInvocationList())
@@ -31,7 +29,7 @@ namespace pg_class
                     GroupChange -= d;
                 }
             }
-            //ClassChange
+
             if (ClassChange != null)
             {
                 foreach (ClassChangeEventHandler d in ClassChange.GetInvocationList())
@@ -40,7 +38,6 @@ namespace pg_class
                 }
             }
 
-            //GlobalPropChange
             if (GlobalPropChange != null)
             {
                 foreach (GlobalPropChangeEventHandler d in GlobalPropChange.GetInvocationList())
@@ -49,7 +46,6 @@ namespace pg_class
                 }
             }
 
-            //GlobalPropLinkClassPropChange
             if (GlobalPropLinkClassPropChange != null)
             {
                 foreach (GlobalPropLinkClassPropChangeEventHandler d in GlobalPropLinkClassPropChange.GetInvocationList())
@@ -58,7 +54,6 @@ namespace pg_class
                 }
             }
 
-            //GlobalPropLinkClassPropChange
             if (GlobalPropLinkPosTempPropChange != null)
             {
                 foreach (GlobalPropLinkClassPropChangeEventHandler d in GlobalPropLinkClassPropChange.GetInvocationList())
@@ -67,7 +62,6 @@ namespace pg_class
                 }
             }
 
-            //ClassPropChange
             if (ClassPropChange != null)
             {
                 foreach (ClassPropChangeEventHandler d in ClassPropChange.GetInvocationList())
@@ -76,7 +70,6 @@ namespace pg_class
                 }
             }
 
-            //ClassPropObjectValChange
             if (ClassPropObjectValChange != null)
             {
                 foreach (ClassPropObjectValChangeEventHandler d in ClassPropObjectValChange.GetInvocationList())
@@ -85,7 +78,6 @@ namespace pg_class
                 }
             }
 
-            //ClassPropUserValChange
             if (ClassPropUserValChange != null)
             {
                 foreach (ClassPropUserValChangeEventHandler d in ClassPropUserValChange.GetInvocationList())
@@ -94,7 +86,6 @@ namespace pg_class
                 }
             }
 
-            //ClassPropEnumValChange
             if (ClassPropEnumValChange != null)
             {
                 foreach (ClassPropEnumValChangeEventHandler d in ClassPropEnumValChange.GetInvocationList())
@@ -103,7 +94,6 @@ namespace pg_class
                 }
             }
 
-            //ClassPropObjectValChange
             if (ClassPropObjectValChange != null)
             {
                 foreach (ClassPropObjectValChangeEventHandler d in ClassPropObjectValChange.GetInvocationList())
@@ -112,7 +102,6 @@ namespace pg_class
                 }
             }
 
-            //ClassPropLinkValChange
             if (ClassPropLinkValChange != null)
             {
                 foreach (ClassPropLinkValChangeEventHandler d in ClassPropLinkValChange.GetInvocationList())
@@ -121,7 +110,6 @@ namespace pg_class
                 }
             }
 
-            //PropEnumChange
             if (PropEnumChange != null)
             {
                 foreach (PropEnumChangeEventHandler d in PropEnumChange.GetInvocationList())
@@ -130,7 +118,6 @@ namespace pg_class
                 }
             }
 
-            //PropEnumValChange
             if (PropEnumValChange != null)
             {
                 foreach (PropEnumValChangeEventHandler d in PropEnumValChange.GetInvocationList())
@@ -139,7 +126,6 @@ namespace pg_class
                 }
             }
 
-            //ObjectChange
             if (ObjectChange != null)
             {
                 foreach (ObjectChangeEventHandler d in ObjectChange.GetInvocationList())
@@ -156,7 +142,6 @@ namespace pg_class
                 }
             }
 
-            //ObjectPropUserValChange
             if (ObjectPropUserValChange != null)
             {
                 foreach (ObjectPropUserValChangeEventHandler d in ObjectPropUserValChange.GetInvocationList())
@@ -165,7 +150,6 @@ namespace pg_class
                 }
             }
 
-            //ObjectPropEnumValChange
             if (ObjectPropEnumValChange != null)
             {
                 foreach (ObjectPropEnumValChangeEventHandler d in ObjectPropEnumValChange.GetInvocationList())
@@ -174,7 +158,6 @@ namespace pg_class
                 }
             }
 
-            //ObjectPropObjectValChange
             if (ObjectPropObjectValChange != null)
             {
                 foreach (ObjectPropObjectValChangeEventHandler d in ObjectPropObjectValChange.GetInvocationList())
@@ -183,7 +166,6 @@ namespace pg_class
                 }
             }
 
-            //ObjectPropLinkValChange
             if (ObjectPropLinkValChange != null)
             {
                 foreach (ObjectPropLinkValChangeEventHandler d in ObjectPropLinkValChange.GetInvocationList())
@@ -192,7 +174,6 @@ namespace pg_class
                 }
             }
 
-            //ObjectPosNestedListListChange
             if (Rulel1_Group_On_Pos_tempListChange != null)
             {
                 foreach (Rulel1_Group_On_Pos_tempListChangeEventHandler d in Rulel1_Group_On_Pos_tempListChange.GetInvocationList())
@@ -200,7 +181,7 @@ namespace pg_class
                     Rulel1_Group_On_Pos_tempListChange -= d;
                 }
             }
-            //ObjectPosWhiteListChange
+
             if (Rulel2_Class_On_PositionListChange != null)
             {
                 foreach (Rulel2_Class_On_PositionListChangeEventHandler d in Rulel2_Class_On_PositionListChange.GetInvocationList())
@@ -209,7 +190,6 @@ namespace pg_class
                 }
             }
 
-            //Con_Prop_Data_TypeListChange
             if (Con_Prop_Data_TypeListChange != null)
             {
                 foreach (Con_Prop_Data_TypeListChangeEventHandler d in Con_Prop_Data_TypeListChange.GetInvocationList())
@@ -218,7 +198,6 @@ namespace pg_class
                 }
             }
             
-            //PosTempChange
             if (PosTempChange != null)
             {
                 foreach (PosTempChangeEventHandler d in PosTempChange.GetInvocationList())
@@ -227,7 +206,6 @@ namespace pg_class
                 }
             }
             
-            //PosTempNestedListChange
             if (PosTempNestedListChange != null)
             {
                 foreach (PosTempNestedListChangeEventHandler d in PosTempNestedListChange.GetInvocationList())
@@ -235,7 +213,7 @@ namespace pg_class
                     PosTempNestedListChange -= d;
                 }
             }
-            //PosTempPropChange
+
             if (PosTempPropChange != null)
             {
                 foreach (PosTempPropChangeEventHandler d in PosTempPropChange.GetInvocationList())
@@ -244,7 +222,6 @@ namespace pg_class
                 }
             }
 
-            //PosTempPropUserValChange
             if (PosTempPropUserValChange != null)
             {
                 foreach (PosTempPropUserValChangeEventHandler d in PosTempPropUserValChange.GetInvocationList())
@@ -253,7 +230,6 @@ namespace pg_class
                 }
             }
 
-            //PosTempPropEnumValChange
             if (PosTempPropEnumValChange != null)
             {
                 foreach (PosTempPropEnumValChangeEventHandler d in PosTempPropEnumValChange.GetInvocationList())
@@ -262,7 +238,6 @@ namespace pg_class
                 }
             }
 
-            //PosTempPropObjectValChange
             if (PosTempPropObjectValChange != null)
             {
                 foreach (PosTempPropObjectValChangeEventHandler d in PosTempPropObjectValChange.GetInvocationList())
@@ -271,7 +246,6 @@ namespace pg_class
                 }
             }
 
-            //PosTempPropLinkValChange
             if (PosTempPropLinkValChange != null)
             {
                 foreach (PosTempPropLinkValChangeEventHandler d in PosTempPropLinkValChange.GetInvocationList())
@@ -280,7 +254,6 @@ namespace pg_class
                 }
             }
 
-            //PositionChange
             if (PositionChange != null)
             {
                 foreach (PositionChangeEventHandler d in PositionChange.GetInvocationList())
@@ -289,7 +262,6 @@ namespace pg_class
                 }
             }
 
-            //PositionPropUserValChange
             if (PositionPropUserValChange != null)
             {
                 foreach (PositionPropUserValChangeEventHandler d in PositionPropUserValChange.GetInvocationList())
@@ -298,7 +270,6 @@ namespace pg_class
                 }
             }
 
-            //PositionPropEnumValChange
             if (PositionPropEnumValChange != null)
             {
                 foreach (PositionPropEnumValChangeEventHandler d in PositionPropEnumValChange.GetInvocationList())
@@ -307,7 +278,6 @@ namespace pg_class
                 }
             }
 
-            //PositionPropObjectValChange
             if (PositionPropObjectValChange != null)
             {
                 foreach (PositionPropObjectValChangeEventHandler d in PositionPropObjectValChange.GetInvocationList())
@@ -316,7 +286,6 @@ namespace pg_class
                 }
             }
 
-            //PositionPropLinkValChange
             if (PositionPropLinkValChange != null)
             {
                 foreach (PositionPropLinkValChangeEventHandler d in PositionPropLinkValChange.GetInvocationList())
@@ -325,7 +294,6 @@ namespace pg_class
                 }
             }
 
-            //PositionChangeLock
             if (PositionChangeLock != null)
             {
                 foreach (PositionChangeEventHandler d in PositionChangeLock.GetInvocationList())
@@ -333,7 +301,7 @@ namespace pg_class
                     PositionChangeLock -= d;
                 }
             }
-            //UserChange
+
             if (UserChange != null)
             {
                 foreach (UserChangeEventHandler d in UserChange.GetInvocationList())
@@ -342,7 +310,6 @@ namespace pg_class
                 }
             }
 
-            //RoleUserChange
             if (RoleUserChange != null)
             {
                 foreach (RoleUserChangeEventHandler d in RoleUserChange.GetInvocationList())
@@ -351,7 +318,6 @@ namespace pg_class
                 }
             }
 
-            //UnitConversionRuleChange;
             if (UnitConversionRuleChange != null)
             {
                 foreach (UnitConversionRuleChangeEventHandler d in UnitConversionRuleChange.GetInvocationList())
@@ -359,7 +325,7 @@ namespace pg_class
                     UnitConversionRuleChange -= d;
                 }
             }
-            //UserChangeEventHandler UserChange;
+
             if (UserChange != null)
             {
                 foreach (UserChangeEventHandler d in UserChange.GetInvocationList())
@@ -368,7 +334,6 @@ namespace pg_class
                 }
             }
 
-            //ClassUnitConversionRuleListChange
             if (ClassUnitConversionRuleListChange != null)
             {
                 foreach (ClassUnitConversionRuleChangeEventHandler d in ClassUnitConversionRuleListChange.GetInvocationList())
@@ -377,7 +342,6 @@ namespace pg_class
                 }
             }
 
-            //DocCategoryChange
             if (DocCategoryChange != null)
             {
                 foreach (DocCategoryChangeEventHandler d in DocCategoryChange.GetInvocationList())
@@ -386,7 +350,6 @@ namespace pg_class
                 }
             }
 
-            //DocumentChange
             if (DocumentChange != null)
             {
                 foreach (DocumentChangeEventHandler d in DocumentChange.GetInvocationList())
@@ -395,7 +358,6 @@ namespace pg_class
                 }
             }
 
-            //DocFileChange
             if (DocFileChange != null)
             {
                 foreach (DocFileChangeEventHandler d in DocFileChange.GetInvocationList())
@@ -404,7 +366,6 @@ namespace pg_class
                 }
             }
 
-            //DocLinkChange
             if (DocLinkChange != null)
             {
                 foreach (DocLinkChangeEventHandler d in DocLinkChange.GetInvocationList())
@@ -413,8 +374,31 @@ namespace pg_class
                 }
             }
 
-            //ClassPropSort
-            if (ClassPropSort != null)
+			if (LogCategoryChange != null)
+			{
+				foreach (LogCategoryChangeEventHandler d in LogCategoryChange.GetInvocationList())
+				{
+					LogCategoryChange -= d;
+				}
+			}
+
+			if (LogChange != null)
+			{
+				foreach (LogChangeEventHandler d in LogChange.GetInvocationList())
+				{
+					LogChange -= d;
+				}
+			}
+
+			if (LogLinkChange != null)
+			{
+				foreach (LogLinkChangeEventHandler d in LogLinkChange.GetInvocationList())
+				{
+					LogLinkChange -= d;
+				}
+			}
+
+			if (ClassPropSort != null)
             {
                 foreach (ClassPropSortEventHandler d in ClassPropSort.GetInvocationList())
                 {
@@ -422,7 +406,6 @@ namespace pg_class
                 }
             }
 
-            //PosTempPropSort
             if (PosTempPropSort != null)
             {
                 foreach (PosTempPropSortEventHandler d in PosTempPropSort.GetInvocationList())
@@ -431,7 +414,6 @@ namespace pg_class
                 }
             }
 
-            //PositionSort
             if (PositionSort != null)
             {
                 foreach (PositionSortEventHandler d in PositionSort.GetInvocationList())
