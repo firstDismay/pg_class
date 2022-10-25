@@ -334,6 +334,7 @@
     <Compile Include="manager\man_log\categoty\man_log_categoty_add.cs" />
     <Compile Include="manager\man_log\categoty\man_log_categoty_del.cs" />
     <Compile Include="manager\man_log\categoty\man_log_categoty_event.cs" />
+    <Compile Include="manager\man_log\categoty\man_log_categoty_is_use.cs" />
     <Compile Include="manager\man_log\categoty\man_log_categoty_is_actual.cs" />
     <Compile Include="manager\man_log\categoty\man_log_categoty_sel.cs" />
     <Compile Include="manager\man_log\categoty\man_log_categoty_upd.cs" />
