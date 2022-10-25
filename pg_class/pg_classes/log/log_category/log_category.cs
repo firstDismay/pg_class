@@ -203,11 +203,11 @@ namespace pg_class.pg_classes
         }
 
         /// <summary>
-        /// Признак использования указанной категории документов в концепции
+        /// Признак использования указанной категории записей журнала
         /// </summary>
         public Boolean Is_use()
         {
-            throw new NotImplementedException();
+            return Manager.log_category_is_use(this);
         }
 
         /// <summary>
