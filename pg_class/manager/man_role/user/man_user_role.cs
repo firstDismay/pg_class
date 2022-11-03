@@ -23,7 +23,7 @@ namespace pg_class
             String desc_error;
             NpgsqlCommandKey cmdk;
             //**********
-            //=======================
+            
             cmdk = CommandByKey("user_role_user_grant");
 
             if (cmdk != null)
@@ -37,7 +37,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
+            
 
             cmdk.Parameters["ilogin"].Value = user.Login;
             cmdk.Parameters["irole_user"].Value = role.NameSystem;
@@ -55,7 +55,7 @@ namespace pg_class
             error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
             desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
             //SetLastTimeUsing();
-            //=======================
+            
             switch (error)
             {
                 case 0:
@@ -83,8 +83,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("user_role_user_grant");
             if (cmdk != null)
             {
@@ -112,7 +112,7 @@ namespace pg_class
             NpgsqlCommandKey cmdk;
             //**********
              
-            //=======================
+            
             cmdk = CommandByKey("user_role_user_revoke");
             if (cmdk != null)
             {
@@ -159,8 +159,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("user_role_user_revoke");
             if (cmdk != null)
             {

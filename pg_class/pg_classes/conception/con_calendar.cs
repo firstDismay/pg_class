@@ -20,7 +20,7 @@ namespace pg_class.pg_classes
         {
             return Manager.plan_add(Id, iid_parent, iname, idesc, ion, ion_crossing, iplan_max, irange_max, ion_freeze);
         }
-        //*********************************************************************************************
+        
         #endregion
 
         #region УДАЛИТЬ

@@ -143,7 +143,7 @@ namespace pg_class.pg_classes
                                      iname, idesc, iregnum, iregdate,
                                      Class_prop);
         }
-        //*********************************************************************************************
+        
         #endregion
 
         #region УДАЛИТЬ

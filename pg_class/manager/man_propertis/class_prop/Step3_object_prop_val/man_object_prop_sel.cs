@@ -21,11 +21,11 @@ namespace pg_class
             object_prop object_prop = null;
 
             DataTable tbl_object_prop  = TableByName("vobject_prop");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
+            
+            
             NpgsqlCommandKey cmdk;
 
-            //=======================
+            
             cmdk = CommandByKey("object_prop_by_id");
 
             if (cmdk != null)
@@ -39,7 +39,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
+            
 
             cmdk.Parameters["iid_object_carrier"].Value = iid_object_carrier;
             cmdk.Parameters["iid_class_prop"].Value = iid_class_prop;
@@ -53,7 +53,7 @@ namespace pg_class
             return object_prop;
         }
 
-        //*********************************************************************************************
+        
         /// <summary>
         /// Выбор свойства объекта носителя по идентификатору объекта и свойства класса
         /// </summary>
@@ -71,8 +71,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("object_prop_by_id");
             if (cmdk != null)
             {
@@ -88,7 +88,7 @@ namespace pg_class
             }
             return Result;
         }
-        //*********************************************************************************************
+        
 
 
         /// <summary>
@@ -99,11 +99,11 @@ namespace pg_class
             List<object_prop> object_prop_list = new List<object_prop>();
 
             DataTable tbl_object_prop  = TableByName("vobject_prop");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
+            
+            
             NpgsqlCommandKey cmdk;
 
-            //=======================
+            
             cmdk = CommandByKey("object_prop_by_id_object");
 
             if (cmdk != null)
@@ -117,7 +117,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
+            
 
             cmdk.Parameters["iid_object_carrier"].Value = iid_object_carrier;
 
@@ -152,8 +152,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("object_prop_by_id_object");
             if (cmdk != null)
             {
@@ -179,11 +179,11 @@ namespace pg_class
             object_prop object_prop = null;
 
             DataTable tbl_object_prop  = TableByName("vobject_prop");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
+            
+            
             NpgsqlCommandKey cmdk;
 
-            //=======================
+            
             cmdk = CommandByKey("object_prop_by_id_object_val");
 
             if (cmdk != null)
@@ -197,7 +197,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
+            
 
             cmdk.Parameters["iid_object_val"].Value = iid_object_val;
 
@@ -226,8 +226,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("object_prop_by_id_object_val");
             if (cmdk != null)
             {
@@ -243,9 +243,9 @@ namespace pg_class
             }
             return Result;
         }
-        //*********************************************************************************************
         
-        //*********************************************************************************************
+        
+        
         /// <summary>
         /// Выбор указанного свойства объекта STEP3 для указанного объекта по идентификатору определяющего свойства
         /// </summary>
@@ -254,11 +254,11 @@ namespace pg_class
             object_prop object_prop = null;
 
             DataTable tbl_object_prop  = TableByName("vobject_prop");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
+            
+            
             NpgsqlCommandKey cmdk;
 
-            //=======================
+            
             cmdk = CommandByKey("object_prop_by_id_prop_definition");
 
             if (cmdk != null)
@@ -272,7 +272,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
+            
 
             cmdk.Parameters["iid_object_carrier"].Value = iid_object_carrier;
             cmdk.Parameters["iid_prop_definition"].Value = iid_prop_definition;
@@ -286,7 +286,7 @@ namespace pg_class
             return object_prop;
         }
 
-        //*********************************************************************************************
+        
         /// <summary>
         /// Выбор указанного свойства объекта STEP3 для указанного объекта по идентификатору определяющего свойства
         /// </summary>
@@ -304,8 +304,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("object_prop_by_id_prop_definition");
             if (cmdk != null)
             {
@@ -321,9 +321,9 @@ namespace pg_class
             }
             return Result;
         }
-        //*********************************************************************************************
+        
 
-        //*********************************************************************************************
+        
         /// <summary>
         /// Выбор указанного свойства объекта STEP3 для указанного объекта по идентификатору определяющего свойства
         /// </summary>
@@ -332,11 +332,11 @@ namespace pg_class
             object_prop object_prop = null;
 
             DataTable tbl_object_prop = TableByName("vobject_prop");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
+            
+            
             NpgsqlCommandKey cmdk;
 
-            //=======================
+            
             cmdk = CommandByKey("object_prop_by_id_global_prop");
 
             if (cmdk != null)
@@ -350,7 +350,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
+            
 
             cmdk.Parameters["iid_object_carrier"].Value = iid_object_carrier;
             cmdk.Parameters["iid_global_prop"].Value = iid_global_prop;
@@ -364,7 +364,7 @@ namespace pg_class
             return object_prop;
         }
 
-        //*********************************************************************************************
+        
         /// <summary>
         /// Выбор указанного свойства объекта STEP3 для указанного объекта по идентификатору определяющего свойства
         /// </summary>
@@ -390,8 +390,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("object_prop_by_id_global_prop");
             if (cmdk != null)
             {

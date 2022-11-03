@@ -21,11 +21,11 @@ namespace pg_class
             pos_temp_prop pos_temp_prop = null;
 
             DataTable tbl_vpos_temp_prop  = TableByName("vpos_temp_prop");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
+            
+            
             NpgsqlCommandKey cmdk;
 
-            //=======================
+            
             cmdk = CommandByKey("pos_temp_prop_by_id");
 
             if (cmdk != null)
@@ -39,7 +39,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
+            
 
             cmdk.Parameters["iid"].Value = iid;
 
@@ -62,8 +62,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("pos_temp_prop_by_id");
             if (cmdk != null)
             {
@@ -81,7 +81,7 @@ namespace pg_class
         }
         
         
-        //*********************************************************************************************
+        
         /// <summary>
         /// Выбор свойства шаблона по идентификатору глобального свойства
         /// </summary>
@@ -90,11 +90,11 @@ namespace pg_class
             pos_temp_prop pos_temp_prop = null;
 
             DataTable tbl_vpos_temp_prop  = TableByName("vpos_temp_prop");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
+            
+            
             NpgsqlCommandKey cmdk;
 
-            //=======================
+            
             cmdk = CommandByKey("pos_temp_prop_by_id_global_prop");
 
             if (cmdk != null)
@@ -108,7 +108,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
+            
 
             cmdk.Parameters["iid_pos_temp"].Value = iid_pos_temp;
             cmdk.Parameters["iid_global_prop"].Value = iid_global_prop;
@@ -139,8 +139,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("pos_temp_prop_by_id_global_prop");
             if (cmdk != null)
             {
@@ -156,7 +156,7 @@ namespace pg_class
             }
             return Result;
         }
-        //*********************************************************************************************
+        
         /// <summary>
         /// Лист свойств шаблона по идентификатору шаблона
         /// </summary>
@@ -166,11 +166,11 @@ namespace pg_class
 
 
             DataTable tbl_pos_temp_prop  = TableByName("vpos_temp_prop");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
+            
+            
             NpgsqlCommandKey cmdk;
 
-            //=======================
+            
             cmdk = CommandByKey("pos_temp_prop_by_id_pos_temp");
 
             if (cmdk != null)
@@ -184,7 +184,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
+            
 
             cmdk.Parameters["iid_pos_temp"].Value = iid_pos_temp;
 
@@ -219,8 +219,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("pos_temp_prop_by_id_pos_temp");
             if (cmdk != null)
             {

@@ -53,7 +53,7 @@ namespace pg_class.pg_classes
         /// <summary>
         /// Полный конструктор класса для возврата данных существующих записей через класс композитного типа
         /// </summary>
-        public log_link(pg_clog_link ll) : this()
+        public log_link(pg_vlog_link ll) : this()
         {
             
             if (ll != null)

@@ -27,11 +27,11 @@ namespace pg_class
 
 
             DataTable tbl_data_type  = TableByName("vprop_data_type");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
+            
+            
             NpgsqlCommandKey cmdk;
 
-            //=======================
+            
             cmdk = CommandByKey("prop_data_type_by_all");
 
             if (cmdk != null)
@@ -45,7 +45,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
+            
 
             cmdk.Fill(tbl_data_type);
             
@@ -71,8 +71,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("prop_data_type_by_all");
             if (cmdk != null)
             {
@@ -104,11 +104,11 @@ namespace pg_class
 
 
             DataTable tbl_prop_val_spec  = TableByName("vcfg_prop_spec_limit2");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
+            
+            
             NpgsqlCommandKey cmdk;
 
-            //=======================
+            
             cmdk = CommandByKey("prop_val_spec_by_id_data_type");
 
             if (cmdk != null)
@@ -122,7 +122,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
+            
 
             cmdk.Parameters["iid_data_type"].Value = iid_data_type;
 
@@ -154,8 +154,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("prop_val_spec_by_id_data_type");
             if (cmdk != null)
             {

@@ -23,7 +23,7 @@ namespace pg_class
         /// Событие возникает при изменении значения свойства позиции типа ссылка
         /// </summary>
         public event PositionPropLinkValChangeEventHandler PositionPropLinkValChange;
-        //===========================================================
+        
 
         /// <summary>
         ///  Метод вызова события изменения значения свойства позиции

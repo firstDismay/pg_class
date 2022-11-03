@@ -16,7 +16,7 @@ namespace pg_class
         #region МЕТОДЫ КЛАССА: ПРЕДСТАВЛЕНИЯ СНИМКОВ КЛАССА
         #region ВЫБРАТЬ
 
-        //*********************************************************************************************
+        
         /// <summary>
         /// Выбирает снимок свойства класса по ключевым параметрам
         /// </summary>
@@ -25,11 +25,11 @@ namespace pg_class
             class_prop class_prop_snapshot = null;
 
             DataTable tbl_class_prop_snapshot  = TableByName("vclass_prop");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
+            
+            
             NpgsqlCommandKey cmdk;
 
-            //=======================
+            
             cmdk = CommandByKey("class_prop_snapshot_by_id");
 
             if (cmdk != null)
@@ -43,7 +43,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
+            
 
             cmdk.Parameters["iid_class_prop"].Value = iid_class_prop;
             cmdk.Parameters["itimestamp_class"].Value = itimestamp_class;
@@ -73,8 +73,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("class_prop_snapshot_by_id");
             if (cmdk != null)
             {
@@ -90,7 +90,7 @@ namespace pg_class
             }
             return Result;
         }
-        //*********************************************************************************************
+        
 
         /// <summary>
         /// Выбирает снимок свойства класса объекта носителя по идентификатору объекта значения свойства
@@ -100,11 +100,11 @@ namespace pg_class
             class_prop class_prop_snapshot = null;
 
             DataTable tbl_class_prop_snapshot  = TableByName("vclass_prop");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
+            
+            
             NpgsqlCommandKey cmdk;
 
-            //=======================
+            
             cmdk = CommandByKey("class_prop_snapshot_by_id_object_val");
 
             if (cmdk != null)
@@ -118,7 +118,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
+            
 
             cmdk.Parameters["iid_object_val"].Value = iid_object_val;
 
@@ -148,8 +148,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("class_prop_snapshot_by_id_object_val");
             if (cmdk != null)
             {
@@ -174,11 +174,11 @@ namespace pg_class
             class_prop class_prop = null;
 
             DataTable tbl_vclass_prop  = TableByName("vclass_prop");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
+            
+            
             NpgsqlCommandKey cmdk;
 
-            //=======================
+            
             cmdk = CommandByKey("class_prop_snapshot_by_id_global_prop");
 
             if (cmdk != null)
@@ -192,7 +192,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
+            
 
             cmdk.Parameters["iid_class_snapshot"].Value = iid_class_snapshot;
             cmdk.Parameters["itimestamp_class_snapshot"].Value = itimestamp_class_snapshot;
@@ -224,7 +224,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
+            
             cmdk = CommandByKey("class_prop_snapshot_by_id_global_prop");
             if (cmdk != null)
             {
@@ -241,7 +241,7 @@ namespace pg_class
             return Result;
         }
 
-        //*********************************************************************************************
+        
         /// <summary>
         /// Лист снимков свойств класса по идентификатору снимка класса с пустым тэгом
         /// </summary>
@@ -250,11 +250,11 @@ namespace pg_class
             List<class_prop> class_prop_snapshot_list = new List<class_prop>();
 
             DataTable tbl_class_prop_snapshot  = TableByName("vclass_prop");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
+            
+            
             NpgsqlCommandKey cmdk;
 
-            //=======================
+            
             cmdk = CommandByKey("class_prop_snapshot_by_id_class_snapshot");
 
             if (cmdk != null)
@@ -268,7 +268,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
+            
 
             cmdk.Parameters["iid_class_snapshot"].Value = iid_class_snapshot;
             cmdk.Parameters["itimestamp_class_snapshot"].Value = itimestamp_class_snapshot;
@@ -304,8 +304,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("class_prop_snapshot_by_id_class_snapshot");
             if (cmdk != null)
             {

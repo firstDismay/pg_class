@@ -23,11 +23,11 @@ namespace pg_class
             plan_range plan_range = null;
 
             DataTable tbl_entity  = TableByName("vplan_range");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
+            
+            
             NpgsqlCommandKey cmdk;
 
-            //=======================
+            
             cmdk = CommandByKey("plan_range_by_id");
 
             if (cmdk != null)
@@ -41,7 +41,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
+            
 
             cmdk.Parameters["iid"].Value = iid;
 
@@ -63,8 +63,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("plan_range_by_id");
             if (cmdk != null)
             {
@@ -80,9 +80,9 @@ namespace pg_class
             }
             return Result;
         }
-        //*********************************************************************************************
+        
 
-        //*********************************************************************************************
+        
         /// <summary>
         /// Лист плановых диапазонов по идентификатору плана
         /// </summary>
@@ -93,10 +93,10 @@ namespace pg_class
             
             DataTable tbl_entity  = TableByName("vplan_range");
             
-            //=======================
+            
             NpgsqlCommandKey cmdk;
 
-            //=======================
+            
             cmdk = CommandByKey("plan_range_by_id_plan");
 
             if (cmdk != null)
@@ -110,7 +110,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
+            
 
             cmdk.Parameters["iid_plan"].Value = iid_plan;
 
@@ -147,8 +147,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("plan_range_by_id_plan");
             if (cmdk != null)
             {

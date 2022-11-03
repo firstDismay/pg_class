@@ -23,11 +23,11 @@ namespace pg_class
 
 
             DataTable tbl_data_type  = TableByName("vobject_prop_create_emded_mode");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
+            
+            
             NpgsqlCommandKey cmdk;
 
-            //=======================
+            
             cmdk = CommandByKey("object_prop_create_emded_mode_by_all");
 
             if (cmdk != null)
@@ -41,7 +41,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
+            
 
             cmdk.Fill(tbl_data_type);
             
@@ -67,8 +67,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("object_prop_create_emded_mode_by_all");
             if (cmdk != null)
             {

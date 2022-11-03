@@ -14,7 +14,7 @@ namespace pg_class
     public partial class manager
     {
         #region ВЫБРАТЬ
-        //*********************************************************************************************
+        
         /// <summary>
         /// Лист объектов path определяющих путь до позиции в дереве позиций
         /// </summary>
@@ -23,10 +23,10 @@ namespace pg_class
             List<pos_path> pos_path_list = new List<pos_path>();
             DataTable tbl_pos_path  = TableByName("path4");
 
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
+            
+            
             NpgsqlCommandKey cmdk;
-            //=======================
+            
             cmdk = CommandByKey("position_path_by_id_position2");
 
             if (cmdk != null)
@@ -40,7 +40,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
+            
 
             cmdk.Parameters["iid_position"].Value = iid_position;
 
@@ -83,8 +83,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("position_path_by_id_position2");
             if (cmdk != null)
             {
@@ -100,7 +100,7 @@ namespace pg_class
             }
             return Result;
         }
-        //*********************************************************************************************
+        
 
         #endregion
     }

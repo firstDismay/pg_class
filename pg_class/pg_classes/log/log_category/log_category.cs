@@ -50,7 +50,7 @@ namespace pg_class.pg_classes
         /// <summary>
         /// Полный конструктор класса для возврата данных существующих записей через класс композитного типа
         /// </summary>
-        public log_category(pg_clog_category lc) : this()
+        public log_category(pg_vlog_category lc) : this()
         {
 
             if (lc != null)

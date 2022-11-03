@@ -22,11 +22,11 @@ namespace pg_class
 
 
             DataTable tbl_data_type  = TableByName("vprop_enum_use_area");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
+            
+            
             NpgsqlCommandKey cmdk;
 
-            //=======================
+            
             cmdk = CommandByKey("prop_enum_use_area_by_all");
 
             if (cmdk != null)
@@ -40,7 +40,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
+            
 
             cmdk.Fill(tbl_data_type);
             
@@ -66,8 +66,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("prop_enum_use_area_by_all");
             if (cmdk != null)
             {
@@ -84,7 +84,7 @@ namespace pg_class
             return Result;
         }
 
-        //*********************************************************************************************
+        
         /// <summary>
         /// Тип  свойства по ИД
         /// </summary>
@@ -93,11 +93,11 @@ namespace pg_class
             prop_enum_use_area prop_enum_use_area = null;
 
             DataTable tbl_type  = TableByName("vprop_enum_use_area");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
+            
+            
             NpgsqlCommandKey cmdk;
 
-            //=======================
+            
             cmdk = CommandByKey("prop_enum_use_area_by_id");
 
             if (cmdk != null)
@@ -111,7 +111,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
+            
 
             cmdk.Parameters["iid"].Value = id;
 
@@ -135,8 +135,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("prop_enum_use_area_by_id");
             if (cmdk != null)
             {

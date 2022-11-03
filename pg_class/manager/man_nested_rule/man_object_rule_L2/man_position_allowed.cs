@@ -22,11 +22,11 @@ namespace pg_class
 
 
             DataTable tbl_position_list  = TableByName("vposition");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
+            
+            
             NpgsqlCommandKey cmdk;
 
-            //=======================
+            
             cmdk = CommandByKey("position_allowed_rl2_by_id_class");
 
             if (cmdk != null)
@@ -40,7 +40,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
+            
 
             cmdk.Parameters["iid_class"].Value = iid_class;
 
@@ -75,8 +75,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("position_allowed_rl2_by_id_class");
             if (cmdk != null)
             {
@@ -92,7 +92,7 @@ namespace pg_class
             }
             return Result;
         }
-        //*********************************************************************************************
+        
         #endregion
         
 

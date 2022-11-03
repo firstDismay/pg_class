@@ -21,11 +21,11 @@ namespace pg_class
             pos_temp_prop_user_val pos_temp_prop_user_val = null;
 
             DataTable tbl_vpos_temp_prop_obj_val_class  = TableByName("vpos_temp_prop_user_small_val");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
+            
+            
             NpgsqlCommandKey cmdk;
 
-            //=======================
+            
             cmdk = CommandByKey("pos_temp_prop_user_small_val_by_id_prop");
 
             if (cmdk != null)
@@ -39,7 +39,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
+            
 
             cmdk.Parameters["iid_pos_temp_prop"].Value = iid_pos_temp_prop;
 
@@ -52,7 +52,7 @@ namespace pg_class
             return pos_temp_prop_user_val;
         }
 
-        //*********************************************************************************************
+        
         /// <summary>
         /// Выбрать значение пользовательского свойства активного представления класса по идентификатору значения свойства
         /// </summary>
@@ -69,8 +69,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("pos_temp_prop_user_small_val_by_id_prop");
             if (cmdk != null)
             {

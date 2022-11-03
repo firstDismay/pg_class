@@ -22,7 +22,7 @@ namespace pg_class
         /// Событие возникает при изменении значения объектного свойства класса методом доступа к БД
         /// </summary>
         public event ClassPropObjectValChangeEventHandler ClassPropObjectValChange;
-        //===========================================================
+        
 
         /// <summary>
         ///  Метод вызова события изменения свойства класса

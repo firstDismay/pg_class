@@ -19,11 +19,11 @@ namespace pg_class
             rulel2_class_on_position rulel2 = null;
 
             DataTable tbl_rulel2  = TableByName("vrulel2_class_on_position");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
+            
+            
             NpgsqlCommandKey cmdk;
 
-            //=======================
+            
             cmdk = CommandByKey("rulel2_class_on_position_by_id");
 
             if (cmdk != null)
@@ -37,7 +37,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
+            
 
             cmdk.Parameters["iid_class"].Value = iid_class;
             cmdk.Parameters["iid_position"].Value = iid_position;
@@ -82,8 +82,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("rulel2_class_on_position_by_id");
             if (cmdk != null)
             {
@@ -99,7 +99,7 @@ namespace pg_class
             }
             return Result;
         }
-        //*********************************************************************************************
+        
 
         /// <summary>
         /// Метод возвращает правила уровня 2 класс на позицию по идентификатору позиции
@@ -110,11 +110,11 @@ namespace pg_class
 
 
             DataTable tbl_rule_list  = TableByName("vrulel2_class_on_position");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
+            
+            
             NpgsqlCommandKey cmdk;
 
-            //=======================
+            
             cmdk = CommandByKey("rulel2_class_on_position_by_id_position");
 
             if (cmdk != null)
@@ -128,7 +128,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
+            
 
             cmdk.Parameters["iid_position"].Value = iid_position;
 
@@ -163,8 +163,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("rulel2_class_on_position_by_id_position");
             if (cmdk != null)
             {
@@ -180,7 +180,7 @@ namespace pg_class
             }
             return Result;
         }
-        //*********************************************************************************************
+        
 
         /// <summary>
         /// Метод возвращает все доступные правила уровня 2 класс на позицию по идентификатору позиции
@@ -191,11 +191,11 @@ namespace pg_class
 
 
             DataTable tbl_rule_list  = TableByName("vrulel2_class_on_position");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
+            
+            
             NpgsqlCommandKey cmdk;
 
-            //=======================
+            
             cmdk = CommandByKey("rulel2_class_on_position_full_by_id_position");
 
             if (cmdk != null)
@@ -209,7 +209,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
+            
 
             cmdk.Parameters["iid_position"].Value = iid_position;
                 
@@ -244,8 +244,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("rulel2_class_on_position_full_by_id_position");
             if (cmdk != null)
             {

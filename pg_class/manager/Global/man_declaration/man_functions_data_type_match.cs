@@ -88,20 +88,26 @@ namespace pg_class
                     case "errarg2":
                         ResType = typeof(pg_errarg2);
                         break;
-                    case "cclass_prop":
+                    case "vclass_prop":
                         ResType = typeof(pg_vclass_prop);
                         break;
-                    case "cobject_prop":
+                    case "vobject_prop":
                         ResType = typeof(pg_vobject_prop);
                         break;
-                    case "cdoc_file":
+                    case "vdoc_file":
                         ResType = typeof(pg_vdoc_file);
                         break;
-                    case "cdoc_link":
+                    case "vdoc_link":
                         ResType = typeof(pg_vdoc_link);
                         break;
-                    case "cdoc_category":
+                    case "vdoc_category":
                         ResType = typeof(pg_vdoc_category);
+                        break;
+                    case "vlog_link":
+                        ResType = typeof(pg_vlog_link);
+                        break;
+                    case "vlog_category":
+                        ResType = typeof(pg_vlog_category);
                         break;
                     case "day_type":
                         ResType = typeof(pg_day_type);

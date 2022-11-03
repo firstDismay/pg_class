@@ -22,7 +22,7 @@ namespace pg_class
         /// Событие возникает при изменении привязки глобального свойства
         /// </summary>
         public event GlobalPropLinkClassPropChangeEventHandler GlobalPropLinkClassPropChange;
-        //===========================================================
+        
 
         /// <summary>
         ///  Метод вызова события изменения привязки глобального свойства

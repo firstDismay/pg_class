@@ -22,11 +22,11 @@ namespace pg_class
             plan_range_link plan_range_link = null;
 
             DataTable tbl_entity  = TableByName("vplan_range_link");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
+            
+            
             NpgsqlCommandKey cmdk;
 
-            //=======================
+            
             cmdk = CommandByKey("plan_range_link_by_id");
 
             if (cmdk != null)
@@ -40,7 +40,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
+            
 
             cmdk.Parameters["iid"].Value = iid;
 
@@ -62,8 +62,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("plan_range_link_by_id");
             if (cmdk != null)
             {
@@ -79,9 +79,9 @@ namespace pg_class
             }
             return Result;
         }
-        //*********************************************************************************************
+        
 
-        //*********************************************************************************************
+        
         /// <summary>
         /// Лист ссылок плана по идентификатору планового диапазона
         /// </summary>
@@ -92,10 +92,10 @@ namespace pg_class
             
             DataTable tbl_entity  = TableByName("vplan_range_link");
             
-            //=======================
+            
             NpgsqlCommandKey cmdk;
 
-            //=======================
+            
             cmdk = CommandByKey("plan_range_link_by_id_plan_range");
 
             if (cmdk != null)
@@ -109,7 +109,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
+            
 
             cmdk.Parameters["iid_plan_range"].Value = iid_plan_range;
 
@@ -146,8 +146,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("plan_range_link_by_id_plan_range");
             if (cmdk != null)
             {
@@ -164,7 +164,7 @@ namespace pg_class
             return Result;
         }
 
-        //*********************************************************************************************
+        
         /// <summary>
         /// Лист ссылок плана по идентификатору сущности
         /// </summary>
@@ -174,10 +174,10 @@ namespace pg_class
 
             DataTable tbl_entity = TableByName("vplan_range_link");
 
-            //=======================
+            
             NpgsqlCommandKey cmdk;
 
-            //=======================
+            
             cmdk = CommandByKey("plan_range_link_by_entity");
 
             if (cmdk != null)
@@ -191,7 +191,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
+            
 
             cmdk.Parameters["iid_plan"].Value = iid_plan;
             cmdk.Parameters["iid_entity"].Value = iid_entity;
@@ -216,8 +216,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("plan_range_link_by_entity");
             if (cmdk != null)
             {

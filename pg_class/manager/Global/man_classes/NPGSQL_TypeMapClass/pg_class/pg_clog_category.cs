@@ -9,7 +9,7 @@ namespace pg_class
     /// <summary>
     /// Композитный тип данных файла документа
     /// </summary>
-    public class pg_clog_category
+    public class pg_vlog_category
     {
         public Int64 id { get; set; }
         public Int64 id_conception { get; set; }

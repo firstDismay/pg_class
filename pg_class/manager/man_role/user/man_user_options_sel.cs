@@ -21,11 +21,11 @@ namespace pg_class
             user_options user_options = null;
 
             DataTable tbl_usr =  TableByName("user_options"); // TableByName("user_options")
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
+            
+            
             NpgsqlCommandKey cmdk;
 
-            //=======================
+            
             cmdk = CommandByKey("user_options_by_current");
 
             if (cmdk != null)
@@ -39,7 +39,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
+            
 
             cmdk.Fill(tbl_usr);
             
@@ -58,8 +58,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("user_options_by_current");
             if (cmdk != null)
             {
@@ -75,20 +75,20 @@ namespace pg_class
             }
             return Result;
         }
-        //*********************************************************************************************
         
-         //*********************************************************************************************
+        
+         
         /// <summary>
         /// Метод определяет актуальность состояния опций пользователя
         /// </summary>
         public eEntityState user_options_is_actual(String login, DateTime mytimestamp)
         {
             Int32 is_actual = 3;
-            //=======================
+            
             NpgsqlCommandKey cmdk;
             //**********
              
-            //=======================
+            
             cmdk = CommandByKey("user_options_is_actual");
 
             if (cmdk != null)
@@ -127,8 +127,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("user_options_is_actual");
             if (cmdk != null)
             {

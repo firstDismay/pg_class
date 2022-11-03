@@ -22,11 +22,11 @@ namespace pg_class
             List<class_prop> class_prop_list = new List<class_prop>();
             
             DataTable tbl_class_prop  = TableByName("vclass_prop");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
+            
+            
             NpgsqlCommandKey cmdk;
 
-            //=======================
+            
             cmdk = CommandByKey("class_prop_by_id_class_search_method");
 
             if (cmdk != null)
@@ -40,7 +40,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
+            
 
             cmdk.Parameters["iid_class"].Value = iid_class;
             cmdk.Parameters["isearch_method"].Value = isearch_method.ToString();
@@ -76,8 +76,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("class_prop_by_id_class_search_method");
             if (cmdk != null)
             {

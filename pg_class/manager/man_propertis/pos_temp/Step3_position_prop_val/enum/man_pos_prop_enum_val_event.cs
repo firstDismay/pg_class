@@ -23,7 +23,7 @@ namespace pg_class
         /// Событие возникает при изменении значения свойства позиции типа перечисление
         /// </summary>
         public event PositionPropEnumValChangeEventHandler PositionPropEnumValChange;
-        //===========================================================
+        
 
         /// <summary>
         ///  Метод вызова события изменения значения свойства позиции

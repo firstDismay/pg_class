@@ -21,11 +21,11 @@ namespace pg_class
             class_prop class_prop = null;
 
             DataTable tbl_vclass_prop  = TableByName("vclass_prop");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
+            
+            
             NpgsqlCommandKey cmdk;
 
-            //=======================
+            
             cmdk = CommandByKey("class_prop_by_id");
 
             if (cmdk != null)
@@ -39,7 +39,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
+            
 
             cmdk.Parameters["iid"].Value = iid;
 
@@ -62,8 +62,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("class_prop_by_id");
             if (cmdk != null)
             {
@@ -79,7 +79,7 @@ namespace pg_class
             }
             return Result;
         }
-        //*********************************************************************************************
+        
 
         /// <summary>
         /// Выбор свойства активного представления класса по идентификатору глобального свойства
@@ -89,11 +89,11 @@ namespace pg_class
             class_prop class_prop = null;
 
             DataTable tbl_vclass_prop  = TableByName("vclass_prop");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
+            
+            
             NpgsqlCommandKey cmdk;
 
-            //=======================
+            
             cmdk = CommandByKey("class_prop_by_id_global_prop");
 
             if (cmdk != null)
@@ -107,7 +107,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
+            
 
             cmdk.Parameters["iid_class"].Value = iid_class;
             cmdk.Parameters["iid_global_prop"].Value = iid_global_prop;
@@ -138,8 +138,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("class_prop_by_id_global_prop");
             if (cmdk != null)
             {
@@ -155,7 +155,7 @@ namespace pg_class
             }
             return Result;
         }
-        //*********************************************************************************************
+        
 
         /// <summary>
         /// Лист свойств представления активного класса по идентификатору класса с пустым тэгом
@@ -166,11 +166,11 @@ namespace pg_class
 
             
             DataTable tbl_class_prop  = TableByName("vclass_prop");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
+            
+            
             NpgsqlCommandKey cmdk;
 
-            //=======================
+            
             cmdk = CommandByKey("class_prop_by_id_class");
 
             if (cmdk != null)
@@ -184,7 +184,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
+            
 
             cmdk.Parameters["iid_class"].Value = iid_class;
 
@@ -219,8 +219,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("class_prop_by_id_class");
             if (cmdk != null)
             {
@@ -246,11 +246,11 @@ namespace pg_class
 
 
             DataTable tbl_class_prop = TableByName("vclass_prop");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
+            
+            
             NpgsqlCommandKey cmdk;
 
-            //=======================
+            
             cmdk = CommandByKey("class_prop_for_format_by_id_class");
 
             if (cmdk != null)
@@ -264,7 +264,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
+            
 
             cmdk.Parameters["iid_class"].Value = iid_class;
 
@@ -299,7 +299,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
+            
             cmdk = CommandByKey("class_prop_for_format_by_id_class");
             if (cmdk != null)
             {

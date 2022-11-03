@@ -27,7 +27,7 @@ namespace pg_class
             NpgsqlCommandKey cmdk;
             //**********
              
-            //=======================
+            
             cmdk = CommandByKey("object_add_by_single_unit");
 
             if (cmdk != null)
@@ -97,8 +97,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("object_add_by_single_unit");
             if (cmdk != null)
             {

@@ -21,11 +21,11 @@ namespace pg_class
             class_prop_link_val Сlass_prop_link_val = null;
 
             DataTable tbl_entity  = TableByName("vclass_prop_link_val");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
+            
+            
             NpgsqlCommandKey cmdk;
 
-            //=======================
+            
             cmdk = CommandByKey("class_prop_link_val_by_id_prop");
 
             if (cmdk != null)
@@ -39,7 +39,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
+            
 
             cmdk.Parameters["iid_class_prop"].Value = iid_class_prop;
 
@@ -69,8 +69,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("class_prop_link_val_by_id_prop");
             if (cmdk != null)
             {

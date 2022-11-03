@@ -20,7 +20,7 @@ namespace pg_class
         /// Событие возникает при изменении списка правил вложенности уровня 2 класс на позицию
         /// </summary>
         public event Rulel2_Class_On_PositionListChangeEventHandler Rulel2_Class_On_PositionListChange;
-        //===========================================================
+        
 
         /// <summary>
         ///  Метод вызова события

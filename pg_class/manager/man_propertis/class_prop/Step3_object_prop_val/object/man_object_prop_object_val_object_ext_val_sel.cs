@@ -21,11 +21,11 @@ namespace pg_class
             List<object_general> object_list = new List<object_general>();
 
             DataTable tbl_object = TableByName("vobject_general_ext");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
+            
+            
             NpgsqlCommandKey cmdk;
 
-            //=======================
+            
             cmdk = CommandByKey("object_object_prop_by_id_object_carrier_ext");
 
             if (cmdk != null)
@@ -39,7 +39,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
+            
 
             cmdk.Parameters["iid_object_carrier"].Value = iid_object_carrier;
             cmdk.Parameters["iid_class_prop"].Value = iid_class_prop;
@@ -83,8 +83,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("object_object_prop_by_id_object_carrier_ext");
             if (cmdk != null)
             {

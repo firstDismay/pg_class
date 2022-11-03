@@ -22,11 +22,11 @@ namespace pg_class
             pos_temp pos_temp = null;
 
             DataTable tbl_pos_temp  = TableByName("vpos_temp");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
+            
+            
             NpgsqlCommandKey cmdk;
 
-            //=======================
+            
             cmdk = CommandByKey("pos_temp_by_id");
 
             if (cmdk != null)
@@ -40,7 +40,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
+            
 
             cmdk.Parameters["iid"].Value = id;
             
@@ -62,8 +62,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("pos_temp_by_id");
             if (cmdk != null)
             {
@@ -79,9 +79,9 @@ namespace pg_class
             }
             return Result;
         }
-        //*********************************************************************************************
+        
 
-        //*********************************************************************************************
+        
         /// <summary>
         /// Лист шаблонов позиции по идентификатору текущего шаблона
         /// </summary>
@@ -89,11 +89,11 @@ namespace pg_class
         {
             List<pos_temp>  pos_temp_list = new List<pos_temp>();
             DataTable tbl_pos_temp  = TableByName("vpos_temp");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
+            
+            
             NpgsqlCommandKey cmdk;
 
-            //=======================
+            
             cmdk = CommandByKey("pos_temp_nestedlist_by_id");
 
             if (cmdk != null)
@@ -107,7 +107,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
+            
 
             cmdk.Parameters["iid"].Value = id;
             cmdk.Parameters["iid_con"].Value = id_con;
@@ -146,8 +146,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("pos_temp_nestedlist_by_id");
             if (cmdk != null)
             {
@@ -164,7 +164,7 @@ namespace pg_class
             return Result;
         }
 
-        //*********************************************************************************************
+        
         /// <summary>
         /// Лист шаблонов позиции входящих в белый список текущего шаблона
         /// </summary>
@@ -172,11 +172,11 @@ namespace pg_class
         {
             List<pos_temp> pos_temp_list = new List<pos_temp>();
             DataTable tbl_pos_temp  = TableByName("vpos_temp");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
+            
+            
             NpgsqlCommandKey cmdk;
 
-            //=======================
+            
             cmdk = CommandByKey("pos_temp_white_nestedlist_by_id");
 
             if (cmdk != null)
@@ -190,7 +190,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
+            
 
             cmdk.Parameters["iid"].Value = id;
             cmdk.Parameters["iid_con"].Value = id_con;
@@ -226,8 +226,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("pos_temp_white_nestedlist_by_id");
             if (cmdk != null)
             {
@@ -243,7 +243,7 @@ namespace pg_class
             }
             return Result;
         }
-        //*********************************************************************************************
+        
         
         /// <summary>
         /// Лист шаблонов позиции по идентификатору прототипа
@@ -253,11 +253,11 @@ namespace pg_class
             List<pos_temp> pos_temp_list = new List<pos_temp>();
 
             DataTable tbl_pos_temp  = TableByName("vpos_temp");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
+            
+            
             NpgsqlCommandKey cmdk;
 
-            //=======================
+            
             cmdk = CommandByKey("pos_temp_by_id_prototype");
 
             if (cmdk != null)
@@ -271,7 +271,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
+            
 
             cmdk.Parameters["iid_con"].Value = iid_con;
             cmdk.Parameters["iid_prototype"].Value = iid_prototype;
@@ -300,8 +300,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("pos_temp_by_id_prototype");
             if (cmdk != null)
             {
@@ -317,7 +317,7 @@ namespace pg_class
             }
             return Result;
         }
-        //*********************************************************************************************
+        
 
 
         /// <summary>
@@ -328,11 +328,11 @@ namespace pg_class
             List<pos_temp> pos_temp_list = new List<pos_temp>();
 
             DataTable tbl_pos_temp  = TableByName("vpos_temp");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
+            
+            
             NpgsqlCommandKey cmdk;
 
-            //=======================
+            
             cmdk = CommandByKey("pos_temp_by_id_prototype_all");
 
             if (cmdk != null)
@@ -346,7 +346,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
+            
 
             cmdk.Parameters["iid_prototype"].Value = iid_prototype;
             
@@ -382,8 +382,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("pos_temp_by_id_prototype_all");
             if (cmdk != null)
             {
@@ -399,7 +399,7 @@ namespace pg_class
             }
             return Result;
         }
-        //*********************************************************************************************
+        
         
         /// <summary>
         /// Лист шаблонов позиции по маске имени шаблона позиции
@@ -411,11 +411,11 @@ namespace pg_class
             List<pos_temp> pos_temp_list = new List<pos_temp>();
 
             DataTable tbl_pos_temp  = TableByName("vpos_temp");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
+            
+            
             NpgsqlCommandKey cmdk;
 
-            //=======================
+            
             cmdk = CommandByKey("pos_temp_by_like_name");
 
             if (cmdk != null)
@@ -429,7 +429,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
+            
 
             cmdk.Parameters["iid_con"].Value = iid_con;
             cmdk.Parameters["iname"].Value = iname;
@@ -458,8 +458,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("pos_temp_by_like_name");
             if (cmdk != null)
             {
@@ -475,7 +475,7 @@ namespace pg_class
             }
             return Result;
         }
-        //*********************************************************************************************
+        
         
          /// <summary>
         /// Лист шаблонов позиции концепции
@@ -487,11 +487,11 @@ namespace pg_class
             List<pos_temp> pos_temp_list = new List<pos_temp>();
 
             DataTable tbl_pos_temp  = TableByName("vpos_temp");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
+            
+            
             NpgsqlCommandKey cmdk;
 
-            //=======================
+            
             cmdk = CommandByKey("pos_temp_by_id_con");
 
             if (cmdk != null)
@@ -505,7 +505,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
+            
 
             cmdk.Parameters["iid_con"].Value = iid_con;
             
@@ -533,8 +533,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("pos_temp_by_id_con");
             if (cmdk != null)
             {
@@ -550,7 +550,7 @@ namespace pg_class
             }
             return Result;
         }
-        //*********************************************************************************************
+        
 
 
         /// <summary>
@@ -562,11 +562,11 @@ namespace pg_class
 
 
             DataTable tbl_entity  = TableByName("vpos_temp");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
+            
+            
             NpgsqlCommandKey cmdk;
 
-            //=======================
+            
             cmdk = CommandByKey("pos_temp_by_id_prop_enum");
 
             if (cmdk != null)
@@ -580,7 +580,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
+            
 
             cmdk.Parameters["iid_prop_enum"].Value = iid_prop_enum;
 
@@ -615,8 +615,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("pos_temp_by_id_prop_enum");
             if (cmdk != null)
             {
@@ -632,7 +632,7 @@ namespace pg_class
             }
             return Result;
         }
-        //*********************************************************************************************
+        
 
         /// <summary>
         /// Лист шаблонов по идентификатору глобального свойства
@@ -643,11 +643,11 @@ namespace pg_class
 
 
             DataTable tbl_entity = TableByName("vpos_temp");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
+            
+            
             NpgsqlCommandKey cmdk;
 
-            //=======================
+            
             cmdk = CommandByKey("pos_temp_by_id_global_prop");
 
             if (cmdk != null)
@@ -661,7 +661,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
+            
 
             cmdk.Parameters["iid_global_prop"].Value = iid_global_prop;
             
@@ -696,8 +696,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("pos_temp_by_id_global_prop");
             if (cmdk != null)
             {
@@ -713,7 +713,7 @@ namespace pg_class
             }
             return Result;
         }
-        //*********************************************************************************************
+        
 
         /// <summary>
         /// Лист шаблонов по идентификатору элемента перечисления
@@ -724,11 +724,11 @@ namespace pg_class
 
 
             DataTable tbl_entity  = TableByName("vpos_temp");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
+            
+            
             NpgsqlCommandKey cmdk;
 
-            //=======================
+            
             cmdk = CommandByKey("pos_temp_by_id_prop_enum_val");
 
             if (cmdk != null)
@@ -742,7 +742,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
+            
 
             cmdk.Parameters["iid_prop_enum_val"].Value = iid_prop_enum_val;
             
@@ -777,8 +777,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("pos_temp_by_id_prop_enum_val");
             if (cmdk != null)
             {
@@ -794,7 +794,7 @@ namespace pg_class
             }
             return Result;
         }
-        //*********************************************************************************************
+        
 
         /// <summary>
         /// Лист шаблонов по идентификатору типа данных свойств концепции
@@ -805,11 +805,11 @@ namespace pg_class
 
 
             DataTable tbl_entity  = TableByName("vpos_temp");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
+            
+            
             NpgsqlCommandKey cmdk;
 
-            //=======================
+            
             cmdk = CommandByKey("pos_temp_by_id_prop_data_type");
 
             if (cmdk != null)
@@ -823,7 +823,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
+            
 
             cmdk.Parameters["iid_conception"].Value = iid_conception;
             cmdk.Parameters["iid_prop_data_type"].Value = iid_prop_data_type;
@@ -859,8 +859,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("pos_temp_by_id_prop_data_type");
             if (cmdk != null)
             {

@@ -129,8 +129,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("pos_temp_prop_object_val_add");
             if (cmdk != null)
             {

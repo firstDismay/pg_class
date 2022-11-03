@@ -22,7 +22,7 @@ namespace pg_class
         /// Событие возникает при изменении значения объектного свойства позиции
         /// </summary>
         public event PositionPropObjectValChangeEventHandler PositionPropObjectValChange;
-        //===========================================================
+        
 
         /// <summary>
         ///  Метод вызова события изменения значения свойства позиции

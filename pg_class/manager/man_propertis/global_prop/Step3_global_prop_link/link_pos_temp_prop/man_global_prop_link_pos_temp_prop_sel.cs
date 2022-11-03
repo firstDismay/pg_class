@@ -21,11 +21,11 @@ namespace pg_class
             global_prop_link_pos_temp_prop global_prop_link_pos_temp_prop = null;
 
             DataTable tbl_vglobal_prop_link  = TableByName("vglobal_prop_link_pos_temp_prop");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
+            
+            
             NpgsqlCommandKey cmdk;
 
-            //=======================
+            
             cmdk = CommandByKey("global_prop_link_pos_temp_prop_by_id");
 
             if (cmdk != null)
@@ -39,7 +39,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
+            
 
             cmdk.Parameters["iid_global_prop"].Value = iid_global_prop;
             cmdk.Parameters["iid_pos_temp_prop"].Value = iid_pos_temp_prop;
@@ -78,8 +78,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("global_prop_link_pos_temp_prop_by_id");
             if (cmdk != null)
             {
@@ -96,7 +96,7 @@ namespace pg_class
             return Result;
         }
 
-        //*********************************************************************************************
+        
         /// <summary>
         /// Лист ссылок глобального свойства на свойства классов по идентификатору глобального свойства
         /// </summary>
@@ -106,11 +106,11 @@ namespace pg_class
 
             
             DataTable tbl_global_prop_link  = TableByName("vglobal_prop_link_pos_temp_prop");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
+            
+            
             NpgsqlCommandKey cmdk;
 
-            //=======================
+            
             cmdk = CommandByKey("global_prop_link_pos_temp_prop_by_id_global_prop");
 
             if (cmdk != null)
@@ -124,7 +124,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
+            
 
             cmdk.Parameters["iid_global_prop"].Value = iid_global_prop;
 
@@ -159,8 +159,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("global_prop_link_pos_temp_prop_by_id_global_prop");
             if (cmdk != null)
             {

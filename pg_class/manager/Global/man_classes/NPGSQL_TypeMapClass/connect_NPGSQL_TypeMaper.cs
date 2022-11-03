@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Npgsql;
-using pg_class.pg_exceptions;
+﻿using Npgsql;
 using System.Data;
-using System.Net.Sockets;
-using pg_class.pg_commands;
+
 
 namespace pg_class.poolcn
 {
@@ -33,6 +26,9 @@ namespace pg_class.poolcn
                 cn.TypeMapper.MapComposite<pg_vdoc_file>("bpd.vdoc_file");
                 cn.TypeMapper.MapComposite <pg_vdoc_link>("bpd.vdoc_link");
                 cn.TypeMapper.MapComposite<pg_vdoc_category>("bpd.vdoc_category");
+
+                cn.TypeMapper.MapComposite<pg_vlog_link>("bpd.vlog_link");
+                cn.TypeMapper.MapComposite<pg_vlog_category>("bpd.vlog_category");
 
                 cn.TypeMapper.MapEnum<pg_day_type>("bpd.day_type");
                 cn.TypeMapper.MapEnum<pg_range_work_type>("bpd.range_work_type");

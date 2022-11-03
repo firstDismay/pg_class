@@ -19,11 +19,11 @@ namespace pg_class
         public eEntityState user_is_actual(String login, DateTime mytimestamp)
         {
             Int32 is_actual = 3;
-            //=======================
+            
             NpgsqlCommandKey cmdk;
             //**********
              
-            //=======================
+            
             cmdk = CommandByKey("user_is_actual");
 
             if (cmdk != null)
@@ -122,8 +122,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("user_pwd_can_change");
 
             if (cmdk != null)
@@ -141,7 +141,7 @@ namespace pg_class
             return Result;
         }
 
-        //*********************************************************************************************
+        
         /// <summary>
         /// Метод определяет членство учетной записи в указанной роли
         /// </summary>
@@ -195,8 +195,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("user_is_member_role");
 
             if (cmdk != null)

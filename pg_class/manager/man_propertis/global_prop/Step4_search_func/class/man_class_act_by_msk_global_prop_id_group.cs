@@ -22,11 +22,11 @@ namespace pg_class
 
 
             DataTable tbl_vclass = TableByName("vclass");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
+            
+            
             NpgsqlCommandKey cmdk;
 
-            //=======================
+            
             cmdk = CommandByKey("class_act_by_msk_global_prop_id_group");
 
             if (cmdk != null)
@@ -40,7 +40,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
+            
 
             cmdk.Parameters["iid_global_prop"].Value = iid_global_prop;
             cmdk.Parameters["iid_group"].Value = iid_group;
@@ -78,8 +78,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("class_act_by_msk_global_prop_id_group");
             if (cmdk != null)
             {

@@ -21,11 +21,11 @@ namespace pg_class
             global_prop global_prop = null;
 
             DataTable tbl_vglobal_prop  = TableByName("vglobal_prop");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
+            
+            
             NpgsqlCommandKey cmdk;
 
-            //=======================
+            
             cmdk = CommandByKey("global_prop_by_name");
 
             if (cmdk != null)
@@ -39,7 +39,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
+            
 
             cmdk.Parameters["iid_conception"].Value = iid_conception;
             cmdk.Parameters["iname"].Value = iname;
@@ -70,8 +70,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("global_prop_by_name");
             if (cmdk != null)
             {

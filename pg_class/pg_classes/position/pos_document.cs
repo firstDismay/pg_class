@@ -29,7 +29,7 @@ namespace pg_class.pg_classes
                                      iname, idesc, iregnum, iregdate,
                                      this);
         }
-        //*********************************************************************************************
+        
         #endregion
 
         #region УДАЛИТЬ

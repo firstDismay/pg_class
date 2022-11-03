@@ -20,7 +20,7 @@ namespace pg_class
         /// Событие возникает при изменении списка ограничения вложенности
         /// </summary>
         public event PosTempNestedListChangeEventHandler PosTempNestedListChange;
-        //===========================================================
+        
 
         /// <summary>
         ///  Метод вызова события изменения концепции

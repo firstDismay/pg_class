@@ -34,7 +34,7 @@ namespace pg_class
         /// Событие применения методов сортировки позиций
         /// </summary>
         public event PositionRootSortEventHandler PositionRootSort;
-        //===========================================================
+        
 
         /// <summary>
         ///  Метод вызова события применения методов сортировки позиций

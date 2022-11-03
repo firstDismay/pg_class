@@ -23,7 +23,7 @@ namespace pg_class
         /// Событие возникает при изменении значения свойства объекта типа ссылка
         /// </summary>
         public event ObjectPropLinkValChangeEventHandler ObjectPropLinkValChange;
-        //===========================================================
+        
 
         /// <summary>
         ///  Метод вызова события изменения значения свойства объекта 

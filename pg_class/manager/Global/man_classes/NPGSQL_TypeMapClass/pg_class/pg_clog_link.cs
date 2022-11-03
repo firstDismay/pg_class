@@ -9,7 +9,7 @@ namespace pg_class
     /// <summary>
     /// Композитный тип данных ссылка на документ
     /// </summary>
-    public class pg_clog_link
+    public class pg_vlog_link
     {
 		public Int64 id { get; set; }
         public Int64 id_conception { get; set; }

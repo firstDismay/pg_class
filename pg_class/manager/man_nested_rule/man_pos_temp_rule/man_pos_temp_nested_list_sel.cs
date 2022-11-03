@@ -19,11 +19,11 @@ namespace pg_class
             pos_temp_nested_rule pos_temp_rule = null;
 
             DataTable tbl_con  = TableByName("vpos_temp_nested_rule");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
+            
+            
             NpgsqlCommandKey cmdk;
 
-            //=======================
+            
             cmdk = CommandByKey("pos_temp_nested_whitelist_by_id");
 
             if (cmdk != null)
@@ -37,7 +37,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
+            
 
             cmdk.Parameters["iid_pos_temp"].Value = iid_pos_temp;
             cmdk.Parameters["iid_pos_temp_nested"].Value = iid_pos_temp_nested;
@@ -60,8 +60,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("pos_temp_nested_whitelist_by_id");
             if (cmdk != null)
             {
@@ -77,7 +77,7 @@ namespace pg_class
             }
             return Result;
         }
-        //*********************************************************************************************
+        
 
         /// <summary>
         /// Полный перечень потенциально доступных Правил вложенности шаблонов позиций для указанного шаблона позиции
@@ -88,11 +88,11 @@ namespace pg_class
 
 
             DataTable tbl_rule_list  = TableByName("vpos_temp_nested_rule");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
+            
+            
             NpgsqlCommandKey cmdk;
 
-            //=======================
+            
             cmdk = CommandByKey("pos_temp_nested_whitelist_full");
 
             if (cmdk != null)
@@ -106,7 +106,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
+            
 
             cmdk.Parameters["iid_pos_temp"].Value = iid_pos_temp;
             cmdk.Parameters["iid_con"].Value = iid_con;
@@ -143,8 +143,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("pos_temp_nested_whitelist_full");
             if (cmdk != null)
             {
@@ -160,7 +160,7 @@ namespace pg_class
             }
             return Result;
         }
-        //*********************************************************************************************
+        
 
 
         /// <summary>
@@ -172,11 +172,11 @@ namespace pg_class
 
 
             DataTable tbl_rule_list  = TableByName("vpos_temp_nested_rule");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
+            
+            
             NpgsqlCommandKey cmdk;
 
-            //=======================
+            
             cmdk = CommandByKey("pos_temp_nested_whitelist");
 
             if (cmdk != null)
@@ -190,7 +190,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
+            
 
             cmdk.Parameters["iid_pos_temp"].Value = iid_pos_temp;
 
@@ -226,8 +226,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("pos_temp_nested_whitelist");
             if (cmdk != null)
             {

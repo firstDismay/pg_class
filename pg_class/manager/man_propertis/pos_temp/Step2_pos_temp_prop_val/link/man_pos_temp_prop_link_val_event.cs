@@ -22,7 +22,7 @@ namespace pg_class
         /// Событие возникает при изменении данных значения свойства шаблона типа ссылка
         /// </summary>
         public event PosTempPropLinkValChangeEventHandler PosTempPropLinkValChange;
-        //===========================================================
+        
 
         /// <summary>
         ///  Метод вызова события изменения ссылки для свойств

@@ -23,7 +23,7 @@ namespace pg_class
         /// Событие возникает при изменении значения свойства объекта типа перечисление
         /// </summary>
         public event ObjectPropEnumValChangeEventHandler ObjectPropEnumValChange;
-        //===========================================================
+        
 
         /// <summary>
         ///  Метод вызова события изменения значения свойства объекта 

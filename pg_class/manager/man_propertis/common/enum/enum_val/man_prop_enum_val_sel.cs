@@ -21,11 +21,11 @@ namespace pg_class
             prop_enum_val prop_enum_val = null;
 
             DataTable tbl_entity  = TableByName("vprop_enum_val");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
+            
+            
             NpgsqlCommandKey cmdk;
 
-            //=======================
+            
             cmdk = CommandByKey("prop_enum_val_by_id");
 
             if (cmdk != null)
@@ -39,7 +39,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
+            
 
             cmdk.Parameters["iid_prop_enum_val"].Value = iid_prop_enum_val;
 
@@ -61,8 +61,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("prop_enum_val_by_id");
             if (cmdk != null)
             {
@@ -78,7 +78,7 @@ namespace pg_class
             }
             return Result;
         }
-        //*********************************************************************************************
+        
 
 
         /// <summary>
@@ -89,11 +89,11 @@ namespace pg_class
             List<prop_enum_val> entity_list = new List<prop_enum_val>();
 
             DataTable tbl_entity  = TableByName("vprop_enum_val");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
+            
+            
             NpgsqlCommandKey cmdk;
 
-            //=======================
+            
             cmdk = CommandByKey("prop_enum_val_by_id_prop_enum");
 
             if (cmdk != null)
@@ -107,7 +107,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
+            
 
             cmdk.Parameters["iid_prop_enum"].Value = iid_prop_enum;
 
@@ -142,8 +142,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("prop_enum_val_by_id_prop_enum");
             if (cmdk != null)
             {

@@ -22,7 +22,7 @@ namespace pg_class
         /// Событие возникает при изменении значения свойства шаблона
         /// </summary>
         public event PosTempPropObjectValChangeEventHandler PosTempPropObjectValChange;
-        //===========================================================
+        
 
         /// <summary>
         ///  Метод вызова события изменения свойства шаблона

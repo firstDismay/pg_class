@@ -13,7 +13,7 @@ namespace pg_class
 {
     public partial class manager
     {
-        //*********************************************************************************************
+        
         /// <summary>
         /// Группа по идентификатору
         /// </summary>
@@ -22,11 +22,11 @@ namespace pg_class
             group group = null;
 
             DataTable tbl_group  = TableByName("vgroup");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
+            
+            
             NpgsqlCommandKey cmdk;
 
-            //=======================
+            
             cmdk = CommandByKey("group_by_id");
 
             if (cmdk != null)
@@ -40,7 +40,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
+            
 
             cmdk.Parameters["iid"].Value = id;
 
@@ -70,8 +70,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("group_by_id");
             if (cmdk != null)
             {
@@ -87,9 +87,9 @@ namespace pg_class
             }
             return Result;
         }
-        //*********************************************************************************************
+        
 
-        //*********************************************************************************************
+        
         /// <summary>
         /// Лист групп по идентификатору родительской группы
         /// </summary>
@@ -99,11 +99,11 @@ namespace pg_class
 
             
             DataTable tbl_group  = TableByName("vgroup");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
+            
+            
             NpgsqlCommandKey cmdk;
 
-            //=======================
+            
             cmdk = CommandByKey("group_by_id_parent");
 
             if (cmdk != null)
@@ -117,7 +117,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
+            
 
             cmdk.Parameters["iid_parent"].Value = id_parent;
             cmdk.Parameters["iid_con"].Value = id_con;
@@ -154,8 +154,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("group_by_id_parent");
             if (cmdk != null)
             {
@@ -172,7 +172,7 @@ namespace pg_class
             return Result;
         }
         
-        //*********************************************************************************************
+        
         /// <summary>
         /// Лист дочерних групп по строгому соотвествию имени
         /// </summary>
@@ -182,11 +182,11 @@ namespace pg_class
 
 
             DataTable tbl_group  = TableByName("vgroup");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
+            
+            
             NpgsqlCommandKey cmdk;
 
-            //=======================
+            
             cmdk = CommandByKey("group_by_name");
 
             if (cmdk != null)
@@ -200,7 +200,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
+            
 
             cmdk.Parameters["iid_parent"].Value = iid_parent;
             cmdk.Parameters["iname"].Value = iname;
@@ -237,8 +237,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("group_by_name");
             if (cmdk != null)
             {

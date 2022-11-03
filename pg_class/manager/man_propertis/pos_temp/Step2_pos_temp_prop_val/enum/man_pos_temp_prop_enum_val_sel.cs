@@ -21,11 +21,11 @@ namespace pg_class
             pos_temp_prop_enum_val pos_temp_prop_enum_val = null;
 
             DataTable tbl_entity  = TableByName("vpos_temp_prop_enum_val");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
+            
+            
             NpgsqlCommandKey cmdk;
 
-            //=======================
+            
             cmdk = CommandByKey("pos_temp_prop_enum_val_by_id_prop");
 
             if (cmdk != null)
@@ -39,7 +39,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
+            
 
             cmdk.Parameters["iid_pos_temp_prop"].Value = iid_pos_temp_prop;
 
@@ -62,7 +62,7 @@ namespace pg_class
         }
 
 
-        //*********************************************************************************************
+        
         /// <summary>
         /// Выбрать данные значения свойства типа перечисление по идентификатору свойства
         /// </summary>
@@ -71,7 +71,7 @@ namespace pg_class
             return pos_temp_prop_enum_val_by_id_prop(PosTemp_prop.Id);
         }
 
-        //*********************************************************************************************
+        
         /// <summary>
         /// Выбрать данные значения свойства типа перечисление по идентификатору свойства
         /// </summary>
@@ -89,8 +89,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("pos_temp_prop_enum_val_by_id_prop");
             if (cmdk != null)
             {

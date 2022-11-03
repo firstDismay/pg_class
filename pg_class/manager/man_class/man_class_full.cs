@@ -25,11 +25,11 @@ namespace pg_class
 
 
             DataTable tbl_vclass_snapshot  = TableByName("vclass");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
+            
+            
             NpgsqlCommandKey cmdk;
 
-            //=======================
+            
             cmdk = CommandByKey("class_full_real_by_id_conception");
 
             if (cmdk != null)
@@ -43,7 +43,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
+            
 
             cmdk.Parameters["iid_conception"].Value = iid_conception;
 
@@ -78,8 +78,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("class_full_real_by_id_conception");
             if (cmdk != null)
             {
@@ -105,11 +105,11 @@ namespace pg_class
 
 
             DataTable tbl_vclass_snapshot = TableByName("vclass");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
+            
+            
             NpgsqlCommandKey cmdk;
 
-            //=======================
+            
             cmdk = CommandByKey("class_full_real_by_id_group");
 
             if (cmdk != null)
@@ -123,7 +123,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
+            
 
             cmdk.Parameters["iid_group"].Value = iid_group;
 
@@ -158,8 +158,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("class_full_real_by_id_group");
             if (cmdk != null)
             {
@@ -186,11 +186,11 @@ namespace pg_class
 
 
             DataTable tbl_vclass_snapshot = TableByName("vclass");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
+            
+            
             NpgsqlCommandKey cmdk;
 
-            //=======================
+            
             cmdk = CommandByKey("class_full_real_by_id_parent");
 
             if (cmdk != null)
@@ -204,7 +204,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
+            
 
             cmdk.Parameters["iid_parent"].Value = iid_parent;
 
@@ -239,8 +239,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("class_full_real_by_id_parent");
             if (cmdk != null)
             {

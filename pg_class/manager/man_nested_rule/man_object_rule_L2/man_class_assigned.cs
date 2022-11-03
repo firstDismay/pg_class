@@ -20,11 +20,11 @@ namespace pg_class
 
 
             DataTable tbl_class_list = TableByName("vclass");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
+            
+            
             NpgsqlCommandKey cmdk;
 
-            //=======================
+            
             cmdk = CommandByKey("class_assigned_rl2_by_id_position");
 
             if (cmdk != null)
@@ -38,7 +38,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
+            
 
             cmdk.Parameters["iid_position"].Value = iid_position;
 
@@ -73,8 +73,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("class_assigned_rl2_by_id_position");
             if (cmdk != null)
             {
@@ -90,7 +90,7 @@ namespace pg_class
             }
             return Result;
         }
-        //*********************************************************************************************
+        
 
         /// <summary>
         /// Метод возвращает классы назначенные с учетом правил уровня 2 класс на позицию для выбранной группы по идентификатору позиции
@@ -101,11 +101,11 @@ namespace pg_class
 
 
             DataTable tbl_class_list  = TableByName("vclass");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
+            
+            
             NpgsqlCommandKey cmdk;
 
-            //=======================
+            
             cmdk = CommandByKey("class_allowed_rl2_for_group_by_id_position");
 
             if (cmdk != null)
@@ -119,7 +119,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
+            
 
             cmdk.Parameters["iid_position"].Value = iid_position;
             cmdk.Parameters["iid_group"].Value = iid_group;
@@ -155,8 +155,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("class_allowed_rl2_for_group_by_id_position");
             if (cmdk != null)
             {
@@ -172,7 +172,7 @@ namespace pg_class
             }
             return Result;
         }
-        //*********************************************************************************************
+        
 
         /// <summary>
         /// Метод возвращает классы назначенные с учетом правил уровня 2 класс на позицию для выбранного класса по идентификатору позиции
@@ -183,11 +183,11 @@ namespace pg_class
 
 
             DataTable tbl_class_list = TableByName("vclass");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
+            
+            
             NpgsqlCommandKey cmdk;
 
-            //=======================
+            
             cmdk = CommandByKey("class_allowed_rl2_for_class_by_id_position");
 
             if (cmdk != null)
@@ -201,7 +201,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
+            
 
             cmdk.Parameters["iid_position"].Value = iid_position;
             cmdk.Parameters["iid_class"].Value = iid_class;
@@ -237,8 +237,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("class_allowed_rl2_for_class_by_id_position");
             if (cmdk != null)
             {

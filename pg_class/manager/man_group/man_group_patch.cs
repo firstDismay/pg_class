@@ -13,7 +13,7 @@ namespace pg_class
 {
     public partial class manager
     {
-        //*********************************************************************************************
+        
         /// <summary>
         /// Лист объектов path определяющих путь до группы
         /// </summary>
@@ -21,10 +21,10 @@ namespace pg_class
         {
             List<group_path> group_path_list = new List<group_path>();
             DataTable tbl_group_path  = TableByName("path");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
+            
+            
             NpgsqlCommandKey cmdk;
-            //=======================
+            
             cmdk = CommandByKey("group_path");
 
             if (cmdk != null)
@@ -38,7 +38,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
+            
 
             cmdk.Parameters["iid_group"].Value = iid_group;
 
@@ -74,8 +74,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("group_path");
             if (cmdk != null)
             {
@@ -91,6 +91,6 @@ namespace pg_class
             }
             return Result;
         }
-        //*********************************************************************************************
+        
     }
 }

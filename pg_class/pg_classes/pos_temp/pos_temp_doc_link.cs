@@ -18,7 +18,7 @@ namespace pg_class.pg_classes
         {
             return Manager.doc_link_add(iid_document, this);
         }
-        //*********************************************************************************************
+        
         #endregion
 
         #region УДАЛИТЬ
@@ -29,7 +29,7 @@ namespace pg_class.pg_classes
         {
             Manager.doc_link_del_by_entity(iid_document, this);
         }
-        //*********************************************************************************************
+        
         #endregion
 
         #region ВЫБРАТЬ

@@ -23,11 +23,11 @@ namespace pg_class
 
             
             DataTable tbl_prop  = TableByName("prop_data_bin_ext");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
+            
+            
             NpgsqlCommandKey cmdk;
 
-            //=======================
+            
             cmdk = CommandByKey("prop_data_bin_ext_by_all");
 
             if (cmdk != null)
@@ -41,7 +41,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
+            
 
             cmdk.Fill(tbl_prop);
             
@@ -89,8 +89,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("prop_data_bin_ext_by_all");
             if (cmdk != null)
             {
@@ -106,7 +106,7 @@ namespace pg_class
             }
             return Result;
         }
-        //*********************************************************************************************
+        
 
         /// <summary>
         /// Лист доступных расширений бинарного свойства для указанного типа свойства 
@@ -117,11 +117,11 @@ namespace pg_class
 
 
             DataTable tbl_prop  = TableByName("prop_data_bin_ext");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
+            
+            
             NpgsqlCommandKey cmdk;
 
-            //=======================
+            
             cmdk = CommandByKey("prop_data_bin_ext_by_id_data_type");
 
             if (cmdk != null)
@@ -135,7 +135,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
+            
 
             cmdk.Parameters["iid_data_type"].Value = id_data_type;
 
@@ -164,7 +164,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
+            
             cmdk = CommandByKey("prop_data_bin_ext_by_id_data_type");
             if (cmdk != null)
             {
@@ -180,11 +180,11 @@ namespace pg_class
             }
             return Result;
         }
-        //*********************************************************************************************
+        
 
         /////////////////////////////////////////////
 
-        //*********************************************************************************************
+        
         /// <summary>
         /// Расширение бинарного свойства по идентификатору
         /// </summary>
@@ -193,11 +193,11 @@ namespace pg_class
             prop_data_bin_ext prop_data_bin_ext = null;
 
             DataTable tbl_prop  = TableByName("prop_data_bin_ext");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
+            
+            
             NpgsqlCommandKey cmdk;
 
-            //=======================
+            
             cmdk = CommandByKey("prop_data_bin_ext_by_id");
 
             if (cmdk != null)
@@ -211,7 +211,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
+            
 
             cmdk.Parameters["iid"].Value = id;
 
@@ -235,8 +235,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("prop_data_bin_ext_by_id");
             if (cmdk != null)
             {

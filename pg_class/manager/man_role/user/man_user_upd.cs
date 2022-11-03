@@ -26,7 +26,7 @@ namespace pg_class
             NpgsqlCommandKey cmdk;
             //**********
              
-            //=======================
+            
             cmdk = CommandByKey("user_upd");
 
             if (cmdk != null)
@@ -119,8 +119,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("user_upd");
             if (cmdk != null)
             {

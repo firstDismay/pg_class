@@ -14,7 +14,7 @@ namespace pg_class
 {
     public partial class manager
     {
-        //*********************************************************************************************
+        
         /// <summary>
         /// Ссылка документа по идентификатору
         /// </summary>
@@ -23,11 +23,11 @@ namespace pg_class
             doc_link doc_link = null;
 
             DataTable tbl_entity  = TableByName("vdoc_link");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
+            
+            
             NpgsqlCommandKey cmdk;
 
-            //=======================
+            
             cmdk = CommandByKey("doc_link_by_id");
 
             if (cmdk != null)
@@ -41,7 +41,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
+            
 
             cmdk.Parameters["iid"].Value = iid;
 
@@ -63,8 +63,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("doc_link_by_id");
             if (cmdk != null)
             {
@@ -82,7 +82,7 @@ namespace pg_class
         }
 
         
-        //*********************************************************************************************
+        
         /// <summary>
         /// Ссылка на документ по идентификатору сущности
         /// </summary>
@@ -91,11 +91,11 @@ namespace pg_class
             doc_link doc_link = null;
 
             DataTable tbl_entity = TableByName("vdoc_link");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
+            
+            
             NpgsqlCommandKey cmdk;
 
-            //=======================
+            
             cmdk = CommandByKey("doc_link_by_entity");
 
             if (cmdk != null)
@@ -109,7 +109,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
+            
 
             cmdk.Parameters["iid_document"].Value = iid_document;
             cmdk.Parameters["iid_entity"].Value = iid_entity;
@@ -214,8 +214,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("doc_link_by_entity");
             if (cmdk != null)
             {
@@ -232,7 +232,7 @@ namespace pg_class
             return Result;
         }
 
-        //*********************************************************************************************
+        
         /// <summary>
         /// Лист ссылок документа по идентификатору документа
         /// </summary>
@@ -241,11 +241,11 @@ namespace pg_class
             List<doc_link>  entity_list = new List<doc_link>();
             
             DataTable tbl_entity  = TableByName("vdoc_link");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
+            
+            
             NpgsqlCommandKey cmdk;
 
-            //=======================
+            
             cmdk = CommandByKey("doc_link_by_id_document");
 
             if (cmdk != null)
@@ -259,7 +259,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
+            
 
             cmdk.Parameters["iid_document"].Value = iid_document;
 
@@ -286,8 +286,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("doc_link_by_id_document");
             if (cmdk != null)
             {

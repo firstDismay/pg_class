@@ -21,7 +21,7 @@ namespace pg_class
             NpgsqlCommandKey cmdk;
             //**********
              
-            //=======================
+            
             cmdk = CommandByKey("rulel2_class_on_position_del");
 
             if (cmdk != null)
@@ -85,8 +85,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("rulel2_class_on_position_del");
             if (cmdk != null)
             {
@@ -102,7 +102,7 @@ namespace pg_class
             }
             return Result;
         }
-        //*********************************************************************************************
+        
 
         /// <summary>
         /// Метод удаляет разрешающие правила уровня 2 класс на позицию для указанной позиции
@@ -114,7 +114,7 @@ namespace pg_class
             NpgsqlCommandKey cmdk;
             //**********
              
-            //=======================
+            
             cmdk = CommandByKey("rulel2_class_on_position_all_del");
 
             if (cmdk != null)
@@ -169,8 +169,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("rulel2_class_on_position_all_del");
             if (cmdk != null)
             {

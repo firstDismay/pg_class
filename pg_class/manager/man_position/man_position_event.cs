@@ -22,7 +22,7 @@ namespace pg_class
         /// Событие возникает при изменении позиции методом доступа к БД
         /// </summary>
         public event PositionChangeEventHandler PositionChange;
-        //===========================================================
+        
 
         /// <summary>
         ///  Метод вызова события изменения позиции
@@ -44,7 +44,7 @@ namespace pg_class
         /// Событие возникает при изменении блокировки позиции методом доступа к БД
         /// </summary>
         public event PositionChangeEventHandler PositionChangeLock;
-        //===========================================================
+        
 
         /// <summary>
         ///  Метод вызова события изменения блокировки позиции

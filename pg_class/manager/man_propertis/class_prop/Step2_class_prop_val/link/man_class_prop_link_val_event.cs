@@ -22,7 +22,7 @@ namespace pg_class
         /// Событие возникает при изменении данных значения свойства класса типа ссылка
         /// </summary>
         public event ClassPropLinkValChangeEventHandler ClassPropLinkValChange;
-        //===========================================================
+        
 
         /// <summary>
         ///  Метод вызова события изменения ссылки для свойств

@@ -22,7 +22,7 @@ namespace pg_class
         /// Событие возникает при изменении данных значения свойства шаблона типа перечисление
         /// </summary>
         public event PosTempPropEnumValChangeEventHandler PosTempPropEnumValChange;
-        //===========================================================
+        
 
         /// <summary>
         ///  Метод вызова события изменения перечисления для свойств

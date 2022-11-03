@@ -22,7 +22,7 @@ namespace pg_class
         /// Событие возникает при изменении глобального свойства
         /// </summary>
         public event GlobalPropChangeEventHandler GlobalPropChange;
-        //===========================================================
+        
 
         /// <summary>
         ///  Метод вызова события изменения глобального свойства

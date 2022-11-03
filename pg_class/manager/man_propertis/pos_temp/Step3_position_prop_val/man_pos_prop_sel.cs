@@ -21,11 +21,11 @@ namespace pg_class
             position_prop position_prop = null;
 
             DataTable tbl_position_prop  = TableByName("vposition_prop");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
+            
+            
             NpgsqlCommandKey cmdk;
 
-            //=======================
+            
             cmdk = CommandByKey("position_prop_by_id");
 
             if (cmdk != null)
@@ -39,7 +39,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
+            
 
             cmdk.Parameters["iid_position_carrier"].Value = iid_position_carrier;
             cmdk.Parameters["iid_pos_temp_prop"].Value = iid_pos_temp_prop;
@@ -53,7 +53,7 @@ namespace pg_class
             return position_prop;
         }
 
-        //*********************************************************************************************
+        
         /// <summary>
         /// Выбор свойства позиции носителя по идентификатору позиции и свойства шаблона
         /// </summary>
@@ -71,8 +71,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("position_prop_by_id");
             if (cmdk != null)
             {
@@ -88,7 +88,7 @@ namespace pg_class
             }
             return Result;
         }
-        //*********************************************************************************************
+        
 
 
         /// <summary>
@@ -100,11 +100,11 @@ namespace pg_class
 
 
             DataTable tbl_position_prop  = TableByName("vposition_prop");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
+            
+            
             NpgsqlCommandKey cmdk;
 
-            //=======================
+            
             cmdk = CommandByKey("position_prop_by_id_position");
 
             if (cmdk != null)
@@ -118,7 +118,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
+            
 
             cmdk.Parameters["iid_position_carrier"].Value = iid_position_carrier;
 
@@ -153,8 +153,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("position_prop_by_id_position");
             if (cmdk != null)
             {
@@ -180,11 +180,11 @@ namespace pg_class
             position_prop position_prop = null;
 
             DataTable tbl_position_prop  = TableByName("vposition_prop");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
+            
+            
             NpgsqlCommandKey cmdk;
 
-            //=======================
+            
             cmdk = CommandByKey("position_prop_by_id_object_val");
 
             if (cmdk != null)
@@ -198,7 +198,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
+            
 
             cmdk.Parameters["iid_object_val"].Value = iid_object_val;
 
@@ -227,8 +227,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("position_prop_by_id_object_val");
             if (cmdk != null)
             {

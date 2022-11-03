@@ -21,11 +21,11 @@ namespace pg_class
             vclass vclass = null;
 
             DataTable tbl_vclass  = TableByName("vclass");
-            //NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
-            //=======================
+            
+            
             NpgsqlCommandKey cmdk;
 
-            //=======================
+            
             cmdk = CommandByKey("class_pos_temp_prop_object_by_id_pos_temp_prop");
 
             if (cmdk != null)
@@ -39,7 +39,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            //=======================
+            
 
             cmdk.Parameters["iid_pos_temp_prop"].Value = iid_pos_temp_prop;
 
@@ -70,8 +70,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            //=======================
-            //=======================
+            
+            
             cmdk = CommandByKey("class_pos_temp_prop_object_by_id_pos_temp_prop");
             if (cmdk != null)
             {
