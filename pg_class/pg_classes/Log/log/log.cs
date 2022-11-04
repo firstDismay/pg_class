@@ -1,14 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
-using System.IO;
-using System.Data;
-using System.Security.Cryptography;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Tab;
-using System.Xml.Linq;
 
 namespace pg_class.pg_classes
 {
@@ -27,6 +17,8 @@ namespace pg_class.pg_classes
             on_change = false;
             imagekey = "log_us";
             selectedimagekey = "log_s";
+
+            include_class_body_to_JSON = false;
         }
 
         /// <summary>
@@ -293,7 +285,8 @@ namespace pg_class.pg_classes
         public void Update()
         {
             if (on_change)
-            {             
+            {
+                include_class_body_to_json_boby();
                 Manager.log_upd(this);
                 Refresh();
                 on_change = false;

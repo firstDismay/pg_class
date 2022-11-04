@@ -11,7 +11,7 @@ using pg_class.pg_exceptions;
 namespace pg_class.pg_classes
 {
     /// <summary>
-    /// Класс классов
+    /// Класс записей журнала 
     /// </summary>
     public partial class log : iEntity
     {

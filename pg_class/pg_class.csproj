@@ -775,6 +775,7 @@
     <Compile Include="pg_classes\log\log\log.cs" />
     <Compile Include="pg_classes\log\log\log_category.cs" />
     <Compile Include="pg_classes\log\log\log_entity.cs" />
+    <Compile Include="pg_classes\log\log\log_link_class_body.cs" />
     <Compile Include="pg_classes\log\log\log_link.cs" />
     <Compile Include="pg_classes\log\log_category\log_category.cs" />
     <Compile Include="pg_classes\log\log_category\log_category_log.cs" />

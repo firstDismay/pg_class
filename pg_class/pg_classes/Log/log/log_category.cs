@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace pg_class.pg_classes
 {
+    /// <summary>
+    /// Класс записей журнала 
+    /// </summary>
     public partial class log
     {
         #region МЕТОДЫ РАБОТЫ С ДОКУМЕНТАМИ
