@@ -11,7 +11,7 @@ using System.Security.Cryptography;
 namespace pg_class.pg_classes
 {
     /// <summary>
-    /// Класс документов 
+    /// Класс записей журнала 
     /// </summary>
     public partial class log
     {
@@ -210,7 +210,22 @@ namespace pg_class.pg_classes
 		{
 			Manager.log_link_del_by_entity(this.Id, Document.EntityID, Document.Id, -1);
 		}
-		#endregion
-		#endregion
-	}
+        #endregion
+
+        #region ВЫБРАТЬ
+        private List<log_link> log_link_list;
+        /// <summary>
+        /// Лист ссылок записи журнала
+        /// </summary>
+        public List<log_link> log_link_get(Boolean DirectRequest = true)
+        {
+            if (DirectRequest || log_link_list == null)
+            {
+                log_link_list = Manager.log_link_by_id_log(Id);
+            }
+            return log_link_list;
+        }
+        #endregion
+        #endregion
+    }
 }
