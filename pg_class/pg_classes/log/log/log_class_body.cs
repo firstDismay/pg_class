@@ -9,6 +9,51 @@ namespace pg_class.pg_classes
     /// </summary>
     public partial class log
     {
+        #region СВОЙСТВА КЛАССА
+        private String class_body;
+        private String body;
+
+        /// <summary>
+		/// Класс сообщения
+		/// </summary>
+		public String Class_body
+        {
+            get
+            {
+                return class_body;
+            }
+            set
+            {
+                if (class_body != value)
+                {
+                    class_body = value;
+                    on_change = true;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Тело сообщения в формате JSON
+        /// </summary>
+        public String Body
+        {
+            get
+            {
+                return body;
+            }
+            set
+            {
+                if (body != value)
+                {
+                    JObject body_check = JObject.Parse(body);
+                    body = value;
+                    include_class_body_to_json_boby();
+                    on_change = true;
+                }
+            }
+        }
+        #endregion
+
         /// <summary>
         /// Свойство определяет поведение атрибута class_body, если свойство true атрибут добавляется в исходный JSON в случае если он корректен
         /// </summary>

@@ -67,9 +67,7 @@ namespace pg_class.pg_classes
 
         private String title;
         private String message;
-		private String class_body;
-        private String body;
-
+		
         private String user_author;
 		private DateTime datetime;
 
@@ -157,44 +155,6 @@ namespace pg_class.pg_classes
                 }
             }
         }
-
-		/// <summary>
-		/// Класс сообщения
-		/// </summary>
-		public String Class_body
-		{
-			get
-			{
-				return class_body;
-			}
-			set
-			{
-				if (class_body != value)
-				{
-					class_body = value;
-					on_change = true;
-				}
-			}
-		}
-
-		/// <summary>
-		/// Тело сообщения в формате JSON
-		/// </summary>
-		public String Body
-		{
-			get
-			{
-				return body;
-			}
-			set
-			{
-                if (body != value)
-                {
-                    body = value;
-                    on_change = true;
-                }
-			}
-		}
 
 		/// <summary>
 		/// Автор сообщения или отвественный
