@@ -45,7 +45,10 @@ namespace pg_class.pg_classes
             {
                 if (body != value)
                 {
-                    JObject body_check = JObject.Parse(body);
+                    if (value != null || value != "")
+                    {
+                        JObject body_check = JObject.Parse(body);
+                    }
                     body = value;
                     include_class_body_to_json_boby();
                     on_change = true;
