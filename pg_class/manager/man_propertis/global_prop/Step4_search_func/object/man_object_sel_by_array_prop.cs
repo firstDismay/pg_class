@@ -17,7 +17,7 @@ namespace pg_class
         /// <summary>
         /// Лист представлений объектов соотвествующих набору значений глобальных/определяющих свойств (подбор по критериям)
         /// </summary>
-        public List<object_general> object_by_array_prop(PropSearchСondition[] array_prop, Int64 iid_position)
+        public List<object_general> object_by_array_prop(PropSearchСondition[] array_prop, Int64 iid_position = -1)
         {
             List<object_general> object_list = new List<object_general>();
             DataTable tbl_object = TableByName("vobject_general");

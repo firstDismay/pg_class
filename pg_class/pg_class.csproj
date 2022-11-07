@@ -594,12 +594,8 @@
     <Compile Include="manager\man_propertis\global_prop\Step4_search_func\class\man_class_act_by_msk_global_prop.cs" />
     <Compile Include="manager\man_propertis\global_prop\Step4_search_func\class\man_class_act_by_msk_global_prop_id_class.cs" />
     <Compile Include="manager\man_propertis\global_prop\Step4_search_func\class\man_class_act_ext_by_msk_global_prop_id_group.cs" />
-    <Compile Include="manager\man_propertis\global_prop\Step4_search_func\object_ext\man_object_ext_by_id_position_msk_global_prop.cs" />
-    <Compile Include="manager\man_propertis\global_prop\Step4_search_func\object_ext\man_object_ext_carrier_by_msk_global_prop.cs" />
-    <Compile Include="manager\man_propertis\global_prop\Step4_search_func\object\man_object_carrier_by_global_prop.cs" />
-    <Compile Include="manager\man_propertis\global_prop\Step4_search_func\object_ext\man_object_ext_by_msk_global_prop.cs" />
-    <Compile Include="manager\man_propertis\global_prop\Step4_search_func\object\man_object_by_global_prop.cs" />
-    <Compile Include="manager\man_propertis\global_prop\Step4_search_func\object\man_object_by_id_position_global_prop.cs" />
+    <Compile Include="manager\man_propertis\global_prop\Step4_search_func\object_ext\man_object_ext_by_prop.cs" />
+    <Compile Include="manager\man_propertis\global_prop\Step4_search_func\object\man_object_by_prop.cs" />
     <Compile Include="manager\man_propertis\global_prop\Step4_search_func\class\man_class_act_by_msk_global_prop_id_group.cs" />
     <Compile Include="manager\man_propertis\global_prop\Step4_agg_func\man_global_prop_agg_func_match.cs" />
     <Compile Include="manager\man_propertis\global_prop\Step4_group_action\man_global_prop_group_action_class_prop_upd.cs" />
@@ -837,7 +833,7 @@
     <Compile Include="pg_classes\position\GroupAction\object_prop_object_objects.cs" />
     <Compile Include="pg_classes\position\GroupAction\object_prop_user_objects.cs" />
     <Compile Include="pg_classes\position\GroupAction\pos_class_snapshot.cs" />
-    <Compile Include="pg_classes\position\pos_object\pos_object_agg_func_object .cs" />
+    <Compile Include="pg_classes\position\pos_object\pos_object_by_prop .cs" />
     <Compile Include="pg_classes\position\pos_pos_prop.cs" />
     <Compile Include="pg_classes\position\pos_ICloneable.cs" />
     <Compile Include="pg_classes\position\pos_nested_rule\pos_rulel1_group_on_pos_temp.cs" />
