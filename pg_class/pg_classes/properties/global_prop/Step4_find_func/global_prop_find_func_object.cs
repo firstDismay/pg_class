@@ -17,8 +17,8 @@ namespace pg_class.pg_classes
         public List<object_general> Object_by_prop(PropSearchСondition prop_search_condition, Int64 iid_position = -1, Boolean Extended = false)
         {
             List<object_general> Result;
-            prop_search_condition.IdGlobalProp = Id;
             prop_search_condition.IdDefinitionProp = -1;
+            prop_search_condition.IdGlobalProp = Id;
             if (Extended)
             {
                 Result = Manager.object_ext_by_prop(prop_search_condition, iid_position);

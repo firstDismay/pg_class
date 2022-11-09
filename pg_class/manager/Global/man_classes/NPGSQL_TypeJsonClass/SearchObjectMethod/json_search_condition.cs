@@ -14,41 +14,26 @@ namespace pg_class
     [JsonObject(MemberSerialization.OptIn)]
     public class PropSearchСondition
     {
-        private Int64 _IdGlobalProp;
+     /// <summary>
+     /// Конструктор по умолчанию
+     /// </summary>
+        public PropSearchСondition()
+        {
+            IdGlobalProp = -1;
+            IdDefinitionProp = -1;
+        }
+
         /// <summary>
         /// Идентификатор глобального свойства
         /// </summary>
         [JsonProperty]
-        public Int64 IdGlobalProp 
-        { 
-            get 
-            { 
-                return _IdGlobalProp; 
-            }
-            set 
-            { 
-                _IdGlobalProp = value;
-                _IdDefinitionProp = -1;
-            }
-        }
+        public Int64 IdGlobalProp { get; set; }
 
-        private Int64 _IdDefinitionProp;
         /// <summary>
         /// Идентификатор определяющего свойства, может быть задан при отсуствии глобального свойства
         /// </summary>
         [JsonProperty]
-        public Int64 IdDefinitionProp 
-        {
-            get
-            {
-                return _IdDefinitionProp; 
-            }
-            set
-            {
-                _IdDefinitionProp = value;
-                _IdGlobalProp = -1;
-            }
-        }
+        public Int64 IdDefinitionProp { get; set; }
 
         private eSearchMethods _SearchMethods;
         /// <summary>
@@ -164,7 +149,6 @@ namespace pg_class
                     break;
             }
             return Result;
-
         }
     }
 }

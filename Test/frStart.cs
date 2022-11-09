@@ -77,6 +77,18 @@ namespace Test
 
 			//log_category lg = NEW_pg_class.log_category_add(107, "Тестовая категория сообщений3", "Тестовая категория сообщений", 0, true);
 
+
+
+            global_prop gp2 = NEW_pg_class.global_prop_by_id(33);
+
+
+            PropSearchСondition fs = new PropSearchСondition();
+            fs.ValReq = "lab*";
+            fs.SearchMethods = eSearchMethods.like_lower;
+
+            List<object_general> ob12 = gp2.Object_by_prop(fs, 1314);
+
+
 			log_category lg = NEW_pg_class.log_category_by_id(2);
             object_general oj = NEW_pg_class.object_by_id(83212);
 
