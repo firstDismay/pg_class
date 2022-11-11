@@ -26,9 +26,9 @@ namespace pg_class
                 sb.Append("Ошибка выполнения операции, сообщение сервера: ");
                 sb.Append(e.Message);
                 //Вызов события журнала
-                JournalEventArgs me = new JournalEventArgs(0, eEntity.manager, 101, e.Message, eAction.Execute, eJournalMessageType.error);
+                JournalEventArgs me = new JournalEventArgs(0, eEntity.manager, e.HResult, e.Message, eAction.Execute, eJournalMessageType.error);
                 JournalMessageOnReceived(me);
-                throw (new PgDataException(101, sb.ToString()));
+                throw (new PgDataException(e.HResult, sb.ToString()));
             }
 
             else if (e is Npgsql.NpgsqlException)
@@ -37,18 +37,17 @@ namespace pg_class
                 sb.Append("Активное соединение разорвано, ошибка: ");
                 sb.Append(e.Message);
                 //Вызов события журнала
-                JournalEventArgs me = new JournalEventArgs(0, eEntity.manager, 201, e.Message, eAction.Execute, eJournalMessageType.error);
+                JournalEventArgs me = new JournalEventArgs(0, eEntity.manager, e.HResult, e.Message, eAction.Execute, eJournalMessageType.error);
                 JournalMessageOnReceived(me);
                 throw (new PgDataException(2147467259, sb.ToString()));
             }
 
             else if (e is AccessDataBaseException)
             {
-                AccessDataBaseException e1 = (AccessDataBaseException)e;
                 //Вызов события журнала
-                JournalEventArgs me = new JournalEventArgs(0, eEntity.manager, e1.ErrorID, e1.ErrorDesc, eAction.Execute, eJournalMessageType.error);
+                JournalEventArgs me = new JournalEventArgs(0, eEntity.manager, e.HResult, e.Message, eAction.Execute, eJournalMessageType.error);
                 JournalMessageOnReceived(me);
-                throw (new PgDataException(e1.ErrorID, e1.ErrorDesc));
+                throw (new PgDataException(e.HResult, e.Message));
             }
 
             else if (e is PgManagerException)
@@ -69,33 +68,6 @@ namespace pg_class
                 JournalEventArgs me = new JournalEventArgs(0, eEntity.manager, 301, e.Message, eAction.Execute, eJournalMessageType.error);
                 JournalMessageOnReceived(me);
                 throw (new PgDataException(301, sb.ToString()));
-            }
-        }
-
-        /// <summary>
-        /// Обобщенный метод обработки исключений выполнения команд сервера
-        /// </summary>
-        private void PG_exception_hadler(Exception e, NpgsqlCommand cmd)
-        {
-            if (e is Npgsql.PostgresException)
-            {
-                StringBuilder sb = new StringBuilder();
-                sb.Append("Ошибка выполнения операции, сообщение сервера: ");
-                sb.Append(e.Message);
-                //Вызов события журнала
-                JournalEventArgs me = new JournalEventArgs(0, eEntity.manager, 101, e.Message, eAction.Execute, eJournalMessageType.error);
-                JournalMessageOnReceived(me);
-                throw (new PgDataException(101, sb.ToString()));
-            }
-            else
-            {
-                StringBuilder sb = new StringBuilder();
-                sb.Append("Ошибка выполнения операции, сообщение сервера: ");
-                sb.Append(e.Message);
-                //Вызов события журнала
-                JournalEventArgs me = new JournalEventArgs(0, eEntity.manager, 101, e.Message, eAction.Execute, eJournalMessageType.error);
-                JournalMessageOnReceived(me);
-                throw (new PgDataException(101, sb.ToString()));
             }
         }
 

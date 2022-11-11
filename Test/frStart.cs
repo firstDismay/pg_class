@@ -83,7 +83,7 @@ namespace Test
 
 
             PropSearchСondition fs = new PropSearchСondition();
-            fs.ValReq = "lab*";
+            fs.ValReq = "lab**";
             fs.SearchMethods = eSearchMethods.like_lower;
 
             List<object_general> ob12 = gp2.Object_by_prop(fs, 1314);
