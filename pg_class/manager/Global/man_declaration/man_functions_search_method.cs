@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using NpgsqlTypes;
 
 namespace pg_class
@@ -22,24 +23,22 @@ namespace pg_class
 
         private static readonly Dictionary<eSearchMethods, string> Dictionary_SearchMethods = new Dictionary<eSearchMethods, String>()
         {
-            { eSearchMethods.equal, Convert.ToString((char)61)},
-            { eSearchMethods.not_equal, Convert.ToString((char)8800)},
+            { eSearchMethods.equal, Convert.ToString((char)61, CultureInfo.CurrentCulture)},
+            { eSearchMethods.not_equal, Convert.ToString((char)8800, CultureInfo.CurrentCulture)},
+            { eSearchMethods.less, Convert.ToString((char)60, CultureInfo.CurrentCulture)},
+            { eSearchMethods.less_or_equal, Convert.ToString((char)8804, CultureInfo.CurrentCulture)},
+            { eSearchMethods.more, Convert.ToString((char)62, CultureInfo.CurrentCulture)},
+            { eSearchMethods.more_or_equal, Convert.ToString((char)8805, CultureInfo.CurrentCulture)},
+            { eSearchMethods.more_and_less, Convert.ToString((char)60, CultureInfo.CurrentCulture) + ".." + Convert.ToString((char)60, CultureInfo.CurrentCulture)},
+            { eSearchMethods.more_and_less_or_equal, Convert.ToString((char)60, CultureInfo.CurrentCulture) + ".." + Convert.ToString((char)8804, CultureInfo.CurrentCulture)},
+            { eSearchMethods.more_or_equal_and_less, Convert.ToString((char)8804, CultureInfo.CurrentCulture) + ".." + Convert.ToString((char)60, CultureInfo.CurrentCulture)},
+            { eSearchMethods.more_or_equal_and_less_or_equal, Convert.ToString((char)8804, CultureInfo.CurrentCulture) + ".." + Convert.ToString((char)8804, CultureInfo.CurrentCulture)},
 
-            { eSearchMethods.less, Convert.ToString((char)60)},
-            { eSearchMethods.less_or_equal, Convert.ToString((char)8804)},
-            { eSearchMethods.more, Convert.ToString((char)62)},
-            { eSearchMethods.more_or_equal, Convert.ToString((char)8805)},
+            { eSearchMethods.like, Convert.ToString((char)8838, CultureInfo.CurrentCulture)},
+            { eSearchMethods.like_lower, Convert.ToString((char)8838, CultureInfo.CurrentCulture) + Convert.ToString((char)8595, CultureInfo.CurrentCulture)},
 
-            { eSearchMethods.more_and_less, Convert.ToString((char)60)+ ".." + Convert.ToString((char)60)},
-            { eSearchMethods.more_and_less_or_equal, Convert.ToString((char)60) + ".." + Convert.ToString((char)8804)},
-            { eSearchMethods.more_or_equal_and_less, Convert.ToString((char)8804) + ".." + Convert.ToString((char)60)},
-            { eSearchMethods.more_or_equal_and_less_or_equal, Convert.ToString((char)8804) + ".." + Convert.ToString((char)8804)},
-
-            { eSearchMethods.like, Convert.ToString((char)8838)},
-            { eSearchMethods.like_lower, Convert.ToString((char)8838) + (char)8595},
-
-            { eSearchMethods.any_array, Convert.ToString((char)8834)},
-            { eSearchMethods.not_any_array, Convert.ToString((char)8836)},
+            { eSearchMethods.any_array, Convert.ToString((char)8834, CultureInfo.CurrentCulture)},
+            { eSearchMethods.not_any_array, Convert.ToString((char)8836, CultureInfo.CurrentCulture)},
         };
 
         /// <summary>
