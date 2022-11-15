@@ -40,17 +40,7 @@ namespace pg_class
         ///Метод поиска
         /// </summary>
         [JsonProperty]
-        public eSearchMethods SearchMethods
-        {
-            get
-            {
-                return _SearchMethods;
-            }
-            set
-            {
-                _SearchMethods = value;
-            }
-        }
+        public eSearchMethods SearchMethods { get; set; }
 
         /// <summary>
         ///Метод поиска строковое представление
