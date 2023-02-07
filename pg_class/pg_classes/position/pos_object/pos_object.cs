@@ -32,19 +32,19 @@ namespace pg_class.pg_classes
 
         /// <summary>
         /// Лист объектов позиции
-        /// object_by_id_position_full
-        /// object_ext_by_id_position_full
+        /// object_by_id_position_recursive
+        /// object_ext_by_id_position_recursive
         /// </summary>
         public List<object_general> Object_list_recursive_get(Boolean Extended = false)
         {
             List<object_general> Result;
             if (Extended)
             {
-                Result = Manager.object_ext_by_id_position_full(this);
+                Result = Manager.object_ext_by_id_position_recursive(this);
             }
             else
             {
-                Result = Manager.object_by_id_position_full(this);
+                Result = Manager.object_by_id_position_recursive(this);
             }
             return Result;
         }

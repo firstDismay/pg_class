@@ -77,8 +77,6 @@ namespace Test
 
             //log_category lg = NEW_pg_class.log_category_add(107, "Тестовая категория сообщений3", "Тестовая категория сообщений", 0, true);
 
-
-
             String sm2 = manager.SearchMethodsToString(eSearchMethods.like_lower);
 
             global_prop gp2 = NEW_pg_class.global_prop_by_id(33);

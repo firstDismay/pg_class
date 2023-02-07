@@ -177,7 +177,7 @@ namespace pg_class
         /// <summary>
         /// Лист представлений объектов по идентификатору позиции рекурсивно
         /// </summary>
-        public List<object_general> object_ext_by_id_position_full(Int64 iid_position)
+        public List<object_general> object_ext_by_id_position_recursive(Int64 iid_position)
         {
             List<object_general> object_list = new List<object_general>();
 
@@ -188,7 +188,7 @@ namespace pg_class
             NpgsqlCommandKey cmdk;
 
             
-            cmdk = CommandByKey("object_ext_by_id_position_full");
+            cmdk = CommandByKey("object_ext_by_id_position_recursive");
 
             if (cmdk != null)
             {
@@ -222,23 +222,23 @@ namespace pg_class
         /// <summary>
         /// Лист представлений объектов по идентификатору позиции рекурсивно
         /// </summary>
-        public List<object_general> object_ext_by_id_position_full(position Position)
+        public List<object_general> object_ext_by_id_position_recursive(position Position)
         {
-            return object_ext_by_id_position_full(Position.Id);
+            return object_ext_by_id_position_recursive(Position.Id);
         }
 
         //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
-        public Boolean object_ext_by_id_position_full(out eAccess Access)
+        public Boolean object_ext_by_id_position_recursive(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
             
             
-            cmdk = CommandByKey("object_ext_by_id_position_full");
+            cmdk = CommandByKey("object_ext_by_id_position_recursive");
             if (cmdk != null)
             {
                 Result = cmdk.Access;
