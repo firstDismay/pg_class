@@ -17,7 +17,7 @@ namespace pg_class
         /// <summary>
         ///  Метод выполняет создание объектов всех вещественных классов указанного класса
         /// </summary>
-        public List<errarg_object_add> object_add_for_class_act(Int64 iid_class, Int64 iid_position_target)
+        public List<errarg_object_add> object_add_for_class_act(Int64 iid_class, Int64 iid_position)
         {
             List<errarg_object_add> object_list = new List<errarg_object_add>();
             //object_general o;
@@ -44,7 +44,7 @@ namespace pg_class
             
 
             cmdk.Parameters["iid_class"].Value = iid_class;
-            cmdk.Parameters["iid_position_target"].Value = iid_position_target;
+            cmdk.Parameters["iid_position"].Value = iid_position;
 
             cmdk.Fill(tbl_result);
             
@@ -58,7 +58,7 @@ namespace pg_class
                 }
             }
 
-            position p = position_by_id(iid_position_target);
+            position p = position_by_id(iid_position);
             if (p != null)
             {
                 //Генерируем событие изменения остава объектов позиции
