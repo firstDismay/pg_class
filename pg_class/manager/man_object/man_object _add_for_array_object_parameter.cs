@@ -42,7 +42,7 @@ namespace pg_class
                 sarray_object_parameter[i] = JsonConvert.SerializeObject(array_object_parameter[i], Formatting.Indented);
             }
 
-            cmdk.Parameters["array_object_parameter"].Value = sarray_object_parameter;
+            cmdk.Parameters["array_object_parameters"].Value = sarray_object_parameter;
             cmdk.Fill(tbl_result);
 
             errarg_object_add og;
