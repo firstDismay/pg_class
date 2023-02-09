@@ -663,7 +663,7 @@ namespace pg_class
 		/// <summary>
 		/// Лист объектов снимка класса по идентификатору класса и содержащей позиции
 		/// </summary>
-		public List<object_general> object_by_id_class_snapshot_id_pos(Int64 iid_class, DateTime itimestamp, Int64 iid_position)
+		public List<object_general> object_by_id_class_snapshot_id_pos(Int64 iid_class, DateTime itimestamp_class, Int64 iid_position)
 		{
 			List<object_general> object_list = new List<object_general>();
 			DataTable tbl_object = TableByName("vobject_general");
@@ -683,7 +683,7 @@ namespace pg_class
 			}
 
 			cmdk.Parameters["iid_class"].Value = iid_class;
-			cmdk.Parameters["itimestamp"].Value = itimestamp;
+			cmdk.Parameters["itimestamp_class"].Value = itimestamp_class;
 			cmdk.Parameters["iid_position"].Value = iid_position;
 			cmdk.Fill(tbl_object);
 
