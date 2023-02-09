@@ -37,7 +37,7 @@ namespace pg_class.pg_classes
             }
             else
             {
-                Result = Manager.object_by_id_class_full(this);
+                Result = Manager.object_by_id_class_recursive(this);
             }
             return Result;
         }

@@ -504,13 +504,13 @@ namespace pg_class
 		/// <summary>
 		/// Лист объектов всех представления класса по идентификатору класса
 		/// </summary>
-		public List<object_general> object_by_id_class_full(Int64 iid_class)
+		public List<object_general> object_by_id_class_recursive(Int64 iid_class)
 		{
 			List<object_general> object_list = new List<object_general>();
 			DataTable tbl_object = TableByName("vobject_general");
 			NpgsqlCommandKey cmdk;
 
-			cmdk = CommandByKey("object_by_id_class_full");
+			cmdk = CommandByKey("object_by_id_class_recursive");
 			if (cmdk != null)
 			{
 				if (!cmdk.Access)
@@ -541,30 +541,30 @@ namespace pg_class
 		/// <summary>
 		/// Лист объектов всех представления класса по идентификатору класса
 		/// </summary>
-		public List<object_general> object_by_id_class_full(vclass Class)
+		public List<object_general> object_by_id_class_recursive(vclass Class)
 		{
-			return object_by_id_class_full(Class.Id);
+			return object_by_id_class_recursive(Class.Id);
 		}
 
 		/// <summary>
 		/// Лист объектов всех представления класса по идентификатору класса
 		/// </summary>
-		public List<object_general> object_by_id_class_full(object_general Object_general)
+		public List<object_general> object_by_id_class_recursive(object_general Object_general)
 		{
-			return object_by_id_class_full(Object_general.Id_class);
+			return object_by_id_class_recursive(Object_general.Id_class);
 		}
 
 		//ACCESS
 		/// <summary>
 		/// Проверка прав доступа к методу
 		/// </summary>
-		public Boolean object_by_id_class_full(out eAccess Access)
+		public Boolean object_by_id_class_recursive(out eAccess Access)
 		{
 			Boolean Result = false;
 			Access = eAccess.NotFound;
 			NpgsqlCommandKey cmdk;
 
-			cmdk = CommandByKey("object_by_id_class_full");
+			cmdk = CommandByKey("object_by_id_class_recursive");
 			if (cmdk != null)
 			{
 				Result = cmdk.Access;
