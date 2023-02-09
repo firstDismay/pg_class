@@ -17,11 +17,11 @@ namespace pg_class.pg_classes
             List<object_general> Result;
             if (Extended)
             {
-                Result = Manager.object_carrier_ext_by_object_class_full(this);
+                Result = Manager.object_ext_carrier_by_object_class_recursive(this);
             }
             else
             {
-                Result = Manager.object_carrier_by_object_class_full(this);
+                Result = Manager.object_carrier_by_object_class_recursive(this);
             }
             return Result;
         }

@@ -16,7 +16,7 @@ namespace pg_class
         /// <summary>
         /// Лист объектов носителей объектов класса по идентификатору класса
         /// </summary>
-        public List<object_general> object_carrier_by_object_class_full(Int64 iid_class)
+        public List<object_general> object_carrier_by_object_class_recursive(Int64 iid_class)
         {
             List<object_general> object_list = new List<object_general>();
 
@@ -27,7 +27,7 @@ namespace pg_class
             NpgsqlCommandKey cmdk;
 
             
-            cmdk = CommandByKey("object_carrier_by_object_class_full");
+            cmdk = CommandByKey("object_carrier_by_object_class_recursive");
 
             if (cmdk != null)
             {
@@ -61,23 +61,23 @@ namespace pg_class
         /// <summary>
         /// Лист объектов носителей объектов класса по идентификатору класса
         /// </summary>
-        public List<object_general> object_carrier_by_object_class_full(vclass Class)
+        public List<object_general> object_carrier_by_object_class_recursive(vclass Class)
         {
-            return object_carrier_by_object_class_full(Class.Id);
+            return object_carrier_by_object_class_recursive(Class.Id);
         }
 
         //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
-        public Boolean object_carrier_by_object_class_full(out eAccess Access)
+        public Boolean object_carrier_by_object_class_recursive(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
             
             
-            cmdk = CommandByKey("object_carrier_by_object_class_full");
+            cmdk = CommandByKey("object_carrier_by_object_class_recursive");
             if (cmdk != null)
             {
                 Result = cmdk.Access;
