@@ -17,13 +17,13 @@ namespace pg_class
         /// <summary>
         ///  Метод добавляет список объектов по массиву параметров объектов
         /// </summary>
-        public List<errarg_object_add> object_add_for_array_object_parameter(json_object_parameters[] array_object_parameter)
+        public List<errarg_object_add> object_add_for_array_object_parameters(json_object_parameters[] object_parameters)
         {
             List<errarg_object_add> object_list = new List<errarg_object_add>();
             DataTable tbl_result = TableByName("errarg_object_add");
             NpgsqlCommandKey cmdk;
 
-            cmdk = CommandByKey("object_add_for_array_object_parameter");
+            cmdk = CommandByKey("object_add_for_array_object_parameters");
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -36,13 +36,13 @@ namespace pg_class
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
 
-            String[] sarray_object_parameter = new String[array_object_parameter.Length];
-            for (Int32 i = 0; i < array_object_parameter.Length; i++)
+            String[] sobject_parameters = new String[object_parameters.Length];
+            for (Int32 i = 0; i < object_parameters.Length; i++)
             {
-                sarray_object_parameter[i] = JsonConvert.SerializeObject(array_object_parameter[i], Formatting.Indented);
+                sobject_parameters[i] = JsonConvert.SerializeObject(object_parameters[i], Formatting.Indented);
             }
 
-            cmdk.Parameters["array_object_parameters"].Value = sarray_object_parameter;
+            cmdk.Parameters["object_parameters"].Value = sobject_parameters;
             cmdk.Fill(tbl_result);
 
             errarg_object_add og;
@@ -61,13 +61,13 @@ namespace pg_class
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
-        public Boolean object_add_for_array_object_parameter(out eAccess Access)
+        public Boolean object_add_for_array_object_parameters(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
 
-            cmdk = CommandByKey("object_add_for_array_object_parameter");
+            cmdk = CommandByKey("object_add_for_array_object_parameters");
             if (cmdk != null)
             {
                 Result = cmdk.Access;
