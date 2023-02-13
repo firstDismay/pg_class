@@ -16,7 +16,7 @@ namespace pg_class
         /// <summary>
         /// Метод определяет актуальность состояния данных пользователя
         /// </summary>
-        public eEntityState user_role_user_is_actual(String irole_user, DateTime mytimestamp)
+        public eEntityState user_role_user_is_actual(String irole_user, DateTime itimestamp)
         {
             Int32 is_actual = 3;
             NpgsqlCommandKey cmdk;
@@ -35,7 +35,7 @@ namespace pg_class
             }
 
             cmdk.Parameters["irole_user"].Value = irole_user;
-            cmdk.Parameters["mytimestamp"].Value = mytimestamp;
+            cmdk.Parameters["itimestamp"].Value = itimestamp;
             is_actual = (Int32)cmdk.ExecuteScalar();
             
             return (eEntityState)is_actual;
