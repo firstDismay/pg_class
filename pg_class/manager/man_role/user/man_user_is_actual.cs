@@ -79,7 +79,7 @@ namespace pg_class
         /// <summary>
         /// Метод определяет доступность изменения пароля указанной учетной записи для указанной изменяемой учетной записи
         /// </summary>
-        public Boolean user_pwd_can_change(String usr_login, String usr_change_login)
+        public Boolean user_pwd_can_change(String ilogin, String icorrectable_login)
         {
             NpgsqlCommandKey cmdk;
 
@@ -96,8 +96,8 @@ namespace pg_class
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
 
-            cmdk.Parameters["usr_login"].Value = usr_login;
-            cmdk.Parameters["usr_change_login"].Value = usr_change_login;
+            cmdk.Parameters["ilogin"].Value = ilogin;
+            cmdk.Parameters["icorrectable_login"].Value = icorrectable_login;
 
             return (Boolean)cmdk.ExecuteScalar();
         }
@@ -105,9 +105,9 @@ namespace pg_class
         /// <summary>
         /// Метод определяет доступность изменения пароля указанной учетной записи для указанной изменяемой учетной записи
         /// </summary>
-        public Boolean user_pwd_can_change(user usr_login, user usr_change_login)
+        public Boolean user_pwd_can_change(user ilogin, user icorrectable_login)
         {
-            return user_pwd_can_change(usr_login.Login, usr_change_login.Login);
+            return user_pwd_can_change(ilogin.Login, icorrectable_login.Login);
         }
 
         //ACCESS
