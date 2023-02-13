@@ -157,13 +157,9 @@ namespace pg_class
         public List<user> user_by_all()
         {
             List<user> usr_list = new List<user>();
+            DataTable tbl_usr =  TableByName("vusers"); //TableByName("vusers");
 
-              DataTable tbl_usr =  TableByName("vusers"); //TableByName("vusers");
-            
-            
             NpgsqlCommandKey cmdk;
-
-            
             cmdk = CommandByKey("user_by_all");
 
             if (cmdk != null)
@@ -177,10 +173,8 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
 
             cmdk.Fill(tbl_usr);
-            
             user usr;
             if (tbl_usr.Rows.Count > 0)
             {
@@ -203,7 +197,6 @@ namespace pg_class
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
             
-            
             cmdk = CommandByKey("user_by_all");
             if (cmdk != null)
             {
@@ -220,20 +213,15 @@ namespace pg_class
             return Result;
         }
         
-        
         /// <summary>
         /// Лист пользователей входящих в указанную роль
         /// </summary>
-        public List<user> user_by_roles(String roles)
+        public List<user> user_by_roles(String irole)
         {
             List<user> usr_list = new List<user>();
-
             DataTable tbl_usr =  TableByName("vusers"); //TableByName("vusers");
             
-            
             NpgsqlCommandKey cmdk;
-
-            
             cmdk = CommandByKey("user_by_roles");
             if (cmdk != null)
             {
@@ -246,12 +234,9 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
 
-            cmdk.Parameters["roles"].Value = roles;
-
+            cmdk.Parameters["irole"].Value = irole;
             cmdk.Fill(tbl_usr);
-            
             user usr;
             if (tbl_usr.Rows.Count > 0)
             {
@@ -291,23 +276,16 @@ namespace pg_class
             return Result;
         }
         
-        
-        
         /// <summary>
         /// Текущий Пользователь
         /// </summary>
         public user user_by_current()
         {
             user user = null;
-
             DataTable tbl_usr =  TableByName("vusers"); //TableByName("vusers");
-            
-            
             NpgsqlCommandKey cmdk;
 
-            
             cmdk = CommandByKey("user_by_current");
-
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -319,15 +297,12 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
 
             cmdk.Fill(tbl_usr);
-            
             if (tbl_usr.Rows.Count > 0)
             {
                 user = new user(tbl_usr.Rows[0]);
             }
-
             return user;
         }
         //ACCESS
@@ -356,7 +331,6 @@ namespace pg_class
             }
             return Result;
         }
-        
        
         #endregion
 
