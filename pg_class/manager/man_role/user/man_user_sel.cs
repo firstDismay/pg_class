@@ -19,7 +19,7 @@ namespace pg_class
         /// <summary>
         /// Пользователь по логину
         /// </summary>
-        public user user_by_login(String login)
+        public user user_by_login(String ilogin)
         {
             user user = null;
 
@@ -44,7 +44,7 @@ namespace pg_class
             }
             
 
-            cmdk.Parameters["login"].Value = login;
+            cmdk.Parameters["ilogin"].Value = ilogin;
 
             cmdk.Fill(tbl_usr);
             
