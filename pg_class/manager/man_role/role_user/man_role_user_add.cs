@@ -16,7 +16,7 @@ namespace pg_class
 		/// <summary>
 		/// Метод добавляет роль пользователя
 		/// </summary>
-		public role_user user_role_user_add(String role_name, String role_description, String role_namesys)
+		public role_user user_role_user_add(String irole_name, String irole_description, String irole_namesys)
 		{
 			role_user role_user = null;
 			String namesys;
@@ -37,9 +37,9 @@ namespace pg_class
 				throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
 			}
 
-			cmdk.Parameters["role_name"].Value = role_name;
-			cmdk.Parameters["role_description"].Value = role_description;
-			cmdk.Parameters["role_namesys"].Value = role_namesys;
+			cmdk.Parameters["irole_name"].Value = irole_name;
+			cmdk.Parameters["irole_description"].Value = irole_description;
+			cmdk.Parameters["irole_namesys"].Value = irole_namesys;
 			cmdk.ExecuteNonQuery();
 
 			error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
