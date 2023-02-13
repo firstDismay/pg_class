@@ -16,16 +16,13 @@ namespace pg_class
         /// <summary>
         /// Метод определяет актуальность состояния данных пользователя
         /// </summary>
-        public eEntityState user_is_actual(String login, DateTime mytimestamp)
+        public eEntityState user_is_actual(String ilogin, DateTime itimestamp)
         {
             Int32 is_actual = 3;
             
             NpgsqlCommandKey cmdk;
-            //**********
-             
             
             cmdk = CommandByKey("user_is_actual");
-
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -38,8 +35,8 @@ namespace pg_class
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
 
-            cmdk.Parameters["login"].Value = login;
-            cmdk.Parameters["mytimestamp"].Value = mytimestamp;
+            cmdk.Parameters["ilogin"].Value = ilogin;
+            cmdk.Parameters["itimestamp"].Value = itimestamp;
             is_actual = (Int32)cmdk.ExecuteScalar();
             
             return (eEntityState)is_actual;
