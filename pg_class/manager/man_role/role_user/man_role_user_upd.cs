@@ -16,7 +16,7 @@ namespace pg_class
 		/// <summary>
 		/// Метод изменяет указанную роль пользователя
 		/// </summary>
-		public role_user user_role_user_upd(String role_name, String role_description, String role_namesys, String role_newnamesys)
+		public role_user user_role_user_upd(String irole_name, String irole_description, String irole_namesys, String irole_newnamesys)
 		{
 			role_user role_user = null;
 			Int32 error;
@@ -36,10 +36,10 @@ namespace pg_class
 				throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
 			}
 
-			cmdk.Parameters["role_name"].Value = role_name;
-			cmdk.Parameters["role_description"].Value = role_description;
-			cmdk.Parameters["role_namesys"].Value = role_namesys;
-			cmdk.Parameters["role_newnamesys"].Value = role_newnamesys;
+			cmdk.Parameters["irole_name"].Value = irole_name;
+			cmdk.Parameters["irole_description"].Value = irole_description;
+			cmdk.Parameters["irole_namesys"].Value = irole_namesys;
+			cmdk.Parameters["irole_newnamesys"].Value = irole_newnamesys;
 			cmdk.ExecuteNonQuery();
 
 			error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
@@ -47,7 +47,7 @@ namespace pg_class
 			switch (error)
 			{
 				case 0:
-					role_user = user_role_user_by_namesys(role_newnamesys);
+					role_user = user_role_user_by_namesys(irole_newnamesys);
 					if (role_user!= null)
 					{
 						//Генерируем событие изменения концепции
