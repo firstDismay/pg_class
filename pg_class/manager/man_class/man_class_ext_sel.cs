@@ -534,7 +534,7 @@ namespace pg_class
         /// <summary>
         /// Лист разрешенных расширенных представлений базовых абстрактных классов по идентификатору группы и целевой позиции создаваемого объекта
         /// </summary>
-        public List<vclass> class_act_base_ext_allowed_by_id_group(Int64 iid_group, Int64 iid_position)
+        public List<vclass> class_act_ext_base_allowed_by_id_group(Int64 iid_group, Int64 iid_position)
         {
             List<vclass> vclass_list = new List<vclass>();
 
@@ -545,7 +545,7 @@ namespace pg_class
             NpgsqlCommandKey cmdk;
 
             
-            cmdk = CommandByKey("class_act_base_ext_allowed_by_id_group");
+            cmdk = CommandByKey("class_act_ext_base_allowed_by_id_group");
 
             if (cmdk != null)
             {
@@ -580,23 +580,23 @@ namespace pg_class
         /// <summary>
         /// Лист разрешенных расширенных представлений базовых абстрактных классов по идентификатору группы и целевой позиции создаваемого объекта
         /// </summary>
-        public List<vclass> class_act_base_ext_allowed_by_id_group(group Group, position Position)
+        public List<vclass> class_act_ext_base_allowed_by_id_group(group Group, position Position)
         {
-            return class_act_base_ext_allowed_by_id_group(Group.Id, Position.Id);
+            return class_act_ext_base_allowed_by_id_group(Group.Id, Position.Id);
         }
 
         //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
-        public Boolean class_act_base_ext_allowed_by_id_group(out eAccess Access)
+        public Boolean class_act_ext_base_allowed_by_id_group(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
             
             
-            cmdk = CommandByKey("class_act_base_ext_allowed_by_id_group");
+            cmdk = CommandByKey("class_act_ext_base_allowed_by_id_group");
             if (cmdk != null)
             {
                 Result = cmdk.Access;

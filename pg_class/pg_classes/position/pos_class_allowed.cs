@@ -53,7 +53,7 @@ namespace pg_class.pg_classes
             List<vclass> Result = null;
             if (Extended)
             {
-                Result = Manager.class_act_base_ext_allowed_by_id_group(Group, this);
+                Result = Manager.class_act_ext_base_allowed_by_id_group(Group, this);
             }
             else
             {
