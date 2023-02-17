@@ -326,13 +326,13 @@ namespace pg_class
         /// <summary>
         /// Лист исторических представлений базовых классов по идентификатору позиции носителя объектов
         /// </summary>
-        public List<vclass> class_snapshot_base_ext_by_id_position(Int64 iid_position, Boolean on_internal = false)
+        public List<vclass> class_snapshot_ext_base_by_id_position(Int64 iid_position, Boolean on_internal = false)
         {
             List<vclass> vclass_snapshot_list = new List<vclass>();
             DataTable tbl_vclass_snapshot = TableByName("vclass_ext");
             NpgsqlCommandKey cmdk;
 
-            cmdk = CommandByKey("class_snapshot_base_ext_by_id_position");
+            cmdk = CommandByKey("class_snapshot_ext_base_by_id_position");
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -364,22 +364,22 @@ namespace pg_class
         /// <summary>
         /// Лист исторических представлений базовых классов по идентификатору позиции носителя объектов
         /// </summary>
-        public List<vclass> class_snapshot_base_ext_by_id_position(position Position_parent, Boolean On_internal = false)
+        public List<vclass> class_snapshot_ext_base_by_id_position(position Position_parent, Boolean On_internal = false)
         {
-            return class_snapshot_base_ext_by_id_position(Position_parent.Id, On_internal);
+            return class_snapshot_ext_base_by_id_position(Position_parent.Id, On_internal);
         }
 
         //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
-        public Boolean class_snapshot_base_ext_by_id_position(out eAccess Access)
+        public Boolean class_snapshot_ext_base_by_id_position(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
 
-            cmdk = CommandByKey("class_snapshot_base_ext_by_id_position");
+            cmdk = CommandByKey("class_snapshot_ext_base_by_id_position");
             if (cmdk != null)
             {
                 Result = cmdk.Access;

@@ -16,7 +16,7 @@ namespace pg_class.pg_classes
             List<vclass> Result = null;
             if (Extended)
             {
-                Result = Manager.class_snapshot_base_ext_by_id_position(this, On_internal);
+                Result = Manager.class_snapshot_ext_base_by_id_position(this, On_internal);
             }
             else
             {
