@@ -27,7 +27,7 @@ namespace pg_class
             
             NpgsqlCommandKey cmdk;
             
-            cmdk = CommandByKey("position_path_by_id_position2");
+            cmdk = CommandByKey("position_path_by_id_position");
 
             if (cmdk != null)
             {
@@ -85,7 +85,7 @@ namespace pg_class
             NpgsqlCommandKey cmdk;
             
             
-            cmdk = CommandByKey("position_path_by_id_position2");
+            cmdk = CommandByKey("position_path_by_id_position");
             if (cmdk != null)
             {
                 Result = cmdk.Access;
