@@ -35,7 +35,6 @@ namespace pg_class
         [JsonProperty]
         public Int64 IdDefinitionProp { get; set; }
 
-        private eSearchMethods _SearchMethods;
         /// <summary>
         ///Метод поиска
         /// </summary>
@@ -46,11 +45,10 @@ namespace pg_class
         ///Метод поиска строковое представление
         /// </summary>
         [JsonProperty]
-        public String SearchMethodsToString 
-        { get
-            {
-                return _SearchMethods.ToString();
-            } 
+        public String SearchMethodsToString {
+            get {
+                return SearchMethods.ToString();
+            }
         }
 
         /// <summary>
@@ -87,11 +85,10 @@ namespace pg_class
         /// </summary>
         public override string ToString()
         {
-            String Result = manager.SearchMethodsToString(_SearchMethods);
+            String Result = manager.SearchMethodsToString(SearchMethods);
 
-            switch(_SearchMethods)
+            switch(SearchMethods)
             {
-
                 case eSearchMethods.equal:
                     Result = String.Format("{0}{1}", Result, ValReq);
                     break;
