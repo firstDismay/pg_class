@@ -16,13 +16,13 @@ namespace pg_class
         /// <summary>
         /// Метод удаляет свойство класса и все наследующие свойства
         /// </summary>
-        public void class_prop_del_cascade(Int64 iid)
+        public void class_prop_del(Int64 iid)
         {
             Int32 error;
             String desc_error;
             NpgsqlCommandKey cmdk;
             
-            cmdk = CommandByKey("class_prop_del_cascade");
+            cmdk = CommandByKey("class_prop_del");
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -62,13 +62,13 @@ namespace pg_class
         /// <summary>
         /// Метод удаляет свойство класса и все наследующие свойства
         /// </summary>
-        public void class_prop_del_cascade(class_prop Class_Prop)
+        public void class_prop_del(class_prop Class_Prop)
         {
             if (Class_Prop != null)
             {
                 if (Class_Prop.StorageType == eStorageType.Active)
                 {
-                    class_prop_del_cascade(Class_Prop.Id);
+                    class_prop_del(Class_Prop.Id);
                 }
                 else
                 {
@@ -83,13 +83,13 @@ namespace pg_class
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
-        public Boolean class_prop_del_cascade(out eAccess Access)
+        public Boolean class_prop_del(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
 
-            cmdk = CommandByKey("class_prop_del_cascade");
+            cmdk = CommandByKey("class_prop_del");
             if (cmdk != null)
             {
                 Result = cmdk.Access;

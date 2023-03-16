@@ -929,11 +929,11 @@ namespace pg_class.pg_classes
 
         /// <summary>
         /// Метод удаляет текущее свойство
-        /// class_prop_del_cascade
+        /// class_prop_del
         /// </summary>
         public void Del()
         {
-            Manager.class_prop_del_cascade(this);
+            Manager.class_prop_del(this);
         }
 
         /// <summary>

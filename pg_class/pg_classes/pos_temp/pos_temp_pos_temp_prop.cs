@@ -65,7 +65,7 @@ namespace pg_class.pg_classes
         /// Метод удаляет свойство шаблона
         /// pos_temp_prop_del
         /// </summary>
-        public void class_prop_del_cascade(class_prop ClassProp)
+        public void class_prop_del(class_prop ClassProp)
         {
             Manager.pos_temp_prop_del(ClassProp.Id);
         }
