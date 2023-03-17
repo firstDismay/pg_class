@@ -16,7 +16,7 @@ namespace pg_class
         /// <summary>
         /// Определить актуальность состояния значения свойства активного представления класса 
         /// </summary>
-        public eEntityState class_prop_object_val_is_actual(Int64 iid, DateTime timestamp_class)
+        public eEntityState class_prop_object_val_is_actual(Int64 iid, DateTime itimestamp_class)
         {
             Int32 is_actual = 3;
             NpgsqlCommandKey cmdk;
@@ -35,7 +35,7 @@ namespace pg_class
             }
 
             cmdk.Parameters["iid"].Value = iid;
-            cmdk.Parameters["timestamp_class"].Value = timestamp_class;
+            cmdk.Parameters["itimestamp_class"].Value = itimestamp_class;
             is_actual = (Int32)cmdk.ExecuteScalar();
             
             return (eEntityState)is_actual;          
