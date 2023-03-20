@@ -16,7 +16,7 @@ namespace pg_class
 		/// <summary>
 		/// Метод добавляет новый объект и встраивает его в объектное свойство в качестве значения
 		/// </summary>
-		public object_general object_prop_object_val_add_new(Int64 iid_object_carrier, Int64 iid_class_prop_snapshot, Int64 iid_class_real, Int32 iid_unit_conversion_rule, Decimal icquantity)
+		public object_general object_prop_object_val_add_new(Int64 iid_object_carrier, Int64 iid_class_prop, Int64 iid_class_real, Int32 iid_unit_conversion_rule, Decimal icquantity)
 		{
 			object_general Object = null;
 			object_prop_object_val ObjectPropObjectVal = null;
@@ -40,7 +40,7 @@ namespace pg_class
 
 			cmdk.Parameters["iid_object_carrier"].Value = iid_object_carrier;
 			cmdk.Parameters["iid_class_real"].Value = iid_class_real;
-			cmdk.Parameters["iid_class_prop_snapshot"].Value = iid_class_prop_snapshot;
+			cmdk.Parameters["iid_class_prop"].Value = iid_class_prop;
 			cmdk.Parameters["iid_unit_conversion_rule"].Value = iid_unit_conversion_rule;
 			cmdk.Parameters["icquantity"].Value = icquantity;
 			cmdk.ExecuteNonQuery();
@@ -54,7 +54,7 @@ namespace pg_class
 					if (id > 0)
 					{
 						Object = object_by_id(id);
-						ObjectPropObjectVal = object_prop_object_val_by_id_prop(iid_object_carrier, iid_class_prop_snapshot);
+						ObjectPropObjectVal = object_prop_object_val_by_id_prop(iid_object_carrier, iid_class_prop);
 					}
 					//Генерируем событие изменения объекта
 					if (Object != null)
@@ -119,7 +119,7 @@ namespace pg_class
 		/// <summary>
 		/// Метод встраивает существующий объект в объектное свойство в качестве значения STEP3
 		/// </summary>
-		public object_general object_prop_object_val_add(Int64 iid_object_carrier, Int64 iid_class_prop_snapshot, Int64 iid_object_val, Decimal icquantity)
+		public object_general object_prop_object_val_add(Int64 iid_object_carrier, Int64 iid_class_prop, Int64 iid_object_val, Decimal icquantity)
 		{
 			object_general Object_embed = null;
 			object_general Object_change = null;
@@ -144,7 +144,7 @@ namespace pg_class
 			}
 
 			cmdk.Parameters["iid_object_carrier"].Value = iid_object_carrier;
-			cmdk.Parameters["iid_class_prop_snapshot"].Value = iid_class_prop_snapshot;
+			cmdk.Parameters["iid_class_prop"].Value = iid_class_prop;
 			cmdk.Parameters["iid_object_val"].Value = iid_object_val;
 			cmdk.Parameters["icquantity"].Value = icquantity;
 			cmdk.ExecuteNonQuery();
@@ -158,7 +158,7 @@ namespace pg_class
 					if (id > 0)
 					{
 						Object_embed = object_by_id(id);
-						ObjectPropObjectVal = object_prop_object_val_by_id_prop(iid_object_carrier, iid_class_prop_snapshot);
+						ObjectPropObjectVal = object_prop_object_val_by_id_prop(iid_object_carrier, iid_class_prop);
 
 						//Если идет частичное встраивание с созданием нового объекта находим остаток
 						if (id != iid_object_val)
