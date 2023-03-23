@@ -21,7 +21,7 @@ namespace pg_class
 			Int32 is_actual = 3;
 			NpgsqlCommandKey cmdk;
 
-			cmdk = CommandByKey("group_is_actual3");
+			cmdk = CommandByKey("group_is_actual");
 			if (cmdk != null)
 			{
 				if (!cmdk.Access)
