@@ -269,7 +269,7 @@ namespace pg_class
         /// <summary>
         /// Лист документов по идентификатору шаблона позиции
         /// </summary>
-        public List<document> document_by_id_pos_temp(Int64 iid_entity_instatce, Boolean position_on, Boolean object_on, Boolean recursive_on)
+        public List<document> document_by_id_pos_temp(Int64 iid_pos_temp, Boolean position_on, Boolean object_on, Boolean recursive_on)
         {
             List<document> entity_list = new List<document>();
             DataTable tbl_entity = TableByName("vdocument");
@@ -288,7 +288,7 @@ namespace pg_class
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
 
-            cmdk.Parameters["iid_entity_instatce"].Value = iid_entity_instatce;
+            cmdk.Parameters["iid_pos_temp"].Value = iid_pos_temp;
             cmdk.Parameters["position_on"].Value = position_on;
             cmdk.Parameters["object_on"].Value = object_on;
             cmdk.Parameters["recursive_on"].Value = recursive_on;
@@ -343,7 +343,7 @@ namespace pg_class
         /// <summary>
         /// Лист документов по идентификатору позиции
         /// </summary>
-        public List<document> document_by_id_position(Int64 iid_entity_instatce, Boolean object_on, Boolean recursive_on)
+        public List<document> document_by_id_position(Int64 iid_position, Boolean object_on, Boolean recursive_on)
         {
             List<document> entity_list = new List<document>();
             DataTable tbl_entity = TableByName("vdocument");
@@ -362,7 +362,7 @@ namespace pg_class
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
 
-            cmdk.Parameters["iid_entity_instatce"].Value = iid_entity_instatce;
+            cmdk.Parameters["iid_position"].Value = iid_position;
             cmdk.Parameters["object_on"].Value = object_on;
             cmdk.Parameters["recursive_on"].Value = recursive_on;
             cmdk.Fill(tbl_entity);
@@ -416,7 +416,7 @@ namespace pg_class
         /// <summary>
         /// Лист документов по идентификатору пользователя
         /// </summary>
-        public List<document> document_by_id_user(Int64 iid_entity_instatce)
+        public List<document> document_by_id_user(Int64 iid_user)
         {
             List<document> entity_list = new List<document>();
             DataTable tbl_entity = TableByName("vdocument");
@@ -435,7 +435,7 @@ namespace pg_class
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
 
-            cmdk.Parameters["iid_entity_instatce"].Value = iid_entity_instatce;
+            cmdk.Parameters["iid_user"].Value = iid_user;
             cmdk.Fill(tbl_entity);
             
             document ce;
@@ -487,7 +487,7 @@ namespace pg_class
         /// <summary>
         /// Лист документов по идентификатору свойства позиции
         /// </summary>
-        public List<document> document_by_id_position_prop(Int64 iid_entity_instatce, Int64 iid_sub_entity_instatce)
+        public List<document> document_by_id_position_prop(Int64 iid_pos_temp_prop, Int64 iid_position)
         {
             List<document> entity_list = new List<document>();
             DataTable tbl_entity = TableByName("vdocument");
@@ -507,8 +507,8 @@ namespace pg_class
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
 
-            cmdk.Parameters["iid_entity_instatce"].Value = iid_entity_instatce;
-            cmdk.Parameters["iid_sub_entity_instatce"].Value = iid_sub_entity_instatce;
+            cmdk.Parameters["iid_pos_temp_prop"].Value = iid_pos_temp_prop;
+            cmdk.Parameters["iid_position"].Value = iid_position;
             cmdk.Fill(tbl_entity);
             
             document ce;
@@ -560,7 +560,7 @@ namespace pg_class
         /// <summary>
         /// Лист документов по идентификатору свойства шаблона позиции
         /// </summary>
-        public List<document> document_by_id_pos_temp_prop(Int64 iid_entity_instatce)
+        public List<document> document_by_id_pos_temp_prop(Int64 iid_pos_temp_prop)
         {
             List<document> entity_list = new List<document>();
             DataTable tbl_entity = TableByName("vdocument");
@@ -579,7 +579,7 @@ namespace pg_class
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
 
-            cmdk.Parameters["iid_entity_instatce"].Value = iid_entity_instatce;
+            cmdk.Parameters["iid_pos_temp_prop"].Value = iid_pos_temp_prop;
             cmdk.Fill(tbl_entity);
             
             document ce;
@@ -631,7 +631,7 @@ namespace pg_class
         /// <summary>
         /// Лист документов по идентификатору группы классов
         /// </summary>
-        public List<document> document_by_id_group(Int64 iid_entity_instatce, Boolean class_on, Boolean object_on , Boolean recursive_on)
+        public List<document> document_by_id_group(Int64 iid_group, Boolean class_on, Boolean object_on , Boolean recursive_on)
         {
             List<document> entity_list = new List<document>();
             DataTable tbl_entity = TableByName("vdocument");
@@ -651,7 +651,7 @@ namespace pg_class
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
 
-            cmdk.Parameters["iid_entity_instatce"].Value = iid_entity_instatce;
+            cmdk.Parameters["iid_group"].Value = iid_group;
             cmdk.Parameters["class_on"].Value = class_on;
             cmdk.Parameters["object_on"].Value = object_on;
             cmdk.Parameters["recursive_on"].Value = recursive_on;
@@ -707,7 +707,7 @@ namespace pg_class
         /// <summary>
         /// Лист документов по идентификатору класса
         /// </summary>
-        public List<document> document_by_id_class(Int64 iid_entity_instatce, Boolean object_on, Boolean recursive_on)
+        public List<document> document_by_id_class(Int64 iid_class, Boolean object_on, Boolean recursive_on)
         {
             List<document> entity_list = new List<document>();
             DataTable tbl_entity = TableByName("vdocument");
@@ -726,7 +726,7 @@ namespace pg_class
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
 
-            cmdk.Parameters["iid_entity_instatce"].Value = iid_entity_instatce;
+            cmdk.Parameters["iid_class"].Value = iid_class;
             cmdk.Parameters["object_on"].Value = object_on;
             cmdk.Parameters["recursive_on"].Value = recursive_on;
             cmdk.Fill(tbl_entity);
@@ -780,7 +780,7 @@ namespace pg_class
         /// <summary>
         /// Лист документов по идентификатору свойства класса
         /// </summary>
-        public List<document> document_by_id_class_prop(Int64 iid_entity_instatce)
+        public List<document> document_by_id_class_prop(Int64 iid_class_prop)
         {
             List<document> entity_list = new List<document>();
             DataTable tbl_entity = TableByName("vdocument");
@@ -799,7 +799,7 @@ namespace pg_class
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
 
-            cmdk.Parameters["iid_entity_instatce"].Value = iid_entity_instatce;
+            cmdk.Parameters["iid_class_prop"].Value = iid_class_prop;
             cmdk.Fill(tbl_entity);
             
             document ce;
@@ -851,13 +851,13 @@ namespace pg_class
         /// <summary>
         /// Лист документов по идентификатору объекта
         /// </summary>
-        public List<document> document_by_id_object(Int64 iid_entity_instatce, Boolean class_on, Boolean group_on, Boolean recursive_on)
+        public List<document> document_by_id_object(Int64 iid_object, Boolean class_on, Boolean group_on, Boolean recursive_on)
         {
             List<document> entity_list = new List<document>();
             DataTable tbl_entity = TableByName("vdocument");
             NpgsqlCommandKey cmdk;
 
-            cmdk = CommandByKey("document_by_id_object");
+            cmdk = CommandByKey("iid_object");
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -925,7 +925,7 @@ namespace pg_class
         /// <summary>
         /// Лист документов по идентификатору свойства объекта
         /// </summary>
-        public List<document> document_by_id_object_prop(Int64 iid_entity_instatce, Int64 iid_sub_entity_instatce)
+        public List<document> document_by_id_object_prop(Int64 iid_class_prop, Int64 iid_object)
         {
             List<document> entity_list = new List<document>();
             DataTable tbl_entity = TableByName("vdocument");
@@ -944,8 +944,8 @@ namespace pg_class
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
 
-            cmdk.Parameters["iid_entity_instatce"].Value = iid_entity_instatce;
-            cmdk.Parameters["iid_sub_entity_instatce"].Value = iid_sub_entity_instatce;
+            cmdk.Parameters["iid_class_prop"].Value = iid_class_prop;
+            cmdk.Parameters["iid_object"].Value = iid_object;
             cmdk.Fill(tbl_entity);
             
             document ce;
