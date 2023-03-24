@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Npgsql;
-using System.Data;
+﻿using pg_class.pg_classes;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
-using pg_class.pg_classes;
+using System;
 
 namespace pg_class
 {
@@ -16,7 +10,7 @@ namespace pg_class
         /// <summary>
         /// Метод добавляет новое представление класса
         /// </summary>
-        public vclass class_add( Int64 iid_group, Int64 iid_parent, String iname, String idesc, Boolean ion,
+        public vclass class_add(Int64 iid_group, Int64 iid_parent, String iname, String idesc, Boolean ion,
             Boolean ion_extensible, Boolean ion_abstraction, Int32 iid_unit, Int32 iid_unit_conversion_rule, Int64 ibarcode_manufacturer)
         {
             vclass vclass = null;
@@ -60,20 +54,20 @@ namespace pg_class
                     {
                         vclass = class_act_by_id(id);
                     }
-					if (vclass != null)
-					{
-						//Генерируем событие изменения представления класса
-						ClassChangeEventArgs e = new ClassChangeEventArgs(vclass, eAction.Insert);
-						ClassOnChange(e);
-					}
-					break;
+                    if (vclass != null)
+                    {
+                        //Генерируем событие изменения представления класса
+                        ClassChangeEventArgs e = new ClassChangeEventArgs(vclass, eAction.Insert);
+                        ClassOnChange(e);
+                    }
+                    break;
                 default:
                     //Вызов события журнала
                     JournalEventArgs me = new JournalEventArgs(id, eEntity.vclass, error, desc_error, eAction.Insert, eJournalMessageType.error);
                     JournalMessageOnReceived(me);
                     throw new PgDataException(error, desc_error);
             }
-            
+
             //Возвращаем сущность
             return vclass;
         }
@@ -152,7 +146,7 @@ namespace pg_class
             cmdk.Parameters["iid_target"].Value = iid_target;
             cmdk.Parameters["on_nested"].Value = on_nested;
             cmdk.ExecuteNonQuery();
-            
+
             error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
             desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
             switch (error)
@@ -242,7 +236,7 @@ namespace pg_class
             cmdk.Parameters["iid_target"].Value = iid_target;
             cmdk.Parameters["on_nested"].Value = on_nested;
             cmdk.ExecuteNonQuery();
-           
+
             error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
             desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
             switch (error)
@@ -307,7 +301,7 @@ namespace pg_class
         /// <summary>
         /// Метод восстанавливает активное представлние вещественного класса объекта и всю цепь наследования до корневого класса
         /// </summary>
-        public vclass class_act_restore(Int64  iid_object)
+        public vclass class_act_restore(Int64 iid_object)
         {
             vclass vclass = null;
             Int32 error;

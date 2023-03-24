@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using NpgsqlTypes;
 
 namespace pg_class
 {
@@ -104,11 +103,11 @@ namespace pg_class
             { eEntity.plan_rule_crossing_link, "Ссылка правила пересечения диапазонов подчиненных планов"},
             { eEntity.plan_rule_nesting, "Правило вложенности диапазонов подчиненных планов"},
             { eEntity.plan_rule_nesting_link, "Ссылка правила вложенности диапазонов подчиненных планов"},
-			{ eEntity.log, "Запись журнала событий"},
-			{ eEntity.log_category, "Категория записи журнала событий"},
-			{ eEntity.log_link, "Ссылка записи журнала событий"},
+            { eEntity.log, "Запись журнала событий"},
+            { eEntity.log_category, "Категория записи журнала событий"},
+            { eEntity.log_link, "Ссылка записи журнала событий"},
 
-		};
+        };
 
         /// <summary>
         /// Текстовое описание операции по данным перечисления типов операций

@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Data;
-using Npgsql;
+﻿using pg_class.pg_classes;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
-using pg_class.pg_classes;
+using System;
+using System.Collections.Generic;
+using System.Data;
 
 namespace pg_class
 {
@@ -14,16 +12,16 @@ namespace pg_class
         /// <summary>
         /// Правило вложенности шаблонов позиций по полному идентификатору
         /// </summary>
-        public pos_temp_nested_rule pos_temp_nested_whitelist_by_id( Int64 iid_pos_temp, Int64 iid_pos_temp_nested)
+        public pos_temp_nested_rule pos_temp_nested_whitelist_by_id(Int64 iid_pos_temp, Int64 iid_pos_temp_nested)
         {
             pos_temp_nested_rule pos_temp_rule = null;
 
-            DataTable tbl_con  = TableByName("vpos_temp_nested_rule");
-            
-            
+            DataTable tbl_con = TableByName("vpos_temp_nested_rule");
+
+
             NpgsqlCommandKey cmdk;
 
-            
+
             cmdk = CommandByKey("pos_temp_nested_whitelist_by_id");
 
             if (cmdk != null)
@@ -37,13 +35,13 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
 
             cmdk.Parameters["iid_pos_temp"].Value = iid_pos_temp;
             cmdk.Parameters["iid_pos_temp_nested"].Value = iid_pos_temp_nested;
 
             cmdk.Fill(tbl_con);
-            
+
             if (tbl_con.Rows.Count > 0)
             {
                 pos_temp_rule = new pos_temp_nested_rule(tbl_con.Rows[0]);
@@ -60,8 +58,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("pos_temp_nested_whitelist_by_id");
             if (cmdk != null)
             {
@@ -77,22 +75,22 @@ namespace pg_class
             }
             return Result;
         }
-        
+
 
         /// <summary>
         /// Полный перечень потенциально доступных Правил вложенности шаблонов позиций для указанного шаблона позиции
         /// </summary>
-        public List<pos_temp_nested_rule> pos_temp_nested_whitelist_full( Int64 iid_pos_temp , Int64 iid_con )
+        public List<pos_temp_nested_rule> pos_temp_nested_whitelist_full(Int64 iid_pos_temp, Int64 iid_con)
         {
             List<pos_temp_nested_rule> rule_list = new List<pos_temp_nested_rule>();
 
 
-            DataTable tbl_rule_list  = TableByName("vpos_temp_nested_rule");
-            
-            
+            DataTable tbl_rule_list = TableByName("vpos_temp_nested_rule");
+
+
             NpgsqlCommandKey cmdk;
 
-            
+
             cmdk = CommandByKey("pos_temp_nested_whitelist_full");
 
             if (cmdk != null)
@@ -106,13 +104,13 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
 
             cmdk.Parameters["iid_pos_temp"].Value = iid_pos_temp;
             cmdk.Parameters["iid_con"].Value = iid_con;
 
             cmdk.Fill(tbl_rule_list);
-            
+
             pos_temp_nested_rule rule;
             if (tbl_rule_list.Rows.Count > 0)
             {
@@ -143,8 +141,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("pos_temp_nested_whitelist_full");
             if (cmdk != null)
             {
@@ -160,23 +158,23 @@ namespace pg_class
             }
             return Result;
         }
-        
+
 
 
         /// <summary>
         /// Перечень существующих Правил вложенности шаблонов позиции по идентификатору шаблона
         /// </summary>
-        public List<pos_temp_nested_rule>pos_temp_nested_whitelist(Int64 iid_pos_temp)
+        public List<pos_temp_nested_rule> pos_temp_nested_whitelist(Int64 iid_pos_temp)
         {
             List<pos_temp_nested_rule> rule_list = new List<pos_temp_nested_rule>();
 
 
-            DataTable tbl_rule_list  = TableByName("vpos_temp_nested_rule");
-            
-            
+            DataTable tbl_rule_list = TableByName("vpos_temp_nested_rule");
+
+
             NpgsqlCommandKey cmdk;
 
-            
+
             cmdk = CommandByKey("pos_temp_nested_whitelist");
 
             if (cmdk != null)
@@ -190,12 +188,12 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
 
             cmdk.Parameters["iid_pos_temp"].Value = iid_pos_temp;
 
             cmdk.Fill(tbl_rule_list);
-            
+
             pos_temp_nested_rule rule;
             if (tbl_rule_list.Rows.Count > 0)
             {
@@ -226,8 +224,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("pos_temp_nested_whitelist");
             if (cmdk != null)
             {

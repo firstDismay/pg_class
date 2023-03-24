@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace pg_class
+﻿namespace pg_class
 {
     #region Перечисления классов и кодов ошибок менеджера данных БД
 
@@ -427,19 +422,19 @@ namespace pg_class
         ///Ссылка правила вложенности диапазонов подчиненных планов
         /// </summary>
         plan_rule_nesting_link = 22000000,
-		/// <summary>
-		/// Запись журнала событий
-		/// </summary>
-		log = 22100000,
-		/// <summary>
-		/// Категория записи журнала событий
-		/// </summary>
-		log_category = 22200000,
-		/// <summary>
-		/// Ссылка записи журнала событий
-		/// </summary>
-		log_link = 22300000
-	}
+        /// <summary>
+        /// Запись журнала событий
+        /// </summary>
+        log = 22100000,
+        /// <summary>
+        /// Категория записи журнала событий
+        /// </summary>
+        log_category = 22200000,
+        /// <summary>
+        /// Ссылка записи журнала событий
+        /// </summary>
+        log_link = 22300000
+    }
 
     /// <summary>
     /// Перечисление базовых кодов ошибок для методов БД

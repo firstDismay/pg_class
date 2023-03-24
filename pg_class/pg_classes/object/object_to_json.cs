@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
+using System;
 
 namespace pg_class.pg_classes
 {
-    public partial  class object_general
+    public partial class object_general
     {
         #region МЕТОДЫ ОБЪЕКТА ДЛЯ ПРЕДСТАВЛЕНИЯ ОБЪЕКТА В JSON
 

@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Npgsql;
-using System.Data;
+﻿using pg_class.pg_classes;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
-using pg_class.pg_classes;
+using System;
 
 namespace pg_class
 {
@@ -19,11 +13,11 @@ namespace pg_class
         public eEntityState global_prop_link_pos_temp_prop_is_actual(Int64 iid_global_prop, Int64 iid_pos_temp_prop)
         {
             Int32 is_actual = 3;
-            
+
             NpgsqlCommandKey cmdk;
             //**********
-           
-            
+
+
             cmdk = CommandByKey("global_prop_link_pos_temp_prop_is_actual");
 
             if (cmdk != null)
@@ -37,7 +31,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
 
             cmdk.Parameters["iid_global_prop"].Value = iid_global_prop;
             cmdk.Parameters["iid_pos_temp_prop"].Value = iid_pos_temp_prop;
@@ -63,8 +57,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("global_prop_link_pos_temp_prop_is_actual");
             if (cmdk != null)
             {

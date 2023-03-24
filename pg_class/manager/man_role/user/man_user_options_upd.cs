@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Npgsql;
-using System.Data;
+﻿using pg_class.pg_classes;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
-using pg_class.pg_classes;
+using System;
 
 namespace pg_class
 {
@@ -38,7 +32,7 @@ namespace pg_class
 
             cmdk.Parameters["ipref_conception"].Value = ipref_conception;
             cmdk.ExecuteNonQuery();
-           
+
             error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
             desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
             switch (error)
@@ -64,7 +58,7 @@ namespace pg_class
         /// </summary>
         public user_options user_options_upd(user_options UserOptions)
         {
-            return user_options_upd( UserOptions.PrefConception);
+            return user_options_upd(UserOptions.PrefConception);
         }
         //ACCESS
         /// <summary>

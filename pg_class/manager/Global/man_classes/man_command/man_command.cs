@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Npgsql;
-using System.Data;
-using pg_class.pg_commands;
+﻿using pg_class.pg_commands;
 using pg_class.pg_exceptions;
-using System.Net.Sockets;
-using pg_class.poolcn;
+using System;
+using System.Data;
 
 namespace pg_class
 {

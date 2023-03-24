@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using pg_class.pg_classes;
+﻿using pg_class.pg_classes;
+using System;
 
 namespace pg_class.pg_exceptions
 {
@@ -78,8 +75,8 @@ namespace pg_class.pg_exceptions
             get { return subclass_errid; }
         }
 
-        
-        
+
+
         /// <summary>
         /// Описание подкласса ошибки
         /// </summary>
@@ -136,7 +133,7 @@ namespace pg_class.pg_exceptions
             }
         }
 
-       private eSourceError sourceerror;
+        private eSourceError sourceerror;
 
         /// <summary>
         /// Источник ошибки с учетом версий функций определяемых типом аргумента результата

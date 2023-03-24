@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Npgsql;
-using System.Data;
+﻿using pg_class.pg_classes.calendar;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
-using pg_class.pg_classes;
-using pg_class.pg_classes.calendar;
-using NpgsqlTypes;
+using System;
+using System.Collections.Generic;
+using System.Data;
 
 namespace pg_class
 {
@@ -21,7 +15,7 @@ namespace pg_class
         public plan_given_range_plan plan_given_range_plan_by_id(Int64 iid)
         {
             plan_given_range_plan plan_given_range_plan = null;
-            DataTable tbl_entity  = TableByName("vplan_given_range_plan");
+            DataTable tbl_entity = TableByName("vplan_given_range_plan");
             NpgsqlCommandKey cmdk;
 
             cmdk = CommandByKey("plan_given_range_plan_by_id");
@@ -39,7 +33,7 @@ namespace pg_class
 
             cmdk.Parameters["iid"].Value = iid;
             cmdk.Fill(tbl_entity);
-            
+
             if (tbl_entity.Rows.Count > 0)
             {
                 plan_given_range_plan = new plan_given_range_plan(tbl_entity.Rows[0]);
@@ -78,8 +72,8 @@ namespace pg_class
         /// </summary>
         public List<plan_given_range_plan> plan_given_range_plan_by_id_plan_range(Int64 iid_plan_range)
         {
-            List<plan_given_range_plan>  entity_list = new List<plan_given_range_plan>();
-            DataTable tbl_entity  = TableByName("vplan_given_range_plan");
+            List<plan_given_range_plan> entity_list = new List<plan_given_range_plan>();
+            DataTable tbl_entity = TableByName("vplan_given_range_plan");
             NpgsqlCommandKey cmdk;
 
             cmdk = CommandByKey("plan_given_range_plan_by_id_plan_range");

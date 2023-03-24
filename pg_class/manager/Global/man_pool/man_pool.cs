@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Data.SqlClient;
-using Npgsql;
-using System.Data;
-using pg_class.pg_exceptions;
+﻿using pg_class.pg_exceptions;
 using pg_class.poolcn;
+using System;
 using System.Globalization;
 
 
@@ -35,8 +30,8 @@ namespace pg_class
                     pool_ = new pool();
                     //
                     ManagerStateInstanceSet(eManagerState.Connected);
-					//
-					InitAPI();
+                    //
+                    InitAPI();
                     //Генерируем событие изменения состояния менеджера данных
                     ManagerStateChangeEventArgs e = new ManagerStateChangeEventArgs(eEntity.manager, eManagerState.Connected);
                     manager.OnManagerStateChange(e);

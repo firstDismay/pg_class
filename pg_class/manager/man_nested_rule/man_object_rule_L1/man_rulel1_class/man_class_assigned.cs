@@ -1,16 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Data;
-using Npgsql;
+﻿using pg_class.pg_classes;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
-using pg_class.pg_classes;
+using System;
+using System.Collections.Generic;
+using System.Data;
 
 namespace pg_class
 {
     public partial class manager
-    {   
+    {
         /// <summary>
         /// Лист назначенных классов на основе разрешения уровня 1 класс на шаблон по идентификатору шаблона позиции
         /// </summary>
@@ -35,7 +33,7 @@ namespace pg_class
 
             cmdk.Parameters["iid_pos_temp"].Value = iid_pos_temp;
             cmdk.Fill(tbl_class);
-            
+
             vclass cl;
             if (tbl_class.Rows.Count > 0)
             {
@@ -106,7 +104,7 @@ namespace pg_class
 
             cmdk.Parameters["iid_position"].Value = iid_position;
             cmdk.Fill(tbl_class);
-            
+
             vclass cl;
             if (tbl_class.Rows.Count > 0)
             {
@@ -136,7 +134,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
+
             cmdk = CommandByKey("class_assigned_rl1_by_id_position");
             if (cmdk != null)
             {

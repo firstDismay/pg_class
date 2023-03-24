@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using pg_class;
+﻿using System.Collections.Generic;
 
 
 namespace pg_class.pg_classes
 {
-	/// <summary>
-	/// Класс глобальных свойств концепции
-	/// </summary>
-	public partial class global_prop
-	{
+    /// <summary>
+    /// Класс глобальных свойств концепции
+    /// </summary>
+    public partial class global_prop
+    {
         /// <summary>
         /// Метод возвращает список методов сложного поиска по идентификатору свойства
         /// class_search_method_by_id_global_prop

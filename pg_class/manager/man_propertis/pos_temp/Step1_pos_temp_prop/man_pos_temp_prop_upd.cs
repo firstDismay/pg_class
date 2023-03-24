@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Npgsql;
-using System.Data;
+﻿using pg_class.pg_classes;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
-using pg_class.pg_classes;
+using System;
 
 namespace pg_class
 {
@@ -22,7 +16,7 @@ namespace pg_class
             Int32 error;
             String desc_error;
             NpgsqlCommandKey cmdk;
-            
+
             cmdk = CommandByKey("pos_temp_prop_upd");
             if (cmdk != null)
             {
@@ -44,7 +38,7 @@ namespace pg_class
             cmdk.Parameters["idesc"].Value = idesc;
             cmdk.Parameters["isort"].Value = isort;
             cmdk.ExecuteNonQuery();
-            
+
             error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
             desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
             switch (error)
@@ -57,14 +51,14 @@ namespace pg_class
                         PosTempPropChangeEventArgs e = new PosTempPropChangeEventArgs(pos_temp_prop, eAction.Update);
                         PosTempPropOnChange(e);
                     }
-					break;
+                    break;
                 default:
                     //Вызов события журнала
                     JournalEventArgs me = new JournalEventArgs(iid, eEntity.pos_temp_prop, error, desc_error, eAction.Update, eJournalMessageType.error);
                     JournalMessageOnReceived(me);
                     throw new PgDataException(error, desc_error);
             }
-            
+
             //Возвращаем сущность
             return pos_temp_prop;
         }
@@ -86,7 +80,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
+
             cmdk = CommandByKey("pos_temp_prop_upd");
             if (cmdk != null)
             {

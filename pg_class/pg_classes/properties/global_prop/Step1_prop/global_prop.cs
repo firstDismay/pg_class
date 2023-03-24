@@ -1,12 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
-using System.IO;
 using System.Data;
-using pg_class.pg_exceptions;
+using System.Text;
 
 namespace pg_class.pg_classes
 {
@@ -114,7 +109,7 @@ namespace pg_class.pg_classes
             get
             {
                 Int32 result = -1;
-                DataTable tbl_pos  = manager.Instance().TableByName("vglobal_prop");
+                DataTable tbl_pos = manager.Instance().TableByName("vglobal_prop");
                 if (tbl_pos != null)
                 {
                     result = tbl_pos.Columns["name"].MaxLength;
@@ -153,7 +148,7 @@ namespace pg_class.pg_classes
             get
             {
                 Int32 result = -1;
-                DataTable tbl_pos  = manager.Instance().TableByName("vglobal_prop");
+                DataTable tbl_pos = manager.Instance().TableByName("vglobal_prop");
                 if (tbl_pos != null)
                 {
                     result = tbl_pos.Columns["desc"].MaxLength;
@@ -406,10 +401,10 @@ namespace pg_class.pg_classes
         {
             global_prop temp = null;
             Boolean Result = false;
-            
+
             temp = Manager.global_prop_by_id(id);
-             if (temp != null)
-             {
+            if (temp != null)
+            {
                 id = temp.Id;
                 id_conception = temp.Id_conception;
                 id_prop_type = temp.Id_prop_type;
@@ -426,11 +421,11 @@ namespace pg_class.pg_classes
                 Result = true;
                 on_change = false;
             }
-             else
-             {
-                 Result = false;
-             }
-         return Result;
+            else
+            {
+                Result = false;
+            }
+            return Result;
         }
 
         /// <summary>

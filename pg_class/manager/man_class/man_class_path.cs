@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using pg_class.pg_classes;
 using pg_class.pg_commands;
-using pg_class.pg_classes;
-using Npgsql;
-using System.Data;
 using pg_class.pg_exceptions;
+using System;
+using System.Collections.Generic;
+using System.Data;
 
 namespace pg_class
 {
@@ -38,7 +34,7 @@ namespace pg_class
 
             cmdk.Parameters["iid_class"].Value = iid_class;
             cmdk.Fill(tbl_vclass_path);
-            
+
             class_path vcp;
             if (tbl_vclass_path.Rows.Count > 0)
             {
@@ -78,7 +74,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
+
             cmdk = CommandByKey("class_act_path");
             if (cmdk != null)
             {
@@ -94,7 +90,7 @@ namespace pg_class
             }
             return Result;
         }
-        
+
         /// <summary>
         /// Лист объектов path определяющих путь до исторического представления класса
         /// </summary>
@@ -121,7 +117,7 @@ namespace pg_class
             cmdk.Parameters["iid_class"].Value = iid_class;
             cmdk.Parameters["itimestamp_class"].Value = itimestamp_class;
             cmdk.Fill(tbl_vclass_path);
-            
+
             class_path vcp;
             if (tbl_vclass_path.Rows.Count > 0)
             {

@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Npgsql;
-using System.Data;
+﻿using pg_class.pg_classes;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
-using pg_class.pg_classes;
+using System;
+using System.Data;
 
 namespace pg_class
 {
@@ -16,16 +11,16 @@ namespace pg_class
         /// <summary>
         /// Лист глобальных свойств концепции по строкгому соотвествию имени
         /// </summary>
-        public global_prop global_prop_by_name(Int64 iid_conception , String iname)
+        public global_prop global_prop_by_name(Int64 iid_conception, String iname)
         {
             global_prop global_prop = null;
 
-            DataTable tbl_vglobal_prop  = TableByName("vglobal_prop");
-            
-            
+            DataTable tbl_vglobal_prop = TableByName("vglobal_prop");
+
+
             NpgsqlCommandKey cmdk;
 
-            
+
             cmdk = CommandByKey("global_prop_by_name");
 
             if (cmdk != null)
@@ -39,13 +34,13 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
 
             cmdk.Parameters["iid_conception"].Value = iid_conception;
             cmdk.Parameters["iname"].Value = iname;
 
             cmdk.Fill(tbl_vglobal_prop);
-            
+
             if (tbl_vglobal_prop.Rows.Count > 0)
             {
                 global_prop = new global_prop(tbl_vglobal_prop.Rows[0]);
@@ -70,8 +65,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("global_prop_by_name");
             if (cmdk != null)
             {

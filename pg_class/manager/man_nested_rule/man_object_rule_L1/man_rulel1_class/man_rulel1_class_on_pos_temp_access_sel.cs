@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Data;
-using Npgsql;
+﻿using pg_class.pg_classes;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
-using pg_class.pg_classes;
+using System;
+using System.Collections.Generic;
+using System.Data;
 
 namespace pg_class
 {
@@ -19,7 +17,7 @@ namespace pg_class
         public List<rulel1_class_on_pos_temp_access> rulel1_class_on_pos_temp_access_by_id_class(Int64 iid_class)
         {
             List<rulel1_class_on_pos_temp_access> rulel1_list = new List<rulel1_class_on_pos_temp_access>();
-            DataTable tbl_rulel1  = TableByName("vrulel1_class_on_pos_temp_tbl_access");
+            DataTable tbl_rulel1 = TableByName("vrulel1_class_on_pos_temp_tbl_access");
             NpgsqlCommandKey cmdk;
 
             cmdk = CommandByKey("rulel1_class_on_pos_temp_access_by_id_class");
@@ -67,7 +65,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
+
             cmdk = CommandByKey("rulel1_class_on_pos_temp_access_by_id_class");
             if (cmdk != null)
             {
@@ -90,7 +88,7 @@ namespace pg_class
         public List<rulel1_class_on_pos_temp_access> rulel1_class_on_pos_temp_access_by_id_pos_temp(Int64 iid_pos_temp)
         {
             List<rulel1_class_on_pos_temp_access> rulel1_list = new List<rulel1_class_on_pos_temp_access>();
-            DataTable tbl_rulel1  = TableByName("vrulel1_class_on_pos_temp_tbl_access");
+            DataTable tbl_rulel1 = TableByName("vrulel1_class_on_pos_temp_tbl_access");
 
             NpgsqlCommandKey cmdk;
             cmdk = CommandByKey("rulel1_class_on_pos_temp_access_by_id_pos_temp");
@@ -109,7 +107,7 @@ namespace pg_class
 
             cmdk.Parameters["iid_pos_temp"].Value = iid_pos_temp;
             cmdk.Fill(tbl_rulel1);
-            
+
             rulel1_class_on_pos_temp_access rl1;
             if (tbl_rulel1.Rows.Count > 0)
             {
@@ -147,7 +145,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
+
             cmdk = CommandByKey("rulel1_class_on_pos_temp_access_by_id_pos_temp");
             if (cmdk != null)
             {
@@ -163,6 +161,6 @@ namespace pg_class
             }
             return Result;
         }
-       #endregion
+        #endregion
     }
 }

@@ -1,12 +1,7 @@
-﻿using System;
+﻿using pg_class.pg_exceptions;
+using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
-using System.IO;
-using System.Data;
-using pg_class.pg_exceptions;
 
 namespace pg_class.pg_classes
 {
@@ -22,7 +17,7 @@ namespace pg_class.pg_classes
         /// </summary>
         protected class_name_format_builder()
         {
-            format_default= "none";
+            format_default = "none";
             layout_default = "{Наименование класса}";
         }
         /// <summary>
@@ -37,7 +32,7 @@ namespace pg_class.pg_classes
             }
             else
             {
-                throw new PgDataException(eEntity.vclass,eAction.Update,eSubClass_ErrID.SCE3_Violation_Rules, 
+                throw new PgDataException(eEntity.vclass, eAction.Update, eSubClass_ErrID.SCE3_Violation_Rules,
                     "Указанный класс не допускает определение формата наименования объектов, требуетс активное представление абстрактного класса, содержащего вещественные классы !");
             }
         }
@@ -165,7 +160,7 @@ namespace pg_class.pg_classes
         /// <summary>
         /// Метод добавляет элемент формата типа значение свойства
         /// </summary>
-        public void FormatAppend( class_prop Class_prop)
+        public void FormatAppend(class_prop Class_prop)
         {
             if (format_builder != null && class_prop_list_builder != null)
             {
@@ -413,7 +408,7 @@ namespace pg_class.pg_classes
 
         struct Step
         {
-            public Step(Int32 format, Int32 class_prop, Int32 layout,  Boolean decrease_index)
+            public Step(Int32 format, Int32 class_prop, Int32 layout, Boolean decrease_index)
             {
                 Format = format;
                 Class_prop = class_prop;

@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Npgsql;
-using System.Data;
+﻿using pg_class.pg_classes;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
-using pg_class.pg_classes;
+using System;
 
 namespace pg_class
 {
@@ -35,30 +29,30 @@ namespace pg_class
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
 
-			//Запрос удаляемой сущности
-			pos_temp_prop_link_val pos_temp_prop_link_val = pos_temp_prop_link_val_by_id_prop(iid_pos_temp_prop);
+            //Запрос удаляемой сущности
+            pos_temp_prop_link_val pos_temp_prop_link_val = pos_temp_prop_link_val_by_id_prop(iid_pos_temp_prop);
 
-			cmdk.Parameters["iid_pos_temp_prop"].Value = iid_pos_temp_prop;
+            cmdk.Parameters["iid_pos_temp_prop"].Value = iid_pos_temp_prop;
             cmdk.ExecuteNonQuery();
-          
+
             error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
             desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-			switch (error)
-			{
-				case 0:
-					//Генерируем событие удаления свойства класса
-					if (pos_temp_prop_link_val != null)
-					{
-						PosTempPropLinkValChangeEventArgs e = new PosTempPropLinkValChangeEventArgs(pos_temp_prop_link_val, eAction.Delete);
-						PosTempPropLinkValOnChange(e);
-					}
-					break;
-				default:
-					//Вызов события журнала
-					JournalEventArgs me = new JournalEventArgs(iid_pos_temp_prop, eEntity.pos_temp_prop_link_val, error, desc_error, eAction.Delete, eJournalMessageType.error);
-					JournalMessageOnReceived(me);
-					throw new PgDataException(error, desc_error);
-			}
+            switch (error)
+            {
+                case 0:
+                    //Генерируем событие удаления свойства класса
+                    if (pos_temp_prop_link_val != null)
+                    {
+                        PosTempPropLinkValChangeEventArgs e = new PosTempPropLinkValChangeEventArgs(pos_temp_prop_link_val, eAction.Delete);
+                        PosTempPropLinkValOnChange(e);
+                    }
+                    break;
+                default:
+                    //Вызов события журнала
+                    JournalEventArgs me = new JournalEventArgs(iid_pos_temp_prop, eEntity.pos_temp_prop_link_val, error, desc_error, eAction.Delete, eJournalMessageType.error);
+                    JournalMessageOnReceived(me);
+                    throw new PgDataException(error, desc_error);
+            }
         }
 
         /// <summary>

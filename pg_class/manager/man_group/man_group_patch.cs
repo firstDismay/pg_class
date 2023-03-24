@@ -1,30 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using pg_class.pg_classes;
 using pg_class.pg_commands;
-using pg_class.pg_classes;
-using Npgsql;
-using System.Data;
 using pg_class.pg_exceptions;
+using System;
+using System.Collections.Generic;
+using System.Data;
 
 namespace pg_class
 {
     public partial class manager
     {
-        
+
         /// <summary>
         /// Лист объектов path определяющих путь до группы
         /// </summary>
         public List<group_path> group_path_by_id_group(Int64 iid_group)
         {
             List<group_path> group_path_list = new List<group_path>();
-            DataTable tbl_group_path  = TableByName("path");
-            
-            
+            DataTable tbl_group_path = TableByName("path");
+
+
             NpgsqlCommandKey cmdk;
-            
+
             cmdk = CommandByKey("group_path");
 
             if (cmdk != null)
@@ -38,12 +34,12 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
 
             cmdk.Parameters["iid_group"].Value = iid_group;
 
             cmdk.Fill(tbl_group_path);
-            
+
             group_path gp;
             if (tbl_group_path.Rows.Count > 0)
             {
@@ -74,8 +70,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("group_path");
             if (cmdk != null)
             {
@@ -91,6 +87,6 @@ namespace pg_class
             }
             return Result;
         }
-        
+
     }
 }

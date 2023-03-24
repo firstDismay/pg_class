@@ -1,20 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Npgsql;
-using System.Data;
+﻿using NpgsqlTypes;
+using pg_class.pg_classes.calendar;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
-using pg_class.pg_classes;
-using pg_class.pg_classes.calendar;
-using NpgsqlTypes;
+using System;
 
 namespace pg_class
 {
     public partial class manager
-    {   
+    {
         /// <summary>
         /// Метод добавляет новый выделенный диапазон планового диапазона
         /// </summary>
@@ -25,7 +18,7 @@ namespace pg_class
             Int32 error;
             String desc_error;
             NpgsqlCommandKey cmdk;
-            
+
             cmdk = CommandByKey("plan_given_range_plan_add");
             if (cmdk != null)
             {

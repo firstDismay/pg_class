@@ -1,23 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Data;
-using Npgsql;
+﻿using pg_class.pg_classes;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
-using pg_class.pg_classes;
+using System;
+using System.Collections.Generic;
+using System.Data;
 
 namespace pg_class
 {
     public partial class manager
-    {   
+    {
         /// <summary>
         /// Лист назначенных групп на основе разрешения уровня 1 группа на шаблон по идентификатору шаблона позиции
         /// </summary>
         public List<group> group_assigned_rl1_by_id_pos_temp(Int64 iid_pos_temp)
         {
             List<group> group_list = new List<group>();
-            DataTable tbl_group  = TableByName("vgroup");
+            DataTable tbl_group = TableByName("vgroup");
             NpgsqlCommandKey cmdk;
 
             cmdk = CommandByKey("group_assigned_rl1_by_id_pos_temp");
@@ -35,7 +33,7 @@ namespace pg_class
 
             cmdk.Parameters["iid_pos_temp"].Value = iid_pos_temp;
             cmdk.Fill(tbl_group);
-            
+
             group gt;
             if (tbl_group.Rows.Count > 0)
             {
@@ -90,7 +88,7 @@ namespace pg_class
             }
             return Result;
         }
-        
+
         /// <summary>
         /// Лист назначенных групп на основе разрешения уровня 1 группа на шаблон по идентификатору позиции
         /// </summary>
@@ -115,7 +113,7 @@ namespace pg_class
 
             cmdk.Parameters["iid_position"].Value = iid_position;
             cmdk.Fill(tbl_group);
-            
+
             group gt;
             if (tbl_group.Rows.Count > 0)
             {

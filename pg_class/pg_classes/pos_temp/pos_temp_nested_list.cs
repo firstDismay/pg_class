@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace pg_class.pg_classes
 {
@@ -20,9 +17,9 @@ namespace pg_class.pg_classes
         {
             return manager.Instance().pos_temp_nestedlist_by_id(this, ignore_nested_limit);
         }
-       
 
-       
+
+
         /// <summary>
         /// Метод определяет максимальное количество позиций указанного шаблона доступных к вложению в указанную позицию, 0 без ограничений
         /// </summary>

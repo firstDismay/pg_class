@@ -1,12 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
-using System.IO;
-using System.Data;
-using System.Security.Cryptography;
 
 namespace pg_class.pg_classes
 {
@@ -213,7 +206,7 @@ namespace pg_class.pg_classes
         /// <summary>
         /// Ссылка на документ по идентификатору сущности
         /// </summary>
-        public doc_link doc_link_by_entity( user User)
+        public doc_link doc_link_by_entity(user User)
         {
             return Manager.doc_link_by_entity(this.Id, User.EntityID, User.Id, -1);
         }
@@ -237,7 +230,7 @@ namespace pg_class.pg_classes
         /// <summary>
         /// Ссылка на документ по идентификатору сущности
         /// </summary>
-        public doc_link doc_link_by_entity( position Position)
+        public doc_link doc_link_by_entity(position Position)
         {
             return Manager.doc_link_by_entity(this.Id, Position.EntityID, Position.Id, -1);
         }
@@ -245,7 +238,7 @@ namespace pg_class.pg_classes
         /// <summary>
         /// Ссылка на документ по идентификатору сущности
         /// </summary>
-        public doc_link doc_link_by_entity( position_prop Position_prop)
+        public doc_link doc_link_by_entity(position_prop Position_prop)
         {
             return Manager.doc_link_by_entity(this.Id, Position_prop.EntityID, Position_prop.Id_position_prop, Position_prop.Id_position_carrier);
         }
@@ -253,7 +246,7 @@ namespace pg_class.pg_classes
         /// <summary>
         /// Ссылка на документ по идентификатору сущности
         /// </summary>
-        public doc_link doc_link_by_entity( object_general Object_general)
+        public doc_link doc_link_by_entity(object_general Object_general)
         {
             return Manager.doc_link_by_entity(this.Id, Object_general.EntityID, Object_general.Id, -1);
         }
@@ -261,7 +254,7 @@ namespace pg_class.pg_classes
         /// <summary>
         /// Ссылка на документ по идентификатору сущности
         /// </summary>
-        public doc_link doc_link_by_entity( object_prop Object_prop)
+        public doc_link doc_link_by_entity(object_prop Object_prop)
         {
             return Manager.doc_link_by_entity(this.Id, Object_prop.EntityID, Object_prop.Id_class_prop, Object_prop.Id_object_carrier);
         }

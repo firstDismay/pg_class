@@ -24,7 +24,7 @@ namespace pg_class.poolcn
                 cn.TypeMapper.MapComposite<pg_vobject_prop>("bpd.vobject_prop");
 
                 cn.TypeMapper.MapComposite<pg_vdoc_file>("bpd.vdoc_file");
-                cn.TypeMapper.MapComposite <pg_vdoc_link>("bpd.vdoc_link");
+                cn.TypeMapper.MapComposite<pg_vdoc_link>("bpd.vdoc_link");
                 cn.TypeMapper.MapComposite<pg_vdoc_category>("bpd.vdoc_category");
 
                 cn.TypeMapper.MapComposite<pg_vlog_link>("bpd.vlog_link");

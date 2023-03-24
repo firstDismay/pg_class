@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using System.Data;
-using System.Threading.Tasks;
-using pg_class.pg_classes;
 
 namespace pg_class
 {
@@ -18,7 +11,7 @@ namespace pg_class
         /// <summary>
         /// Основной конструктор класса аргумента события
         /// </summary>
-        public ManagerStateChangeEventArgs( eEntity Entity, eManagerState ManagerState) : base()
+        public ManagerStateChangeEventArgs(eEntity Entity, eManagerState ManagerState) : base()
         {
             entity = Entity;
             managerstate = ManagerState;

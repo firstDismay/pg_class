@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Npgsql;
-using System.Data;
+﻿using pg_class.pg_classes;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
-using pg_class.pg_classes;
+using System;
 
 namespace pg_class
 {
@@ -16,7 +10,7 @@ namespace pg_class
         /// <summary>
         /// Метод изменяет указанную концепцию
         /// </summary>
-        public conception conception_upd( Int64 iid, String iname, String idesc, Boolean ion, Boolean ion_root_create,  Boolean idefault)
+        public conception conception_upd(Int64 iid, String iname, String idesc, Boolean ion, Boolean ion_root_create, Boolean idefault)
         {
             conception conception = null;
             Int32 error;
@@ -43,14 +37,14 @@ namespace pg_class
             cmdk.Parameters["ion_root_create"].Value = ion_root_create;
             cmdk.Parameters["idefault"].Value = idefault;
             cmdk.ExecuteNonQuery();
-            
+
             error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
             desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
 
             switch (error)
             {
                 case 0:
-                        conception = conception_by_id(iid);
+                    conception = conception_by_id(iid);
                     break;
                 default:
                     //Вызов события журнала
@@ -98,7 +92,7 @@ namespace pg_class
             }
             return Result;
         }
-        
+
         /// <summary>
         /// Метод восстанавливает указанную концепцию
         /// </summary>

@@ -1,12 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
-using System.IO;
 using System.Data;
-using pg_class.pg_exceptions;
 
 namespace pg_class.pg_classes
 {
@@ -25,7 +19,7 @@ namespace pg_class.pg_classes
             on_change = false;
             imagekey = "pos_temp_prop_enum_val_us";
             selectedimagekey = "pos_temp_prop_enum_val_s";
-            
+
         }
         /// <summary>
         /// Полный конструктор класса для возврата данных существующих записей через строку таблицы 
@@ -74,11 +68,11 @@ namespace pg_class.pg_classes
         private Decimal val_numeric;
         private String val_varchar;
         private Int32 val_varchar_len;
-        
+
         private Int64 id_object_reference;
         private Boolean is_use;
         private Boolean has_object_reference;
-        
+
 
         /// <summary>
         /// Идентификатор концепции
@@ -94,7 +88,7 @@ namespace pg_class.pg_classes
         /// Идентификатор свойства шаблона носителя свойства
         /// </summary>
         public Int64 Id_pos_temp_prop { get => id_pos_temp_prop; }
-        
+
         /// <summary>
         /// Идентификатор типа данных перечисления
         /// </summary>
@@ -196,7 +190,7 @@ namespace pg_class.pg_classes
             get
             {
                 Int32 result = -1;
-                DataTable tbl_pos  = manager.Instance().TableByName("vprop_enum_val");
+                DataTable tbl_pos = manager.Instance().TableByName("vprop_enum_val");
                 if (tbl_pos != null)
                 {
                     result = tbl_pos.Columns["val_varchar"].MaxLength;
@@ -215,8 +209,8 @@ namespace pg_class.pg_classes
                 return val_numeric;
             }
         }
-        
-       
+
+
         private Boolean on_change;
         /// <summary>
         /// Свойство определяющее потребность в обновлении данных БД
@@ -456,7 +450,7 @@ namespace pg_class.pg_classes
             {
                 prop_enum = tmp.NameEnum;
             }
-            
+
             switch (id_data_type)
             {
                 case 1:

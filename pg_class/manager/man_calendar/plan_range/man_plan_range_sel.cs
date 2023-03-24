@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Npgsql;
-using System.Data;
+﻿using pg_class.pg_classes.calendar;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
-using pg_class.pg_classes;
-using pg_class.pg_classes.calendar;
-using NpgsqlTypes;
+using System;
+using System.Collections.Generic;
+using System.Data;
 
 namespace pg_class
 {
@@ -22,12 +16,12 @@ namespace pg_class
         {
             plan_range plan_range = null;
 
-            DataTable tbl_entity  = TableByName("vplan_range");
-            
-            
+            DataTable tbl_entity = TableByName("vplan_range");
+
+
             NpgsqlCommandKey cmdk;
 
-            
+
             cmdk = CommandByKey("plan_range_by_id");
 
             if (cmdk != null)
@@ -41,12 +35,12 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
 
             cmdk.Parameters["iid"].Value = iid;
 
             cmdk.Fill(tbl_entity);
-            
+
             if (tbl_entity.Rows.Count > 0)
             {
                 plan_range = new plan_range(tbl_entity.Rows[0]);
@@ -63,8 +57,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("plan_range_by_id");
             if (cmdk != null)
             {
@@ -80,23 +74,23 @@ namespace pg_class
             }
             return Result;
         }
-        
 
-        
+
+
         /// <summary>
         /// Лист плановых диапазонов по идентификатору плана
         /// </summary>
         public List<plan_range> plan_range_by_id_plan(Int64 iid_plan)
         {
-            List<plan_range>  entity_list = new List<plan_range>();
+            List<plan_range> entity_list = new List<plan_range>();
 
-            
-            DataTable tbl_entity  = TableByName("vplan_range");
-            
-            
+
+            DataTable tbl_entity = TableByName("vplan_range");
+
+
             NpgsqlCommandKey cmdk;
 
-            
+
             cmdk = CommandByKey("plan_range_by_id_plan");
 
             if (cmdk != null)
@@ -110,14 +104,14 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
 
             cmdk.Parameters["iid_plan"].Value = iid_plan;
 
             cmdk.Fill(tbl_entity);
 
             plan_range centity;
-            
+
             if (tbl_entity.Rows.Count > 0)
             {
                 foreach (System.Data.DataRow dr in tbl_entity.Rows)
@@ -147,8 +141,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("plan_range_by_id_plan");
             if (cmdk != null)
             {

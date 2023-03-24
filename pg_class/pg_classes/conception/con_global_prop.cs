@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace pg_class.pg_classes
 {
@@ -19,7 +16,7 @@ namespace pg_class.pg_classes
             return Manager.global_prop_add(this, Prop_type, Data_type, iname, idesc, ivisible);
         }
         //*************************************************************************************
-        
+
         /// <summary>
         /// Метод добавляет новое глобальное свойство по образцу существующего свойства
         /// global_prop_add_as_class_prop

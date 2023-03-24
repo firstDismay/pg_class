@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data;
 
 namespace pg_class.pg_classes
 {
@@ -22,7 +18,7 @@ namespace pg_class.pg_classes
         {
             if (DirectRequest || property_list == null)
             {
-                property_list =  Manager.object_prop_by_id_object(this);
+                property_list = Manager.object_prop_by_id_object(this);
             }
             return property_list;
         }

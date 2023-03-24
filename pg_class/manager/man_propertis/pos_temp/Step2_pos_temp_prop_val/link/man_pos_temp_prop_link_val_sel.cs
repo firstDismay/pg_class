@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Npgsql;
-using System.Data;
+﻿using pg_class.pg_classes;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
-using pg_class.pg_classes;
+using System;
+using System.Data;
 
 namespace pg_class
 {
@@ -20,12 +15,12 @@ namespace pg_class
         {
             pos_temp_prop_link_val pos_temp_prop_link_val = null;
 
-            DataTable tbl_entity  = TableByName("vpos_temp_prop_link_val");
-            
-            
+            DataTable tbl_entity = TableByName("vpos_temp_prop_link_val");
+
+
             NpgsqlCommandKey cmdk;
 
-            
+
             cmdk = CommandByKey("pos_temp_prop_link_val_by_id_prop");
 
             if (cmdk != null)
@@ -39,12 +34,12 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
 
             cmdk.Parameters["iid_pos_temp_prop"].Value = iid_pos_temp_prop;
 
             cmdk.Fill(tbl_entity);
-            
+
             if (tbl_entity.Rows.Count > 0)
             {
                 pos_temp_prop_link_val = new pos_temp_prop_link_val(tbl_entity.Rows[0]);
@@ -53,7 +48,7 @@ namespace pg_class
         }
 
 
-        
+
         /// <summary>
         /// Выбрать данные значения свойства-ссылки по идентификатору свойства
         /// </summary>
@@ -62,7 +57,7 @@ namespace pg_class
             return pos_temp_prop_link_val_by_id_prop(PosTemp_prop.Id);
         }
 
-        
+
         /// <summary>
         /// Выбрать данные значения свойства-ссылки по идентификатору свойства
         /// </summary>
@@ -79,8 +74,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("pos_temp_prop_link_val_by_id_prop");
             if (cmdk != null)
             {

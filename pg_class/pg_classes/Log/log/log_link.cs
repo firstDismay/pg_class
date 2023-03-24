@@ -1,12 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
-using System.IO;
-using System.Data;
-using System.Security.Cryptography;
 
 namespace pg_class.pg_classes
 {
@@ -97,20 +90,20 @@ namespace pg_class.pg_classes
             return Manager.log_link_add(Id, Class_prop.EntityID, Class_prop.Id, -1);
         }
 
-		/// <summary>
-		/// Метод добавляет новую ссылку
-		/// </summary>
-		public log_link log_link_add(document Document)
-		{
-			return Manager.log_link_add(Id, Document.EntityID, Document.Id, -1);
-		}
-		#endregion
+        /// <summary>
+        /// Метод добавляет новую ссылку
+        /// </summary>
+        public log_link log_link_add(document Document)
+        {
+            return Manager.log_link_add(Id, Document.EntityID, Document.Id, -1);
+        }
+        #endregion
 
-		#region УДАЛИТЬ
-		/// <summary>
-		/// Метод удаляет указаную ссылку
-		/// </summary>
-		public void log_link_del(Int64 iid_log_link)
+        #region УДАЛИТЬ
+        /// <summary>
+        /// Метод удаляет указаную ссылку
+        /// </summary>
+        public void log_link_del(Int64 iid_log_link)
         {
             Manager.log_link_del(iid_log_link);
         }
@@ -203,13 +196,13 @@ namespace pg_class.pg_classes
             Manager.log_link_del_by_entity(this.Id, Class_prop.EntityID, Class_prop.Id, -1);
         }
 
-		/// <summary>
-		/// Метод удаляет указаную ссылку
-		/// </summary>
-		public void log_link_del(document Document)
-		{
-			Manager.log_link_del_by_entity(this.Id, Document.EntityID, Document.Id, -1);
-		}
+        /// <summary>
+        /// Метод удаляет указаную ссылку
+        /// </summary>
+        public void log_link_del(document Document)
+        {
+            Manager.log_link_del_by_entity(this.Id, Document.EntityID, Document.Id, -1);
+        }
         #endregion
 
         #region ВЫБРАТЬ

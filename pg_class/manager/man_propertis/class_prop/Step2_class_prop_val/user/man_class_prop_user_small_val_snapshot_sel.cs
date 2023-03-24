@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Npgsql;
-using System.Data;
+﻿using pg_class.pg_classes;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
-using pg_class.pg_classes;
+using System;
+using System.Data;
 
 namespace pg_class
 {
@@ -20,12 +15,12 @@ namespace pg_class
         {
             class_prop_user_val class_prop_user_val = null;
 
-            DataTable tbl_vclass_prop_obj_val_class  = TableByName("vclass_prop_user_small_val");
-            
-            
+            DataTable tbl_vclass_prop_obj_val_class = TableByName("vclass_prop_user_small_val");
+
+
             NpgsqlCommandKey cmdk;
 
-            
+
             cmdk = CommandByKey("class_prop_user_small_val_snapshot_by_id_prop");
 
             if (cmdk != null)
@@ -39,13 +34,13 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
 
             cmdk.Parameters["iid_class_prop"].Value = iid_class_prop;
             cmdk.Parameters["itimestamp_class"].Value = itimestamp_class;
 
             cmdk.Fill(tbl_vclass_prop_obj_val_class);
-            
+
             if (tbl_vclass_prop_obj_val_class.Rows.Count > 0)
             {
                 class_prop_user_val = new class_prop_user_val(tbl_vclass_prop_obj_val_class.Rows[0]);
@@ -70,8 +65,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("class_prop_user_small_val_snapshot_by_id_prop");
             if (cmdk != null)
             {

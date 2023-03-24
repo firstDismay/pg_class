@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace pg_class.pg_classes
 {
@@ -70,8 +67,8 @@ namespace pg_class.pg_classes
         /// Перечисление измеряемой величины
         /// </summary>
         public eUnit Unit { get => (eUnit)id_unit; }
-        
-        
+
+
         /// <summary>
         /// Базовые единицы измерения объекта
         /// </summary>

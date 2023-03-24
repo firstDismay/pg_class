@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace pg_class.poolcn
 {
@@ -22,7 +18,7 @@ namespace pg_class.poolcn
             //ИНИЦИАЛИЗАЦИЯ ТАЙМЕРА
             if (MyTimer == null)
             {
-                
+
                 MyTimer = new System.Timers.Timer(10000);
                 MyTimer.Elapsed += new System.Timers.ElapsedEventHandler(MyTimer_Elapsed);
                 MyTimer.Start();
@@ -79,7 +75,7 @@ namespace pg_class.poolcn
                         //Генерируем событие изменения состояния менеджера данных
                         ManagerStateChangeEventArgs e2 = new ManagerStateChangeEventArgs(eEntity.pool, eManagerState.Disconnected);
                         manager.OnManagerStateChange(e2);
-                        
+
                         //Вызов события журнала
                         JournalEventArgs me = new JournalEventArgs(0, eEntity.manager, 0, "Все соединения менеджера закрыты", eAction.DisConnect, eJournalMessageType.information);
                         manager.JournalMessageOnReceivedStatic(this, me);

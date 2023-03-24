@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Npgsql;
-using System.Data;
+﻿using Npgsql;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
-using System.Net.Sockets;
-using pg_class.poolcn;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Text;
 
 namespace pg_class
 {
@@ -50,8 +46,8 @@ namespace pg_class
                 }
                 //Запрос списка процедур API
                 //NCM.CommandText = String.Format("SELECT * FROM cfg_m_initproc_base_{0};", ExpectedVerBD);
-				NCM.CommandText = String.Format("SELECT * FROM cfg_v_initproc_base;", ExpectedVerBD);
-				proc_DT = new DataTable();
+                NCM.CommandText = String.Format("SELECT * FROM cfg_v_initproc_base;", ExpectedVerBD);
+                proc_DT = new DataTable();
                 NDA = new NpgsqlDataAdapter();
                 NDA.SelectCommand = NCM;
                 NDA.Fill(proc_DT);
@@ -63,11 +59,11 @@ namespace pg_class
                     Int32 proc_args;
                     pg_argument[] proc_args_list;
                     String proc_argsignature;
-					UInt32 prorettype;
+                    UInt32 prorettype;
                     String prorettypename;
-                    Boolean proretset;				  
+                    Boolean proretset;
                     Boolean proc_access;
-					
+
                     NpgsqlCommand cmd;
                     NpgsqlCommandKey cmdk;
 
@@ -88,9 +84,9 @@ namespace pg_class
                         proc_args = Convert.ToInt32(dr["proargs"]);
                         proc_args_list = (pg_argument[])dr["proargslist"];
                         proc_argsignature = Convert.ToString(dr["argsignature"]);
-						prorettype = Convert.ToUInt32(dr["prorettype"]); ;
+                        prorettype = Convert.ToUInt32(dr["prorettype"]); ;
                         prorettypename = Convert.ToString(dr["prorettypename"]);
-                        proretset =  Convert.ToBoolean(dr["proretset"]);
+                        proretset = Convert.ToBoolean(dr["proretset"]);
                         proc_access = Convert.ToBoolean(dr["access"]);
                         cmd = new NpgsqlCommand();
                         cmd.Connection = CN_local;
@@ -135,8 +131,8 @@ namespace pg_class
                 datatable_list = new List<DataTable>();
 
                 //NCM.CommandText = String.Format("SELECT * FROM cfg_m_inittable_base_{0};", ExpectedVerBD);
-				NCM.CommandText = String.Format("SELECT * FROM cfg_v_inittable_base;", ExpectedVerBD);
-				proc_DT = new DataTable();
+                NCM.CommandText = String.Format("SELECT * FROM cfg_v_inittable_base;", ExpectedVerBD);
+                proc_DT = new DataTable();
                 NDA.SelectCommand = NCM;
                 NDA.Fill(proc_DT);
                 if (proc_DT.Rows.Count > 0)
@@ -180,16 +176,16 @@ namespace pg_class
                 if (pex.SqlState == "42P01" && (pex.Message.Contains("cfg_m_initproc_base_") || pex.Message.Contains("cfg_m_inittable_base")))
                 {
                     String sb = String.Format("Затребованная клиентом версия API: {0} не поддерживается сервером, дополнительные сведения: {1}", ExpectedVerBD, pex.Message);
-                    
+
                     throw new PgManagerException(404, sb, pex.Message);
                 }
                 else
                 {
-					StringBuilder sb = new StringBuilder();
-					sb.Append("Сбой процедуры инициализации команд менеджера данных, дополнительные сведения: ");
-					sb.Append(pex.Message);
-					throw new PgManagerException(1101, sb.ToString(), pex.Message);
-				}
+                    StringBuilder sb = new StringBuilder();
+                    sb.Append("Сбой процедуры инициализации команд менеджера данных, дополнительные сведения: ");
+                    sb.Append(pex.Message);
+                    throw new PgManagerException(1101, sb.ToString(), pex.Message);
+                }
             }
             catch (Exception ex)
             {

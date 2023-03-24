@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace pg_class
+﻿namespace pg_class
 {
     public partial class manager
     {
@@ -197,7 +191,7 @@ namespace pg_class
                     Con_Prop_Data_TypeListChange -= d;
                 }
             }
-            
+
             if (PosTempChange != null)
             {
                 foreach (PosTempChangeEventHandler d in PosTempChange.GetInvocationList())
@@ -205,7 +199,7 @@ namespace pg_class
                     PosTempChange -= d;
                 }
             }
-            
+
             if (PosTempNestedListChange != null)
             {
                 foreach (PosTempNestedListChangeEventHandler d in PosTempNestedListChange.GetInvocationList())
@@ -374,31 +368,31 @@ namespace pg_class
                 }
             }
 
-			if (LogCategoryChange != null)
-			{
-				foreach (LogCategoryChangeEventHandler d in LogCategoryChange.GetInvocationList())
-				{
-					LogCategoryChange -= d;
-				}
-			}
+            if (LogCategoryChange != null)
+            {
+                foreach (LogCategoryChangeEventHandler d in LogCategoryChange.GetInvocationList())
+                {
+                    LogCategoryChange -= d;
+                }
+            }
 
-			if (LogChange != null)
-			{
-				foreach (LogChangeEventHandler d in LogChange.GetInvocationList())
-				{
-					LogChange -= d;
-				}
-			}
+            if (LogChange != null)
+            {
+                foreach (LogChangeEventHandler d in LogChange.GetInvocationList())
+                {
+                    LogChange -= d;
+                }
+            }
 
-			if (LogLinkChange != null)
-			{
-				foreach (LogLinkChangeEventHandler d in LogLinkChange.GetInvocationList())
-				{
-					LogLinkChange -= d;
-				}
-			}
+            if (LogLinkChange != null)
+            {
+                foreach (LogLinkChangeEventHandler d in LogLinkChange.GetInvocationList())
+                {
+                    LogLinkChange -= d;
+                }
+            }
 
-			if (ClassPropSort != null)
+            if (ClassPropSort != null)
             {
                 foreach (ClassPropSortEventHandler d in ClassPropSort.GetInvocationList())
                 {

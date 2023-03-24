@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Data;
-using Npgsql;
+﻿using pg_class.pg_classes;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
-using pg_class.pg_classes;
+using System;
 
 namespace pg_class
 {
     public partial class manager
-    {   
+    {
         /// <summary>
         /// Метод определяет наличие разрешения RL1 группа на шаблон для переданной пары
         /// </summary>

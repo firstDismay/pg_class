@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using pg_class.pg_exceptions;
 
 namespace pg_class.pg_classes
 {
@@ -28,7 +24,7 @@ namespace pg_class.pg_classes
         {
             if (row.Table.TableName == "vpos_temp_prop_object_val")
             {
-                id  = (Int64)row["id"];
+                id = (Int64)row["id"];
                 id_pos_temp = (Int64)row["id_pos_temp"];
                 id_pos_temp_prop = (Int64)row["id_pos_temp_prop"];
 
@@ -55,7 +51,7 @@ namespace pg_class.pg_classes
         /// <summary>
         /// Дополнительный конструктор класса для комплектации значения на стороне клиента
         /// </summary>
-        public pos_temp_prop_object_val(pos_temp_prop PosTempProp, vclass ClassVal,  
+        public pos_temp_prop_object_val(pos_temp_prop PosTempProp, vclass ClassVal,
             Decimal bQuantityMin, Decimal bQuantityMax) : this()
         {
             if (PosTempProp != null & ClassVal != null)
@@ -63,7 +59,7 @@ namespace pg_class.pg_classes
                 id = -1;
                 id_pos_temp_prop = PosTempProp.Id;
                 id_pos_temp = PosTempProp.Id_pos_temp;
-                
+
                 id_class_val = ClassVal.Id;
                 timestamp_class_val = ClassVal.Timestamp;
                 bquantity_min = bQuantityMin;
@@ -96,7 +92,7 @@ namespace pg_class.pg_classes
         private Int32 id_unit_conversion_rule;
 
         private Boolean on_change;
-        
+
         /// <summary>
         /// Свойство определяет источник сущности
         /// </summary>
@@ -191,7 +187,7 @@ namespace pg_class.pg_classes
                 return id_class_val;
             }
         }
-        
+
         /// <summary>
         /// Идентификатор шаблона носителя свойства
         /// </summary>
@@ -202,7 +198,7 @@ namespace pg_class.pg_classes
                 return id_pos_temp_prop;
             }
         }
-        
+
         /// <summary>
         /// Идентификатор свойства шаблона
         /// </summary>
@@ -225,7 +221,7 @@ namespace pg_class.pg_classes
             }
         }
 
-        
+
         private String imagekey;
         /// <summary>
         /// Ключ объекта

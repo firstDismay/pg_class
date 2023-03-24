@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Npgsql;
-using System.Data;
+﻿using Npgsql;
 using pg_class.pg_exceptions;
+using System;
+using System.Data;
 
 namespace pg_class.poolcn
 {
@@ -32,7 +28,7 @@ namespace pg_class.poolcn
         /// Признак доступности соединения для выполнения команд
         /// </summary>
         internal Boolean IsUse
-        {     
+        {
             get
             {
                 return isuse;
@@ -93,7 +89,7 @@ namespace pg_class.poolcn
                 return Result;
             }
         }
-        
+
         /// <summary>
         /// Ссылка на менеджера данных
         /// </summary>
@@ -139,7 +135,7 @@ namespace pg_class.poolcn
                         Manager.man_exception_hadler(ex);
                     }
                 }
-                
+
                 if (cn.State != ConnectionState.Open)
                 {
                     cn.ConnectionString = Session_Settings.NpgsqlConnectionString;
@@ -283,8 +279,8 @@ namespace pg_class.poolcn
             Result_ = time.TotalMinutes;
             return Result_;
         }
-        
-        #endregion     
+
+        #endregion
         #endregion
     }
 }

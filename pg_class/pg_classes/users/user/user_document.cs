@@ -1,12 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
-using System.IO;
-using pg_class.pg_exceptions;
-using System.Data;
 
 namespace pg_class.pg_classes
 {
@@ -28,7 +21,7 @@ namespace pg_class.pg_classes
                                      iname, idesc, iregnum, iregdate,
                                      this);
         }
-        
+
         #endregion
 
         #region УДАЛИТЬ
@@ -86,6 +79,6 @@ namespace pg_class.pg_classes
         }
         #endregion
 
-#endregion
+        #endregion
     }
 }

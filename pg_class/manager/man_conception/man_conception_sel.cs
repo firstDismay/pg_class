@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Npgsql;
-using System.Data;
+﻿using pg_class.pg_classes;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
-using pg_class.pg_classes;
+using System;
+using System.Collections.Generic;
+using System.Data;
 
 namespace pg_class
 {
@@ -19,7 +15,7 @@ namespace pg_class
         public conception conception_by_id(Int64 id)
         {
             conception conception = null;
-            DataTable tbl_con  = TableByName("vconception");
+            DataTable tbl_con = TableByName("vconception");
             NpgsqlCommandKey cmdk;
 
             cmdk = CommandByKey("conception_by_id");
@@ -37,15 +33,15 @@ namespace pg_class
 
             cmdk.Parameters["iid"].Value = id;
             cmdk.Fill(tbl_con);
-            
-            if (tbl_con .Rows.Count > 0)
+
+            if (tbl_con.Rows.Count > 0)
             {
                 conception = new conception(tbl_con.Rows[0]);
             }
 
             return conception;
         }
-        
+
         //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
@@ -55,7 +51,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-        
+
             cmdk = CommandByKey("conception_by_id");
             if (cmdk != null)
             {
@@ -78,7 +74,7 @@ namespace pg_class
         public List<conception> conception_by_all(eStatus status)
         {
             List<conception> con_list = new List<conception>();
-            DataTable tbl_con  = TableByName("vconception");
+            DataTable tbl_con = TableByName("vconception");
             NpgsqlCommandKey cmdk;
 
             cmdk = CommandByKey("conception_by_all");
@@ -96,7 +92,7 @@ namespace pg_class
 
             cmdk.Parameters["status"].Value = status.ToString("g");
             cmdk.Fill(tbl_con);
-            
+
             conception con;
             if (tbl_con.Rows.Count > 0)
             {
@@ -135,14 +131,14 @@ namespace pg_class
             }
             return Result;
         }
-        
+
         /// <summary>
         /// Концепция по умолчанию
         /// </summary>
         public conception conception_by_default()
         {
             conception conception = null;
-            DataTable tbl_con  = TableByName("vconception");
+            DataTable tbl_con = TableByName("vconception");
             NpgsqlCommandKey cmdk;
 
             cmdk = CommandByKey("conception_by_default");

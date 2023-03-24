@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
-using System.IO;
-using System.Data;
 
 namespace pg_class.pg_classes
 {
@@ -60,7 +53,7 @@ namespace pg_class.pg_classes
         /// Тип измеряемой величины
         /// </summary>
         public eUnit Unit { get => (eUnit)id; }
-        
+
         /// <summary>
         /// Наименование измеряемой величины
         /// </summary>
@@ -127,7 +120,7 @@ namespace pg_class.pg_classes
 
         #endregion
 
-        
+
         #region ПЕРЕОПРЕДЕЛЕННЫЕ МЕТОДЫ КЛАССА
         /// <summary>
         ///Переопределенный метод класса для работы с листами и списками

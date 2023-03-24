@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace pg_class.pg_classes
 {
@@ -25,7 +22,7 @@ namespace pg_class.pg_classes
         /// </summary>
         public prop_data_type(System.Data.DataRow row) : this()
         {
-         
+
             if (row.Table.TableName == "vprop_data_type" || row.Table.TableName == "vcon_prop_data_type")
             {
                 id = (Int32)row["id"];
@@ -96,7 +93,7 @@ namespace pg_class.pg_classes
         /// <summary>
         /// Лист расширений двоичных данных доступных типу данных свойства
         /// </summary>
-        public virtual List<prop_data_bin_ext>  Data_bin_ext_list
+        public virtual List<prop_data_bin_ext> Data_bin_ext_list
         {
             get
             {

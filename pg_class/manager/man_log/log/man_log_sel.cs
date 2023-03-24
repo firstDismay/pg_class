@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using pg_class.pg_classes;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
-using pg_class.pg_classes;
+using System;
+using System.Collections.Generic;
+using System.Data;
 
 namespace pg_class
 {
@@ -15,7 +15,7 @@ namespace pg_class
         public log log_by_id(Int64 iid)
         {
             log log = null;
-            DataTable tbl_entity  = TableByName("vlog");
+            DataTable tbl_entity = TableByName("vlog");
             NpgsqlCommandKey cmdk;
 
             cmdk = CommandByKey("log_by_id");
@@ -90,7 +90,7 @@ namespace pg_class
 
             cmdk.Parameters["iid_conception"].Value = iid_conception;
             cmdk.Fill(tbl_entity);
-            
+
             log ce;
             if (tbl_entity.Rows.Count > 0)
             {
@@ -153,7 +153,7 @@ namespace pg_class
 
             cmdk.Parameters["iid_category"].Value = iid_category;
             cmdk.Fill(tbl_entity);
-            
+
             log ce;
             if (tbl_entity.Rows.Count > 0)
             {
@@ -219,7 +219,7 @@ namespace pg_class
             cmdk.Parameters["object_on"].Value = object_on;
             cmdk.Parameters["recursive_on"].Value = recursive_on;
             cmdk.Fill(tbl_entity);
-            
+
             log ce;
             if (tbl_entity.Rows.Count > 0)
             {
@@ -239,7 +239,7 @@ namespace pg_class
         {
             return log_by_id_pos_temp(Pos_temp.Id, position_on, object_on, recursive_on);
         }
-        
+
         //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
@@ -292,7 +292,7 @@ namespace pg_class
             cmdk.Parameters["object_on"].Value = object_on;
             cmdk.Parameters["recursive_on"].Value = recursive_on;
             cmdk.Fill(tbl_entity);
-            
+
             log ce;
             if (tbl_entity.Rows.Count > 0)
             {
@@ -363,7 +363,7 @@ namespace pg_class
 
             cmdk.Parameters["iid_user"].Value = iid_user;
             cmdk.Fill(tbl_entity);
-            
+
             log ce;
             if (tbl_entity.Rows.Count > 0)
             {
@@ -393,7 +393,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
+
             cmdk = CommandByKey("log_by_id_user");
             if (cmdk != null)
             {
@@ -409,7 +409,7 @@ namespace pg_class
             }
             return Result;
         }
-        
+
         /// <summary>
         /// Лист записей журнала по идентификатору свойства позиции
         /// </summary>
@@ -435,7 +435,7 @@ namespace pg_class
             cmdk.Parameters["iid_pos_temp_prop"].Value = iid_pos_temp_prop;
             cmdk.Parameters["iid_position"].Value = iid_position;
             cmdk.Fill(tbl_entity);
-            
+
             log ce;
             if (tbl_entity.Rows.Count > 0)
             {
@@ -506,7 +506,7 @@ namespace pg_class
 
             cmdk.Parameters["iid_pos_temp_prop"].Value = iid_pos_temp_prop;
             cmdk.Fill(tbl_entity);
-            
+
             log ce;
             if (tbl_entity.Rows.Count > 0)
             {
@@ -536,7 +536,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
+
             cmdk = CommandByKey("log_by_id_pos_temp_prop");
             if (cmdk != null)
             {
@@ -556,7 +556,7 @@ namespace pg_class
         /// <summary>
         /// Лист записей журнала по идентификатору группы классов
         /// </summary>
-        public List<log> log_by_id_group(Int64 iid_group, Boolean class_on, Boolean object_on , Boolean recursive_on)
+        public List<log> log_by_id_group(Int64 iid_group, Boolean class_on, Boolean object_on, Boolean recursive_on)
         {
             List<log> entity_list = new List<log>();
             DataTable tbl_entity = TableByName("vlog");
@@ -580,7 +580,7 @@ namespace pg_class
             cmdk.Parameters["object_on"].Value = object_on;
             cmdk.Parameters["recursive_on"].Value = recursive_on;
             cmdk.Fill(tbl_entity);
-            
+
             log ce;
             if (tbl_entity.Rows.Count > 0)
             {
@@ -653,7 +653,7 @@ namespace pg_class
             cmdk.Parameters["object_on"].Value = object_on;
             cmdk.Parameters["recursive_on"].Value = recursive_on;
             cmdk.Fill(tbl_entity);
-            
+
             log ce;
             if (tbl_entity.Rows.Count > 0)
             {
@@ -683,7 +683,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
+
             cmdk = CommandByKey("log_by_id_class");
             if (cmdk != null)
             {
@@ -724,7 +724,7 @@ namespace pg_class
 
             cmdk.Parameters["iid_class_prop"].Value = iid_class_prop;
             cmdk.Fill(tbl_entity);
-            
+
             log ce;
             if (tbl_entity.Rows.Count > 0)
             {
@@ -798,7 +798,7 @@ namespace pg_class
             cmdk.Parameters["group_on"].Value = group_on;
             cmdk.Parameters["recursive_on"].Value = recursive_on;
             cmdk.Fill(tbl_entity);
-            
+
             log ce;
             if (tbl_entity.Rows.Count > 0)
             {
@@ -870,7 +870,7 @@ namespace pg_class
             cmdk.Parameters["iid_class_prop"].Value = iid_class_prop;
             cmdk.Parameters["id_object"].Value = id_object;
             cmdk.Fill(tbl_entity);
-            
+
             log ce;
             if (tbl_entity.Rows.Count > 0)
             {
@@ -942,7 +942,7 @@ namespace pg_class
             cmdk.Parameters["iname"].Value = iname;
             cmdk.Parameters["iid_conception"].Value = iid_conception;
             cmdk.Fill(tbl_entity);
-            
+
             log ce;
             if (tbl_entity.Rows.Count > 0)
             {
@@ -980,7 +980,7 @@ namespace pg_class
             }
             return Result;
         }
-        
+
         /// <summary>
         /// Лист записей журнала категории по маске имени документа
         /// </summary>
@@ -1006,7 +1006,7 @@ namespace pg_class
             cmdk.Parameters["iname"].Value = iname;
             cmdk.Parameters["iid_category"].Value = iid_category;
             cmdk.Fill(tbl_entity);
-            
+
             log ce;
             if (tbl_entity.Rows.Count > 0)
             {
@@ -1028,7 +1028,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
+
             cmdk = CommandByKey("log_by_msk_name_from_category");
             if (cmdk != null)
             {
@@ -1045,132 +1045,132 @@ namespace pg_class
             return Result;
         }
 
-		/// <summary>
-		/// Лист записей журнала по маске описания и категории записи
-		/// </summary>
-		public List<log> log_by_msk_title_id_category(String ititle, Int64 iid_category)
-		{
-			List<log> entity_list = new List<log>();
-			DataTable tbl_entity = TableByName("vlog");
-			NpgsqlCommandKey cmdk;
+        /// <summary>
+        /// Лист записей журнала по маске описания и категории записи
+        /// </summary>
+        public List<log> log_by_msk_title_id_category(String ititle, Int64 iid_category)
+        {
+            List<log> entity_list = new List<log>();
+            DataTable tbl_entity = TableByName("vlog");
+            NpgsqlCommandKey cmdk;
 
-			cmdk = CommandByKey("log_by_msk_name_id_category");
-			if (cmdk != null)
-			{
-				if (!cmdk.Access)
-				{
-					throw new AccessDataBaseException(404, String.Format(@"Отказано в доступе к методу: {0}!", cmdk.CommandText));
-				}
-			}
-			else
-			{
-				throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
-			}
+            cmdk = CommandByKey("log_by_msk_name_id_category");
+            if (cmdk != null)
+            {
+                if (!cmdk.Access)
+                {
+                    throw new AccessDataBaseException(404, String.Format(@"Отказано в доступе к методу: {0}!", cmdk.CommandText));
+                }
+            }
+            else
+            {
+                throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
+            }
 
-			cmdk.Parameters["ititle"].Value = ititle;
-			cmdk.Parameters["iid_category"].Value = iid_category;
-			cmdk.Fill(tbl_entity);
+            cmdk.Parameters["ititle"].Value = ititle;
+            cmdk.Parameters["iid_category"].Value = iid_category;
+            cmdk.Fill(tbl_entity);
 
-			log ce;
-			if (tbl_entity.Rows.Count > 0)
-			{
-				foreach (System.Data.DataRow dr in tbl_entity.Rows)
-				{
-					ce = new log(dr);
-					entity_list.Add(ce);
-				}
-			}
-			return entity_list;
-		}
+            log ce;
+            if (tbl_entity.Rows.Count > 0)
+            {
+                foreach (System.Data.DataRow dr in tbl_entity.Rows)
+                {
+                    ce = new log(dr);
+                    entity_list.Add(ce);
+                }
+            }
+            return entity_list;
+        }
 
-		//ACCESS
-		/// <summary>
-		/// Проверка прав доступа к методу
-		/// </summary>
-		public Boolean log_by_msk_name_id_category(out eAccess Access)
-		{
-			Boolean Result = false;
-			Access = eAccess.NotFound;
-			NpgsqlCommandKey cmdk;
+        //ACCESS
+        /// <summary>
+        /// Проверка прав доступа к методу
+        /// </summary>
+        public Boolean log_by_msk_name_id_category(out eAccess Access)
+        {
+            Boolean Result = false;
+            Access = eAccess.NotFound;
+            NpgsqlCommandKey cmdk;
 
-			cmdk = CommandByKey("log_by_msk_name_id_category");
-			if (cmdk != null)
-			{
-				Result = cmdk.Access;
-				if (Result)
-				{
-					Access = eAccess.Success;
-				}
-				else
-				{
-					Access = eAccess.NotAvailable;
-				}
-			}
-			return Result;
-		}
+            cmdk = CommandByKey("log_by_msk_name_id_category");
+            if (cmdk != null)
+            {
+                Result = cmdk.Access;
+                if (Result)
+                {
+                    Access = eAccess.Success;
+                }
+                else
+                {
+                    Access = eAccess.NotAvailable;
+                }
+            }
+            return Result;
+        }
 
-		/// <summary>
-		/// Лист записей журнала по маске сообщения и категории записи
-		/// </summary>
-		public List<log> log_by_msk_message_id_category(String imessage, Int64 iid_category)
-		{
-			List<log> entity_list = new List<log>();
-			DataTable tbl_entity = TableByName("vlog");
-			NpgsqlCommandKey cmdk;
+        /// <summary>
+        /// Лист записей журнала по маске сообщения и категории записи
+        /// </summary>
+        public List<log> log_by_msk_message_id_category(String imessage, Int64 iid_category)
+        {
+            List<log> entity_list = new List<log>();
+            DataTable tbl_entity = TableByName("vlog");
+            NpgsqlCommandKey cmdk;
 
-			cmdk = CommandByKey("log_by_msk_message_id_category");
-			if (cmdk != null)
-			{
-				if (!cmdk.Access)
-				{
-					throw new AccessDataBaseException(404, String.Format(@"Отказано в доступе к методу: {0}!", cmdk.CommandText));
-				}
-			}
-			else
-			{
-				throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
-			}
+            cmdk = CommandByKey("log_by_msk_message_id_category");
+            if (cmdk != null)
+            {
+                if (!cmdk.Access)
+                {
+                    throw new AccessDataBaseException(404, String.Format(@"Отказано в доступе к методу: {0}!", cmdk.CommandText));
+                }
+            }
+            else
+            {
+                throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
+            }
 
-			cmdk.Parameters["imessage"].Value = imessage;
-			cmdk.Parameters["iid_category"].Value = iid_category;
-			cmdk.Fill(tbl_entity);
+            cmdk.Parameters["imessage"].Value = imessage;
+            cmdk.Parameters["iid_category"].Value = iid_category;
+            cmdk.Fill(tbl_entity);
 
-			log ce;
-			if (tbl_entity.Rows.Count > 0)
-			{
-				foreach (System.Data.DataRow dr in tbl_entity.Rows)
-				{
-					ce = new log(dr);
-					entity_list.Add(ce);
-				}
-			}
-			return entity_list;
-		}
+            log ce;
+            if (tbl_entity.Rows.Count > 0)
+            {
+                foreach (System.Data.DataRow dr in tbl_entity.Rows)
+                {
+                    ce = new log(dr);
+                    entity_list.Add(ce);
+                }
+            }
+            return entity_list;
+        }
 
-		//ACCESS
-		/// <summary>
-		/// Проверка прав доступа к методу
-		/// </summary>
-		public Boolean log_by_msk_message_id_category(out eAccess Access)
-		{
-			Boolean Result = false;
-			Access = eAccess.NotFound;
-			NpgsqlCommandKey cmdk;
+        //ACCESS
+        /// <summary>
+        /// Проверка прав доступа к методу
+        /// </summary>
+        public Boolean log_by_msk_message_id_category(out eAccess Access)
+        {
+            Boolean Result = false;
+            Access = eAccess.NotFound;
+            NpgsqlCommandKey cmdk;
 
-			cmdk = CommandByKey("log_by_msk_message_id_category");
-			if (cmdk != null)
-			{
-				Result = cmdk.Access;
-				if (Result)
-				{
-					Access = eAccess.Success;
-				}
-				else
-				{
-					Access = eAccess.NotAvailable;
-				}
-			}
-			return Result;
-		}
-	}
+            cmdk = CommandByKey("log_by_msk_message_id_category");
+            if (cmdk != null)
+            {
+                Result = cmdk.Access;
+                if (Result)
+                {
+                    Access = eAccess.Success;
+                }
+                else
+                {
+                    Access = eAccess.NotAvailable;
+                }
+            }
+            return Result;
+        }
+    }
 }

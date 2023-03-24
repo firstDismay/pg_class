@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace pg_class.pg_classes
 {
     /// <summary>
     /// Квантовый класс определящий узловую структуру представления классов
     /// </summary>
-    public class object_path 
+    public class object_path
 
     {
         #region КОНСТРУКТОРЫ КЛАССА
@@ -53,7 +49,7 @@ namespace pg_class.pg_classes
         private Int64 id_class_prop_object_carrier;
         private String name_class_prop_object_carrier;
         private Int32 level;
-        
+
         /// <summary>
         /// Идентификатор позиции объекта
         /// </summary>

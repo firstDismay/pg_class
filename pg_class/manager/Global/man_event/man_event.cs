@@ -1,13 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Npgsql;
-using pg_class.pg_exceptions;
-using System.Data;
-using System.Net.Sockets;
-using pg_class.pg_commands;
 
 namespace pg_class
 {
@@ -25,7 +16,7 @@ namespace pg_class
         /// Событие возникает при изменении состояния менеджера
         /// </summary>
         public static event ManagerStateChangeEventHandler ManagerStateChange;
-        
+
 
         /// <summary>
         ///  Метод вызова события изменения состояния менеджера
@@ -52,7 +43,7 @@ namespace pg_class
         /// Событие возникает при появлении события журнала менеджера
         /// </summary>
         public static event JournalMessageEventHandler JournalMessageReceived;
-        
+
 
         /// <summary>
         ///  Метод вызова события журнала менеджера
@@ -92,7 +83,7 @@ namespace pg_class
         /// Событие изменения количества подключений пула
         /// </summary>
         public static event PoolConnectCountChangeEventHandler PoolConnectCountChange;
-        
+
 
         /// <summary>
         ///  Метод вызова события изменения количества подключений пула

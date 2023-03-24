@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Npgsql;
-using System.Data;
+﻿using pg_class.pg_classes;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
-using pg_class.pg_classes;
+using System;
 
 namespace pg_class
 {
@@ -38,7 +32,7 @@ namespace pg_class
             cmdk.Parameters["itimestamp"].Value = itimestamp;
             cmdk.Parameters["itimestamp_child_change"].Value = itimestamp_child_change;
             is_actual = (Int32)cmdk.ExecuteScalar();
-            
+
             return (eEntityState)is_actual;
         }
 
@@ -104,7 +98,7 @@ namespace pg_class
 
             cmdk.Parameters["iid_class"].Value = iid_class;
             Result = (Boolean)cmdk.ExecuteScalar();
-            
+
             return Result;
         }
 
@@ -170,7 +164,7 @@ namespace pg_class
 
             cmdk.Parameters["iid_class"].Value = iid_class;
             Result = (Boolean)cmdk.ExecuteScalar();
-            
+
             return Result;
         }
 

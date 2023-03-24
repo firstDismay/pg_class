@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using pg_class.pg_commands;
 
 namespace pg_class.pg_classes
 {
@@ -25,7 +21,7 @@ namespace pg_class.pg_classes
             }
             else
             {
-                Result = Manager.object_by_id_position(this); 
+                Result = Manager.object_by_id_position(this);
             }
             return Result;
         }
@@ -134,13 +130,13 @@ namespace pg_class.pg_classes
         /// </summary>
         public object_general Object_add(vclass Class, unit_conversion_rule Unit_conversion_rule, Decimal quantity)
         {
-            return Manager.object_add(Class,this, Unit_conversion_rule, quantity);
+            return Manager.object_add(Class, this, Unit_conversion_rule, quantity);
         }
 
         /// <summary>
         /// Метод добавляет новый объект с правилом пересчета по умолчанию
         /// </summary>
-        public object_general Object_add(vclass Class,  Decimal quantity)
+        public object_general Object_add(vclass Class, Decimal quantity)
         {
             return Manager.object_add(Class, this, Class.Unit_conversion_rule_base, quantity);
         }

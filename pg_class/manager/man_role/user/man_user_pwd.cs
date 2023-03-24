@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Npgsql;
-using System.Data;
+﻿using pg_class.pg_classes;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
-using pg_class.pg_classes;
+using System;
 
 namespace pg_class
 {
@@ -38,9 +32,9 @@ namespace pg_class
 
             cmdk.Parameters["ilogin"].Value = login;
             cmdk.Parameters["inewpwd1"].Value = inewpwd1;
-			cmdk.Parameters["inewpwd2"].Value = inewpwd2;
-			cmdk.ExecuteNonQuery();
-            
+            cmdk.Parameters["inewpwd2"].Value = inewpwd2;
+            cmdk.ExecuteNonQuery();
+
             error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
             desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
             switch (error)
@@ -113,8 +107,8 @@ namespace pg_class
             cmdk.Parameters["ilogin"].Value = login;
             cmdk.Parameters["ioldpwd"].Value = oldpwd;
             cmdk.Parameters["inewpwd1"].Value = inewpwd1;
-			cmdk.Parameters["inewpwd2"].Value = inewpwd2;
-			cmdk.ExecuteNonQuery();
+            cmdk.Parameters["inewpwd2"].Value = inewpwd2;
+            cmdk.ExecuteNonQuery();
 
             error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
             desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
@@ -145,7 +139,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
+
             cmdk = CommandByKey("user_pwd_set");
             if (cmdk != null)
             {
@@ -171,7 +165,7 @@ namespace pg_class
             Int32 error;
             String desc_error;
             NpgsqlCommandKey cmdk;
-            
+
             cmdk = CommandByKey("user_pwd_verify");
             if (cmdk != null)
             {

@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Npgsql;
-using System.Data;
+﻿using pg_class.pg_classes;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
-using pg_class.pg_classes;
+using System;
+using System.Collections.Generic;
+using System.Data;
 
 
 namespace pg_class
@@ -20,7 +16,7 @@ namespace pg_class
         public List<pattern_string> class_name_format_pattern_string_by_all()
         {
             List<pattern_string> pattern_string_list = new List<pattern_string>();
-            DataTable tbl_pattern_string  = TableByName("vpattern_string");
+            DataTable tbl_pattern_string = TableByName("vpattern_string");
             NpgsqlCommandKey cmdk;
 
             cmdk = CommandByKey("class_name_format_pattern_string_by_all");
@@ -37,7 +33,7 @@ namespace pg_class
             }
 
             cmdk.Fill(tbl_pattern_string);
-            
+
             pattern_string pattern_string;
             if (tbl_pattern_string.Rows.Count > 0)
             {

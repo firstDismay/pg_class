@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
-using System.IO;
-using System.Data;
-using pg_class.pg_exceptions;
+﻿using pg_class.pg_exceptions;
+using System;
 
 namespace pg_class.pg_classes
 {
@@ -25,7 +18,7 @@ namespace pg_class.pg_classes
             on_change = false;
             imagekey = "class_prop_link_val_us";
             selectedimagekey = "class_prop_link_val_s";
-            
+
         }
         /// <summary>
         /// Полный конструктор класса для возврата данных существующих записей через строку таблицы 
@@ -48,7 +41,7 @@ namespace pg_class.pg_classes
                 id_entity_instance = (Int64)row["id_entity_instance"];
                 id_sub_entity_instance = (Int64)row["id_sub_entity_instance"];
                 tablename = (String)row["tablename"];
-                on_val = (Boolean)row["on_val"];               
+                on_val = (Boolean)row["on_val"];
             }
             else
             {
@@ -136,7 +129,7 @@ namespace pg_class.pg_classes
             get
             {
                 return id_entity;
-            }        
+            }
         }
 
         /// <summary>

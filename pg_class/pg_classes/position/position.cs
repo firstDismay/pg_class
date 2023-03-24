@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
-using System.IO;
 using System.Data;
+using System.Text;
 
 namespace pg_class.pg_classes
 {
@@ -103,7 +98,7 @@ namespace pg_class.pg_classes
         /// Признак корневой позиции
         /// </summary>
         public Boolean Is_root { get => is_root; }
-        
+
         /// <summary>
         /// Признак доступности вложения объектов на основе разрешения прототипа шаблона позиции (уровень 0)
         /// </summary>
@@ -122,7 +117,7 @@ namespace pg_class.pg_classes
         /// <summary>
         /// Идентификатор позиций
         /// </summary>
-        public Int64 Id { get => id;}
+        public Int64 Id { get => id; }
 
         /// <summary>
         /// Идентификатор шаблона позиции
@@ -154,12 +149,12 @@ namespace pg_class.pg_classes
         /// <summary>
         /// Идентификатор родительской позиций, если 0 то позиция root
         /// </summary>
-        public Int64 Id_parent { get => id_parent;}
+        public Int64 Id_parent { get => id_parent; }
         /// <summary>
         /// Идентификатор корневой позиции ветви позиций
         /// </summary>
-        public Int64 Id_root { get => id_root;}
-        
+        public Int64 Id_root { get => id_root; }
+
 
         /// <summary>
         /// Наименование позиции совпадает с именем узла дерева
@@ -169,7 +164,7 @@ namespace pg_class.pg_classes
             get
             {
                 return name;
-            } 
+            }
             set
             {
                 if (name != value)
@@ -192,7 +187,7 @@ namespace pg_class.pg_classes
             get
             {
                 Int32 result = -1;
-                DataTable tbl_pos  = manager.Instance().TableByName("vposition");
+                DataTable tbl_pos = manager.Instance().TableByName("vposition");
                 if (tbl_pos != null)
                 {
                     result = tbl_pos.Columns["name"].MaxLength;
@@ -219,7 +214,7 @@ namespace pg_class.pg_classes
                     }
                     desc = value;
                     on_change = true;
-                   
+
                 }
             }
         }
@@ -228,12 +223,12 @@ namespace pg_class.pg_classes
         /// <summary>
         /// Максимально допустимая длинна строкового поля
         /// </summary>
-        public static  Int32 Desc_len
+        public static Int32 Desc_len
         {
             get
             {
                 Int32 result = -1;
-                DataTable tbl_pos  = manager.Instance().TableByName("vposition");
+                DataTable tbl_pos = manager.Instance().TableByName("vposition");
                 if (tbl_pos != null)
                 {
                     result = tbl_pos.Columns["desc"].MaxLength;
@@ -246,20 +241,20 @@ namespace pg_class.pg_classes
         /// <summary>
         /// Идентификатор концепции позиции
         /// </summary>
-        public Int64 Id_conception { get => id_con;}
+        public Int64 Id_conception { get => id_con; }
 
         /// <summary>
         /// Идентификатор прототипа шаблона позиции
         /// </summary>
         public Int32 Id_prototype { get => id_prototype; }
 
-        
+
 
 
         /// <summary>
         /// Уровень вложенности позиции, совпадает уровнем вложенности узла дерева
         /// </summary>
-        public Int32 LevelPosition { get => level;}
+        public Int32 LevelPosition { get => level; }
 
         /// <summary>
         /// Порядок сортировки текущего уровня вложенности позиций
@@ -267,8 +262,8 @@ namespace pg_class.pg_classes
         public Int32 Sort
         {
             get
-            { 
-               return sort;
+            {
+                return sort;
             }
             set
             {
@@ -276,7 +271,7 @@ namespace pg_class.pg_classes
                 {
                     sort = value;
                     on_change = true;
-                  
+
                 }
             }
         }
@@ -284,7 +279,7 @@ namespace pg_class.pg_classes
         /// <summary>
         /// Признак доступности удаления позиции
         /// </summary>
-        public Boolean LockDel { get => lockdel;}
+        public Boolean LockDel { get => lockdel; }
 
 
         /// <summary>
@@ -300,7 +295,7 @@ namespace pg_class.pg_classes
             get
             {
                 //Refresh();
-                return   include_object;
+                return include_object;
             }
         }
 
@@ -334,8 +329,8 @@ namespace pg_class.pg_classes
         public eStatus Child_status
         {
             get
-            { 
-              return child_status;
+            {
+                return child_status;
             }
             set
             {
@@ -343,7 +338,7 @@ namespace pg_class.pg_classes
                 {
                     child_status = value;
                     on_change = true;
-                   
+
                 }
             }
         }
@@ -370,7 +365,7 @@ namespace pg_class.pg_classes
             }
         }
 
-        
+
         /// <summary>
         /// Ключ объекта
         /// </summary>
@@ -385,7 +380,7 @@ namespace pg_class.pg_classes
                 }
                 else
                 {
-                 
+
                     sb.Append("pos_");
                     if (LockDel)
                     {
@@ -396,31 +391,31 @@ namespace pg_class.pg_classes
                 return sb.ToString();
             }
         }
-        
-                    
 
-    /// <summary>
-    /// Ключ выделенного объекта
-    /// </summary>
-    public String SelectedImageKey
+
+
+        /// <summary>
+        /// Ключ выделенного объекта
+        /// </summary>
+        public String SelectedImageKey
         {
             get
             {
-            StringBuilder sb = new StringBuilder();
-            if (on_recycle)
-            {
-                sb.Append("recycle_s");
-            }
-            else
-            {
-                sb.Append("pos_");
-                if (LockDel)
+                StringBuilder sb = new StringBuilder();
+                if (on_recycle)
                 {
-                    sb.Append("lock_");
+                    sb.Append("recycle_s");
                 }
+                else
+                {
+                    sb.Append("pos_");
+                    if (LockDel)
+                    {
+                        sb.Append("lock_");
+                    }
 
-                sb.Append("s");
-            }
+                    sb.Append("s");
+                }
                 return sb.ToString();
             }
         }
@@ -443,7 +438,7 @@ namespace pg_class.pg_classes
         public void Update()
         {
             if (on_change)
-            {           
+            {
                 Manager.position_upd(this);
                 Refresh();
                 on_change = false;
@@ -464,7 +459,7 @@ namespace pg_class.pg_classes
         public void MoveRoot()
         {
             Manager.position_move_root(this);
-           
+
         }
 
         /// <summary>
@@ -475,12 +470,12 @@ namespace pg_class.pg_classes
             return Manager.position_move(ParentPos, ChildPos);
         }
 
-            /// <summary>
-            /// Изменение статуса блокировки позиции в БД
-            /// </summary>
-            public void Updatepos_changelock(Boolean onlock)
+        /// <summary>
+        /// Изменение статуса блокировки позиции в БД
+        /// </summary>
+        public void Updatepos_changelock(Boolean onlock)
         {
-            if (lockdel!= onlock)
+            if (lockdel != onlock)
             {
                 Manager.position_changelock(this.id, onlock);
                 lockdel = onlock;
@@ -496,7 +491,7 @@ namespace pg_class.pg_classes
             Boolean Result = false;
             temp = Manager.position_by_id(id);
 
-            if (temp !=null)
+            if (temp != null)
             {
                 id = temp.Id;
                 id_pos_temp = temp.Id_pos_temp;

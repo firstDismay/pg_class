@@ -1,30 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Npgsql;
-using System.Data;
+﻿using pg_class.pg_classes.calendar;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
-using pg_class.pg_classes;
-using pg_class.pg_classes.calendar;
+using System;
 
 namespace pg_class
 {
     public partial class manager
-    {   
+    {
         /// <summary>
         /// Метод добавляет новую ссылку выделенный диапазон плановго диапазона
         /// </summary>
-        public plan_given_range_plan_link plan_given_range_plan_link_add( Int64 iid_plan_given_range_plan, Int64 iid_entity, Int64 iid_entity_instance, Int64 iid_sub_entity_instance)
+        public plan_given_range_plan_link plan_given_range_plan_link_add(Int64 iid_plan_given_range_plan, Int64 iid_entity, Int64 iid_entity_instance, Int64 iid_sub_entity_instance)
         {
             plan_given_range_plan_link centity = null;
             Int64 id = 0;
             Int32 error;
             String desc_error;
             NpgsqlCommandKey cmdk;
-            
+
             cmdk = CommandByKey("plan_given_range_plan_link_add");
             if (cmdk != null)
             {
@@ -79,7 +72,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
+
             cmdk = CommandByKey("plan_given_range_plan_link_add");
             if (cmdk != null)
             {

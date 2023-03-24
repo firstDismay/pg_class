@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Data;
-using Npgsql;
-using pg_class.pg_commands;
-using pg_class.pg_exceptions;
-using pg_class.pg_classes;
 
 namespace pg_class
 {
@@ -20,7 +13,7 @@ namespace pg_class
         /// Событие возникает при изменении списка правил вложенности уровня 2 класс на позицию
         /// </summary>
         public event Rulel2_Class_On_PositionListChangeEventHandler Rulel2_Class_On_PositionListChange;
-        
+
 
         /// <summary>
         ///  Метод вызова события

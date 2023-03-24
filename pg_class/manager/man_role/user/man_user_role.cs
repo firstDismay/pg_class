@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Npgsql;
-using System.Data;
+﻿using pg_class.pg_classes;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
-using pg_class.pg_classes;
+using System;
 
 namespace pg_class
 {
@@ -23,7 +17,7 @@ namespace pg_class
             String desc_error;
             NpgsqlCommandKey cmdk;
             //**********
-            
+
             cmdk = CommandByKey("user_role_user_grant");
 
             if (cmdk != null)
@@ -37,7 +31,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
 
             cmdk.Parameters["ilogin"].Value = user.Login;
             cmdk.Parameters["irole_user"].Value = role.NameSystem;
@@ -51,11 +45,11 @@ namespace pg_class
                 cmdk.Transaction.Rollback();
                 PG_exception_hadler(ex, cmdk);
             }
-            
+
             error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
             desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
             //SetLastTimeUsing();
-            
+
             switch (error)
             {
                 case 0:
@@ -83,8 +77,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("user_role_user_grant");
             if (cmdk != null)
             {
@@ -100,7 +94,7 @@ namespace pg_class
             }
             return Result;
         }
-        
+
         /// <summary>
         /// Метод исключает пользователя из роли
         /// </summary>
@@ -111,8 +105,8 @@ namespace pg_class
             String desc_error;
             NpgsqlCommandKey cmdk;
             //**********
-             
-            
+
+
             cmdk = CommandByKey("user_role_user_revoke");
             if (cmdk != null)
             {
@@ -125,11 +119,11 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
             cmdk.Parameters["ilogin"].Value = user.Login;
             cmdk.Parameters["irole_user"].Value = role.NameSystem;
             cmdk.ExecuteNonQuery();
-            
+
             error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
             desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
             switch (error)
@@ -159,8 +153,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("user_role_user_revoke");
             if (cmdk != null)
             {

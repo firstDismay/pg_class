@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Npgsql;
-using System.Data;
+﻿using pg_class.pg_classes.calendar;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
-using pg_class.pg_classes;
-using pg_class.pg_classes.calendar;
+using System;
 
 namespace pg_class
 {
@@ -17,14 +10,14 @@ namespace pg_class
         /// <summary>
         /// Метод добавляет новый план
         /// </summary>
-        public plan plan_add( Int64 iid_conception, Int64 iid_parent,  String iname, String idesc, Boolean ion, Boolean ion_crossing, Int32 iplan_max, Int32 irange_max, Boolean ion_freeze)
+        public plan plan_add(Int64 iid_conception, Int64 iid_parent, String iname, String idesc, Boolean ion, Boolean ion_crossing, Int32 iplan_max, Int32 irange_max, Boolean ion_freeze)
         {
             plan centity = null;
             Int64 id = 0;
             Int32 error;
             String desc_error;
             NpgsqlCommandKey cmdk;
-            
+
             cmdk = CommandByKey("plan_add");
             if (cmdk != null)
             {

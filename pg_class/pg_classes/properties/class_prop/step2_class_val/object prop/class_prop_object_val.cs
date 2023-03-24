@@ -1,9 +1,6 @@
-﻿using System;
+﻿using pg_class.pg_exceptions;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using pg_class.pg_exceptions;
 
 namespace pg_class.pg_classes
 {
@@ -23,7 +20,7 @@ namespace pg_class.pg_classes
             embed_mode = eObjectPropCreateEmdedMode.NoAction;
             embed_single = true;
             embed_class_real_id = -1;
-    }
+        }
         /// <summary>
         /// Полный конструктор класса для возврата данных существующих записей через строку таблицы 
         /// </summary>
@@ -31,12 +28,12 @@ namespace pg_class.pg_classes
         {
             if (row.Table.TableName == "vclass_prop_object_val")
             {
-                id  = (Int64)row["id"];
+                id = (Int64)row["id"];
                 id_class_prop = (Int64)row["id_class_prop"];
                 id_class = (Int64)row["id_class"];
 
                 id_class_definition = (Int64)row["id_class_definition"];
-                id_prop_definition  = (Int64)row["id_prop_definition"];
+                id_prop_definition = (Int64)row["id_prop_definition"];
                 timestamp_class_definition = (DateTime)row["timestamp_class_definition"];
 
                 on_val = (Boolean)row["on_val"];
@@ -62,7 +59,7 @@ namespace pg_class.pg_classes
         /// <summary>
         /// Дополнительный конструктор класса для комплектации значения на стороне клиента
         /// </summary>
-        public class_prop_object_val(class_prop ClassProp, vclass ClassVal,  
+        public class_prop_object_val(class_prop ClassProp, vclass ClassVal,
             Decimal bQuantityMin, Decimal bQuantityMax) : this()
         {
             if (ClassProp != null & ClassVal != null)
@@ -381,7 +378,7 @@ namespace pg_class.pg_classes
                 }
             }
         }
-        
+
         /// <summary>
         /// Идентификатор активного представления вещественного класса используемого для порождения встраиваемых объектов
         /// </summary>
@@ -580,11 +577,11 @@ namespace pg_class.pg_classes
         public class_prop Class_prop_get()
         {
             class_prop Result = null;
-       
+
             switch (StorageType)
             {
                 case eStorageType.Active:
-                    Result = Manager.class_prop_by_id(id_class_prop); 
+                    Result = Manager.class_prop_by_id(id_class_prop);
                     break;
                 case eStorageType.History:
                     Result = Manager.class_prop_snapshot_by_id(id_class_prop, Timestamp_class);
@@ -602,7 +599,7 @@ namespace pg_class.pg_classes
         {
             return Manager.object_prop_create_emded_mode_by_all();
         }
-        
+
         /// <summary>
         /// Метод возвращает вещественный класс зазначенный для создания встраиваемых объектов в объектное свойство при создании объекта класса носителя
         /// </summary>

@@ -159,7 +159,7 @@ namespace pg_class.pg_classes
         /// Штамп времени объекта носителя свойства
         /// </summary>
         public DateTime Timestamp_object_carrier { get => timestamp_object_carrier; }
-        
+
         /// <summary>
         /// Идентификатор класса содержащего свойство
         /// </summary>
@@ -203,7 +203,7 @@ namespace pg_class.pg_classes
             get
             {
                 Int32 result = -1;
-                DataTable tbl_pos  = manager.Instance().TableByName("vclass_prop");
+                DataTable tbl_pos = manager.Instance().TableByName("vclass_prop");
                 if (tbl_pos != null)
                 {
                     result = tbl_pos.Columns["name"].MaxLength;
@@ -231,7 +231,7 @@ namespace pg_class.pg_classes
             get
             {
                 Int32 result = -1;
-                DataTable tbl_pos  = manager.Instance().TableByName("vclass_prop");
+                DataTable tbl_pos = manager.Instance().TableByName("vclass_prop");
                 if (tbl_pos != null)
                 {
                     result = tbl_pos.Columns["desc"].MaxLength;
@@ -422,7 +422,7 @@ namespace pg_class.pg_classes
         }
 
         private Boolean on_change;
-        
+
         /// <summary>
         /// Свойство определяющее потребность в обновлении данных БД
         /// </summary>

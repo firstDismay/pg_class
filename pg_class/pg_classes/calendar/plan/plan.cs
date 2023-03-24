@@ -1,12 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
-using System.IO;
 using System.Data;
-using System.Security.Cryptography;
 
 namespace pg_class.pg_classes.calendar
 {
@@ -46,7 +39,7 @@ namespace pg_class.pg_classes.calendar
                     name_len = row.Table.Columns["name"].MaxLength;
                     desc = (String)row["desc"];
                     desc_len = row.Table.Columns["desc"].MaxLength;
-                    on= (Boolean)row["on"];
+                    on = (Boolean)row["on"];
                     on_crossing = (Boolean)row["on_crossing"];
                     on_freeze = (Boolean)row["on_freeze"];
                     plan_max = (Int32)row["plan_max"];
@@ -98,7 +91,7 @@ namespace pg_class.pg_classes.calendar
         /// <summary>
         /// Идентификатор плана
         /// </summary>
-        public Int64 Id { get => id;}
+        public Int64 Id { get => id; }
 
         /// <summary>
         /// Идентификатор концепции плана
@@ -128,7 +121,7 @@ namespace pg_class.pg_classes.calendar
             get
             {
                 return name;
-            } 
+            }
             set
             {
                 if (name != value)
@@ -151,7 +144,7 @@ namespace pg_class.pg_classes.calendar
             get
             {
                 Int32 result = -1;
-                DataTable tbl_pos  = manager.Instance().TableByName("vdocument");
+                DataTable tbl_pos = manager.Instance().TableByName("vdocument");
                 if (tbl_pos != null)
                 {
                     result = tbl_pos.Columns["name"].MaxLength;
@@ -159,7 +152,7 @@ namespace pg_class.pg_classes.calendar
                 return result;
             }
         }
-        
+
         /// <summary>
         /// Описание плана
         /// </summary>
@@ -179,7 +172,7 @@ namespace pg_class.pg_classes.calendar
                     }
                     desc = value;
                     on_change = true;
-                   
+
                 }
             }
         }
@@ -187,12 +180,12 @@ namespace pg_class.pg_classes.calendar
         /// <summary>
         /// Максимально допустимая длинна строкового поля
         /// </summary>
-        public static  Int32 Desc_len
+        public static Int32 Desc_len
         {
             get
             {
                 Int32 result = -1;
-                DataTable tbl_pos  = manager.Instance().TableByName("vdocument");
+                DataTable tbl_pos = manager.Instance().TableByName("vdocument");
                 if (tbl_pos != null)
                 {
                     result = tbl_pos.Columns["desc"].MaxLength;
@@ -205,7 +198,7 @@ namespace pg_class.pg_classes.calendar
         /// <summary>
         /// Признак активности плана
         /// </summary>
-        public Boolean On 
+        public Boolean On
         {
             get
             {
@@ -217,11 +210,11 @@ namespace pg_class.pg_classes.calendar
                 on_change = true;
             }
         }
-        
+
         /// <summary>
         /// Признак защиты плана от изменений
         /// </summary>
-        public Boolean On_freeze 
+        public Boolean On_freeze
         {
             get
             {
@@ -233,11 +226,11 @@ namespace pg_class.pg_classes.calendar
                 on_change = true;
             }
         }
-        
+
         /// <summary>
         /// Признак доступности пересечения плановых диапазонов в дочерних планах
         /// </summary>
-        public Boolean On_crossing 
+        public Boolean On_crossing
         {
             get
             {
@@ -253,7 +246,7 @@ namespace pg_class.pg_classes.calendar
         /// <summary>
         /// Ограничение количества вложенных планов -1 не ограничено
         /// </summary>
-        public Int32 Plan_max 
+        public Int32 Plan_max
         {
             get
             {
@@ -269,7 +262,7 @@ namespace pg_class.pg_classes.calendar
         /// <summary>
         /// Ограничение количества плановых диапазонов -1 не ограничено
         /// </summary>
-        public Int32 Range_max 
+        public Int32 Range_max
         {
             get
             {
@@ -298,7 +291,7 @@ namespace pg_class.pg_classes.calendar
                 return has_child_plan;
             }
         }
-        
+
 
         /// <summary>
         /// Штамп времени плана
@@ -310,7 +303,7 @@ namespace pg_class.pg_classes.calendar
         /// </summary>
         public DateTime Timestamp_child_change { get => timestamp_child_change; }
 
-        
+
         /// <summary>
         /// Свойство определяющее потребность в обновлении данных БД
         /// </summary>
@@ -321,7 +314,7 @@ namespace pg_class.pg_classes.calendar
                 return on_change;
             }
         }
-        
+
         /// <summary>
         /// Ссылка на менеджера данных
         /// </summary>
@@ -365,7 +358,7 @@ namespace pg_class.pg_classes.calendar
         /// </summary>
         public eEntityState Is_actual()
         {
-         return Manager.plan_is_actual(this);
+            return Manager.plan_is_actual(this);
         }
 
         /// <summary>
@@ -374,7 +367,7 @@ namespace pg_class.pg_classes.calendar
         public void Update()
         {
             if (on_change)
-            {             
+            {
                 Manager.plan_upd(this);
                 Refresh();
                 on_change = false;

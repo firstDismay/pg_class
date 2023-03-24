@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
-using System.IO;
 using System.Data;
+using System.IO;
 using System.Security.Cryptography;
+using System.Text;
 
 namespace pg_class.pg_classes
 {
@@ -100,7 +96,7 @@ namespace pg_class.pg_classes
         /// Идентификатор концепции
         /// </summary>
         public Int64 Id_conception { get => id_conception; }
-        
+
         /// <summary>
         /// Наименование категории
         /// </summary>
@@ -132,7 +128,7 @@ namespace pg_class.pg_classes
             get
             {
                 Int32 result = -1;
-                DataTable tbl_pos  = manager.Instance().TableByName("vdoc_category");
+                DataTable tbl_pos = manager.Instance().TableByName("vdoc_category");
                 if (tbl_pos != null)
                 {
                     result = tbl_pos.Columns["name"].MaxLength;
@@ -180,7 +176,7 @@ namespace pg_class.pg_classes
                 return result;
             }
         }
-        
+
         /// <summary>
         /// Признак доступности категории документов к использованию
         /// </summary>
@@ -258,7 +254,7 @@ namespace pg_class.pg_classes
                 return on_change;
             }
         }
-        
+
         /// <summary>
         /// Ссылка на менеджера данных
         /// </summary>
@@ -350,7 +346,7 @@ namespace pg_class.pg_classes
         public void Update()
         {
             if (on_change)
-            {             
+            {
                 Manager.doc_category_upd(this);
                 Refresh();
                 on_change = false;
@@ -362,7 +358,7 @@ namespace pg_class.pg_classes
         /// </summary>
         public Boolean Refresh()
         {
-            
+
             doc_category temp;
             Boolean Result = false;
             temp = Manager.doc_category_by_id(id);

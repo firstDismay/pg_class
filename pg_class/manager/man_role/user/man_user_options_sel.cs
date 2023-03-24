@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Npgsql;
-using System.Data;
+﻿using pg_class.pg_classes;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
-using pg_class.pg_classes;
+using System;
+using System.Data;
 
 namespace pg_class
 {
@@ -20,12 +15,12 @@ namespace pg_class
         {
             user_options user_options = null;
 
-            DataTable tbl_usr =  TableByName("user_options"); // TableByName("user_options")
-            
-            
+            DataTable tbl_usr = TableByName("user_options"); // TableByName("user_options")
+
+
             NpgsqlCommandKey cmdk;
 
-            
+
             cmdk = CommandByKey("user_options_by_current");
 
             if (cmdk != null)
@@ -39,10 +34,10 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
 
             cmdk.Fill(tbl_usr);
-            
+
             if (tbl_usr.Rows.Count > 0)
             {
                 user_options = new user_options(tbl_usr.Rows[0]);
@@ -58,8 +53,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("user_options_by_current");
             if (cmdk != null)
             {
@@ -75,20 +70,20 @@ namespace pg_class
             }
             return Result;
         }
-        
-        
-         
+
+
+
         /// <summary>
         /// Метод определяет актуальность состояния опций пользователя
         /// </summary>
         public eEntityState user_options_is_actual(String login, DateTime mytimestamp)
         {
             Int32 is_actual = 3;
-            
+
             NpgsqlCommandKey cmdk;
             //**********
-             
-            
+
+
             cmdk = CommandByKey("user_options_is_actual");
 
             if (cmdk != null)
@@ -106,7 +101,7 @@ namespace pg_class
             cmdk.Parameters["ilogin"].Value = login;
             cmdk.Parameters["imytimestamp"].Value = mytimestamp;
             is_actual = (Int32)cmdk.ExecuteScalar();
-            
+
             return (eEntityState)is_actual;
         }
 
@@ -127,8 +122,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("user_options_is_actual");
             if (cmdk != null)
             {

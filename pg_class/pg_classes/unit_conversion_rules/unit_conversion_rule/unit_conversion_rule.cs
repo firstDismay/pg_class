@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
-using System.IO;
-using System.Data;
 
 namespace pg_class.pg_classes
 {
@@ -30,9 +25,9 @@ namespace pg_class.pg_classes
 
             if (row.Table.TableName == "vunit_conversion_rules")
             {
-                id = (Int32)row["id"]; 
+                id = (Int32)row["id"];
                 id_unit = (Int32)row["id_unit"];
-                mc = (Decimal)row["mc"]; 
+                mc = (Decimal)row["mc"];
                 bunit = (String)row["bunit"];
                 cunit = (String)row["cunit"];
                 desc = (String)row["desc"];
@@ -78,7 +73,7 @@ namespace pg_class.pg_classes
         /// <summary>
         /// Идентификатор правила пересчета
         /// </summary>
-        public Int32 Id { get => id;}
+        public Int32 Id { get => id; }
 
         /// <summary>
         /// Идентификатор концепции правила пересчета
@@ -130,7 +125,8 @@ namespace pg_class.pg_classes
         /// <summary>
         /// Колличество знаков после запятой
         /// </summary>
-        public Int32 Round {
+        public Int32 Round
+        {
             get
             {
                 return round;
@@ -160,11 +156,12 @@ namespace pg_class.pg_classes
         /// Единицы измерения базовые
         /// </summary>
         public String Bunit { get => bunit; }
-        
+
         /// <summary>
         /// Единицы измерения установленные в текущем правиле
         /// </summary>
-        public String Cunit {
+        public String Cunit
+        {
             get
             {
                 return cunit;
@@ -183,7 +180,8 @@ namespace pg_class.pg_classes
         /// <summary>
         /// Описание правила пересчета
         /// </summary>
-        public String Desc {
+        public String Desc
+        {
             get
             {
                 return desc;
@@ -233,7 +231,8 @@ namespace pg_class.pg_classes
         /// Признак включенного правила пересчета доступного к применению в активной конфигурации
         /// </summary>
         public Boolean On
-        { get
+        {
+            get
             {
                 return on;
             }
@@ -266,7 +265,7 @@ namespace pg_class.pg_classes
         {
             get
             {
-                return String.Format("unit_conversion_rule_{0}", id );
+                return String.Format("unit_conversion_rule_{0}", id);
             }
         }
 
@@ -420,7 +419,7 @@ namespace pg_class.pg_classes
         {
             StringBuilder sb = new StringBuilder();
             sb.Append(desc);
-            if (On_base & !On_single )
+            if (On_base & !On_single)
             {
                 sb.Append(" (базовая единица)");
             }

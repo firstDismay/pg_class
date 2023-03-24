@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace pg_class
+﻿namespace pg_class
 {
     #region Перечисления сущностей БД
     /// <summary>
@@ -370,19 +365,19 @@ namespace pg_class
         /// Ссылка правила вложенности диапазонов подчиненных планов
         /// </summary>
         plan_rule_nesting_link = 120,
-		/// <summary>
-		/// Запись журнала событий
-		/// </summary>
-		log = 121,
-		/// <summary>
-		/// Категория записи журнала событий
-		/// </summary>
-		log_category = 122,
-		/// <summary>
-		/// Ссылка записи журнала событий
-		/// </summary>
-		log_link = 123
-	}
+        /// <summary>
+        /// Запись журнала событий
+        /// </summary>
+        log = 121,
+        /// <summary>
+        /// Категория записи журнала событий
+        /// </summary>
+        log_category = 122,
+        /// <summary>
+        /// Ссылка записи журнала событий
+        /// </summary>
+        log_link = 123
+    }
 
     /// <summary>
     /// Источник сущности свойство применимо к сущностям с открытыми конструкторами

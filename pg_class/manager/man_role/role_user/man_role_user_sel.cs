@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Npgsql;
-using System.Data;
+﻿using pg_class.pg_classes;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
-using pg_class.pg_classes;
+using System;
+using System.Collections.Generic;
+using System.Data;
 
 namespace pg_class
 {
@@ -20,12 +16,12 @@ namespace pg_class
         {
             role_user role_user = null;
 
-            DataTable tbl_usr =  TableByName("vrole_user"); //TableByName("vusers");
-            
-            
+            DataTable tbl_usr = TableByName("vrole_user"); //TableByName("vusers");
+
+
             NpgsqlCommandKey cmdk;
 
-            
+
             cmdk = CommandByKey("user_role_user_by_namesys");
 
             if (cmdk != null)
@@ -39,13 +35,13 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
 
             cmdk.Parameters["inamesys"].Value = inamesys;
 
             cmdk.Fill(tbl_usr);
-            
-            if (tbl_usr .Rows.Count > 0)
+
+            if (tbl_usr.Rows.Count > 0)
             {
                 role_user = new role_user(tbl_usr.Rows[0]);
             }
@@ -61,8 +57,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("user_role_user_by_namesys");
             if (cmdk != null)
             {
@@ -78,7 +74,7 @@ namespace pg_class
             }
             return Result;
         }
-        
+
 
         /// <summary>
         /// Роль пользователя по глобальному идентификатору
@@ -87,12 +83,12 @@ namespace pg_class
         {
             role_user role_user = null;
 
-            DataTable tbl_usr =  TableByName("vrole_user"); //TableByName("vusers");
-            
-            
+            DataTable tbl_usr = TableByName("vrole_user"); //TableByName("vusers");
+
+
             NpgsqlCommandKey cmdk;
 
-            
+
             cmdk = CommandByKey("user_role_user_by_id");
 
             if (cmdk != null)
@@ -106,12 +102,12 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
 
             cmdk.Parameters["iid"].Value = iid;
 
             cmdk.Fill(tbl_usr);
-            
+
             if (tbl_usr.Rows.Count > 0)
             {
                 role_user = new role_user(tbl_usr.Rows[0]);
@@ -128,8 +124,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("user_role_user_by_id");
             if (cmdk != null)
             {
@@ -145,8 +141,8 @@ namespace pg_class
             }
             return Result;
         }
-        
-        
+
+
 
         /// <summary>
         /// Лист всех ролей пользователей
@@ -155,12 +151,12 @@ namespace pg_class
         {
             List<role_user> usr_list = new List<role_user>();
 
-              DataTable tbl_usr =  TableByName("vrole_user"); //TableByName("vusers");
-            
-            
+            DataTable tbl_usr = TableByName("vrole_user"); //TableByName("vusers");
+
+
             NpgsqlCommandKey cmdk;
 
-            
+
             cmdk = CommandByKey("user_role_user_by_all");
 
             if (cmdk != null)
@@ -174,10 +170,10 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
 
             cmdk.Fill(tbl_usr);
-            
+
             role_user usr;
             if (tbl_usr.Rows.Count > 0)
             {
@@ -199,8 +195,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("user_role_user_by_all");
             if (cmdk != null)
             {
@@ -216,8 +212,8 @@ namespace pg_class
             }
             return Result;
         }
-        
-        
+
+
         /// <summary>
         /// Лист ролей пользователя
         /// </summary>
@@ -225,12 +221,12 @@ namespace pg_class
         {
             List<role_user> rol_list = new List<role_user>();
 
-            DataTable tbl_rol =  TableByName("vrole_user"); //TableByName("roles");
-            
-            
+            DataTable tbl_rol = TableByName("vrole_user"); //TableByName("roles");
+
+
             NpgsqlCommandKey cmdk;
 
-            
+
             cmdk = CommandByKey("user_role_user_by_login");
             if (cmdk != null)
             {
@@ -248,7 +244,7 @@ namespace pg_class
             cmdk.Parameters["irecursive"].Value = irecursive;
 
             cmdk.Fill(tbl_rol);
-            
+
             role_user rol;
             if (tbl_rol.Rows.Count > 0)
             {
@@ -270,8 +266,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("user_role_user_by_login");
             if (cmdk != null)
             {
@@ -287,7 +283,7 @@ namespace pg_class
             }
             return Result;
         }
-        
+
 
         /// <summary>
         /// Лист ролей пользователя включенных в базовую роль
@@ -297,11 +293,11 @@ namespace pg_class
             List<role_user> rol_list = new List<role_user>();
 
             DataTable tbl_rol = TableByName("vrole_user"); //TableByName("roles");
-            
-            
+
+
             NpgsqlCommandKey cmdk;
 
-            
+
             cmdk = CommandByKey("user_role_user_by_role_base");
             if (cmdk != null)
             {
@@ -316,9 +312,9 @@ namespace pg_class
             }
 
             cmdk.Parameters["irole_base"].Value = irole_base;
-            
+
             cmdk.Fill(tbl_rol);
-            
+
             role_user rol;
             if (tbl_rol.Rows.Count > 0)
             {
@@ -339,17 +335,17 @@ namespace pg_class
             return user_role_user_by_role_base(RoleBase.NameSystem);
         }
 
-            //ACCESS
-            /// <summary>
-            /// Проверка прав доступа к методу
-            /// </summary>
-            public Boolean user_role_user_by_role_base(out eAccess Access)
+        //ACCESS
+        /// <summary>
+        /// Проверка прав доступа к методу
+        /// </summary>
+        public Boolean user_role_user_by_role_base(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("user_role_user_by_role_base");
             if (cmdk != null)
             {

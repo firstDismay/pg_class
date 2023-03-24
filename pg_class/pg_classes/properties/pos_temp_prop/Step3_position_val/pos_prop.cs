@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data;
 
 namespace pg_class.pg_classes
@@ -21,7 +18,7 @@ namespace pg_class.pg_classes
         {
         }
 
-        
+
         /// <summary>
         /// Полный конструктор класса для возврата данных существующих записей через строку таблицы 
         /// </summary>
@@ -162,7 +159,7 @@ namespace pg_class.pg_classes
                 return on_override;
             }
         }
-        
+
         private String name;
         /// <summary>
         /// Наименование
@@ -184,7 +181,7 @@ namespace pg_class.pg_classes
             get
             {
                 Int32 result = -1;
-                DataTable tbl_pos  = manager.Instance().TableByName("vpos_temp_prop");
+                DataTable tbl_pos = manager.Instance().TableByName("vpos_temp_prop");
                 if (tbl_pos != null)
                 {
                     result = tbl_pos.Columns["name"].MaxLength;
@@ -214,7 +211,7 @@ namespace pg_class.pg_classes
             get
             {
                 Int32 result = -1;
-                DataTable tbl_pos  = manager.Instance().TableByName("vpos_temp_prop");
+                DataTable tbl_pos = manager.Instance().TableByName("vpos_temp_prop");
                 if (tbl_pos != null)
                 {
                     result = tbl_pos.Columns["desc"].MaxLength;
@@ -484,7 +481,7 @@ namespace pg_class.pg_classes
                 string_val = temp.String_val;
                 timestamp_position_carrier = temp.timestamp_position_carrier;
                 Result = true;
-                
+
             }
             else
             {
@@ -492,7 +489,7 @@ namespace pg_class.pg_classes
             }
             return Result;
         }
-       
+
         /// <summary>
         /// Тип свойства
         /// </summary>

@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Npgsql;
-using System.Data;
+﻿using pg_class.pg_classes;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
-using pg_class.pg_classes;
+using System;
 
 namespace pg_class
 {
@@ -16,7 +10,7 @@ namespace pg_class
         /// <summary>
         /// Метод добавляет новое свойство класса
         /// </summary>
-        public class_prop class_prop_add( Int64 iid_class, Int32 iid_prop_type, Boolean ion_override, Int32 iid_data_type, String iname, String idesc, String itag, Int32 isort)
+        public class_prop class_prop_add(Int64 iid_class, Int32 iid_prop_type, Boolean ion_override, Int32 iid_data_type, String iname, String idesc, String itag, Int32 isort)
         {
             class_prop class_prop = null;
             Int64 id = 0;
@@ -46,7 +40,7 @@ namespace pg_class
             cmdk.Parameters["itag"].Value = itag;
             cmdk.Parameters["isort"].Value = isort;
             cmdk.ExecuteNonQuery();
-            
+
             error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
             desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
             switch (error)
@@ -105,7 +99,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
+
             cmdk = CommandByKey("class_prop_add");
             if (cmdk != null)
             {

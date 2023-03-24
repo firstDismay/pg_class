@@ -1,21 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace pg_class.pg_classes
 {
-    public partial  class object_general
+    public partial class object_general
     {
         #region СВОЙСТВА ДЛЯ РАБОТЫ С ПУТЯМИ ПРЕДСТАВЛЕНИЙ КЛАССОВ
-        
+
         /// <summary>
         /// Свойство возвращает лист фрагментов пути представлений объектов отсортированных от корневого несущего объкта
         /// </summary>
         public List<pos_path> Path_position_get()
         {
-            return Manager.position_path_by_id_position (this.Id_position);
+            return Manager.position_path_by_id_position(this.Id_position);
         }
 
         /// <summary>

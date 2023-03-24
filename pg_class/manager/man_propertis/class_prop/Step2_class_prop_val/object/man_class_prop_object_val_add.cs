@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Npgsql;
-using System.Data;
+﻿using pg_class.pg_classes;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
-using pg_class.pg_classes;
+using System;
 
 namespace pg_class
 {
@@ -16,7 +10,7 @@ namespace pg_class
         /// <summary>
         /// Добавить новое значение объектного свойства активного представления класса
         /// </summary>
-        public class_prop_object_val class_prop_object_val_add(Int64 iid_class_prop, Int64 iid_class_val, 
+        public class_prop_object_val class_prop_object_val_add(Int64 iid_class_prop, Int64 iid_class_val,
                                      Decimal ibquantity_min, Decimal ibquantity_max,
                                      eObjectPropCreateEmdedMode iembed_mode, Boolean iembed_single, Int64 iembed_class_real_id, Int32 iid_unit_conversion_rule)
         {
@@ -26,7 +20,7 @@ namespace pg_class
             Int32 error;
             String desc_error;
             NpgsqlCommandKey cmdk;
-            
+
             cmdk = CommandByKey("class_prop_object_val_add");
             if (cmdk != null)
             {
@@ -49,7 +43,7 @@ namespace pg_class
             cmdk.Parameters["iembed_class_real_id"].Value = iembed_class_real_id;
             cmdk.Parameters["iid_unit_conversion_rule"].Value = iid_unit_conversion_rule;
             cmdk.ExecuteNonQuery();
-            
+
             error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
             desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
             switch (error)
@@ -124,7 +118,7 @@ namespace pg_class
             class_prop_object_val Result = null;
             if (Class_prop_object_val != null)
             {
-                Result = class_prop_object_val_add(Class_prop_object_val.Id_class_prop, Class_prop_object_val.Id_class_val, 
+                Result = class_prop_object_val_add(Class_prop_object_val.Id_class_prop, Class_prop_object_val.Id_class_val,
                                         Class_prop_object_val.Bquantity_min, Class_prop_object_val.Bquantity_max,
                                         Class_prop_object_val.Embed_mode, Class_prop_object_val.Embed_single, Class_prop_object_val.Embed_class_real_id, Class_prop_object_val.Id_unit_conversion_rule);
             }

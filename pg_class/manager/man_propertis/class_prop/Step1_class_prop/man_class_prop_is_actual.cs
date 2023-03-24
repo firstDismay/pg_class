@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Npgsql;
-using System.Data;
+﻿using pg_class.pg_classes;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
-using pg_class.pg_classes;
+using System;
 
 namespace pg_class
 {
@@ -37,7 +31,7 @@ namespace pg_class
             cmdk.Parameters["iid"].Value = iid;
             cmdk.Parameters["timestamp_class"].Value = timestamp_class;
             is_actual = (Int32)cmdk.ExecuteScalar();
-            
+
             return (eEntityState)is_actual;
         }
 
@@ -103,7 +97,7 @@ namespace pg_class
 
             cmdk.Parameters["iid_class_prop"].Value = iid_class_prop;
             class_prop_state = (Int32)cmdk.ExecuteScalar();
-            
+
             return (ePropStateForGlobalPropLink)class_prop_state;
         }
 
@@ -181,7 +175,7 @@ namespace pg_class
         /// </summary>
         public Boolean class_prop_has_object_prop_override_by_id_pos(position Position_parent, class_prop Class_prop, Boolean on_internal = false)
         {
-            return class_prop_has_object_prop_override_by_id_pos(Position_parent.Id, Class_prop.Id, Class_prop.Timestamp_class, on_internal); 
+            return class_prop_has_object_prop_override_by_id_pos(Position_parent.Id, Class_prop.Id, Class_prop.Timestamp_class, on_internal);
         }
 
         /// <summary>

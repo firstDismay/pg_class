@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace pg_class.pg_classes
 {
-    public partial  class position
+    public partial class position
     {
         #region СВОЙСТВА ДЛЯ РАБОТЫ С ПУТЯМИ ПОЗИЦИЙ
 

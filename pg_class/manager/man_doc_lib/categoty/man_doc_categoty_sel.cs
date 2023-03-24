@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Npgsql;
-using System.Data;
+﻿using pg_class.pg_classes;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
-using pg_class.pg_classes;
+using System;
+using System.Collections.Generic;
+using System.Data;
 
 namespace pg_class
 {
@@ -19,7 +15,7 @@ namespace pg_class
         public doc_category doc_category_by_id(Int64 iid)
         {
             doc_category doc_category = null;
-            DataTable tbl_entity  = TableByName("vdoc_category");
+            DataTable tbl_entity = TableByName("vdoc_category");
             NpgsqlCommandKey cmdk;
 
             cmdk = CommandByKey("doc_category_by_id");
@@ -37,7 +33,7 @@ namespace pg_class
 
             cmdk.Parameters["iid"].Value = iid;
             cmdk.Fill(tbl_entity);
-            
+
             if (tbl_entity.Rows.Count > 0)
             {
                 doc_category = new doc_category(tbl_entity.Rows[0]);
@@ -76,8 +72,8 @@ namespace pg_class
         /// </summary>
         public List<doc_category> doc_category_by_id_conception(Int64 iid_conception)
         {
-            List<doc_category>  entity_list = new List<doc_category>();
-            DataTable tbl_entity  = TableByName("vdoc_category");
+            List<doc_category> entity_list = new List<doc_category>();
+            DataTable tbl_entity = TableByName("vdoc_category");
             NpgsqlCommandKey cmdk;
 
             cmdk = CommandByKey("doc_category_by_id_conception");
@@ -95,7 +91,7 @@ namespace pg_class
 
             cmdk.Parameters["iid_conception"].Value = iid_conception;
             cmdk.Fill(tbl_entity);
-            
+
             doc_category ce;
             if (tbl_entity.Rows.Count > 0)
             {
@@ -130,7 +126,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
+
             cmdk = CommandByKey("doc_category_by_id_conception");
             if (cmdk != null)
             {

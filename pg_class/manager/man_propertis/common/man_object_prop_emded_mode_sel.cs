@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Npgsql;
-using System.Data;
+﻿using pg_class.pg_classes;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
-using pg_class.pg_classes;
+using System;
+using System.Collections.Generic;
+using System.Data;
 
 
 namespace pg_class
@@ -22,12 +18,12 @@ namespace pg_class
             List<object_prop_create_emded_mode> entity_list = new List<object_prop_create_emded_mode>();
 
 
-            DataTable tbl_data_type  = TableByName("vobject_prop_create_emded_mode");
-            
-            
+            DataTable tbl_data_type = TableByName("vobject_prop_create_emded_mode");
+
+
             NpgsqlCommandKey cmdk;
 
-            
+
             cmdk = CommandByKey("object_prop_create_emded_mode_by_all");
 
             if (cmdk != null)
@@ -41,10 +37,10 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
 
             cmdk.Fill(tbl_data_type);
-            
+
             object_prop_create_emded_mode item;
             if (tbl_data_type.Rows.Count > 0)
             {
@@ -67,8 +63,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("object_prop_create_emded_mode_by_all");
             if (cmdk != null)
             {

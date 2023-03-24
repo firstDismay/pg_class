@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace pg_class.pg_classes
 {
@@ -27,7 +23,7 @@ namespace pg_class.pg_classes
 
             if (row.Table.TableName == "prop_data_bin_ext")
             {
-                id = (Int32)row["id"];       
+                id = (Int32)row["id"];
                 name = (String)row["name"];
             }
             else
@@ -44,12 +40,13 @@ namespace pg_class.pg_classes
 
         private Int32 id;
         private String name;
-        
+
         /// <summary>
         /// Идентификатор расширения бинарного свойства
         /// </summary>
         public Int32 Id
-        { get
+        {
+            get
             {
                 return id;
             }
@@ -65,7 +62,7 @@ namespace pg_class.pg_classes
                 return name;
             }
         }
-        
+
         #endregion
 
         #region ПЕРЕОПРЕДЕЛЕННЫЕ МЕТОДЫ КЛАССА

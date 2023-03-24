@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Npgsql;
-using System.Data;
+﻿using pg_class.pg_classes;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
-using pg_class.pg_classes;
+using System;
+using System.Data;
 
 namespace pg_class
 {
@@ -20,12 +15,12 @@ namespace pg_class
         {
             position_prop_object_val position_prop_object_val = null;
 
-            DataTable tbl_object  = TableByName("vposition_prop_object_val");
-            
-            
+            DataTable tbl_object = TableByName("vposition_prop_object_val");
+
+
             NpgsqlCommandKey cmdk;
 
-            
+
             cmdk = CommandByKey("position_prop_object_val_by_id_prop");
 
             if (cmdk != null)
@@ -39,13 +34,13 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
 
             cmdk.Parameters["iid_position"].Value = iid_position;
             cmdk.Parameters["iid_pos_temp_prop"].Value = iid_pos_temp_prop;
 
             cmdk.Fill(tbl_object);
-            
+
             if (tbl_object.Rows.Count > 0)
             {
                 position_prop_object_val = new position_prop_object_val(tbl_object.Rows[0]);
@@ -78,8 +73,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("position_prop_object_val_by_id_prop");
             if (cmdk != null)
             {

@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using pg_class.pg_exceptions;
 
 namespace pg_class.pg_classes
 {
@@ -21,7 +17,7 @@ namespace pg_class.pg_classes
             if (Extended)
             {
                 Result = Manager.class_act_ext_by_msk_global_prop(this, find_mask, class_real_only);
-                
+
             }
             else
             {
@@ -41,7 +37,7 @@ namespace pg_class.pg_classes
             if (Extended)
             {
                 Result = Manager.class_act_ext_by_msk_global_prop_id_class(id, iid_class, find_mask, class_real_only);
-                
+
             }
             else
             {
@@ -60,7 +56,7 @@ namespace pg_class.pg_classes
             if (Extended)
             {
                 Result = Manager.class_act_ext_by_msk_global_prop_id_group(id, iid_group, find_mask, class_real_only);
-                
+
             }
             else
             {

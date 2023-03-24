@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace pg_class
 {
@@ -11,7 +7,7 @@ namespace pg_class
     /// </summary>
     public class pg_vlog_link
     {
-		public Int64 id { get; set; }
+        public Int64 id { get; set; }
         public Int64 id_conception { get; set; }
         public Int64 id_log { get; set; }
         public Int32 id_category { get; set; }

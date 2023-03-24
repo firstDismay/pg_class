@@ -1,6 +1,5 @@
-﻿using System;
-using System.Data;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
+using System;
 
 
 namespace pg_class.pg_classes
@@ -12,7 +11,7 @@ namespace pg_class.pg_classes
     public partial class vclass
     {
         System.Data.DataRow crow;
-        
+
         /// <summary>
         /// Идентификатор сущности в БД
         /// </summary>

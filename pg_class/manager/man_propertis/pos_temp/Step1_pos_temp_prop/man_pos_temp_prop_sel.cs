@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Npgsql;
-using System.Data;
+﻿using pg_class.pg_classes;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
-using pg_class.pg_classes;
+using System;
+using System.Collections.Generic;
+using System.Data;
 
 namespace pg_class
 {
@@ -20,12 +16,12 @@ namespace pg_class
         {
             pos_temp_prop pos_temp_prop = null;
 
-            DataTable tbl_vpos_temp_prop  = TableByName("vpos_temp_prop");
-            
-            
+            DataTable tbl_vpos_temp_prop = TableByName("vpos_temp_prop");
+
+
             NpgsqlCommandKey cmdk;
 
-            
+
             cmdk = CommandByKey("pos_temp_prop_by_id");
 
             if (cmdk != null)
@@ -39,12 +35,12 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
 
             cmdk.Parameters["iid"].Value = iid;
 
             cmdk.Fill(tbl_vpos_temp_prop);
-            
+
             if (tbl_vpos_temp_prop.Rows.Count > 0)
             {
                 pos_temp_prop = new pos_temp_prop(tbl_vpos_temp_prop.Rows[0]);
@@ -62,8 +58,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("pos_temp_prop_by_id");
             if (cmdk != null)
             {
@@ -79,9 +75,9 @@ namespace pg_class
             }
             return Result;
         }
-        
-        
-        
+
+
+
         /// <summary>
         /// Выбор свойства шаблона по идентификатору глобального свойства
         /// </summary>
@@ -89,12 +85,12 @@ namespace pg_class
         {
             pos_temp_prop pos_temp_prop = null;
 
-            DataTable tbl_vpos_temp_prop  = TableByName("vpos_temp_prop");
-            
-            
+            DataTable tbl_vpos_temp_prop = TableByName("vpos_temp_prop");
+
+
             NpgsqlCommandKey cmdk;
 
-            
+
             cmdk = CommandByKey("pos_temp_prop_by_id_global_prop");
 
             if (cmdk != null)
@@ -108,13 +104,13 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
 
             cmdk.Parameters["iid_pos_temp"].Value = iid_pos_temp;
             cmdk.Parameters["iid_global_prop"].Value = iid_global_prop;
 
             cmdk.Fill(tbl_vpos_temp_prop);
-            
+
             if (tbl_vpos_temp_prop.Rows.Count > 0)
             {
                 pos_temp_prop = new pos_temp_prop(tbl_vpos_temp_prop.Rows[0]);
@@ -139,8 +135,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("pos_temp_prop_by_id_global_prop");
             if (cmdk != null)
             {
@@ -156,7 +152,7 @@ namespace pg_class
             }
             return Result;
         }
-        
+
         /// <summary>
         /// Лист свойств шаблона по идентификатору шаблона
         /// </summary>
@@ -165,12 +161,12 @@ namespace pg_class
             List<pos_temp_prop> pos_temp_prop_list = new List<pos_temp_prop>();
 
 
-            DataTable tbl_pos_temp_prop  = TableByName("vpos_temp_prop");
-            
-            
+            DataTable tbl_pos_temp_prop = TableByName("vpos_temp_prop");
+
+
             NpgsqlCommandKey cmdk;
 
-            
+
             cmdk = CommandByKey("pos_temp_prop_by_id_pos_temp");
 
             if (cmdk != null)
@@ -184,12 +180,12 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
 
             cmdk.Parameters["iid_pos_temp"].Value = iid_pos_temp;
 
             cmdk.Fill(tbl_pos_temp_prop);
-            
+
             pos_temp_prop cp;
             if (tbl_pos_temp_prop.Rows.Count > 0)
             {
@@ -219,8 +215,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("pos_temp_prop_by_id_pos_temp");
             if (cmdk != null)
             {

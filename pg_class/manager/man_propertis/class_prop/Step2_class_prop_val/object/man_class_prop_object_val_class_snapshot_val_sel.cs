@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Npgsql;
-using System.Data;
+﻿using pg_class.pg_classes;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
-using pg_class.pg_classes;
+using System;
+using System.Data;
 
 namespace pg_class
 {
@@ -20,12 +15,12 @@ namespace pg_class
         {
             vclass vclass = null;
 
-            DataTable tbl_vclass  = TableByName("vclass");
-            
-            
+            DataTable tbl_vclass = TableByName("vclass");
+
+
             NpgsqlCommandKey cmdk;
 
-            
+
             cmdk = CommandByKey("class_class_prop_object_snapshot_by_id_class_prop");
 
             if (cmdk != null)
@@ -39,13 +34,13 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
 
             cmdk.Parameters["iid_class_prop"].Value = iid_class_prop;
             cmdk.Parameters["itimestamp_class"].Value = itimestamp_classop;
 
             cmdk.Fill(tbl_vclass);
-            
+
             if (tbl_vclass.Rows.Count > 0)
             {
                 vclass = new vclass(tbl_vclass.Rows[0]);
@@ -80,8 +75,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("class_prop_obj_class_val_step2_snapshot_by_id_class_prop");
             if (cmdk != null)
             {

@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Npgsql;
-using System.Data;
+﻿using pg_class.pg_classes;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
-using pg_class.pg_classes;
+using System;
+using System.Collections.Generic;
+using System.Data;
 
 namespace pg_class
 {
@@ -20,12 +16,12 @@ namespace pg_class
         {
             global_prop global_prop = null;
 
-            DataTable tbl_vglobal_prop  = TableByName("vglobal_prop");
-            
-            
+            DataTable tbl_vglobal_prop = TableByName("vglobal_prop");
+
+
             NpgsqlCommandKey cmdk;
 
-            
+
             cmdk = CommandByKey("global_prop_by_id");
 
             if (cmdk != null)
@@ -39,12 +35,12 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
 
             cmdk.Parameters["iid_global_prop"].Value = iid_global_prop;
 
             cmdk.Fill(tbl_vglobal_prop);
-            
+
             if (tbl_vglobal_prop.Rows.Count > 0)
             {
                 global_prop = new global_prop(tbl_vglobal_prop.Rows[0]);
@@ -69,8 +65,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("global_prop_by_id");
             if (cmdk != null)
             {
@@ -87,7 +83,7 @@ namespace pg_class
             return Result;
         }
 
-        
+
         /// <summary>
         /// Лист глобальных свойств по идентификатору концепции
         /// </summary>
@@ -95,13 +91,13 @@ namespace pg_class
         {
             List<global_prop> global_prop_list = new List<global_prop>();
 
-            
-            DataTable tbl_global_prop  = TableByName("vglobal_prop");
-            
-            
+
+            DataTable tbl_global_prop = TableByName("vglobal_prop");
+
+
             NpgsqlCommandKey cmdk;
 
-            
+
             cmdk = CommandByKey("global_prop_by_id_conception");
 
             if (cmdk != null)
@@ -115,12 +111,12 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
 
             cmdk.Parameters["iid_conception"].Value = iid_conception;
 
             cmdk.Fill(tbl_global_prop);
-            
+
             global_prop gp;
             if (tbl_global_prop.Rows.Count > 0)
             {
@@ -150,8 +146,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("global_prop_by_id_conception");
             if (cmdk != null)
             {
@@ -168,8 +164,8 @@ namespace pg_class
             return Result;
         }
 
-        
-        
+
+
         /// <summary>
         /// Лист глобальных свойств по идентификатору концепции с учетом видимости
         /// </summary>
@@ -179,11 +175,11 @@ namespace pg_class
 
 
             DataTable tbl_global_prop = TableByName("vglobal_prop");
-            
-            
+
+
             NpgsqlCommandKey cmdk;
 
-            
+
             cmdk = CommandByKey("global_prop_visible_by_id_conception");
 
             if (cmdk != null)
@@ -197,12 +193,12 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
 
             cmdk.Parameters["iid_conception"].Value = iid_conception;
 
             cmdk.Fill(tbl_global_prop);
-            
+
             global_prop gp;
             if (tbl_global_prop.Rows.Count > 0)
             {
@@ -232,8 +228,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("global_prop_visible_by_id_conception");
             if (cmdk != null)
             {
@@ -250,8 +246,8 @@ namespace pg_class
             return Result;
         }
 
-        
-        
+
+
         /// <summary>
         /// Лист глобальных свойств по идентификатору концепции с учетом видимости и допустимых для поиска
         /// </summary>
@@ -261,11 +257,11 @@ namespace pg_class
 
 
             DataTable tbl_global_prop = TableByName("vglobal_prop");
-            
-            
+
+
             NpgsqlCommandKey cmdk;
 
-            
+
             cmdk = CommandByKey("global_prop_for_search_by_id_conception");
 
             if (cmdk != null)
@@ -279,12 +275,12 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
 
             cmdk.Parameters["iid_conception"].Value = iid_conception;
 
             cmdk.Fill(tbl_global_prop);
-            
+
             global_prop gp;
             if (tbl_global_prop.Rows.Count > 0)
             {
@@ -314,8 +310,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("global_prop_for_search_by_id_conception");
             if (cmdk != null)
             {
@@ -335,7 +331,7 @@ namespace pg_class
 
 
 
-        
+
         /// <summary>
         /// Лист глобальных свойств по идентификатору класса
         /// </summary>
@@ -344,12 +340,12 @@ namespace pg_class
             List<global_prop> global_prop_list = new List<global_prop>();
 
 
-            DataTable tbl_global_prop  = TableByName("vglobal_prop");
-            
-            
+            DataTable tbl_global_prop = TableByName("vglobal_prop");
+
+
             NpgsqlCommandKey cmdk;
 
-            
+
             cmdk = CommandByKey("global_prop_by_id_class");
 
             if (cmdk != null)
@@ -363,12 +359,12 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
 
             cmdk.Parameters["iid_class"].Value = iid_class;
 
             cmdk.Fill(tbl_global_prop);
-            
+
             global_prop gp;
             if (tbl_global_prop.Rows.Count > 0)
             {
@@ -398,8 +394,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("global_prop_by_id_class");
             if (cmdk != null)
             {
@@ -416,8 +412,8 @@ namespace pg_class
             return Result;
         }
 
-        
-        
+
+
         /// <summary>
         /// Выбор глобального свойства по идентификатру определяющего свойства класса
         /// </summary>
@@ -425,12 +421,12 @@ namespace pg_class
         {
             global_prop global_prop = null;
 
-            DataTable tbl_vglobal_prop  = TableByName("vglobal_prop");
-            
-            
+            DataTable tbl_vglobal_prop = TableByName("vglobal_prop");
+
+
             NpgsqlCommandKey cmdk;
 
-            
+
             cmdk = CommandByKey("global_prop_by_id_class_prop_definition");
 
             if (cmdk != null)
@@ -444,12 +440,12 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
 
             cmdk.Parameters["iid_class_prop_definition"].Value = iid_class_prop_definition;
 
             cmdk.Fill(tbl_vglobal_prop);
-            
+
             if (tbl_vglobal_prop.Rows.Count > 0)
             {
                 global_prop = new global_prop(tbl_vglobal_prop.Rows[0]);
@@ -483,8 +479,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("global_prop_by_id_class_prop_definition");
             if (cmdk != null)
             {
@@ -500,8 +496,8 @@ namespace pg_class
             }
             return Result;
         }
-        
-        
+
+
         /// <summary>
         /// Лист глобальных свойств по идентификатору шаблона позиции
         /// </summary>
@@ -510,12 +506,12 @@ namespace pg_class
             List<global_prop> global_prop_list = new List<global_prop>();
 
 
-            DataTable tbl_global_prop  = TableByName("vglobal_prop");
-            
-            
+            DataTable tbl_global_prop = TableByName("vglobal_prop");
+
+
             NpgsqlCommandKey cmdk;
 
-            
+
             cmdk = CommandByKey("global_prop_by_id_pos_temp");
 
             if (cmdk != null)
@@ -529,12 +525,12 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
 
             cmdk.Parameters["iid_pos_temp"].Value = iid_pos_temp;
 
             cmdk.Fill(tbl_global_prop);
-            
+
             global_prop gp;
             if (tbl_global_prop.Rows.Count > 0)
             {
@@ -564,8 +560,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("global_prop_by_id_pos_temp");
             if (cmdk != null)
             {
@@ -582,7 +578,7 @@ namespace pg_class
             return Result;
         }
 
-        
+
         /// <summary>
         /// Выбор глобального свойства по идентификатру свойства шаблона позиции
         /// </summary>
@@ -590,12 +586,12 @@ namespace pg_class
         {
             global_prop global_prop = null;
 
-            DataTable tbl_vglobal_prop  = TableByName("vglobal_prop");
-            
-            
+            DataTable tbl_vglobal_prop = TableByName("vglobal_prop");
+
+
             NpgsqlCommandKey cmdk;
 
-            
+
             cmdk = CommandByKey("global_prop_by_id_pos_temp_prop");
 
             if (cmdk != null)
@@ -609,12 +605,12 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
 
             cmdk.Parameters["iid_pos_temp_prop"].Value = iid_pos_temp_prop;
 
             cmdk.Fill(tbl_vglobal_prop);
-            
+
             if (tbl_vglobal_prop.Rows.Count > 0)
             {
                 global_prop = new global_prop(tbl_vglobal_prop.Rows[0]);
@@ -648,8 +644,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("global_prop_by_id_pos_temp_prop");
             if (cmdk != null)
             {

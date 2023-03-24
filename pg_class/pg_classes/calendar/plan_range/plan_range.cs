@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using NpgsqlTypes;
+﻿using NpgsqlTypes;
+using System;
 
 namespace pg_class.pg_classes.calendar
 {
@@ -63,7 +61,7 @@ namespace pg_class.pg_classes.calendar
         /// <summary>
         /// Идентификатор плана
         /// </summary>
-        public Int64 Id { get => id;}
+        public Int64 Id { get => id; }
 
         /// <summary>
         /// Идентификатор концепции плана
@@ -96,7 +94,7 @@ namespace pg_class.pg_classes.calendar
         /// </summary>
         public DateTime Range_plan_upper
         {
-            get 
+            get
             {
                 if (range_plan != null)
                 {
@@ -173,7 +171,7 @@ namespace pg_class.pg_classes.calendar
         /// </summary>
         public DateTime Timestamp_child_change { get => timestamp_child_change; }
 
-        
+
         /// <summary>
         /// Свойство определяющее потребность в обновлении данных БД
         /// </summary>
@@ -184,7 +182,7 @@ namespace pg_class.pg_classes.calendar
                 return on_change;
             }
         }
-        
+
         /// <summary>
         /// Ссылка на менеджера данных
         /// </summary>
@@ -237,7 +235,7 @@ namespace pg_class.pg_classes.calendar
         public void Update()
         {
             if (on_change)
-            {             
+            {
                 Manager.plan_range_upd(this);
                 Refresh();
                 on_change = false;

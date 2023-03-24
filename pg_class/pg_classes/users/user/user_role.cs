@@ -1,20 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace pg_class.pg_classes
-    { /// <summary>
-    /// Класс пользователей БД учеет
-    /// </summary>
+{ /// <summary>
+  /// Класс пользователей БД учеет
+  /// </summary>
     public partial class user
     {
         #region МЕТОДЫ КЛАССА
-		/// <summary>
-		/// Метод определяет членство пользователя в указанной роли
-		/// </summary>
-		public Boolean Is_member_role(role_base vrole, Boolean irecursive)
+        /// <summary>
+        /// Метод определяет членство пользователя в указанной роли
+        /// </summary>
+        public Boolean Is_member_role(role_base vrole, Boolean irecursive)
         {
             return Manager.user_is_member_role(this, vrole, irecursive);
         }

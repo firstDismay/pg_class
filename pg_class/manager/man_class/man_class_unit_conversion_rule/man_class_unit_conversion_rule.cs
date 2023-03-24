@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Data;
-using Npgsql;
+﻿using pg_class.pg_classes;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
-using pg_class.pg_classes;
+using System;
+using System.Collections.Generic;
+using System.Data;
 
 namespace pg_class
 {
@@ -21,7 +19,7 @@ namespace pg_class
             Int32 error;
             String desc_error;
             NpgsqlCommandKey cmdk;
-            
+
             cmdk = CommandByKey("class_unit_conversion_rules_add");
             if (cmdk != null)
             {
@@ -38,7 +36,7 @@ namespace pg_class
             cmdk.Parameters["iid_class"].Value = iid_class;
             cmdk.Parameters["iid_unit_conversion_rule"].Value = iid_unit_conversion_rule;
             cmdk.ExecuteNonQuery();
-            
+
             error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
             desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
             switch (error)
@@ -51,7 +49,7 @@ namespace pg_class
                     JournalMessageOnReceived(me);
                     throw new PgDataException(error, desc_error);
             }
-            
+
             //Вызов события изменения списка вложенности
             ClassUnitConversionRuleChangeEventArgs e;
             e = new ClassUnitConversionRuleChangeEventArgs(iid_class, eAction.Insert);
@@ -61,9 +59,9 @@ namespace pg_class
         /// <summary>
         /// Метод добавляет правило пресчета к списку правил вещественного класса
         /// </summary>
-        public void  class_unit_conversion_rules_add(vclass Class, unit_conversion_rule Rule)
+        public void class_unit_conversion_rules_add(vclass Class, unit_conversion_rule Rule)
         {
-             class_unit_conversion_rules_add(Class.Id, Rule.Id);
+            class_unit_conversion_rules_add(Class.Id, Rule.Id);
         }
 
         //ACCESS
@@ -102,7 +100,7 @@ namespace pg_class
             Int32 error;
             String desc_error;
             NpgsqlCommandKey cmdk;
-            
+
             cmdk = CommandByKey("class_unit_conversion_rules_del");
             if (cmdk != null)
             {
@@ -119,7 +117,7 @@ namespace pg_class
             cmdk.Parameters["iid_class"].Value = iid_class;
             cmdk.Parameters["iid_unit_conversion_rule"].Value = iid_unit_conversion_rule;
             cmdk.ExecuteNonQuery();
-            
+
             error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
             desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
             switch (error)
@@ -144,7 +142,7 @@ namespace pg_class
         /// </summary>
         public void class_unit_conversion_rules_del(vclass Class, unit_conversion_rule Rule)
         {
-             class_unit_conversion_rules_del(Class.Id, Rule.Id);
+            class_unit_conversion_rules_del(Class.Id, Rule.Id);
         }
 
         /// <summary>
@@ -189,7 +187,7 @@ namespace pg_class
         public class_unit_conversion_rule class_unit_conversion_rules_by_id(Int64 iid_class, Int32 iid_unit_conversion_rule)
         {
             class_unit_conversion_rule class_unit_conversion_rule = null;
-            DataTable tbl_rule  = TableByName("vclass_unit_conversion_rules");
+            DataTable tbl_rule = TableByName("vclass_unit_conversion_rules");
             NpgsqlCommandKey cmdk;
 
             cmdk = CommandByKey("class_unit_conversion_rules_by_id");
@@ -208,7 +206,7 @@ namespace pg_class
             cmdk.Parameters["iid_class"].Value = iid_class;
             cmdk.Parameters["iid_unit_conversion_rule"].Value = iid_unit_conversion_rule;
             cmdk.Fill(tbl_rule);
-            
+
             if (tbl_rule.Rows.Count > 0)
             {
                 class_unit_conversion_rule = new class_unit_conversion_rule(tbl_rule.Rows[0]);
@@ -226,7 +224,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
+
             cmdk = CommandByKey("class_unit_conversion_rules_by_id");
             if (cmdk != null)
             {
@@ -249,7 +247,7 @@ namespace pg_class
         public List<class_unit_conversion_rule> class_unit_conversion_rules(Int64 iid_class)
         {
             List<class_unit_conversion_rule> rule_list = new List<class_unit_conversion_rule>();
-            DataTable tbl_rule_list  = TableByName("vclass_unit_conversion_rules");
+            DataTable tbl_rule_list = TableByName("vclass_unit_conversion_rules");
             NpgsqlCommandKey cmdk;
 
             cmdk = CommandByKey("class_unit_conversion_rules");
@@ -267,7 +265,7 @@ namespace pg_class
 
             cmdk.Parameters["iid_class"].Value = iid_class;
             cmdk.Fill(tbl_rule_list);
-            
+
             class_unit_conversion_rule rule;
             if (tbl_rule_list.Rows.Count > 0)
             {
@@ -317,10 +315,10 @@ namespace pg_class
         /// <summary>
         /// Полный список доступных назначений правил пересчета объектов вещественного класса
         /// </summary>
-        public List<class_unit_conversion_rule> class_unit_conversion_rules_full(Int64 iid_class )
+        public List<class_unit_conversion_rule> class_unit_conversion_rules_full(Int64 iid_class)
         {
             List<class_unit_conversion_rule> rule_list = new List<class_unit_conversion_rule>();
-            DataTable tbl_rule_list  = TableByName("vclass_unit_conversion_rules");
+            DataTable tbl_rule_list = TableByName("vclass_unit_conversion_rules");
             NpgsqlCommandKey cmdk;
 
             cmdk = CommandByKey("class_unit_conversion_rules_full");
@@ -338,7 +336,7 @@ namespace pg_class
 
             cmdk.Parameters["iid_class"].Value = iid_class;
             cmdk.Fill(tbl_rule_list);
-            
+
             class_unit_conversion_rule rule;
             if (tbl_rule_list.Rows.Count > 0)
             {
@@ -368,7 +366,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
+
             cmdk = CommandByKey("class_unit_conversion_rules_full");
             if (cmdk != null)
             {
@@ -388,10 +386,10 @@ namespace pg_class
         /// <summary>
         /// Полный список доступных назначений правил пересчета объектов вещественного класса по идентификатору измеряемой величины
         /// </summary>
-        public List<class_unit_conversion_rule> class_unit_conversion_rules_by_unit(Int32 iid_unit )
+        public List<class_unit_conversion_rule> class_unit_conversion_rules_by_unit(Int32 iid_unit)
         {
             List<class_unit_conversion_rule> rule_list = new List<class_unit_conversion_rule>();
-            DataTable tbl_rule_list  = TableByName("vclass_unit_conversion_rules");
+            DataTable tbl_rule_list = TableByName("vclass_unit_conversion_rules");
             NpgsqlCommandKey cmdk;
 
             cmdk = CommandByKey("class_unit_conversion_rules_by_unit");
@@ -409,7 +407,7 @@ namespace pg_class
 
             cmdk.Parameters["iid_unit"].Value = iid_unit;
             cmdk.Fill(tbl_rule_list);
-            
+
             class_unit_conversion_rule rule;
             if (tbl_rule_list.Rows.Count > 0)
             {

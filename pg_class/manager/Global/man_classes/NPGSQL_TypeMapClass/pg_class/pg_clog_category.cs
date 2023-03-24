@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace pg_class
 {
@@ -16,7 +12,7 @@ namespace pg_class
         public String name { get; set; }
         public String desc { get; set; }
         public Int32 level { get; set; }
-		public Boolean on { get; set; }
+        public Boolean on { get; set; }
         public DateTime timestamp { get; set; }
 
         public override string ToString()

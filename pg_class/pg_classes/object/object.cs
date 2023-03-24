@@ -1,17 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data;
 using System.Globalization;
+using System.Text;
 
 namespace pg_class.pg_classes
 {
     /// <summary>
     /// Класс обобщенного представления объектов
     /// </summary>
-    public partial class object_general 
+    public partial class object_general
     {
         #region КОНСТРУКТОРЫ КЛАССА
 
@@ -74,7 +72,7 @@ namespace pg_class.pg_classes
                     path = (String)row["path"];
                     round = (Int32)row["round"];
                     break;
-                
+
                 case "vobject_general_ext":
                     viewname = row.Table.TableName;
                     id = (Int64)row["id"];
@@ -227,9 +225,9 @@ namespace pg_class.pg_classes
         /// <summary>
         /// Идентификатор корневого класса объекта
         /// </summary>
-        public Int64 Id_class_root { get => id_class_root;}
+        public Int64 Id_class_root { get => id_class_root; }
 
-       
+
         /// <summary>
         /// Уникальный штрих-код объекта
         /// </summary>
@@ -239,8 +237,8 @@ namespace pg_class.pg_classes
         /// Признак встроенного объекта
         /// </summary>
         public Boolean Is_inside { get => is_inside; }
-        
-        
+
+
         /// <summary>
         /// Признак установленного технического расширения объекта
         /// </summary>
@@ -302,7 +300,7 @@ namespace pg_class.pg_classes
             get
             {
                 Int32 result = -1;
-                DataTable tbl_con  = manager.Instance().TableByName("vobject_general");
+                DataTable tbl_con = manager.Instance().TableByName("vobject_general");
                 if (tbl_con != null)
                 {
                     result = tbl_con.Columns["name"].MaxLength;
@@ -330,7 +328,7 @@ namespace pg_class.pg_classes
         /// </summary>
         public Boolean Has_link_property { get => has_link_property; }
 
-        
+
         /// <summary>
         /// Признак удаленной сущности
         /// </summary>
@@ -349,7 +347,7 @@ namespace pg_class.pg_classes
         /// </summary>
         public Boolean Quantity_show { get => quantity_show; }
 
-        
+
         private Boolean on_change;
         /// <summary>
         /// Свойство определяющее потребность в обновлении данных БД
@@ -427,7 +425,7 @@ namespace pg_class.pg_classes
         /// <summary>
         /// Метод выполняет приведение объекта к указанному снимку того же класса
         /// </summary>
-        public void Cast(vclass Class_target )
+        public void Cast(vclass Class_target)
         {
             if (this.Id_class == Class_target.Id)
             {
@@ -437,7 +435,7 @@ namespace pg_class.pg_classes
             }
             else
             {
-                throw (new pg_exceptions.PgDataException(eEntity.vclass, eAction.Update, eSubClass_ErrID.SCE3_Violation_Rules, 
+                throw (new pg_exceptions.PgDataException(eEntity.vclass, eAction.Update, eSubClass_ErrID.SCE3_Violation_Rules,
                     "Указанный класс не соотвествует классу объекта!"));
             }
         }
@@ -502,7 +500,7 @@ namespace pg_class.pg_classes
             switch (viewname)
             {
                 case "vobject_general":
-                    temp =  Manager.object_by_id(id);
+                    temp = Manager.object_by_id(id);
                     if (temp != null)
                     {
                         viewname = temp.Viewname;
@@ -544,7 +542,7 @@ namespace pg_class.pg_classes
                         quantity_show = temp.Quantity_show;
                         path = temp.Path;
                         is_inside = temp.Is_inside;
-                        
+
                         name_format = temp.Name_format;
                         Result = true;
                         on_change = false;

@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Npgsql;
-using System.Data;
+﻿using pg_class.pg_classes;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
-using pg_class.pg_classes;
-using System.Security.Cryptography;
-using System.IO;
+using System;
+using System.Collections.Generic;
+using System.Data;
 
 namespace pg_class
 {
@@ -97,7 +91,7 @@ namespace pg_class
 
             cmdk.Parameters["iid_parent"].Value = iid_parent;
             cmdk.Fill(tbl_entity);
-            
+
             document ce;
             if (tbl_entity.Rows.Count > 0)
             {
@@ -119,7 +113,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
+
             cmdk = CommandByKey("document_ext_by_id_parent");
             if (cmdk != null)
             {
@@ -160,7 +154,7 @@ namespace pg_class
 
             cmdk.Parameters["iid_conception"].Value = iid_conception;
             cmdk.Fill(tbl_entity);
-            
+
             document ce;
             if (tbl_entity.Rows.Count > 0)
             {
@@ -223,7 +217,7 @@ namespace pg_class
 
             cmdk.Parameters["iid_category"].Value = iid_category;
             cmdk.Fill(tbl_entity);
-            
+
             document ce;
             if (tbl_entity.Rows.Count > 0)
             {
@@ -289,7 +283,7 @@ namespace pg_class
             cmdk.Parameters["object_on"].Value = object_on;
             cmdk.Parameters["recursive_on"].Value = recursive_on;
             cmdk.Fill(tbl_entity);
-            
+
             document ce;
             if (tbl_entity.Rows.Count > 0)
             {
@@ -319,7 +313,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
+
             cmdk = CommandByKey("document_ext_by_id_pos_temp");
             if (cmdk != null)
             {
@@ -362,7 +356,7 @@ namespace pg_class
             cmdk.Parameters["object_on"].Value = object_on;
             cmdk.Parameters["recursive_on"].Value = recursive_on;
             cmdk.Fill(tbl_entity);
-            
+
             document ce;
             if (tbl_entity.Rows.Count > 0)
             {
@@ -433,7 +427,7 @@ namespace pg_class
 
             cmdk.Parameters["iid_user"].Value = iid_user;
             cmdk.Fill(tbl_entity);
-            
+
             document ce;
             if (tbl_entity.Rows.Count > 0)
             {
@@ -505,7 +499,7 @@ namespace pg_class
             cmdk.Parameters["iid_pos_temp_prop"].Value = iid_pos_temp_prop;
             cmdk.Parameters["iid_position"].Value = iid_position;
             cmdk.Fill(tbl_entity);
-            
+
             document ce;
             if (tbl_entity.Rows.Count > 0)
             {
@@ -576,7 +570,7 @@ namespace pg_class
 
             cmdk.Parameters["iid_pos_temp_prop"].Value = iid_pos_temp_prop;
             cmdk.Fill(tbl_entity);
-            
+
             document ce;
             if (tbl_entity.Rows.Count > 0)
             {
@@ -650,7 +644,7 @@ namespace pg_class
             cmdk.Parameters["object_on"].Value = object_on;
             cmdk.Parameters["recursive_on"].Value = recursive_on;
             cmdk.Fill(tbl_entity);
-            
+
             document ce;
             if (tbl_entity.Rows.Count > 0)
             {
@@ -723,7 +717,7 @@ namespace pg_class
             cmdk.Parameters["object_on"].Value = object_on;
             cmdk.Parameters["recursive_on"].Value = recursive_on;
             cmdk.Fill(tbl_entity);
-            
+
             document ce;
             if (tbl_entity.Rows.Count > 0)
             {
@@ -794,7 +788,7 @@ namespace pg_class
 
             cmdk.Parameters["iid_class_prop"].Value = iid_class_prop;
             cmdk.Fill(tbl_entity);
-            
+
             document ce;
             if (tbl_entity.Rows.Count > 0)
             {
@@ -869,7 +863,7 @@ namespace pg_class
             cmdk.Parameters["recursive_on"].Value = recursive_on;
 
             cmdk.Fill(tbl_entity);
-            
+
             document ce;
             if (tbl_entity.Rows.Count > 0)
             {
@@ -942,7 +936,7 @@ namespace pg_class
             cmdk.Parameters["iid_class_prop"].Value = iid_class_prop;
             cmdk.Parameters["iid_object"].Value = iid_object;
             cmdk.Fill(tbl_entity);
-            
+
             document ce;
             if (tbl_entity.Rows.Count > 0)
             {
@@ -1014,7 +1008,7 @@ namespace pg_class
             cmdk.Parameters["iname"].Value = iname;
             cmdk.Parameters["iid_conception"].Value = iid_conception;
             cmdk.Fill(tbl_entity);
-            
+
             document ce;
             if (tbl_entity.Rows.Count > 0)
             {
@@ -1079,7 +1073,7 @@ namespace pg_class
             cmdk.Parameters["iname"].Value = iname;
             cmdk.Parameters["iid_category"].Value = iid_category;
             cmdk.Fill(tbl_entity);
-            
+
             document ce;
             if (tbl_entity.Rows.Count > 0)
             {

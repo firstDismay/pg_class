@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Npgsql;
-using System.Data;
+﻿using pg_class.pg_classes;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
-using pg_class.pg_classes;
+using System;
 
 namespace pg_class
 {
@@ -16,7 +10,7 @@ namespace pg_class
         /// <summary>
         /// Добавить новое значение объектного свойства шаблона
         /// </summary>
-        public pos_temp_prop_object_val pos_temp_prop_object_val_add(Int64 iid_pos_temp_prop, Int64 iid_class_val, 
+        public pos_temp_prop_object_val pos_temp_prop_object_val_add(Int64 iid_pos_temp_prop, Int64 iid_class_val,
                                      Decimal ibquantity_min, Decimal ibquantity_max,
                                      eObjectPropCreateEmdedMode iembed_mode, Boolean iembed_single, Int64 iembed_class_real_id, Int32 iid_unit_conversion_rule)
         {
@@ -48,27 +42,27 @@ namespace pg_class
             cmdk.Parameters["iembed_class_real_id"].Value = iembed_class_real_id;
             cmdk.Parameters["iid_unit_conversion_rule"].Value = iid_unit_conversion_rule;
             cmdk.ExecuteNonQuery();
-            
+
             error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
             desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
             switch (error)
             {
                 case 0:
                     pos_temp_prop = pos_temp_prop_by_id(iid_pos_temp_prop);
-                    if(pos_temp_prop!=null)
+                    if (pos_temp_prop != null)
                     {
-						//Генерируем событие изменения свойства шаблона позиции
-						PosTempPropChangeEventArgs e = new PosTempPropChangeEventArgs(pos_temp_prop, eAction.Update);
-						PosTempPropOnChange(e);
-					}
+                        //Генерируем событие изменения свойства шаблона позиции
+                        PosTempPropChangeEventArgs e = new PosTempPropChangeEventArgs(pos_temp_prop, eAction.Update);
+                        PosTempPropOnChange(e);
+                    }
 
                     pos_temp_prop_object_val = pos_temp_prop.object_data_get();
-                    if (pos_temp_prop_object_val!=null)
+                    if (pos_temp_prop_object_val != null)
                     {
-						//Генерируем событие изменения значения объектного свойства класса
-						PosTempPropObjectValChangeEventArgs e2 = new PosTempPropObjectValChangeEventArgs(pos_temp_prop_object_val, eAction.Insert);
-						PosTempPropObjectValOnChange(e2);
-					}
+                        //Генерируем событие изменения значения объектного свойства класса
+                        PosTempPropObjectValChangeEventArgs e2 = new PosTempPropObjectValChangeEventArgs(pos_temp_prop_object_val, eAction.Insert);
+                        PosTempPropObjectValOnChange(e2);
+                    }
                     break;
                 default:
                     //Вызов события журнала
@@ -87,7 +81,7 @@ namespace pg_class
                        Decimal ibquantity_min, Decimal ibquantity_max,
                                      eObjectPropCreateEmdedMode iembed_mode, Boolean iembed_single, Int64 embed_class_real_id, Int32 iid_unit_conversion_rule)
         {
-            return  pos_temp_prop_object_val_add(PosTemp_prop.Id, class_val.Id, ibquantity_min, ibquantity_max, iembed_mode, iembed_single, embed_class_real_id, iid_unit_conversion_rule);
+            return pos_temp_prop_object_val_add(PosTemp_prop.Id, class_val.Id, ibquantity_min, ibquantity_max, iembed_mode, iembed_single, embed_class_real_id, iid_unit_conversion_rule);
         }
 
 
@@ -114,7 +108,7 @@ namespace pg_class
             pos_temp_prop_object_val Result = null;
             if (PosTemp_prop_object_val != null)
             {
-                Result = pos_temp_prop_object_val_add(PosTemp_prop_object_val.Id_pos_temp_prop, PosTemp_prop_object_val.Id_class_val, PosTemp_prop_object_val.Bquantity_min, 
+                Result = pos_temp_prop_object_val_add(PosTemp_prop_object_val.Id_pos_temp_prop, PosTemp_prop_object_val.Id_class_val, PosTemp_prop_object_val.Bquantity_min,
                     PosTemp_prop_object_val.Bquantity_max,
                                         PosTemp_prop_object_val.Embed_mode, PosTemp_prop_object_val.Embed_single, PosTemp_prop_object_val.Embed_class_real_id, PosTemp_prop_object_val.Id_unit_conversion_rule);
             }
@@ -129,8 +123,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("pos_temp_prop_object_val_add");
             if (cmdk != null)
             {

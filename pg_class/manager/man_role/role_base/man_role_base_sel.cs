@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Npgsql;
-using System.Data;
+﻿using pg_class.pg_classes;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
-using pg_class.pg_classes;
+using System;
+using System.Collections.Generic;
+using System.Data;
 
 namespace pg_class
 {
@@ -19,7 +15,7 @@ namespace pg_class
         public List<role_base> user_role_base_by_login(String ilogin, Boolean irecursive)
         {
             List<role_base> rol_list = new List<role_base>();
-            DataTable tbl_rol =  TableByName("vrole_base");
+            DataTable tbl_rol = TableByName("vrole_base");
             NpgsqlCommandKey cmdk;
 
             cmdk = CommandByKey("user_role_base_by_login");
@@ -39,7 +35,7 @@ namespace pg_class
             cmdk.Parameters["irecursive"].Value = irecursive;
 
             cmdk.Fill(tbl_rol);
-            
+
             role_base rol;
             if (tbl_rol.Rows.Count > 0)
             {
@@ -77,7 +73,7 @@ namespace pg_class
             }
             return Result;
         }
-        
+
         /// <summary>
         /// Лист базовых ролей
         /// </summary>
@@ -85,7 +81,7 @@ namespace pg_class
         {
             List<role_base> rol_list = new List<role_base>();
 
-            DataTable tbl_rol =  TableByName("vrole_base");
+            DataTable tbl_rol = TableByName("vrole_base");
             NpgsqlCommandKey cmdk;
 
             cmdk = CommandByKey("user_role_base_by_all");
@@ -102,7 +98,7 @@ namespace pg_class
             }
 
             cmdk.Fill(tbl_rol);
-            
+
             role_base rol;
             if (tbl_rol.Rows.Count > 0)
             {

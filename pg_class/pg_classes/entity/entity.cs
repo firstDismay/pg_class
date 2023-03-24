@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
-using System.IO;
-using System.Data;
 
 namespace pg_class.pg_classes
 {
@@ -37,7 +30,7 @@ namespace pg_class.pg_classes
                 errid = (Int32)row["errid"];
                 can_link = (Boolean)row["can_link"];
                 on_export = (Boolean)row["can_link"];
-                sec_point = (Boolean)row["sec_point"]; 
+                sec_point = (Boolean)row["sec_point"];
             }
             else
             {
@@ -61,7 +54,7 @@ namespace pg_class.pg_classes
         /// <summary>
         /// Идентификатор сущности
         /// </summary>
-        public Int32 Id { get => id;}
+        public Int32 Id { get => id; }
 
         /// <summary>
         /// Сущность

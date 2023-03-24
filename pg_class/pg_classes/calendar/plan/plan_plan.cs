@@ -1,12 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
-using System.IO;
-using System.Data;
-using System.Security.Cryptography;
 
 namespace pg_class.pg_classes.calendar
 {
@@ -22,7 +15,7 @@ namespace pg_class.pg_classes.calendar
         /// <summary>
         /// Метод добавляет новый вложенный план
         /// </summary>
-        public plan plan_add( String iname, String idesc, Boolean ion, Boolean ion_crossing, Int32 iplan_max, Int32 irange_max, Boolean ion_freeze)
+        public plan plan_add(String iname, String idesc, Boolean ion, Boolean ion_crossing, Int32 iplan_max, Int32 irange_max, Boolean ion_freeze)
         {
             return Manager.plan_add(Id_conception, Id, iname, idesc, ion, ion_crossing, iplan_max, irange_max, ion_freeze);
         }

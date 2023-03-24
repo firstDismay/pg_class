@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace pg_class.pg_classes
+﻿namespace pg_class.pg_classes
 {
-    public partial  class position
+    public partial class position
     {
         #region СВОЙСТВА ДЛЯ РАБОТЫ С ПРОТОТИПАМИ ШАБЛОНОВ ПОЗИЦИЙ
-         
+
         /// <summary>
         /// Метод возвращает прототип текущей позиции
         /// </summary>

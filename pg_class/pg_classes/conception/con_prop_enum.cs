@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace pg_class.pg_classes
 {
@@ -17,8 +14,8 @@ namespace pg_class.pg_classes
         /// Метод добавляет новое перечисление для свойств
         /// prop_enum_add
         /// </summary>
-        public prop_enum Prop_enum_add( String iname, String idesc, prop_enum_use_area iprop_enum_use_area, eDataType DataType)
-        { 
+        public prop_enum Prop_enum_add(String iname, String idesc, prop_enum_use_area iprop_enum_use_area, eDataType DataType)
+        {
             return Manager.prop_enum_add(id, iname, idesc, iprop_enum_use_area, (Int32)DataType);
         }
         /// <summary>
@@ -96,7 +93,7 @@ namespace pg_class.pg_classes
         ///  Выбрать все перечисления для свойства по идентификатору концепции с учетом области применения
         ///  prop_enum_by_id_conception_use_area
         /// </summary>
-        public List<prop_enum> Prop_enum_list_use_area_get( eProp_enum_use_area Prop_enum_use_area)
+        public List<prop_enum> Prop_enum_list_use_area_get(eProp_enum_use_area Prop_enum_use_area)
         {
             return Manager.prop_enum_by_id_conception_use_area(id, (Int32)Prop_enum_use_area);
         }
@@ -106,7 +103,7 @@ namespace pg_class.pg_classes
         ///  Выбрать все перечисления для свойства по идентификатору концепции с учетом области применения и типа данных перечисления
         ///  prop_enum_by_id_conception_use_area_data_type
         /// </summary>
-        public List<prop_enum> Prop_enum_list_use_area_data_type_get( prop_enum_use_area Prop_enum_use_area, con_prop_data_type Data_type)
+        public List<prop_enum> Prop_enum_list_use_area_data_type_get(prop_enum_use_area Prop_enum_use_area, con_prop_data_type Data_type)
         {
             return Manager.prop_enum_by_id_conception_use_area_data_type(id, Prop_enum_use_area.Id, Data_type.Id);
         }
@@ -129,7 +126,7 @@ namespace pg_class.pg_classes
         /// </summary>
         public List<prop_enum> Prop_enum_for_object_list_get(con_prop_data_type Data_type)
         {
-            return Manager.prop_enum_for_object_by_id_conception_data_type (id, Data_type.Id);
+            return Manager.prop_enum_for_object_by_id_conception_data_type(id, Data_type.Id);
         }
         /// <summary>
         /// Проверка прав доступа к методу

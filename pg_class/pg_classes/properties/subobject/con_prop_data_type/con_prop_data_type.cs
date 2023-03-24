@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace pg_class.pg_classes
 {
     /// <summary>
     /// Класс типа данных свойства концепции
     /// </summary>
-    public partial class con_prop_data_type: prop_data_type
+    public partial class con_prop_data_type : prop_data_type
     {
         #region КОНСТРУКТОРЫ КЛАССА
 
@@ -24,7 +21,7 @@ namespace pg_class.pg_classes
         /// </summary>
         public con_prop_data_type(System.Data.DataRow row) : base(row)
         {
-         
+
             if (row.Table.TableName == "vcon_prop_data_type")
             {
                 id_conception = (Int64)row["id_conception"];
@@ -40,14 +37,14 @@ namespace pg_class.pg_classes
         }
 
         #endregion
-        
+
         #region СВОЙСТВА КЛАССА
         private Int64 id_conception;
         private String alias;
         private Int32 sort;
         private Boolean is_create;
         private Boolean is_use;
-        
+
         /// <summary>
         /// Идентификатор концепции типа данных свойства
         /// </summary>
@@ -119,7 +116,7 @@ namespace pg_class.pg_classes
         /// <summary>
         /// Лист расширений двоичных данных доступных типу данных свойства
         /// </summary>
-        public override List<prop_data_bin_ext>  Data_bin_ext_list
+        public override List<prop_data_bin_ext> Data_bin_ext_list
         {
             get
             {
@@ -127,7 +124,7 @@ namespace pg_class.pg_classes
             }
         }
 
-        
+
         /// <summary>
         /// Ссылка на менеджера данных
         /// </summary>

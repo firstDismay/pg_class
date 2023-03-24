@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
-using System.IO;
 using System.Data;
 
 namespace pg_class.pg_classes
@@ -102,7 +96,7 @@ namespace pg_class.pg_classes
                 if ((eProp_enum_use_area)id_prop_enum_use_area != value)
                 {
 
-                    id_prop_enum_use_area =(Int32)value;
+                    id_prop_enum_use_area = (Int32)value;
                     on_change = true;
 
                 }
@@ -242,7 +236,7 @@ namespace pg_class.pg_classes
             get
             {
                 Int32 result = -1;
-                DataTable tbl_pos  = manager.Instance().TableByName("vprop_enum_val");
+                DataTable tbl_pos = manager.Instance().TableByName("vprop_enum_val");
                 if (tbl_pos != null)
                 {
                     result = tbl_pos.Columns["val_varchar"].MaxLength;
@@ -269,7 +263,7 @@ namespace pg_class.pg_classes
                 }
             }
         }
-        
+
         /// <summary>
         /// Значение элемента перечисления
         /// </summary>
@@ -279,7 +273,7 @@ namespace pg_class.pg_classes
             {
                 object Result = null;
                 switch (id_data_type)
-                { 
+                {
                     case 1:
                         Result = val_varchar;
                         break;

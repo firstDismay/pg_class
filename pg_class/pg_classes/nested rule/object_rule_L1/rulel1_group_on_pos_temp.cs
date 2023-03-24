@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.Data;
 
 namespace pg_class.pg_classes
 {
@@ -85,7 +81,7 @@ namespace pg_class.pg_classes
             }
         }
 
-       
+
         /// <summary>
         /// Группа назначенная правилом
         /// </summary>
@@ -169,6 +165,6 @@ namespace pg_class.pg_classes
         }
         #endregion
 
-        
+
     }
 }

@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 
 namespace pg_class
@@ -26,7 +23,7 @@ namespace pg_class
         /// <summary>
         /// Основной конструктор класса аргумента события
         /// </summary>
-        public JournalEventArgs(Int64 ID, eEntity EntityName, Int32 ErrorID, String ErrorDesc, eAction Action , eJournalMessageType MessageType) : this()
+        public JournalEventArgs(Int64 ID, eEntity EntityName, Int32 ErrorID, String ErrorDesc, eAction Action, eJournalMessageType MessageType) : this()
         {
             id = ID;
             entityname = EntityName;
@@ -154,7 +151,7 @@ namespace pg_class
             errordesc = "Успешное завершение процедуры";
             messagetype = eJournalMessageType.success;
         }
-        
+
         /// <summary>
         /// Дополнительный конструктор для событий методов свойств объектов
         /// </summary>
@@ -204,7 +201,7 @@ namespace pg_class
         public JournalEventArgs(UnitConversionRuleChangeEventArgs e) : this()
         {
             action = e.Action;
-            id = e.IdUnitConversionRule; 
+            id = e.IdUnitConversionRule;
             entityname = eEntity.unit_conversion_rule;
             errorid = 0;
             errordesc = "Успешное завершение процедуры";
@@ -251,7 +248,7 @@ namespace pg_class
                 case eActionPosTempNestedList.on:
                     action = eAction.Insert;
                     break;
-                case eActionPosTempNestedList.delrule: 
+                case eActionPosTempNestedList.delrule:
                 case eActionPosTempNestedList.delallrule:
                 case eActionPosTempNestedList.off:
                     action = eAction.Delete;
@@ -677,7 +674,7 @@ namespace pg_class
         public JournalEventArgs(ObjectPropLinkValChangeEventArgs e) : this()
         {
             action = e.Action;
-            if (e.ObjectPropLinkVal!=null)
+            if (e.ObjectPropLinkVal != null)
             {
                 id = e.ObjectPropLinkVal.Id_object;
                 id_prop = e.ObjectPropLinkVal.Id_class_prop;
@@ -830,58 +827,58 @@ namespace pg_class
             messagetype = eJournalMessageType.success;
         }
 
-		/// <summary>
-		/// Дополнительный конструктор для событий методов категории документов
-		/// </summary>
-		public JournalEventArgs(LogCategoryChangeEventArgs e) : this()
-		{
-			action = e.Action;
-			if (e.LogCategory != null)
-			{
-				id = e.LogCategory.Id;
-			}
-			entityname = eEntity.log_category;
-			errorid = 0;
-			errordesc = "Успешное завершение процедуры";
-			messagetype = eJournalMessageType.success;
-		}
+        /// <summary>
+        /// Дополнительный конструктор для событий методов категории документов
+        /// </summary>
+        public JournalEventArgs(LogCategoryChangeEventArgs e) : this()
+        {
+            action = e.Action;
+            if (e.LogCategory != null)
+            {
+                id = e.LogCategory.Id;
+            }
+            entityname = eEntity.log_category;
+            errorid = 0;
+            errordesc = "Успешное завершение процедуры";
+            messagetype = eJournalMessageType.success;
+        }
 
-		/// <summary>
-		/// Дополнительный конструктор для событий методов записей журнала
-		/// </summary>
-		public JournalEventArgs(LogChangeEventArgs e) : this()
-		{
-			action = e.Action;
-			if (e.Log != null)
-			{
-				id = e.Log.Id;
-			}
-			entityname = eEntity.log;
-			errorid = 0;
-			errordesc = "Успешное завершение процедуры";
-			messagetype = eJournalMessageType.success;
-		}
-		
-		/// <summary>
-		/// Дополнительный конструктор для событий методов ссылок записей журнала
-		/// </summary>
-		public JournalEventArgs(LogLinkChangeEventArgs e) : this()
-		{
-			action = e.Action;
-			if (e.LogLink != null)
-			{
-				id = e.LogLink.Id;
-			}
-			entityname = eEntity.log_link;
-			errorid = 0;
-			errordesc = "Успешное завершение процедуры";
-			messagetype = eJournalMessageType.success;
-		}
+        /// <summary>
+        /// Дополнительный конструктор для событий методов записей журнала
+        /// </summary>
+        public JournalEventArgs(LogChangeEventArgs e) : this()
+        {
+            action = e.Action;
+            if (e.Log != null)
+            {
+                id = e.Log.Id;
+            }
+            entityname = eEntity.log;
+            errorid = 0;
+            errordesc = "Успешное завершение процедуры";
+            messagetype = eJournalMessageType.success;
+        }
 
-		/// <summary>
-		/// Дополнительный конструктор для событий методов планов
-		/// </summary>
-		public JournalEventArgs(PlanChangeEventArgs e) : this()
+        /// <summary>
+        /// Дополнительный конструктор для событий методов ссылок записей журнала
+        /// </summary>
+        public JournalEventArgs(LogLinkChangeEventArgs e) : this()
+        {
+            action = e.Action;
+            if (e.LogLink != null)
+            {
+                id = e.LogLink.Id;
+            }
+            entityname = eEntity.log_link;
+            errorid = 0;
+            errordesc = "Успешное завершение процедуры";
+            messagetype = eJournalMessageType.success;
+        }
+
+        /// <summary>
+        /// Дополнительный конструктор для событий методов планов
+        /// </summary>
+        public JournalEventArgs(PlanChangeEventArgs e) : this()
         {
             action = e.Action;
             if (e.Plan != null)
@@ -995,7 +992,7 @@ namespace pg_class
         /// </summary>
         public eJournalMessageType MessageType
         {
-        get
+            get
             {
                 return messagetype;
             }

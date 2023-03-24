@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
-using System.IO;
 using System.Data;
+using System.IO;
 using System.Security.Cryptography;
 
 namespace pg_class.pg_classes
@@ -122,7 +117,7 @@ namespace pg_class.pg_classes
             get
             {
                 return name;
-            } 
+            }
         }
 
         /// <summary>
@@ -133,7 +128,7 @@ namespace pg_class.pg_classes
             get
             {
                 Int32 result = -1;
-                DataTable tbl_pos  = manager.Instance().TableByName("vdocument");
+                DataTable tbl_pos = manager.Instance().TableByName("vdocument");
                 if (tbl_pos != null)
                 {
                     result = tbl_pos.Columns["name"].MaxLength;
@@ -247,7 +242,7 @@ namespace pg_class.pg_classes
         {
             return Manager.doc_link_is_actual(id);
         }
-        
+
         /// <summary>
         /// Обновление ссылки из БД
         /// </summary>

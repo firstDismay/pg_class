@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Npgsql;
-using System.Data;
+﻿using Newtonsoft.Json;
+using pg_class.pg_classes;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
-using pg_class.pg_classes;
-using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Data;
 
 namespace pg_class
 {
@@ -48,7 +44,7 @@ namespace pg_class
             cmdk.Parameters["iid_position"].Value = iid_position;
 
             cmdk.Fill(tbl_object);
-            
+
             object_general og;
             if (tbl_object.Rows.Count > 0)
             {
@@ -78,7 +74,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
+
             cmdk = CommandByKey("object_ext_by_array_prop");
             if (cmdk != null)
             {

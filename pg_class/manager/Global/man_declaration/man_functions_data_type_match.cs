@@ -1,6 +1,6 @@
-﻿using System;
+﻿using NpgsqlTypes;
+using System;
 using System.Collections.Generic;
-using NpgsqlTypes;
 
 namespace pg_class
 {
@@ -193,9 +193,9 @@ namespace pg_class
         };
 
         //***********************************************
-            /// <summary>
-            /// Функция определяет тип данных свойства в среде Postgre SQL
-            /// </summary>
+        /// <summary>
+        /// Функция определяет тип данных свойства в среде Postgre SQL
+        /// </summary>
         public NpgsqlTypes.NpgsqlDbType DataTypeNpgsql(eDataType Datatype)
         {
             NpgsqlTypes.NpgsqlDbType Result = NpgsqlTypes.NpgsqlDbType.Unknown;
@@ -224,9 +224,9 @@ namespace pg_class
         };
 
         ///////**************************
-            /// <summary>
-            /// Функция определяет тип данных свойства в среде .Net 
-            /// </summary>
+        /// <summary>
+        /// Функция определяет тип данных свойства в среде .Net 
+        /// </summary>
         public eDataTypeNet DataTypeNet(eDataType Datatype)
         {
             eDataTypeNet Result = eDataTypeNet.Object;
@@ -236,7 +236,7 @@ namespace pg_class
             return Result;
         }
 
-        private static readonly Dictionary<eDataType, eDataTypeNet> Dictionary_DataTypeNet = new Dictionary<eDataType, eDataTypeNet>() 
+        private static readonly Dictionary<eDataType, eDataTypeNet> Dictionary_DataTypeNet = new Dictionary<eDataType, eDataTypeNet>()
         {
             { eDataType.val_varchar, eDataTypeNet.String },
             { eDataType.val_int, eDataTypeNet.Int32 },

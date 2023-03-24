@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace pg_class.pg_classes
 {
@@ -11,7 +8,7 @@ namespace pg_class.pg_classes
         #region МЕТОДЫ РАБОТЫ С КЛАССАМИ И СНИМКАМИ КЛАССОВ КОНЦЕПЦИИ
 
         #region КОПИРОВНИАЕ И ПЕРЕНОС АКТИВНЫХ ПРЕДСТАВЛЕНИЙ КЛАССОВ
-        
+
         /// <summary>
         /// Метод переносит активное представление класса в указанный абстрактный класс
         /// class_move_to_class
@@ -138,7 +135,7 @@ namespace pg_class.pg_classes
         /// Лист представлений активных классов концепции по маске имени
         /// class_act_by_id_conception_msk_name
         /// </summary>
-        public List<vclass> Class_act_by_msk_name( String name_mask, Boolean Extended = false)
+        public List<vclass> Class_act_by_msk_name(String name_mask, Boolean Extended = false)
         {
             List<vclass> Result = null;
             if (Extended)

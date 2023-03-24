@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using pg_class.pg_classes;
 
 namespace pg_class
 {
@@ -30,7 +25,7 @@ namespace pg_class
         /// <summary>
         /// Перечисление определяющее тип действия выполняемого методом доступа к БД
         /// </summary>
-        public eAction Action { get => action;}
+        public eAction Action { get => action; }
 
         /// <summary>
         /// Идентификатор класса правила назначения методов пересчета

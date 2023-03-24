@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace pg_class.pg_classes
 {
@@ -29,7 +25,7 @@ namespace pg_class.pg_classes
         /// Метод удаляет свойство класса из глобального свойства
         /// global_prop_link_class_prop_exclude
         /// </summary>
-        public global_prop_link_class_prop Link_class_prop_exclude( class_prop ClassProp)
+        public global_prop_link_class_prop Link_class_prop_exclude(class_prop ClassProp)
         {
             return Manager.global_prop_link_class_prop_exclude(this, ClassProp);
         }

@@ -1,9 +1,6 @@
-﻿using System;
+﻿using pg_class.pg_classes.calendar;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using pg_class.pg_classes.calendar;
 
 namespace pg_class.pg_classes
 {
@@ -16,11 +13,11 @@ namespace pg_class.pg_classes
         /// <summary>
         /// Метод добавляет новый план
         /// </summary>
-        public plan plan_add( Int64 iid_parent, String iname, String idesc, Boolean ion, Boolean ion_crossing, Int32 iplan_max, Int32 irange_max, Boolean ion_freeze)
+        public plan plan_add(Int64 iid_parent, String iname, String idesc, Boolean ion, Boolean ion_crossing, Int32 iplan_max, Int32 irange_max, Boolean ion_freeze)
         {
             return Manager.plan_add(Id, iid_parent, iname, idesc, ion, ion_crossing, iplan_max, irange_max, ion_freeze);
         }
-        
+
         #endregion
 
         #region УДАЛИТЬ
@@ -53,9 +50,9 @@ namespace pg_class.pg_classes
         }
         //*************************************************************************************
 
-       
+
         #endregion
-        
+
         #endregion
     }
 }

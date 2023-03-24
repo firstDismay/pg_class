@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using pg_class.pg_exceptions;
-
-namespace pg_class.pg_classes
+﻿namespace pg_class.pg_classes
 {
     public partial class object_prop
     {
@@ -37,7 +30,7 @@ namespace pg_class.pg_classes
         /// <summary>
         /// Метод выбирает данные значение свойства-ссылки шаг №3
         /// </summary>
-        public  object_prop_link_val link_data_get()
+        public object_prop_link_val link_data_get()
         {
             object_prop_link_val Result = null;
             Result = Manager.object_prop_link_val_by_id_prop(this);
@@ -45,6 +38,6 @@ namespace pg_class.pg_classes
         }
         #endregion
         #endregion
-        
+
     }
 }

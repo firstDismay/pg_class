@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using pg_class.pg_exceptions;
+﻿using pg_class.pg_exceptions;
 
 namespace pg_class.pg_classes
 {
@@ -18,7 +13,7 @@ namespace pg_class.pg_classes
         public class_prop_enum_val enum_data_add(class_prop_enum_val ClassPropEnumVal)
         {
             class_prop_enum_val Result = null;
-            
+
             if (this.StorageType == eStorageType.Active)
             {
                 Result = Manager.class_prop_enum_val_add(ClassPropEnumVal.Id_class_prop, ClassPropEnumVal.Id_prop_enum, ClassPropEnumVal.Id_prop_enum_val);
@@ -89,6 +84,6 @@ namespace pg_class.pg_classes
         }
         #endregion
         #endregion
-        
+
     }
 }

@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Npgsql;
-using System.Data;
+﻿using pg_class.pg_classes;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
-using pg_class.pg_classes;
+using System;
+using System.Collections.Generic;
 
 namespace pg_class
 {
@@ -39,7 +34,7 @@ namespace pg_class
 
             cmdk.Parameters["iid_prop_enum_val"].Value = iid_prop_enum_val;
             cmdk.ExecuteNonQuery();
-            
+
             error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
             desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
             switch (error)
@@ -47,20 +42,20 @@ namespace pg_class
                 case 0:
                     prop_enum_val = prop_enum_val_by_id(iid_prop_enum_val);
                     SortList = prop_enum_val_by_id_prop_enum(prop_enum_val.Id_prop_enum);
-					foreach (prop_enum_val item in SortList)
-					{
-						//Генерируем события изменения сортировки элементов перечисления
-						PropEnumValChangeEventArgs e = new PropEnumValChangeEventArgs(item, eAction.Update);
-						PropEnumValOnChange(e);
-					}
-					break;
+                    foreach (prop_enum_val item in SortList)
+                    {
+                        //Генерируем события изменения сортировки элементов перечисления
+                        PropEnumValChangeEventArgs e = new PropEnumValChangeEventArgs(item, eAction.Update);
+                        PropEnumValOnChange(e);
+                    }
+                    break;
                 default:
                     //Вызов события журнала
                     JournalEventArgs me = new JournalEventArgs(iid_prop_enum_val, eEntity.prop_enum_val, error, desc_error, eAction.Update, eJournalMessageType.error);
                     JournalMessageOnReceived(me);
                     throw new PgDataException(error, desc_error);
             }
-            
+
             //Возвращаем сущность
             return prop_enum_val;
         }
@@ -87,7 +82,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
+
             cmdk = CommandByKey("prop_enum_val_sort_top");
             if (cmdk != null)
             {

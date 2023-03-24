@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace pg_class.pg_classes
+﻿namespace pg_class.pg_classes
 {
     public partial class unit_conversion_rule
     {
         #region СВОЙСТВА ДЛЯ РАБОТЫ С ИЗМЕРЯЕМОЙ ВЕЛИЧИНОЙ ПРАВИЛА ПЕРЕСЧЕТА
-        
+
         /// <summary>
         /// Измеряемая величина правила пересчета
         /// </summary>

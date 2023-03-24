@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace pg_class.pg_classes
-    { /// <summary>
-    /// Класс пользователей БД учеет
-    /// </summary>
+{ /// <summary>
+  /// Класс пользователей БД учеет
+  /// </summary>
     public partial class role_user
     {
         #region КОНСТРУКТОРЫ КЛАССА
@@ -111,9 +108,9 @@ namespace pg_class.pg_classes
                 {
                     name = value;
                     on_change = true;
-                   
+
                 }
-                
+
             }
         }
 
@@ -136,7 +133,7 @@ namespace pg_class.pg_classes
             }
         }
 
-        
+
 
         /// <summary>
         /// Системное имя роли
@@ -154,7 +151,7 @@ namespace pg_class.pg_classes
             }
         }
 
-        
+
         /// <summary>
         /// Флаг суперпользователя
         /// </summary>
@@ -234,7 +231,7 @@ namespace pg_class.pg_classes
             }
         }
 
-        
+
 
         /// <summary>
         /// Ссылка на менеджера данных
@@ -310,7 +307,7 @@ namespace pg_class.pg_classes
                 }
                 Refresh();
                 on_change = false;
-               
+
             }
         }
 
@@ -343,7 +340,7 @@ namespace pg_class.pg_classes
             }
             return Result;
         }
-        
+
         /// <summary>
         /// Метод определяет членство пользователя в указанной роли
         /// </summary>
@@ -352,7 +349,7 @@ namespace pg_class.pg_classes
             return Manager.user_is_member_role(NameSystem, vrole.NameSystem, irecursive);
         }
 
-        
+
         /// <summary>
         /// Метод удаляет текущую позицию
         /// user_del
@@ -394,7 +391,7 @@ namespace pg_class.pg_classes
         /// </summary>
         public override string ToString()
         {
-            return String.Format("{0}",name.Substring(0, 1));
+            return String.Format("{0}", name.Substring(0, 1));
         }
         #endregion
     }

@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using pg_class.pg_classes;
+﻿using pg_class.pg_classes;
+using System;
 
 namespace pg_class
 {
     /// <summary>
     /// Аргумент события изменения списка разрешений уровня 1 класс на шаблон
     /// </summary>
-    public class Rulel1_Class_On_Pos_tempListChangeEventArgs: EventArgs
+    public class Rulel1_Class_On_Pos_tempListChangeEventArgs : EventArgs
     {
         #region КОНСТРУКТОРЫ КЛАССА
         /// <summary>
@@ -32,7 +28,7 @@ namespace pg_class
         /// <summary>
         /// Перечисление определяющее тип действия выполняемого методом доступа к БД
         /// </summary>
-        public eActionRuleList Action { get => action;}
+        public eActionRuleList Action { get => action; }
         /// <summary>
         /// Идентификатор класса включенной в правило вложенности уровня 1
         /// </summary>

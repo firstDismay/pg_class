@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using pg_class.pg_exceptions;
-
-namespace pg_class.pg_classes
+﻿namespace pg_class.pg_classes
 {
     public partial class position_prop
     {
         #region МЕТОДЫ РАБОТЫ СО ЗНАЧЕНИЯМИ ПОЛЬЗОВАТЕЛЬСКИХ СВОЙСТВ КЛАССА
-       #region ДОБАВИТЬ ЗНАЧЕНИЕ
+        #region ДОБАВИТЬ ЗНАЧЕНИЕ
 
         /// <summary>
         /// Метод добавляет новое значение пользовательского свойства позиции
@@ -46,6 +39,6 @@ namespace pg_class.pg_classes
         }
         #endregion
         #endregion
-        
+
     }
 }

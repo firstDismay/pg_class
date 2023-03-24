@@ -1,16 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Data;
-using Npgsql;
+﻿using pg_class.pg_classes;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
-using pg_class.pg_classes;
+using System;
+using System.Collections.Generic;
+using System.Data;
 
 namespace pg_class
 {
     public partial class manager
-    {   
+    {
         /// <summary>
         /// Метод возвращает список шаблонов которым разрешена указанная группа 
         /// на основе разрешений уровня 1 группа на шаблон по идентификатору шаблона
@@ -18,7 +16,7 @@ namespace pg_class
         public List<pos_temp> pos_temp_allowed_rl1_by_id_group(Int64 iid_group)
         {
             List<pos_temp> pos_temp_list = new List<pos_temp>();
-            DataTable tbl_pos_temp  = TableByName("vpos_temp");
+            DataTable tbl_pos_temp = TableByName("vpos_temp");
             NpgsqlCommandKey cmdk;
 
             cmdk = CommandByKey("pos_temp_allowed_rl1_by_id_group");
@@ -36,7 +34,7 @@ namespace pg_class
 
             cmdk.Parameters["iid_group"].Value = iid_group;
             cmdk.Fill(tbl_pos_temp);
-            
+
             pos_temp pt;
             if (tbl_pos_temp.Rows.Count > 0)
             {

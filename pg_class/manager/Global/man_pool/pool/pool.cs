@@ -1,11 +1,6 @@
-﻿using System;
+﻿using pg_class.pg_exceptions;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data;
-using Npgsql;
-using pg_class.pg_exceptions;
 
 namespace pg_class.poolcn
 {
@@ -15,7 +10,7 @@ namespace pg_class.poolcn
     internal partial class pool
     {
         #region КОНСТРУКТОРЫ КЛАССА
-        
+
         /// <summary>
         /// Полный конструктор класса для инициализации пула с первичными папаремтрами сессии
         /// </summary>
@@ -31,7 +26,7 @@ namespace pg_class.poolcn
             CN.Open();
             CN.UnLock();
             cn_list.Add(CN);
-            
+
             //Вызов события изменения количества подключений
             PoolConnectEventArgs pc = new PoolConnectEventArgs(cn_list.Count, manager.PoolConnectMaxStatic);
             manager.PoolConnectCountOnChangeStatic(this, pc);
@@ -43,7 +38,7 @@ namespace pg_class.poolcn
             StartControlTimer();
         }
         #endregion
-        
+
         #region СВОЙСТВА КЛАССА
         List<connect> cn_list;
         //Boolean is_init;
@@ -238,7 +233,7 @@ namespace pg_class.poolcn
                         cn_list.Remove(CN);
                     }
                 }
-                
+
                 if (manager.StateInstance == eManagerState.Connected && cn_list.Count == 0)
                 {
                     StopControlTimer();

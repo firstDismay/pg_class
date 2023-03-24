@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Npgsql;
-using System.Data;
+﻿using pg_class.pg_classes;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
-using pg_class.pg_classes;
-using System.Security.Cryptography;
+using System;
+using System.Collections.Generic;
+using System.Data;
 
 namespace pg_class
 {
@@ -20,7 +15,7 @@ namespace pg_class
         public log_link log_link_by_id(Int64 iid)
         {
             log_link log_link = null;
-            DataTable tbl_entity  = TableByName("vlog_link");
+            DataTable tbl_entity = TableByName("vlog_link");
             NpgsqlCommandKey cmdk;
 
             cmdk = CommandByKey("log_link_by_id");
@@ -38,7 +33,7 @@ namespace pg_class
 
             cmdk.Parameters["iid"].Value = iid;
             cmdk.Fill(tbl_entity);
-            
+
             if (tbl_entity.Rows.Count > 0)
             {
                 log_link = new log_link(tbl_entity.Rows[0]);
@@ -99,7 +94,7 @@ namespace pg_class
             cmdk.Parameters["iid_entity_instance"].Value = iid_entity_instance;
             cmdk.Parameters["iid_sub_entity_instance"].Value = iid_sub_entity_instance;
             cmdk.Fill(tbl_entity);
-            
+
             if (tbl_entity.Rows.Count > 0)
             {
                 log_link = new log_link(tbl_entity.Rows[0]);
@@ -107,10 +102,10 @@ namespace pg_class
             return log_link;
         }
 
-		/// <summary>
-		/// Ссылка записи журнала по идентификатору сущности
-		/// </summary>
-		public log_link log_link_by_entity(Int64 iid_log, user User)
+        /// <summary>
+        /// Ссылка записи журнала по идентификатору сущности
+        /// </summary>
+        public log_link log_link_by_entity(Int64 iid_log, user User)
         {
             return log_link_by_entity(iid_log, User.EntityID, User.Id, -1);
         }
@@ -196,7 +191,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
+
             cmdk = CommandByKey("log_link_by_entity");
             if (cmdk != null)
             {
@@ -218,8 +213,8 @@ namespace pg_class
         /// </summary>
         public List<log_link> log_link_by_id_log(Int64 iid_log)
         {
-            List<log_link>  entity_list = new List<log_link>();
-            DataTable tbl_entity  = TableByName("vlog_link");
+            List<log_link> entity_list = new List<log_link>();
+            DataTable tbl_entity = TableByName("vlog_link");
             NpgsqlCommandKey cmdk;
 
             cmdk = CommandByKey("log_link_by_id_log");
@@ -237,7 +232,7 @@ namespace pg_class
 
             cmdk.Parameters["iid_log"].Value = iid_log;
             cmdk.Fill(tbl_entity);
-            
+
             log_link ce;
             if (tbl_entity.Rows.Count > 0)
             {

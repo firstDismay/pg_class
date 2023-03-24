@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Data;
-using Npgsql;
-using pg_class.pg_commands;
-using pg_class.pg_exceptions;
-using pg_class.pg_classes;
 
 namespace pg_class
 {
@@ -20,7 +13,7 @@ namespace pg_class
         /// Событие возникает при изменении списка ограничения вложенности
         /// </summary>
         public event PosTempNestedListChangeEventHandler PosTempNestedListChange;
-        
+
 
         /// <summary>
         ///  Метод вызова события изменения концепции

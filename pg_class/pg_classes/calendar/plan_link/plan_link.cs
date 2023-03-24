@@ -1,12 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
-using System.IO;
 using System.Data;
-using System.Security.Cryptography;
 
 namespace pg_class.pg_classes.calendar
 {
@@ -36,7 +29,7 @@ namespace pg_class.pg_classes.calendar
                 id = (Int64)row["id"];
                 id_conception = (Int64)row["id_conception"];
                 id_plan = (Int64)row["id_plan"];
-                
+
                 name = (String)row["name"];
 
                 id_entity = (Int32)row["id_entity"];
@@ -48,7 +41,7 @@ namespace pg_class.pg_classes.calendar
                 throw new ArgumentOutOfRangeException(String.Format("Наименование входной таблицы '{0}' не соответствует ограничениям конструктора!", row.Table.TableName));
             }
         }
-        
+
         #endregion
 
         #region СВОЙСТВА КЛАССА
@@ -180,7 +173,7 @@ namespace pg_class.pg_classes.calendar
             return Manager.plan_link_is_actual(id);
         }
 
-        
+
         /// <summary>
         /// Обновление ссылки плана из БД
         /// </summary>

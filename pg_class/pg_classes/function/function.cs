@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace pg_class.pg_classes
-    { /// <summary>
-    /// Класс используемый для формирования списка доступных функций БД ассистента
-    /// </summary>
+{ /// <summary>
+  /// Класс используемый для формирования списка доступных функций БД ассистента
+  /// </summary>
     public class function
     {
         #region КОНСТРУКТОРЫ КЛАССА
@@ -32,7 +28,7 @@ namespace pg_class.pg_classes
                 oid = Convert.ToUInt32(row["oid"]);
                 name = Convert.ToString(row["proname"]);
                 args = Convert.ToInt32(row["proargs"]);
-                argsignature = Convert.ToString(row["argsignature"]); 
+                argsignature = Convert.ToString(row["argsignature"]);
                 access = Convert.ToBoolean(row["access"]);
                 description = Convert.ToString(row["description"]);
             }
@@ -52,7 +48,7 @@ namespace pg_class.pg_classes
         private Boolean access;
         private String description;
 
-        
+
         /// <summary>
         /// Уникальный идентификатор учетной записи
         /// </summary>
@@ -143,7 +139,7 @@ namespace pg_class.pg_classes
             }
         }
 
-        
+
         #endregion
 
         #region ПЕРЕОПРЕДЕЛЕННЫЕ МЕТОДЫ КЛАССА

@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
-using System.IO;
-using pg_class.pg_exceptions;
 using System.Data;
+using System.Text;
 
 namespace pg_class.pg_classes
 {
@@ -24,7 +18,7 @@ namespace pg_class.pg_classes
         {
             on_change = false;
             nested_status = eStatus.on;
-            ActionPosTempNestedList = eActionPosTempNestedList.none; 
+            ActionPosTempNestedList = eActionPosTempNestedList.none;
         }
         /// <summary>
         /// Полный конструктор класса для возврата данных существующих записей через строку таблицы 
@@ -114,7 +108,7 @@ namespace pg_class.pg_classes
                 {
                     on = value;
                     on_change = true;
-                  
+
                 }
             }
         }
@@ -138,7 +132,7 @@ namespace pg_class.pg_classes
                     }
                     name = value;
                     on_change = true;
-                  
+
                 }
             }
 
@@ -147,12 +141,12 @@ namespace pg_class.pg_classes
         /// <summary>
         /// Максимально допустимая длинна строкового поля
         /// </summary>
-        public static  Int32 Name_pos_temp_len
+        public static Int32 Name_pos_temp_len
         {
             get
             {
                 Int32 result = -1;
-                DataTable tbl_con  = manager.Instance().TableByName("vpos_temp");
+                DataTable tbl_con = manager.Instance().TableByName("vpos_temp");
                 if (tbl_con != null)
                 {
                     result = tbl_con.Columns["name"].MaxLength;
@@ -180,7 +174,7 @@ namespace pg_class.pg_classes
                     }
                     desc = value;
                     on_change = true;
-                 
+
                 }
             }
         }
@@ -193,7 +187,7 @@ namespace pg_class.pg_classes
             get
             {
                 Int32 result = -1;
-                DataTable tbl_con  = manager.Instance().TableByName("vpos_temp");
+                DataTable tbl_con = manager.Instance().TableByName("vpos_temp");
                 if (tbl_con != null)
                 {
                     result = tbl_con.Columns["desc"].MaxLength;
@@ -211,7 +205,7 @@ namespace pg_class.pg_classes
         /// Идентификатор прототипа шаблона позиции
         /// </summary>
         public int Id_prototype { get => id_prototype; }
-       
+
 
         /// <summary>
         /// Включение отключения режима ограничения списка доступных шаблонов позиции
@@ -237,9 +231,9 @@ namespace pg_class.pg_classes
                     {
                         ActionPosTempNestedList = eActionPosTempNestedList.off;
                     }
-                 
+
                 }
-                
+
             }
         }
 
@@ -280,7 +274,7 @@ namespace pg_class.pg_classes
         /// Допускает создание корневых позиций
         /// </summary>
         public Boolean On_root { get => on_root; }
-        
+
         /// <summary>
         /// Допускает вложение позиций основанных на одном прототипе
         /// </summary>
@@ -389,7 +383,7 @@ namespace pg_class.pg_classes
         public void Update()
         {
             if (on_change)
-            {            
+            {
                 //Вносим изменения в БД
                 Manager.pos_temp_upd(this);
                 Refresh();
@@ -402,8 +396,8 @@ namespace pg_class.pg_classes
         /// </summary>
         public pos_temp Copy()
         {
-           //Вносим изменения в БД
-           return Manager.pos_temp_copy(this);
+            //Вносим изменения в БД
+            return Manager.pos_temp_copy(this);
         }
         /// <summary>
         /// Обновление шаблона из БД

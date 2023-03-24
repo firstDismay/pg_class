@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Npgsql;
-using System.Data;
+﻿using pg_class.pg_classes;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
-using pg_class.pg_classes;
+using System;
+using System.Data;
 
 namespace pg_class
 {
-    
+
     public partial class manager
     {
         /// <summary>
@@ -21,12 +16,12 @@ namespace pg_class
         {
             position_prop_enum_val position_prop_enum_val = null;
 
-            DataTable tbl_entity  = TableByName("vposition_prop_enum_val");
-            
-            
+            DataTable tbl_entity = TableByName("vposition_prop_enum_val");
+
+
             NpgsqlCommandKey cmdk;
 
-            
+
             cmdk = CommandByKey("position_prop_enum_val_by_id_prop");
 
             if (cmdk != null)
@@ -40,13 +35,13 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
 
             cmdk.Parameters["iid_position"].Value = iid_position;
             cmdk.Parameters["iid_pos_temp_prop"].Value = iid_pos_temp_prop;
 
             cmdk.Fill(tbl_entity);
-            
+
             if (tbl_entity.Rows.Count > 0)
             {
                 position_prop_enum_val = new position_prop_enum_val(tbl_entity.Rows[0]);
@@ -54,7 +49,7 @@ namespace pg_class
             return position_prop_enum_val;
         }
 
-        
+
         /// <summary>
         /// Выбрать значение свойства позиции типа перечисление по идентификатору значения свойства
         /// </summary>
@@ -63,7 +58,7 @@ namespace pg_class
             return position_prop_enum_val_by_id_prop(PositionProp.Id_position_carrier, PositionProp.Id_pos_temp_prop);
         }
 
-        
+
         /// <summary>
         /// Выбрать значение свойства позиции типа перечисление по идентификатору значения свойства
         /// </summary>
@@ -81,8 +76,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("position_prop_enum_val_by_id_prop");
             if (cmdk != null)
             {
@@ -98,5 +93,5 @@ namespace pg_class
             }
             return Result;
         }
-    } 
+    }
 }

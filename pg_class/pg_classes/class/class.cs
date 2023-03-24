@@ -1,13 +1,8 @@
-﻿using System;
+﻿using pg_class.pg_exceptions;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
-using System.IO;
 using System.Data;
-using pg_class.pg_exceptions;
-using pg_class.pg_classes;
+using System.Text;
 
 namespace pg_class.pg_classes
 {
@@ -75,7 +70,7 @@ namespace pg_class.pg_classes
                     on_freeze = (Boolean)row["on_freeze"];
                     ready = (Boolean)row["ready"];
                     path = (String)row["path"];
-                    
+
                     break;
                 case "vclass_ext":
                     crow = row;
@@ -132,7 +127,7 @@ namespace pg_class.pg_classes
                     path = (String)row["path"];
                     break;
                 default:
-                throw new ArgumentOutOfRangeException(String.Format("Наименование входной таблицы '{0}' не соответствует ограничениям конструктора!", row.Table.TableName));
+                    throw new ArgumentOutOfRangeException(String.Format("Наименование входной таблицы '{0}' не соответствует ограничениям конструктора!", row.Table.TableName));
             }
         }
 
@@ -199,7 +194,7 @@ namespace pg_class.pg_classes
         /// <summary>
         /// Идентификатор
         /// </summary>
-        public Int64 Id { get => id;}
+        public Int64 Id { get => id; }
 
         /// <summary>
         /// Идентификатор концепции
@@ -221,12 +216,12 @@ namespace pg_class.pg_classes
         /// </summary>
         public DateTime Timestamp { get => timestamp; }
 
-       
+
 
         /// <summary>
         /// Идентификатор родительского узла
         /// </summary>
-        public Int64 Id_parent { get => id_parent;}
+        public Int64 Id_parent { get => id_parent; }
 
 
         /// <summary>
@@ -244,9 +239,9 @@ namespace pg_class.pg_classes
         /// <summary>
         /// Идентификатор корневого узла
         /// </summary>
-        public Int64 Id_root { get => id_root;}
+        public Int64 Id_root { get => id_root; }
 
-        
+
         /// <summary>
         /// Признак наличия у историчского класса, активного класса. Всегда true если класс является активным
         /// </summary>
@@ -260,7 +255,7 @@ namespace pg_class.pg_classes
             get
             {
                 return name;
-            } 
+            }
             set
             {
                 if (name != value)
@@ -285,7 +280,8 @@ namespace pg_class.pg_classes
         /// Формат наименования объектов класса установлен
         /// </summary>
         public Boolean Name_format_default
-        { get
+        {
+            get
             {
                 Boolean Result = false;
                 if (name_format == "none")
@@ -300,7 +296,7 @@ namespace pg_class.pg_classes
         /// Признак необходимости доавить количество объекта к имени объекта
         /// </summary>
         public Boolean Quantity_show { get => quantity_show; }
-        
+
         /// <summary>
         /// Максимально допустимая длинна строкового поля
         /// </summary>
@@ -309,7 +305,7 @@ namespace pg_class.pg_classes
             get
             {
                 Int32 result = -1;
-                DataTable tbl_pos  = manager.Instance().TableByName("vclass");
+                DataTable tbl_pos = manager.Instance().TableByName("vclass");
                 if (tbl_pos != null)
                 {
                     result = tbl_pos.Columns["name"].MaxLength;
@@ -336,7 +332,7 @@ namespace pg_class.pg_classes
                     }
                     desc = value;
                     on_change = true;
-                   
+
                 }
             }
         }
@@ -344,12 +340,12 @@ namespace pg_class.pg_classes
         /// <summary>
         /// Максимально допустимая длинна строкового поля
         /// </summary>
-        public static  Int32 Desc_len
+        public static Int32 Desc_len
         {
             get
             {
                 Int32 result = -1;
-                DataTable tbl_pos  = manager.Instance().TableByName("vclass");
+                DataTable tbl_pos = manager.Instance().TableByName("vclass");
                 if (tbl_pos != null)
                 {
                     result = tbl_pos.Columns["desc"].MaxLength;
@@ -357,7 +353,7 @@ namespace pg_class.pg_classes
                 return result;
             }
         }
-        
+
         /// <summary>
         /// Доступность создания объектов для неабстрактных классов
         /// </summary>
@@ -533,7 +529,7 @@ namespace pg_class.pg_classes
         /// </summary>
         public String ClassLevelDesc
         {
-            get 
+            get
             {
                 String Result = "н/д";
                 switch (ClassLevel)
@@ -697,7 +693,7 @@ namespace pg_class.pg_classes
         /// <summary>
         /// Уровень вложенности узла
         /// </summary>
-        public Int32 LevelClass { get => level;}
+        public Int32 LevelClass { get => level; }
 
         /// <summary>
         /// Имя таблицы базы ассистента, содержащей запись о классе
@@ -743,7 +739,7 @@ namespace pg_class.pg_classes
                 return on_change;
             }
         }
-        
+
         /// <summary>
         /// Ссылка на менеджера данных
         /// </summary>
@@ -872,7 +868,7 @@ namespace pg_class.pg_classes
         /// </summary>
         public void Copy_to(group ParentGroup)
         {
-            Manager.class_copy_to_group(this, ParentGroup,true);
+            Manager.class_copy_to_group(this, ParentGroup, true);
         }
 
 
@@ -1054,7 +1050,7 @@ namespace pg_class.pg_classes
 
             //Определяем массив раделителей
             char[] charSeparators = new char[] { ',' };
-            
+
             //Определяем макет в отсуствии формата
             Result = "{" + Class_name_layout + "}";
 
@@ -1068,7 +1064,7 @@ namespace pg_class.pg_classes
                 Int64 cp_id;
                 class_prop cp;
 
-                Result = format_array[0].Substring(1, format_array[0].Length-2);
+                Result = format_array[0].Substring(1, format_array[0].Length - 2);
                 for (int s = 1; s < format_array.Length; s++)
                 {
                     //Ключ подстановки

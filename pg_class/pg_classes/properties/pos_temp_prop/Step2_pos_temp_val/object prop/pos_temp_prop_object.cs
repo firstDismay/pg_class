@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace pg_class.pg_classes
 {
@@ -67,7 +63,7 @@ namespace pg_class.pg_classes
         /// </summary>
         public pos_temp_prop_object_val object_data_get()
         {
-            return Manager.pos_temp_prop_object_val_by_id_prop(this); 
+            return Manager.pos_temp_prop_object_val_by_id_prop(this);
         }
         #endregion
 

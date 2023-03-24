@@ -1,12 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
-using System.IO;
-using System.Data;
-using System.Security.Cryptography;
 
 namespace pg_class.pg_classes
 {
@@ -37,9 +29,9 @@ namespace pg_class.pg_classes
                 id_conception = (Int64)row["id_conception"];
                 id_log = (Int64)row["id_log"];
                 id_category = (Int64)row["id_category"];
-                message  = (String)row["message"];
-				datetime = (DateTime)row["datetime"];
-                
+                message = (String)row["message"];
+                datetime = (DateTime)row["datetime"];
+
                 id_entity = (Int32)row["id_entity"];
                 id_entity_instance = (Int64)row["id_entity_instance"];
                 id_sub_entity_instance = (Int64)row["id_sub_entity_instance"];
@@ -55,20 +47,20 @@ namespace pg_class.pg_classes
         /// </summary>
         public log_link(pg_vlog_link ll) : this()
         {
-            
+
             if (ll != null)
             {
-				id = ll.id;
-				id_conception = ll.id_conception;
-				id_log = ll.id_log;
-				id_category = ll.id_category;
-				message = ll.message;
-				datetime = ll.datetime;
+                id = ll.id;
+                id_conception = ll.id_conception;
+                id_log = ll.id_log;
+                id_category = ll.id_category;
+                message = ll.message;
+                datetime = ll.datetime;
 
-				id_entity = ll.id_entity;
-				id_entity_instance = ll.id_entity_instance;
-				id_sub_entity_instance = ll.id_sub_entity_instance;
-			}
+                id_entity = ll.id_entity;
+                id_entity_instance = ll.id_entity_instance;
+                id_sub_entity_instance = ll.id_sub_entity_instance;
+            }
             else
             {
                 throw new ArgumentOutOfRangeException("Переданное значение композитного типа равно нулю");
@@ -82,7 +74,7 @@ namespace pg_class.pg_classes
         private Int64 id_log;
         private Int64 id_category;
         private String message;
-		private DateTime datetime;
+        private DateTime datetime;
         private Int32 id_entity;
         private Int64 id_entity_instance;
         private Int64 id_sub_entity_instance;
@@ -115,7 +107,7 @@ namespace pg_class.pg_classes
             get
             {
                 return message;
-            } 
+            }
         }
 
         /// <summary>
@@ -192,10 +184,10 @@ namespace pg_class.pg_classes
         /// </summary>
         public eEntityState Is_actual()
         {
-           return Manager.log_link_is_actual(id);
+            return Manager.log_link_is_actual(id);
         }
 
-        
+
         /// <summary>
         /// Обновление группы из БД
         /// </summary>
@@ -212,7 +204,7 @@ namespace pg_class.pg_classes
                 id_log = temp.Id_log;
                 id_category = temp.Id_category;
                 message = temp.Message;
-				datetime = temp.Datetime;
+                datetime = temp.Datetime;
 
                 id_entity = temp.Link_id_entity;
                 id_entity_instance = temp.Link_id_entity_instance;
@@ -273,10 +265,10 @@ namespace pg_class.pg_classes
                 case eEntity.object_prop:
                     Result = Manager.object_prop_by_id(id_entity_instance, id_sub_entity_instance);
                     break;
-				case eEntity.document:
-					Result = Manager.document_by_id(id_entity_instance);
-					break;
-				default:
+                case eEntity.document:
+                    Result = Manager.document_by_id(id_entity_instance);
+                    break;
+                default:
                     Result = Manager.entity_by_id(Convert.ToInt32(id_entity));
                     break;
             }

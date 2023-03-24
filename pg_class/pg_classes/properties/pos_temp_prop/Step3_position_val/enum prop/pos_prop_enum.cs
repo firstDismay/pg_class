@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using pg_class.pg_exceptions;
-
-namespace pg_class.pg_classes
+﻿namespace pg_class.pg_classes
 {
     public partial class position_prop
     {
@@ -41,6 +34,6 @@ namespace pg_class.pg_classes
         }
         #endregion
         #endregion
-        
+
     }
 }

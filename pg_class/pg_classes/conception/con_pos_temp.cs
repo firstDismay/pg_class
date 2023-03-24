@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace pg_class.pg_classes
 {
@@ -73,7 +70,7 @@ namespace pg_class.pg_classes
         /// </summary>
         public List<pos_temp> Pos_temp_nested_list_get()
         {
-           return  Manager.pos_temp_nestedlist_by_id(0, id, pos_temp_state, false);
+            return Manager.pos_temp_nestedlist_by_id(0, id, pos_temp_state, false);
         }
         /// <summary>
         /// Проверка прав доступа к методу

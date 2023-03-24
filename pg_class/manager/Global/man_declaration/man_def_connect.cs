@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace pg_class
+﻿namespace pg_class
 {
     #region Перечисления общих параметров менеджера данных и методов доступа к данным
     /// <summary>
@@ -108,7 +103,7 @@ namespace pg_class
         /// <summary>
         /// Операция клонирования сущности
         /// </summary>
-        Clone  = 6000,
+        Clone = 6000,
         /// <summary>
         /// Откат сущности к ранее сохраненному состоянию
         /// </summary>

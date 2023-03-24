@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Data;
-using Npgsql;
+﻿using pg_class.pg_classes;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
-using pg_class.pg_classes;
+using System;
 
 namespace pg_class
 {
@@ -20,8 +16,8 @@ namespace pg_class
             String desc_error;
             NpgsqlCommandKey cmdk;
             //**********
-             
-            
+
+
             cmdk = CommandByKey("rulel2_class_on_position_del");
 
             if (cmdk != null)
@@ -39,7 +35,7 @@ namespace pg_class
             cmdk.Parameters["iid_class"].Value = iid_class;
             cmdk.Parameters["iid_position"].Value = iid_position;
             cmdk.ExecuteNonQuery();
-            
+
             error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
             desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
             switch (error)
@@ -55,7 +51,7 @@ namespace pg_class
 
             //Вызов события изменения списка вложенности
             Rulel2_Class_On_PositionListChangeEventArgs e;
-            e = new Rulel2_Class_On_PositionListChangeEventArgs(iid_position, iid_class,  eActionRuleList.delrule);
+            e = new Rulel2_Class_On_PositionListChangeEventArgs(iid_position, iid_class, eActionRuleList.delrule);
             OnRulel2_Class_On_PositionListChange(e);
         }
 
@@ -85,8 +81,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("rulel2_class_on_position_del");
             if (cmdk != null)
             {
@@ -102,7 +98,7 @@ namespace pg_class
             }
             return Result;
         }
-        
+
 
         /// <summary>
         /// Метод удаляет разрешающие правила уровня 2 класс на позицию для указанной позиции
@@ -113,8 +109,8 @@ namespace pg_class
             String desc_error;
             NpgsqlCommandKey cmdk;
             //**********
-             
-            
+
+
             cmdk = CommandByKey("rulel2_class_on_position_all_del");
 
             if (cmdk != null)
@@ -131,7 +127,7 @@ namespace pg_class
 
             cmdk.Parameters["iid_position"].Value = iid_position;
             cmdk.ExecuteNonQuery();
-            
+
             error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
             desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
             switch (error)
@@ -169,8 +165,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("rulel2_class_on_position_all_del");
             if (cmdk != null)
             {

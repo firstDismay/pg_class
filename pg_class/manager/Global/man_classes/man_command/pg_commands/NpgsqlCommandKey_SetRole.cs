@@ -1,8 +1,7 @@
-﻿using System;
-using Npgsql;
-using System.Data;
+﻿using Npgsql;
 using pg_class.poolcn;
-using pg_class.pg_exceptions;
+using System;
+using System.Data;
 
 namespace pg_class.pg_commands
 {

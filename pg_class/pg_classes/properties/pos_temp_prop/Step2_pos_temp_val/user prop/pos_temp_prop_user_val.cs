@@ -1,10 +1,7 @@
-﻿using System;
+﻿using pg_class.pg_exceptions;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Globalization;
-using System.Threading.Tasks;
-using pg_class.pg_exceptions;
 
 namespace pg_class.pg_classes
 {
@@ -21,7 +18,7 @@ namespace pg_class.pg_classes
         protected pos_temp_prop_user_val()
         {
             imagekey = "pos_temp_prop_user_val_us";
-            
+
             val_text = null;
             val_bytea = null;
             val_json = null;
@@ -46,9 +43,9 @@ namespace pg_class.pg_classes
             val_money = 0;
             val_boolean = false;
             val_date = DateTime.MinValue;
-            val_time = new TimeSpan(0,0,0,0,0);
+            val_time = new TimeSpan(0, 0, 0, 0, 0);
             val_interval = new TimeSpan(0, 0, 0, 0, 0);
-            val_timestamp = DateTime.MinValue; 
+            val_timestamp = DateTime.MinValue;
             val_bigint = 0;
         }
         /// <summary>
@@ -101,12 +98,12 @@ namespace pg_class.pg_classes
                     {
                         val_text = (String)row["val_text"];
                     }
-                    
+
                     if (!DBNull.Value.Equals(row["val_bytea"]))
                     {
                         val_bytea = (Byte[])row["val_bytea"];
                     }
-                    
+
                     if (!DBNull.Value.Equals(row["val_json"]))
                     {
                         val_json = (String)row["val_json"];
@@ -172,57 +169,57 @@ namespace pg_class.pg_classes
                     {
                         val_varchar = (String)row["val_varchar"];
                     }
-                    
+
                     if (!DBNull.Value.Equals(row["val_int"]))
                     {
                         val_int = (Int32)row["val_int"];
                     }
-                    
+
                     if (!DBNull.Value.Equals(row["val_numeric"]))
                     {
                         val_numeric = (Decimal)row["val_numeric"];
                     }
-                    
+
                     if (!DBNull.Value.Equals(row["val_real"]))
                     {
                         val_real = (Single)row["val_real"];
                     }
-                    
+
                     if (!DBNull.Value.Equals(row["val_double"]))
                     {
                         val_double = (Double)row["val_double"];
                     }
-                    
+
                     if (!DBNull.Value.Equals(row["val_money"]))
                     {
                         val_money = (Decimal)row["val_money"];
                     }
-                    
+
                     if (!DBNull.Value.Equals(row["val_boolean"]))
                     {
                         val_boolean = (Boolean)row["val_boolean"];
                     }
-                    
+
                     if (!DBNull.Value.Equals(row["val_date"]))
                     {
                         val_date = (DateTime)row["val_date"];
                     }
-                    
+
                     if (!DBNull.Value.Equals(row["val_time"]))
                     {
                         val_time = (TimeSpan)row["val_time"];
                     }
-                    
+
                     if (!DBNull.Value.Equals(row["val_interval"]))
                     {
                         val_interval = (TimeSpan)row["val_interval"];
                     }
-                    
+
                     if (!DBNull.Value.Equals(row["val_timestamp"]))
                     {
                         val_timestamp = (DateTime)row["val_timestamp"];
                     }
-                    
+
                     if (!DBNull.Value.Equals(row["val_bigint"]))
                     {
                         val_bigint = (Int64)row["val_bigint"];
@@ -490,14 +487,14 @@ namespace pg_class.pg_classes
             }
             set
             {
-                if(data_type==eDataType.val_text)
-                { 
+                if (data_type == eDataType.val_text)
+                {
                     val_text = value;
                 }
                 else
                 {
-                throw new PgDataException(eEntity.class_prop_user_val, eAction.Update, eSubClass_ErrID.SCE3_Violation_Rules,
-                    "Тип данных свойства не соотвествует типу данных переданного значения");
+                    throw new PgDataException(eEntity.class_prop_user_val, eAction.Update, eSubClass_ErrID.SCE3_Violation_Rules,
+                        "Тип данных свойства не соотвествует типу данных переданного значения");
                 }
             }
         }
@@ -1022,8 +1019,8 @@ namespace pg_class.pg_classes
         /// </summary>
         public void Update()
         {
-            
-            if (on_change )
+
+            if (on_change)
             {
                 if (this.StorageType == eStorageType.NotSaved)
                 {
@@ -1052,7 +1049,7 @@ namespace pg_class.pg_classes
         /// </summary>
         public Boolean Refresh()
         {
-            
+
             pos_temp_prop_user_val temp = null;
             Boolean Result = false;
 
@@ -1113,7 +1110,7 @@ namespace pg_class.pg_classes
             switch (DataType)
             {
                 case eDataType.val_varchar:
-                    Result = val_varchar;                    
+                    Result = val_varchar;
                     break;
                 case eDataType.val_int:
                     Result = val_int;

@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Npgsql;
-using System.Data;
+﻿using pg_class.pg_classes;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
-using pg_class.pg_classes;
+using System;
+using System.Data;
 
 namespace pg_class
 {
@@ -20,12 +15,12 @@ namespace pg_class
         {
             class_prop_link_val Сlass_prop_link_val = null;
 
-            DataTable tbl_entity  = TableByName("vclass_prop_link_val");
-            
-            
+            DataTable tbl_entity = TableByName("vclass_prop_link_val");
+
+
             NpgsqlCommandKey cmdk;
 
-            
+
             cmdk = CommandByKey("class_prop_link_val_by_id_prop");
 
             if (cmdk != null)
@@ -39,12 +34,12 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
 
             cmdk.Parameters["iid_class_prop"].Value = iid_class_prop;
 
             cmdk.Fill(tbl_entity);
-            
+
             if (tbl_entity.Rows.Count > 0)
             {
                 Сlass_prop_link_val = new class_prop_link_val(tbl_entity.Rows[0]);
@@ -60,17 +55,17 @@ namespace pg_class
         {
             return class_prop_link_val_by_id_prop(Class_prop.Id);
         }
-            //ACCESS
-            /// <summary>
-            /// Проверка прав доступа к методу
-            /// </summary>
-            public Boolean class_prop_link_val_by_id_prop(out eAccess Access)
+        //ACCESS
+        /// <summary>
+        /// Проверка прав доступа к методу
+        /// </summary>
+        public Boolean class_prop_link_val_by_id_prop(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("class_prop_link_val_by_id_prop");
             if (cmdk != null)
             {

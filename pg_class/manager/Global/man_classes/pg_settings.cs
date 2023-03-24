@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace pg_class
 {
@@ -24,7 +21,7 @@ namespace pg_class
         /// </summary>
         public pg_settings(String UserName, String Password, String Host, String DataBase, Int32 Port = 5999,
                 String ApplicationName = "-",
-                String SearchPath = "bpd, public", Int32 SessionTimeOut = 30, Int32 Timeout = 240, Int32 CommandTimeout = 2400, Int32 PoolConnectMax = 10, Boolean LoadTableComposites = true):this()
+                String SearchPath = "bpd, public", Int32 SessionTimeOut = 30, Int32 Timeout = 240, Int32 CommandTimeout = 2400, Int32 PoolConnectMax = 10, Boolean LoadTableComposites = true) : this()
         {
             StringBuilder sb = new StringBuilder();
             //Если имя вызывающего приложения не передано, передаем имя класса доступа к данным
@@ -69,7 +66,7 @@ namespace pg_class
             //pg_sb.ConnectionIdleLifetime = SessionTimeOut * 60 + 10;
             pg_sb.ClientEncoding = "UTF8";
             pg_sb.Encoding = "UTF8";
-                
+
             pg_sb.LoadTableComposites = LoadTableComposites;
         }
         #endregion
@@ -104,7 +101,7 @@ namespace pg_class
                 {
                     return null;
                 }
-            }       
+            }
         }
 
         /// <summary>
@@ -167,7 +164,7 @@ namespace pg_class
                 PoolConnectMax_ = value;
             }
         }
-        
+
         /// <summary>
         /// Название БД
         /// </summary>
@@ -198,16 +195,16 @@ namespace pg_class
             }
         }
 
-       /// <summary>
-       /// Пароль роли БД если применим по условиям авторизации
-       /// </summary>
-       public String Password
-       {
-           set
-           {
+        /// <summary>
+        /// Пароль роли БД если применим по условиям авторизации
+        /// </summary>
+        public String Password
+        {
+            set
+            {
                 pg_sb.Password = value;
-           }
-       }
+            }
+        }
         /// <summary>
         /// Возвращает или задает логическое значение, которое определяет, возвращаются ли сведения, связанные с 
         /// безопасностью (такие как пароль), как часть подключения, если оно открыто или когда-либо находилось в открытом состоянии.
@@ -223,7 +220,7 @@ namespace pg_class
                 pg_sb.PersistSecurityInfo = value;
             }
         }
-     
+
         /// <summary>
         /// Время ожидания (в секундах) при попытке выполнить команду, прежде чем завершить попытку и выдать ошибку. Установить на ноль для бесконечности.
         /// </summary>
@@ -239,7 +236,7 @@ namespace pg_class
             }
         }
 
-       
+
         private Int32 SessionTimeOut_;
         /// <summary>
         /// Время бездействия клиентского приложения в минутах, до вызова метода закрытия соединения с сервером
@@ -272,9 +269,9 @@ namespace pg_class
         }
 
         private String UploadTemp_;
-            /// <summary>
-            /// Наименование временной директории для загрузки файлов библиотеки документов
-            /// </summary>
+        /// <summary>
+        /// Наименование временной директории для загрузки файлов библиотеки документов
+        /// </summary>
         public String UploadTemp
         {
             get

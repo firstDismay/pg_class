@@ -1,12 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
-using System.IO;
 using System.Data;
-using pg_class.pg_exceptions;
+using System.Text;
 
 namespace pg_class.pg_classes
 {
@@ -107,7 +102,7 @@ namespace pg_class.pg_classes
             }
         }
 
-        
+
         /// <summary>
         /// Максимально допустимая длинна строкового поля
         /// </summary>
@@ -116,7 +111,7 @@ namespace pg_class.pg_classes
             get
             {
                 Int32 result = -1;
-                DataTable tbl_pos  = manager.Instance().TableByName("vclass_prop");
+                DataTable tbl_pos = manager.Instance().TableByName("vclass_prop");
                 if (tbl_pos != null)
                 {
                     result = tbl_pos.Columns["name"].MaxLength;
@@ -143,7 +138,7 @@ namespace pg_class.pg_classes
             get
             {
                 Int32 result = -1;
-                DataTable tbl_pos  = manager.Instance().TableByName("vclass_prop");
+                DataTable tbl_pos = manager.Instance().TableByName("vclass_prop");
                 if (tbl_pos != null)
                 {
                     result = tbl_pos.Columns["desc"].MaxLength;
@@ -151,7 +146,7 @@ namespace pg_class.pg_classes
                 return result;
             }
         }
-        
+
         /// <summary>
         /// Идентификатор типа свойства
         /// </summary>
@@ -326,7 +321,7 @@ namespace pg_class.pg_classes
             return Manager.Con_prop_data_type_by_id(Id_conception, Id_data_type);
         }
 
-        
+
         /// <summary>
         /// Концепция свойства класса
         /// </summary>
@@ -341,7 +336,7 @@ namespace pg_class.pg_classes
         /// </summary>
         public void Del()
         {
-            
+
             Manager.global_prop_link_class_prop_exclude(this.Id_global_prop, this.Id_class_prop_definition);
         }
 
@@ -360,9 +355,9 @@ namespace pg_class.pg_classes
         #endregion
 
         #region ПЕРЕОПРЕДЕЛЕННЫЕ МЕТОДЫ КЛАССА
-            /// <summary>
-            ///Переопределенный метод класса для работы с листами и списками
-            /// </summary>
+        /// <summary>
+        ///Переопределенный метод класса для работы с листами и списками
+        /// </summary>
         public override string ToString()
         {
             return Name_link;

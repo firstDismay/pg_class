@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace pg_class.pg_classes
 {
     /// <summary>
     /// Квантовый класс определящий узловую структуру представления классов
     /// </summary>
-    public class class_path 
+    public class class_path
     {
         #region КОНСТРУКТОРЫ КЛАССА
 

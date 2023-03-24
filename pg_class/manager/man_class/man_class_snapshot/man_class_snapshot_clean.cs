@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Npgsql;
-using System.Data;
+﻿using pg_class.pg_classes;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
-using pg_class.pg_classes;
+using System;
+using System.Collections.Generic;
+using System.Data;
 
 namespace pg_class
 {
@@ -16,7 +12,7 @@ namespace pg_class
         /// <summary>
         /// Метод удаляет снимки концепции не содержащие каскадно наследующие объекты и классы значения свойств
         /// </summary>
-        public Int64 class_snapshot_clear(Int64 iid_conception )
+        public Int64 class_snapshot_clear(Int64 iid_conception)
         {
             Int64 Result = 0;
             NpgsqlCommandKey cmdk;
@@ -37,7 +33,7 @@ namespace pg_class
             conception conception = conception_by_id(iid_conception);
             cmdk.Parameters["iid_conception"].Value = iid_conception;
             Result = (Int64)cmdk.ExecuteScalar();
-            
+
             if (conception == null)
             {
                 //Подготовка исключения метода
@@ -46,7 +42,7 @@ namespace pg_class
                 JournalEventArgs me = new JournalEventArgs(iid_conception, eEntity.conception, pgex.ErrID, "Указанная концепция не существует!", eAction.Clear, eJournalMessageType.error);
                 JournalMessageOnReceived(me);
                 //Генерация исключения
-                throw new PgDataException(eEntity.conception,eAction.Clear,eSubClass_ErrID.SCE1_NonExistent_Entity, "Указанная концепция не существует!");
+                throw new PgDataException(eEntity.conception, eAction.Clear, eSubClass_ErrID.SCE1_NonExistent_Entity, "Указанная концепция не существует!");
             }
 
             //Генерируем событие изменения концепции
@@ -98,7 +94,7 @@ namespace pg_class
         public List<vclass> class_snapshot_clear_info(Int64 iid_conception)
         {
             List<vclass> vclass_snapshot_list = new List<vclass>();
-            DataTable tbl_vclass_snapshot  = TableByName("vclass");
+            DataTable tbl_vclass_snapshot = TableByName("vclass");
             NpgsqlCommandKey cmdk;
 
             cmdk = CommandByKey("class_snapshot_clear_info");
@@ -116,7 +112,7 @@ namespace pg_class
 
             cmdk.Parameters["iid_conception"].Value = iid_conception;
             cmdk.Fill(tbl_vclass_snapshot);
-            
+
             vclass vcs;
             if (tbl_vclass_snapshot.Rows.Count > 0)
             {

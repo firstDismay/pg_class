@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace pg_class.pg_classes
 {
@@ -16,9 +13,9 @@ namespace pg_class.pg_classes
         /// Метод добавляет новую группу
         /// group_add
         /// </summary>
-        public group group_add( String iname, String idesc, Boolean ion_class, Int32 isort)
+        public group group_add(String iname, String idesc, Boolean ion_class, Int32 isort)
         {
-            return Manager.group_add(0,id, iname, idesc, ion_class, isort);
+            return Manager.group_add(0, id, iname, idesc, ion_class, isort);
         }
         /// <summary>
         /// Проверка прав доступа к методу

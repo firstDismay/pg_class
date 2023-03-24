@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
-using System.IO;
+﻿using pg_class.pg_exceptions;
+using System;
 using System.Data;
-using System.Security;
+using System.IO;
 using System.Security.Cryptography;
-using pg_class.pg_exceptions;
 
 namespace pg_class.pg_classes
 {
@@ -137,7 +131,7 @@ namespace pg_class.pg_classes
         /// Идентификатор документа
         /// </summary>
         public Int64 Id_document { get => id_document; }
-        
+
 
         /// <summary>
         /// Наименование файла документа
@@ -147,7 +141,7 @@ namespace pg_class.pg_classes
             get
             {
                 return name;
-            } 
+            }
             set
             {
                 if (name != value)
@@ -179,7 +173,7 @@ namespace pg_class.pg_classes
             get
             {
                 Int32 result = -1;
-                DataTable tbl_pos  = manager.Instance().TableByName("vdocument");
+                DataTable tbl_pos = manager.Instance().TableByName("vdocument");
                 if (tbl_pos != null)
                 {
                     result = tbl_pos.Columns["name"].MaxLength;
@@ -187,7 +181,7 @@ namespace pg_class.pg_classes
                 return result;
             }
         }
-        
+
         /// <summary>
         /// Расширение файла документа
         /// </summary>
@@ -262,7 +256,7 @@ namespace pg_class.pg_classes
             {
                 return fulltxtsrch_on;
             }
-            
+
             set
             {
                 if (fulltxtsrch_on != value)
@@ -294,7 +288,7 @@ namespace pg_class.pg_classes
                 return on_change;
             }
         }
-        
+
         /// <summary>
         /// Ссылка на менеджера данных
         /// </summary>
@@ -355,7 +349,7 @@ namespace pg_class.pg_classes
         public void Update()
         {
             if (on_change)
-            {             
+            {
                 Manager.doc_file_upd(this);
                 Refresh();
                 on_change = false;
@@ -367,7 +361,7 @@ namespace pg_class.pg_classes
         /// </summary>
         public Boolean Refresh()
         {
-           
+
             doc_file temp;
             Boolean Result = false;
             temp = Manager.doc_file_by_id(id);
@@ -380,7 +374,7 @@ namespace pg_class.pg_classes
                 id_conception = temp.Id_conception;
                 catalog = temp.Catalog;
                 id_document = temp.Id_document;
-                name = temp.Name;              
+                name = temp.Name;
                 extension = temp.Extension;
                 version = temp.Version;
                 versiondate = temp.Versiondate;
@@ -410,7 +404,7 @@ namespace pg_class.pg_classes
         /// </summary>
         public String doc_file_save(String Path, eSizeTransferPage isizepage)
         {
-            
+
             Byte[] file_data = null;
 
             System.IO.Directory.CreateDirectory(Path);
@@ -427,7 +421,7 @@ namespace pg_class.pg_classes
             using (FileStream fs = System.IO.File.OpenWrite(Path))
             {
                 file_data = Manager.doc_file_data_by_id(this, isizepage);
-                fs.Write(file_data,0, file_data.Length);
+                fs.Write(file_data, 0, file_data.Length);
             }
             return Path;
         }

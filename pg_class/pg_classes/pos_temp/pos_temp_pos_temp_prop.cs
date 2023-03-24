@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace pg_class.pg_classes
 {
@@ -43,7 +40,7 @@ namespace pg_class.pg_classes
         /// Метод добавляет новое свойство шаблона
         /// pos_temp_prop_add
         /// </summary>
-        public pos_temp_prop pos_temp_prop_add( prop_type Prop_type, Boolean On_Override, prop_data_type Data_type, String iname, String idesc, Int32 isort)
+        public pos_temp_prop pos_temp_prop_add(prop_type Prop_type, Boolean On_Override, prop_data_type Data_type, String iname, String idesc, Int32 isort)
         {
             return Manager.pos_temp_prop_add(this.Id, Prop_type.Id, On_Override, Data_type.Id, iname, idesc, isort);
         }

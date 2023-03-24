@@ -1,20 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Npgsql;
-using System.Data;
+﻿using pg_class.pg_classes;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
-using pg_class.pg_classes;
-using System.Security.Cryptography;
+using System;
+using System.Collections.Generic;
+using System.Data;
 
 namespace pg_class
 {
     public partial class manager
     {
-        
+
         /// <summary>
         /// Ссылка документа по идентификатору
         /// </summary>
@@ -22,12 +17,12 @@ namespace pg_class
         {
             doc_link doc_link = null;
 
-            DataTable tbl_entity  = TableByName("vdoc_link");
-            
-            
+            DataTable tbl_entity = TableByName("vdoc_link");
+
+
             NpgsqlCommandKey cmdk;
 
-            
+
             cmdk = CommandByKey("doc_link_by_id");
 
             if (cmdk != null)
@@ -41,12 +36,12 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
 
             cmdk.Parameters["iid"].Value = iid;
 
             cmdk.Fill(tbl_entity);
-            
+
             if (tbl_entity.Rows.Count > 0)
             {
                 doc_link = new doc_link(tbl_entity.Rows[0]);
@@ -63,8 +58,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("doc_link_by_id");
             if (cmdk != null)
             {
@@ -81,8 +76,8 @@ namespace pg_class
             return Result;
         }
 
-        
-        
+
+
         /// <summary>
         /// Ссылка на документ по идентификатору сущности
         /// </summary>
@@ -91,11 +86,11 @@ namespace pg_class
             doc_link doc_link = null;
 
             DataTable tbl_entity = TableByName("vdoc_link");
-            
-            
+
+
             NpgsqlCommandKey cmdk;
 
-            
+
             cmdk = CommandByKey("doc_link_by_entity");
 
             if (cmdk != null)
@@ -109,7 +104,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
 
             cmdk.Parameters["iid_document"].Value = iid_document;
             cmdk.Parameters["iid_entity"].Value = iid_entity;
@@ -117,7 +112,7 @@ namespace pg_class
             cmdk.Parameters["iid_sub_entity_instance"].Value = iid_sub_entity_instance;
 
             cmdk.Fill(tbl_entity);
-            
+
             if (tbl_entity.Rows.Count > 0)
             {
                 doc_link = new doc_link(tbl_entity.Rows[0]);
@@ -214,8 +209,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("doc_link_by_entity");
             if (cmdk != null)
             {
@@ -232,20 +227,20 @@ namespace pg_class
             return Result;
         }
 
-        
+
         /// <summary>
         /// Лист ссылок документа по идентификатору документа
         /// </summary>
         public List<doc_link> doc_link_by_id_document(Int64 iid_document)
         {
-            List<doc_link>  entity_list = new List<doc_link>();
-            
-            DataTable tbl_entity  = TableByName("vdoc_link");
-            
-            
+            List<doc_link> entity_list = new List<doc_link>();
+
+            DataTable tbl_entity = TableByName("vdoc_link");
+
+
             NpgsqlCommandKey cmdk;
 
-            
+
             cmdk = CommandByKey("doc_link_by_id_document");
 
             if (cmdk != null)
@@ -259,12 +254,12 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
 
             cmdk.Parameters["iid_document"].Value = iid_document;
 
             cmdk.Fill(tbl_entity);
-            
+
             doc_link ce;
             if (tbl_entity.Rows.Count > 0)
             {
@@ -286,8 +281,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("doc_link_by_id_document");
             if (cmdk != null)
             {

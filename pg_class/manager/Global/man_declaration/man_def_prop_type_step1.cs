@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace pg_class
+﻿namespace pg_class
 {
-	#region Перечисления типов свойств Шаг №1
-	/// <summary>
-	/// Перечисление допустимых типов свойств
-	/// </summary>
-	public enum ePropType
+    #region Перечисления типов свойств Шаг №1
+    /// <summary>
+    /// Перечисление допустимых типов свойств
+    /// </summary>
+    public enum ePropType
     {
         /// <summary>
         /// Свободно определяемое свойство
@@ -52,7 +47,7 @@ namespace pg_class
         /// <summary>
         /// Свойство готово к линковке
         /// </summary>
-        ready=0,
+        ready = 0,
         /// <summary>
         /// Свойство не готово к линковке содержит различные имена в снимках метаданных
         /// </summary>

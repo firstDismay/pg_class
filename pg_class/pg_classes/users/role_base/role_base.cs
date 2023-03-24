@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace pg_class.pg_classes
 {
@@ -16,7 +13,7 @@ namespace pg_class.pg_classes
         /// <summary>
         /// Закрытый конструктор по умолчанию
         /// </summary>
-        protected role_base() 
+        protected role_base()
         {
             on_change = false;
             imagekey = "role_base_us";
@@ -33,9 +30,9 @@ namespace pg_class.pg_classes
             if (row.Table.TableName == "vrole_base")
             {
                 oid = Convert.ToInt32(row["oid"]);
-                rolinherit = (Boolean) row["rolinherit"];
-                namesys = (String) row["namesys"];
-                description = (String)row["description"];     
+                rolinherit = (Boolean)row["rolinherit"];
+                namesys = (String)row["namesys"];
+                description = (String)row["description"];
             }
             else
             {
@@ -50,7 +47,7 @@ namespace pg_class.pg_classes
         private Boolean rolinherit;
         private String namesys;
         private String description;
-    
+
         /// <summary>
         /// Уникальный идентификатор учетной записи
         /// </summary>
@@ -177,7 +174,7 @@ namespace pg_class.pg_classes
         /// </summary>
         public List<user> Users_list_get()
         {
-             return Manager.user_by_roles(namesys);
+            return Manager.user_by_roles(namesys);
         }
 
         /// <summary>
@@ -203,7 +200,7 @@ namespace pg_class.pg_classes
         /// </summary>
         public override string ToString()
         {
-            
+
             return Name;
         }
         #endregion

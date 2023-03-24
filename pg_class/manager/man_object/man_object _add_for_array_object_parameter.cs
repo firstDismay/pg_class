@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Npgsql;
-using System.Data;
+﻿using Newtonsoft.Json;
+using pg_class.pg_classes;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
-using pg_class.pg_classes;
-using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Data;
 
 namespace pg_class
 {
@@ -56,7 +52,7 @@ namespace pg_class
             }
             return object_list;
         }
-       
+
         //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу

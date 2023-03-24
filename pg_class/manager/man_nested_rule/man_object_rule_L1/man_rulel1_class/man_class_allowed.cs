@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Data;
-using Npgsql;
+﻿using pg_class.pg_classes;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
-using pg_class.pg_classes;
+using System;
+using System.Collections.Generic;
+using System.Data;
 
 namespace pg_class
 {
@@ -17,7 +15,7 @@ namespace pg_class
         public List<vclass> class_allowed_rl1_by_id_position(Int64 iid_position)
         {
             List<vclass> class_list = new List<vclass>();
-            DataTable tbl_class  = TableByName("vclass");
+            DataTable tbl_class = TableByName("vclass");
 
             NpgsqlCommandKey cmdk;
             cmdk = CommandByKey("class_allowed_rl1_by_id_position");
@@ -36,7 +34,7 @@ namespace pg_class
 
             cmdk.Parameters["iid_position"].Value = iid_position;
             cmdk.Fill(tbl_class);
-            
+
             vclass cl;
             if (tbl_class.Rows.Count > 0)
             {
@@ -66,7 +64,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
+
             cmdk = CommandByKey("class_allowed_rl1_by_id_position");
             if (cmdk != null)
             {
@@ -89,7 +87,7 @@ namespace pg_class
         public List<vclass> class_allowed_rl1_by_id_pos_temp(Int64 iid_pos_temp)
         {
             List<vclass> class_list = new List<vclass>();
-            DataTable tbl_class  = TableByName("vclass");
+            DataTable tbl_class = TableByName("vclass");
             NpgsqlCommandKey cmdk;
 
             cmdk = CommandByKey("class_allowed_rl1_by_id_pos_temp");
@@ -107,7 +105,7 @@ namespace pg_class
 
             cmdk.Parameters["iid_pos_temp"].Value = iid_pos_temp;
             cmdk.Fill(tbl_class);
-            
+
             vclass cl;
             if (tbl_class.Rows.Count > 0)
             {

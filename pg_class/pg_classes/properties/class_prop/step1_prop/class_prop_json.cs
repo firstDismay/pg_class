@@ -1,6 +1,5 @@
-﻿using System;
-using Newtonsoft.Json;
-using System.Data;
+﻿using Newtonsoft.Json;
+using System;
 
 
 namespace pg_class.pg_classes

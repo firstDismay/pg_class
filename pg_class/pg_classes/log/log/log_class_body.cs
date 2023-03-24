@@ -1,6 +1,6 @@
-﻿using System;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System;
 
 namespace pg_class.pg_classes
 {
@@ -82,7 +82,7 @@ namespace pg_class.pg_classes
                                 body = body_check.ToString();
                             }
                         }
-                        catch (JsonReaderException ex){}
+                        catch (JsonReaderException ex) { }
                     }
                 }
             }

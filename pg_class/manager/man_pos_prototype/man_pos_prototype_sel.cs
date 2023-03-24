@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Npgsql;
-using System.Data;
+﻿using pg_class.pg_classes;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
-using pg_class.pg_classes;
+using System;
+using System.Collections.Generic;
+using System.Data;
 
 
 namespace pg_class
@@ -17,10 +13,10 @@ namespace pg_class
         /// <summary>
         /// Лист доступных к вложению прототипов позиций  
         /// </summary>
-        public List<pos_prototype> pos_prototype_nested_by_id_prototype( Int32 iid_prototype)
+        public List<pos_prototype> pos_prototype_nested_by_id_prototype(Int32 iid_prototype)
         {
             List<pos_prototype> proto_list = new List<pos_prototype>();
-            DataTable tbl_proto  = TableByName("vpos_prototype");
+            DataTable tbl_proto = TableByName("vpos_prototype");
             NpgsqlCommandKey cmdk;
 
             cmdk = CommandByKey("pos_prototype_nested_by_id_prototype");
@@ -38,7 +34,7 @@ namespace pg_class
 
             cmdk.Parameters["iid_prototype"].Value = iid_prototype;
             cmdk.Fill(tbl_proto);
-            
+
             pos_prototype proto;
             if (tbl_proto.Rows.Count > 0)
             {
@@ -84,7 +80,7 @@ namespace pg_class
         public List<pos_prototype> pos_prototype_by_all()
         {
             List<pos_prototype> proto_list = new List<pos_prototype>();
-            DataTable tbl_proto  = TableByName("vpos_prototype");
+            DataTable tbl_proto = TableByName("vpos_prototype");
             NpgsqlCommandKey cmdk;
 
             cmdk = CommandByKey("pos_prototype_by_all");
@@ -100,7 +96,7 @@ namespace pg_class
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
             cmdk.Fill(tbl_proto);
-            
+
             pos_prototype proto;
             if (tbl_proto.Rows.Count > 0)
             {
@@ -146,7 +142,7 @@ namespace pg_class
         public pos_prototype pos_prototype_by_id(Int32 id)
         {
             pos_prototype pos_prototype = null;
-            DataTable tbl_proto  = TableByName("vpos_prototype");
+            DataTable tbl_proto = TableByName("vpos_prototype");
             NpgsqlCommandKey cmdk;
 
             cmdk = CommandByKey("pos_prototype_by_id");
@@ -164,7 +160,7 @@ namespace pg_class
 
             cmdk.Parameters["iid"].Value = id;
             cmdk.Fill(tbl_proto);
-            
+
             if (tbl_proto.Rows.Count > 0)
             {
                 pos_prototype = new pos_prototype(tbl_proto.Rows[0]);
@@ -205,7 +201,7 @@ namespace pg_class
         public pos_prototype pos_prototype_by_id_pos_temp(Int64 id_pos_temp)
         {
             pos_prototype pos_prototype = null;
-            DataTable tbl_proto  = TableByName("vpos_prototype");
+            DataTable tbl_proto = TableByName("vpos_prototype");
             NpgsqlCommandKey cmdk;
 
             cmdk = CommandByKey("pos_prototype_by_id_pos_temp");
@@ -223,7 +219,7 @@ namespace pg_class
 
             cmdk.Parameters["iid_pos_temp"].Value = id_pos_temp;
             cmdk.Fill(tbl_proto);
-            
+
             if (tbl_proto.Rows.Count > 0)
             {
                 pos_prototype = new pos_prototype(tbl_proto.Rows[0]);

@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace pg_class.pg_classes
 {
     /// <summary>
     /// Исключение состояний сущностей БД
     /// </summary>
-public class EntityStateException : ArgumentException
+    public class EntityStateException : ArgumentException
     {
         private Int32 errorid;
         /// <summary>
@@ -36,5 +33,5 @@ public class EntityStateException : ArgumentException
             errordesc = ErrorDesc;
         }
     }
-    
+
 }

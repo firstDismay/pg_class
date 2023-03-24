@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace pg_class.pg_classes
 {
     /// <summary>
     /// Квантовый класс определящий узловую структуру пути в ветви дерева
     /// </summary>
-    public class pos_path 
+    public class pos_path
     {
         #region КОНСТРУКТОРЫ КЛАССА
 
@@ -56,7 +52,7 @@ namespace pg_class.pg_classes
         /// Идентификатор родительскго элемента, если 0 то элемент root
         /// </summary>
         public long Id_parent { get => id_parent; }
-        
+
         /// <summary>
         /// Идентификатор корневой ветви элементов
         /// </summary>

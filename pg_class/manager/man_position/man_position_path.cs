@@ -1,32 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using pg_class.pg_classes;
 using pg_class.pg_commands;
-using pg_class.pg_classes;
-using Npgsql;
-using System.Data;
 using pg_class.pg_exceptions;
+using System;
+using System.Collections.Generic;
+using System.Data;
 
 namespace pg_class
 {
     public partial class manager
     {
         #region ВЫБРАТЬ
-        
+
         /// <summary>
         /// Лист объектов path определяющих путь до позиции в дереве позиций
         /// </summary>
         public List<pos_path> position_path_by_id_position(Int64 iid_position)
         {
             List<pos_path> pos_path_list = new List<pos_path>();
-            DataTable tbl_pos_path  = TableByName("path4");
+            DataTable tbl_pos_path = TableByName("path4");
 
-            
-            
+
+
             NpgsqlCommandKey cmdk;
-            
+
             cmdk = CommandByKey("position_path_by_id_position");
 
             if (cmdk != null)
@@ -40,12 +36,12 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
 
             cmdk.Parameters["iid_position"].Value = iid_position;
 
             cmdk.Fill(tbl_pos_path);
-            
+
             pos_path pp;
             if (tbl_pos_path.Rows.Count > 0)
             {
@@ -83,8 +79,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("position_path_by_id_position");
             if (cmdk != null)
             {
@@ -100,7 +96,7 @@ namespace pg_class
             }
             return Result;
         }
-        
+
 
         #endregion
     }

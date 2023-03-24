@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace pg_class.pg_classes
 {
@@ -18,7 +15,7 @@ namespace pg_class.pg_classes
             List<object_general> Result;
             if (Extended)
             {
-                Result = Manager.object_ext_by_prop(prop_search_condition,  Id);
+                Result = Manager.object_ext_by_prop(prop_search_condition, Id);
             }
             else
             {

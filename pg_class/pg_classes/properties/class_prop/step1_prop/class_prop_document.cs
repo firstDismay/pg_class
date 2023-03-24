@@ -1,12 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
-using System.IO;
-using pg_class.pg_exceptions;
-using System.Data;
 
 namespace pg_class.pg_classes
 {
@@ -28,7 +21,7 @@ namespace pg_class.pg_classes
                                      iname, idesc, iregnum, iregdate,
                                      this);
         }
-        
+
         #endregion
 
 
@@ -74,7 +67,7 @@ namespace pg_class.pg_classes
         /// document_ext_by_id_class_prop
         /// document_by_id_class_prop
         /// </summary>
-        public List<document> document_list_get( Boolean Extended = false)
+        public List<document> document_list_get(Boolean Extended = false)
         {
             if (Extended)
             {
@@ -96,6 +89,6 @@ namespace pg_class.pg_classes
             return Manager.doc_file_extension_by_id_conception(Id_conception);
         }
         #endregion
-#endregion
+        #endregion
     }
 }

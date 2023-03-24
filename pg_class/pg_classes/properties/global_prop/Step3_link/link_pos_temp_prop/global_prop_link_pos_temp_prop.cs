@@ -1,12 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
-using System.IO;
 using System.Data;
-using pg_class.pg_exceptions;
+using System.Text;
 
 namespace pg_class.pg_classes
 {
@@ -86,7 +81,7 @@ namespace pg_class.pg_classes
         /// </summary>
         public Int64 Id_conception { get => id_conception; }
 
-       
+
 
         /// <summary>
         /// Наименование
@@ -107,7 +102,7 @@ namespace pg_class.pg_classes
             get
             {
                 Int32 result = -1;
-                DataTable tbl_pos  = manager.Instance().TableByName("vclass_prop");
+                DataTable tbl_pos = manager.Instance().TableByName("vclass_prop");
                 if (tbl_pos != null)
                 {
                     result = tbl_pos.Columns["name"].MaxLength;
@@ -146,7 +141,7 @@ namespace pg_class.pg_classes
             get
             {
                 Int32 result = -1;
-                DataTable tbl_pos  = manager.Instance().TableByName("vclass_prop");
+                DataTable tbl_pos = manager.Instance().TableByName("vclass_prop");
                 if (tbl_pos != null)
                 {
                     result = tbl_pos.Columns["desc"].MaxLength;
@@ -292,8 +287,8 @@ namespace pg_class.pg_classes
             global_prop_link_pos_temp_prop temp = null;
             Boolean Result = false;
             temp = Manager.global_prop_link_pos_temp_prop_by_id(id_global_prop, id_pos_temp_prop);
-             if (temp != null)
-             {
+            if (temp != null)
+            {
                 id_conception = temp.Id_conception;
                 id_global_prop = temp.Id_global_prop;
                 id_pos_temp = temp.Id_pos_temp;
@@ -305,11 +300,11 @@ namespace pg_class.pg_classes
                 Result = true;
                 on_change = false;
             }
-             else
-             {
-                 Result = false;
-             }
-         return Result;
+            else
+            {
+                Result = false;
+            }
+            return Result;
         }
 
         /// <summary>
@@ -328,7 +323,7 @@ namespace pg_class.pg_classes
             return Manager.Con_prop_data_type_by_id(Id_conception, Id_data_type);
         }
 
-        
+
         /// <summary>
         /// Концепция свойства класса
         /// </summary>

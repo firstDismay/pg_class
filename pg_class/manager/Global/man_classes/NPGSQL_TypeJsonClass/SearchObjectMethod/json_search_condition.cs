@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
+using System;
 
 namespace pg_class
 {
@@ -14,9 +9,9 @@ namespace pg_class
     [JsonObject(MemberSerialization.OptIn)]
     public class PropSearchСondition
     {
-     /// <summary>
-     /// Конструктор по умолчанию
-     /// </summary>
+        /// <summary>
+        /// Конструктор по умолчанию
+        /// </summary>
         public PropSearchСondition()
         {
             IdGlobalProp = -1;
@@ -45,8 +40,10 @@ namespace pg_class
         ///Метод поиска строковое представление
         /// </summary>
         [JsonProperty]
-        public String SearchMethodsToString {
-            get {
+        public String SearchMethodsToString
+        {
+            get
+            {
                 return SearchMethods.ToString();
             }
         }
@@ -87,7 +84,7 @@ namespace pg_class
         {
             String Result = manager.SearchMethodsToString(SearchMethods);
 
-            switch(SearchMethods)
+            switch (SearchMethods)
             {
                 case eSearchMethods.equal:
                     Result = String.Format("{0}{1}", Result, ValReq);
@@ -109,7 +106,7 @@ namespace pg_class
                     break;
 
                 case eSearchMethods.more_and_less:
-                    Result = String.Format("{0}{1}{2}",ValMin , Result, ValMax);
+                    Result = String.Format("{0}{1}{2}", ValMin, Result, ValMax);
                     break;
                 case eSearchMethods.more_and_less_or_equal:
                     Result = String.Format("{0}{1}{2}", ValMin, Result, ValMax);

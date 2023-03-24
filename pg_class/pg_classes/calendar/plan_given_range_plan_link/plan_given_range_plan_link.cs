@@ -1,5 +1,5 @@
-﻿using System;
-using NpgsqlTypes;
+﻿using NpgsqlTypes;
+using System;
 
 namespace pg_class.pg_classes.calendar
 {
@@ -29,7 +29,7 @@ namespace pg_class.pg_classes.calendar
                 id = (Int64)row["id"];
                 id_conception = (Int64)row["id_conception"];
                 id_plan_given_range_plan = (Int64)row["id_plan_given_range_plan"];
-                
+
                 range_plan = (NpgsqlRange<DateTime>)row["range_plan"];
 
                 id_entity = (Int32)row["id_entity"];
@@ -41,7 +41,7 @@ namespace pg_class.pg_classes.calendar
                 throw new ArgumentOutOfRangeException(String.Format("Наименование входной таблицы '{0}' не соответствует ограничениям конструктора!", row.Table.TableName));
             }
         }
-        
+
         #endregion
 
         #region СВОЙСТВА КЛАССА
@@ -153,7 +153,7 @@ namespace pg_class.pg_classes.calendar
             return Manager.doc_link_is_actual(id);
         }
 
-        
+
         /// <summary>
         /// Обновление группы из БД
         /// </summary>

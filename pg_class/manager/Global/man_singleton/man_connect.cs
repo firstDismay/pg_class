@@ -1,14 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Npgsql;
-using pg_class.pg_exceptions;
-using System.Data;
-using System.Net.Sockets;
-using pg_class.pg_commands;
-using pg_class.poolcn;
+﻿using pg_class.poolcn;
+using System;
 
 namespace pg_class
 {
@@ -69,7 +60,7 @@ namespace pg_class
             connect Result = null;
             if (pool_ != null)
             {
-                Result =  pool_.Connect_Get();
+                Result = pool_.Connect_Get();
             }
             return Result;
         }
@@ -94,6 +85,6 @@ namespace pg_class
                 Me = null;
             }
         }
-    #endregion
+        #endregion
     }
 }

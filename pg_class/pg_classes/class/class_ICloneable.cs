@@ -1,12 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
-using System.IO;
-using System.Data;
-using pg_class.pg_exceptions;
 
 namespace pg_class.pg_classes
 {
@@ -29,7 +21,7 @@ namespace pg_class.pg_classes
                     result = Manager.class_act_by_id(id);
                     break;
                 case eStorageType.History:
-                    result = Manager.class_snapshot_by_id(id,timestamp);
+                    result = Manager.class_snapshot_by_id(id, timestamp);
                     break;
             }
             return result;

@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Npgsql;
-using System.Data;
+﻿using pg_class.pg_classes;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
-using pg_class.pg_classes;
+using System;
+using System.Collections.Generic;
+using System.Data;
 
 namespace pg_class
 {
@@ -17,16 +13,16 @@ namespace pg_class
         /// <summary>
         /// Лист свойств класса по идентификатору класса-носителя с учетом метода сложного поиска
         /// </summary>
-        public List<class_prop> class_prop_snapshot_by_id_class_snapshot_search_method(Int64  iid_class_snapshot, DateTime itimestamp_class_snapshot, eSearchMethods isearch_method)
+        public List<class_prop> class_prop_snapshot_by_id_class_snapshot_search_method(Int64 iid_class_snapshot, DateTime itimestamp_class_snapshot, eSearchMethods isearch_method)
         {
             List<class_prop> class_prop_list = new List<class_prop>();
-            
-            DataTable tbl_class_prop  = TableByName("vclass_prop");
-            
-            
+
+            DataTable tbl_class_prop = TableByName("vclass_prop");
+
+
             NpgsqlCommandKey cmdk;
 
-            
+
             cmdk = CommandByKey("class_prop_snapshot_by_id_class_snapshot_search_method");
 
             if (cmdk != null)
@@ -40,14 +36,14 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
 
             cmdk.Parameters["iid_class_snapshot"].Value = iid_class_snapshot;
             cmdk.Parameters["itimestamp_class_snapshot"].Value = itimestamp_class_snapshot;
             cmdk.Parameters["isearch_method"].Value = isearch_method.ToString();
 
             cmdk.Fill(tbl_class_prop);
-            
+
             class_prop cp;
             if (tbl_class_prop.Rows.Count > 0)
             {
@@ -77,8 +73,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("class_prop_snapshot_by_id_class_snapshot_search_method");
             if (cmdk != null)
             {

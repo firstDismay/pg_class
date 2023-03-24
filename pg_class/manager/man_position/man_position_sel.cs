@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Npgsql;
-using System.Data;
+﻿using pg_class.pg_classes;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
-using pg_class.pg_classes;
+using System;
+using System.Collections.Generic;
+using System.Data;
 
 namespace pg_class
 {
@@ -20,12 +16,12 @@ namespace pg_class
         {
             position position = null;
 
-            DataTable tbl_pos  = TableByName("vposition");
-            
-            
+            DataTable tbl_pos = TableByName("vposition");
+
+
             NpgsqlCommandKey cmdk;
 
-            
+
             cmdk = CommandByKey("position_by_id");
 
             if (cmdk != null)
@@ -39,12 +35,12 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
 
             cmdk.Parameters["iid"].Value = id;
 
             cmdk.Fill(tbl_pos);
-            
+
             if (tbl_pos.Rows.Count > 0)
             {
                 position = new position(tbl_pos.Rows[0]);
@@ -69,8 +65,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("position_by_id");
             if (cmdk != null)
             {
@@ -86,24 +82,24 @@ namespace pg_class
             }
             return Result;
         }
-        
 
-        
+
+
         /// <summary>
         /// Лист позиций по идентификатору родительской позиции
         /// position_by_id_parent
         /// </summary>
         public List<position> position_by_id_parent(Int64 id_parent, Int64 id_con)
         {
-            List<position>  pos_list = new List<position>();
+            List<position> pos_list = new List<position>();
 
-            
-            DataTable tbl_pos  = TableByName("vposition");
-            
-            
+
+            DataTable tbl_pos = TableByName("vposition");
+
+
             NpgsqlCommandKey cmdk;
 
-            
+
             cmdk = CommandByKey("position_by_id_parent");
 
             if (cmdk != null)
@@ -117,13 +113,13 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
 
             cmdk.Parameters["iid_parent"].Value = id_parent;
             cmdk.Parameters["iid_con"].Value = id_con;
 
             cmdk.Fill(tbl_pos);
-            
+
             position pt;
             if (tbl_pos.Rows.Count > 0)
             {
@@ -174,8 +170,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("position_by_id_parent");
             if (cmdk != null)
             {
@@ -191,20 +187,20 @@ namespace pg_class
             }
             return Result;
         }
-        
-       
+
+
         /// <summary>
         /// Лист позиций по идентификатору шаблона позиции
         /// </summary>
         public List<position> position_by_id_pos_temp(Int64 id_pos_temp)
         {
             List<position> pos_list = new List<position>();
-            DataTable tbl_pos  = TableByName("vposition");
-            
-            
+            DataTable tbl_pos = TableByName("vposition");
+
+
             NpgsqlCommandKey cmdk;
 
-            
+
             cmdk = CommandByKey("position_by_id_pos_temp");
 
             if (cmdk != null)
@@ -218,12 +214,12 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
 
             cmdk.Parameters["iid_pos_temp"].Value = id_pos_temp;
 
             cmdk.Fill(tbl_pos);
-            
+
             position pt;
             if (tbl_pos.Rows.Count > 0)
             {
@@ -254,8 +250,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("position_by_id_pos_temp");
             if (cmdk != null)
             {
@@ -271,7 +267,7 @@ namespace pg_class
             }
             return Result;
         }
-        
+
 
         /// <summary>
         /// Лист позиций по идентификатору глобального свойства
@@ -280,11 +276,11 @@ namespace pg_class
         {
             List<position> pos_list = new List<position>();
             DataTable tbl_pos = TableByName("vposition");
-            
-            
+
+
             NpgsqlCommandKey cmdk;
 
-            
+
             cmdk = CommandByKey("position_by_id_global_prop");
 
             if (cmdk != null)
@@ -298,12 +294,12 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
 
             cmdk.Parameters["iid_global_prop"].Value = iid_global_prop;
 
             cmdk.Fill(tbl_pos);
-            
+
             position pt;
             if (tbl_pos.Rows.Count > 0)
             {
@@ -333,8 +329,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("position_by_id_global_prop");
             if (cmdk != null)
             {
@@ -350,7 +346,7 @@ namespace pg_class
             }
             return Result;
         }
-        
+
 
         /// <summary>
         /// Лист позиций по идентификатору типа данных свойств
@@ -359,11 +355,11 @@ namespace pg_class
         {
             List<position> pos_list = new List<position>();
             DataTable tbl_pos = TableByName("vposition");
-            
-            
+
+
             NpgsqlCommandKey cmdk;
 
-            
+
             cmdk = CommandByKey("position_by_id_prop_data_type");
 
             if (cmdk != null)
@@ -377,13 +373,13 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
 
             cmdk.Parameters["iid_conception"].Value = iid_conception;
             cmdk.Parameters["iid_prop_data_type"].Value = iid_prop_data_type;
 
             cmdk.Fill(tbl_pos);
-            
+
             position pt;
             if (tbl_pos.Rows.Count > 0)
             {
@@ -414,8 +410,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("position_by_id_prop_data_type");
             if (cmdk != null)
             {
@@ -431,7 +427,7 @@ namespace pg_class
             }
             return Result;
         }
-        
+
 
         /// <summary>
         /// Лист позиций по идентификатору перечисления
@@ -440,11 +436,11 @@ namespace pg_class
         {
             List<position> pos_list = new List<position>();
             DataTable tbl_pos = TableByName("vposition");
-            
-            
+
+
             NpgsqlCommandKey cmdk;
 
-            
+
             cmdk = CommandByKey("position_by_id_prop_enum");
 
             if (cmdk != null)
@@ -458,12 +454,12 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
 
             cmdk.Parameters["iid_prop_enum"].Value = iid_prop_enum;
 
             cmdk.Fill(tbl_pos);
-            
+
             position pt;
             if (tbl_pos.Rows.Count > 0)
             {
@@ -494,8 +490,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("position_by_id_prop_enum");
             if (cmdk != null)
             {
@@ -511,7 +507,7 @@ namespace pg_class
             }
             return Result;
         }
-        
+
 
         /// <summary>
         /// Лист позиций по идентификатору элемента перечисления
@@ -520,11 +516,11 @@ namespace pg_class
         {
             List<position> pos_list = new List<position>();
             DataTable tbl_pos = TableByName("vposition");
-            
-            
+
+
             NpgsqlCommandKey cmdk;
 
-            
+
             cmdk = CommandByKey("position_by_id_prop_enum_val");
 
             if (cmdk != null)
@@ -538,12 +534,12 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
 
             cmdk.Parameters["iid_prop_enum_val"].Value = iid_prop_enum_val;
 
             cmdk.Fill(tbl_pos);
-            
+
             position pt;
             if (tbl_pos.Rows.Count > 0)
             {
@@ -574,8 +570,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("position_by_id_prop_enum_val");
             if (cmdk != null)
             {
@@ -591,7 +587,7 @@ namespace pg_class
             }
             return Result;
         }
-        
+
 
         /// <summary>
         /// Лист макетов наименований позиций по идентификатору шаблона позиции
@@ -600,11 +596,11 @@ namespace pg_class
         {
             List<String> pos_list = new List<String>();
             DataTable tbl_pos = new DataTable();
-            
-            
+
+
             NpgsqlCommandKey cmdk;
 
-            
+
             cmdk = CommandByKey("position_name_layout_by_id_pos_temp");
 
             if (cmdk != null)
@@ -618,12 +614,12 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
 
             cmdk.Parameters["iid_pos_temp"].Value = iid_pos_temp;
 
             cmdk.Fill(tbl_pos);
-            
+
             String pt;
             if (tbl_pos.Rows.Count > 0)
             {
@@ -654,8 +650,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("position_name_layout_by_id_pos_temp");
             if (cmdk != null)
             {
@@ -671,9 +667,9 @@ namespace pg_class
             }
             return Result;
         }
-        
-        
-        
+
+
+
         /// <summary>
         /// Лист дочерних позиций по строгому соотвествию имени
         /// </summary>
@@ -682,12 +678,12 @@ namespace pg_class
             List<position> pos_list = new List<position>();
 
 
-            DataTable tbl_pos  = TableByName("vposition");
-            
-            
+            DataTable tbl_pos = TableByName("vposition");
+
+
             NpgsqlCommandKey cmdk;
 
-            
+
             cmdk = CommandByKey("position_by_name");
 
             if (cmdk != null)
@@ -701,13 +697,13 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
 
             cmdk.Parameters["iid_parent"].Value = iid_parent;
             cmdk.Parameters["iname"].Value = iname;
 
             cmdk.Fill(tbl_pos);
-            
+
             position pt;
             if (tbl_pos.Rows.Count > 0)
             {
@@ -738,8 +734,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("position_by_name");
             if (cmdk != null)
             {

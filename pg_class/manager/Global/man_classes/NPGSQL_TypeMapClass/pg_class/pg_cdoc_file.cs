@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace pg_class
 {
@@ -11,7 +7,7 @@ namespace pg_class
     /// </summary>
     public class pg_vdoc_file
     {
-        public Int64 id  { get; set; }
+        public Int64 id { get; set; }
         public Guid uuid { get; set; }
         public String md5 { get; set; }
         public Int64 id_conception { get; set; }
@@ -30,5 +26,5 @@ namespace pg_class
             return name;
         }
     }
-}	
+}
 

@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Data;
-using Npgsql;
+﻿using pg_class.pg_classes;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
-using pg_class.pg_classes;
+using System;
+using System.Collections.Generic;
+using System.Data;
 
 namespace pg_class
 {
@@ -17,7 +15,7 @@ namespace pg_class
         public rulel1_class_on_pos_temp rulel1_class_on_pos_temp_by_id(Int64 iid_class, Int64 iid_pos_temp)
         {
             rulel1_class_on_pos_temp rulel1 = null;
-            DataTable tbl_rl1  = TableByName("vrulel1_class_on_pos_temp");
+            DataTable tbl_rl1 = TableByName("vrulel1_class_on_pos_temp");
             NpgsqlCommandKey cmdk;
 
             cmdk = CommandByKey("rulel1_class_on_pos_temp_by_id");
@@ -36,7 +34,7 @@ namespace pg_class
             cmdk.Parameters["iid_class"].Value = iid_class;
             cmdk.Parameters["iid_pos_temp"].Value = iid_pos_temp;
             cmdk.Fill(tbl_rl1);
-            
+
             if (tbl_rl1.Rows.Count > 0)
             {
                 rulel1 = new rulel1_class_on_pos_temp(tbl_rl1.Rows[0]);
@@ -83,7 +81,7 @@ namespace pg_class
         public List<rulel1_class_on_pos_temp> rulel1_class_on_pos_temp_by_id_class(Int64 iid_class)
         {
             List<rulel1_class_on_pos_temp> rulel1_list = new List<rulel1_class_on_pos_temp>();
-            DataTable tbl_rulel1  = TableByName("vrulel1_class_on_pos_temp");
+            DataTable tbl_rulel1 = TableByName("vrulel1_class_on_pos_temp");
             NpgsqlCommandKey cmdk;
 
             cmdk = CommandByKey("rulel1_class_on_pos_temp_by_id_class");
@@ -101,7 +99,7 @@ namespace pg_class
 
             cmdk.Parameters["iid_class"].Value = iid_class;
             cmdk.Fill(tbl_rulel1);
-            
+
             rulel1_class_on_pos_temp rl1;
             if (tbl_rulel1.Rows.Count > 0)
             {
@@ -154,7 +152,7 @@ namespace pg_class
         public List<rulel1_class_on_pos_temp> rulel1_class_on_pos_temp_by_id_pos_temp(Int64 iid_pos_temp)
         {
             List<rulel1_class_on_pos_temp> rulel1_list = new List<rulel1_class_on_pos_temp>();
-            DataTable tbl_rulel1  = TableByName("vrulel1_class_on_pos_temp");
+            DataTable tbl_rulel1 = TableByName("vrulel1_class_on_pos_temp");
             NpgsqlCommandKey cmdk;
 
             cmdk = CommandByKey("rulel1_class_on_pos_temp_by_id_pos_temp");
@@ -172,7 +170,7 @@ namespace pg_class
 
             cmdk.Parameters["iid_pos_temp"].Value = iid_pos_temp;
             cmdk.Fill(tbl_rulel1);
-            
+
             rulel1_class_on_pos_temp rl1;
             if (tbl_rulel1.Rows.Count > 0)
             {

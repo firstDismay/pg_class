@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Npgsql;
-using System.Data;
+﻿using pg_class.pg_classes;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
-using pg_class.pg_classes;
-using System.Security.Cryptography;
-using System.IO;
+using System;
+using System.Collections.Generic;
+using System.Data;
 
 namespace pg_class
 {
@@ -21,7 +15,7 @@ namespace pg_class
         public document document_by_id(Int64 iid)
         {
             document document = null;
-            DataTable tbl_entity  = TableByName("vdocument");
+            DataTable tbl_entity = TableByName("vdocument");
             NpgsqlCommandKey cmdk;
 
             cmdk = CommandByKey("document_by_id");
@@ -39,7 +33,7 @@ namespace pg_class
 
             cmdk.Parameters["iid"].Value = iid;
             cmdk.Fill(tbl_entity);
-            
+
             if (tbl_entity.Rows.Count > 0)
             {
                 document = new document(tbl_entity.Rows[0]);
@@ -78,8 +72,8 @@ namespace pg_class
         /// </summary>
         public List<document> document_by_id_parent(Int64 iid_parent)
         {
-            List<document>  entity_list = new List<document>();
-            DataTable tbl_entity  = TableByName("vdocument");
+            List<document> entity_list = new List<document>();
+            DataTable tbl_entity = TableByName("vdocument");
             NpgsqlCommandKey cmdk;
 
             cmdk = CommandByKey("document_by_id_parent");
@@ -97,7 +91,7 @@ namespace pg_class
 
             cmdk.Parameters["iid_parent"].Value = iid_parent;
             cmdk.Fill(tbl_entity);
-            
+
             document ce;
             if (tbl_entity.Rows.Count > 0)
             {
@@ -163,7 +157,7 @@ namespace pg_class
             cmdk.Parameters["iid_conception"].Value = iid_conception;
 
             cmdk.Fill(tbl_entity);
-            
+
             document ce;
             if (tbl_entity.Rows.Count > 0)
             {
@@ -201,7 +195,7 @@ namespace pg_class
             }
             return Result;
         }
- 
+
         /// <summary>
         /// Лист документов по идентификатору категории документов
         /// </summary>
@@ -226,7 +220,7 @@ namespace pg_class
 
             cmdk.Parameters["iid_category"].Value = iid_category;
             cmdk.Fill(tbl_entity);
-            
+
             document ce;
             if (tbl_entity.Rows.Count > 0)
             {
@@ -293,7 +287,7 @@ namespace pg_class
             cmdk.Parameters["object_on"].Value = object_on;
             cmdk.Parameters["recursive_on"].Value = recursive_on;
             cmdk.Fill(tbl_entity);
-            
+
             document ce;
             if (tbl_entity.Rows.Count > 0)
             {
@@ -313,7 +307,7 @@ namespace pg_class
         {
             return document_by_id_pos_temp(Pos_temp.Id, position_on, object_on, recursive_on);
         }
-        
+
         //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
@@ -339,7 +333,7 @@ namespace pg_class
             }
             return Result;
         }
-       
+
         /// <summary>
         /// Лист документов по идентификатору позиции
         /// </summary>
@@ -366,7 +360,7 @@ namespace pg_class
             cmdk.Parameters["object_on"].Value = object_on;
             cmdk.Parameters["recursive_on"].Value = recursive_on;
             cmdk.Fill(tbl_entity);
-            
+
             document ce;
             if (tbl_entity.Rows.Count > 0)
             {
@@ -412,7 +406,7 @@ namespace pg_class
             }
             return Result;
         }
-       
+
         /// <summary>
         /// Лист документов по идентификатору пользователя
         /// </summary>
@@ -437,7 +431,7 @@ namespace pg_class
 
             cmdk.Parameters["iid_user"].Value = iid_user;
             cmdk.Fill(tbl_entity);
-            
+
             document ce;
             if (tbl_entity.Rows.Count > 0)
             {
@@ -510,7 +504,7 @@ namespace pg_class
             cmdk.Parameters["iid_pos_temp_prop"].Value = iid_pos_temp_prop;
             cmdk.Parameters["iid_position"].Value = iid_position;
             cmdk.Fill(tbl_entity);
-            
+
             document ce;
             if (tbl_entity.Rows.Count > 0)
             {
@@ -556,7 +550,7 @@ namespace pg_class
             }
             return Result;
         }
-        
+
         /// <summary>
         /// Лист документов по идентификатору свойства шаблона позиции
         /// </summary>
@@ -581,7 +575,7 @@ namespace pg_class
 
             cmdk.Parameters["iid_pos_temp_prop"].Value = iid_pos_temp_prop;
             cmdk.Fill(tbl_entity);
-            
+
             document ce;
             if (tbl_entity.Rows.Count > 0)
             {
@@ -627,11 +621,11 @@ namespace pg_class
             }
             return Result;
         }
-        
+
         /// <summary>
         /// Лист документов по идентификатору группы классов
         /// </summary>
-        public List<document> document_by_id_group(Int64 iid_group, Boolean class_on, Boolean object_on , Boolean recursive_on)
+        public List<document> document_by_id_group(Int64 iid_group, Boolean class_on, Boolean object_on, Boolean recursive_on)
         {
             List<document> entity_list = new List<document>();
             DataTable tbl_entity = TableByName("vdocument");
@@ -656,7 +650,7 @@ namespace pg_class
             cmdk.Parameters["object_on"].Value = object_on;
             cmdk.Parameters["recursive_on"].Value = recursive_on;
             cmdk.Fill(tbl_entity);
-            
+
             document ce;
             if (tbl_entity.Rows.Count > 0)
             {
@@ -730,7 +724,7 @@ namespace pg_class
             cmdk.Parameters["object_on"].Value = object_on;
             cmdk.Parameters["recursive_on"].Value = recursive_on;
             cmdk.Fill(tbl_entity);
-            
+
             document ce;
             if (tbl_entity.Rows.Count > 0)
             {
@@ -801,7 +795,7 @@ namespace pg_class
 
             cmdk.Parameters["iid_class_prop"].Value = iid_class_prop;
             cmdk.Fill(tbl_entity);
-            
+
             document ce;
             if (tbl_entity.Rows.Count > 0)
             {
@@ -870,12 +864,12 @@ namespace pg_class
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
 
-            cmdk.Parameters["iid_entity_instatce"].Value = iid_entity_instatce;
+            cmdk.Parameters["iid_object"].Value = iid_object;
             cmdk.Parameters["class_on"].Value = class_on;
             cmdk.Parameters["group_on"].Value = group_on;
             cmdk.Parameters["recursive_on"].Value = recursive_on;
             cmdk.Fill(tbl_entity);
-            
+
             document ce;
             if (tbl_entity.Rows.Count > 0)
             {
@@ -947,7 +941,7 @@ namespace pg_class
             cmdk.Parameters["iid_class_prop"].Value = iid_class_prop;
             cmdk.Parameters["iid_object"].Value = iid_object;
             cmdk.Fill(tbl_entity);
-            
+
             document ce;
             if (tbl_entity.Rows.Count > 0)
             {
@@ -993,7 +987,7 @@ namespace pg_class
             }
             return Result;
         }
-        
+
 
         /// <summary>
         /// Лист документов концепции по маске имени документа
@@ -1020,7 +1014,7 @@ namespace pg_class
             cmdk.Parameters["iname"].Value = iname;
             cmdk.Parameters["iid_conception"].Value = iid_conception;
             cmdk.Fill(tbl_entity);
-            
+
             document ce;
             if (tbl_entity.Rows.Count > 0)
             {
@@ -1059,7 +1053,7 @@ namespace pg_class
             }
             return Result;
         }
-       
+
         /// <summary>
         /// Лист документов категории по маске имени документа
         /// </summary>
@@ -1085,7 +1079,7 @@ namespace pg_class
             cmdk.Parameters["iname"].Value = iname;
             cmdk.Parameters["iid_category"].Value = iid_category;
             cmdk.Fill(tbl_entity);
-            
+
             document ce;
             if (tbl_entity.Rows.Count > 0)
             {

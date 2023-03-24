@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
-using System.IO;
 using System.Data;
 
 namespace pg_class.pg_classes
@@ -47,7 +41,7 @@ namespace pg_class.pg_classes
                 sort = (Int32)row["sort"];
                 on_recycle = (Boolean)row["on_recycle"];
                 timestamp = Convert.ToDateTime(row["timestamp"]);
-                on_class =  (Boolean)row["on_class"];
+                on_class = (Boolean)row["on_class"];
                 include_act_class = (Boolean)row["include_act_class"];
                 timestamp_child_change = Convert.ToDateTime(row["timestamp_child_change"]);
                 in_recycle = (Boolean)row["in_recycle"];
@@ -95,24 +89,24 @@ namespace pg_class.pg_classes
         /// <summary>
         /// Идентификатор группы
         /// </summary>
-        public Int64 Id { get => id;}
+        public Int64 Id { get => id; }
 
         /// <summary>
         /// Штамп времени группы
         /// </summary>
         public DateTime Timestamp { get => timestamp; }
 
-       
+
         /// <summary>
         /// Идентификатор родительской группы, если 0 то группа root (корень ветви)
         /// </summary>
-        public long Id_parent { get => id_parent;}
+        public long Id_parent { get => id_parent; }
 
         /// <summary>
         /// Идентификатор корневой группы ветви групп
         /// </summary>
-        public long Id_root { get => id_root;}
-        
+        public long Id_root { get => id_root; }
+
 
         /// <summary>
         /// Наименование группы
@@ -122,7 +116,7 @@ namespace pg_class.pg_classes
             get
             {
                 return name;
-            } 
+            }
             set
             {
                 if (name != value)
@@ -145,7 +139,7 @@ namespace pg_class.pg_classes
             get
             {
                 Int32 result = -1;
-                DataTable tbl_pos  = manager.Instance().TableByName("vgroup");
+                DataTable tbl_pos = manager.Instance().TableByName("vgroup");
                 if (tbl_pos != null)
                 {
                     result = tbl_pos.Columns["name"].MaxLength;
@@ -172,7 +166,7 @@ namespace pg_class.pg_classes
                     }
                     desc = value;
                     on_change = true;
-                   
+
                 }
             }
         }
@@ -181,12 +175,12 @@ namespace pg_class.pg_classes
         /// <summary>
         /// Максимально допустимая длинна строкового поля
         /// </summary>
-        public static  Int32 Desc_len
+        public static Int32 Desc_len
         {
             get
             {
                 Int32 result = -1;
-                DataTable tbl_pos  = manager.Instance().TableByName("vgroup");
+                DataTable tbl_pos = manager.Instance().TableByName("vgroup");
                 if (tbl_pos != null)
                 {
                     result = tbl_pos.Columns["desc"].MaxLength;
@@ -199,14 +193,14 @@ namespace pg_class.pg_classes
         /// <summary>
         /// Идентификатор концепции группы
         /// </summary>
-        public long Id_conception { get => id_con;}
+        public long Id_conception { get => id_con; }
 
-                
+
 
         /// <summary>
         /// Уровень вложенности группы (с нуля)
         /// </summary>
-        public int LevelGroup { get => level;}
+        public int LevelGroup { get => level; }
 
         /// <summary>
         /// Порядок сортировки текущего уровня вложенности групп
@@ -214,8 +208,8 @@ namespace pg_class.pg_classes
         public int Sort
         {
             get
-            { 
-               return sort;
+            {
+                return sort;
             }
             set
             {
@@ -223,12 +217,12 @@ namespace pg_class.pg_classes
                 {
                     sort = value;
                     on_change = true;
-                  
+
                 }
             }
         }
 
-        
+
         /// <summary>
         /// Признак корзины групп
         /// </summary>
@@ -239,15 +233,15 @@ namespace pg_class.pg_classes
         /// </summary>
         public Boolean In_recycle { get => in_recycle; }
 
-        
+
         /// <summary>
         /// Поле определяет режим фильтрации дочерних групп
         /// </summary>
         public eStatus Child_status
         {
             get
-            { 
-              return child_status;
+            {
+                return child_status;
             }
             set
             {
@@ -255,7 +249,7 @@ namespace pg_class.pg_classes
                 {
                     child_status = value;
                     on_change = true;
-                   
+
                 }
             }
         }
@@ -315,7 +309,7 @@ namespace pg_class.pg_classes
             }
         }
 
-        
+
         /// <summary>
         /// Ссылка на менеджера данных
         /// </summary>
@@ -370,7 +364,7 @@ namespace pg_class.pg_classes
         public void Update()
         {
             if (on_change)
-            {             
+            {
                 Manager.group_upd(this);
                 Refresh();
                 on_change = false;
@@ -385,7 +379,7 @@ namespace pg_class.pg_classes
         {
             Manager.group_move(this, ParentGroup);
         }
-        
+
 
         /// <summary>
         /// Метод переносит группу в указанную родительскую группу
@@ -437,7 +431,7 @@ namespace pg_class.pg_classes
         /// </summary>
         public Boolean Assigned_to_rule_l1()
         {
-            throw(new Exception("Метод не определен!")) ;
+            throw (new Exception("Метод не определен!"));
         }
 
         /// <summary>

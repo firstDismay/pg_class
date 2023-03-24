@@ -1,12 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
-using System.IO;
 using System.Data;
-using pg_class.pg_exceptions;
+using System.Text;
 
 namespace pg_class.pg_classes
 {
@@ -49,7 +44,7 @@ namespace pg_class.pg_classes
                 on_override_prop_inherit = (Boolean)row["on_override_prop_inherit"];
                 on_val = (Boolean)row["on_val"];
                 string_val = (String)row["string_val"];
-                
+
                 tablename = (String)row["tablename"];
                 ready = (Boolean)row["ready"];
                 id_conception = (Int64)row["id_conception"];
@@ -90,7 +85,7 @@ namespace pg_class.pg_classes
                 id_data_type = cp.id_data_type;
                 name = cp.name;
                 desc = cp.desc;
-                
+
                 sort = cp.sort;
                 on_override = cp.on_override;
                 on_override_prop_inherit = cp.on_override_prop_inherit;
@@ -217,7 +212,7 @@ namespace pg_class.pg_classes
             get
             {
                 Int32 result = -1;
-                DataTable tbl_pos  = manager.Instance().TableByName("vclass_prop");
+                DataTable tbl_pos = manager.Instance().TableByName("vclass_prop");
                 if (tbl_pos != null)
                 {
                     result = tbl_pos.Columns["name"].MaxLength;
@@ -257,7 +252,7 @@ namespace pg_class.pg_classes
             get
             {
                 Int32 result = -1;
-                DataTable tbl_pos  = manager.Instance().TableByName("vclass_prop");
+                DataTable tbl_pos = manager.Instance().TableByName("vclass_prop");
                 if (tbl_pos != null)
                 {
                     result = tbl_pos.Columns["desc"].MaxLength;
@@ -486,7 +481,7 @@ namespace pg_class.pg_classes
                 return string_val;
             }
         }
-        
+
 
         /// <summary>
         /// Тип хранилища данных сущности

@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Npgsql;
-using System.Data;
+﻿using pg_class.pg_classes.calendar;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
-using pg_class.pg_classes;
-using pg_class.pg_classes.calendar;
+using System;
+using System.Collections.Generic;
+using System.Data;
 
 namespace pg_class
 {
@@ -20,7 +15,7 @@ namespace pg_class
         public plan_link plan_link_by_id(Int64 iid)
         {
             plan_link plan_link = null;
-            DataTable tbl_entity  = TableByName("vplan_link");
+            DataTable tbl_entity = TableByName("vplan_link");
             NpgsqlCommandKey cmdk;
 
             cmdk = CommandByKey("plan_link_by_id");
@@ -38,7 +33,7 @@ namespace pg_class
 
             cmdk.Parameters["iid"].Value = iid;
             cmdk.Fill(tbl_entity);
-            
+
             if (tbl_entity.Rows.Count > 0)
             {
                 plan_link = new plan_link(tbl_entity.Rows[0]);
@@ -77,8 +72,8 @@ namespace pg_class
         /// </summary>
         public List<plan_link> plan_link_by_id_plan(Int64 iid_plan)
         {
-            List<plan_link>  entity_list = new List<plan_link>();
-            DataTable tbl_entity  = TableByName("vplan_link");
+            List<plan_link> entity_list = new List<plan_link>();
+            DataTable tbl_entity = TableByName("vplan_link");
             NpgsqlCommandKey cmdk;
 
             cmdk = CommandByKey("plan_link_by_id_plan");

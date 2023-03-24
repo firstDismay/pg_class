@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Npgsql;
-using System.Data;
+﻿using pg_class.pg_classes;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
-using pg_class.pg_classes;
+using System;
+using System.Collections.Generic;
+using System.Data;
 
 namespace pg_class
 {
@@ -20,12 +16,12 @@ namespace pg_class
         {
             global_prop_link_class_prop global_prop_link_class_prop = null;
 
-            DataTable tbl_vglobal_prop_link  = TableByName("vglobal_prop_link_class_prop");
-            
-            
+            DataTable tbl_vglobal_prop_link = TableByName("vglobal_prop_link_class_prop");
+
+
             NpgsqlCommandKey cmdk;
 
-            
+
             cmdk = CommandByKey("global_prop_link_class_prop_by_id");
 
             if (cmdk != null)
@@ -39,13 +35,13 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
 
             cmdk.Parameters["iid_global_prop"].Value = iid_global_prop;
             cmdk.Parameters["iid_class_prop_definition"].Value = iid_class_prop_definition;
 
             cmdk.Fill(tbl_vglobal_prop_link);
-                        
+
             if (tbl_vglobal_prop_link.Rows.Count > 0)
             {
                 global_prop_link_class_prop = new global_prop_link_class_prop(tbl_vglobal_prop_link.Rows[0]);
@@ -78,8 +74,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("global_prop_link_class_prop_by_id");
             if (cmdk != null)
             {
@@ -96,7 +92,7 @@ namespace pg_class
             return Result;
         }
 
-        
+
         /// <summary>
         /// Лист ссылок глобального свойства на свойства классов по идентификатору глобального свойства
         /// </summary>
@@ -104,13 +100,13 @@ namespace pg_class
         {
             List<global_prop_link_class_prop> global_prop_link_list = new List<global_prop_link_class_prop>();
 
-            
-            DataTable tbl_global_prop_link  = TableByName("vglobal_prop_link_class_prop");
-            
-            
+
+            DataTable tbl_global_prop_link = TableByName("vglobal_prop_link_class_prop");
+
+
             NpgsqlCommandKey cmdk;
 
-            
+
             cmdk = CommandByKey("global_prop_link_class_prop_by_id_global_prop");
 
             if (cmdk != null)
@@ -124,12 +120,12 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
 
             cmdk.Parameters["iid_global_prop"].Value = iid_global_prop;
 
             cmdk.Fill(tbl_global_prop_link);
-            
+
             global_prop_link_class_prop gpl;
             if (tbl_global_prop_link.Rows.Count > 0)
             {
@@ -159,8 +155,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("global_prop_link_class_prop_by_id_global_prop");
             if (cmdk != null)
             {

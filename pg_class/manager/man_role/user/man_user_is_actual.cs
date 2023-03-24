@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Npgsql;
-using System.Data;
+﻿using pg_class.pg_classes;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
-using pg_class.pg_classes;
+using System;
 
 namespace pg_class
 {
@@ -19,9 +13,9 @@ namespace pg_class
         public eEntityState user_is_actual(String ilogin, DateTime itimestamp)
         {
             Int32 is_actual = 3;
-            
+
             NpgsqlCommandKey cmdk;
-            
+
             cmdk = CommandByKey("user_is_actual");
             if (cmdk != null)
             {
@@ -38,7 +32,7 @@ namespace pg_class
             cmdk.Parameters["ilogin"].Value = ilogin;
             cmdk.Parameters["itimestamp"].Value = itimestamp;
             is_actual = (Int32)cmdk.ExecuteScalar();
-            
+
             return (eEntityState)is_actual;
         }
 
@@ -119,8 +113,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("user_pwd_can_change");
 
             if (cmdk != null)
@@ -138,7 +132,7 @@ namespace pg_class
             return Result;
         }
 
-        
+
         /// <summary>
         /// Метод определяет членство учетной записи в указанной роли
         /// </summary>
@@ -163,7 +157,7 @@ namespace pg_class
             cmdk.Parameters["ilogin"].Value = ilogin;
             cmdk.Parameters["irole"].Value = irole;
             cmdk.Parameters["irecursive"].Value = irecursive;
-            
+
             return (Boolean)cmdk.ExecuteScalar();
         }
 
@@ -192,8 +186,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("user_is_member_role");
 
             if (cmdk != null)

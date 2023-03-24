@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Npgsql;
-using System.Data;
+﻿using pg_class.pg_classes;
+using pg_class.pg_classes.calendar;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
-using pg_class.pg_classes;
-using pg_class.pg_classes.calendar;
+using System;
+using System.Collections.Generic;
+using System.Data;
 
 namespace pg_class
 {
@@ -20,7 +16,7 @@ namespace pg_class
         public plan plan_by_id(Int64 iid)
         {
             plan plan = null;
-            DataTable tbl_entity  = TableByName("vplan");
+            DataTable tbl_entity = TableByName("vplan");
             NpgsqlCommandKey cmdk;
 
             cmdk = CommandByKey("plan_by_id");
@@ -38,7 +34,7 @@ namespace pg_class
 
             cmdk.Parameters["iid"].Value = iid;
             cmdk.Fill(tbl_entity);
-            
+
             if (tbl_entity.Rows.Count > 0)
             {
                 plan = new plan(tbl_entity.Rows[0]);
@@ -71,14 +67,14 @@ namespace pg_class
             }
             return Result;
         }
-        
+
         /// <summary>
         /// Лист планов по идентификатору родительского плана
         /// </summary>
         public List<plan> plan_by_id_parent(Int64 id_parent)
         {
-            List<plan>  entity_list = new List<plan>();
-            DataTable tbl_entity  = TableByName("vplan");
+            List<plan> entity_list = new List<plan>();
+            DataTable tbl_entity = TableByName("vplan");
             NpgsqlCommandKey cmdk;
 
             cmdk = CommandByKey("plan_by_id_parent");
@@ -96,8 +92,8 @@ namespace pg_class
 
             cmdk.Parameters["iid_parent"].Value = id_parent;
             cmdk.Fill(tbl_entity);
-            
-            plan  centity;
+
+            plan centity;
             if (tbl_entity.Rows.Count > 0)
             {
                 foreach (System.Data.DataRow dr in tbl_entity.Rows)

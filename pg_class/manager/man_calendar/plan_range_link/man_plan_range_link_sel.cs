@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Npgsql;
-using System.Data;
+﻿using pg_class.pg_classes.calendar;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
-using pg_class.pg_classes;
-using pg_class.pg_classes.calendar;
+using System;
+using System.Collections.Generic;
+using System.Data;
 
 namespace pg_class
 {
@@ -21,12 +16,12 @@ namespace pg_class
         {
             plan_range_link plan_range_link = null;
 
-            DataTable tbl_entity  = TableByName("vplan_range_link");
-            
-            
+            DataTable tbl_entity = TableByName("vplan_range_link");
+
+
             NpgsqlCommandKey cmdk;
 
-            
+
             cmdk = CommandByKey("plan_range_link_by_id");
 
             if (cmdk != null)
@@ -40,12 +35,12 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
 
             cmdk.Parameters["iid"].Value = iid;
 
             cmdk.Fill(tbl_entity);
-            
+
             if (tbl_entity.Rows.Count > 0)
             {
                 plan_range_link = new plan_range_link(tbl_entity.Rows[0]);
@@ -62,8 +57,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("plan_range_link_by_id");
             if (cmdk != null)
             {
@@ -79,23 +74,23 @@ namespace pg_class
             }
             return Result;
         }
-        
 
-        
+
+
         /// <summary>
         /// Лист ссылок плана по идентификатору планового диапазона
         /// </summary>
         public List<plan_range_link> plan_range_link_by_id_plan_range(Int64 iid_plan_range)
         {
-            List<plan_range_link>  entity_list = new List<plan_range_link>();
+            List<plan_range_link> entity_list = new List<plan_range_link>();
 
-            
-            DataTable tbl_entity  = TableByName("vplan_range_link");
-            
-            
+
+            DataTable tbl_entity = TableByName("vplan_range_link");
+
+
             NpgsqlCommandKey cmdk;
 
-            
+
             cmdk = CommandByKey("plan_range_link_by_id_plan_range");
 
             if (cmdk != null)
@@ -109,14 +104,14 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
 
             cmdk.Parameters["iid_plan_range"].Value = iid_plan_range;
 
             cmdk.Fill(tbl_entity);
 
             plan_range_link centity;
-            
+
             if (tbl_entity.Rows.Count > 0)
             {
                 foreach (System.Data.DataRow dr in tbl_entity.Rows)
@@ -146,8 +141,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("plan_range_link_by_id_plan_range");
             if (cmdk != null)
             {
@@ -164,7 +159,7 @@ namespace pg_class
             return Result;
         }
 
-        
+
         /// <summary>
         /// Лист ссылок плана по идентификатору сущности
         /// </summary>
@@ -174,10 +169,10 @@ namespace pg_class
 
             DataTable tbl_entity = TableByName("vplan_range_link");
 
-            
+
             NpgsqlCommandKey cmdk;
 
-            
+
             cmdk = CommandByKey("plan_range_link_by_entity");
 
             if (cmdk != null)
@@ -191,7 +186,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
 
             cmdk.Parameters["iid_plan"].Value = iid_plan;
             cmdk.Parameters["iid_entity"].Value = iid_entity;
@@ -216,8 +211,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("plan_range_link_by_entity");
             if (cmdk != null)
             {

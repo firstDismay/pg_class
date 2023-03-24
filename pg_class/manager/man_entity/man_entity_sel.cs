@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Npgsql;
-using System.Data;
+﻿using pg_class.pg_classes;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
-using pg_class.pg_classes;
+using System;
+using System.Collections.Generic;
+using System.Data;
 
 namespace pg_class
 {
@@ -17,9 +13,9 @@ namespace pg_class
         /// Выбор сущности по идентификатору
         /// </summary>
         public entity entity_by_id(Int32 iid)
-        {   
+        {
             entity entity = null;
-            DataTable tbl_entity  = TableByName("ventity");
+            DataTable tbl_entity = TableByName("ventity");
             NpgsqlCommandKey cmdk;
 
             cmdk = CommandByKey("entity_by_id");
@@ -37,7 +33,7 @@ namespace pg_class
 
             cmdk.Parameters["iid"].Value = iid;
             cmdk.Fill(tbl_entity);
-            
+
             if (tbl_entity.Rows.Count > 0)
             {
                 entity = new entity(tbl_entity.Rows[0]);
@@ -78,14 +74,14 @@ namespace pg_class
             }
             return Result;
         }
-        
+
         /// <summary>
         /// Лист всех сущностей БД
         /// </summary>
         public List<entity> entity_by_all()
         {
             List<entity> entity_list = new List<entity>();
-            DataTable tbl_entity  = TableByName("ventity");
+            DataTable tbl_entity = TableByName("ventity");
             NpgsqlCommandKey cmdk;
 
             cmdk = CommandByKey("entity_by_all");
@@ -102,7 +98,7 @@ namespace pg_class
             }
 
             cmdk.Fill(tbl_entity);
-            
+
             entity en;
             if (tbl_entity.Rows.Count > 0)
             {
@@ -147,7 +143,7 @@ namespace pg_class
         public List<entity> entity_by_can_link()
         {
             List<entity> entity_list = new List<entity>();
-            DataTable tbl_entity  = TableByName("ventity");
+            DataTable tbl_entity = TableByName("ventity");
             NpgsqlCommandKey cmdk;
 
             cmdk = CommandByKey("entity_by_can_link");
@@ -164,7 +160,7 @@ namespace pg_class
             }
 
             cmdk.Fill(tbl_entity);
-            
+
             entity en;
             if (tbl_entity.Rows.Count > 0)
             {

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using pg_class;
+﻿using System.Collections.Generic;
 
 
 namespace pg_class.pg_classes

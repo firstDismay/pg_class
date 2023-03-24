@@ -1,16 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data;
+using System.Text;
 
 namespace pg_class.pg_classes
 {
     /// <summary>
     /// Класс концепций классификатора позиций
     /// </summary>
-    public partial class conception 
+    public partial class conception
     {
         #region КОНСТРУКТОРЫ КЛАССА
 
@@ -39,7 +36,7 @@ namespace pg_class.pg_classes
                 on = (Boolean)row["on"];
                 on_root_create = (Boolean)row["on_root_create"];
                 default_conception = (Boolean)row["default"];
-                
+
                 id_pos_recycle = (Int64)row["pos_recycle"];
                 id_group_recycle = (Int64)row["group_recycle"];
                 id_pos_temp_recycle = (Int64)row["pos_temp_recycle"];
@@ -108,7 +105,8 @@ namespace pg_class.pg_classes
         /// <summary>
         /// Состояние концепции 
         /// </summary>
-        public Boolean On {
+        public Boolean On
+        {
             get
             {
                 return on;
@@ -174,7 +172,7 @@ namespace pg_class.pg_classes
             get
             {
                 Int32 result = -1;
-                DataTable tbl_con  = manager.Instance().TableByName("vconception");
+                DataTable tbl_con = manager.Instance().TableByName("vconception");
                 if (tbl_con != null)
                 {
                     result = tbl_con.Columns["name"].MaxLength;
@@ -186,7 +184,8 @@ namespace pg_class.pg_classes
         /// Описание концепции
         /// </summary>
         public string Desc
-        { get
+        {
+            get
             {
                 return desc;
             }
@@ -201,7 +200,7 @@ namespace pg_class.pg_classes
                     desc = value;
                     on_change = true;
                 }
-                
+
             }
         }
 
@@ -213,7 +212,7 @@ namespace pg_class.pg_classes
             get
             {
                 Int32 result = -1;
-                DataTable tbl_con  = manager.Instance().TableByName("vconception");
+                DataTable tbl_con = manager.Instance().TableByName("vconception");
                 if (tbl_con != null)
                 {
                     result = tbl_con.Columns["desc"].MaxLength;
@@ -237,7 +236,7 @@ namespace pg_class.pg_classes
                 {
                     default_conception = value;
                     on_change = true;
-                 
+
                 }
             }
         }
@@ -264,7 +263,7 @@ namespace pg_class.pg_classes
             }
         }
 
-        
+
         /// <summary>
         /// Ключ объекта
         /// </summary>
@@ -369,7 +368,7 @@ namespace pg_class.pg_classes
         {
             conception temp;
             Boolean Result = false;
-            temp =  Manager.conception_by_id(id);
+            temp = Manager.conception_by_id(id);
 
             if (temp != null)
             {

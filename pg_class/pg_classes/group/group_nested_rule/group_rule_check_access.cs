@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace pg_class.pg_classes
 {
@@ -17,7 +13,7 @@ namespace pg_class.pg_classes
         {
             return Manager.rulel1_group_on_pos_temp_check_access(Pos_temp.Id, this.Id);
         }
-        
+
         #endregion
     }
 }

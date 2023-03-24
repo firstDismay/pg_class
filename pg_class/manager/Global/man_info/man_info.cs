@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace pg_class.pg_classes
 {
@@ -56,7 +52,7 @@ namespace pg_class.pg_classes
         /// <summary>
         /// Версия сборки базы данных (СЕРВЕР)
         /// </summary>
-        public Int32 Base_Build_Id { get => base_build_id;}
+        public Int32 Base_Build_Id { get => base_build_id; }
 
         DateTime base_build_date;
         /// <summary>
@@ -252,7 +248,7 @@ namespace pg_class.pg_classes
         public void Update(Boolean on_increment_baseid)
         {
 
-            String ver_pgclass_next = Base_PGclass.ToString(); 
+            String ver_pgclass_next = Base_PGclass.ToString();
             String ver_configurator_next = Base_Configurator.ToString();
             String ver_client_next = Base_Client.ToString();
 
@@ -307,7 +303,7 @@ namespace pg_class.pg_classes
         {
             man_info temp;
             Boolean Result = false;
-            temp = Manager.man_get_baseid(); 
+            temp = Manager.man_get_baseid();
 
             if (temp != null)
             {

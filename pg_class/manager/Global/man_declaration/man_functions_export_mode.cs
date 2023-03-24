@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using NpgsqlTypes;
 
 namespace pg_class
 {

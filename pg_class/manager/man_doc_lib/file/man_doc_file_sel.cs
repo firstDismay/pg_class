@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Npgsql;
-using System.Data;
+﻿using pg_class.pg_classes;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
-using pg_class.pg_classes;
-using System.Security.Cryptography;
-using System.IO;
+using System;
+using System.Collections.Generic;
+using System.Data;
 
 namespace pg_class
 {
@@ -22,12 +16,12 @@ namespace pg_class
         {
             doc_file doc_file = null;
 
-            DataTable tbl_entity  = TableByName("vdoc_file");
-            
-            
+            DataTable tbl_entity = TableByName("vdoc_file");
+
+
             NpgsqlCommandKey cmdk;
 
-            
+
             cmdk = CommandByKey("doc_file_by_id");
 
             if (cmdk != null)
@@ -41,12 +35,12 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
 
             cmdk.Parameters["iid"].Value = iid;
 
             cmdk.Fill(tbl_entity);
-            
+
             if (tbl_entity.Rows.Count > 0)
             {
                 doc_file = new doc_file(tbl_entity.Rows[0]);
@@ -63,8 +57,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("doc_file_by_id");
             if (cmdk != null)
             {
@@ -81,20 +75,20 @@ namespace pg_class
             return Result;
         }
 
-        
+
         /// <summary>
         /// Лист файлов документа по идентификатору документа
         /// </summary>
         public List<doc_file> doc_file_by_id_document(Int64 iid_document)
         {
-            List<doc_file>  entity_list = new List<doc_file>();
-            
-            DataTable tbl_entity  = TableByName("vdoc_file");
-            
-            
+            List<doc_file> entity_list = new List<doc_file>();
+
+            DataTable tbl_entity = TableByName("vdoc_file");
+
+
             NpgsqlCommandKey cmdk;
 
-            
+
             cmdk = CommandByKey("doc_file_by_id_document");
 
             if (cmdk != null)
@@ -108,12 +102,12 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
 
             cmdk.Parameters["iid_document"].Value = iid_document;
 
             cmdk.Fill(tbl_entity);
-            
+
             doc_file ce;
             if (tbl_entity.Rows.Count > 0)
             {
@@ -135,8 +129,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("doc_file_by_id_document");
             if (cmdk != null)
             {
@@ -153,7 +147,7 @@ namespace pg_class
             return Result;
         }
 
-        
+
         /// <summary>
         /// Лист файлов документа по идентификатору документа и хэшу
         /// </summary>
@@ -162,11 +156,11 @@ namespace pg_class
             List<doc_file> entity_list = new List<doc_file>();
 
             DataTable tbl_entity = TableByName("vdoc_file");
-            
-            
+
+
             NpgsqlCommandKey cmdk;
 
-            
+
             cmdk = CommandByKey("doc_file_by_md5");
 
             if (cmdk != null)
@@ -180,13 +174,13 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
 
             cmdk.Parameters["iid_document"].Value = iid_document;
             cmdk.Parameters["imd5"].Value = imd5;
 
             cmdk.Fill(tbl_entity);
-            
+
             doc_file ce;
             if (tbl_entity.Rows.Count > 0)
             {
@@ -208,8 +202,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("doc_file_by_md5");
             if (cmdk != null)
             {
@@ -226,7 +220,7 @@ namespace pg_class
             return Result;
         }
 
-         
+
         /// <summary>
         /// Метод извлекает из каталога двоичные данные файла документа
         /// </summary>
@@ -234,11 +228,11 @@ namespace pg_class
         {
             doc_file doc_file = null;
             Byte[] Result = null;
-            
+
             NpgsqlCommandKey cmdk;
             NpgsqlCommandKey cmdk_next;
             //**********
-            
+
             cmdk = CommandByKey("doc_file_data_by_id");
             if (cmdk != null)
             {
@@ -251,7 +245,7 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
             cmdk_next = CommandByKey("doc_file_data_read_by_id");
             if (cmdk != null)
             {
@@ -264,8 +258,8 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
-            
+
+
             Int32 SizePage;
             Int32 SizeEndPage;
             Int32 CountPage;
@@ -279,7 +273,7 @@ namespace pg_class
                     Result = new byte[doc_file.Data_length];
                     SizePage = (Int32)isizepage;
                     CountPage = Math.DivRem(Convert.ToInt32(doc_file.Data_length), SizePage, out SizeEndPage);
-                    
+
                     cmdk_next.Parameters["iid_doc_file"].Value = iid_doc_file;
                     cmdk_next.Parameters["iseek"].Value = 0;
                     cmdk_next.Parameters["icount"].Value = SizePage;

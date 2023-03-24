@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace pg_class.pg_classes
+﻿namespace pg_class.pg_classes
 {
     public partial class vclass
     {
         #region СВОЙСТВА ДЛЯ РАБОТЫ С ИЗМЕРЯЕМОЙ ВЕЛИЧИНОЙ КЛАССА
-        
+
         /// <summary>
         /// Измеряемая величина класса
         /// </summary>
@@ -17,7 +11,7 @@ namespace pg_class.pg_classes
         {
             get
             {
-                return Manager.unit_conception_by_id(Id_unit,Id_conception);
+                return Manager.unit_conception_by_id(Id_unit, Id_conception);
             }
         }
         #endregion

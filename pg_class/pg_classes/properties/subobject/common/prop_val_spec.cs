@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace pg_class.pg_classes
 {
@@ -49,7 +45,7 @@ namespace pg_class.pg_classes
                 round_upper = (Int32)row["round_upper"];
                 round_lower = (Int32)row["round_lower"];
                 round_default = (Int32)row["round_default"];
-    }
+            }
             else
             {
                 throw new ArgumentOutOfRangeException(String.Format("Наименование входной таблицы '{0}' не соответствует ограничениям конструктора!", row.Table.TableName));

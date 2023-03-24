@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Data.SqlClient;
-using Npgsql;
-using System.Data;
-using System.Windows.Forms;
-using pg_class.pg_exceptions;
-using pg_class.poolcn;
-using System.Globalization;
+﻿using pg_class.pg_exceptions;
 
 
 namespace pg_class
@@ -28,11 +19,11 @@ namespace pg_class
             {
                 manager.Pg_ManagerSettings = Session_Settings;
                 if (pool_ != null)
-                {                   
+                {
                     pool_.LogOn(Session_Settings);
 
-					//Повторная инициализация команд с новыми учетными данными
-					InitAPI();
+                    //Повторная инициализация команд с новыми учетными данными
+                    InitAPI();
 
                     //Генерируем событие изменения состояния менеджера данных
                     ManagerStateChangeEventArgs e = new ManagerStateChangeEventArgs(eEntity.pool, eManagerState.Connected);

@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace pg_class.pg_classes
 {
@@ -43,8 +39,8 @@ namespace pg_class.pg_classes
 
         #region СВОЙСТВА КЛАССА
 
-        private Int32  err_id;
-	    private String errdesc;
+        private Int32 err_id;
+        private String errdesc;
         private Int32 entity_id;
         private Int64 entity_instance_id;
         private String entity_instance_name;

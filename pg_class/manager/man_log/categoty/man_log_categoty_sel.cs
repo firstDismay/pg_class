@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Npgsql;
-using System.Data;
+﻿using pg_class.pg_classes;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
-using pg_class.pg_classes;
+using System;
+using System.Collections.Generic;
+using System.Data;
 
 namespace pg_class
 {
@@ -19,7 +15,7 @@ namespace pg_class
         public log_category log_category_by_id(Int64 iid)
         {
             log_category log_category = null;
-            DataTable tbl_entity  = TableByName("vlog_category");
+            DataTable tbl_entity = TableByName("vlog_category");
             NpgsqlCommandKey cmdk;
 
             cmdk = CommandByKey("log_category_by_id");
@@ -75,8 +71,8 @@ namespace pg_class
         /// </summary>
         public List<log_category> log_category_by_id_conception(Int64 iid_conception)
         {
-            List<log_category>  entity_list = new List<log_category>();
-            DataTable tbl_entity  = TableByName("vlog_category");
+            List<log_category> entity_list = new List<log_category>();
+            DataTable tbl_entity = TableByName("vlog_category");
             NpgsqlCommandKey cmdk;
 
             cmdk = CommandByKey("log_category_by_id_conception");
@@ -94,7 +90,7 @@ namespace pg_class
 
             cmdk.Parameters["iid_conception"].Value = iid_conception;
             cmdk.Fill(tbl_entity);
-            
+
             log_category ce;
             if (tbl_entity.Rows.Count > 0)
             {
@@ -129,7 +125,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
+
             cmdk = CommandByKey("log_category_by_id_conception");
             if (cmdk != null)
             {

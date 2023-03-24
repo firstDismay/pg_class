@@ -1,12 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
-using System.IO;
-using System.Data;
-using pg_class.pg_exceptions;
 
 namespace pg_class.pg_classes
 {
@@ -25,7 +17,7 @@ namespace pg_class.pg_classes
             on_change = false;
             imagekey = "pos_temp_prop_link_val_us";
             selectedimagekey = "pos_temp_prop_link_val_s";
-            
+
         }
         /// <summary>
         /// Полный конструктор класса для возврата данных существующих записей через строку таблицы 
@@ -40,11 +32,11 @@ namespace pg_class.pg_classes
 
                 id_pos_temp_prop = (Int64)row["id_pos_temp_prop"];
                 id_data_type = (Int32)row["id_data_type"];
-                
+
                 id_entity = (Int32)row["id_entity"];
                 id_entity_instance = (Int64)row["id_entity_instance"];
                 id_sub_entity_instance = (Int64)row["id_sub_entity_instance"];
-                
+
                 tablename = (String)row["tablename"];
                 on_val = (Boolean)row["on_val"];
                 timestamp = Convert.ToDateTime(row["timestamp"]);
@@ -133,7 +125,7 @@ namespace pg_class.pg_classes
             get
             {
                 return id_sub_entity_instance;
-            } 
+            }
         }
 
         private Boolean on_change;
@@ -267,7 +259,7 @@ namespace pg_class.pg_classes
         /// </summary>
         public void Update()
         {
-            
+
             if (on_change)
             {
                 if (this.StorageType == eStorageType.NotSaved)

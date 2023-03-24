@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.Data;
 
 namespace pg_class.pg_classes
 {
@@ -72,7 +68,8 @@ namespace pg_class.pg_classes
         /// <summary>
         /// Верхний предел правила для вкдадываемого шаблона
         /// </summary>
-        public Int32 Limit_max {
+        public Int32 Limit_max
+        {
             get
             {
                 return limit_max;
@@ -121,7 +118,7 @@ namespace pg_class.pg_classes
             }
         }
 
-        
+
         /// <summary>
         /// Шаблон позиции вкладываемый, согласно текущего правила
         /// </summary>
@@ -248,6 +245,6 @@ namespace pg_class.pg_classes
         }
         #endregion
 
-        
+
     }
 }

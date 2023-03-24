@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Npgsql;
-using System.Data;
+﻿using pg_class.pg_classes;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
-using pg_class.pg_classes;
+using System;
 
 namespace pg_class
 {
@@ -38,7 +32,7 @@ namespace pg_class
             conception conception = conception_by_id(id);
             cmdk.Parameters["iid"].Value = id;
             cmdk.ExecuteNonQuery();
-            
+
             error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
             desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
             if (error > 0)
@@ -62,7 +56,7 @@ namespace pg_class
         /// </summary>
         public void conception_del(conception Conception)
         {
-             conception_del(Conception);
+            conception_del(Conception);
         }
 
         //ACCESS

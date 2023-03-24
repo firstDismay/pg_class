@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using pg_class.pg_exceptions;
+using System;
 
 namespace pg_class.pg_classes
 {
-    public partial  class vclass
+    public partial class vclass
     {
         #region МЕТОДЫ КЛАССА ДЛЯ ПРЕДСТАВЛЕНИЯ ОБЪЕКТА В JSON
 
@@ -19,7 +15,7 @@ namespace pg_class.pg_classes
         {
             if (On_abstraction)
             {
-                throw new PgDataException(eEntity.vclass, eAction.Cast,eSubClass_ErrID.SCE3_Violation_Rules, "Абстрактный класс не допускает извлечение классов представления объектов в JSON!");
+                throw new PgDataException(eEntity.vclass, eAction.Cast, eSubClass_ErrID.SCE3_Violation_Rules, "Абстрактный класс не допускает извлечение классов представления объектов в JSON!");
             }
             return new json_object_parameters(this);
         }

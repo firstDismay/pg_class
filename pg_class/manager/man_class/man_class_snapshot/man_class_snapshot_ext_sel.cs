@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Npgsql;
-using System.Data;
+﻿using pg_class.pg_classes;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
-using pg_class.pg_classes;
+using System;
+using System.Collections.Generic;
+using System.Data;
 
 namespace pg_class
 {
@@ -38,7 +34,7 @@ namespace pg_class
             cmdk.Parameters["iid_class"].Value = iid_class;
             cmdk.Parameters["timestamp_class"].Value = timestamp_class;
             cmdk.Fill(tbl_vclass_snapshot);
-            
+
             if (tbl_vclass_snapshot.Rows.Count > 0)
             {
                 vclass_snapshot = new vclass(tbl_vclass_snapshot.Rows[0]);
@@ -104,7 +100,7 @@ namespace pg_class
 
             cmdk.Parameters["iid_class"].Value = iid_class;
             cmdk.Fill(tbl_vclass_snapshot);
-            
+
             vclass vcs;
             if (tbl_vclass_snapshot.Rows.Count > 0)
             {
@@ -184,7 +180,7 @@ namespace pg_class
             cmdk.Parameters["iid_parent_snapshot"].Value = iid_parent_snapshot;
             cmdk.Parameters["itimestamp_parent_snapshot"].Value = itimestamp_parent_snapshot;
             cmdk.Fill(tbl_vclass_snapshot);
-            
+
             vclass vcs;
             if (tbl_vclass_snapshot.Rows.Count > 0)
             {
@@ -267,7 +263,7 @@ namespace pg_class
             cmdk.Parameters["itimestamp_parent_snapshot"].Value = itimestamp_parent_snapshot;
             cmdk.Parameters["iid_position"].Value = iid_position;
             cmdk.Fill(tbl_vclass_snapshot);
-            
+
             vclass vcs;
             if (tbl_vclass_snapshot.Rows.Count > 0)
             {
@@ -348,7 +344,7 @@ namespace pg_class
             cmdk.Parameters["iid_position"].Value = iid_position;
             cmdk.Parameters["on_internal"].Value = on_internal;
             cmdk.Fill(tbl_vclass_snapshot);
-            
+
             vclass vcs;
             if (tbl_vclass_snapshot.Rows.Count > 0)
             {

@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Npgsql;
-using pg_class.pg_exceptions;
-using System.Data;
-using System.Net.Sockets;
+﻿using Npgsql;
 using pg_class.pg_commands;
+using pg_class.pg_exceptions;
+using System;
+using System.Net.Sockets;
+using System.Text;
 
 namespace pg_class
 {
@@ -92,7 +88,7 @@ namespace pg_class
                         me = new JournalEventArgs(0, eEntity.manager, ResultID, ResultDesc, pe.MessageText, eAction.Connect, eJournalMessageType.error);
                         JournalMessageOnReceived(me);
                         throw new PgManagerException(ResultID, ResultDesc, pe.MessageText);
-                    
+
                     case "3D000":
                         sb = new StringBuilder();
                         sb.Append("Указанный каталог: '");
@@ -105,7 +101,7 @@ namespace pg_class
                         me = new JournalEventArgs(0, eEntity.manager, ResultID, ResultDesc, pe.MessageText, eAction.Connect, eJournalMessageType.error);
                         JournalMessageOnReceived(me);
                         throw new PgManagerException(ResultID, ResultDesc, pe.MessageText);
-                    
+
                     case "28000":
                         sb = new StringBuilder();
                         sb.Append("Указанный пользователь: '");
@@ -118,7 +114,7 @@ namespace pg_class
                         me = new JournalEventArgs(0, eEntity.manager, ResultID, ResultDesc, pe.MessageText, eAction.Connect, eJournalMessageType.error);
                         JournalMessageOnReceived(me);
                         throw new PgManagerException(ResultID, ResultDesc, pe.MessageText);
-                    
+
                     default:
                         ResultID = pe.HResult;
                         ResultDesc = "Необработанная ошибка подключения";
@@ -140,7 +136,7 @@ namespace pg_class
                         me = new JournalEventArgs(0, eEntity.manager, ResultID, ResultDesc, pe.ErrorDesc, eAction.Connect, eJournalMessageType.error);
                         JournalMessageOnReceived(me);
                         throw new PgManagerException(ResultID, ResultDesc, pe.ErrorDesc);
-                    
+
                     default:
                         ResultID = pe.ErrorID;
                         ResultDesc = "Необработанная ошибка подключения";

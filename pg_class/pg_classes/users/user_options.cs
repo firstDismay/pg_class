@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace pg_class.pg_classes
-    { /// <summary>
-    /// Класс пользовательских предпочтений хранимых в БД
-    /// </summary>
+{ /// <summary>
+  /// Класс пользовательских предпочтений хранимых в БД
+  /// </summary>
     public partial class user_options
     {
         #region КОНСТРУКТОРЫ КЛАССА
@@ -43,11 +39,11 @@ namespace pg_class.pg_classes
 
         #region СВОЙСТВА КЛАССА
 
-        
+
         private String login;
         private Int64 pref_conception;
         private DateTime timestamp;
-        
+
         /// <summary>
         /// Штамп времени пользователя
         /// </summary>
@@ -172,10 +168,10 @@ namespace pg_class.pg_classes
         {
             if (on_change)
             {
-               Manager.user_options_upd(this);
+                Manager.user_options_upd(this);
                 Refresh();
                 on_change = false;
-               
+
             }
         }
 
@@ -204,7 +200,7 @@ namespace pg_class.pg_classes
         #endregion
 
         #region ПЕРЕОПРЕДЕЛЕННЫЕ МЕТОДЫ КЛАССА
-        
+
         #endregion
     }
 }

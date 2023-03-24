@@ -1,16 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Data;
-using Npgsql;
-using pg_class.pg_commands;
-using pg_class.pg_exceptions;
-using pg_class.pg_classes;
 
 namespace pg_class
 {
     public partial class manager
-    {   
+    {
         /// <summary>
         /// Делегат события изменения
         /// </summary>

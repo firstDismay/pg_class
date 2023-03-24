@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace pg_class.pg_classes
 {
@@ -49,7 +46,7 @@ namespace pg_class.pg_classes
         #endregion
 
         #region МЕТОДЫ РАБОТЫ С ПРЕДСТАВЛЕНИЯМИ БАЗОВЫХ АБСТРАКТНЫХ КЛАССОЫ
-        
+
         #region ДОБАВИТЬ
 
 
@@ -91,7 +88,7 @@ namespace pg_class.pg_classes
                 Result = Manager.class_act_base_allowed_by_id_group(this, Position);
             }
             return Result;
-            
+
         }
 
         /// <summary>
@@ -107,7 +104,7 @@ namespace pg_class.pg_classes
             }
             else
             {
-                Result =  Manager.class_act_by_id_group(this);
+                Result = Manager.class_act_by_id_group(this);
             }
             return Result;
         }

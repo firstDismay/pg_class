@@ -1,7 +1,6 @@
-﻿using System;
+﻿using NpgsqlTypes;
+using System;
 using System.Collections.Generic;
-
-using NpgsqlTypes;
 
 namespace pg_class.pg_classes.calendar
 {
@@ -16,7 +15,7 @@ namespace pg_class.pg_classes.calendar
         /// <summary>
         /// Метод добавляет новый выделенный диапазон планового диапазона
         /// </summary>
-        public plan_given_range_plan plan_given_range_plan_add( NpgsqlRange<DateTime> irange_plan)
+        public plan_given_range_plan plan_given_range_plan_add(NpgsqlRange<DateTime> irange_plan)
         {
             return Manager.plan_given_range_plan_add(Id_plan, Id, irange_plan);
         }

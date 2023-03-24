@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Npgsql;
-using System.Data;
+﻿using pg_class.pg_classes;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
-using pg_class.pg_classes;
+using System;
+using System.Collections.Generic;
+using System.Data;
 
 namespace pg_class
 {
@@ -16,7 +12,7 @@ namespace pg_class
         #region МЕТОДЫ КЛАССА: ПРЕДСТАВЛЕНИЯ СНИМКОВ КЛАССА
         #region ВЫБРАТЬ
 
-        
+
         /// <summary>
         /// Выбирает снимок свойства класса по ключевым параметрам
         /// </summary>
@@ -24,12 +20,12 @@ namespace pg_class
         {
             class_prop class_prop_snapshot = null;
 
-            DataTable tbl_class_prop_snapshot  = TableByName("vclass_prop");
-            
-            
+            DataTable tbl_class_prop_snapshot = TableByName("vclass_prop");
+
+
             NpgsqlCommandKey cmdk;
 
-            
+
             cmdk = CommandByKey("class_prop_snapshot_by_id");
 
             if (cmdk != null)
@@ -43,13 +39,13 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
 
             cmdk.Parameters["iid_class_prop"].Value = iid_class_prop;
             cmdk.Parameters["itimestamp_class"].Value = itimestamp_class;
 
             cmdk.Fill(tbl_class_prop_snapshot);
-            
+
             if (tbl_class_prop_snapshot.Rows.Count > 0)
             {
                 class_prop_snapshot = new class_prop(tbl_class_prop_snapshot.Rows[0]);
@@ -73,8 +69,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("class_prop_snapshot_by_id");
             if (cmdk != null)
             {
@@ -90,7 +86,7 @@ namespace pg_class
             }
             return Result;
         }
-        
+
 
         /// <summary>
         /// Выбирает снимок свойства класса объекта носителя по идентификатору объекта значения свойства
@@ -99,12 +95,12 @@ namespace pg_class
         {
             class_prop class_prop_snapshot = null;
 
-            DataTable tbl_class_prop_snapshot  = TableByName("vclass_prop");
-            
-            
+            DataTable tbl_class_prop_snapshot = TableByName("vclass_prop");
+
+
             NpgsqlCommandKey cmdk;
 
-            
+
             cmdk = CommandByKey("class_prop_snapshot_by_id_object_val");
 
             if (cmdk != null)
@@ -118,12 +114,12 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
 
             cmdk.Parameters["iid_object_val"].Value = iid_object_val;
 
             cmdk.Fill(tbl_class_prop_snapshot);
-            
+
             if (tbl_class_prop_snapshot.Rows.Count > 0)
             {
                 class_prop_snapshot = new class_prop(tbl_class_prop_snapshot.Rows[0]);
@@ -148,8 +144,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("class_prop_snapshot_by_id_object_val");
             if (cmdk != null)
             {
@@ -165,7 +161,7 @@ namespace pg_class
             }
             return Result;
         }
-        
+
         /// <summary>
         /// Выбор свойства снимка класса по идентификатору глобального свойства
         /// </summary>
@@ -173,12 +169,12 @@ namespace pg_class
         {
             class_prop class_prop = null;
 
-            DataTable tbl_vclass_prop  = TableByName("vclass_prop");
-            
-            
+            DataTable tbl_vclass_prop = TableByName("vclass_prop");
+
+
             NpgsqlCommandKey cmdk;
 
-            
+
             cmdk = CommandByKey("class_prop_snapshot_by_id_global_prop");
 
             if (cmdk != null)
@@ -192,14 +188,14 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
 
             cmdk.Parameters["iid_class_snapshot"].Value = iid_class_snapshot;
             cmdk.Parameters["itimestamp_class_snapshot"].Value = itimestamp_class_snapshot;
             cmdk.Parameters["iid_global_prop"].Value = iid_global_prop;
 
             cmdk.Fill(tbl_vclass_prop);
-            
+
             if (tbl_vclass_prop.Rows.Count > 0)
             {
                 class_prop = new class_prop(tbl_vclass_prop.Rows[0]);
@@ -224,7 +220,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
+
             cmdk = CommandByKey("class_prop_snapshot_by_id_global_prop");
             if (cmdk != null)
             {
@@ -241,7 +237,7 @@ namespace pg_class
             return Result;
         }
 
-        
+
         /// <summary>
         /// Лист снимков свойств класса по идентификатору снимка класса с пустым тэгом
         /// </summary>
@@ -249,12 +245,12 @@ namespace pg_class
         {
             List<class_prop> class_prop_snapshot_list = new List<class_prop>();
 
-            DataTable tbl_class_prop_snapshot  = TableByName("vclass_prop");
-            
-            
+            DataTable tbl_class_prop_snapshot = TableByName("vclass_prop");
+
+
             NpgsqlCommandKey cmdk;
 
-            
+
             cmdk = CommandByKey("class_prop_snapshot_by_id_class_snapshot");
 
             if (cmdk != null)
@@ -268,13 +264,13 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
 
             cmdk.Parameters["iid_class_snapshot"].Value = iid_class_snapshot;
             cmdk.Parameters["itimestamp_class_snapshot"].Value = itimestamp_class_snapshot;
 
             cmdk.Fill(tbl_class_prop_snapshot);
-            
+
             class_prop vcps;
             if (tbl_class_prop_snapshot.Rows.Count > 0)
             {
@@ -304,8 +300,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("class_prop_snapshot_by_id_class_snapshot");
             if (cmdk != null)
             {

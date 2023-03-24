@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
-using pg_class.pg_exceptions;
-using pg_class.pg_classes;
 
 namespace pg_class.pg_classes
 {
@@ -82,8 +77,8 @@ namespace pg_class.pg_classes
         {
             try
             {
-               //Удаляем ранее выгруженный файл если он есть
-               //System.IO.File.Delete(this.ЛокальныйПуть);
+                //Удаляем ранее выгруженный файл если он есть
+                //System.IO.File.Delete(this.ЛокальныйПуть);
             }
             catch (System.IO.IOException) { }
         }

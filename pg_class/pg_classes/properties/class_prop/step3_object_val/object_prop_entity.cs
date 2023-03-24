@@ -1,5 +1,4 @@
 ﻿using System;
-using pg_class.pg_exceptions;
 
 namespace pg_class.pg_classes
 {
@@ -55,7 +54,7 @@ namespace pg_class.pg_classes
         /// <summary>
         /// Класс сущности к классе доступа к данным
         /// </summary>
-        public  String EntityTypeName
+        public String EntityTypeName
         {
             get
             {

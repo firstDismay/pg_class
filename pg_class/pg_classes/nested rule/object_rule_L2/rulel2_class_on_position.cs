@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.Data;
 
 namespace pg_class.pg_classes
 {
@@ -39,7 +35,7 @@ namespace pg_class.pg_classes
             }
         }
         #endregion
-        
+
         #region СВОЙСТВА КЛАССА
 
         private Int64 id_class;
@@ -102,7 +98,7 @@ namespace pg_class.pg_classes
             }
         }
 
-        
+
         /// <summary>
         /// Ключ объекта
         /// </summary>
@@ -123,7 +119,7 @@ namespace pg_class.pg_classes
                 }
 
                 sb.Append("_us");
-                
+
                 return sb.ToString();
             }
         }
@@ -171,6 +167,6 @@ namespace pg_class.pg_classes
         }
         #endregion
 
-        
+
     }
 }

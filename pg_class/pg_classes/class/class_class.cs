@@ -1,9 +1,6 @@
-﻿using System;
+﻿using pg_class.pg_exceptions;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using pg_class.pg_exceptions;
 
 namespace pg_class.pg_classes
 {
@@ -185,7 +182,7 @@ namespace pg_class.pg_classes
         /// Лист представлений активных классов указанного расположения по маске имени
         /// class_act_by_id_parent_msk_name
         /// </summary>
-        public List<vclass> Class_act_by_msk_name( String name_mask, Boolean Extended = false)
+        public List<vclass> Class_act_by_msk_name(String name_mask, Boolean Extended = false)
         {
             List<vclass> Result = null;
             if (Extended)

@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace pg_class.pg_classes
 {
@@ -126,7 +123,7 @@ namespace pg_class.pg_classes
             }
         }
 
-        
+
 
         /// <summary>
         /// Штамп времени снимка класса объекта носителя
@@ -139,7 +136,7 @@ namespace pg_class.pg_classes
             }
         }
 
-        
+
 
         /// <summary>
         /// Идентификатор свойства объекта носителя (наследованного от класса)
@@ -174,7 +171,7 @@ namespace pg_class.pg_classes
             }
         }
 
-        
+
 
         /// <summary>
         /// Колличество объекта значения объектного свойства
@@ -234,7 +231,7 @@ namespace pg_class.pg_classes
         /// <summary>
         /// Уникальный строковый идентификатор позиции
         /// </summary>
-        
+
         private String imagekey;
         /// <summary>
         /// Ключ объекта
@@ -418,11 +415,11 @@ namespace pg_class.pg_classes
         {
             object_prop_object_val temp = null;
             Boolean Result = false;
-            
-                temp = Manager.object_prop_object_val_by_id_prop(id_object_carrier,id_class_prop_object_carrier);
 
-                if (temp != null)
-                {
+            temp = Manager.object_prop_object_val_by_id_prop(id_object_carrier, id_class_prop_object_carrier);
+
+            if (temp != null)
+            {
                 id_object_carrier = temp.id_object_carrier;
                 id_class_object_carrier = temp.id_class_object_carrier;
                 timestamp_class_object_carrier = temp.timestamp_class_object_carrier;
@@ -438,10 +435,10 @@ namespace pg_class.pg_classes
                 tablename = temp.Tablename;
                 Result = true;
             }
-                else
-                {
-                    Result = false;
-                }
+            else
+            {
+                Result = false;
+            }
             return Result;
         }
 

@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace pg_class.pg_classes
 {
@@ -30,7 +27,7 @@ namespace pg_class.pg_classes
             //if (Модуль.Table is ТаблицаМодулей)
             if (row.Table.TableName == "vpos_prototype")
             {
-                id= (Int32)row["id"];
+                id = (Int32)row["id"];
                 sort = (Int32)row["sort"];
                 on_root = (Boolean)row["on_root"];
                 on_this = (Boolean)row["on_this"];
@@ -56,7 +53,7 @@ namespace pg_class.pg_classes
         private Int32 sort;
         private Boolean on_pos;
         private Boolean on_obj;
-	    private String desc;
+        private String desc;
         private Boolean on_this;
         private Boolean on_root;
         private Boolean on_service;
@@ -64,7 +61,7 @@ namespace pg_class.pg_classes
         /// <summary>
         /// Идентификатор прототипа
         /// </summary>
-        public int Id { get => id;}
+        public int Id { get => id; }
 
         /// <summary>
         /// Номер сортировки определяющий позицию в цепи вложенности
@@ -74,16 +71,16 @@ namespace pg_class.pg_classes
         /// <summary>
         /// Признак доступности вложения позиций
         /// </summary>
-        public bool On_pos { get => on_pos;}
+        public bool On_pos { get => on_pos; }
         /// <summary>
         /// Признак доступности вложения объектов
         /// </summary>
-        public bool On_obj { get => on_obj;}
-        
+        public bool On_obj { get => on_obj; }
+
         /// <summary>
         /// Полное описание прототипа позиции
         /// </summary>
-        public string Desc { get => desc;}
+        public string Desc { get => desc; }
 
         /// <summary>
         /// Полное описание прототипа позиции
@@ -115,11 +112,11 @@ namespace pg_class.pg_classes
                 Convert.ToInt32(on_pos),
                 Convert.ToInt32(on_obj));
         }
-        
+
         /// <summary>
         /// Признак доступности вложения позиции в саму себя
         /// </summary>
-        public bool On_this { get => on_this;}
+        public bool On_this { get => on_this; }
 
         /// <summary>
         /// Признак доступности создания корневых позиций
@@ -135,11 +132,12 @@ namespace pg_class.pg_classes
         /// <summary>
         /// Свойство возвращает лист прототипов дотупных к вложению в текущий прототип
         /// </summary>
-        public List<pos_prototype> Pos_prototype_nested_list {
+        public List<pos_prototype> Pos_prototype_nested_list
+        {
             get
             {
                 return Manager.pos_prototype_nested_by_id_prototype(id);
-            } 
+            }
         }
 
 
@@ -186,7 +184,7 @@ namespace pg_class.pg_classes
         /// </summary>
         public List<pos_prototype> pos_prototype_nested_list_get()
         {
-             return Manager.pos_prototype_nested_by_id_prototype(id);
+            return Manager.pos_prototype_nested_by_id_prototype(id);
         }
         #endregion
 

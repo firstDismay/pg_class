@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Npgsql;
-using System.Data;
+﻿using pg_class.pg_classes;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
-using pg_class.pg_classes;
+using System;
+using System.Collections.Generic;
+using System.Data;
 
 namespace pg_class
 {
@@ -15,7 +11,7 @@ namespace pg_class
     {
         #region ВЫБРАТЬ
 
-        
+
         /// <summary>
         /// Пользователь по логину
         /// </summary>
@@ -23,12 +19,12 @@ namespace pg_class
         {
             user user = null;
 
-            DataTable tbl_usr =  TableByName("vusers"); //TableByName("vusers");
-            
-            
+            DataTable tbl_usr = TableByName("vusers"); //TableByName("vusers");
+
+
             NpgsqlCommandKey cmdk;
 
-            
+
             cmdk = CommandByKey("user_by_login");
 
             if (cmdk != null)
@@ -42,13 +38,13 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
 
             cmdk.Parameters["ilogin"].Value = ilogin;
 
             cmdk.Fill(tbl_usr);
-            
-            if (tbl_usr .Rows.Count > 0)
+
+            if (tbl_usr.Rows.Count > 0)
             {
                 user = new user(tbl_usr.Rows[0]);
             }
@@ -64,8 +60,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("user_by_login");
             if (cmdk != null)
             {
@@ -81,7 +77,7 @@ namespace pg_class
             }
             return Result;
         }
-        
+
 
         /// <summary>
         /// Пользователь по глобальному идентификатору
@@ -90,12 +86,12 @@ namespace pg_class
         {
             user user = null;
 
-            DataTable tbl_usr =  TableByName("vusers"); //TableByName("vusers");
-            
-            
+            DataTable tbl_usr = TableByName("vusers"); //TableByName("vusers");
+
+
             NpgsqlCommandKey cmdk;
 
-            
+
             cmdk = CommandByKey("user_by_id");
 
             if (cmdk != null)
@@ -109,12 +105,12 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
 
             cmdk.Parameters["iid"].Value = iid;
 
             cmdk.Fill(tbl_usr);
-            
+
             if (tbl_usr.Rows.Count > 0)
             {
                 user = new user(tbl_usr.Rows[0]);
@@ -131,8 +127,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("user_by_id");
             if (cmdk != null)
             {
@@ -148,8 +144,8 @@ namespace pg_class
             }
             return Result;
         }
-        
-        
+
+
 
         /// <summary>
         /// Лист всех пользователей
@@ -157,7 +153,7 @@ namespace pg_class
         public List<user> user_by_all()
         {
             List<user> usr_list = new List<user>();
-            DataTable tbl_usr =  TableByName("vusers"); //TableByName("vusers");
+            DataTable tbl_usr = TableByName("vusers"); //TableByName("vusers");
 
             NpgsqlCommandKey cmdk;
             cmdk = CommandByKey("user_by_all");
@@ -196,7 +192,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
+
             cmdk = CommandByKey("user_by_all");
             if (cmdk != null)
             {
@@ -212,15 +208,15 @@ namespace pg_class
             }
             return Result;
         }
-        
+
         /// <summary>
         /// Лист пользователей входящих в указанную роль
         /// </summary>
         public List<user> user_by_roles(String irole)
         {
             List<user> usr_list = new List<user>();
-            DataTable tbl_usr =  TableByName("vusers"); //TableByName("vusers");
-            
+            DataTable tbl_usr = TableByName("vusers"); //TableByName("vusers");
+
             NpgsqlCommandKey cmdk;
             cmdk = CommandByKey("user_by_roles");
             if (cmdk != null)
@@ -258,8 +254,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("user_by_roles");
             if (cmdk != null)
             {
@@ -275,14 +271,14 @@ namespace pg_class
             }
             return Result;
         }
-        
+
         /// <summary>
         /// Текущий Пользователь
         /// </summary>
         public user user_by_current()
         {
             user user = null;
-            DataTable tbl_usr =  TableByName("vusers"); //TableByName("vusers");
+            DataTable tbl_usr = TableByName("vusers"); //TableByName("vusers");
             NpgsqlCommandKey cmdk;
 
             cmdk = CommandByKey("user_by_current");
@@ -314,8 +310,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("user_by_current");
             if (cmdk != null)
             {
@@ -331,11 +327,11 @@ namespace pg_class
             }
             return Result;
         }
-       
+
         #endregion
 
         #region ПАРАМЕТРЫ ДОСТУПА К БД 
-        
+
         /// <summary>
         /// Список функций доступных текущему пользователю, с параметрам доступности выполнения 
         /// </summary>
@@ -344,11 +340,11 @@ namespace pg_class
             List<function> func_list = new List<function>();
 
             DataTable tbl_func = TableByName("cfg_v_initproc_base_desc"); //TableByName("cfg_v_initproc_base_desc");
-            
-            
+
+
             NpgsqlCommandKey cmdk;
 
-            
+
             cmdk = CommandByKey("user_base_function_by_current");
 
             if (cmdk != null)
@@ -362,9 +358,9 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
             cmdk.Fill(tbl_func);
-            
+
             function func;
             if (tbl_func.Rows.Count > 0)
             {
@@ -386,8 +382,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("user_base_function_by_current");
             if (cmdk != null)
             {
@@ -403,9 +399,9 @@ namespace pg_class
             }
             return Result;
         }
-        
-        
-        
+
+
+
         /// <summary>
         /// Список функций доступных указанному пользователю, с параметрам доступности выполнения 
         /// </summary>
@@ -414,11 +410,11 @@ namespace pg_class
             List<function> func_list = new List<function>();
 
             DataTable tbl_func = TableByName("cfg_v_initproc_base_desc"); //TableByName("cfg_v_initproc_base_desc");
-            
-            
+
+
             NpgsqlCommandKey cmdk;
 
-            
+
             cmdk = CommandByKey("user_base_function_by_login");
 
             if (cmdk != null)
@@ -434,9 +430,9 @@ namespace pg_class
             }
 
             cmdk.Parameters["usr_rolname"].Value = usr_rolname;
-            
+
             cmdk.Fill(tbl_func);
-            
+
             function func;
             if (tbl_func.Rows.Count > 0)
             {
@@ -458,8 +454,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("user_base_function_by_login");
             if (cmdk != null)
             {
@@ -475,20 +471,20 @@ namespace pg_class
             }
             return Result;
         }
-        
+
         #endregion
 
         #region ПОЛЯ И ПЕРЕМЕННЫЕ КЛАССА: ПОЛЬЗОВАТЕЛИ
 
-        
+
         /// <summary>
         /// Лист пользователей
         /// </summary>
         public List<user> User_list_get()
-        { 
+        {
             return user_by_all();
         }
-                
+
         /// <summary>
         /// Текущий пользователь
         /// </summary>

@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace pg_class.pg_classes
 {
     public partial class pos_temp
     {
         #region СВОЙСТВА ДЛЯ РАБОТЫ С ПРОТОТИПАМИ ПОЗИЦИЙ
- 
+
         /// <summary>
         /// Лист прототипов
         /// </summary>

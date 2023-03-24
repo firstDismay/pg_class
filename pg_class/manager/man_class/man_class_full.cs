@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Npgsql;
-using System.Data;
+﻿using pg_class.pg_classes;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
-using pg_class.pg_classes;
+using System;
+using System.Collections.Generic;
+using System.Data;
 
 namespace pg_class
 {
@@ -24,12 +20,12 @@ namespace pg_class
             List<vclass> vclass_snapshot_list = new List<vclass>();
 
 
-            DataTable tbl_vclass_snapshot  = TableByName("vclass");
-            
-            
+            DataTable tbl_vclass_snapshot = TableByName("vclass");
+
+
             NpgsqlCommandKey cmdk;
 
-            
+
             cmdk = CommandByKey("class_full_real_by_id_conception");
 
             if (cmdk != null)
@@ -43,12 +39,12 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
 
             cmdk.Parameters["iid_conception"].Value = iid_conception;
 
             cmdk.Fill(tbl_vclass_snapshot);
-            
+
             vclass vcs;
             if (tbl_vclass_snapshot.Rows.Count > 0)
             {
@@ -78,8 +74,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("class_full_real_by_id_conception");
             if (cmdk != null)
             {
@@ -95,7 +91,7 @@ namespace pg_class
             }
             return Result;
         }
-       
+
         /// <summary>
         /// Лист всех вещественных классов по идентификатору группы
         /// </summary>
@@ -105,11 +101,11 @@ namespace pg_class
 
 
             DataTable tbl_vclass_snapshot = TableByName("vclass");
-            
-            
+
+
             NpgsqlCommandKey cmdk;
 
-            
+
             cmdk = CommandByKey("class_full_real_by_id_group");
 
             if (cmdk != null)
@@ -123,12 +119,12 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
 
             cmdk.Parameters["iid_group"].Value = iid_group;
 
             cmdk.Fill(tbl_vclass_snapshot);
-            
+
             vclass vcs;
             if (tbl_vclass_snapshot.Rows.Count > 0)
             {
@@ -158,8 +154,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("class_full_real_by_id_group");
             if (cmdk != null)
             {
@@ -176,7 +172,7 @@ namespace pg_class
             return Result;
         }
 
-        
+
         /// <summary>
         /// Лист всех вещественных классов по идентификатору класса
         /// </summary>
@@ -186,11 +182,11 @@ namespace pg_class
 
 
             DataTable tbl_vclass_snapshot = TableByName("vclass");
-            
-            
+
+
             NpgsqlCommandKey cmdk;
 
-            
+
             cmdk = CommandByKey("class_full_real_by_id_parent");
 
             if (cmdk != null)
@@ -204,12 +200,12 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
 
             cmdk.Parameters["iid_parent"].Value = iid_parent;
 
             cmdk.Fill(tbl_vclass_snapshot);
-            
+
             vclass vcs;
             if (tbl_vclass_snapshot.Rows.Count > 0)
             {
@@ -239,8 +235,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("class_full_real_by_id_parent");
             if (cmdk != null)
             {

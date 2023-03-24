@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data;
-using Npgsql;
-using pg_class.pg_exceptions;
+﻿using System.Data;
 
 namespace pg_class.poolcn
 {
@@ -47,7 +40,7 @@ namespace pg_class.poolcn
             //Вызов события изменения количества подключений
             PoolConnectEventArgs pc = new PoolConnectEventArgs(cn_list.Count, manager.PoolConnectMaxStatic);
             manager.PoolConnectCountOnChangeStatic(this, pc);
-            
+
             //Вызов события журнала
             me = new JournalEventArgs(0, eEntity.pool, 0, "Вход пользователя выполнен", eAction.Connect, eJournalMessageType.information);
             manager.JournalMessageOnReceivedStatic(this, me);
@@ -74,11 +67,11 @@ namespace pg_class.poolcn
                 }
             }
             StopControlTimer();
-            
+
             //Вызов события изменения количества подключений
             PoolConnectEventArgs pc = new PoolConnectEventArgs(cn_list.Count, manager.PoolConnectMaxStatic);
             manager.PoolConnectCountOnChangeStatic(this, pc);
-            
+
             //Вызов события журнала
             JournalEventArgs me = new JournalEventArgs(0, eEntity.pool, 0, "Выход пользователя выполнен", eAction.DisConnect, eJournalMessageType.information);
             manager.JournalMessageOnReceivedStatic(this, me);

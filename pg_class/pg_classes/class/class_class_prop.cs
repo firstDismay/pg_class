@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace pg_class.pg_classes
 {
@@ -10,7 +7,7 @@ namespace pg_class.pg_classes
     {
         #region МЕТОДЫ ДЛЯ РАБОТЫ СО СПИСКОМ СВОЙСТВ
         List<class_prop> property_list;
-        
+
         /// <summary>
         /// Лист свойств класса с пустым тэгом ''
         /// </summary>
@@ -45,7 +42,7 @@ namespace pg_class.pg_classes
         /// <summary>
         /// Лист свойств класса с указанным тэгом
         /// </summary>
-        public List<class_prop> Property_list_by_tag_get( String itag = "")
+        public List<class_prop> Property_list_by_tag_get(String itag = "")
         {
             return Property_list_get(false).FindAll(x => x.Tag == itag);
         }
@@ -170,7 +167,7 @@ namespace pg_class.pg_classes
         /// <summary>
         /// Метод добавляет новое свойство класса
         /// </summary>
-        public class_prop class_prop_add( prop_type Prop_type, Boolean On_Override, prop_data_type Data_type, String iname, String idesc, String itag, Int32 isort)
+        public class_prop class_prop_add(prop_type Prop_type, Boolean On_Override, prop_data_type Data_type, String iname, String idesc, String itag, Int32 isort)
         {
             return Manager.class_prop_add(this.Id, Prop_type.Id, On_Override, Data_type.Id, iname, idesc, itag, isort);
         }
@@ -232,10 +229,10 @@ namespace pg_class.pg_classes
             switch (StorageType)
             {
                 case eStorageType.Active:
-                        property_list = Manager.class_prop_by_id_class_search_method(this, isearch_method);
+                    property_list = Manager.class_prop_by_id_class_search_method(this, isearch_method);
                     break;
                 case eStorageType.History:
-                        property_list = Manager.class_prop_snapshot_by_id_class_snapshot_search_method(this, isearch_method);
+                    property_list = Manager.class_prop_snapshot_by_id_class_snapshot_search_method(this, isearch_method);
                     break;
             }
             return property_list;

@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Npgsql;
-using System.Data;
+﻿using pg_class.pg_classes;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
-using pg_class.pg_classes;
-using System.Security.Cryptography;
+using System;
 
 namespace pg_class
 {
@@ -17,14 +10,14 @@ namespace pg_class
         /// <summary>
         /// Метод добавляет ссылку для указанной записи журнала
         /// </summary>
-        public log_link log_link_add( Int64 iid_log, Int64 iid_entity, Int64 iid_entity_instance, Int64 iid_sub_entity_instance)
+        public log_link log_link_add(Int64 iid_log, Int64 iid_entity, Int64 iid_entity_instance, Int64 iid_sub_entity_instance)
         {
             log_link log_link = null;
             Int64 id = 0;
             Int32 error;
             String desc_error;
             NpgsqlCommandKey cmdk;
-            
+
             cmdk = CommandByKey("log_link_add");
             if (cmdk != null)
             {
@@ -151,19 +144,19 @@ namespace pg_class
             return log_link_add(iid_log, Class_prop.EntityID, Class_prop.Id, -1);
         }
 
-		/// <summary>
-		/// Метод добавляет ссылку для указанной записи журнала
-		/// </summary>
-		public log_link log_link_add(Int64 iid_log, document Document)
-		{
-			return log_link_add(iid_log, Document.EntityID, Document.Id, -1);
-		}
+        /// <summary>
+        /// Метод добавляет ссылку для указанной записи журнала
+        /// </summary>
+        public log_link log_link_add(Int64 iid_log, document Document)
+        {
+            return log_link_add(iid_log, Document.EntityID, Document.Id, -1);
+        }
 
-		//ACCESS
-		/// <summary>
-		/// Проверка прав доступа к методу
-		/// </summary>
-		public Boolean log_link_add(out eAccess Access)
+        //ACCESS
+        /// <summary>
+        /// Проверка прав доступа к методу
+        /// </summary>
+        public Boolean log_link_add(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;

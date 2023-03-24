@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace pg_class.pg_classes
 {
-    public partial  class position
+    public partial class position
     {
         #region СВОЙСТВА ДЛЯ РАБОТЫ С ШАБЛОНАМИ ПОЗИЦИЙ
 
@@ -16,7 +13,7 @@ namespace pg_class.pg_classes
         /// </summary>
         public eStatus Pos_temp_state { get => pos_temp_state; set => pos_temp_state = value; }
 
-           
+
 
         /// <summary>
         /// Метод возвращает шаблон текущей позиции
@@ -38,7 +35,7 @@ namespace pg_class.pg_classes
         /// </summary>
         public List<pos_temp> Pos_temp_nested_list_get(Boolean ignore_nested_limit)
         {
-            return Manager.pos_temp_nestedlist_by_id(this.id_pos_temp, this.id_con, this.Pos_temp_state, ignore_nested_limit);  
+            return Manager.pos_temp_nestedlist_by_id(this.id_pos_temp, this.id_con, this.Pos_temp_state, ignore_nested_limit);
         }
         #endregion
 

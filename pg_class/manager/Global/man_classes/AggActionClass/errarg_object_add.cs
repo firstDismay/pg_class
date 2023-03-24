@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace pg_class.pg_classes
 {
@@ -47,8 +43,8 @@ namespace pg_class.pg_classes
 
         #region СВОЙСТВА КЛАССА
 
-        private Int32  err_id;
-	    private String errdesc;
+        private Int32 err_id;
+        private String errdesc;
 
         private Int64 class_id;
         private String class_name;
@@ -118,7 +114,7 @@ namespace pg_class.pg_classes
         #endregion
 
         #region МЕТОДЫ КЛАССА
-        
+
         /// <summary>
         /// Созданный объект
         /// </summary>

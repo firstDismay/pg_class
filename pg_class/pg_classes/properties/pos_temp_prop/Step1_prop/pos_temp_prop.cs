@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data;
+using System.Text;
 
 namespace pg_class.pg_classes
 {
@@ -22,7 +20,7 @@ namespace pg_class.pg_classes
             on_change = false;
         }
 
-        
+
         /// <summary>
         /// Полный конструктор класса для возврата данных существующих записей через строку таблицы 
         /// </summary>
@@ -199,7 +197,7 @@ namespace pg_class.pg_classes
                 }
             }
         }
-       
+
         private String name;
         /// <summary>
         /// Наименование
@@ -233,7 +231,7 @@ namespace pg_class.pg_classes
             get
             {
                 Int32 result = -1;
-                DataTable tbl_pos  = manager.Instance().TableByName("vpos_temp_prop");
+                DataTable tbl_pos = manager.Instance().TableByName("vpos_temp_prop");
                 if (tbl_pos != null)
                 {
                     result = tbl_pos.Columns["name"].MaxLength;
@@ -276,7 +274,7 @@ namespace pg_class.pg_classes
             get
             {
                 Int32 result = -1;
-                DataTable tbl_pos  = manager.Instance().TableByName("vpos_temp_prop");
+                DataTable tbl_pos = manager.Instance().TableByName("vpos_temp_prop");
                 if (tbl_pos != null)
                 {
                     result = tbl_pos.Columns["desc"].MaxLength;
@@ -476,14 +474,14 @@ namespace pg_class.pg_classes
         /// Обновление концепции в БД
         /// </summary>
         public void Update()
-       {
+        {
             if (on_change)
             {
                 Manager.pos_temp_prop_upd(this);
                 Refresh();
                 on_change = false;
             }
-       }
+        }
 
         /// <summary>
         /// Обновление представления класса из БД, для исторических представлений всегда true
@@ -520,7 +518,7 @@ namespace pg_class.pg_classes
             return Result;
         }
 
-       
+
         /// <summary>
         /// Тип свойства
         /// </summary>

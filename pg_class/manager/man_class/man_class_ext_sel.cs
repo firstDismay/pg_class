@@ -1,19 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Npgsql;
-using System.Data;
+﻿using pg_class.pg_classes;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
-using pg_class.pg_classes;
+using System;
+using System.Collections.Generic;
+using System.Data;
 
 namespace pg_class
 {
     public partial class manager
     {
-        
+
         /// <summary>
         /// Выбор активного представления класса с признаком готовности к созданию объектов по идентификатору
         /// class_act_ready_by_id
@@ -23,11 +19,11 @@ namespace pg_class
             vclass vclass = null;
 
             DataTable tbl_vclass = TableByName("vclass_ext");  //new DataTable("vclass_ext")
-            
-            
+
+
             NpgsqlCommandKey cmdk;
 
-            
+
             cmdk = CommandByKey("class_act_ext_by_id");
 
             if (cmdk != null)
@@ -41,12 +37,12 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
 
             cmdk.Parameters["iid"].Value = iid;
 
             cmdk.Fill(tbl_vclass);
-            
+
             if (tbl_vclass.Rows.Count > 0)
             {
                 vclass = new vclass(tbl_vclass.Rows[0]);
@@ -100,8 +96,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("class_act_ext_by_id");
             if (cmdk != null)
             {
@@ -117,7 +113,7 @@ namespace pg_class
             }
             return Result;
         }
-        
+
 
         /// <summary>
         /// Лист представлений активных классов  с признаком готовности к созданию объектов по идентификатору родительского класса
@@ -128,11 +124,11 @@ namespace pg_class
 
             DataTable tbl_vclass = new DataTable(); // TableByName("vclass_ext");
             tbl_vclass.TableName = "vclass_ext";
-            
-            
+
+
             NpgsqlCommandKey cmdk;
 
-            
+
             cmdk = CommandByKey("class_act_ext_by_id_parent");
 
             if (cmdk != null)
@@ -146,12 +142,12 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
 
             cmdk.Parameters["iid_parent"].Value = id_parent;
 
             cmdk.Fill(tbl_vclass);
-            
+
             vclass vc;
             if (tbl_vclass.Rows.Count > 0)
             {
@@ -190,8 +186,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("class_act_ext_by_id_parent");
             if (cmdk != null)
             {
@@ -217,11 +213,11 @@ namespace pg_class
 
             DataTable tbl_vclass = TableByName("vclass_ext");
             //tbl_vclass.TableName = "vclass_ext";
-            
-            
+
+
             NpgsqlCommandKey cmdk;
 
-            
+
             cmdk = CommandByKey("class_act_ext_by_id_global_prop");
 
             if (cmdk != null)
@@ -235,12 +231,12 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
 
             cmdk.Parameters["iid_global_prop"].Value = iid_global_prop;
 
             cmdk.Fill(tbl_vclass);
-            
+
             vclass vc;
             if (tbl_vclass.Rows.Count > 0)
             {
@@ -270,8 +266,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("class_act_ext_by_id_global_prop");
             if (cmdk != null)
             {
@@ -297,11 +293,11 @@ namespace pg_class
 
             DataTable tbl_vclass = new DataTable(); // TableByName("vclass_ext");
             tbl_vclass.TableName = "vclass_ext";
-            
-            
+
+
             NpgsqlCommandKey cmdk;
 
-            
+
             cmdk = CommandByKey("class_act_ext_by_id_group");
 
             if (cmdk != null)
@@ -315,12 +311,12 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
 
             cmdk.Parameters["iid_group"].Value = iid_group;
-            
+
             cmdk.Fill(tbl_vclass);
-            
+
             vclass vc;
             if (tbl_vclass.Rows.Count > 0)
             {
@@ -350,8 +346,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("class_act_ext_by_id_group");
             if (cmdk != null)
             {
@@ -368,7 +364,7 @@ namespace pg_class
             return Result;
         }
 
-        
+
         /// <summary>
         /// Лист расширенных представлений активных вещественных классов по идентификатору группы
         /// </summary>
@@ -378,11 +374,11 @@ namespace pg_class
 
 
             DataTable tbl_vclass = TableByName("vclass_ext");
-            
-            
+
+
             NpgsqlCommandKey cmdk;
 
-            
+
             cmdk = CommandByKey("class_act_real_ext_by_id_group");
 
             if (cmdk != null)
@@ -396,12 +392,12 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
 
             cmdk.Parameters["iid_group"].Value = id_group;
 
             cmdk.Fill(tbl_vclass);
-            
+
             vclass vc;
             if (tbl_vclass.Rows.Count > 0)
             {
@@ -431,8 +427,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("class_act_real_ext_by_id_group");
             if (cmdk != null)
             {
@@ -448,7 +444,7 @@ namespace pg_class
             }
             return Result;
         }
-        
+
         /// <summary>
         /// Лист разрешенных активных расширенных представлений вещественных классов по идентификатору группы и целевой позиции создаваемого объекта
         /// </summary>
@@ -458,11 +454,11 @@ namespace pg_class
 
 
             DataTable tbl_vclass = TableByName("vclass_ext");
-            
-            
+
+
             NpgsqlCommandKey cmdk;
 
-            
+
             cmdk = CommandByKey("class_act_real_ext_allowed_by_id_group");
 
             if (cmdk != null)
@@ -476,13 +472,13 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
 
             cmdk.Parameters["iid_group"].Value = iid_group;
             cmdk.Parameters["iid_position"].Value = iid_position;
 
             cmdk.Fill(tbl_vclass);
-            
+
             vclass vc;
             if (tbl_vclass.Rows.Count > 0)
             {
@@ -512,8 +508,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("class_act_real_ext_allowed_by_id_group");
             if (cmdk != null)
             {
@@ -529,7 +525,7 @@ namespace pg_class
             }
             return Result;
         }
-        
+
 
         /// <summary>
         /// Лист разрешенных расширенных представлений базовых абстрактных классов по идентификатору группы и целевой позиции создаваемого объекта
@@ -540,11 +536,11 @@ namespace pg_class
 
 
             DataTable tbl_vclass = TableByName("vclass_ext");
-            
-            
+
+
             NpgsqlCommandKey cmdk;
 
-            
+
             cmdk = CommandByKey("class_act_ext_base_allowed_by_id_group");
 
             if (cmdk != null)
@@ -558,13 +554,13 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
 
             cmdk.Parameters["iid_group"].Value = iid_group;
             cmdk.Parameters["iid_position"].Value = iid_position;
 
             cmdk.Fill(tbl_vclass);
-            
+
             vclass vc;
             if (tbl_vclass.Rows.Count > 0)
             {
@@ -594,8 +590,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("class_act_ext_base_allowed_by_id_group");
             if (cmdk != null)
             {

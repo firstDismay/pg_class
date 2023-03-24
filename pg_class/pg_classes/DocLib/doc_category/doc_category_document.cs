@@ -1,19 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
-using System.IO;
-using System.Data;
-using System.Security.Cryptography;
 
 namespace pg_class.pg_classes
 {
-	/// <summary>
-	/// Класс категории документов
-	/// </summary>
-	public partial class doc_category
+    /// <summary>
+    /// Класс категории документов
+    /// </summary>
+    public partial class doc_category
     {
         #region МЕТОДЫ РАБОТЫ С ДОКУМЕНТАМИ
 
@@ -186,10 +179,10 @@ namespace pg_class.pg_classes
             }
         }
 
-		/// <summary>
-		/// Лист документов категории по маске имени документов
-		/// </summary>
-		public List<document> document_by_name(String iname, Boolean Extended = false)
+        /// <summary>
+        /// Лист документов категории по маске имени документов
+        /// </summary>
+        public List<document> document_by_name(String iname, Boolean Extended = false)
         {
             if (Extended)
             {

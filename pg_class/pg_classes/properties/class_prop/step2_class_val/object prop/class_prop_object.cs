@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace pg_class.pg_classes
 {
@@ -41,7 +37,7 @@ namespace pg_class.pg_classes
         {
             return Manager.class_prop_object_val_add(this, class_val,
                       ibquantity_min, ibquantity_max,
-                                     eObjectPropCreateEmdedMode.NoAction, true,-1, -1);
+                                     eObjectPropCreateEmdedMode.NoAction, true, -1, -1);
         }
 
         #endregion

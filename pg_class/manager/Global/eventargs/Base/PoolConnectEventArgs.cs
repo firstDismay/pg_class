@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 
 namespace pg_class
@@ -31,14 +27,14 @@ namespace pg_class
             connectmax = ConnectMax;
         }
 
-  
+
         #endregion
 
         #region СВОЙСТВА КЛАССА
         private Int32 connectcurent = 0;
         private Int32 connectmax = 0;
 
-        
+
 
         /// <summary>
         /// Количество подключений текущее
@@ -48,7 +44,7 @@ namespace pg_class
         /// <summary>
         /// Количество подключений текущее
         /// </summary>
-        public Int32 ConnectMax { get => connectmax; }        
+        public Int32 ConnectMax { get => connectmax; }
         #endregion
     }
 }

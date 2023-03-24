@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Npgsql;
-using System.Data;
+﻿using pg_class.pg_classes;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
-using pg_class.pg_classes;
-using System.Security.Cryptography;
+using System;
 
 namespace pg_class
 {
@@ -17,14 +10,14 @@ namespace pg_class
         /// <summary>
         /// Метод добавляет ссылку на документ для указанной сущности
         /// </summary>
-        public doc_link doc_link_add( Int64 iid_document, Int64 iid_entity, Int64 iid_entity_instance, Int64 iid_sub_entity_instance)
+        public doc_link doc_link_add(Int64 iid_document, Int64 iid_entity, Int64 iid_entity_instance, Int64 iid_sub_entity_instance)
         {
             doc_link doc_link = null;
             Int64 id = 0;
             Int32 error;
             String desc_error;
             NpgsqlCommandKey cmdk;
-            
+
             cmdk = CommandByKey("doc_link_add");
             if (cmdk != null)
             {

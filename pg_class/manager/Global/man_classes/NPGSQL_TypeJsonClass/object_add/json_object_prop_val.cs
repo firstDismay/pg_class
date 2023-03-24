@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using pg_class.pg_classes;
+using System;
 
 
 namespace pg_class
@@ -49,13 +44,13 @@ namespace pg_class
         /// </summary>
         [JsonProperty]
         public Int64 IdClassProp { get; set; }
-        
+
         /// <summary>
         ///Наименование свойства класса
         /// </summary>
         [JsonProperty]
         public String NameClassProp { get; set; }
-        
+
         /// <summary>
         ///Значеие свойства объекта
         /// </summary>

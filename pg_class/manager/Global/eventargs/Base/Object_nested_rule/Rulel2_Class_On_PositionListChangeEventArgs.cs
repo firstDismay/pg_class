@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using pg_class.pg_classes;
+﻿using pg_class.pg_classes;
+using System;
 
 namespace pg_class
 {
     /// <summary>
     /// Аргумент событий изменения списка правил разрешения вложения классов в позиции указанных шаблонов
     /// </summary>
-    public class Rulel2_Class_On_PositionListChangeEventArgs:EventArgs
+    public class Rulel2_Class_On_PositionListChangeEventArgs : EventArgs
 
     {
         #region КОНСТРУКТОРЫ КЛАССА
@@ -43,7 +39,7 @@ namespace pg_class
         /// <summary>
         /// Перечисление определяющее тип действия выполняемого методом доступа к БД
         /// </summary>
-        public eActionRuleList Action { get => action;}
+        public eActionRuleList Action { get => action; }
         /// <summary>
         /// Идентификатор класса включенного в разрешающее правило уровня 2 класс на позицию
         /// </summary>

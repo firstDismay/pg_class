@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Npgsql;
-using System.Data;
+﻿using pg_class.pg_classes;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
-using pg_class.pg_classes;
-using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
 
 namespace pg_class
 {
@@ -26,8 +20,8 @@ namespace pg_class
             String desc_error;
             NpgsqlCommandKey cmdk;
             //**********
-             
-            
+
+
             cmdk = CommandByKey("object_add_by_single_unit");
 
             if (cmdk != null)
@@ -47,7 +41,7 @@ namespace pg_class
             cmdk.Parameters["iid_unit_conversion_rule"].Value = iid_unit_conversion_rule;
             cmdk.Parameters["icquantity"].Value = icquantity;
             cmdk.ExecuteNonQuery();
-           
+
             error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
             desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
             switch (error)
@@ -97,8 +91,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("object_add_by_single_unit");
             if (cmdk != null)
             {

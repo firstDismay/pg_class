@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace pg_class
 {
@@ -14,7 +10,7 @@ namespace pg_class
         public Int64 id_class_prop { get; set; }
         public Int64 id_object_carrier { get; set; }
         public DateTime timestamp_object_carrier { get; set; }
-        public Int64 id_class{ get; set; }
+        public Int64 id_class { get; set; }
         public DateTime timestamp_class { get; set; }
         public Boolean on_inherit { get; set; }
         public Boolean inheritance { get; set; }

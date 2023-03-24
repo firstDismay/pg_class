@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace pg_class
+﻿namespace pg_class
 {
     #region Перечисления типов данных
     /// <summary>
@@ -180,5 +175,5 @@ namespace pg_class
         /// </summary>
         RecalculatedUnits
     }
-	#endregion
+    #endregion
 }

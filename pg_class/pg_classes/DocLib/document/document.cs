@@ -1,12 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
-using System.IO;
 using System.Data;
-using System.Security.Cryptography;
+using System.IO;
 
 namespace pg_class.pg_classes
 {
@@ -100,7 +95,7 @@ namespace pg_class.pg_classes
                         }
                     }
 
-                    List<doc_category>  doc_category_list = new List<doc_category>();
+                    List<doc_category> doc_category_list = new List<doc_category>();
                     if (!DBNull.Value.Equals(row["doc_category_list"]))
                     {
                         pg_vdoc_category[] dca = (pg_vdoc_category[])row["doc_category_list"];
@@ -113,7 +108,7 @@ namespace pg_class.pg_classes
                     }
                     if (doc_category_list.Count > 0)
                     {
-                        doc_category = doc_category_list.Find(x=>x.Id == id_category);
+                        doc_category = doc_category_list.Find(x => x.Id == id_category);
                     }
                     break;
                 default:
@@ -152,7 +147,7 @@ namespace pg_class.pg_classes
         /// <summary>
         /// Идентификатор окумента
         /// </summary>
-        public Int64 Id { get => id;}
+        public Int64 Id { get => id; }
 
         /// <summary>
         /// Идентификатор концепции документа
@@ -193,7 +188,7 @@ namespace pg_class.pg_classes
                 return on_grouping;
             }
         }
-        
+
 
         /// <summary>
         /// Документ является элементом пакета
@@ -207,7 +202,7 @@ namespace pg_class.pg_classes
             get
             {
                 return name;
-            } 
+            }
             set
             {
                 if (name != value)
@@ -248,7 +243,7 @@ namespace pg_class.pg_classes
             get
             {
                 Int32 result = -1;
-                DataTable tbl_pos  = manager.Instance().TableByName("vdocument");
+                DataTable tbl_pos = manager.Instance().TableByName("vdocument");
                 if (tbl_pos != null)
                 {
                     result = tbl_pos.Columns["name"].MaxLength;
@@ -256,7 +251,7 @@ namespace pg_class.pg_classes
                 return result;
             }
         }
-        
+
         /// <summary>
         /// Описание документа
         /// </summary>
@@ -276,7 +271,7 @@ namespace pg_class.pg_classes
                     }
                     desc = value;
                     on_change = true;
-                   
+
                 }
             }
         }
@@ -284,12 +279,12 @@ namespace pg_class.pg_classes
         /// <summary>
         /// Максимально допустимая длинна строкового поля
         /// </summary>
-        public static  Int32 Desc_len
+        public static Int32 Desc_len
         {
             get
             {
                 Int32 result = -1;
-                DataTable tbl_pos  = manager.Instance().TableByName("vdocument");
+                DataTable tbl_pos = manager.Instance().TableByName("vdocument");
                 if (tbl_pos != null)
                 {
                     result = tbl_pos.Columns["desc"].MaxLength;
@@ -399,7 +394,7 @@ namespace pg_class.pg_classes
                 return on_change;
             }
         }
-        
+
         /// <summary>
         /// Ссылка на менеджера данных
         /// </summary>
@@ -452,7 +447,7 @@ namespace pg_class.pg_classes
         public void Update()
         {
             if (on_change)
-            {             
+            {
                 Manager.document_upd(this);
                 Refresh();
                 on_change = false;

@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Npgsql;
-using System.Data;
+﻿using pg_class.pg_classes;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
-using pg_class.pg_classes;
+using System;
+using System.Collections.Generic;
+using System.Data;
 
 namespace pg_class
 {
@@ -19,7 +15,7 @@ namespace pg_class
         public vclass class_snapshot_by_id(Int64 iid_class, DateTime timestamp_class)
         {
             vclass vclass_snapshot = null;
-            DataTable tbl_vclass_snapshot  = TableByName("vclass");
+            DataTable tbl_vclass_snapshot = TableByName("vclass");
             NpgsqlCommandKey cmdk;
 
             cmdk = CommandByKey("class_snapshot_by_id");
@@ -38,7 +34,7 @@ namespace pg_class
             cmdk.Parameters["iid_class"].Value = iid_class;
             cmdk.Parameters["timestamp_class"].Value = timestamp_class;
             cmdk.Fill(tbl_vclass_snapshot);
-            
+
             if (tbl_vclass_snapshot.Rows.Count > 0)
             {
                 vclass_snapshot = new vclass(tbl_vclass_snapshot.Rows[0]);
@@ -63,7 +59,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
+
             cmdk = CommandByKey("class_snapshot_by_id");
             if (cmdk != null)
             {
@@ -86,7 +82,7 @@ namespace pg_class
         public List<vclass> class_snapshot_by_id_class(Int64 iid_class)
         {
             List<vclass> vclass_snapshot_list = new List<vclass>();
-            DataTable tbl_vclass_snapshot  = TableByName("vclass");
+            DataTable tbl_vclass_snapshot = TableByName("vclass");
             NpgsqlCommandKey cmdk;
 
             cmdk = CommandByKey("class_snapshot_by_id_class");
@@ -104,7 +100,7 @@ namespace pg_class
 
             cmdk.Parameters["iid_class"].Value = iid_class;
             cmdk.Fill(tbl_vclass_snapshot);
-            
+
             vclass vcs;
             if (tbl_vclass_snapshot.Rows.Count > 0)
             {
@@ -158,14 +154,14 @@ namespace pg_class
             }
             return Result;
         }
-        
+
         /// <summary>
         /// Лист снимков класса по идентификатору класса. c учетом активного представлеиня
         /// </summary>
         public List<vclass> class_snapshot_full_by_id_class(Int64 iid_class)
         {
             List<vclass> vclass_snapshot_list = new List<vclass>();
-            DataTable tbl_vclass_snapshot  = TableByName("vclass");
+            DataTable tbl_vclass_snapshot = TableByName("vclass");
             NpgsqlCommandKey cmdk;
 
             cmdk = CommandByKey("class_snapshot_full_by_id_class");
@@ -183,7 +179,7 @@ namespace pg_class
 
             cmdk.Parameters["iid_class"].Value = iid_class;
             cmdk.Fill(tbl_vclass_snapshot);
-            
+
             vclass vcs;
             if (tbl_vclass_snapshot.Rows.Count > 0)
             {
@@ -244,7 +240,7 @@ namespace pg_class
         public List<vclass> class_snapshot_by_id_parent_snapshot(Int64 iid_parent_snapshot, DateTime itimestamp_parent_snapshot)
         {
             List<vclass> vclass_snapshot_list = new List<vclass>();
-            DataTable tbl_vclass_snapshot  = TableByName("vclass");
+            DataTable tbl_vclass_snapshot = TableByName("vclass");
             NpgsqlCommandKey cmdk;
 
             cmdk = CommandByKey("class_snapshot_by_id_parent_snapshot");
@@ -263,7 +259,7 @@ namespace pg_class
             cmdk.Parameters["iid_parent_snapshot"].Value = iid_parent_snapshot;
             cmdk.Parameters["itimestamp_parent_snapshot"].Value = itimestamp_parent_snapshot;
             cmdk.Fill(tbl_vclass_snapshot);
-            
+
             vclass vcs;
             if (tbl_vclass_snapshot.Rows.Count > 0)
             {
@@ -345,7 +341,7 @@ namespace pg_class
             cmdk.Parameters["itimestamp_parent_snapshot"].Value = itimestamp_parent_snapshot;
             cmdk.Parameters["iid_position"].Value = iid_position;
             cmdk.Fill(tbl_vclass_snapshot);
-            
+
             vclass vcs;
             if (tbl_vclass_snapshot.Rows.Count > 0)
             {
@@ -426,7 +422,7 @@ namespace pg_class
             cmdk.Parameters["iid_position"].Value = iid_position;
             cmdk.Parameters["on_internal"].Value = on_internal;
             cmdk.Fill(tbl_vclass_snapshot);
-            
+
             vclass vcs;
             if (tbl_vclass_snapshot.Rows.Count > 0)
             {
@@ -479,7 +475,7 @@ namespace pg_class
         public List<vclass> class_snapshot_by_id_prop_enum(Int64 iid_prop_enum)
         {
             List<vclass> vclass_list = new List<vclass>();
-            DataTable tbl_vclass  = TableByName("vclass");
+            DataTable tbl_vclass = TableByName("vclass");
             NpgsqlCommandKey cmdk;
 
             cmdk = CommandByKey("class_snapshot_by_id_prop_enum");
@@ -497,7 +493,7 @@ namespace pg_class
 
             cmdk.Parameters["iid_prop_enum"].Value = iid_prop_enum;
             cmdk.Fill(tbl_vclass);
-            
+
             vclass vc;
             if (tbl_vclass.Rows.Count > 0)
             {
@@ -550,7 +546,7 @@ namespace pg_class
         public List<vclass> class_snapshot_by_id_prop_enum_val(Int64 iid_prop_enum_val)
         {
             List<vclass> vclass_list = new List<vclass>();
-            DataTable tbl_vclass  = TableByName("vclass");
+            DataTable tbl_vclass = TableByName("vclass");
             NpgsqlCommandKey cmdk;
 
             cmdk = CommandByKey("class_snapshot_by_id_prop_enum_val");
@@ -568,7 +564,7 @@ namespace pg_class
 
             cmdk.Parameters["iid_prop_enum_val"].Value = iid_prop_enum_val;
             cmdk.Fill(tbl_vclass);
-            
+
             vclass vc;
             if (tbl_vclass.Rows.Count > 0)
             {
@@ -621,7 +617,7 @@ namespace pg_class
         public List<vclass> class_snapshot_by_id_unit_conversion_rule(Int32 iid_unit_conversion_rule)
         {
             List<vclass> vclass_list = new List<vclass>();
-            DataTable tbl_vclass  = TableByName("vclass");
+            DataTable tbl_vclass = TableByName("vclass");
             NpgsqlCommandKey cmdk;
 
             cmdk = CommandByKey("class_snapshot_by_id_unit_conversion_rule");
@@ -639,7 +635,7 @@ namespace pg_class
 
             cmdk.Parameters["iid_unit_conversion_rule"].Value = iid_unit_conversion_rule;
             cmdk.Fill(tbl_vclass);
-            
+
             vclass vc;
             if (tbl_vclass.Rows.Count > 0)
             {
@@ -700,7 +696,7 @@ namespace pg_class
         public List<vclass> class_snapshot_by_id_prop_data_type(Int64 iid_conception, Int64 iid_prop_data_type)
         {
             List<vclass> vclass_list = new List<vclass>();
-            DataTable tbl_vclass  = TableByName("vclass");
+            DataTable tbl_vclass = TableByName("vclass");
             NpgsqlCommandKey cmdk;
 
             cmdk = CommandByKey("class_snapshot_by_id_prop_data_type");
@@ -715,11 +711,11 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
             cmdk.Parameters["iid_conception"].Value = iid_conception;
             cmdk.Parameters["iid_prop_data_type"].Value = iid_prop_data_type;
             cmdk.Fill(tbl_vclass);
-            
+
             vclass vc;
             if (tbl_vclass.Rows.Count > 0)
             {

@@ -1,25 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace pg_class.pg_classes
 {
     public partial class pos_temp
     {
         #region СВОЙСТВА ДЛЯ РАБОТЫ С ПОЗИЦИЯМИ ШАБЛОНА ПОЗИЦИИ
- 
-            /// <summary>
-            /// Лист позиций шаблона позиции
-            /// </summary>
-            public List<position> Pos_inheritance_list
+
+        /// <summary>
+        /// Лист позиций шаблона позиции
+        /// </summary>
+        public List<position> Pos_inheritance_list
+        {
+            get
             {
-                get
-                {
-                    return Manager.position_by_id_pos_temp(this.Id);
-                }
+                return Manager.position_by_id_pos_temp(this.Id);
             }
+        }
         #endregion
 
         #region МЕТОДЫ РАБОТЫ С ЛИСТАМИ ПРОТОТИПОВ ПОЗИЦИЙ

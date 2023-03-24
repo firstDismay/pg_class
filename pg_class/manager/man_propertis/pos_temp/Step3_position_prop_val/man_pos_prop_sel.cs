@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Npgsql;
-using System.Data;
+﻿using pg_class.pg_classes;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
-using pg_class.pg_classes;
+using System;
+using System.Collections.Generic;
+using System.Data;
 
 namespace pg_class
 {
@@ -20,12 +16,12 @@ namespace pg_class
         {
             position_prop position_prop = null;
 
-            DataTable tbl_position_prop  = TableByName("vposition_prop");
-            
-            
+            DataTable tbl_position_prop = TableByName("vposition_prop");
+
+
             NpgsqlCommandKey cmdk;
 
-            
+
             cmdk = CommandByKey("position_prop_by_id");
 
             if (cmdk != null)
@@ -39,13 +35,13 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
 
             cmdk.Parameters["iid_position_carrier"].Value = iid_position_carrier;
             cmdk.Parameters["iid_pos_temp_prop"].Value = iid_pos_temp_prop;
 
             cmdk.Fill(tbl_position_prop);
-            
+
             if (tbl_position_prop.Rows.Count > 0)
             {
                 position_prop = new position_prop(tbl_position_prop.Rows[0]);
@@ -53,7 +49,7 @@ namespace pg_class
             return position_prop;
         }
 
-        
+
         /// <summary>
         /// Выбор свойства позиции носителя по идентификатору позиции и свойства шаблона
         /// </summary>
@@ -71,8 +67,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("position_prop_by_id");
             if (cmdk != null)
             {
@@ -88,7 +84,7 @@ namespace pg_class
             }
             return Result;
         }
-        
+
 
 
         /// <summary>
@@ -99,12 +95,12 @@ namespace pg_class
             List<position_prop> position_prop_list = new List<position_prop>();
 
 
-            DataTable tbl_position_prop  = TableByName("vposition_prop");
-            
-            
+            DataTable tbl_position_prop = TableByName("vposition_prop");
+
+
             NpgsqlCommandKey cmdk;
 
-            
+
             cmdk = CommandByKey("position_prop_by_id_position");
 
             if (cmdk != null)
@@ -118,12 +114,12 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
 
             cmdk.Parameters["iid_position_carrier"].Value = iid_position_carrier;
 
             cmdk.Fill(tbl_position_prop);
-            
+
             position_prop cp;
             if (tbl_position_prop.Rows.Count > 0)
             {
@@ -153,8 +149,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("position_prop_by_id_position");
             if (cmdk != null)
             {
@@ -179,12 +175,12 @@ namespace pg_class
         {
             position_prop position_prop = null;
 
-            DataTable tbl_position_prop  = TableByName("vposition_prop");
-            
-            
+            DataTable tbl_position_prop = TableByName("vposition_prop");
+
+
             NpgsqlCommandKey cmdk;
 
-            
+
             cmdk = CommandByKey("position_prop_by_id_object_val");
 
             if (cmdk != null)
@@ -198,15 +194,15 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
 
             cmdk.Parameters["iid_object_val"].Value = iid_object_val;
 
             cmdk.Fill(tbl_position_prop);
-            
+
             if (tbl_position_prop.Rows.Count > 0)
             {
-                position_prop = new position_prop( tbl_position_prop.Rows[0]);
+                position_prop = new position_prop(tbl_position_prop.Rows[0]);
             }
             return position_prop;
         }
@@ -214,7 +210,7 @@ namespace pg_class
         /// <summary>
         /// Выбирает свойства позиции носителя по идентификатору объекта значения
         /// </summary>
-        public position_prop position_prop_by_id_object_val(object_general  Object_val)
+        public position_prop position_prop_by_id_object_val(object_general Object_val)
         {
             return position_prop_by_id_object_val(Object_val.Id);
         }
@@ -227,8 +223,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("position_prop_by_id_object_val");
             if (cmdk != null)
             {

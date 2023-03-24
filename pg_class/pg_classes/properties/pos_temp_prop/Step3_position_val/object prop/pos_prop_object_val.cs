@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace pg_class.pg_classes
 {
@@ -126,7 +123,7 @@ namespace pg_class.pg_classes
             }
         }
 
-        
+
         /// <summary>
         /// Идентификатор свойства позиции носителя
         /// </summary>
@@ -160,7 +157,7 @@ namespace pg_class.pg_classes
             }
         }
 
-        
+
 
         /// <summary>
         /// Колличество объекта значения объектного свойства
@@ -220,7 +217,7 @@ namespace pg_class.pg_classes
         /// <summary>
         /// Уникальный строковый идентификатор позиции
         /// </summary>
-        
+
         private String imagekey;
         /// <summary>
         /// Ключ объекта
@@ -285,7 +282,7 @@ namespace pg_class.pg_classes
             List<object_general> Result;
             if (Extended)
             {
-                Result = Manager.object_ext_object_prop_by_id_object_carrier(id_position_carrier, id_pos_temp_prop_position_carrier); 
+                Result = Manager.object_ext_object_prop_by_id_object_carrier(id_position_carrier, id_pos_temp_prop_position_carrier);
             }
             else
             {
@@ -341,11 +338,11 @@ namespace pg_class.pg_classes
         {
             position_prop_object_val temp = null;
             Boolean Result = false;
-            
-                temp = Manager.position_prop_object_val_by_id_prop(id_position_carrier, id_pos_temp_prop_position_carrier);
 
-                if (temp != null)
-                {
+            temp = Manager.position_prop_object_val_by_id_prop(id_position_carrier, id_pos_temp_prop_position_carrier);
+
+            if (temp != null)
+            {
                 id_position_carrier = temp.Id_position_carrier;
                 id_pos_temp_position_carrier = temp.Id_pos_temp_position_carrier;
                 id_pos_temp_prop_position_carrier = temp.Id_pos_temp_prop;
@@ -359,12 +356,12 @@ namespace pg_class.pg_classes
                 timestamp_class_val = temp.timestamp_val;
                 tablename = temp.Tablename;
                 Result = true;
-                
+
             }
-                else
-                {
-                    Result = false;
-                }
+            else
+            {
+                Result = false;
+            }
             return Result;
         }
 

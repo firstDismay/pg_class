@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Npgsql;
-using System.Data;
+﻿using pg_class.pg_classes;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
-using pg_class.pg_classes;
+using System;
+using System.Collections.Generic;
+using System.Data;
 
 namespace pg_class
 {
@@ -20,12 +16,12 @@ namespace pg_class
         {
             prop_enum prop_enum = null;
 
-            DataTable tbl_entity  = TableByName("vprop_enum");
-            
-            
+            DataTable tbl_entity = TableByName("vprop_enum");
+
+
             NpgsqlCommandKey cmdk;
 
-            
+
             cmdk = CommandByKey("prop_enum_by_id");
 
             if (cmdk != null)
@@ -39,19 +35,19 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
 
             cmdk.Parameters["iid_prop_enum"].Value = iid_prop_enum;
 
             cmdk.Fill(tbl_entity);
-            
+
             if (tbl_entity.Rows.Count > 0)
             {
                 prop_enum = new prop_enum(tbl_entity.Rows[0]);
             }
             return prop_enum;
         }
-        
+
         //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
@@ -61,8 +57,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("prop_enum_by_id");
             if (cmdk != null)
             {
@@ -78,21 +74,21 @@ namespace pg_class
             }
             return Result;
         }
-        
+
 
         /// <summary>
         ///  Выбрать все перечисления для свойства по идентификатору концепции
         /// </summary>
-        public List<prop_enum> prop_enum_by_id_conception( Int64 iid_conception)
+        public List<prop_enum> prop_enum_by_id_conception(Int64 iid_conception)
         {
             List<prop_enum> entity_list = new List<prop_enum>();
 
-            DataTable tbl_entity  = TableByName("vprop_enum");
-            
-            
+            DataTable tbl_entity = TableByName("vprop_enum");
+
+
             NpgsqlCommandKey cmdk;
 
-            
+
             cmdk = CommandByKey("prop_enum_by_id_conception");
 
             if (cmdk != null)
@@ -106,12 +102,12 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
 
             cmdk.Parameters["iid_conception"].Value = iid_conception;
 
             cmdk.Fill(tbl_entity);
-            
+
             prop_enum prop_enum;
             if (tbl_entity.Rows.Count > 0)
             {
@@ -131,7 +127,7 @@ namespace pg_class
         {
             return prop_enum_by_id_conception(Conception.Id);
         }
-        
+
         //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
@@ -141,8 +137,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("prop_enum_by_id_conception");
             if (cmdk != null)
             {
@@ -167,12 +163,12 @@ namespace pg_class
         {
             List<prop_enum> entity_list = new List<prop_enum>();
 
-            DataTable tbl_entity  = TableByName("vprop_enum");
-            
-            
+            DataTable tbl_entity = TableByName("vprop_enum");
+
+
             NpgsqlCommandKey cmdk;
 
-            
+
             cmdk = CommandByKey("prop_enum_by_id_conception_use_area");
 
             if (cmdk != null)
@@ -186,13 +182,13 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
 
             cmdk.Parameters["iid_conception"].Value = iid_conception;
             cmdk.Parameters["iid_prop_enum_use_area"].Value = iid_prop_enum_use_area;
 
             cmdk.Fill(tbl_entity);
-            
+
             prop_enum prop_enum;
             if (tbl_entity.Rows.Count > 0)
             {
@@ -208,7 +204,7 @@ namespace pg_class
         /// <summary>
         ///  Выбрать все перечисления для свойства по идентификатору концепции с учетом области применения
         /// </summary>
-        public List<prop_enum> prop_enum_by_id_conception_use_area(conception Conception, prop_enum_use_area Prop_enum_use_area )
+        public List<prop_enum> prop_enum_by_id_conception_use_area(conception Conception, prop_enum_use_area Prop_enum_use_area)
         {
             return prop_enum_by_id_conception_use_area(Conception.Id, Prop_enum_use_area.Id);
         }
@@ -230,8 +226,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("prop_enum_by_id_conception_use_area");
             if (cmdk != null)
             {
@@ -256,12 +252,12 @@ namespace pg_class
         {
             List<prop_enum> entity_list = new List<prop_enum>();
 
-            DataTable tbl_entity  = TableByName("vprop_enum");
-            
-            
+            DataTable tbl_entity = TableByName("vprop_enum");
+
+
             NpgsqlCommandKey cmdk;
 
-            
+
             cmdk = CommandByKey("prop_enum_by_id_conception_use_area_data_type");
 
             if (cmdk != null)
@@ -275,14 +271,14 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
 
             cmdk.Parameters["iid_conception"].Value = iid_conception;
             cmdk.Parameters["iid_prop_enum_use_area"].Value = iid_prop_enum_use_area;
             cmdk.Parameters["iid_data_type"].Value = iid_data_type;
 
             cmdk.Fill(tbl_entity);
-            
+
             prop_enum prop_enum;
             if (tbl_entity.Rows.Count > 0)
             {
@@ -320,8 +316,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("prop_enum_by_id_conception_use_area_data_type");
             if (cmdk != null)
             {
@@ -345,12 +341,12 @@ namespace pg_class
         {
             List<prop_enum> entity_list = new List<prop_enum>();
 
-            DataTable tbl_entity  = TableByName("vprop_enum");
-            
-            
+            DataTable tbl_entity = TableByName("vprop_enum");
+
+
             NpgsqlCommandKey cmdk;
 
-            
+
             cmdk = CommandByKey("prop_enum_by_id_conception_data_type");
 
             if (cmdk != null)
@@ -364,13 +360,13 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
 
             cmdk.Parameters["iid_conception"].Value = iid_conception;
             cmdk.Parameters["iid_data_type"].Value = iid_data_type;
 
             cmdk.Fill(tbl_entity);
-            
+
             prop_enum prop_enum;
             if (tbl_entity.Rows.Count > 0)
             {
@@ -386,7 +382,7 @@ namespace pg_class
         /// <summary>
         ///  Выбрать все перечисления для свойства по идентификатору концепции с учетом типа денных
         /// </summary>
-        public List<prop_enum> prop_enum_by_id_conception_data_type(conception Conception , con_prop_data_type Data_type)
+        public List<prop_enum> prop_enum_by_id_conception_data_type(conception Conception, con_prop_data_type Data_type)
         {
             return prop_enum_by_id_conception_data_type(Conception.Id, Data_type.Id);
         }
@@ -400,8 +396,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("prop_enum_by_id_conception_data_type");
             if (cmdk != null)
             {
@@ -417,7 +413,7 @@ namespace pg_class
             }
             return Result;
         }
-        
+
         //=-***********************************************************************************
         /// <summary>
         ///  Выбрать все перечисления для свойств объектов по идентификатору концепции с типа данных перечисления
@@ -426,12 +422,12 @@ namespace pg_class
         {
             List<prop_enum> entity_list = new List<prop_enum>();
 
-            DataTable tbl_entity  = TableByName("vprop_enum");
-            
-            
+            DataTable tbl_entity = TableByName("vprop_enum");
+
+
             NpgsqlCommandKey cmdk;
 
-            
+
             cmdk = CommandByKey("prop_enum_for_object_by_id_conception_data_type");
 
             if (cmdk != null)
@@ -445,14 +441,14 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
 
             cmdk.Parameters["iid_conception"].Value = iid_conception;
-            
+
             cmdk.Parameters["iid_data_type"].Value = iid_data_type;
 
             cmdk.Fill(tbl_entity);
-            
+
             prop_enum prop_enum;
             if (tbl_entity.Rows.Count > 0)
             {
@@ -490,8 +486,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("prop_enum_for_object_by_id_conception_data_type");
             if (cmdk != null)
             {
@@ -507,8 +503,8 @@ namespace pg_class
             }
             return Result;
         }
-     
-         //=-***********************************************************************************
+
+        //=-***********************************************************************************
         /// <summary>
         ///  Выбрать все перечисления для свойств позиций по идентификатору концепции с типа данных перечисления
         /// </summary>
@@ -516,12 +512,12 @@ namespace pg_class
         {
             List<prop_enum> entity_list = new List<prop_enum>();
 
-            DataTable tbl_entity  = TableByName("vprop_enum");
-            
-            
+            DataTable tbl_entity = TableByName("vprop_enum");
+
+
             NpgsqlCommandKey cmdk;
 
-            
+
             cmdk = CommandByKey("prop_enum_for_position_by_id_conception_data_type");
 
             if (cmdk != null)
@@ -535,14 +531,14 @@ namespace pg_class
             {
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
-            
+
 
             cmdk.Parameters["iid_conception"].Value = iid_conception;
 
             cmdk.Parameters["iid_data_type"].Value = iid_data_type;
 
             cmdk.Fill(tbl_entity);
-            
+
             prop_enum prop_enum;
             if (tbl_entity.Rows.Count > 0)
             {
@@ -580,8 +576,8 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
-            
+
+
             cmdk = CommandByKey("prop_enum_for_position_by_id_conception_data_type");
             if (cmdk != null)
             {

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace pg_class.pg_classes
+﻿namespace pg_class.pg_classes
 {
     /// <summary>
     /// Класс обобщенного представления объектов

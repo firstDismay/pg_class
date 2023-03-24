@@ -1,23 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Npgsql;
-using System.Data;
+﻿using pg_class.pg_classes;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
-using pg_class.pg_classes;
-using System.Windows.Forms;
+using System;
 
 namespace pg_class
 {
     public partial class manager
-    {   
+    {
         /// <summary>
         /// Метод добавляет новый шаблон позиций
         /// </summary>
-        public pos_temp pos_temp_add( String iname, Int64 iid_con, Int32 iid_prototype, Boolean inested_limit, String idesc)
+        public pos_temp pos_temp_add(String iname, Int64 iid_con, Int32 iid_prototype, Boolean inested_limit, String idesc)
         {
             pos_temp pos_temp = null;
             Int64 id = 0;
@@ -44,7 +37,7 @@ namespace pg_class
             cmdk.Parameters["inested_limit"].Value = inested_limit;
             cmdk.Parameters["idesc"].Value = idesc;
             cmdk.ExecuteNonQuery();
-            
+
             error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
             desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
             switch (error)
@@ -81,7 +74,7 @@ namespace pg_class
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-            
+
             cmdk = CommandByKey("pos_temp_add");
             if (cmdk != null)
             {
@@ -108,7 +101,7 @@ namespace pg_class
             Int32 error;
             String desc_error;
             NpgsqlCommandKey cmdk;
-             
+
             cmdk = CommandByKey("pos_temp_copy");
             if (cmdk != null)
             {
@@ -124,7 +117,7 @@ namespace pg_class
 
             cmdk.Parameters["iid_pattern"].Value = iid_pattern;
             cmdk.ExecuteNonQuery();
-            
+
             error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
             desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
             switch (error)

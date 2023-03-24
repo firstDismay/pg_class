@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace pg_class.pg_classes
-    { /// <summary>
-    /// Класс пользователей БД учеет
-    /// </summary>
+{ /// <summary>
+  /// Класс пользователей БД учеет
+  /// </summary>
     public partial class user
     {
         #region КОНСТРУКТОРЫ КЛАССА
@@ -153,7 +149,7 @@ namespace pg_class.pg_classes
                 {
                     familiya = value;
                     on_change = true;
-                   
+
                 }
             }
         }
@@ -257,9 +253,9 @@ namespace pg_class.pg_classes
                 {
                     rolcreatedb = value;
                     on_change = true;
-                  
+
                 }
-                
+
             }
         }
 
@@ -332,7 +328,7 @@ namespace pg_class.pg_classes
                 return on_change;
             }
         }
-        
+
         /// <summary>
         /// Ссылка на менеджера данных
         /// </summary>
@@ -418,7 +414,7 @@ namespace pg_class.pg_classes
                 }
                 Refresh();
                 on_change = false;
-               
+
             }
         }
 

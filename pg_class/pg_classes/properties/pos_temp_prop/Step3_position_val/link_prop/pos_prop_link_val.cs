@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
-using System.IO;
-using System.Data;
 
 namespace pg_class.pg_classes
 {
@@ -24,7 +17,7 @@ namespace pg_class.pg_classes
             on_change = false;
             imagekey = "position_prop_link_val_us";
             selectedimagekey = "position_prop_link_val_s";
-            
+
         }
         /// <summary>
         /// Полный конструктор класса для возврата данных существующих записей через строку таблицы 
@@ -100,7 +93,7 @@ namespace pg_class.pg_classes
         /// Идентификатор шаблона позиции носителя свойства
         /// </summary>
         public Int64 Шd_pos_temp { get => id_pos_temp; }
-        
+
         /// <summary>
         /// Идентификатор свойства шаблона позиции
         /// </summary>
@@ -179,63 +172,63 @@ namespace pg_class.pg_classes
         }
 
         private DateTime timestamp_val;
-            /// <summary>
-            /// Штам времени класса носителя свойства
-            /// </summary>
-            public DateTime Timestamp_val
+        /// <summary>
+        /// Штам времени класса носителя свойства
+        /// </summary>
+        public DateTime Timestamp_val
+        {
+            get
             {
-                get
-                {
-                    return timestamp_val;
-                }
+                return timestamp_val;
             }
+        }
 
-            private Boolean on_change;
-            /// <summary>
-            /// Свойство определяющее потребность в обновлении данных БД
-            /// </summary>
-            public Boolean On_change
+        private Boolean on_change;
+        /// <summary>
+        /// Свойство определяющее потребность в обновлении данных БД
+        /// </summary>
+        public Boolean On_change
+        {
+            get
             {
-                get
-                {
-                    return on_change;
-                }
+                return on_change;
             }
+        }
 
-            /// <summary>
-            /// Ссылка на менеджера данных
-            /// </summary>
-            private manager Manager
+        /// <summary>
+        /// Ссылка на менеджера данных
+        /// </summary>
+        private manager Manager
+        {
+            get
             {
-                get
-                {
-                    return manager.Instance();
-                }
+                return manager.Instance();
             }
+        }
 
-            private String imagekey;
-            /// <summary>
-            /// Ключ объекта
-            /// </summary>
-            public string ImageKey
+        private String imagekey;
+        /// <summary>
+        /// Ключ объекта
+        /// </summary>
+        public string ImageKey
+        {
+            get
             {
-                get
-                {
-                    return imagekey;
-                }
+                return imagekey;
             }
+        }
 
-            private String selectedimagekey;
-            /// <summary>
-            /// Ключ выделенного объекта
-            /// </summary>
-            public string SelectedImageKey
+        private String selectedimagekey;
+        /// <summary>
+        /// Ключ выделенного объекта
+        /// </summary>
+        public string SelectedImageKey
+        {
+            get
             {
-                get
-                {
-                    return selectedimagekey;
-                }
+                return selectedimagekey;
             }
+        }
 
 
         private String tablename;
@@ -252,16 +245,16 @@ namespace pg_class.pg_classes
 
 
         private Boolean on_val;
-            /// <summary>
-            /// Признак установленного значения свойства
-            /// </summary>
-            public Boolean On_val
+        /// <summary>
+        /// Признак установленного значения свойства
+        /// </summary>
+        public Boolean On_val
+        {
+            get
             {
-                get
-                {
-                    return on_val;
-                }
+                return on_val;
             }
+        }
 
         #endregion
 
@@ -278,21 +271,21 @@ namespace pg_class.pg_classes
         /// Обновление данных значения свойства
         /// </summary>
         public void Update()
+        {
+            if (on_change)
             {
-                if (on_change)
+                if (this.StorageType == eStorageType.NotSaved)
                 {
-                    if (this.StorageType == eStorageType.NotSaved)
-                    {
-                        Manager.position_prop_link_val_add(this);
-                    }
-                    else
-                    {
-                        Manager.position_prop_link_val_upd(this);
-                    }
-                    Refresh();
-                    on_change = false;
+                    Manager.position_prop_link_val_add(this);
                 }
+                else
+                {
+                    Manager.position_prop_link_val_upd(this);
+                }
+                Refresh();
+                on_change = false;
             }
+        }
 
         /// <summary>
         /// Удаление значения из данных значения свойства
@@ -308,7 +301,7 @@ namespace pg_class.pg_classes
         /// </summary>
         public Boolean Refresh()
         {
-            
+
             position_prop_link_val temp;
             Boolean Result = false;
             temp = Manager.position_prop_link_val_by_id_prop(this);
@@ -454,7 +447,7 @@ namespace pg_class.pg_classes
                 case eEntity.vclass:
                     vclass vclass;
                     vclass = Manager.class_act_by_id(Link_id_entity_instance);
-                    
+
                     if (vclass != null)
                     {
                         entity_instance = vclass.Name;

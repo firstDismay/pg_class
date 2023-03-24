@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace pg_class.pg_classes
 {
@@ -25,12 +22,12 @@ namespace pg_class.pg_classes
         #region МЕТОДЫ РАБОТЫ С ГРУППАМИ
         #region ДОБАВИТЬ
 
-      
+
 
         /// <summary>
         /// Метод добавляет новую группу
         /// </summary>
-        public group group_add( String iname, String idesc, Boolean ion_class, Int32 isort)
+        public group group_add(String iname, String idesc, Boolean ion_class, Int32 isort)
         {
             return Manager.group_add(this.id, this.Id_conception, iname, idesc, ion_class, isort);
         }

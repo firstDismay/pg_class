@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace pg_class.pg_classes
 {
     public partial class prop_enum
     {
         #region СВОЙСТВА ДЛЯ РАБОТЫ С ЭЛЕМЕНТАМИ ПЕРЕЧИСЛЕНИЯ
-        
+
         /// <summary>
         /// Метод возвращает лист элементов перечисления для свойств
         /// </summary>
@@ -29,7 +26,7 @@ namespace pg_class.pg_classes
         /// <summary>
         /// Добавить новый элемент в перечисление для свойств
         /// </summary>
-        public prop_enum_val prop_enum_val_add( Decimal ival_numeric, String ival_varchar, Int64 iid_object_reference = -1, Int32 isort = -1)
+        public prop_enum_val prop_enum_val_add(Decimal ival_numeric, String ival_varchar, Int64 iid_object_reference = -1, Int32 isort = -1)
         {
             return Manager.prop_enum_val_add(id_prop_enum, ival_numeric, ival_varchar, iid_object_reference, isort);
         }
@@ -37,7 +34,7 @@ namespace pg_class.pg_classes
         /// <summary>
         /// Добавить новый элемент в перечисление для свойств
         /// </summary>
-        public prop_enum_val prop_enum_val_add(Object ival, Int64 iid_object_reference = -1, Int32 isort=-1)
+        public prop_enum_val prop_enum_val_add(Object ival, Int64 iid_object_reference = -1, Int32 isort = -1)
         {
             return Manager.prop_enum_val_add(this, ival, iid_object_reference, isort);
         }

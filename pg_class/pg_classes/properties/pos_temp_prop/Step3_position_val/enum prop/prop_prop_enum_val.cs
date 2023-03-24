@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
-using System.IO;
 using System.Data;
 
 namespace pg_class.pg_classes
@@ -24,7 +18,7 @@ namespace pg_class.pg_classes
             on_change = false;
             imagekey = "position_prop_enum_val_us";
             selectedimagekey = "position_prop_enum_val_s";
-            
+
         }
         /// <summary>
         /// Полный конструктор класса для возврата данных существующих записей через строку таблицы 
@@ -77,7 +71,7 @@ namespace pg_class.pg_classes
         private Decimal val_numeric;
         private String val_varchar;
         private Int32 val_varchar_len;
-        
+
         private Int64 id_object_reference;
         private Boolean is_use;
         private Boolean has_object_reference;
@@ -233,7 +227,7 @@ namespace pg_class.pg_classes
             get
             {
                 Int32 result = -1;
-                DataTable tbl_pos  = manager.Instance().TableByName("vprop_enum_val");
+                DataTable tbl_pos = manager.Instance().TableByName("vprop_enum_val");
                 if (tbl_pos != null)
                 {
                     result = tbl_pos.Columns["val_varchar"].MaxLength;
@@ -276,7 +270,7 @@ namespace pg_class.pg_classes
             }
         }
 
-        
+
         private Boolean on_change;
         /// <summary>
         /// Свойство определяющее потребность в обновлении данных БД
@@ -453,7 +447,7 @@ namespace pg_class.pg_classes
                 id_prop_enum = newVal.Id_prop_enum;
                 id_prop_enum_val = newVal.Id_prop_enum_val;
             }
-            
+
             return Result;
         }
 

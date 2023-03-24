@@ -1,12 +1,7 @@
-﻿using System;
+﻿using pg_class.pg_exceptions;
+using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
-using System.IO;
-using System.Data;
-using pg_class.pg_exceptions;
 
 namespace pg_class.pg_classes
 {
@@ -204,7 +199,7 @@ namespace pg_class.pg_classes
                 }
             }
         }
-    
+
         /// <summary>
         /// Штамп времени области значений глобального свойства применим для объектных свойств
         /// </summary>
@@ -292,10 +287,10 @@ namespace pg_class.pg_classes
         {
             global_prop_area_val temp = null;
             Boolean Result = false;
-            
+
             temp = Manager.global_prop_area_val_by_id_prop(id_global_prop);
-             if (temp != null)
-             {
+            if (temp != null)
+            {
                 id_global_prop = temp.Id_global_prop;
                 id_conception = temp.Id_conception;
                 id_prop_type = temp.Id_prop_type;
@@ -309,11 +304,11 @@ namespace pg_class.pg_classes
                 Result = true;
                 on_change = false;
             }
-             else
-             {
-                 Result = false;
-             }
-         return Result;
+            else
+            {
+                Result = false;
+            }
+            return Result;
         }
 
         /// <summary>
@@ -378,7 +373,7 @@ namespace pg_class.pg_classes
             prop_enum Result = null;
             if (id_prop_type == 2)
             {
-                Result =  Manager.prop_enum_by_id(id_area_val);
+                Result = Manager.prop_enum_by_id(id_area_val);
             }
             else
             {

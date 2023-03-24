@@ -1,13 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Data.SqlClient;
-using Npgsql;
-using System.Data;
-using System.Windows.Forms;
-using pg_class.pg_exceptions;
-using System.Net.Sockets;
-using System.Linq;
 
 namespace pg_class
 {
