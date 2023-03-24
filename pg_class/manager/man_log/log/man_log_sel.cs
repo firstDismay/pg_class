@@ -195,7 +195,7 @@ namespace pg_class
         /// <summary>
         /// Лист записей журнала по идентификатору шаблона позиции
         /// </summary>
-        public List<log> log_by_id_pos_temp(Int64 iid_entity_instatce, Boolean position_on, Boolean object_on, Boolean recursive_on)
+        public List<log> log_by_id_pos_temp(Int64 iid_pos_temp, Boolean position_on, Boolean object_on, Boolean recursive_on)
         {
             List<log> entity_list = new List<log>();
             DataTable tbl_entity = TableByName("vlog");
@@ -214,7 +214,7 @@ namespace pg_class
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
 
-            cmdk.Parameters["iid_entity_instatce"].Value = iid_entity_instatce;
+            cmdk.Parameters["iid_pos_temp"].Value = iid_pos_temp;
             cmdk.Parameters["position_on"].Value = position_on;
             cmdk.Parameters["object_on"].Value = object_on;
             cmdk.Parameters["recursive_on"].Value = recursive_on;
@@ -269,7 +269,7 @@ namespace pg_class
         /// <summary>
         /// Лист записей журнала по идентификатору позиции
         /// </summary>
-        public List<log> log_by_id_position(Int64 iid_entity_instatce, Boolean object_on, Boolean recursive_on)
+        public List<log> log_by_id_position(Int64 iid_position, Boolean object_on, Boolean recursive_on)
         {
             List<log> entity_list = new List<log>();
             DataTable tbl_entity = TableByName("vlog");
@@ -288,7 +288,7 @@ namespace pg_class
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
 
-            cmdk.Parameters["iid_entity_instatce"].Value = iid_entity_instatce;
+            cmdk.Parameters["iid_position"].Value = iid_position;
             cmdk.Parameters["object_on"].Value = object_on;
             cmdk.Parameters["recursive_on"].Value = recursive_on;
             cmdk.Fill(tbl_entity);
@@ -342,7 +342,7 @@ namespace pg_class
         /// <summary>
         /// Лист записей журнала по идентификатору пользователя
         /// </summary>
-        public List<log> log_by_id_user(Int64 iid_entity_instatce)
+        public List<log> log_by_id_user(Int64 iid_user)
         {
             List<log> entity_list = new List<log>();
             DataTable tbl_entity = TableByName("vlog");
@@ -361,7 +361,7 @@ namespace pg_class
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
 
-            cmdk.Parameters["iid_entity_instatce"].Value = iid_entity_instatce;
+            cmdk.Parameters["iid_user"].Value = iid_user;
             cmdk.Fill(tbl_entity);
             
             log ce;
@@ -413,7 +413,7 @@ namespace pg_class
         /// <summary>
         /// Лист записей журнала по идентификатору свойства позиции
         /// </summary>
-        public List<log> log_by_id_position_prop(Int64 iid_entity_instatce, Int64 iid_sub_entity_instatce)
+        public List<log> log_by_id_position_prop(Int64 iid_pos_temp_prop, Int64 iid_position)
         {
             List<log> entity_list = new List<log>();
             DataTable tbl_entity = TableByName("vlog");
@@ -432,8 +432,8 @@ namespace pg_class
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
 
-            cmdk.Parameters["iid_entity_instatce"].Value = iid_entity_instatce;
-            cmdk.Parameters["iid_sub_entity_instatce"].Value = iid_sub_entity_instatce;
+            cmdk.Parameters["iid_pos_temp_prop"].Value = iid_pos_temp_prop;
+            cmdk.Parameters["iid_position"].Value = iid_position;
             cmdk.Fill(tbl_entity);
             
             log ce;
@@ -485,7 +485,7 @@ namespace pg_class
         /// <summary>
         /// Лист записей журнала по идентификатору свойства шаблона позиции
         /// </summary>
-        public List<log> log_by_id_pos_temp_prop(Int64 iid_entity_instatce)
+        public List<log> log_by_id_pos_temp_prop(Int64 iid_pos_temp_prop)
         {
             List<log> entity_list = new List<log>();
             DataTable tbl_entity = TableByName("vlog");
@@ -504,7 +504,7 @@ namespace pg_class
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
 
-            cmdk.Parameters["iid_entity_instatce"].Value = iid_entity_instatce;
+            cmdk.Parameters["iid_pos_temp_prop"].Value = iid_pos_temp_prop;
             cmdk.Fill(tbl_entity);
             
             log ce;
@@ -556,7 +556,7 @@ namespace pg_class
         /// <summary>
         /// Лист записей журнала по идентификатору группы классов
         /// </summary>
-        public List<log> log_by_id_group(Int64 iid_entity_instatce, Boolean class_on, Boolean object_on , Boolean recursive_on)
+        public List<log> log_by_id_group(Int64 iid_group, Boolean class_on, Boolean object_on , Boolean recursive_on)
         {
             List<log> entity_list = new List<log>();
             DataTable tbl_entity = TableByName("vlog");
@@ -575,7 +575,7 @@ namespace pg_class
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
 
-            cmdk.Parameters["iid_entity_instatce"].Value = iid_entity_instatce;
+            cmdk.Parameters["iid_group"].Value = iid_group;
             cmdk.Parameters["class_on"].Value = class_on;
             cmdk.Parameters["object_on"].Value = object_on;
             cmdk.Parameters["recursive_on"].Value = recursive_on;
@@ -630,7 +630,7 @@ namespace pg_class
         /// <summary>
         /// Лист записей журнала по идентификатору класса
         /// </summary>
-        public List<log> log_by_id_class(Int64 iid_entity_instatce, Boolean object_on, Boolean recursive_on)
+        public List<log> log_by_id_class(Int64 iid_class, Boolean object_on, Boolean recursive_on)
         {
             List<log> entity_list = new List<log>();
             DataTable tbl_entity = TableByName("vlog");
@@ -649,7 +649,7 @@ namespace pg_class
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
 
-            cmdk.Parameters["iid_entity_instatce"].Value = iid_entity_instatce;
+            cmdk.Parameters["iid_class"].Value = iid_class;
             cmdk.Parameters["object_on"].Value = object_on;
             cmdk.Parameters["recursive_on"].Value = recursive_on;
             cmdk.Fill(tbl_entity);
@@ -703,7 +703,7 @@ namespace pg_class
         /// <summary>
         /// Лист записей журнала по идентификатору свойства класса
         /// </summary>
-        public List<log> log_by_id_class_prop(Int64 iid_entity_instatce)
+        public List<log> log_by_id_class_prop(Int64 iid_class_prop)
         {
             List<log> entity_list = new List<log>();
             DataTable tbl_entity = TableByName("vlog");
@@ -722,7 +722,7 @@ namespace pg_class
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
 
-            cmdk.Parameters["iid_entity_instatce"].Value = iid_entity_instatce;
+            cmdk.Parameters["iid_class_prop"].Value = iid_class_prop;
             cmdk.Fill(tbl_entity);
             
             log ce;
@@ -774,7 +774,7 @@ namespace pg_class
         /// <summary>
         /// Лист записей журнала по идентификатору объекта
         /// </summary>
-        public List<log> log_by_id_object(Int64 iid_entity_instatce, Boolean class_on, Boolean group_on, Boolean recursive_on)
+        public List<log> log_by_id_object(Int64 iid_object, Boolean class_on, Boolean group_on, Boolean recursive_on)
         {
             List<log> entity_list = new List<log>();
             DataTable tbl_entity = TableByName("vlog");
@@ -793,7 +793,7 @@ namespace pg_class
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
 
-            cmdk.Parameters["iid_entity_instatce"].Value = iid_entity_instatce;
+            cmdk.Parameters["iid_object"].Value = iid_object;
             cmdk.Parameters["class_on"].Value = class_on;
             cmdk.Parameters["group_on"].Value = group_on;
             cmdk.Parameters["recursive_on"].Value = recursive_on;
@@ -848,7 +848,7 @@ namespace pg_class
         /// <summary>
         /// Лист записей журнала по идентификатору свойства объекта
         /// </summary>
-        public List<log> log_by_id_object_prop(Int64 iid_entity_instatce, Int64 iid_sub_entity_instatce)
+        public List<log> log_by_id_object_prop(Int64 iid_class_prop, Int64 id_object)
         {
             List<log> entity_list = new List<log>();
             DataTable tbl_entity = TableByName("vlog");
@@ -867,8 +867,8 @@ namespace pg_class
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
 
-            cmdk.Parameters["iid_entity_instatce"].Value = iid_entity_instatce;
-            cmdk.Parameters["iid_sub_entity_instatce"].Value = iid_sub_entity_instatce;
+            cmdk.Parameters["iid_class_prop"].Value = iid_class_prop;
+            cmdk.Parameters["id_object"].Value = id_object;
             cmdk.Fill(tbl_entity);
             
             log ce;
