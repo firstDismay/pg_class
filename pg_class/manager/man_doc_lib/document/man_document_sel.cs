@@ -851,7 +851,7 @@ namespace pg_class
             DataTable tbl_entity = TableByName("vdocument");
             NpgsqlCommandKey cmdk;
 
-            cmdk = CommandByKey("iid_object");
+            cmdk = CommandByKey("document_by_id_object");
             if (cmdk != null)
             {
                 if (!cmdk.Access)
