@@ -72,18 +72,18 @@ namespace pg_class.pg_classes
         #region ВЫБРАТЬ
         /// <summary>
         /// Лист позиции концепции
-        /// position_by_id_parent
+        /// position_root_by_id_conception
         /// </summary>
         public List<position> Position_list_get()
         {
-            return Manager.position_by_id_parent(0, id);
+            return Manager.position_root_by_id_conception(id);
         }
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
         public Boolean Position_list_get(out eAccess Access)
         {
-            return Manager.position_by_id_parent(out Access);
+            return Manager.position_root_by_id_conception(out Access);
         }
         //*************************************************************************************
         #endregion
