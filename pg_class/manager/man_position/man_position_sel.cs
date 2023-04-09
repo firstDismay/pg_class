@@ -89,7 +89,7 @@ namespace pg_class
         /// Лист позиций по идентификатору родительской позиции
         /// position_by_id_parent
         /// </summary>
-        public List<position> position_by_id_parent(Int64 id_parent, Int64 id_con)
+        public List<position> position_by_id_parent(Int64 id_parent)
         {
             List<position> pos_list = new List<position>();
 
@@ -114,9 +114,7 @@ namespace pg_class
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
 
-
             cmdk.Parameters["iid_parent"].Value = id_parent;
-            cmdk.Parameters["iid_con"].Value = id_con;
 
             cmdk.Fill(tbl_pos);
 
@@ -139,16 +137,16 @@ namespace pg_class
         /// </summary>
         public List<position> position_by_id_parent(position Position)
         {
-            return position_by_id_parent(Position.Id, Position.Id_conception);
+            return position_by_id_parent(Position.Id);
         }
 
         /// <summary>
         /// Лист позиций по идентификатору родительской позиции с учетом шаблона позиции
         /// position_by_id_parent
         /// </summary>
-        public List<position> position_by_id_parent(Int64 id_parent, Int64 id_con, Int64 id_pos_temp)
+        public List<position> position_by_id_parent(Int64 id_parent, Int64 id_pos_temp)
         {
-            return position_by_id_parent(id_parent, id_con).FindAll(x => x.Id_pos_temp == id_pos_temp);
+            return position_by_id_parent(id_parent).FindAll(x => x.Id_pos_temp == id_pos_temp);
         }
 
         /// <summary>
@@ -157,7 +155,7 @@ namespace pg_class
         /// </summary>
         public List<position> position_by_id_parent(position Position, pos_temp Pos_temp)
         {
-            return position_by_id_parent(Position.Id, Position.Id_conception, Pos_temp.Id);
+            return position_by_id_parent(Position.Id, Pos_temp.Id);
         }
 
         //ACCESS

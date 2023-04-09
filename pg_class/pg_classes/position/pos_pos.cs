@@ -77,7 +77,7 @@ namespace pg_class.pg_classes
         /// </summary>
         public List<position> Position_by_id_pos_temp(Int64 id_pos_temp)
         {
-            return Manager.position_by_id_parent(Id, Id_conception, id_pos_temp);
+            return Manager.position_by_id_parent(Id, id_pos_temp);
         }
 
         /// <summary>
