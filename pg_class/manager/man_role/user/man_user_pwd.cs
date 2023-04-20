@@ -159,9 +159,9 @@ namespace pg_class
         /// <summary>
         /// Метод проверяет пароль пользователя
         /// </summary>
-        public user user_pwd_verify(String login, String pwd)
+        public Boolean user_pwd_verify(String login, String pwd)
         {
-            user user = null;
+            Boolean result = false;
             Int32 error;
             String desc_error;
             NpgsqlCommandKey cmdk;
@@ -181,26 +181,9 @@ namespace pg_class
 
             cmdk.Parameters["ilogin"].Value = login;
             cmdk.Parameters["ipwd"].Value = pwd;
-            cmdk.ExecuteNonQuery();
+            result = (Boolean)cmdk.ExecuteScalar();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
-            {
-                case 0:
-                    user = user_by_login(login);
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(-1, eEntity.user, error, desc_error, eAction.Update, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
-            }
-            //Генерируем событие изменения концепции
-            UserChangeEventArgs e = new UserChangeEventArgs(user, eAction.Update);
-            UserOnChange(e);
-            //Возвращаем сущность
-            return user;
+            return result;
         }
 
         //ACCESS
