@@ -123,7 +123,7 @@ namespace pg_class
                     JournalMessageOnReceived(me);
                     throw new PgDataException(error, desc_error);
             }
-            //Генерируем событие изменения концепции
+            //Генерируем событие изменения пользователя
             UserChangeEventArgs e = new UserChangeEventArgs(user, eAction.Update);
             UserOnChange(e);
             //Возвращаем сущность
