@@ -6,7 +6,7 @@ namespace pg_class.pg_classes
     /// <summary>
     /// Класс шаблонов позиций
     /// </summary>
-    public partial class vclass
+    public partial class object_prop
     {
         #region МЕТОДЫ ДЛЯ РАБОТЫ ЗАПИСЯМИ ЖУРНАЛА
         #region ДОБАВИТЬ
@@ -45,9 +45,9 @@ namespace pg_class.pg_classes
         /// <summary>
         /// Лист записей журнала
         /// </summary>
-        public List<log> log_list_get(Boolean object_on, Boolean recursive_on)
+        public List<log> log_list_get()
         {
-            return Manager.log_by_id_class(this, object_on, recursive_on);
+            return Manager.log_by_id_object_prop(this);
         }
         #endregion
         #endregion
