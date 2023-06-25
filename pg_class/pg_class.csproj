@@ -726,6 +726,8 @@
     <Compile Include="pg_classes\calendar\plan_range_link\plan_range_link_entity.cs" />
     <Compile Include="pg_classes\class\class.cs" />
     <Compile Include="pg_classes\class\class_class_prop.cs" />
+    <Compile Include="pg_classes\class\class_log_link.cs" />
+    <Compile Include="pg_classes\class\class_log.cs" />
     <Compile Include="pg_classes\class\class_json.cs" />
     <Compile Include="pg_classes\class\class_IComparable.cs" />
     <Compile Include="pg_classes\class\class_global_prop.cs" />
@@ -752,10 +754,11 @@
     <Compile Include="pg_classes\conception\con_class_full.cs" />
     <Compile Include="pg_classes\conception\con_class.cs" />
     <Compile Include="pg_classes\conception\con_calendar.cs" />
+    <Compile Include="pg_classes\conception\con_log_category.cs" />
     <Compile Include="pg_classes\conception\con_entity.cs" />
     <Compile Include="pg_classes\conception\con_global_prop.cs" />
     <Compile Include="pg_classes\conception\con_document.cs" />
-    <Compile Include="pg_classes\conception\con_category.cs" />
+    <Compile Include="pg_classes\conception\con_doc_category.cs" />
     <Compile Include="pg_classes\conception\con_object.cs" />
     <Compile Include="pg_classes\conception\con_prop_enum.cs" />
     <Compile Include="pg_classes\conception\con_unit_conception.cs" />
@@ -821,6 +824,7 @@
     <Compile Include="pg_classes\position\pos_doc_link.cs" />
     <Compile Include="pg_classes\position\pos_nested_rule\pos_rulel_check_access.cs" />
     <Compile Include="pg_classes\position\pos_object\pos_object_merging.cs" />
+    <Compile Include="pg_classes\position\pos_log_link.cs" />
     <Compile Include="pg_classes\position\pos_sort.cs" />
     <Compile Include="pg_classes\position\GroupAction\object_prop_enum_objects.cs" />
     <Compile Include="pg_classes\position\GroupAction\object_prop_link_objects.cs" />
@@ -845,6 +849,7 @@
     <Compile Include="pg_classes\pos_temp\pos_temp_nested_rule\pos_temp_rulel1_group_on_pos_temp.cs" />
     <Compile Include="pg_classes\pos_temp\pos_temp_group.cs" />
     <Compile Include="pg_classes\pos_temp\pos_temp_conception.cs" />
+    <Compile Include="pg_classes\pos_temp\pos_temp_log_link.cs" />
     <Compile Include="pg_classes\properties\class_prop\step1_prop\class_prop_search_method.cs" />
     <Compile Include="pg_classes\properties\class_prop\step3_object_val\object_prop_doc_link.cs" />
     <Compile Include="pg_classes\properties\class_prop\step1_prop\class_prop_json.cs" />
@@ -868,6 +873,7 @@
     <Compile Include="pg_classes\properties\global_prop\Step4_find_func\global_prop_find_func_object.cs" />
     <Compile Include="pg_classes\properties\global_prop\Step4_agg_func\global_prop_agg_func_match.cs" />
     <Compile Include="pg_classes\properties\global_prop\Step4_group_action\global_prop_group_action_class_prop.cs" />
+    <Compile Include="pg_classes\properties\pos_temp_prop\Step1_prop\pos_temp_prop_log_link.cs" />
     <Compile Include="pg_classes\properties\pos_temp_prop\Step1_prop\pos_temp_prop_doc_link.cs" />
     <Compile Include="pg_classes\properties\pos_temp_prop\Step1_prop\pos_temp_prop_document.cs" />
     <Compile Include="pg_classes\properties\pos_temp_prop\Step1_prop\pos_temp_prop_pos_temp.cs" />
@@ -897,6 +903,7 @@
     <Compile Include="pg_classes\properties\pos_temp_prop\Step3_position_val\pos_prop.cs" />
     <Compile Include="pg_classes\properties\pos_temp_prop\Step3_position_val\pos_prop_global_prop.cs" />
     <Compile Include="pg_classes\properties\pos_temp_prop\Step3_position_val\pos_prop_doc_link.cs" />
+    <Compile Include="pg_classes\properties\pos_temp_prop\Step3_position_val\pos_prop_log_link.cs" />
     <Compile Include="pg_classes\properties\pos_temp_prop\Step3_position_val\user prop\pos_prop_user.cs" />
     <Compile Include="pg_classes\properties\pos_temp_prop\Step3_position_val\user prop\pos_prop_user_val.cs" />
     <Compile Include="pg_classes\properties\pos_temp_prop\Step3_position_val\user prop\pos_prop_user_val_entity.cs" />
@@ -1023,6 +1030,7 @@
     <Compile Include="pg_classes\unit_conversion_rules\units\unit.cs" />
     <Compile Include="pg_classes\users\role_user\role_user_entity.cs" />
     <Compile Include="pg_classes\users\role_user\role_user.cs" />
+    <Compile Include="pg_classes\users\user\user_log_link.cs" />
     <Compile Include="pg_classes\users\user\user_role.cs" />
     <Compile Include="pg_classes\users\user\user_pwd.cs" />
     <Compile Include="pg_classes\users\user\user_doc_link.cs" />
