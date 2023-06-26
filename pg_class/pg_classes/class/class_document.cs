@@ -24,7 +24,6 @@ namespace pg_class.pg_classes
 
         #endregion
 
-
         #region УДАЛИТЬ
         /// <summary>
         /// Метод удаляет указанный документ и все его файлы
