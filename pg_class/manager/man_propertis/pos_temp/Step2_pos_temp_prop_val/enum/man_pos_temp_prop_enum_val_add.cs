@@ -44,28 +44,16 @@ namespace pg_class
             }
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
+            id = Convert.ToInt64(cmdk.Parameters["outid"].Value);
+            if (id > 0)
             {
-                case 0:
-                    id = Convert.ToInt64(cmdk.Parameters["outid"].Value);
-                    if (id > 0)
-                    {
-                        pos_temp_prop_enum_val = pos_temp_prop_enum_val_by_id_prop(iid_pos_temp_prop);
-                    }
-                    if (pos_temp_prop_enum_val != null)
-                    {
-                        //Генерируем событие изменения данных значения свойства типа перечисление
-                        PosTempPropEnumValChangeEventArgs e = new PosTempPropEnumValChangeEventArgs(pos_temp_prop_enum_val, eAction.Insert);
-                        PosTempPropEnumValOnChange(e);
-                    }
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(iid_pos_temp_prop, eEntity.pos_temp_prop_enum_val, error, desc_error, eAction.Insert, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
+                pos_temp_prop_enum_val = pos_temp_prop_enum_val_by_id_prop(iid_pos_temp_prop);
+            }
+            if (pos_temp_prop_enum_val != null)
+            {
+                //Генерируем событие изменения данных значения свойства типа перечисление
+                PosTempPropEnumValChangeEventArgs e = new PosTempPropEnumValChangeEventArgs(pos_temp_prop_enum_val, eAction.Insert);
+                PosTempPropEnumValOnChange(e);
             }
 
             //Возвращаем Сущность

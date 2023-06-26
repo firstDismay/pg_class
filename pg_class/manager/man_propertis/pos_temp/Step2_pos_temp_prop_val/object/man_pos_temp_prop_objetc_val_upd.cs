@@ -44,31 +44,19 @@ namespace pg_class
             cmdk.Parameters["iid_unit_conversion_rule"].Value = iid_unit_conversion_rule;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
+            pos_temp_prop = pos_temp_prop_by_id(iid_pos_temp_prop);
+            if (pos_temp_prop != null)
             {
-                case 0:
-                    pos_temp_prop = pos_temp_prop_by_id(iid_pos_temp_prop);
-                    if (pos_temp_prop != null)
-                    {
-                        //Генерируем событие изменения свойства шаблона
-                        PosTempPropChangeEventArgs e = new PosTempPropChangeEventArgs(pos_temp_prop, eAction.Update);
-                        PosTempPropOnChange(e);
-                    }
-                    pos_temp_prop_object_val = pos_temp_prop.object_data_get();
-                    if (pos_temp_prop_object_val != null)
-                    {
-                        //Генерируем событие изменения данных значения объектного свойства шаблона
-                        PosTempPropObjectValChangeEventArgs e2 = new PosTempPropObjectValChangeEventArgs(pos_temp_prop_object_val, eAction.Update);
-                        PosTempPropObjectValOnChange(e2);
-                    }
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(iid_pos_temp_prop, eEntity.pos_temp_prop_object_val, error, desc_error, eAction.Update, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
+                //Генерируем событие изменения свойства шаблона
+                PosTempPropChangeEventArgs e = new PosTempPropChangeEventArgs(pos_temp_prop, eAction.Update);
+                PosTempPropOnChange(e);
+            }
+            pos_temp_prop_object_val = pos_temp_prop.object_data_get();
+            if (pos_temp_prop_object_val != null)
+            {
+                //Генерируем событие изменения данных значения объектного свойства шаблона
+                PosTempPropObjectValChangeEventArgs e2 = new PosTempPropObjectValChangeEventArgs(pos_temp_prop_object_val, eAction.Update);
+                PosTempPropObjectValOnChange(e2);
             }
 
             //Возвращаем сущность

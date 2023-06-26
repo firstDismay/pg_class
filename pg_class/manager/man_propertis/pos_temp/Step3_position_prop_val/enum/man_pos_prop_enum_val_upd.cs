@@ -45,26 +45,13 @@ namespace pg_class
                     cmdk.Parameters["iid_prop_enum_val"].Value = newPositionPropEnumVal.Id_prop_enum_val;
                 }
                 cmdk.ExecuteNonQuery();
-
-                error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-                desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-                switch (error)
+                
+                position_prop_enum_val = position_prop_enum_val_by_id_prop(newPositionPropEnumVal);
+                if (position_prop_enum_val != null)
                 {
-                    case 0:
-                        position_prop_enum_val = position_prop_enum_val_by_id_prop(newPositionPropEnumVal);
-                        if (position_prop_enum_val != null)
-                        {
-                            //Генерируем событие изменения значения свойства объекта
-                            PositionPropEnumValChangeEventArgs e = new PositionPropEnumValChangeEventArgs(position_prop_enum_val, eAction.Update);
-                            PositionPropEnumValOnChange(e);
-                        }
-                        break;
-                    default:
-                        //Вызов события журнала
-                        position_prop_enum_val = newPositionPropEnumVal;
-                        JournalEventArgs me = new JournalEventArgs(newPositionPropEnumVal.Id_position_carrier, newPositionPropEnumVal.Id_pos_temp_prop, eEntity.position_prop_enum_val, error, desc_error, eAction.Update, eJournalMessageType.error);
-                        JournalMessageOnReceived(me);
-                        throw new PgDataException(error, desc_error);
+                    //Генерируем событие изменения значения свойства объекта
+                    PositionPropEnumValChangeEventArgs e = new PositionPropEnumValChangeEventArgs(position_prop_enum_val, eAction.Update);
+                    PositionPropEnumValOnChange(e);
                 }
             }
             //Возвращаем сущность

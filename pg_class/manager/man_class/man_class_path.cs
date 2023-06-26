@@ -60,7 +60,7 @@ namespace pg_class
                     Result = class_act_path_by_id_class(Class.Id);
                     break;
                 case eStorageType.History:
-                    throw new PgDataException(505, "Исторический класс vclass не допустим методе class_act_path_by_id_class!");
+                    throw new ArgumentOutOfRangeException("Исторический класс vclass не допустим методе class_act_path_by_id_class!");
             }
             return Result;
         }
@@ -142,7 +142,8 @@ namespace pg_class
                     Result = class_snapshot_path_by_id_class(Class.Id, Class.Timestamp);
                     break;
                 case eStorageType.Active:
-                    throw new PgDataException(505, "Активный класс vclass не допустим методе class_snapshot_path_by_id_class!");
+                    throw new ArgumentOutOfRangeException(
+                    "Активный класс vclass не допустим методе class_snapshot_path_by_id_class!");
             }
             return Result;
         }

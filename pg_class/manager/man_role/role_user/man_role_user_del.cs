@@ -34,23 +34,11 @@ namespace pg_class
             cmdk.Parameters["inamesys"].Value = inamesys;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
+            if (usr != null)
             {
-                case 0:
-                    if (usr != null)
-                    {
-                        //Генерируем событие изменения концепции
-                        RoleUserChangeEventArgs e = new RoleUserChangeEventArgs(usr, eAction.Delete);
-                        RoleUserOnChange(e);
-                    }
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(-1, eEntity.role_user, error, desc_error, eAction.Delete, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
+                //Генерируем событие изменения концепции
+                RoleUserChangeEventArgs e = new RoleUserChangeEventArgs(usr, eAction.Delete);
+                RoleUserOnChange(e);
             }
         }
 

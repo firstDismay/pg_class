@@ -54,23 +54,12 @@ namespace pg_class
             cmdk.Parameters["iid_sub_entity_instance"].Value = iid_sub_entity_instance;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
+            id = Convert.ToInt64(cmdk.Parameters["outid"].Value);
+            if (id > 0)
             {
-                case 0:
-                    id = Convert.ToInt64(cmdk.Parameters["outid"].Value);
-                    if (id > 0)
-                    {
-                        log = log_by_id(id);
-                    }
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(id, eEntity.log, error, desc_error, eAction.Insert, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
+                log = log_by_id(id);
             }
+
             if (log != null)
             {
                 //Генерируем событие изменения 

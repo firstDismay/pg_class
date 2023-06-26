@@ -36,38 +36,26 @@ namespace pg_class
             cmdk.Parameters["iid_pos_temp_prop"].Value = iid_pos_temp_prop;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
             pos_temp_prop pos_temp_prop = pos_temp_prop_by_id(iid_pos_temp_prop);
-            switch (error)
+            //Генерируем событие удаления значения свойства класса
+            if (pos_temp_prop != null)
             {
-                case 0:
-                    //Генерируем событие удаления значения свойства класса
-                    if (pos_temp_prop != null)
-                    {
-                        PosTempPropChangeEventArgs e = new PosTempPropChangeEventArgs(pos_temp_prop, eAction.Update);
-                        PosTempPropOnChange(e);
+                PosTempPropChangeEventArgs e = new PosTempPropChangeEventArgs(pos_temp_prop, eAction.Update);
+                PosTempPropOnChange(e);
 
-                        //Генерируем событие изменения значения объектного свойства класса
-                        PosTempPropObjectValChangeEventArgs e2 = new PosTempPropObjectValChangeEventArgs(pos_temp_prop_object_val, eAction.Delete);
-                        PosTempPropObjectValOnChange(e2);
-                    }
-                    //Генерируем событие удаления значения свойства класса
-                    if (pos_temp_prop != null)
-                    {
-                        PosTempPropChangeEventArgs e = new PosTempPropChangeEventArgs(pos_temp_prop, eAction.Update);
-                        PosTempPropOnChange(e);
+                //Генерируем событие изменения значения объектного свойства класса
+                PosTempPropObjectValChangeEventArgs e2 = new PosTempPropObjectValChangeEventArgs(pos_temp_prop_object_val, eAction.Delete);
+                PosTempPropObjectValOnChange(e2);
+            }
+            //Генерируем событие удаления значения свойства класса
+            if (pos_temp_prop != null)
+            {
+                PosTempPropChangeEventArgs e = new PosTempPropChangeEventArgs(pos_temp_prop, eAction.Update);
+                PosTempPropOnChange(e);
 
-                        //Генерируем событие изменения значения объектного свойства класса
-                        PosTempPropObjectValChangeEventArgs e2 = new PosTempPropObjectValChangeEventArgs(pos_temp_prop_object_val, eAction.Delete);
-                        PosTempPropObjectValOnChange(e2);
-                    }
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(iid_pos_temp_prop, eEntity.class_prop_object_val, error, desc_error, eAction.Delete, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
+                //Генерируем событие изменения значения объектного свойства класса
+                PosTempPropObjectValChangeEventArgs e2 = new PosTempPropObjectValChangeEventArgs(pos_temp_prop_object_val, eAction.Delete);
+                PosTempPropObjectValOnChange(e2);
             }
         }
 

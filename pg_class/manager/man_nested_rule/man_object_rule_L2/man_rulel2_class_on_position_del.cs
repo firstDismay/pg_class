@@ -15,8 +15,6 @@ namespace pg_class
             Int32 error;
             String desc_error;
             NpgsqlCommandKey cmdk;
-            //**********
-
 
             cmdk = CommandByKey("rulel2_class_on_position_del");
 
@@ -35,19 +33,6 @@ namespace pg_class
             cmdk.Parameters["iid_class"].Value = iid_class;
             cmdk.Parameters["iid_position"].Value = iid_position;
             cmdk.ExecuteNonQuery();
-
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
-            {
-                case 0:
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(iid_position, eEntity.rulel2_class_on_position, error, desc_error, eAction.Delete, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
-            }
 
             //Вызов события изменения списка вложенности
             Rulel2_Class_On_PositionListChangeEventArgs e;
@@ -108,7 +93,6 @@ namespace pg_class
             Int32 error;
             String desc_error;
             NpgsqlCommandKey cmdk;
-            //**********
 
 
             cmdk = CommandByKey("rulel2_class_on_position_all_del");
@@ -127,19 +111,6 @@ namespace pg_class
 
             cmdk.Parameters["iid_position"].Value = iid_position;
             cmdk.ExecuteNonQuery();
-
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
-            {
-                case 0:
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(iid_position, eEntity.rulel2_class_on_position, error, desc_error, eAction.Delete, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
-            }
 
             //Вызов события изменения списка вложенности
             Rulel2_Class_On_PositionListChangeEventArgs e;

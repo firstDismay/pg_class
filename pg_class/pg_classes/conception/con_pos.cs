@@ -23,7 +23,8 @@ namespace pg_class.pg_classes
                 }
                 else
                 {
-                    throw new pg_exceptions.PgDataException(505, "Выбранный шаблон не пренадлежит текущей концепции");
+                    throw new ArgumentOutOfRangeException(
+                        "Выбранный шаблон не пренадлежит текущей концепции");
                 }
             }
             return pos;

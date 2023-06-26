@@ -39,23 +39,12 @@ namespace pg_class
             cmdk.Parameters["ivisible"].Value = ivisible;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
+            id = Convert.ToInt64(cmdk.Parameters["outid"].Value);
+            if (id > 0)
             {
-                case 0:
-                    id = Convert.ToInt64(cmdk.Parameters["outid"].Value);
-                    if (id > 0)
-                    {
-                        global_prop = global_prop_by_id(id);
-                    }
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(id, eEntity.global_prop, error, desc_error, eAction.Insert, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
+                global_prop = global_prop_by_id(id);
             }
+
             //Генерируем событие изменения свойства класса
             GlobalPropChangeEventArgs e = new GlobalPropChangeEventArgs(global_prop, eAction.Insert);
             GlobalPropOnChange(e);
@@ -131,23 +120,12 @@ namespace pg_class
             cmdk.Parameters["iid_class_prop"].Value = iid_class_prop;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
+            id = Convert.ToInt64(cmdk.Parameters["outid"].Value);
+            if (id > 0)
             {
-                case 0:
-                    id = Convert.ToInt64(cmdk.Parameters["outid"].Value);
-                    if (id > 0)
-                    {
-                        global_prop = global_prop_by_id(id);
-                    }
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(id, eEntity.global_prop, error, desc_error, eAction.Insert, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
+                global_prop = global_prop_by_id(id);
             }
+
             //Генерируем событие изменения свойства класса
             GlobalPropChangeEventArgs e = new GlobalPropChangeEventArgs(global_prop, eAction.Insert);
             GlobalPropOnChange(e);
@@ -223,22 +201,10 @@ namespace pg_class
             cmdk.Parameters["iid_pos_temp_prop"].Value = iid_pos_temp_prop;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
+            id = Convert.ToInt64(cmdk.Parameters["outid"].Value);
+            if (id > 0)
             {
-                case 0:
-                    id = Convert.ToInt64(cmdk.Parameters["outid"].Value);
-                    if (id > 0)
-                    {
-                        global_prop = global_prop_by_id(id);
-                    }
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(id, eEntity.global_prop, error, desc_error, eAction.Insert, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
+                global_prop = global_prop_by_id(id);
             }
             //Генерируем событие изменения свойства класса
             GlobalPropChangeEventArgs e = new GlobalPropChangeEventArgs(global_prop, eAction.Insert);

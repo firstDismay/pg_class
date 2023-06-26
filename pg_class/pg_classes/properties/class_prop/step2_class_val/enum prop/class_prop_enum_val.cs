@@ -384,7 +384,7 @@ namespace pg_class.pg_classes
                 }
                 else
                 {
-                    throw new PgDataException(eEntity.class_prop_enum_val, eAction.Update, eSubClass_ErrID.SCE3_Violation_Rules,
+                    throw new ArgumentOutOfRangeException(
                         "Метод обновления данных значения свойства класса не применим к историческому представлению класса!");
                 }
             }
@@ -402,7 +402,7 @@ namespace pg_class.pg_classes
             }
             else
             {
-                throw new PgDataException(eEntity.class_prop_enum_val, eAction.Delete, eSubClass_ErrID.SCE3_Violation_Rules,
+                throw new ArgumentOutOfRangeException(
                     "Метод удаления значения не применим к историческому представлению класса!");
             }
         }

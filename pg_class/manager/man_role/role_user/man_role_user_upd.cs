@@ -36,24 +36,12 @@ namespace pg_class
             cmdk.Parameters["irole_newnamesys"].Value = irole_newnamesys;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
+            role_user = user_role_user_by_namesys(irole_newnamesys);
+            if (role_user != null)
             {
-                case 0:
-                    role_user = user_role_user_by_namesys(irole_newnamesys);
-                    if (role_user != null)
-                    {
-                        //Генерируем событие изменения концепции
-                        RoleUserChangeEventArgs e = new RoleUserChangeEventArgs(role_user, eAction.Update);
-                        RoleUserOnChange(e);
-                    }
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(-1, eEntity.role_user, error, desc_error, eAction.Update, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
+                //Генерируем событие изменения концепции
+                RoleUserChangeEventArgs e = new RoleUserChangeEventArgs(role_user, eAction.Update);
+                RoleUserOnChange(e);
             }
 
             //Возвращаем сущность
@@ -138,22 +126,10 @@ namespace pg_class
             cmdk.Parameters["irole_base"].Value = RoleBase.NameSystem;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
-            {
-                case 0:
-                    Result = true;
-                    //Генерируем событие изменения концепции
-                    RoleUserChangeEventArgs e = new RoleUserChangeEventArgs(RoleUser, eAction.Update);
-                    RoleUserOnChange(e);
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(-1, eEntity.role_user, error, desc_error, eAction.Update, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
-            }
+            Result = true;
+            //Генерируем событие изменения концепции
+            RoleUserChangeEventArgs e = new RoleUserChangeEventArgs(RoleUser, eAction.Update);
+            RoleUserOnChange(e);
 
             return Result;
         }
@@ -211,22 +187,10 @@ namespace pg_class
             cmdk.Parameters["irole_base"].Value = RoleBase.NameSystem;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
-            {
-                case 0:
-                    Result = true;
-                    //Генерируем событие изменения концепции
-                    RoleUserChangeEventArgs e = new RoleUserChangeEventArgs(RoleUser, eAction.Update);
-                    RoleUserOnChange(e);
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(-1, eEntity.role_user, error, desc_error, eAction.Update, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
-            }
+            Result = true;
+            //Генерируем событие изменения концепции
+            RoleUserChangeEventArgs e = new RoleUserChangeEventArgs(RoleUser, eAction.Update);
+            RoleUserOnChange(e);
 
             //Возвращаем сущность
             return Result;

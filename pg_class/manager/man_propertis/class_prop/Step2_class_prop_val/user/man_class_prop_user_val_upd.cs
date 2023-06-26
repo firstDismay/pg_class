@@ -155,20 +155,9 @@ namespace pg_class
                 }
                 cmdk.ExecuteNonQuery();
 
-                error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-                desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-                switch (error)
-                {
-                    case 0:
-                        class_prop = class_prop_by_id(newClassPropUserVal.Id_class_prop);
-                        class_prop_user_val = class_prop_user_val_by_id_prop(class_prop);
-                        break;
-                    default:
-                        //Вызов события журнала
-                        JournalEventArgs me = new JournalEventArgs(newClassPropUserVal.Id_class_prop, eEntity.class_prop_user_val, error, desc_error, eAction.Update, eJournalMessageType.error);
-                        JournalMessageOnReceived(me);
-                        throw new PgDataException(error, desc_error);
-                }
+                class_prop = class_prop_by_id(newClassPropUserVal.Id_class_prop);
+                class_prop_user_val = class_prop_user_val_by_id_prop(class_prop);
+
                 if (class_prop_user_val != null)
                 {
                     //Генерируем событие изменения значения объектного свойства класса

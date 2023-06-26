@@ -22,7 +22,7 @@ namespace pg_class.pg_classes.calendar
 
         #region УДАЛИТЬ
         /// <summary>
-        /// Метод удаляет указаную ссылку плана
+        /// Метод удаляет указанную ссылку плана
         /// </summary>
         public void plan_link_del(Int64 iid_plan_link)
         {
@@ -30,7 +30,7 @@ namespace pg_class.pg_classes.calendar
         }
 
         /// <summary>
-        /// Метод удаляет указаную ссылку плана
+        /// Метод удаляет указанную ссылку плана
         /// </summary>
         public void plan_link_del(plan_link Plan_link)
         {

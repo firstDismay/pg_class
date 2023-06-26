@@ -8,7 +8,7 @@ namespace pg_class
     public partial class manager
     {
         /// <summary>
-        /// Метод удаляет указаную ссылку документа
+        /// Метод удаляет указанную ссылку документа
         /// </summary>
         public void doc_link_del(Int64 iid_doc_link)
         {
@@ -33,16 +33,6 @@ namespace pg_class
 
             cmdk.Parameters["iid_doc_link"].Value = iid_doc_link;
             cmdk.ExecuteNonQuery();
-
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            if (error > 0)
-            {
-                //Вызов события журнала
-                JournalEventArgs me = new JournalEventArgs(iid_doc_link, eEntity.doc_link, error, desc_error, eAction.Delete, eJournalMessageType.error);
-                JournalMessageOnReceived(me);
-                throw new PgDataException(error, desc_error);
-            }
 
             if (doc_link != null)
             {
@@ -79,7 +69,7 @@ namespace pg_class
         }
 
         /// <summary>
-        /// Метод удаляет указаную ссылку документа по идентификатору сущности
+        /// Метод удаляет указанную ссылку документа по идентификатору сущности
         /// </summary>
         public void doc_link_del_by_entity(Int64 iid_document, Int64 iid_entity, Int64 iid_entity_instance, Int64 iid_sub_entity_instance)
         {
@@ -112,17 +102,7 @@ namespace pg_class
             cmdk.Parameters["iid_entity_instance"].Value = iid_entity_instance;
             cmdk.Parameters["iid_sub_entity_instance"].Value = iid_sub_entity_instance;
             cmdk.ExecuteNonQuery();
-
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            if (error > 0)
-            {
-                //Вызов события журнала
-                JournalEventArgs me = new JournalEventArgs(iid_doc_link, eEntity.doc_link, error, desc_error, eAction.Delete, eJournalMessageType.error);
-                JournalMessageOnReceived(me);
-                throw new PgDataException(error, desc_error);
-            }
-
+                        
             if (doc_link != null)
             {
                 //Генерируем событие изменения
@@ -132,7 +112,7 @@ namespace pg_class
         }
 
         /// <summary>
-        /// Метод удаляет указаную ссылку документа по идентификатору сущности
+        /// Метод удаляет указанную ссылку документа по идентификатору сущности
         /// </summary>
         public void doc_link_del_by_entity(Int64 iid_document, user User)
         {
@@ -140,7 +120,7 @@ namespace pg_class
         }
 
         /// <summary>
-        /// Метод удаляет указаную ссылку документа по идентификатору сущности
+        /// Метод удаляет указанную ссылку документа по идентификатору сущности
         /// </summary>
         public void doc_link_del_by_entity(Int64 iid_document, pos_temp Pos_temp)
         {
@@ -148,7 +128,7 @@ namespace pg_class
         }
 
         /// <summary>
-        /// Метод удаляет указаную ссылку документа по идентификатору сущности
+        /// Метод удаляет указанную ссылку документа по идентификатору сущности
         /// </summary>
         public void doc_link_del_by_entity(Int64 iid_document, pos_temp_prop Pos_temp_prop)
         {
@@ -156,7 +136,7 @@ namespace pg_class
         }
 
         /// <summary>
-        /// Метод удаляет указаную ссылку документа по идентификатору сущности
+        /// Метод удаляет указанную ссылку документа по идентификатору сущности
         /// </summary>
         public void doc_link_del_by_entity(Int64 iid_document, position Position)
         {
@@ -164,7 +144,7 @@ namespace pg_class
         }
 
         /// <summary>
-        /// Метод удаляет указаную ссылку документа по идентификатору сущности
+        /// Метод удаляет указанную ссылку документа по идентификатору сущности
         /// </summary>
         public void doc_link_del_by_entity(Int64 iid_document, position_prop Position_prop)
         {
@@ -172,7 +152,7 @@ namespace pg_class
         }
 
         /// <summary>
-        /// Метод удаляет указаную ссылку документа по идентификатору сущности
+        /// Метод удаляет указанную ссылку документа по идентификатору сущности
         /// </summary>
         public void doc_link_del_by_entity(Int64 iid_document, object_general Object_general)
         {
@@ -180,7 +160,7 @@ namespace pg_class
         }
 
         /// <summary>
-        /// Метод удаляет указаную ссылку документа по идентификатору сущности
+        /// Метод удаляет указанную ссылку документа по идентификатору сущности
         /// </summary>
         public void doc_link_del_by_entity(Int64 iid_document, object_prop Object_prop)
         {
@@ -188,7 +168,7 @@ namespace pg_class
         }
 
         /// <summary>
-        /// Метод удаляет указаную ссылку документа по идентификатору сущности
+        /// Метод удаляет указанную ссылку документа по идентификатору сущности
         /// </summary>
         public void doc_link_del_by_entity(Int64 iid_document, group Group)
         {
@@ -196,7 +176,7 @@ namespace pg_class
         }
 
         /// <summary>
-        /// Метод удаляет указаную ссылку документа по идентификатору сущности
+        /// Метод удаляет указанную ссылку документа по идентификатору сущности
         /// </summary>
         public void doc_link_del_by_entity(Int64 iid_document, vclass Class)
         {
@@ -204,7 +184,7 @@ namespace pg_class
         }
 
         /// <summary>
-        /// Метод удаляет указаную ссылку документа по идентификатору сущности
+        /// Метод удаляет указанную ссылку документа по идентификатору сущности
         /// </summary>
         public void doc_link_del_by_entity(Int64 iid_document, class_prop Class_prop)
         {
@@ -262,15 +242,6 @@ namespace pg_class
             cmdk.Parameters["iid_document"].Value = iid_document;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            if (error > 0)
-            {
-                //Вызов события журнала
-                JournalEventArgs me = new JournalEventArgs(iid_document, eEntity.doc_link, error, desc_error, eAction.Delete, eJournalMessageType.error);
-                JournalMessageOnReceived(me);
-                throw new PgDataException(error, desc_error);
-            }
         }
 
         //ACCESS

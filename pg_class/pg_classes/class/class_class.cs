@@ -82,7 +82,7 @@ namespace pg_class.pg_classes
                     Result = Manager.class_act_real_by_id_parent(this);
                     break;
                 case eStorageType.History:
-                    throw new PgDataException(505, "Тип представления класса не соотвествует сигнатуре функции, требуется активное представление класса");
+                    throw new ArgumentOutOfRangeException("Тип представления класса не соответствует сигнатуре функции, требуется активное представление класса");
             }
             return Result;
         }

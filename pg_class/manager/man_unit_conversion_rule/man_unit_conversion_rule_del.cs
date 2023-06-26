@@ -32,21 +32,9 @@ namespace pg_class
             cmdk.Parameters["iid"].Value = id;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
-            {
-                case 0:
-                    //Генерируем событие изменения правила пересчета
-                    UnitConversionRuleChangeEventArgs e = new UnitConversionRuleChangeEventArgs(id, eAction.Delete);
-                    UnitConversionRuleOnChange(e);
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(id, eEntity.unit_conversion_rule, error, desc_error, eAction.Delete, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
-            }
+            //Генерируем событие изменения правила пересчета
+            UnitConversionRuleChangeEventArgs e = new UnitConversionRuleChangeEventArgs(id, eAction.Delete);
+            UnitConversionRuleOnChange(e);
         }
 
         /// <summary>

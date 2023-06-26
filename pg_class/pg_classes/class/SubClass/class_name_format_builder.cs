@@ -32,8 +32,8 @@ namespace pg_class.pg_classes
             }
             else
             {
-                throw new PgDataException(eEntity.vclass, eAction.Update, eSubClass_ErrID.SCE3_Violation_Rules,
-                    "Указанный класс не допускает определение формата наименования объектов, требуетс активное представление абстрактного класса, содержащего вещественные классы !");
+                throw new ArgumentOutOfRangeException(
+                    "Указанный класс не допускает определение формата наименования объектов, требуется активное представление абстрактного класса, содержащего вещественные классы !");
             }
         }
         #endregion
@@ -186,7 +186,7 @@ namespace pg_class.pg_classes
                     }
                     else
                     {
-                        throw new PgDataException(eEntity.vclass, eAction.Update, eSubClass_ErrID.SCE3_Violation_Rules, "Формат имен объектов класса не создан, используйте метод FormatNew!");
+                        throw new ArgumentOutOfRangeException("Формат имен объектов класса не создан, используйте метод FormatNew!");
                     }
                 }
             }
@@ -220,7 +220,7 @@ namespace pg_class.pg_classes
                     }
                     else
                     {
-                        throw new PgDataException(eEntity.vclass, eAction.Update, eSubClass_ErrID.SCE3_Violation_Rules, "Формат имен объектов класса не создан, используйте метод FormatNew!");
+                        throw new ArgumentOutOfRangeException("Формат имен объектов класса не создан, используйте метод FormatNew!");
                     }
                 }
             }
@@ -254,7 +254,7 @@ namespace pg_class.pg_classes
                     }
                     else
                     {
-                        throw new PgDataException(eEntity.vclass, eAction.Update, eSubClass_ErrID.SCE3_Violation_Rules, "Формат имен объектов класса не создан, используйте метод FormatNew!");
+                        throw new ArgumentOutOfRangeException("Формат имен объектов класса не создан, используйте метод FormatNew!");
                     }
                 }
             }
@@ -286,7 +286,7 @@ namespace pg_class.pg_classes
                 }
                 else
                 {
-                    throw new PgDataException(eEntity.vclass, eAction.Update, eSubClass_ErrID.SCE3_Violation_Rules, "Формат имен объектов класса не создан, используйте метод FormatNew!");
+                    throw new ArgumentOutOfRangeException("Формат имен объектов класса не создан, используйте метод FormatNew!");
                 }
             }
             else
@@ -323,13 +323,14 @@ namespace pg_class.pg_classes
                         }
                         else
                         {
-                            throw new PgDataException(eEntity.vclass, eAction.Update, eSubClass_ErrID.SCE3_Violation_Rules, "Формат не содержит данных для удаления!");
+                            throw new ArgumentOutOfRangeException(
+                                "Формат не содержит данных для удаления!");
                         }
                     }
                 }
                 else
                 {
-                    throw new PgDataException(eEntity.vclass, eAction.Update, eSubClass_ErrID.SCE3_Violation_Rules, "Формат имен объектов класса не создан, используйте метод FormatNew!");
+                    throw new ArgumentOutOfRangeException("Формат имен объектов класса не создан, используйте метод FormatNew!");
                 }
             }
             else

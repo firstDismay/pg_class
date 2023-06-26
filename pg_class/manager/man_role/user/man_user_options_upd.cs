@@ -33,19 +33,7 @@ namespace pg_class
             cmdk.Parameters["ipref_conception"].Value = ipref_conception;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
-            {
-                case 0:
-                    user_options = user_options_by_current();
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(-1, eEntity.user, error, desc_error, eAction.Update, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
-            }
+            user_options = user_options_by_current();
             //Генерируем событие изменения пользователя
             UserChangeEventArgs e = new UserChangeEventArgs(User_current, eAction.Update);
             UserOnChange(e);

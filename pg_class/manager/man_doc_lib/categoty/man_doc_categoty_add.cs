@@ -38,23 +38,12 @@ namespace pg_class
             cmdk.Parameters["ion"].Value = ion;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
+            id = Convert.ToInt64(cmdk.Parameters["outid"].Value);
+            if (id > 0)
             {
-                case 0:
-                    id = Convert.ToInt64(cmdk.Parameters["outid"].Value);
-                    if (id > 0)
-                    {
-                        doc_category = doc_category_by_id(id);
-                    }
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(id, eEntity.doc_category, error, desc_error, eAction.Insert, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
+                doc_category = doc_category_by_id(id);
             }
+
             if (doc_category != null)
             {
                 //Генерируем событие изменения категории документов

@@ -126,7 +126,7 @@ namespace pg_class
                     Result = class_prop_object_val_by_id_prop(Class_prop.Id);
                     break;
                 case eStorageType.History:
-                    throw new PgDataException(505, "Исторический класс class_prop не допустим методе class_prop_object_val_by_id_prop!");
+                    throw new ArgumentOutOfRangeException("Исторический класс class_prop не допустим методе class_prop_object_val_by_id_prop!");
             }
             return Result;
         }

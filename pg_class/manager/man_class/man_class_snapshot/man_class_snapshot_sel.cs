@@ -284,7 +284,7 @@ namespace pg_class
                     Result = class_snapshot_by_id_parent_snapshot(Vclass_parent.Id, Vclass_parent.Timestamp);
                     break;
                 case eStorageType.Active:
-                    throw new PgDataException(505, "Тип представления класса не соотвествует сигнатуре функции, требуется историческое представление класса!");
+                    throw new ArgumentOutOfRangeException("Тип представления класса не соответствует сигнатуре функции, требуется историческое представление класса!");
             }
             return Result;
         }
@@ -366,7 +366,7 @@ namespace pg_class
                     Result = class_snapshot_on_object_by_id_parent_snapshot_parent_pos(Vclass_parent.Id, Vclass_parent.Timestamp, Position_parent.Id);
                     break;
                 case eStorageType.Active:
-                    throw new PgDataException(505, "Тип представления класса не соотвествует сигнатуре функции, требуется историческое представление класса!");
+                    throw new ArgumentOutOfRangeException("Тип представления класса не соответствует сигнатуре функции, требуется историческое представление класса!");
             }
             return Result;
         }

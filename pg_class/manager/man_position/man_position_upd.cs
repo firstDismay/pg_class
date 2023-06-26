@@ -36,26 +36,13 @@ namespace pg_class
             cmdk.Parameters["isort"].Value = isort;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
+            position = position_by_id(id);
+            if (position != null)
             {
-                case 0:
-                    position = position_by_id(id);
-                    if (position != null)
-                    {
-                        //Генерируем событие изменения позиции
-                        PositionChangeEventArgs e = new PositionChangeEventArgs(position, eAction.Update);
-                        PositionOnChange(e);
-                    }
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(id, eEntity.position, error, desc_error, eAction.Update, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
+                //Генерируем событие изменения позиции
+                PositionChangeEventArgs e = new PositionChangeEventArgs(position, eAction.Update);
+                PositionOnChange(e);
             }
-
             //Возвращаем сущность
             return position;
         }
@@ -121,24 +108,12 @@ namespace pg_class
             cmdk.Parameters["iid_parent"].Value = ParentPos;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
+            position = position_by_id(ChildPos);
+            if (position != null)
             {
-                case 0:
-                    position = position_by_id(ChildPos);
-                    if (position != null)
-                    {
-                        //Генерируем событие изменения позиции
-                        PositionChangeEventArgs e = new PositionChangeEventArgs(position, eAction.Move);
-                        PositionOnChange(e);
-                    }
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(ChildPos, eEntity.position, error, desc_error, eAction.Move, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
+                //Генерируем событие изменения позиции
+                PositionChangeEventArgs e = new PositionChangeEventArgs(position, eAction.Move);
+                PositionOnChange(e);
             }
 
             //Возвращаем сущность
@@ -206,25 +181,12 @@ namespace pg_class
             cmdk.Parameters["iid_parent"].Value = 0;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
+            position = position_by_id(ChildPos);
+            if (position != null)
             {
-                case 0:
-                    position = position_by_id(ChildPos);
-                    if (position != null)
-                    {
-                        //Генерируем событие изменения позиции
-                        PositionChangeEventArgs e = new PositionChangeEventArgs(position, eAction.Move);
-                        PositionOnChange(e);
-                    }
-
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(ChildPos, eEntity.position, error, desc_error, eAction.Move, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
+                //Генерируем событие изменения позиции
+                PositionChangeEventArgs e = new PositionChangeEventArgs(position, eAction.Move);
+                PositionOnChange(e);
             }
 
             //Возвращаем сущность
@@ -292,8 +254,6 @@ namespace pg_class
             cmdk.Parameters["onlock"].Value = onlock;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
             eAction Action;
             if (onlock)
             {
@@ -303,21 +263,11 @@ namespace pg_class
             {
                 Action = eAction.UnLock;
             }
-            switch (error)
+            position = position_by_id(iid);
+            if (position != null)
             {
-                case 0:
-                    position = position_by_id(iid);
-                    if (position != null)
-                    {
-                        PositionChangeEventArgs e = new PositionChangeEventArgs(position, Action);
-                        PositionOnChangeLock(e);
-                    }
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(iid, eEntity.position, error, desc_error, Action, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
+                PositionChangeEventArgs e = new PositionChangeEventArgs(position, Action);
+                PositionOnChangeLock(e);
             }
 
             //Возвращаем сущность

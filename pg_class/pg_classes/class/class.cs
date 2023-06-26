@@ -663,7 +663,8 @@ namespace pg_class.pg_classes
                     }
                     else
                     {
-                        throw new PgDataException(100103, "Указан не действительный штрихкод производителя!");
+                        throw new ArgumentOutOfRangeException(
+                            "Указан не действительный штрихкод производителя!");
                     }
                 }
             }
@@ -1033,7 +1034,7 @@ namespace pg_class.pg_classes
             }
             else
             {
-                throw new PgDataException(eEntity.vclass, eAction.Update, eSubClass_ErrID.SCE3_Violation_Rules,
+                throw new ArgumentOutOfRangeException(
                     "Построитель формата имен объектов не доступен в историческом представлении класса!");
             }
             return Result;

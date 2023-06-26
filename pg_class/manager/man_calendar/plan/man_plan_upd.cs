@@ -40,19 +40,7 @@ namespace pg_class
             cmdk.Parameters["irange_max"].Value = irange_max;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
-            {
-                case 0:
-                    centity = plan_by_id(iid);
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(iid, eEntity.plan, error, desc_error, eAction.Update, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
-            }
+            centity = plan_by_id(iid);
             if (centity != null)
             {
                 //Генерируем событие изменения плана

@@ -9,7 +9,7 @@ namespace pg_class
     public partial class manager
     {
         /// <summary>
-        /// Метод удаляет указаную ссылку планового диапазона
+        /// Метод удаляет указанную ссылку планового диапазона
         /// </summary>
         public void plan_range_link_del(Int64 iid_plan_range, Int64 iid_plan_range_link)
         {
@@ -36,23 +36,11 @@ namespace pg_class
             cmdk.Parameters["iid_plan_range_link"].Value = iid_plan_range_link;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
+            if (plan_range_link != null)
             {
-                case 0:
-                    if (plan_range_link != null)
-                    {
-                        //Генерируем событие изменения
-                        PlanRangeLinkChangeEventArgs e = new PlanRangeLinkChangeEventArgs(plan_range_link, eAction.Delete);
-                        PlanRangeLinkOnChange(e);
-                    }
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(iid_plan_range_link, eEntity.plan_range_link, error, desc_error, eAction.Delete, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
+                //Генерируем событие изменения
+                PlanRangeLinkChangeEventArgs e = new PlanRangeLinkChangeEventArgs(plan_range_link, eAction.Delete);
+                PlanRangeLinkOnChange(e);
             }
         }
 
@@ -83,7 +71,7 @@ namespace pg_class
         }
 
         /// <summary>
-        /// Метод удаляет указаную ссылку планового диапазона по идентификатору сущности
+        /// Метод удаляет указанную ссылку планового диапазона по идентификатору сущности
         /// </summary>
         public void plan_range_link_del_by_entity(Int64 iid_plan_range, Int64 iid_entity, Int64 iid_entity_instance, Int64 iid_sub_entity_instance)
         {
@@ -117,28 +105,16 @@ namespace pg_class
             cmdk.Parameters["iid_sub_entity_instance"].Value = iid_sub_entity_instance;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
+            if (plan_range_link != null)
             {
-                case 0:
-                    if (plan_range_link != null)
-                    {
-                        //Генерируем событие изменения
-                        PlanRangeLinkChangeEventArgs e = new PlanRangeLinkChangeEventArgs(plan_range_link, eAction.Delete);
-                        PlanRangeLinkOnChange(e);
-                    }
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(iid_doc_link, eEntity.plan_range_link, error, desc_error, eAction.Delete, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
+                //Генерируем событие изменения
+                PlanRangeLinkChangeEventArgs e = new PlanRangeLinkChangeEventArgs(plan_range_link, eAction.Delete);
+                PlanRangeLinkOnChange(e);
             }
         }
 
         /// <summary>
-        /// Метод удаляет указаную ссылку планового диапазона по идентификатору сущности
+        /// Метод удаляет указанную ссылку планового диапазона по идентификатору сущности
         /// </summary>
         public void plan_range_link_del_by_entity(Int64 iid_plan, user User)
         {
@@ -146,7 +122,7 @@ namespace pg_class
         }
 
         /// <summary>
-        /// Метод удаляет указаную ссылку планового диапазона по идентификатору сущности
+        /// Метод удаляет указанную ссылку планового диапазона по идентификатору сущности
         /// </summary>
         public void plan_range_link_del_by_entity(Int64 iid_plan, pos_temp Pos_temp)
         {
@@ -154,7 +130,7 @@ namespace pg_class
         }
 
         /// <summary>
-        /// Метод удаляет указаную ссылку планового диапазона по идентификатору сущности
+        /// Метод удаляет указанную ссылку планового диапазона по идентификатору сущности
         /// </summary>
         public void plan_range_link_del_by_entity(Int64 iid_plan, pos_temp_prop Pos_temp_prop)
         {
@@ -162,7 +138,7 @@ namespace pg_class
         }
 
         /// <summary>
-        /// Метод удаляет указаную ссылку планового диапазона по идентификатору сущности
+        /// Метод удаляет указанную ссылку планового диапазона по идентификатору сущности
         /// </summary>
         public void plan_range_link_del_by_entity(Int64 iid_plan, position Position)
         {
@@ -170,7 +146,7 @@ namespace pg_class
         }
 
         /// <summary>
-        /// Метод удаляет указаную ссылку планового диапазона по идентификатору сущности
+        /// Метод удаляет указанную ссылку планового диапазона по идентификатору сущности
         /// </summary>
         public void plan_range_link_del_by_entity(Int64 iid_plan, position_prop Position_prop)
         {
@@ -178,7 +154,7 @@ namespace pg_class
         }
 
         /// <summary>
-        /// Метод удаляет указаную ссылку планового диапазона по идентификатору сущности
+        /// Метод удаляет указанную ссылку планового диапазона по идентификатору сущности
         /// </summary>
         public void plan_range_link_del_by_entity(Int64 iid_plan, object_general Object_general)
         {
@@ -186,7 +162,7 @@ namespace pg_class
         }
 
         /// <summary>
-        /// Метод удаляет указаную ссылку планового диапазона по идентификатору сущности
+        /// Метод удаляет указанную ссылку планового диапазона по идентификатору сущности
         /// </summary>
         public void plan_range_link_del_by_entity(Int64 iid_plan, object_prop Object_prop)
         {
@@ -194,7 +170,7 @@ namespace pg_class
         }
 
         /// <summary>
-        /// Метод удаляет указаную ссылку планового диапазона по идентификатору сущности
+        /// Метод удаляет указанную ссылку планового диапазона по идентификатору сущности
         /// </summary>
         public void plan_range_link_del_by_entity(Int64 iid_plan, group Group)
         {
@@ -202,7 +178,7 @@ namespace pg_class
         }
 
         /// <summary>
-        /// Метод удаляет указаную ссылку планового диапазона по идентификатору сущности
+        /// Метод удаляет указанную ссылку планового диапазона по идентификатору сущности
         /// </summary>
         public void plan_range_link_del_by_entity(Int64 iid_plan, vclass Class)
         {
@@ -210,7 +186,7 @@ namespace pg_class
         }
 
         /// <summary>
-        /// Метод удаляет указаную ссылку планового диапазона по идентификатору сущности
+        /// Метод удаляет указанную ссылку планового диапазона по идентификатору сущности
         /// </summary>
         public void plan_range_link_del_by_entity(Int64 iid_plan, class_prop Class_prop)
         {
@@ -267,19 +243,6 @@ namespace pg_class
 
             cmdk.Parameters["iid_plan_range"].Value = iid_plan_range;
             cmdk.ExecuteNonQuery();
-
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
-            {
-                case 0:
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(iid_plan_range, eEntity.plan_range_link, error, desc_error, eAction.Delete, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
-            }
         }
 
         //ACCESS

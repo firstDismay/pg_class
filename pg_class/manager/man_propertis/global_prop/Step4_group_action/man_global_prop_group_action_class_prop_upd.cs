@@ -34,19 +34,8 @@ namespace pg_class
             cmdk.Parameters["itag"].Value = itag;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
-            {
-                case 0:
-                    global_prop = global_prop_by_id(iid_global_prop);
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(iid_global_prop, eEntity.global_prop, error, desc_error, eAction.Update, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
-            }
+            global_prop = global_prop_by_id(iid_global_prop);
+
             //Генерируем событие изменения свойства класса
             GlobalPropChangeEventArgs e = new GlobalPropChangeEventArgs(global_prop, eAction.Update);
             GlobalPropOnChange(e);

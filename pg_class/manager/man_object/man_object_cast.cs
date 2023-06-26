@@ -36,19 +36,8 @@ namespace pg_class
             cmdk.Parameters["itimestamp_class"].Value = itimestamp_class;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
-            {
-                case 0:
-                    Object = object_by_id(iid_object);
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(iid_object, eEntity.vobject, error, desc_error, eAction.Cast, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
-            }
+            Object = object_by_id(iid_object);
+
             if (Object != null)
             {
                 //Генерируем событие изменения

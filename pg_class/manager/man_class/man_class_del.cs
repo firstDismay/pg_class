@@ -35,16 +35,6 @@ namespace pg_class
             cmdk.Parameters["iid"].Value = iid;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            if (error > 0)
-            {
-                //Вызов события журнала
-                JournalEventArgs me = new JournalEventArgs(iid, eEntity.vclass, error, desc_error, eAction.Delete, eJournalMessageType.error);
-                JournalMessageOnReceived(me);
-                throw new PgDataException(error, desc_error);
-            }
-
             //Генерируем событие удаления представления класса
             if (vclass != null)
             {
@@ -61,15 +51,8 @@ namespace pg_class
 
             if (Vclass != null)
             {
-                if (Vclass.StorageType == eStorageType.Active)
-                {
-                    class_del(Vclass.Id);
-                }
-                else
-                {
-                    throw new PgDataException(eEntity.vclass, eAction.Delete, eSubClass_ErrID.SCE3_Violation_Rules,
-                        "Метод удаления класса не применим к историческому представлению класса!");
-                }
+                class_del(Vclass.Id);
+
             }
         }
 

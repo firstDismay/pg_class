@@ -435,8 +435,8 @@ namespace pg_class.pg_classes
             }
             else
             {
-                throw (new pg_exceptions.PgDataException(eEntity.vclass, eAction.Update, eSubClass_ErrID.SCE3_Violation_Rules,
-                    "Указанный класс не соотвествует классу объекта!"));
+                throw new ArgumentOutOfRangeException(
+                    "Указанный класс не соответствует классу объекта!");
             }
         }
 

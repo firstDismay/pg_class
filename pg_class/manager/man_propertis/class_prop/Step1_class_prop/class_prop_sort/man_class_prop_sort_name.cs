@@ -33,19 +33,8 @@ namespace pg_class
             cmdk.Parameters["iid_class"].Value = iid_class;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
-            {
-                case 0:
-                    class_sort = class_act_by_id(iid_class);
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(iid_class, eEntity.vclass, error, desc_error, eAction.Update, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
-            }
+            class_sort = class_act_by_id(iid_class);
+
             //Генерируем событие применения метода сортировки
             if (class_sort != null)
             {
@@ -70,7 +59,7 @@ namespace pg_class
                 }
                 else
                 {
-                    throw new PgDataException(eEntity.class_prop, eAction.Update, eSubClass_ErrID.SCE3_Violation_Rules,
+                    throw new ArgumentOutOfRangeException(
                         "Метод обновления данных свойства класса не применим к историческому представлению класса!");
                 }
             }

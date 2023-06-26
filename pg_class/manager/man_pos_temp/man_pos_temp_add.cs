@@ -37,24 +37,13 @@ namespace pg_class
             cmdk.Parameters["inested_limit"].Value = inested_limit;
             cmdk.Parameters["idesc"].Value = idesc;
             cmdk.ExecuteNonQuery();
-
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
+            
+            id = Convert.ToInt64(cmdk.Parameters["outid"].Value);
+            if (id > 0)
             {
-                case 0:
-                    id = Convert.ToInt64(cmdk.Parameters["outid"].Value);
-                    if (id > 0)
-                    {
-                        pos_temp = pos_temp_by_id(id);
-                    }
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(id, eEntity.pos_temp, error, desc_error, eAction.Insert, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
+                pos_temp = pos_temp_by_id(id);
             }
+        
             if (pos_temp != null)
             {
                 //Генерируем событие изменения концепции
@@ -117,24 +106,13 @@ namespace pg_class
 
             cmdk.Parameters["iid_pattern"].Value = iid_pattern;
             cmdk.ExecuteNonQuery();
-
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
+            
+            id = Convert.ToInt64(cmdk.Parameters["outid"].Value);
+            if (id > 0)
             {
-                case 0:
-                    id = Convert.ToInt64(cmdk.Parameters["outid"].Value);
-                    if (id > 0)
-                    {
-                        pos_temp = pos_temp_by_id(id);
-                    }
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(iid_pattern, eEntity.pos_temp, error, desc_error, eAction.Copy, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
+                pos_temp = pos_temp_by_id(id);
             }
+
             if (pos_temp != null)
             {
                 //Генерируем событие изменения шаблона позиции

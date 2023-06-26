@@ -34,25 +34,13 @@ namespace pg_class
             cmdk.Parameters["iid_pos_temp_nested"].Value = iid_pos_temp_nested;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
+            pos_temp = pos_temp_by_id(iid_pos_temp);
+            if (pos_temp != null)
             {
-                case 0:
-                    pos_temp = pos_temp_by_id(iid_pos_temp);
-                    if (pos_temp != null)
-                    {
-                        //Вызов события изменения списка вложенности
-                        PosTempNestedListChangeEventArgs e;
-                        e = new PosTempNestedListChangeEventArgs(pos_temp, eActionPosTempNestedList.delrule);
-                        OnPosTempNestedListChange(e);
-                    }
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(iid_pos_temp, eEntity.pos_temp_nested_rule, error, desc_error, eAction.Exclude, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
+                //Вызов события изменения списка вложенности
+                PosTempNestedListChangeEventArgs e;
+                e = new PosTempNestedListChangeEventArgs(pos_temp, eActionPosTempNestedList.delrule);
+                OnPosTempNestedListChange(e);
             }
 
             //Возвращаем сущность
@@ -110,25 +98,13 @@ namespace pg_class
             cmdk.Parameters["iid_pos_temp"].Value = iid_pos_temp;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
+            pos_temp = pos_temp_by_id(iid_pos_temp);
+            if (pos_temp != null)
             {
-                case 0:
-                    pos_temp = pos_temp_by_id(iid_pos_temp);
-                    if (pos_temp != null)
-                    {
-                        //Генерируем событие изменения шаблона позиции
-                        PosTempNestedListChangeEventArgs e;
-                        e = new PosTempNestedListChangeEventArgs(pos_temp, eActionPosTempNestedList.delallrule);
-                        OnPosTempNestedListChange(e);
-                    }
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(iid_pos_temp, eEntity.pos_temp_nested_rule, error, desc_error, eAction.Exclude, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
+                //Генерируем событие изменения шаблона позиции
+                PosTempNestedListChangeEventArgs e;
+                e = new PosTempNestedListChangeEventArgs(pos_temp, eActionPosTempNestedList.delallrule);
+                OnPosTempNestedListChange(e);
             }
 
             //Возвращаем сущность

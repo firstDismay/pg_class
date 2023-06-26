@@ -8,7 +8,7 @@ namespace pg_class
     public partial class manager
     {
         /// <summary>
-        /// Метод удаляет указаную концепцию
+        /// Метод удаляет указанную концепцию
         /// </summary>
         public void conception_del(Int64 id)
         {
@@ -33,16 +33,6 @@ namespace pg_class
             cmdk.Parameters["iid"].Value = id;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            if (error > 0)
-            {
-                //Вызов события журнала
-                JournalEventArgs me = new JournalEventArgs(id, eEntity.conception, error, desc_error, eAction.Delete, eJournalMessageType.error);
-                JournalMessageOnReceived(me);
-                throw new PgDataException(error, desc_error);
-            }
-
             //Генерируем событие изменения концепции
             if (conception != null)
             {
@@ -52,7 +42,7 @@ namespace pg_class
         }
 
         /// <summary>
-        /// Метод удаляет указаную концепцию
+        /// Метод удаляет указанную концепцию
         /// </summary>
         public void conception_del(conception Conception)
         {

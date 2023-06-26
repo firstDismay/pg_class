@@ -34,7 +34,7 @@ namespace pg_class.pg_classes
 
         #region ВЫБРАТЬ
         /// <summary>
-        /// Метод удаляет указаную ссылку документа по идентификатору сущности
+        /// Метод удаляет указанную ссылку документа по идентификатору сущности
         /// </summary>
         public doc_link doc_link_by_entity(Int64 iid_document)
         {

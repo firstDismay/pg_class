@@ -33,24 +33,6 @@ namespace pg_class
             conception conception = conception_by_id(iid_conception);
             cmdk.Parameters["iid_conception"].Value = iid_conception;
             Result = (Int64)cmdk.ExecuteScalar();
-
-            if (conception == null)
-            {
-                //Подготовка исключения метода
-                PgDataException pgex = new PgDataException(eEntity.conception, eAction.Clear, eSubClass_ErrID.SCE1_NonExistent_Entity, "Указанная концепция не существует!");
-                //Вызов события журнала
-                JournalEventArgs me = new JournalEventArgs(iid_conception, eEntity.conception, pgex.ErrID, "Указанная концепция не существует!", eAction.Clear, eJournalMessageType.error);
-                JournalMessageOnReceived(me);
-                //Генерация исключения
-                throw new PgDataException(eEntity.conception, eAction.Clear, eSubClass_ErrID.SCE1_NonExistent_Entity, "Указанная концепция не существует!");
-            }
-
-            //Генерируем событие изменения концепции
-            if (conception != null)
-            {
-                ConceptionChangeEventArgs e = new ConceptionChangeEventArgs(conception, eAction.Clear);
-                ConceptionOnChange(e);
-            }
             return Result;
         }
 

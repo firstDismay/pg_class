@@ -49,19 +49,8 @@ namespace pg_class
             cmdk.Parameters["ifulltxtsrch_on"].Value = ifulltxtsrch_on;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
-            {
-                case 0:
-                    doc_file = doc_file_by_id(iid_doc_file);
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(iid_doc_file, eEntity.doc_file, error, desc_error, eAction.Update, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
-            }
+            doc_file = doc_file_by_id(iid_doc_file);
+
             if (doc_file != null)
             {
                 //Генерируем событие изменения файла документов
@@ -188,47 +177,36 @@ namespace pg_class
             cmdk.Parameters["imd5"].Value = imd5;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
+            //Этап №02 Циклическая дозаливка документа
+            if (CountPage > 1)
             {
-                case 0:
-                    //Этап №02 Циклическая дозаливка документа
-                    if (CountPage > 1)
-                    {
-                        for (int i = 1; i < CountPage; i++)
-                        {
-                            buffer = new Byte[SizePage];
-                            ms.Position = i * SizePage;
-                            ms.Read(buffer, 0, SizePage);
+                for (int i = 1; i < CountPage; i++)
+                {
+                    buffer = new Byte[SizePage];
+                    ms.Position = i * SizePage;
+                    ms.Read(buffer, 0, SizePage);
 
-                            cmdk_next.Parameters["iid_doc_file"].Value = iid_doc_file;
-                            cmdk_next.Parameters["file_data"].Size = buffer.Length;
-                            cmdk_next.Parameters["file_data"].Value = buffer;
-                            cmdk_next.ExecuteNonQuery();
-                        }
-                    }
-
-                    //Этап №03 Заливка остатка документа
-                    if (SizeEndPage > 0)
-                    {
-                        buffer = new Byte[SizeEndPage];
-                        ms.Position = CountPage * SizePage;
-                        ms.Read(buffer, 0, SizeEndPage);
-
-                        cmdk_next.Parameters["iid_doc_file"].Value = iid_doc_file;
-                        cmdk_next.Parameters["file_data"].Size = buffer.Length;
-                        cmdk_next.Parameters["file_data"].Value = buffer;
-                        cmdk_next.ExecuteNonQuery();
-                    }
-                    doc_file = doc_file_by_id(iid_doc_file);
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(iid_doc_file, eEntity.doc_file, error, desc_error, eAction.Update, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
+                    cmdk_next.Parameters["iid_doc_file"].Value = iid_doc_file;
+                    cmdk_next.Parameters["file_data"].Size = buffer.Length;
+                    cmdk_next.Parameters["file_data"].Value = buffer;
+                    cmdk_next.ExecuteNonQuery();
+                }
             }
+
+            //Этап №03 Заливка остатка документа
+            if (SizeEndPage > 0)
+            {
+                buffer = new Byte[SizeEndPage];
+                ms.Position = CountPage * SizePage;
+                ms.Read(buffer, 0, SizeEndPage);
+
+                cmdk_next.Parameters["iid_doc_file"].Value = iid_doc_file;
+                cmdk_next.Parameters["file_data"].Size = buffer.Length;
+                cmdk_next.Parameters["file_data"].Value = buffer;
+                cmdk_next.ExecuteNonQuery();
+            }
+            doc_file = doc_file_by_id(iid_doc_file);
+
             if (doc_file != null)
             {
                 //Генерируем событие изменения файла документов

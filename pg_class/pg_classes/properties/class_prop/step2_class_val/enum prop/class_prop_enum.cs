@@ -1,4 +1,5 @@
 ﻿using pg_class.pg_exceptions;
+using System;
 
 namespace pg_class.pg_classes
 {
@@ -20,7 +21,7 @@ namespace pg_class.pg_classes
             }
             else
             {
-                throw new PgDataException(eEntity.class_prop_user_val, eAction.Insert, eSubClass_ErrID.SCE3_Violation_Rules,
+                throw new ArgumentOutOfRangeException(
                     "Метод обновления данных класса не применим к историческому представлению класса!");
             }
             return Result;
@@ -38,7 +39,7 @@ namespace pg_class.pg_classes
             }
             else
             {
-                throw new PgDataException(eEntity.class_prop_user_val, eAction.Insert, eSubClass_ErrID.SCE3_Violation_Rules,
+                throw new ArgumentOutOfRangeException(
                     "Метод обновления данных класса не применим к историческому представлению класса!");
             }
             return Result;
@@ -58,7 +59,7 @@ namespace pg_class.pg_classes
             }
             else
             {
-                throw new PgDataException(eEntity.class_prop_user_val, eAction.Delete, eSubClass_ErrID.SCE3_Violation_Rules,
+                throw new ArgumentOutOfRangeException(
                     "Метод обновления данных класса не применим к историческому представлению класса!");
             }
         }

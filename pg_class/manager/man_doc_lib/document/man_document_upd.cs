@@ -38,19 +38,8 @@ namespace pg_class
             cmdk.Parameters["iregdate"].Value = iregdate;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
-            {
-                case 0:
-                    document = document_by_id(iid_document);
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(iid_document, eEntity.document, error, desc_error, eAction.Update, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
-            }
+            document = document_by_id(iid_document);
+
             if (document != null)
             {
                 //Генерируем событие изменения
@@ -122,19 +111,7 @@ namespace pg_class
             cmdk.Parameters["iid_document"].Value = iid_document;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
-            {
-                case 0:
-                    document = document_by_id(iid_document);
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(iid_document, eEntity.document, error, desc_error, eAction.Include, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
-            }
+            document = document_by_id(iid_document);
             if (document != null)
             {
                 //Генерируем событие изменения
@@ -209,19 +186,8 @@ namespace pg_class
             cmdk.Parameters["iid_document"].Value = iid_document;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
-            {
-                case 0:
-                    document = document_by_id(iid_document);
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(iid_document, eEntity.document, error, desc_error, eAction.Exclude, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
-            }
+            document = document_by_id(iid_document);
+
             //Генерируем событие изменения файла документов
             if (document != null)
             {

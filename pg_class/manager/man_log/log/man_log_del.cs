@@ -35,16 +35,7 @@ namespace pg_class
             cmdk.Parameters["iid_log"].Value = iid_log;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            if (error > 0)
-            {
-                //Вызов события журнала
-                JournalEventArgs me = new JournalEventArgs(iid_log, eEntity.log, error, desc_error, eAction.Delete, eJournalMessageType.error);
-                JournalMessageOnReceived(me);
-                throw new PgDataException(error, desc_error);
-            }
-
+           
             //Генерируем событие изменения концепции
             if (log != null)
             {

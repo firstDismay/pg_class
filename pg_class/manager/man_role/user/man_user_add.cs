@@ -48,25 +48,13 @@ namespace pg_class
             cmdk.Parameters["usr_bypassrls"].Value = usr_bypassrls;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
+            login = (String)(cmdk.Parameters["outid"].Value);
+            user = user_by_login(login);
+            if (user != null)
             {
-                case 0:
-                    login = (String)(cmdk.Parameters["outid"].Value);
-                    user = user_by_login(login);
-                    if (user != null)
-                    {
-                        //Генерируем событие изменения пользователя
-                        UserChangeEventArgs e = new UserChangeEventArgs(user, eAction.Insert);
-                        UserOnChange(e);
-                    }
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(-1, eEntity.user, error, desc_error, eAction.Insert, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
+                //Генерируем событие изменения пользователя
+                UserChangeEventArgs e = new UserChangeEventArgs(user, eAction.Insert);
+                UserOnChange(e);
             }
 
             //Возвращаем сущность

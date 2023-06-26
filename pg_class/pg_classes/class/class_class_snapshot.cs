@@ -14,20 +14,13 @@ namespace pg_class.pg_classes
         public List<vclass> Сlass_snapshot_on_object_by_parent_pos_list_get(position Position_parent, Boolean Extended = false)
         {
             List<vclass> Result = null;
-            switch (StorageType)
+            if (Extended)
             {
-                case eStorageType.History:
-                    if (Extended)
-                    {
-                        Result = Manager.class_snapshot_ext_on_object_by_id_parent_snapshot_parent_pos(this, Position_parent);
-                    }
-                    else
-                    {
-                        Result = Manager.class_snapshot_on_object_by_id_parent_snapshot_parent_pos(this, Position_parent);
-                    }
-                    break;
-                case eStorageType.Active:
-                    throw new PgDataException(505, "Тип представления класса не соотвествует сигнатуре функции, требуется историческое представление класса!");
+                Result = Manager.class_snapshot_ext_on_object_by_id_parent_snapshot_parent_pos(this, Position_parent);
+            }
+            else
+            {
+                Result = Manager.class_snapshot_on_object_by_id_parent_snapshot_parent_pos(this, Position_parent);
             }
             return Result;
         }

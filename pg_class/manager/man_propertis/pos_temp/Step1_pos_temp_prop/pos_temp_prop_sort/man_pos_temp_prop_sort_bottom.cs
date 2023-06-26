@@ -34,20 +34,9 @@ namespace pg_class
             cmdk.Parameters["iid_pos_temp_prop"].Value = iid_pos_temp_prop;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
-            {
-                case 0:
-                    pos_temp_prop = pos_temp_prop_by_id(iid_pos_temp_prop);
-                    pos_temp_sort = pos_temp_by_id(pos_temp_prop.Id_pos_temp);
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(iid_pos_temp_prop, eEntity.pos_temp_prop, error, desc_error, eAction.Update, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
-            }
+            pos_temp_prop = pos_temp_prop_by_id(iid_pos_temp_prop);
+            pos_temp_sort = pos_temp_by_id(pos_temp_prop.Id_pos_temp);
+
             //Генерируем событие применения метода сортировки
             if (pos_temp_sort != null)
             {

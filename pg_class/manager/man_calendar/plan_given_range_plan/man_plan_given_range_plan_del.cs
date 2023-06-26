@@ -33,16 +33,6 @@ namespace pg_class
             cmdk.Parameters["iid"].Value = iid;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            if (error > 0)
-            {
-                //Вызов события журнала
-                JournalEventArgs me = new JournalEventArgs(iid, eEntity.plan_given_range_plan, error, desc_error, eAction.Delete, eJournalMessageType.error);
-                JournalMessageOnReceived(me);
-                throw new PgDataException(error, desc_error);
-            }
-
             //Генерируем событие изменения выделенного диапазона планового диапазона плана
             if (centity != null)
             {
@@ -110,16 +100,6 @@ namespace pg_class
             plan_range centity = plan_range_by_id(iid_plan_range);
             cmdk.Parameters["iid_plan_range"].Value = iid_plan_range;
             cmdk.ExecuteNonQuery();
-
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            if (error > 0)
-            {
-                //Вызов события журнала
-                JournalEventArgs me = new JournalEventArgs(iid_plan_range, eEntity.plan_range, error, desc_error, eAction.Delete, eJournalMessageType.error);
-                JournalMessageOnReceived(me);
-                throw new PgDataException(error, desc_error);
-            }
 
             //Генерируем событие изменения планового диапазона плана
             if (centity != null)

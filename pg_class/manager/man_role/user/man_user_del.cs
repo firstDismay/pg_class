@@ -34,23 +34,11 @@ namespace pg_class
             cmdk.Parameters["ilogin"].Value = login;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
+            //Генерируем событие удаления пользователя
+            if (usr != null)
             {
-                case 0:
-                    //Генерируем событие удаления пользователя
-                    if (usr != null)
-                    {
-                        UserChangeEventArgs e = new UserChangeEventArgs(usr, eAction.Delete);
-                        UserOnChange(e);
-                    }
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(-1, eEntity.user, error, desc_error, eAction.Delete, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
+                UserChangeEventArgs e = new UserChangeEventArgs(usr, eAction.Delete);
+                UserOnChange(e);
             }
         }
 

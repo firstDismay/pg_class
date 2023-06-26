@@ -40,28 +40,16 @@ namespace pg_class
             cmdk.Parameters["isort"].Value = isort;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
+            id = Convert.ToInt64(cmdk.Parameters["outid"].Value);
+            if (id > 0)
             {
-                case 0:
-                    id = Convert.ToInt64(cmdk.Parameters["outid"].Value);
-                    if (id > 0)
-                    {
-                        pos_temp_prop = pos_temp_prop_by_id(id);
-                        if (pos_temp_prop != null)
-                        {
-                            //Генерируем событие изменения свойства
-                            PosTempPropChangeEventArgs e = new PosTempPropChangeEventArgs(pos_temp_prop, eAction.Insert);
-                            PosTempPropOnChange(e);
-                        }
-                    }
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(id, eEntity.pos_temp_prop, error, desc_error, eAction.Insert, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
+                pos_temp_prop = pos_temp_prop_by_id(id);
+                if (pos_temp_prop != null)
+                {
+                    //Генерируем событие изменения свойства
+                    PosTempPropChangeEventArgs e = new PosTempPropChangeEventArgs(pos_temp_prop, eAction.Insert);
+                    PosTempPropOnChange(e);
+                }
             }
 
             //Возвращаем сущность

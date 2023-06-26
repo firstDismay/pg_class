@@ -36,24 +36,12 @@ namespace pg_class
             cmdk.Parameters["iid_pos_temp_prop"].Value = iid_pos_temp_prop;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
+            //Генерируем событие удаления свойства класса
+            if (pos_temp_prop_user_val != null)
             {
-                case 0:
-                    //Генерируем событие удаления свойства класса
-                    if (pos_temp_prop_user_val != null)
-                    {
-                        //Генерируем событие изменения значения свойства шаблона
-                        PosTempPropUserValChangeEventArgs e = new PosTempPropUserValChangeEventArgs(pos_temp_prop_user_val, eAction.Delete);
-                        PosTempPropUserValOnChange(e);
-                    }
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(iid_pos_temp_prop, eEntity.pos_temp_prop_user_val, error, desc_error, eAction.Delete, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
+                //Генерируем событие изменения значения свойства шаблона
+                PosTempPropUserValChangeEventArgs e = new PosTempPropUserValChangeEventArgs(pos_temp_prop_user_val, eAction.Delete);
+                PosTempPropUserValOnChange(e);
             }
         }
 

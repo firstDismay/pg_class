@@ -75,7 +75,7 @@ namespace pg_class.pg_commands
                     }
                     connect_.UnLock();
                     cmd_.Connection = null;
-                    Manager.PG_exception_hadler(ex, this);
+                    Manager.command_exception_handler(ex, this);
                 }
                 catch (Exception ex)
                 {
@@ -88,7 +88,7 @@ namespace pg_class.pg_commands
                     }
                     connect_.UnLock();
                     cmd_.Connection = null;
-                    Manager.PG_exception_hadler(ex, this);
+                    Manager.command_exception_handler(ex, this);
                 }
                 finally
                 {
@@ -167,7 +167,7 @@ namespace pg_class.pg_commands
                     }
                     connect_.UnLock();
                     cmd_.Connection = null;
-                    Manager.PG_exception_hadler(ex, this);
+                    Manager.command_exception_handler(ex, this);
                 }
                 catch (Exception ex)
                 {
@@ -180,7 +180,7 @@ namespace pg_class.pg_commands
                     }
                     connect_.UnLock();
                     cmd_.Connection = null;
-                    Manager.PG_exception_hadler(ex, this);
+                    Manager.command_exception_handler(ex, this);
                 }
                 finally
                 {
@@ -257,7 +257,7 @@ namespace pg_class.pg_commands
                         }
                     }
                     connect_.UnLock();
-                    Manager.PG_exception_hadler(ex, this);
+                    Manager.command_exception_handler(ex, this);
                 }
                 catch (Exception ex)
                 {
@@ -269,7 +269,7 @@ namespace pg_class.pg_commands
                         }
                     }
                     connect_.UnLock();
-                    Manager.PG_exception_hadler(ex, this);
+                    Manager.command_exception_handler(ex, this);
                 }
                 finally
                 {

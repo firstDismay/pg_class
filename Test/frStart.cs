@@ -66,9 +66,15 @@ namespace Test
 
             //log_category lg = NEW_pg_class.log_category_add(107, "Тестовая категория сообщений3", "Тестовая категория сообщений", 0, true);
 
+
+
+            NEW_pg_class.class_add(99999999121,444441212,"12121","121212",true,true,true,12,12,1212121);
+
             String sm2 = manager.SearchMethodsToString(eSearchMethods.like_lower);
 
             global_prop gp2 = NEW_pg_class.global_prop_by_id(33);
+
+
 
 
             PropSearchСondition fs = new PropSearchСondition();

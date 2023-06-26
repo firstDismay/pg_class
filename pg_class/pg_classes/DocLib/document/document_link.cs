@@ -93,7 +93,7 @@ namespace pg_class.pg_classes
 
         #region УДАЛИТЬ
         /// <summary>
-        /// Метод удаляет указаную ссылку документа
+        /// Метод удаляет указанную ссылку документа
         /// </summary>
         public void doc_link_del(Int64 iid_doc_link)
         {
@@ -101,7 +101,7 @@ namespace pg_class.pg_classes
         }
 
         /// <summary>
-        /// Метод удаляет указаную ссылку документа
+        /// Метод удаляет указанную ссылку документа
         /// </summary>
         public void doc_link_del(doc_link Doc_link)
         {
@@ -109,7 +109,7 @@ namespace pg_class.pg_classes
         }
 
         /// <summary>
-        /// Метод удаляет указаную ссылку документа по идентификатору сущности
+        /// Метод удаляет указанную ссылку документа по идентификатору сущности
         /// </summary>
         public void doc_link_del(user User)
         {
@@ -117,7 +117,7 @@ namespace pg_class.pg_classes
         }
 
         /// <summary>
-        /// Метод удаляет указаную ссылку документа по идентификатору сущности
+        /// Метод удаляет указанную ссылку документа по идентификатору сущности
         /// </summary>
         public void doc_link_del(pos_temp Pos_temp)
         {
@@ -125,7 +125,7 @@ namespace pg_class.pg_classes
         }
 
         /// <summary>
-        /// Метод удаляет указаную ссылку документа по идентификатору сущности
+        /// Метод удаляет указанную ссылку документа по идентификатору сущности
         /// </summary>
         public void doc_link_del(pos_temp_prop Pos_temp_prop)
         {
@@ -133,7 +133,7 @@ namespace pg_class.pg_classes
         }
 
         /// <summary>
-        /// Метод удаляет указаную ссылку документа по идентификатору сущности
+        /// Метод удаляет указанную ссылку документа по идентификатору сущности
         /// </summary>
         public void doc_link_del(position Position)
         {
@@ -141,7 +141,7 @@ namespace pg_class.pg_classes
         }
 
         /// <summary>
-        /// Метод удаляет указаную ссылку документа по идентификатору сущности
+        /// Метод удаляет указанную ссылку документа по идентификатору сущности
         /// </summary>
         public void doc_link_del(position_prop Position_prop)
         {
@@ -149,7 +149,7 @@ namespace pg_class.pg_classes
         }
 
         /// <summary>
-        /// Метод удаляет указаную ссылку документа по идентификатору сущности
+        /// Метод удаляет указанную ссылку документа по идентификатору сущности
         /// </summary>
         public void doc_link_del(object_general Object_general)
         {
@@ -157,7 +157,7 @@ namespace pg_class.pg_classes
         }
 
         /// <summary>
-        /// Метод удаляет указаную ссылку документа по идентификатору сущности
+        /// Метод удаляет указанную ссылку документа по идентификатору сущности
         /// </summary>
         public void doc_link_del(object_prop Object_prop)
         {
@@ -165,7 +165,7 @@ namespace pg_class.pg_classes
         }
 
         /// <summary>
-        /// Метод удаляет указаную ссылку документа по идентификатору сущности
+        /// Метод удаляет указанную ссылку документа по идентификатору сущности
         /// </summary>
         public void doc_link_del(group Group)
         {
@@ -173,7 +173,7 @@ namespace pg_class.pg_classes
         }
 
         /// <summary>
-        /// Метод удаляет указаную ссылку документа по идентификатору сущности
+        /// Метод удаляет указанную ссылку документа по идентификатору сущности
         /// </summary>
         public void doc_link_del(vclass Class)
         {
@@ -181,7 +181,7 @@ namespace pg_class.pg_classes
         }
 
         /// <summary>
-        /// Метод удаляет указаную ссылку документа по идентификатору сущности
+        /// Метод удаляет указанную ссылку документа по идентификатору сущности
         /// </summary>
         public void doc_link_del(class_prop Class_prop)
         {

@@ -155,25 +155,13 @@ namespace pg_class
                 }
                 cmdk.ExecuteNonQuery();
 
-                error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-                desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-                switch (error)
+                pos_temp_prop = pos_temp_prop_by_id(newPosTempPropUserVal.Id_pos_temp_prop);
+                pos_temp_prop_user_val = pos_temp_prop_user_val_by_id_prop(pos_temp_prop);
+                if (pos_temp_prop_user_val != null)
                 {
-                    case 0:
-                        pos_temp_prop = pos_temp_prop_by_id(newPosTempPropUserVal.Id_pos_temp_prop);
-                        pos_temp_prop_user_val = pos_temp_prop_user_val_by_id_prop(pos_temp_prop);
-                        if (pos_temp_prop_user_val != null)
-                        {
-                            //Генерируем событие изменения значения объектного свойства шаблоа
-                            PosTempPropUserValChangeEventArgs e = new PosTempPropUserValChangeEventArgs(pos_temp_prop_user_val, eAction.Update);
-                            PosTempPropUserValOnChange(e);
-                        }
-                        break;
-                    default:
-                        //Вызов события журнала
-                        JournalEventArgs me = new JournalEventArgs(newPosTempPropUserVal.Id_pos_temp_prop, eEntity.pos_temp_prop_user_val, error, desc_error, eAction.Update, eJournalMessageType.error);
-                        JournalMessageOnReceived(me);
-                        throw new PgDataException(error, desc_error);
+                    //Генерируем событие изменения значения объектного свойства шаблоа
+                    PosTempPropUserValChangeEventArgs e = new PosTempPropUserValChangeEventArgs(pos_temp_prop_user_val, eAction.Update);
+                    PosTempPropUserValOnChange(e);
                 }
             }
 

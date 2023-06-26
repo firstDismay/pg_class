@@ -33,24 +33,12 @@ namespace pg_class
             cmdk.Parameters["iid_pos_temp"].Value = iid_pos_temp;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
+            pos_temp_sort = pos_temp_by_id(iid_pos_temp);
+            //Генерируем событие применения метода сортировки
+            if (pos_temp_sort != null)
             {
-                case 0:
-                    pos_temp_sort = pos_temp_by_id(iid_pos_temp);
-                    //Генерируем событие применения метода сортировки
-                    if (pos_temp_sort != null)
-                    {
-                        PosTempChangeEventArgs e = new PosTempChangeEventArgs(pos_temp_sort, eAction.Update);
-                        PosTempPropSortOnChange(e);
-                    }
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(iid_pos_temp, eEntity.pos_temp, error, desc_error, eAction.Update, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
+                PosTempChangeEventArgs e = new PosTempChangeEventArgs(pos_temp_sort, eAction.Update);
+                PosTempPropSortOnChange(e);
             }
 
             //Возвращаем сущность

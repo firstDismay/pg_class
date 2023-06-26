@@ -38,25 +38,13 @@ namespace pg_class
             cmdk.Parameters["iid_data_type"].Value = iid_data_type;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
+            id = Convert.ToInt64(cmdk.Parameters["outid"].Value);
+            Prop_enum = prop_enum_by_id(id);
+            if (Prop_enum != null)
             {
-                case 0:
-                    id = Convert.ToInt64(cmdk.Parameters["outid"].Value);
-                    Prop_enum = prop_enum_by_id(id);
-                    if (Prop_enum != null)
-                    {
-                        //Генерируем событие изменения свойства класса
-                        PropEnumChangeEventArgs e = new PropEnumChangeEventArgs(Prop_enum, eAction.Insert);
-                        PropEnumOnChange(e);
-                    }
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(id, eEntity.prop_enum, error, desc_error, eAction.Insert, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
+                //Генерируем событие изменения свойства класса
+                PropEnumChangeEventArgs e = new PropEnumChangeEventArgs(Prop_enum, eAction.Insert);
+                PropEnumOnChange(e);
             }
 
             //Возвращаем Сущность
@@ -125,27 +113,14 @@ namespace pg_class
             cmdk.Parameters["iid_conception"].Value = iid_conception;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
+            id = Convert.ToInt64(cmdk.Parameters["outid"].Value);
+            Prop_enum = prop_enum_by_id(id);
+            if (Prop_enum != null)
             {
-                case 0:
-                    id = Convert.ToInt64(cmdk.Parameters["outid"].Value);
-                    Prop_enum = prop_enum_by_id(id);
-                    if (Prop_enum != null)
-                    {
-                        //Генерируем событие изменения свойства класса
-                        PropEnumChangeEventArgs e = new PropEnumChangeEventArgs(Prop_enum, eAction.Copy);
-                        PropEnumOnChange(e);
-                    }
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(id, eEntity.prop_enum, error, desc_error, eAction.Copy, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
+                //Генерируем событие изменения свойства класса
+                PropEnumChangeEventArgs e = new PropEnumChangeEventArgs(Prop_enum, eAction.Copy);
+                PropEnumOnChange(e);
             }
-
             //Возвращаем Сущность
             return Prop_enum;
         }

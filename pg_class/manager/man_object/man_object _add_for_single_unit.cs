@@ -42,20 +42,7 @@ namespace pg_class
             cmdk.Parameters["icquantity"].Value = icquantity;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
-            {
-                case 0:
-                    id_array = (Int64[])(cmdk.Parameters["outid"].Value);
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(-1, eEntity.vobject, error, desc_error, eAction.Insert, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
-            }
-
+            id_array = (Int64[])(cmdk.Parameters["outid"].Value);
             //Генерируем событие изменения объектов
             foreach (Int64 i in id_array)
             {

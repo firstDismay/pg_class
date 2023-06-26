@@ -65,7 +65,8 @@ namespace pg_class
         {
             if (Object.Is_inside)
             {
-                throw (new PgDataException(404, "Метод не применим для встроенных объектов входящих в состав объектных агрегатов!"));
+                throw new ArgumentOutOfRangeException(
+                    "Метод не применим для встроенных объектов входящих в состав объектных агрегатов!");
             }
             return Rulel2_class_on_position_by_id(Object.Id_class, Object.Id_position);
         }

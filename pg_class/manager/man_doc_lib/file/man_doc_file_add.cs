@@ -103,52 +103,41 @@ namespace pg_class
             cmdk.Parameters["ifulltxtsrch_on"].Value = ifulltxtsrch_on;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
+            id = Convert.ToInt64(cmdk.Parameters["outid"].Value);
+            if (id > 0)
             {
-                case 0:
-                    id = Convert.ToInt64(cmdk.Parameters["outid"].Value);
-                    if (id > 0)
+                //Этап 02 Циклическая дозаливка документа
+                if (CountPage > 1)
+                {
+                    for (int i = 1; i < CountPage; i++)
                     {
-                        //Этап №02 Циклическая дозаливка документа
-                        if (CountPage > 1)
-                        {
-                            for (int i = 1; i < CountPage; i++)
-                            {
-                                buffer = new Byte[SizePage];
-                                ms.Position = i * SizePage;
-                                ms.Read(buffer, 0, SizePage);
+                        buffer = new Byte[SizePage];
+                        ms.Position = i * SizePage;
+                        ms.Read(buffer, 0, SizePage);
 
-                                cmdk_next.Parameters["iid_doc_file"].Value = id;
-                                cmdk_next.Parameters["file_data"].Size = buffer.Length;
-                                cmdk_next.Parameters["file_data"].Value = buffer;
-                                cmdk_next.ExecuteNonQuery();
-                            }
-                        }
-
-                        //Этап №03 Заливка остатка документа
-                        if (SizeEndPage > 0)
-                        {
-                            buffer = new Byte[SizeEndPage];
-                            ms.Position = CountPage * SizePage;
-                            ms.Read(buffer, 0, SizeEndPage);
-
-                            cmdk_next.Parameters["iid_doc_file"].Value = id;
-                            cmdk_next.Parameters["file_data"].Size = buffer.Length;
-                            cmdk_next.Parameters["file_data"].Value = buffer;
-                            cmdk_next.ExecuteNonQuery();
-                        }
-
-                        doc_file = doc_file_by_id(id);
+                        cmdk_next.Parameters["iid_doc_file"].Value = id;
+                        cmdk_next.Parameters["file_data"].Size = buffer.Length;
+                        cmdk_next.Parameters["file_data"].Value = buffer;
+                        cmdk_next.ExecuteNonQuery();
                     }
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(id, eEntity.doc_file, error, desc_error, eAction.Insert, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
+                }
+
+                //Этап 03 Заливка остатка документа
+                if (SizeEndPage > 0)
+                {
+                    buffer = new Byte[SizeEndPage];
+                    ms.Position = CountPage * SizePage;
+                    ms.Read(buffer, 0, SizeEndPage);
+
+                    cmdk_next.Parameters["iid_doc_file"].Value = id;
+                    cmdk_next.Parameters["file_data"].Size = buffer.Length;
+                    cmdk_next.Parameters["file_data"].Value = buffer;
+                    cmdk_next.ExecuteNonQuery();
+                }
+
+                doc_file = doc_file_by_id(id);
             }
+
             if (doc_file != null)
             {
                 //Генерируем событие изменения 

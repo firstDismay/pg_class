@@ -36,19 +36,7 @@ namespace pg_class
             cmdk.Parameters["isort"].Value = isort;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
-            {
-                case 0:
-                    con_prop_data_type = Con_prop_data_type_by_id(iid_conception, iid_prop_data_type);
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(iid_prop_data_type, eEntity.con_prop_data_type, error, desc_error, eAction.Update, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
-            }
+            con_prop_data_type = Con_prop_data_type_by_id(iid_conception, iid_prop_data_type);
 
             //Вызов события изменения элемента назначения типа данных на концепцию
             Con_Prop_Data_TypeChangeEventArgs e;

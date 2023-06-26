@@ -34,20 +34,7 @@ namespace pg_class
             cmdk.Parameters["iid_area_val"].Value = iid_area_val;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
-            {
-                case 0:
-                    global_prop_area_val = global_prop_area_val_by_id_prop(iid_global_prop);
-
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(iid_global_prop, eEntity.global_prop_area_val, error, desc_error, eAction.Insert, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
-            }
+            global_prop_area_val = global_prop_area_val_by_id_prop(iid_global_prop);
             //Генерируем событие изменения свойства класса
             if (global_prop_area_val != null)
             {
@@ -72,7 +59,8 @@ namespace pg_class
                 }
                 else
                 {
-                    throw (new PgDataException(eEntity.global_prop_area_val, eAction.Insert, eSubClass_ErrID.SCE3_Violation_Rules, "Сущность области значений не соотвествует типу свойства!"));
+                    throw new ArgumentOutOfRangeException(
+                        "Сущность области значений не соответствует типу свойства!");
                 }
             }
             return Result;
@@ -92,7 +80,8 @@ namespace pg_class
                 }
                 else
                 {
-                    throw (new PgDataException(eEntity.global_prop_area_val, eAction.Insert, eSubClass_ErrID.SCE3_Violation_Rules, "Сущность области значений не соотвествует типу свойства!"));
+                    throw new ArgumentOutOfRangeException(
+                        "Сущность области значений не соответствует типу свойства!");
                 }
             }
             return Result;
@@ -112,7 +101,8 @@ namespace pg_class
                 }
                 else
                 {
-                    throw (new PgDataException(eEntity.global_prop_area_val, eAction.Insert, eSubClass_ErrID.SCE3_Violation_Rules, "Сущность области значений не соотвествует типу свойства!"));
+                    throw new ArgumentOutOfRangeException(
+                        "Сущность области значений не соответствует типу свойства!");
                 }
             }
             return Result;

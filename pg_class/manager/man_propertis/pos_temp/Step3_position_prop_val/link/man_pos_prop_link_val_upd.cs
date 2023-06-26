@@ -55,25 +55,12 @@ namespace pg_class
                 }
                 cmdk.ExecuteNonQuery();
 
-                error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-                desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-                switch (error)
+                position_prop_link_val = position_prop_link_val_by_id_prop(newPositionPropLinkVal);
+                if (position_prop_link_val != null)
                 {
-                    case 0:
-                        position_prop_link_val = position_prop_link_val_by_id_prop(newPositionPropLinkVal);
-                        if (position_prop_link_val != null)
-                        {
-                            //Генерируем событие изменения значения свойства объекта
-                            PositionPropLinkValChangeEventArgs e = new PositionPropLinkValChangeEventArgs(position_prop_link_val, eAction.Update);
-                            PositionPropLinkValOnChange(e);
-                        }
-                        break;
-                    default:
-                        //Вызов события журнала
-                        position_prop_link_val = newPositionPropLinkVal;
-                        JournalEventArgs me = new JournalEventArgs(newPositionPropLinkVal.Id_position_carrier, newPositionPropLinkVal.Id_pos_temp_prop, eEntity.position_prop_link_val, error, desc_error, eAction.Update, eJournalMessageType.error);
-                        JournalMessageOnReceived(me);
-                        throw new PgDataException(error, desc_error);
+                    //Генерируем событие изменения значения свойства объекта
+                    PositionPropLinkValChangeEventArgs e = new PositionPropLinkValChangeEventArgs(position_prop_link_val, eAction.Update);
+                    PositionPropLinkValOnChange(e);
                 }
             }
             //Возвращаем сущность

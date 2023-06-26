@@ -37,23 +37,11 @@ namespace pg_class
             cmdk.Parameters["iid_class_prop"].Value = iid_class_prop;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
+            if (object_prop_link_val != null)
             {
-                case 0:
-                    if (object_prop_link_val != null)
-                    {
-                        //Генерируем событие изменения значения свойства объекта
-                        ObjectPropLinkValChangeEventArgs e = new ObjectPropLinkValChangeEventArgs(object_prop_link_val, eAction.Delete);
-                        ObjectPropLinkValOnChange(e);
-                    }
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(object_prop_link_val.Id_object, object_prop_link_val.Id_class_prop, eEntity.object_prop_link_val, error, desc_error, eAction.Delete, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
+                //Генерируем событие изменения значения свойства объекта
+                ObjectPropLinkValChangeEventArgs e = new ObjectPropLinkValChangeEventArgs(object_prop_link_val, eAction.Delete);
+                ObjectPropLinkValOnChange(e);
             }
         }
 

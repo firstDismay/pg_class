@@ -35,17 +35,7 @@ namespace pg_class
             cmdk.Parameters["on_internal"].Value = on_internal;
             cmdk.Parameters["iid_prop_enum_val"].Value = newClass_prop_enum_val.Id_prop_enum_val;
             cmdk.ExecuteNonQuery();
-
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            if (error > 0)
-            {
-                //Вызов события журнала
-                JournalEventArgs me = new JournalEventArgs(Position_parent.Id, eEntity.position, error, desc_error, eAction.Update, eJournalMessageType.error);
-                JournalMessageOnReceived(me);
-                throw new PgDataException(error, desc_error);
-            }
-
+                        
             //Возвращаем сущность
             return Position_parent;
         }

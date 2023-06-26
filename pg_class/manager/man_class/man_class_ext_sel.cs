@@ -63,7 +63,8 @@ namespace pg_class
                     Result = class_act_ext_by_id(Class_path.Id);
                     break;
                 case eStorageType.History:
-                    throw new PgDataException(505, "Исторический класс class_path не допустим методе class_act_by_class_path!");
+                    throw new ArgumentOutOfRangeException(
+                        "Исторический класс class_path не допустим методе class_act_by_class_path!");
             }
             return Result;
         }
@@ -82,7 +83,8 @@ namespace pg_class
                     Result = class_act_ext_by_id(Class.Id);
                     break;
                 case eStorageType.History:
-                    throw new PgDataException(505, "Исторический класс не допустим методе class_act_ext_by_class_path!");
+                    throw new ArgumentOutOfRangeException(
+                        "Исторический класс не допустим методе class_act_ext_by_class_path!");
             }
             return Result;
         }
@@ -172,7 +174,7 @@ namespace pg_class
                     Result = class_act_ext_by_id_parent(Vclass_parent.Id);
                     break;
                 case eStorageType.History:
-                    throw new PgDataException(505, "Тип представления класса не соотвествует сигнатуре функции, требуется активное представление класса");
+                    throw new ArgumentOutOfRangeException("Тип представления класса не соответствует сигнатуре функции, требуется активное представление класса");
             }
             return Result;
         }

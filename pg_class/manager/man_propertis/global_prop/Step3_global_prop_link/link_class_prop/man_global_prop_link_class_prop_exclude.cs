@@ -38,19 +38,8 @@ namespace pg_class
             cmdk.Parameters["iid_class_prop_definition"].Value = iid_class_prop_definition;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            if (error == 0)
-            {
-                prop_link = prop_link = class_prop_by_id(iid_class_prop_definition);
-            }
-            else
-            {
-                //Вызов события журнала
-                JournalEventArgs me = new JournalEventArgs(iid_global_prop, iid_class_prop_definition, eEntity.global_prop_link_class_prop, error, desc_error, eAction.Exclude, eJournalMessageType.error);
-                JournalMessageOnReceived(me);
-                throw new PgDataException(error, desc_error);
-            }
+            prop_link = prop_link = class_prop_by_id(iid_class_prop_definition);
+            
             //Генерируем событие изменения
             if (global_prop_link_class_prop != null)
             {

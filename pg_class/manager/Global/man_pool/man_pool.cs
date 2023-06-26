@@ -15,7 +15,7 @@ namespace pg_class
         static private pool pool_;
 
         /// <summary>
-        /// Метод первичного создания пула содинений
+        /// Метод первичного создания пула соединений
         /// </summary>
         public void Pool_Create(pg_settings newSession_Settings)
         {
@@ -25,7 +25,7 @@ namespace pg_class
                 if (pool_ == null)
                 {
                     Pg_ManagerSettings = newSession_Settings;
-                    me = new JournalEventArgs(0, eEntity.manager, 0, "Создание пула соединений", eAction.Init, eJournalMessageType.information);
+                    me = new JournalEventArgs(0, eEntity.manager, "0", "Создание пула соединений", eAction.Init, eJournalMessageType.information);
                     Me.JournalMessageOnReceived(me);
                     pool_ = new pool();
                     //
@@ -37,7 +37,7 @@ namespace pg_class
                     manager.OnManagerStateChange(e);
                     stoptime = DateTime.Now;
                     inittime = stoptime - starttime;
-                    me = new JournalEventArgs(0, eEntity.manager, 0, String.Format("Менеджер данных готов, время первичной инициализации: {0}сек.", inittime.TotalSeconds.ToString(@"0.000", CultureInfo.InvariantCulture)), eAction.Init, eJournalMessageType.information);
+                    me = new JournalEventArgs(0, eEntity.manager, "0", String.Format("Менеджер данных готов, время первичной инициализации: {0}сек.", inittime.TotalSeconds.ToString(@"0.000", CultureInfo.InvariantCulture)), eAction.Init, eJournalMessageType.information);
                     Me.JournalMessageOnReceived(me);
                 }
                 else
@@ -62,11 +62,11 @@ namespace pg_class
 
             if (pool_ != null)
             {
-                me = new JournalEventArgs(0, eEntity.manager, 0, "Удаление пула соединений", eAction.Delete, eJournalMessageType.information);
+                me = new JournalEventArgs(0, eEntity.manager, "0", "Удаление пула соединений", eAction.Delete, eJournalMessageType.information);
                 Me.JournalMessageOnReceived(me);
                 pool_.Connect_Close();
                 pool_ = null;
-                me = new JournalEventArgs(0, eEntity.manager, 0, "Пул соединений удален", eAction.Delete, eJournalMessageType.information);
+                me = new JournalEventArgs(0, eEntity.manager, "0", "Пул соединений удален", eAction.Delete, eJournalMessageType.information);
                 Me.JournalMessageOnReceived(me);
             }
             ManagerStateInstanceSet(eManagerState.NoReady);

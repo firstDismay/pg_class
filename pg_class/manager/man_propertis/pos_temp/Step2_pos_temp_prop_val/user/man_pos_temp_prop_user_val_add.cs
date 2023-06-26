@@ -157,29 +157,17 @@ namespace pg_class
                 }
                 cmdk.ExecuteNonQuery();
 
-                error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-                desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-                switch (error)
+                id = Convert.ToInt64(cmdk.Parameters["outid"].Value);
+                if (id > 0)
                 {
-                    case 0:
-                        id = Convert.ToInt64(cmdk.Parameters["outid"].Value);
-                        if (id > 0)
-                        {
-                            pos_temp_prop = pos_temp_prop_by_id(newPosTempPropUserVal.Id_pos_temp_prop);
-                            PosTempPropUserVal = pos_temp_prop_user_val_by_id_prop(pos_temp_prop);
-                        }
-                        if (PosTempPropUserVal != null)
-                        {
-                            //Генерируем событие изменения значения свойства шаблона
-                            PosTempPropUserValChangeEventArgs e = new PosTempPropUserValChangeEventArgs(PosTempPropUserVal, eAction.Insert);
-                            PosTempPropUserValOnChange(e);
-                        }
-                        break;
-                    default:
-                        //Вызов события журнала
-                        JournalEventArgs me = new JournalEventArgs(newPosTempPropUserVal.Id_pos_temp_prop, eEntity.pos_temp_prop_user_val, error, desc_error, eAction.Insert, eJournalMessageType.error);
-                        JournalMessageOnReceived(me);
-                        throw new PgDataException(error, desc_error);
+                    pos_temp_prop = pos_temp_prop_by_id(newPosTempPropUserVal.Id_pos_temp_prop);
+                    PosTempPropUserVal = pos_temp_prop_user_val_by_id_prop(pos_temp_prop);
+                }
+                if (PosTempPropUserVal != null)
+                {
+                    //Генерируем событие изменения значения свойства шаблона
+                    PosTempPropUserValChangeEventArgs e = new PosTempPropUserValChangeEventArgs(PosTempPropUserVal, eAction.Insert);
+                    PosTempPropUserValOnChange(e);
                 }
             }
             //Возвращаем сущность

@@ -39,24 +39,12 @@ namespace pg_class
             cmdk.Parameters["icquantity"].Value = icquantity;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
-            {
-                case 0:
-                    /*if (Position_parent != null)
+            /*if (Position_parent != null)
 					{
 						//Генерируем событие изменения позиции
 						PositionChangeEventArgs e = new PositionChangeEventArgs(Position_parent, eAction.Update);
 						PositionOnChange(e);
 					}*/
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(Position_parent.Id, eEntity.position, error, desc_error, eAction.Update, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
-            }
 
             //Возвращаем сущность
             return Position_parent;

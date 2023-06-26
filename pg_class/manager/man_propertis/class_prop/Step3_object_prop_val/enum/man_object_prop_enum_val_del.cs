@@ -36,23 +36,11 @@ namespace pg_class
             cmdk.Parameters["iid_class_prop"].Value = iid_class_prop;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
+            if (object_prop_enum_val != null)
             {
-                case 0:
-                    if (object_prop_enum_val != null)
-                    {
-                        //Генерируем событие изменения значения свойства объекта
-                        ObjectPropEnumValChangeEventArgs e = new ObjectPropEnumValChangeEventArgs(object_prop_enum_val, eAction.Delete);
-                        ObjectPropEnumValOnChange(e);
-                    }
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(iid_object, iid_class_prop, eEntity.object_prop_enum_val, error, desc_error, eAction.Delete, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
+                //Генерируем событие изменения значения свойства объекта
+                ObjectPropEnumValChangeEventArgs e = new ObjectPropEnumValChangeEventArgs(object_prop_enum_val, eAction.Delete);
+                ObjectPropEnumValOnChange(e);
             }
         }
 

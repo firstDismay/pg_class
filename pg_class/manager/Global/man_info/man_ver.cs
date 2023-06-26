@@ -107,17 +107,6 @@ namespace pg_class
             cmdk.Parameters["ver_client"].Value = ver_client;
             cmdk.Parameters["on_increment_baseid"].Value = on_increment_baseid;
             cmdk.ExecuteNonQuery();
-
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
-            {
-                case 0:
-                    man_info = man_get_baseid();
-                    break;
-                default:
-                    throw new PgDataException(error, desc_error);
-            }
             return man_get_baseid();
         }
 

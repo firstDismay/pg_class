@@ -43,19 +43,7 @@ namespace pg_class
             cmdk.Parameters["ibarcode_manufacturer"].Value = ibarcode_manufacturer;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
-            {
-                case 0:
-                    vclass = class_act_by_id(iid);
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(iid, eEntity.vclass, error, desc_error, eAction.Update, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
-            }
+            vclass = class_act_by_id(iid);
             if (vclass != null)
             {
                 //Генерируем событие изменения представления класса
@@ -75,16 +63,8 @@ namespace pg_class
 
             if (Vclass != null)
             {
-                if (Vclass.StorageType == eStorageType.Active)
-                {
-                    Result = class_upd(Vclass.Id, Vclass.Name, Vclass.Desc, Vclass.On, Vclass.On_extensible,
+                Result = class_upd(Vclass.Id, Vclass.Name, Vclass.Desc, Vclass.On, Vclass.On_extensible,
                                     Vclass.On_abstraction, Vclass.Id_unit, Vclass.Id_unit_conversion_rule, Vclass.Barcode_manufacturer);
-                }
-                else
-                {
-                    throw new PgDataException(eEntity.vclass, eAction.Update, eSubClass_ErrID.SCE3_Violation_Rules,
-                        "Метод обновления данных класса не применим к историческому представлению класса!");
-                }
             }
             return Result;
         }
@@ -141,19 +121,7 @@ namespace pg_class
             cmdk.Parameters["iid_group"].Value = iid_group;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
-            {
-                case 0:
-                    vclass = class_act_by_id(iid_class);
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(iid_class, eEntity.vclass, error, desc_error, eAction.Move, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
-            }
+            vclass = class_act_by_id(iid_class);
             if (vclass != null)
             {
                 //Генерируем событие изменения позиции
@@ -172,15 +140,7 @@ namespace pg_class
             vclass Result = null;
             if (Class_pattern != null & Group_target != null)
             {
-                if (Class_pattern.StorageType == eStorageType.Active)
-                {
-                    Result = class_move_to_group(Class_pattern.Id, Group_target.Id);
-                }
-                else
-                {
-                    throw new PgDataException(eEntity.vclass, eAction.Move, eSubClass_ErrID.SCE3_Violation_Rules,
-                        "Метод перемещения базового класса не применим к историческому представлению класса!");
-                }
+                Result = class_move_to_group(Class_pattern.Id, Group_target.Id);
             }
             return Result;
         }
@@ -242,24 +202,7 @@ namespace pg_class
             cmdk.Parameters["iid_target"].Value = iid_target;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
-            {
-                case 0:
-                    id = Convert.ToInt64(cmdk.Parameters["outid"].Value);
-                    if (id > 0)
-                    {
-                        vclass = class_act_by_id(id);
-                    }
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(id, eEntity.vclass, error, desc_error, eAction.Move, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
-            }
-
+            vclass = class_act_by_id(id);
             if (vclass != null)
             {
                 //Генерируем событие изменения класса
@@ -339,19 +282,7 @@ namespace pg_class
             cmdk.Parameters["timestamp_snapshot"].Value = timestamp_snapshot;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
-            {
-                case 0:
-                    vclass = class_act_by_id(iid_snapshot);
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(iid_snapshot, eEntity.vclass, error, desc_error, eAction.Update, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
-            }
+            vclass = class_act_by_id(iid_snapshot);
             if (vclass != null)
             {
                 //Генерируем событие изменения позиции
@@ -376,7 +307,7 @@ namespace pg_class
                 }
                 else
                 {
-                    throw new PgDataException(eEntity.vclass, eAction.RollBack, eSubClass_ErrID.SCE3_Violation_Rules,
+                    throw new ArgumentOutOfRangeException(
                         "Метод удаления данных класса не применим к историческому представлению класса!");
                 }
             }

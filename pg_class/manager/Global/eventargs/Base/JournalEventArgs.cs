@@ -23,7 +23,7 @@ namespace pg_class
         /// <summary>
         /// Основной конструктор класса аргумента события
         /// </summary>
-        public JournalEventArgs(Int64 ID, eEntity EntityName, Int32 ErrorID, String ErrorDesc, eAction Action, eJournalMessageType MessageType) : this()
+        public JournalEventArgs(Int64 ID, eEntity EntityName, String ErrorID, String ErrorDesc, eAction Action, eJournalMessageType MessageType) : this()
         {
             id = ID;
             entityname = EntityName;
@@ -36,7 +36,7 @@ namespace pg_class
         /// <summary>
         /// Основной конструктор класса аргумента события для работы с сотавными сущностями, данными свойств
         /// </summary>
-        public JournalEventArgs(Int64 Id_entity, Int64 Id_prop, eEntity EntityName, Int32 ErrorID, String ErrorDesc, eAction Action, eJournalMessageType MessageType) : this()
+        public JournalEventArgs(Int64 Id_entity, Int64 Id_prop, eEntity EntityName, String ErrorID, String ErrorDesc, eAction Action, eJournalMessageType MessageType) : this()
         {
             id = Id_entity;
             id_prop = Id_prop;
@@ -65,7 +65,7 @@ namespace pg_class
         /// <summary>
         /// Основной конструктор класса аргумента события
         /// </summary>
-        public JournalEventArgs(Int64 ID, eEntity EntityName, Int32 ErrorID, String ErrorDesc, String PrimaryErrorDesc, eAction Action, eJournalMessageType MessageType) : this()
+        public JournalEventArgs(Int64 ID, eEntity EntityName, String ErrorID, String ErrorDesc, String PrimaryErrorDesc, eAction Action, eJournalMessageType MessageType) : this()
         {
             id = ID;
             entityname = EntityName;
@@ -88,7 +88,7 @@ namespace pg_class
                 id = e.Vclass.Id;
             }
             entityname = eEntity.vclass;
-            errorid = 0;
+            errorid = "0";
             errordesc = "Успешное завершение процедуры";
             messagetype = eJournalMessageType.success;
         }
@@ -104,7 +104,7 @@ namespace pg_class
                 id = e.ClassProp.Id;
             }
             entityname = eEntity.class_prop;
-            errorid = 0;
+            errorid = "0";
             errordesc = "Успешное завершение процедуры";
             messagetype = eJournalMessageType.success;
         }
@@ -120,7 +120,7 @@ namespace pg_class
                 id = e.ClassPropObjectVal.Id;
             }
             entityname = eEntity.class_prop_object_val;
-            errorid = 0;
+            errorid = "0";
             errordesc = "Успешное завершение процедуры";
             messagetype = eJournalMessageType.success;
         }
@@ -133,7 +133,7 @@ namespace pg_class
             action = e.Action;
             id = e.Id_Class_Prop;
             entityname = eEntity.class_prop_user_val;
-            errorid = 0;
+            errorid = "0";
             errordesc = "Успешное завершение процедуры";
             messagetype = eJournalMessageType.success;
         }
@@ -147,7 +147,7 @@ namespace pg_class
             id = e.Id_object_carrier;
             id_prop = e.Id_class_prop;
             entityname = eEntity.object_prop_user_val;
-            errorid = 0;
+            errorid = "0";
             errordesc = "Успешное завершение процедуры";
             messagetype = eJournalMessageType.success;
         }
@@ -164,7 +164,7 @@ namespace pg_class
                 id_prop = e.ObjectPropObjectVal.Id_object_prop;
             }
             entityname = eEntity.object_prop_object_val;
-            errorid = 0;
+            errorid = "0";
             errordesc = "Успешное завершение процедуры";
             messagetype = eJournalMessageType.success;
         }
@@ -177,7 +177,7 @@ namespace pg_class
             action = e.Action;
             id = 0;
             entityname = eEntity.user;
-            errorid = 0;
+            errorid = "0";
             errordesc = "Успешное завершение процедуры";
             messagetype = eJournalMessageType.success;
         }
@@ -190,7 +190,7 @@ namespace pg_class
             action = e.Action;
             id = 0;
             entityname = eEntity.role_user;
-            errorid = 0;
+            errorid = "0";
             errordesc = "Успешное завершение процедуры";
             messagetype = eJournalMessageType.success;
         }
@@ -203,7 +203,7 @@ namespace pg_class
             action = e.Action;
             id = e.IdUnitConversionRule;
             entityname = eEntity.unit_conversion_rule;
-            errorid = 0;
+            errorid = "0";
             errordesc = "Успешное завершение процедуры";
             messagetype = eJournalMessageType.success;
         }
@@ -216,7 +216,7 @@ namespace pg_class
             action = e.Action;
             id = e.Id_class;
             entityname = eEntity.class_unit_conversion_rule;
-            errorid = 0;
+            errorid = "0";
             errordesc = "Успешное завершение процедуры";
             messagetype = eJournalMessageType.success;
         }
@@ -232,7 +232,7 @@ namespace pg_class
                 id = e.Position.Id;
             }
             entityname = eEntity.position;
-            errorid = 0;
+            errorid = "0";
             errordesc = "Успешное завершение процедуры";
             messagetype = eJournalMessageType.success;
         }
@@ -259,7 +259,7 @@ namespace pg_class
             }
             id = e.PosTemp.Id;
             entityname = eEntity.pos_temp_nested_rule;
-            errorid = 0;
+            errorid = "0";
             errordesc = "Успешное завершение процедуры";
             messagetype = eJournalMessageType.success;
         }
@@ -286,7 +286,7 @@ namespace pg_class
             }
             id = e.Id_position;
             entityname = eEntity.rulel2_class_on_position;
-            errorid = 0;
+            errorid = "0";
             errordesc = "Успешное завершение процедуры";
             messagetype = eJournalMessageType.success;
         }
@@ -316,7 +316,7 @@ namespace pg_class
             }
             id = e.Id_Prop_Data_Type;
             entityname = eEntity.con_prop_data_type;
-            errorid = 0;
+            errorid = "0";
             errordesc = "Успешное завершение процедуры";
             messagetype = eJournalMessageType.success;
         }
@@ -346,7 +346,7 @@ namespace pg_class
             }
             id = e.Id_Prop_Data_Type;
             entityname = eEntity.con_prop_data_type;
-            errorid = 0;
+            errorid = "0";
             errordesc = "Успешное завершение процедуры";
             messagetype = eJournalMessageType.success;
         }
@@ -373,7 +373,7 @@ namespace pg_class
             }
             id = e.Id_pos_temp;
             entityname = eEntity.rulel1_group_on_pos_temp;
-            errorid = 0;
+            errorid = "0";
             errordesc = "Успешное завершение процедуры";
             messagetype = eJournalMessageType.success;
         }
@@ -400,7 +400,7 @@ namespace pg_class
             }
             id = e.Id_pos_temp;
             entityname = eEntity.rulel1_group_on_pos_temp;
-            errorid = 0;
+            errorid = "0";
             errordesc = "Успешное завершение процедуры";
             messagetype = eJournalMessageType.success;
         }
@@ -416,7 +416,7 @@ namespace pg_class
                 id = e.PosTemp.Id;
             }
             entityname = eEntity.position;
-            errorid = 0;
+            errorid = "0";
             errordesc = "Успешное завершение процедуры";
             messagetype = eJournalMessageType.success;
         }
@@ -429,7 +429,7 @@ namespace pg_class
             action = e.Action;
             id = e.Id_PosTempProp;
             entityname = eEntity.pos_temp_prop_user_val;
-            errorid = 0;
+            errorid = "0";
             errordesc = "Успешное завершение процедуры";
             messagetype = eJournalMessageType.success;
         }
@@ -443,7 +443,7 @@ namespace pg_class
             id = e.Id_position_carrier;
             id_prop = e.Id_pos_temp_prop;
             entityname = eEntity.pos_temp_prop_user_val;
-            errorid = 0;
+            errorid = "0";
             errordesc = "Успешное завершение процедуры";
             messagetype = eJournalMessageType.success;
         }
@@ -459,7 +459,7 @@ namespace pg_class
                 id = e.PosTempPropEnumVal.Id_pos_temp_prop;
             }
             entityname = eEntity.pos_temp_prop_enum_val;
-            errorid = 0;
+            errorid = "0";
             errordesc = "Успешное завершение процедуры";
             messagetype = eJournalMessageType.success;
         }
@@ -473,7 +473,7 @@ namespace pg_class
             id = e.Id_position_carrier;
             id_prop = e.Id_pos_temp_prop;
             entityname = eEntity.pos_temp_prop_user_val;
-            errorid = 0;
+            errorid = "0";
             errordesc = "Успешное завершение процедуры";
             messagetype = eJournalMessageType.success;
         }
@@ -489,7 +489,7 @@ namespace pg_class
                 id = e.PosTempPropObjectVal.Id_pos_temp_prop;
             }
             entityname = eEntity.pos_temp_prop_object_val;
-            errorid = 0;
+            errorid = "0";
             errordesc = "Успешное завершение процедуры";
             messagetype = eJournalMessageType.success;
         }
@@ -503,7 +503,7 @@ namespace pg_class
             id = e.Id_position_carrier;
             id_prop = e.Id_pos_temp_prop;
             entityname = eEntity.pos_temp_prop_user_val;
-            errorid = 0;
+            errorid = "0";
             errordesc = "Успешное завершение процедуры";
             messagetype = eJournalMessageType.success;
         }
@@ -519,7 +519,7 @@ namespace pg_class
                 id = e.PosTempPropLinkVal.Id_pos_temp_prop;
             }
             entityname = eEntity.pos_temp_prop_link_val;
-            errorid = 0;
+            errorid = "0";
             errordesc = "Успешное завершение процедуры";
             messagetype = eJournalMessageType.success;
         }
@@ -533,7 +533,7 @@ namespace pg_class
             id = e.Id_position_carrier;
             id_prop = e.Id_pos_temp_prop;
             entityname = eEntity.pos_temp_prop_user_val;
-            errorid = 0;
+            errorid = "0";
             errordesc = "Успешное завершение процедуры";
             messagetype = eJournalMessageType.success;
         }
@@ -549,7 +549,7 @@ namespace pg_class
                 id = e.Object_general.Id;
             }
             entityname = eEntity.vobject;
-            errorid = 0;
+            errorid = "0";
             errordesc = "Успешное завершение процедуры";
             messagetype = eJournalMessageType.success;
         }
@@ -565,7 +565,7 @@ namespace pg_class
                 id = e.Group.Id;
             }
             entityname = eEntity.group;
-            errorid = 0;
+            errorid = "0";
             errordesc = "Успешное завершение процедуры";
             messagetype = eJournalMessageType.success;
         }
@@ -581,7 +581,7 @@ namespace pg_class
                 id = e.Conception.Id;
             }
             entityname = eEntity.conception;
-            errorid = 0;
+            errorid = "0";
             errordesc = "Успешное завершение процедуры";
             messagetype = eJournalMessageType.success;
         }
@@ -598,7 +598,7 @@ namespace pg_class
                 id = e.PropEnum.Id_prop_enum;
             }
             entityname = eEntity.prop_enum;
-            errorid = 0;
+            errorid = "0";
             errordesc = "Успешное завершение процедуры";
             messagetype = eJournalMessageType.success;
         }
@@ -614,7 +614,7 @@ namespace pg_class
                 id = e.PropEnumVal.Id_prop_enum_val;
             }
             entityname = eEntity.prop_enum_val;
-            errorid = 0;
+            errorid = "0";
             errordesc = "Успешное завершение процедуры";
             messagetype = eJournalMessageType.success;
         }
@@ -630,7 +630,7 @@ namespace pg_class
                 id = e.ClassPropEnumVal.Id_class_prop;
             }
             entityname = eEntity.class_prop_enum_val;
-            errorid = 0;
+            errorid = "0";
             errordesc = "Успешное завершение процедуры";
             messagetype = eJournalMessageType.success;
         }
@@ -647,7 +647,7 @@ namespace pg_class
                 id_prop = e.ObjectPropEnumVal.Id_class_prop;
             }
             entityname = eEntity.object_prop_enum_val;
-            errorid = 0;
+            errorid = "0";
             errordesc = "Успешное завершение процедуры";
             messagetype = eJournalMessageType.success;
         }
@@ -663,7 +663,7 @@ namespace pg_class
                 id = e.ClassPropLinkVal.Id_class_prop;
             }
             entityname = eEntity.class_prop_link_val;
-            errorid = 0;
+            errorid = "0";
             errordesc = "Успешное завершение процедуры";
             messagetype = eJournalMessageType.success;
         }
@@ -680,7 +680,7 @@ namespace pg_class
                 id_prop = e.ObjectPropLinkVal.Id_class_prop;
             }
             entityname = eEntity.object_prop_link_val;
-            errorid = 0;
+            errorid = "0";
             errordesc = "Успешное завершение процедуры";
             messagetype = eJournalMessageType.success;
         }
@@ -696,7 +696,7 @@ namespace pg_class
                 id = e.GlobalProp.Id;
             }
             entityname = eEntity.global_prop;
-            errorid = 0;
+            errorid = "0";
             errordesc = "Успешное завершение процедуры";
             messagetype = eJournalMessageType.success;
         }
@@ -712,7 +712,7 @@ namespace pg_class
                 id = e.GlobalPropAreaVal.Id_global_prop;
             }
             entityname = eEntity.global_prop_area_val;
-            errorid = 0;
+            errorid = "0";
             errordesc = "Успешное завершение процедуры";
             messagetype = eJournalMessageType.success;
         }
@@ -729,7 +729,7 @@ namespace pg_class
                 id_prop = e.GlobalPropLinkClassProp.Id_class_prop_definition;
             }
             entityname = eEntity.global_prop_link_class_prop;
-            errorid = 0;
+            errorid = "0";
             errordesc = "Успешное завершение процедуры";
             messagetype = eJournalMessageType.success;
         }
@@ -746,7 +746,7 @@ namespace pg_class
                 id_prop = e.GlobalPropLinkPosTempProp.Id_pos_temp_prop;
             }
             entityname = eEntity.global_prop_link_pos_temp_prop;
-            errorid = 0;
+            errorid = "0";
             errordesc = "Успешное завершение процедуры";
             messagetype = eJournalMessageType.success;
         }
@@ -758,7 +758,7 @@ namespace pg_class
         {
             action = eAction.Execute;
             entityname = eEntity.procedure_export;
-            errorid = 0;
+            errorid = "0";
             errordesc = "Успешное завершение процедуры";
             messagetype = eJournalMessageType.success;
         }
@@ -774,7 +774,7 @@ namespace pg_class
                 id = e.DocCategory.Id;
             }
             entityname = eEntity.doc_category;
-            errorid = 0;
+            errorid = "0";
             errordesc = "Успешное завершение процедуры";
             messagetype = eJournalMessageType.success;
         }
@@ -790,7 +790,7 @@ namespace pg_class
                 id = e.Document.Id;
             }
             entityname = eEntity.document;
-            errorid = 0;
+            errorid = "0";
             errordesc = "Успешное завершение процедуры";
             messagetype = eJournalMessageType.success;
         }
@@ -806,7 +806,7 @@ namespace pg_class
                 id = e.DocFile.Id;
             }
             entityname = eEntity.doc_file;
-            errorid = 0;
+            errorid = "0";
             errordesc = "Успешное завершение процедуры";
             messagetype = eJournalMessageType.success;
         }
@@ -822,7 +822,7 @@ namespace pg_class
                 id = e.DocLink.Id;
             }
             entityname = eEntity.doc_link;
-            errorid = 0;
+            errorid = "0";
             errordesc = "Успешное завершение процедуры";
             messagetype = eJournalMessageType.success;
         }
@@ -838,7 +838,7 @@ namespace pg_class
                 id = e.LogCategory.Id;
             }
             entityname = eEntity.log_category;
-            errorid = 0;
+            errorid = "0";
             errordesc = "Успешное завершение процедуры";
             messagetype = eJournalMessageType.success;
         }
@@ -854,7 +854,7 @@ namespace pg_class
                 id = e.Log.Id;
             }
             entityname = eEntity.log;
-            errorid = 0;
+            errorid = "0";
             errordesc = "Успешное завершение процедуры";
             messagetype = eJournalMessageType.success;
         }
@@ -870,7 +870,7 @@ namespace pg_class
                 id = e.LogLink.Id;
             }
             entityname = eEntity.log_link;
-            errorid = 0;
+            errorid = "0";
             errordesc = "Успешное завершение процедуры";
             messagetype = eJournalMessageType.success;
         }
@@ -886,7 +886,7 @@ namespace pg_class
                 id = e.Plan.Id;
             }
             entityname = eEntity.plan;
-            errorid = 0;
+            errorid = "0";
             errordesc = "Успешное завершение процедуры";
             messagetype = eJournalMessageType.success;
         }
@@ -902,7 +902,7 @@ namespace pg_class
                 id = e.Plan_link.Id;
             }
             entityname = eEntity.plan_link;
-            errorid = 0;
+            errorid = "0";
             errordesc = "Успешное завершение процедуры";
             messagetype = eJournalMessageType.success;
         }
@@ -918,7 +918,7 @@ namespace pg_class
                 id = e.Plan_range.Id;
             }
             entityname = eEntity.plan_range;
-            errorid = 0;
+            errorid = "0";
             errordesc = "Успешное завершение процедуры";
             messagetype = eJournalMessageType.success;
         }
@@ -934,7 +934,7 @@ namespace pg_class
                 id = e.Plan_range_link.Id;
             }
             entityname = eEntity.plan_range_link;
-            errorid = 0;
+            errorid = "0";
             errordesc = "Успешное завершение процедуры";
             messagetype = eJournalMessageType.success;
         }
@@ -950,7 +950,7 @@ namespace pg_class
                 id = e.Plan_given_range_plan.Id;
             }
             entityname = eEntity.plan_given_range_plan;
-            errorid = 0;
+            errorid = "0";
             errordesc = "Успешное завершение процедуры";
             messagetype = eJournalMessageType.success;
         }
@@ -966,7 +966,7 @@ namespace pg_class
                 id = e.Plan_given_range_plan_link.Id;
             }
             entityname = eEntity.plan_given_range_plan_link;
-            errorid = 0;
+            errorid = "0";
             errordesc = "Успешное завершение процедуры";
             messagetype = eJournalMessageType.success;
         }
@@ -977,7 +977,7 @@ namespace pg_class
         private Int64 id_prop = 0;
         private eAction action;
         private eEntity entityname;
-        private Int32 errorid;
+        private String errorid;
         private String errordesc;
         private String primaryerrordesc;
         private eJournalMessageType messagetype;
@@ -1014,7 +1014,7 @@ namespace pg_class
         public Int64 Id_prop { get => id_prop; }
 
         /// <summary>
-        /// Наменовании сущности подвергшейся модификации
+        /// Наименовании сущности подвергшейся модификации
         /// </summary>
         public String EntityName
         {
@@ -1036,7 +1036,7 @@ namespace pg_class
         /// <summary>
         /// Код завершения операции
         /// </summary>
-        public Int32 ErrorID { get => errorid; }
+        public String ErrorID { get => errorid; }
 
         /// <summary>
         /// Текстовое описание результата операции

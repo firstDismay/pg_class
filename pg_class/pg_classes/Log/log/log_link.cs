@@ -101,7 +101,7 @@ namespace pg_class.pg_classes
 
         #region УДАЛИТЬ
         /// <summary>
-        /// Метод удаляет указаную ссылку
+        /// Метод удаляет указанную ссылку
         /// </summary>
         public void log_link_del(Int64 iid_log_link)
         {
@@ -109,7 +109,7 @@ namespace pg_class.pg_classes
         }
 
         /// <summary>
-        /// Метод удаляет указаную ссылку
+        /// Метод удаляет указанную ссылку
         /// </summary>
         public void log_link_del(log_link log_link)
         {
@@ -117,7 +117,7 @@ namespace pg_class.pg_classes
         }
 
         /// <summary>
-        /// Метод удаляет указаную ссылку
+        /// Метод удаляет указанную ссылку
         /// </summary>
         public void log_link_del(user User)
         {
@@ -125,7 +125,7 @@ namespace pg_class.pg_classes
         }
 
         /// <summary>
-        /// Метод удаляет указаную ссылку
+        /// Метод удаляет указанную ссылку
         /// </summary>
         public void log_link_del(pos_temp Pos_temp)
         {
@@ -133,7 +133,7 @@ namespace pg_class.pg_classes
         }
 
         /// <summary>
-        /// Метод удаляет указаную ссылку
+        /// Метод удаляет указанную ссылку
         /// </summary>
         public void log_link_del(pos_temp_prop Pos_temp_prop)
         {
@@ -141,7 +141,7 @@ namespace pg_class.pg_classes
         }
 
         /// <summary>
-        /// Метод удаляет указаную ссылку
+        /// Метод удаляет указанную ссылку
         /// </summary>
         public void log_link_del(position Position)
         {
@@ -149,7 +149,7 @@ namespace pg_class.pg_classes
         }
 
         /// <summary>
-        /// Метод удаляет указаную ссылку
+        /// Метод удаляет указанную ссылку
         /// </summary>
         public void log_link_del(position_prop Position_prop)
         {
@@ -157,7 +157,7 @@ namespace pg_class.pg_classes
         }
 
         /// <summary>
-        /// Метод удаляет указаную ссылку
+        /// Метод удаляет указанную ссылку
         /// </summary>
         public void log_link_del(object_general Object_general)
         {
@@ -165,7 +165,7 @@ namespace pg_class.pg_classes
         }
 
         /// <summary>
-        /// Метод удаляет указаную ссылку
+        /// Метод удаляет указанную ссылку
         /// </summary>
         public void log_link_del(object_prop Object_prop)
         {
@@ -173,7 +173,7 @@ namespace pg_class.pg_classes
         }
 
         /// <summary>
-        /// Метод удаляет указаную ссылку
+        /// Метод удаляет указанную ссылку
         /// </summary>
         public void log_link_del(group Group)
         {
@@ -181,7 +181,7 @@ namespace pg_class.pg_classes
         }
 
         /// <summary>
-        /// Метод удаляет указаную ссылку
+        /// Метод удаляет указанную ссылку
         /// </summary>
         public void log_link_del(vclass Class)
         {
@@ -189,7 +189,7 @@ namespace pg_class.pg_classes
         }
 
         /// <summary>
-        /// Метод удаляет указаную ссылку
+        /// Метод удаляет указанную ссылку
         /// </summary>
         public void log_link_del(class_prop Class_prop)
         {
@@ -197,7 +197,7 @@ namespace pg_class.pg_classes
         }
 
         /// <summary>
-        /// Метод удаляет указаную ссылку
+        /// Метод удаляет указанную ссылку
         /// </summary>
         public void log_link_del(document Document)
         {

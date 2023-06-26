@@ -29,7 +29,7 @@
             }
             else
             {
-                throw new ArgumentException("Переданная сущность не соотвествует сравиниваемой сущности!");
+                throw new ArgumentException("Переданная сущность не соответствует сравиниваемой сущности!");
             }
             return Result;
         }
@@ -60,7 +60,7 @@
                 }
                 else
                 {
-                    throw new ArgumentException("Переданная сущность не соотвествует сравиниваемой сущности!");
+                    throw new ArgumentException("Переданная сущность не соответствует сравиниваемой сущности!");
                 }
             }
             return Result;

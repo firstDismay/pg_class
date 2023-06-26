@@ -36,23 +36,11 @@ namespace pg_class
             cmdk.Parameters["iid_pos_temp_prop"].Value = iid_pos_temp_prop;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
+            if (position_prop_user_val != null)
             {
-                case 0:
-                    if (position_prop_user_val != null)
-                    {
-                        //Генерируем событие изменения значения свойства объекта
-                        PositionPropUserValChangeEventArgs e = new PositionPropUserValChangeEventArgs(position_prop_user_val, eAction.Delete);
-                        PositionPropUserValOnChange(e);
-                    }
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(position_prop_user_val.Id_position_carrier, position_prop_user_val.Id_pos_temp_prop, eEntity.position_prop_user_val, error, desc_error, eAction.Delete, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
+                //Генерируем событие изменения значения свойства объекта
+                PositionPropUserValChangeEventArgs e = new PositionPropUserValChangeEventArgs(position_prop_user_val, eAction.Delete);
+                PositionPropUserValOnChange(e);
             }
         }
 

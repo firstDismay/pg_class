@@ -37,19 +37,8 @@ namespace pg_class
             cmdk.Parameters["setname"].Value = true;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
-            {
-                case 0:
-                    Object = object_by_id(iid);
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(iid, eEntity.vobject, error, desc_error, eAction.Update, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
-            }
+            Object = object_by_id(iid);
+
             if (Object != null)
             {
                 //Генерируем событие изменения
@@ -125,32 +114,18 @@ namespace pg_class
             cmdk.Parameters["icquantity"].Value = icquantity;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
+            id = Convert.ToInt64(cmdk.Parameters["outid"].Value);
+            if (id > 0)
             {
-                case 0:
-                    id = Convert.ToInt64(cmdk.Parameters["outid"].Value);
-                    if (id > 0)
-                    {
-                        Object_move = object_by_id(id);
-                    }
-
-                    //Если идет частичное встраивание с созданием нового объекта находим остаток
-                    if (id != iid_object)
-                    {
-                        Object_change = object_by_id(iid_object);
-                    }
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(iid_object, eEntity.vobject, error, desc_error, eAction.Move, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
+                Object_move = object_by_id(id);
             }
-            //Генерируем событие изменения объекта
-            ObjectChangeEventArgs e = new ObjectChangeEventArgs(Object_move, eAction.Move);
-            ObjectOnChange(e);
+
+            if (Object_move != null)
+            {
+                //Генерируем событие изменения объекта
+                ObjectChangeEventArgs e = new ObjectChangeEventArgs(Object_move, eAction.Move);
+                ObjectOnChange(e);
+            }
 
             //Если есть остаток то генерируем изменение остатка
             if (Object_change != null)

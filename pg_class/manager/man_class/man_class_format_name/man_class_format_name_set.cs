@@ -34,19 +34,8 @@ namespace pg_class
             cmdk.Parameters["iname_format"].Value = iname_format;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
-            {
-                case 0:
-                    vclass = class_act_by_id(iid_class);
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(iid_class, eEntity.vclass, error, desc_error, eAction.Update, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
-            }
+            vclass = class_act_by_id(iid_class);
+
             //Генерируем событие изменения представления класса
             ClassChangeEventArgs e = new ClassChangeEventArgs(vclass, eAction.Update);
             ClassOnChange(e);
@@ -63,15 +52,7 @@ namespace pg_class
 
             if (Vclass != null)
             {
-                if (Vclass.StorageType == eStorageType.Active)
-                {
-                    Result = class_act_name_format_set(Vclass.Id, iname_format);
-                }
-                else
-                {
-                    throw new PgDataException(eEntity.vclass, eAction.Update, eSubClass_ErrID.SCE3_Violation_Rules,
-                        "Метод обновления данных класса не применим к историческому представлению класса!");
-                }
+                Result = class_act_name_format_set(Vclass.Id, iname_format);
             }
             return Result;
         }
@@ -85,15 +66,7 @@ namespace pg_class
 
             if (Class_name_format_builder.Сlass != null)
             {
-                if (Class_name_format_builder.Сlass.StorageType == eStorageType.Active)
-                {
-                    Result = class_act_name_format_set(Class_name_format_builder.Сlass.Id, Class_name_format_builder.Format_get());
-                }
-                else
-                {
-                    throw new PgDataException(eEntity.vclass, eAction.Update, eSubClass_ErrID.SCE3_Violation_Rules,
-                        "Метод обновления данных класса не применим к историческому представлению класса!");
-                }
+                Result = class_act_name_format_set(Class_name_format_builder.Сlass.Id, Class_name_format_builder.Format_get());
             }
             return Result;
         }
@@ -150,20 +123,7 @@ namespace pg_class
             cmdk.Parameters["iid_class"].Value = iid_class;
             cmdk.Parameters["iquantity_show"].Value = iquantity_show;
             cmdk.ExecuteNonQuery();
-
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
-            {
-                case 0:
-                    vclass = class_act_by_id(iid_class);
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(iid_class, eEntity.vclass, error, desc_error, eAction.Update, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
-            }
+            
             //Генерируем событие изменения представления класса
             ClassChangeEventArgs e = new ClassChangeEventArgs(vclass, eAction.Update);
             ClassOnChange(e);
@@ -180,15 +140,7 @@ namespace pg_class
 
             if (Vclass != null)
             {
-                if (Vclass.StorageType == eStorageType.Active)
-                {
-                    Result = class_quantity_show_set(Vclass.Id, iquantity_show);
-                }
-                else
-                {
-                    throw new PgDataException(eEntity.vclass, eAction.Update, eSubClass_ErrID.SCE3_Violation_Rules,
-                        "Метод обновления данных класса не применим к историческому представлению класса!");
-                }
+                Result = class_quantity_show_set(Vclass.Id, iquantity_show);
             }
             return Result;
         }
@@ -202,15 +154,7 @@ namespace pg_class
 
             if (Class_name_format_builder.Сlass != null)
             {
-                if (Class_name_format_builder.Сlass.StorageType == eStorageType.Active)
-                {
-                    Result = class_quantity_show_set(Class_name_format_builder.Сlass.Id, Class_name_format_builder.Quantity_show);
-                }
-                else
-                {
-                    throw new PgDataException(eEntity.vclass, eAction.Update, eSubClass_ErrID.SCE3_Violation_Rules,
-                        "Метод обновления данных класса не применим к историческому представлению класса!");
-                }
+                Result = class_quantity_show_set(Class_name_format_builder.Сlass.Id, Class_name_format_builder.Quantity_show);
             }
             return Result;
         }

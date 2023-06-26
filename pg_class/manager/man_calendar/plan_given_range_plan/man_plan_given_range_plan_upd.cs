@@ -35,19 +35,8 @@ namespace pg_class
             cmdk.Parameters["irange_plan"].Value = irange_plan;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
-            {
-                case 0:
-                    centity = plan_given_range_plan_by_id(iid);
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(iid, eEntity.plan_given_range_plan, error, desc_error, eAction.Update, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
-            }
+            centity = plan_given_range_plan_by_id(iid);
+
             if (centity != null)
             {
                 //Генерируем событие изменения планового диапазона

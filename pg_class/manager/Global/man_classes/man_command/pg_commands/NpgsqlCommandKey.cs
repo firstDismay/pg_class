@@ -155,7 +155,7 @@ namespace pg_class.pg_commands
             {
                 String msg = String.Format(@"Отказано в доступе к методу: {0}!", cmd_.CommandText);
                 AccessDataBaseException ex = new AccessDataBaseException(404, msg);
-                Manager.PG_exception_hadler(ex, this);
+                Manager.command_exception_handler(ex, this);
             }
 
             if (cmd_ != null & access_)
@@ -183,7 +183,7 @@ namespace pg_class.pg_commands
                         }
                     }
                     connect_.UnLock();
-                    Manager.PG_exception_hadler(ex, this);
+                    Manager.command_exception_handler(ex, this);
                 }
                 finally
                 {
@@ -213,7 +213,7 @@ namespace pg_class.pg_commands
             {
                 String msg = String.Format(@"Отказано в доступе к методу: {0}!", cmd_.CommandText);
                 AccessDataBaseException ex = new AccessDataBaseException(404, msg);
-                Manager.PG_exception_hadler(ex, this);
+                Manager.command_exception_handler(ex, this);
             }
 
             if (cmd_ != null && access_)
@@ -247,7 +247,7 @@ namespace pg_class.pg_commands
                     }
                     cmd_.Connection = null;
                     connect_.UnLock();
-                    Manager.PG_exception_hadler(ex, this);
+                    Manager.command_exception_handler(ex, this);
                 }
                 catch (Exception ex)
                 {
@@ -260,7 +260,7 @@ namespace pg_class.pg_commands
                     }
                     cmd_.Connection = null;
                     connect_.UnLock();
-                    Manager.PG_exception_hadler(ex, this);
+                    Manager.command_exception_handler(ex, this);
                 }
                 finally
                 {
@@ -292,7 +292,7 @@ namespace pg_class.pg_commands
             {
                 String msg = String.Format(@"Отказано в доступе к методу: {0}!", cmd_.CommandText);
                 AccessDataBaseException ex = new AccessDataBaseException(404, msg);
-                Manager.PG_exception_hadler(ex, this);
+                Manager.command_exception_handler(ex, this);
             }
 
             if (cmd_ != null && access_)
@@ -328,7 +328,7 @@ namespace pg_class.pg_commands
                     }
                     cmd_.Connection = null;
                     connect_.UnLock();
-                    Manager.PG_exception_hadler(ex, this);
+                    Manager.command_exception_handler(ex, this);
                 }
                 catch (Exception ex)
                 {
@@ -341,7 +341,7 @@ namespace pg_class.pg_commands
                     }
                     cmd_.Connection = null;
                     connect_.UnLock();
-                    Manager.PG_exception_hadler(ex, this);
+                    Manager.command_exception_handler(ex, this);
                 }
                 finally
                 {
@@ -372,7 +372,7 @@ namespace pg_class.pg_commands
             {
                 String msg = String.Format(@"Отказано в доступе к методу: {0}!", cmd_.CommandText);
                 AccessDataBaseException ex = new AccessDataBaseException(404, msg);
-                Manager.PG_exception_hadler(ex, this);
+                Manager.command_exception_handler(ex, this);
             }
 
             Start = DateTime.Now;
@@ -405,7 +405,7 @@ namespace pg_class.pg_commands
                     }
                     cmd_.Connection = null;
                     connect_.UnLock();
-                    Manager.PG_exception_hadler(ex, this);
+                    Manager.command_exception_handler(ex, this);
                 }
                 catch (Exception ex)
                 {
@@ -418,7 +418,7 @@ namespace pg_class.pg_commands
                     }
                     cmd_.Connection = null;
                     connect_.UnLock();
-                    Manager.PG_exception_hadler(ex, this);
+                    Manager.command_exception_handler(ex, this);
                 }
                 finally
                 {
@@ -442,7 +442,7 @@ namespace pg_class.pg_commands
             {
                 String msg = String.Format(@"Отказано в доступе к методу: {0}!", cmd_.CommandText);
                 AccessDataBaseException ex = new AccessDataBaseException(404, msg);
-                Manager.PG_exception_hadler(ex, this);
+                Manager.command_exception_handler(ex, this);
             }
 
             if (cmd_ != null && access_)
@@ -511,7 +511,7 @@ namespace pg_class.pg_commands
                 }
 
                 //Вызов события журнала
-                JournalEventArgs me = new JournalEventArgs(-1, eEntity.entity, 0, Message, eAction.Execute, eJournalMessageType.debug);
+                JournalEventArgs me = new JournalEventArgs(-1, eEntity.entity, "0", Message, eAction.Execute, eJournalMessageType.debug);
                 manager.JournalMessageOnReceivedStatic(this, me);
             }
         }
@@ -573,7 +573,7 @@ namespace pg_class.pg_commands
 
                 Message = String.Format("{0}| Время выполнения: {1}мс", Message, LeadTime_ms);
                 //Вызов события журнала
-                JournalEventArgs me = new JournalEventArgs(procoid_, eEntity.entity, 0, Message, eAction.Execute, eJournalMessageType.debug);
+                JournalEventArgs me = new JournalEventArgs(procoid_, eEntity.entity, "0", Message, eAction.Execute, eJournalMessageType.debug);
                 manager.JournalMessageOnReceivedStatic(this, me);
             }
         }

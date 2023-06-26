@@ -34,16 +34,6 @@ namespace pg_class
             cmdk.Parameters["iid_doc_file"].Value = iid_doc_file;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            if (error > 0)
-            {
-                //Вызов события журнала
-                JournalEventArgs me = new JournalEventArgs(iid_doc_file, eEntity.doc_file, error, desc_error, eAction.Delete, eJournalMessageType.error);
-                JournalMessageOnReceived(me);
-                throw new PgDataException(error, desc_error);
-            }
-
             if (doc_file != null)
             {
                 //Генерируем событие изменения файла документа

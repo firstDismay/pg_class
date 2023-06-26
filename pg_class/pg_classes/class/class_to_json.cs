@@ -15,7 +15,8 @@ namespace pg_class.pg_classes
         {
             if (On_abstraction)
             {
-                throw new PgDataException(eEntity.vclass, eAction.Cast, eSubClass_ErrID.SCE3_Violation_Rules, "Абстрактный класс не допускает извлечение классов представления объектов в JSON!");
+                throw new ArgumentOutOfRangeException(
+                    "Абстрактный класс не допускает извлечение классов представления объектов в JSON!");
             }
             return new json_object_parameters(this);
         }

@@ -35,28 +35,16 @@ namespace pg_class
             cmdk.Parameters["iid_position"].Value = iid_position;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
+            position = position_by_id(iid_position);
+            if (position.Id_parent > 0)
             {
-                case 0:
-                    position = position_by_id(iid_position);
-                    if (position.Id_parent > 0)
-                    {
-                        position = position_by_id(position.Id_parent);
-                    }
-                    //Генерируем событие применения метода сортировки
-                    if (position != null)
-                    {
-                        PositionChangeEventArgs e = new PositionChangeEventArgs(position, eAction.Update);
-                        PositionSortOnChange(e);
-                    }
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(iid_position, eEntity.position, error, desc_error, eAction.Update, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
+                position = position_by_id(position.Id_parent);
+            }
+            //Генерируем событие применения метода сортировки
+            if (position != null)
+            {
+                PositionChangeEventArgs e = new PositionChangeEventArgs(position, eAction.Update);
+                PositionSortOnChange(e);
             }
 
             //Возвращаем сущность
@@ -125,28 +113,16 @@ namespace pg_class
             cmdk.Parameters["iid_position"].Value = iid_position;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
+            position = position_by_id(iid_position);
+            if (position.Id_parent > 0)
             {
-                case 0:
-                    position = position_by_id(iid_position);
-                    if (position.Id_parent > 0)
-                    {
-                        position = position_by_id(position.Id_parent);
-                    }
-                    //Генерируем событие применения метода сортировки
-                    if (position != null)
-                    {
-                        PositionChangeEventArgs e = new PositionChangeEventArgs(position, eAction.Update);
-                        PositionSortOnChange(e);
-                    }
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(iid_position, eEntity.position, error, desc_error, eAction.Update, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
+                position = position_by_id(position.Id_parent);
+            }
+            //Генерируем событие применения метода сортировки
+            if (position != null)
+            {
+                PositionChangeEventArgs e = new PositionChangeEventArgs(position, eAction.Update);
+                PositionSortOnChange(e);
             }
 
             //Возвращаем сущность
@@ -215,28 +191,16 @@ namespace pg_class
             cmdk.Parameters["iid_position"].Value = iid_position;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
+            position = position_by_id(iid_position);
+            if (position.Id_parent > 0)
             {
-                case 0:
-                    position = position_by_id(iid_position);
-                    if (position.Id_parent > 0)
-                    {
-                        position = position_by_id(position.Id_parent);
-                    }
-                    //Генерируем событие применения метода сортировки
-                    if (position != null)
-                    {
-                        PositionChangeEventArgs e = new PositionChangeEventArgs(position, eAction.Update);
-                        PositionSortOnChange(e);
-                    }
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(iid_position, eEntity.position, error, desc_error, eAction.Update, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
+                position = position_by_id(position.Id_parent);
+            }
+            //Генерируем событие применения метода сортировки
+            if (position != null)
+            {
+                PositionChangeEventArgs e = new PositionChangeEventArgs(position, eAction.Update);
+                PositionSortOnChange(e);
             }
 
             //Возвращаем сущность
@@ -305,29 +269,16 @@ namespace pg_class
             cmdk.Parameters["iid_position"].Value = iid_position;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
+            position = position_by_id(iid_position);
+            if (position.Id_parent > 0)
             {
-                case 0:
-                    position = position_by_id(iid_position);
-                    if (position.Id_parent > 0)
-                    {
-                        position = position_by_id(position.Id_parent);
-                    }
-                    //Генерируем событие применения метода сортировки
-                    if (position != null)
-                    {
-                        PositionChangeEventArgs e = new PositionChangeEventArgs(position, eAction.Update);
-                        PositionSortOnChange(e);
-                    }
-
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(iid_position, eEntity.position, error, desc_error, eAction.Update, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
+                position = position_by_id(position.Id_parent);
+            }
+            //Генерируем событие применения метода сортировки
+            if (position != null)
+            {
+                PositionChangeEventArgs e = new PositionChangeEventArgs(position, eAction.Update);
+                PositionSortOnChange(e);
             }
 
             //Возвращаем сущность
@@ -396,28 +347,16 @@ namespace pg_class
             cmdk.Parameters["iid_position_parent"].Value = iid_position_parent;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
+            position = position_by_id(iid_position_parent);
+            if (position.Id_parent > 0)
             {
-                case 0:
-                    position = position_by_id(iid_position_parent);
-                    if (position.Id_parent > 0)
-                    {
-                        position = position_by_id(position.Id_parent);
-                    }
-                    //Генерируем событие применения метода сортировки
-                    if (position != null)
-                    {
-                        PositionChangeEventArgs e = new PositionChangeEventArgs(position, eAction.Update);
-                        PositionSortOnChange(e);
-                    }
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(iid_position_parent, eEntity.position, error, desc_error, eAction.Update, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
+                position = position_by_id(position.Id_parent);
+            }
+            //Генерируем событие применения метода сортировки
+            if (position != null)
+            {
+                PositionChangeEventArgs e = new PositionChangeEventArgs(position, eAction.Update);
+                PositionSortOnChange(e);
             }
 
             //Возвращаем сущность
@@ -484,24 +423,12 @@ namespace pg_class
             cmdk.Parameters["iid_conception"].Value = iid_conception;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
+            conception = conception_by_id(iid_conception);
+            //Генерируем событие применения метода сортировки
+            if (conception != null)
             {
-                case 0:
-                    conception = conception_by_id(iid_conception);
-                    //Генерируем событие применения метода сортировки
-                    if (conception != null)
-                    {
-                        ConceptionChangeEventArgs e = new ConceptionChangeEventArgs(conception, eAction.Update);
-                        PositionSortOnChange(e);
-                    }
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(iid_conception, eEntity.conception, error, desc_error, eAction.Update, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
+                ConceptionChangeEventArgs e = new ConceptionChangeEventArgs(conception, eAction.Update);
+                PositionSortOnChange(e);
             }
 
             //Возвращаем сущность

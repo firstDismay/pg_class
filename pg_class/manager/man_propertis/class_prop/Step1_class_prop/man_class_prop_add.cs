@@ -41,23 +41,12 @@ namespace pg_class
             cmdk.Parameters["isort"].Value = isort;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
+            id = Convert.ToInt64(cmdk.Parameters["outid"].Value);
+            if (id > 0)
             {
-                case 0:
-                    id = Convert.ToInt64(cmdk.Parameters["outid"].Value);
-                    if (id > 0)
-                    {
-                        class_prop = class_prop_by_id(id);
-                    }
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(id, eEntity.class_prop, error, desc_error, eAction.Insert, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
+                class_prop = class_prop_by_id(id);
             }
+
             if (class_prop != null)
             {
                 //Генерируем событие изменения свойства класса
@@ -82,7 +71,7 @@ namespace pg_class
                 }
                 else
                 {
-                    throw new PgDataException(eEntity.class_prop, eAction.Insert, eSubClass_ErrID.SCE3_Violation_Rules,
+                    throw new ArgumentOutOfRangeException(
                         "Метод обновления данных класса не применим к историческому представлению класса!");
                 }
             }

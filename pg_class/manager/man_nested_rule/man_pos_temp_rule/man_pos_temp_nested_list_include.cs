@@ -35,25 +35,13 @@ namespace pg_class
             cmdk.Parameters["ipos_temp_nested_limit"].Value = ipos_temp_nested_limit;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
+            pos_temp = pos_temp_by_id(iid_pos_temp);
+            if (pos_temp != null)
             {
-                case 0:
-                    pos_temp = pos_temp_by_id(iid_pos_temp);
-                    if (pos_temp != null)
-                    {
-                        //Вызов события изменения списка вложенности
-                        PosTempNestedListChangeEventArgs e;
-                        e = new PosTempNestedListChangeEventArgs(pos_temp, eActionPosTempNestedList.addrule);
-                        OnPosTempNestedListChange(e);
-                    }
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(iid_pos_temp, eEntity.pos_temp_nested_rule, error, desc_error, eAction.Include, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
+                //Вызов события изменения списка вложенности
+                PosTempNestedListChangeEventArgs e;
+                e = new PosTempNestedListChangeEventArgs(pos_temp, eActionPosTempNestedList.addrule);
+                OnPosTempNestedListChange(e);
             }
 
             //Возвращаем сущность

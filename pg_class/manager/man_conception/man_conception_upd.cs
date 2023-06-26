@@ -38,20 +38,8 @@ namespace pg_class
             cmdk.Parameters["idefault"].Value = idefault;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
+            conception = conception_by_id(iid);
 
-            switch (error)
-            {
-                case 0:
-                    conception = conception_by_id(iid);
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(iid, eEntity.conception, error, desc_error, eAction.Update, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
-            }
             //Генерируем событие изменения концепции
             ConceptionChangeEventArgs e = new ConceptionChangeEventArgs(conception, eAction.Update);
             ConceptionOnChange(e);
@@ -119,20 +107,7 @@ namespace pg_class
             cmdk.Parameters["iid"].Value = iid;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
-            {
-                case 0:
-                    conception = conception_by_id(iid);
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(iid, eEntity.conception, error, desc_error, eAction.Update, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
-            }
-
+            conception = conception_by_id(iid);
             //Возвращаем сущность
             return conception;
         }

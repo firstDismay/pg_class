@@ -61,7 +61,7 @@ namespace pg_class
                     Result = class_class_prop_object_snapshot_by_id_class_prop(Class_prop.Id, Class_prop.Timestamp_class);
                     break;
                 case eStorageType.Active:
-                    throw new PgDataException(505, "Актисвное свойство не допустимо методе class_class_prop_object_snapshot_by_id_class_prop!");
+                    throw new ArgumentOutOfRangeException("Актисвное свойство не допустимо методе class_class_prop_object_snapshot_by_id_class_prop!");
             }
             return Result;
         }

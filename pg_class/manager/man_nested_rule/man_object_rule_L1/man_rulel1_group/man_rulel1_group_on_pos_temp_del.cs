@@ -33,22 +33,10 @@ namespace pg_class
             cmdk.Parameters["iid_pos_temp"].Value = iid_pos_temp;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
-            {
-                case 0:
-                    //Вызов события изменения списка правил вложенности вложенности
-                    Rulel1_Group_On_Pos_tempListChangeEventArgs e;
-                    e = new Rulel1_Group_On_Pos_tempListChangeEventArgs(iid_group, iid_pos_temp, eActionRuleList.delrule);
-                    OnRulel1_Group_On_Pos_tempListChange(e);
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(iid_pos_temp, eEntity.rulel1_group_on_pos_temp, error, desc_error, eAction.Delete, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
-            }
+            //Вызов события изменения списка правил вложенности вложенности
+            Rulel1_Group_On_Pos_tempListChangeEventArgs e;
+            e = new Rulel1_Group_On_Pos_tempListChangeEventArgs(iid_group, iid_pos_temp, eActionRuleList.delrule);
+            OnRulel1_Group_On_Pos_tempListChange(e);
         }
 
         /// <summary>

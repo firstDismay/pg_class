@@ -16,7 +16,6 @@ namespace pg_class
             Int32 error;
             String desc_error;
             NpgsqlCommandKey cmdk;
-            //**********
 
             cmdk = CommandByKey("user_role_user_grant");
 
@@ -32,35 +31,11 @@ namespace pg_class
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
 
-
             cmdk.Parameters["ilogin"].Value = user.Login;
             cmdk.Parameters["irole_user"].Value = role.NameSystem;
-            try
-            {
-                //Выполнение основной команды в контексте транзакции
-                cmdk.ExecuteNonQuery();
-            }
-            catch (Exception ex)
-            {
-                cmdk.Transaction.Rollback();
-                PG_exception_hadler(ex, cmdk);
-            }
+            cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            //SetLastTimeUsing();
-
-            switch (error)
-            {
-                case 0:
-                    Result = true;
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(-1, eEntity.user, error, desc_error, eAction.Update, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
-            }
+            Result = true;
             //Генерируем событие изменения концепции
             UserChangeEventArgs e = new UserChangeEventArgs(user, eAction.Update);
             UserOnChange(e);
@@ -104,9 +79,7 @@ namespace pg_class
             Int32 error;
             String desc_error;
             NpgsqlCommandKey cmdk;
-            //**********
-
-
+            
             cmdk = CommandByKey("user_role_user_revoke");
             if (cmdk != null)
             {
@@ -123,20 +96,8 @@ namespace pg_class
             cmdk.Parameters["ilogin"].Value = user.Login;
             cmdk.Parameters["irole_user"].Value = role.NameSystem;
             cmdk.ExecuteNonQuery();
-
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
-            {
-                case 0:
-                    Result = true;
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(-1, eEntity.user, error, desc_error, eAction.Update, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
-            }
+            
+            Result = true;
             //Генерируем событие изменения концепции
             UserChangeEventArgs e = new UserChangeEventArgs(user, eAction.Update);
             UserOnChange(e);

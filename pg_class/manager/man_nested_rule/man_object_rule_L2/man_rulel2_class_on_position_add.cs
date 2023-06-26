@@ -33,22 +33,10 @@ namespace pg_class
             cmdk.Parameters["iid_position"].Value = iid_position;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
-            {
-                case 0:
-                    //Вызов события изменения списка вложенности
-                    Rulel2_Class_On_PositionListChangeEventArgs e;
-                    e = new Rulel2_Class_On_PositionListChangeEventArgs(iid_position, iid_class, eActionRuleList.addrule);
-                    OnRulel2_Class_On_PositionListChange(e);
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(iid_position, eEntity.rulel2_class_on_position, error, desc_error, eAction.Insert, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
-            }
+            //Вызов события изменения списка вложенности
+            Rulel2_Class_On_PositionListChangeEventArgs e;
+            e = new Rulel2_Class_On_PositionListChangeEventArgs(iid_position, iid_class, eActionRuleList.addrule);
+            OnRulel2_Class_On_PositionListChange(e);
         }
 
         /// <summary>

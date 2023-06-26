@@ -44,24 +44,13 @@ namespace pg_class
             cmdk.Parameters["iid_unit_conversion_rule"].Value = iid_unit_conversion_rule;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
+            id = Convert.ToInt64(cmdk.Parameters["outid"].Value);
+            if (id > 0)
             {
-                case 0:
-                    id = Convert.ToInt64(cmdk.Parameters["outid"].Value);
-                    if (id > 0)
-                    {
-                        class_prop_obj_val_class = class_prop_object_val_by_id(id);
-                        class_prop = class_prop_by_id(iid_class_prop);
-                    }
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(iid_class_prop, eEntity.class_prop_object_val, error, desc_error, eAction.Insert, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
+                class_prop_obj_val_class = class_prop_object_val_by_id(id);
+                class_prop = class_prop_by_id(iid_class_prop);
             }
+
             if (class_prop != null)
             {
                 //Генерируем событие изменения свойства класса

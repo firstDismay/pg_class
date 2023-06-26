@@ -36,25 +36,13 @@ namespace pg_class
             cmdk.Parameters["irole_namesys"].Value = irole_namesys;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
+            namesys = (String)(cmdk.Parameters["outid"].Value);
+            role_user = user_role_user_by_namesys(namesys);
+            if (role_user != null)
             {
-                case 0:
-                    namesys = (String)(cmdk.Parameters["outid"].Value);
-                    role_user = user_role_user_by_namesys(namesys);
-                    if (role_user != null)
-                    {
-                        //Генерируем событие изменения пользователя
-                        RoleUserChangeEventArgs e = new RoleUserChangeEventArgs(role_user, eAction.Insert);
-                        RoleUserOnChange(e);
-                    }
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(-1, eEntity.role_user, error, desc_error, eAction.Insert, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
+                //Генерируем событие изменения пользователя
+                RoleUserChangeEventArgs e = new RoleUserChangeEventArgs(role_user, eAction.Insert);
+                RoleUserOnChange(e);
             }
 
             //Возвращаем сущность

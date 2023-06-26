@@ -34,21 +34,9 @@ namespace pg_class
             cmdk.Parameters["iid_global_prop"].Value = iid_global_prop;
             cmdk.Parameters["iid_class_prop_definition"].Value = iid_class_prop_definition;
             cmdk.ExecuteNonQuery();
-
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
-            {
-                case 0:
-                    global_prop_link_class_prop = global_prop_link_class_prop_by_id(iid_global_prop, iid_class_prop_definition);
-                    prop_link = class_prop_by_id(iid_class_prop_definition);
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(iid_global_prop, iid_class_prop_definition, eEntity.global_prop_link_class_prop, error, desc_error, eAction.Include, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
-            }
+            global_prop_link_class_prop = global_prop_link_class_prop_by_id(iid_global_prop, iid_class_prop_definition);
+            prop_link = class_prop_by_id(iid_class_prop_definition);
+            
             if (global_prop_link_class_prop != null)
             {
                 //Генерируем событие изменения данных привязки глобального свойства

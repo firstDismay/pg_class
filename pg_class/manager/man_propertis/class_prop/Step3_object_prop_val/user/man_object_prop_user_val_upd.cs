@@ -143,25 +143,13 @@ namespace pg_class
                         break;
                 }
                 cmdk.ExecuteNonQuery();
-
-                error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-                desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-                switch (error)
+                ObjectPropUserVal = object_prop_user_val_by_id_prop(newObjectPropUserVal);
+                
+                if (ObjectPropUserVal != null)
                 {
-                    case 0:
-                        ObjectPropUserVal = object_prop_user_val_by_id_prop(newObjectPropUserVal);
-                        if (ObjectPropUserVal != null)
-                        {
-                            //Генерируем событие изменения значения свойства объекта
-                            ObjectPropUserValChangeEventArgs e = new ObjectPropUserValChangeEventArgs(ObjectPropUserVal, eAction.Update);
-                            ObjectPropUserValOnChange(e);
-                        }
-                        break;
-                    default:
-                        //Вызов события журнала
-                        JournalEventArgs me = new JournalEventArgs(newObjectPropUserVal.Id_object_carrier, newObjectPropUserVal.Id_class_prop, eEntity.object_prop_user_val, error, desc_error, eAction.Update, eJournalMessageType.error);
-                        JournalMessageOnReceived(me);
-                        throw new PgDataException(error, desc_error);
+                    //Генерируем событие изменения значения свойства объекта
+                    ObjectPropUserValChangeEventArgs e = new ObjectPropUserValChangeEventArgs(ObjectPropUserVal, eAction.Update);
+                    ObjectPropUserValOnChange(e);
                 }
             }
             //Возвращаем сущность

@@ -19,7 +19,7 @@ namespace pg_class.poolcn
             cn_list = new List<connect>();
 
             //Вызов события журнала
-            JournalEventArgs me = new JournalEventArgs(0, eEntity.pool, 0, "Пул соединений создан", eAction.Connect, eJournalMessageType.information);
+            JournalEventArgs me = new JournalEventArgs(0, eEntity.pool, "0", "Пул соединений создан", eAction.Connect, eJournalMessageType.information);
             manager.JournalMessageOnReceivedStatic(this, me);
 
             connect CN = new connect();
@@ -32,7 +32,7 @@ namespace pg_class.poolcn
             manager.PoolConnectCountOnChangeStatic(this, pc);
 
             //Вызов события журнала
-            me = new JournalEventArgs(0, eEntity.manager, 0, "Менеджер данных подключен в БД", eAction.Connect, eJournalMessageType.information);
+            me = new JournalEventArgs(0, eEntity.manager, "0", "Менеджер данных подключен в БД", eAction.Connect, eJournalMessageType.information);
             manager.JournalMessageOnReceivedStatic(this, me);
 
             StartControlTimer();
@@ -168,19 +168,19 @@ namespace pg_class.poolcn
                                 manager.OnManagerStateChange(e2);
                             }
                             //Вызов события журнала
-                            me = new JournalEventArgs(0, eEntity.manager, 0, "Менеджер данных подключен в БД", eAction.Connect, eJournalMessageType.information);
+                            me = new JournalEventArgs(0, eEntity.manager, "0", "Менеджер данных подключен в БД", eAction.Connect, eJournalMessageType.information);
                             manager.JournalMessageOnReceivedStatic(this, me);
                         }
                     }
                     break;
                 case eManagerState.LogOff:
                     //Вызов события журнала
-                    me = new JournalEventArgs(0, eEntity.manager, 0, "Авторизующая сессия сервера завершена", eAction.Connect, eJournalMessageType.error);
+                    me = new JournalEventArgs(0, eEntity.manager, "0", "Авторизующая сессия сервера завершена", eAction.Connect, eJournalMessageType.error);
                     manager.JournalMessageOnReceivedStatic(this, me);
                     throw new PgManagerException(404, "Авторизующая сессия сервера завершена", "Сессия сервера завершена, выполнение команд не доступно");
                 case eManagerState.NoReady:
                     //Вызов события журнала
-                    me = new JournalEventArgs(0, eEntity.manager, 0, "Пул менеджера данных не создан", eAction.Connect, eJournalMessageType.error);
+                    me = new JournalEventArgs(0, eEntity.manager, "0", "Пул менеджера данных не создан", eAction.Connect, eJournalMessageType.error);
                     manager.JournalMessageOnReceivedStatic(this, me);
                     throw new PgManagerException(404, "Пул менеджера данных не создан", "Пул менеджера данных не создан, выполнение команд не доступно");
             }
@@ -210,7 +210,7 @@ namespace pg_class.poolcn
                     ManagerStateChangeEventArgs e2 = new ManagerStateChangeEventArgs(eEntity.pool, eManagerState.Disconnected);
                     manager.OnManagerStateChange(e2);
                     //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(0, eEntity.pool, 0, "Все соединения менеджера закрыты по команде менеджера данных", eAction.DisConnect, eJournalMessageType.information);
+                    JournalEventArgs me = new JournalEventArgs(0, eEntity.pool, "0", "Все соединения менеджера закрыты по команде менеджера данных", eAction.DisConnect, eJournalMessageType.information);
                     manager.JournalMessageOnReceivedStatic(this, me);
                 }
                 //Вызов события изменения количества подключений
@@ -242,7 +242,7 @@ namespace pg_class.poolcn
                     ManagerStateChangeEventArgs e2 = new ManagerStateChangeEventArgs(eEntity.pool, eManagerState.Disconnected);
                     manager.OnManagerStateChange(e2);
                     //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(0, eEntity.pool, 0, "Все соединения менеджера закрыты по команде менеджера данных", eAction.DisConnect, eJournalMessageType.information);
+                    JournalEventArgs me = new JournalEventArgs(0, eEntity.pool, "0", "Все соединения менеджера закрыты по команде менеджера данных", eAction.DisConnect, eJournalMessageType.information);
                     manager.JournalMessageOnReceivedStatic(this, me);
                 }
                 //Вызов события изменения количества подключений

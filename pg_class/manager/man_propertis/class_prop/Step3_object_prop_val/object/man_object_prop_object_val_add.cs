@@ -39,36 +39,24 @@ namespace pg_class
             cmdk.Parameters["icquantity"].Value = icquantity;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
+            id = Convert.ToInt64(cmdk.Parameters["outid"].Value);
+            if (id > 0)
             {
-                case 0:
-                    id = Convert.ToInt64(cmdk.Parameters["outid"].Value);
-                    if (id > 0)
-                    {
-                        Object = object_by_id(id);
-                        ObjectPropObjectVal = object_prop_object_val_by_id_prop(iid_object_carrier, iid_class_prop);
-                    }
-                    //Генерируем событие изменения объекта
-                    if (Object != null)
-                    {
-                        ObjectChangeEventArgs e = new ObjectChangeEventArgs(Object, eAction.Insert);
-                        ObjectOnChange(e);
-                    }
+                Object = object_by_id(id);
+                ObjectPropObjectVal = object_prop_object_val_by_id_prop(iid_object_carrier, iid_class_prop);
+            }
+            //Генерируем событие изменения объекта
+            if (Object != null)
+            {
+                ObjectChangeEventArgs e = new ObjectChangeEventArgs(Object, eAction.Insert);
+                ObjectOnChange(e);
+            }
 
-                    if (ObjectPropObjectVal != null)
-                    {
-                        //Генерируем событие изменения значения данных значения объектного свойства объекта
-                        ObjectPropObjectValChangeEventArgs e2 = new ObjectPropObjectValChangeEventArgs(ObjectPropObjectVal, eAction.Insert);
-                        ObjectPropObjectValOnChange(e2);
-                    }
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(id, eEntity.vobject, error, desc_error, eAction.Insert, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
+            if (ObjectPropObjectVal != null)
+            {
+                //Генерируем событие изменения значения данных значения объектного свойства объекта
+                ObjectPropObjectValChangeEventArgs e2 = new ObjectPropObjectValChangeEventArgs(ObjectPropObjectVal, eAction.Insert);
+                ObjectPropObjectValOnChange(e2);
             }
 
             //Возвращаем данные значения объетного свойства
@@ -143,49 +131,37 @@ namespace pg_class
             cmdk.Parameters["icquantity"].Value = icquantity;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
+            id = Convert.ToInt64(cmdk.Parameters["outid"].Value);
+            if (id > 0)
             {
-                case 0:
-                    id = Convert.ToInt64(cmdk.Parameters["outid"].Value);
-                    if (id > 0)
-                    {
-                        Object_embed = object_by_id(id);
-                        ObjectPropObjectVal = object_prop_object_val_by_id_prop(iid_object_carrier, iid_class_prop);
+                Object_embed = object_by_id(id);
+                ObjectPropObjectVal = object_prop_object_val_by_id_prop(iid_object_carrier, iid_class_prop);
 
-                        //Если идет частичное встраивание с созданием нового объекта находим остаток
-                        if (id != iid_object_val)
-                        {
-                            Object_change = object_by_id(iid_object_val);
-                        }
-                    }
-                    //Генерируем событие изменения встроенного объекта
-                    if (Object_embed != null)
-                    {
-                        ObjectChangeEventArgs e = new ObjectChangeEventArgs(Object_embed, eAction.Insert);
-                        ObjectOnChange(e);
-                    }
+                //Если идет частичное встраивание с созданием нового объекта находим остаток
+                if (id != iid_object_val)
+                {
+                    Object_change = object_by_id(iid_object_val);
+                }
+            }
+            //Генерируем событие изменения встроенного объекта
+            if (Object_embed != null)
+            {
+                ObjectChangeEventArgs e = new ObjectChangeEventArgs(Object_embed, eAction.Insert);
+                ObjectOnChange(e);
+            }
 
-                    //Если есть остаток то генерируем изменение остатка
-                    if (Object_change != null)
-                    {
-                        ObjectChangeEventArgs e3 = new ObjectChangeEventArgs(Object_change, eAction.Update);
-                        ObjectOnChange(e3);
-                    }
+            //Если есть остаток то генерируем изменение остатка
+            if (Object_change != null)
+            {
+                ObjectChangeEventArgs e3 = new ObjectChangeEventArgs(Object_change, eAction.Update);
+                ObjectOnChange(e3);
+            }
 
-                    if (ObjectPropObjectVal != null)
-                    {
-                        //Генерируем событие изменения данных значения объектного свойства
-                        ObjectPropObjectValChangeEventArgs e2 = new ObjectPropObjectValChangeEventArgs(ObjectPropObjectVal, eAction.Insert);
-                        ObjectPropObjectValOnChange(e2);
-                    }
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(iid_object_val, eEntity.vobject, error, desc_error, eAction.Insert, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
+            if (ObjectPropObjectVal != null)
+            {
+                //Генерируем событие изменения данных значения объектного свойства
+                ObjectPropObjectValChangeEventArgs e2 = new ObjectPropObjectValChangeEventArgs(ObjectPropObjectVal, eAction.Insert);
+                ObjectPropObjectValOnChange(e2);
             }
 
             //Возвращаем сущность

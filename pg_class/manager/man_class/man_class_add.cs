@@ -15,11 +15,9 @@ namespace pg_class
         {
             vclass vclass = null;
             Int64 id = 0;
-            Int32 error;
-            String desc_error;
             NpgsqlCommandKey cmdk;
 
-            cmdk = CommandByKey("class_add");
+            cmdk = CommandByKey("class_add2");
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -44,28 +42,16 @@ namespace pg_class
             cmdk.Parameters["ibarcode_manufacturer"].Value = ibarcode_manufacturer;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
+            id = Convert.ToInt64(cmdk.Parameters["outid"].Value);
+            if (id > 0)
             {
-                case 0:
-                    id = Convert.ToInt64(cmdk.Parameters["outid"].Value);
-                    if (id > 0)
-                    {
-                        vclass = class_act_by_id(id);
-                    }
-                    if (vclass != null)
-                    {
-                        //Генерируем событие изменения представления класса
-                        ClassChangeEventArgs e = new ClassChangeEventArgs(vclass, eAction.Insert);
-                        ClassOnChange(e);
-                    }
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(id, eEntity.vclass, error, desc_error, eAction.Insert, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
+                vclass = class_act_by_id(id);
+            }
+            if (vclass != null)
+            {
+                //Генерируем событие изменения представления класса
+                ClassChangeEventArgs e = new ClassChangeEventArgs(vclass, eAction.Insert);
+                ClassOnChange(e);
             }
 
             //Возвращаем сущность
@@ -147,23 +133,12 @@ namespace pg_class
             cmdk.Parameters["on_nested"].Value = on_nested;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
+            id = Convert.ToInt64(cmdk.Parameters["outid"].Value);
+            if (id > 0)
             {
-                case 0:
-                    id = Convert.ToInt64(cmdk.Parameters["outid"].Value);
-                    if (id > 0)
-                    {
-                        vclass = class_act_by_id(id);
-                    }
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(id, eEntity.vclass, error, desc_error, eAction.Copy, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
+                vclass = class_act_by_id(id);
             }
+
             if (vclass != null)
             {
                 //Генерируем событие изменения класса
@@ -237,22 +212,10 @@ namespace pg_class
             cmdk.Parameters["on_nested"].Value = on_nested;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
+            id = Convert.ToInt64(cmdk.Parameters["outid"].Value);
+            if (id > 0)
             {
-                case 0:
-                    id = Convert.ToInt64(cmdk.Parameters["outid"].Value);
-                    if (id > 0)
-                    {
-                        vclass = class_act_by_id(id);
-                    }
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(id, eEntity.vclass, error, desc_error, eAction.Copy, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
+                vclass = class_act_by_id(id);
             }
             if (vclass != null)
             {
@@ -325,23 +288,12 @@ namespace pg_class
             cmdk.Parameters["iid_object"].Value = iid_object;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
+            id = Convert.ToInt64(cmdk.Parameters["outid"].Value);
+            if (id > 0)
             {
-                case 0:
-                    id = Convert.ToInt64(cmdk.Parameters["outid"].Value);
-                    if (id > 0)
-                    {
-                        vclass = class_act_by_id(id);
-                    }
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(id, eEntity.vclass, error, desc_error, eAction.Restore, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
+                vclass = class_act_by_id(id);
             }
+
             if (vclass != null)
             {
                 //Генерируем событие изменения класса

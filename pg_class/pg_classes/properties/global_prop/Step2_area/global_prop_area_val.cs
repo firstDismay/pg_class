@@ -17,7 +17,6 @@ namespace pg_class.pg_classes
         /// </summary>
         protected global_prop_area_val()
         {
-            on_change = false;
         }
         /// <summary>
         /// Полный конструктор класса для возврата данных существующих записей через строку таблицы 
@@ -27,17 +26,17 @@ namespace pg_class.pg_classes
 
             if (row.Table.TableName == "vglobal_prop_area_val")
             {
-                id_conception = (Int64)row["id_conception"];
-                id_global_prop = (Int64)row["id_global_prop"];
-                timestamp_global_prop = Convert.ToDateTime(row["timestamp_global_prop"]);
-                id_prop_type = (Int32)row["id_prop_type"];
-                id_data_type = (Int32)row["id_data_type"];
+                Id_conception = (Int64)row["id_conception"];
+                Id_global_prop = (Int64)row["id_global_prop"];
+                Timestamp_global_prop = Convert.ToDateTime(row["timestamp_global_prop"]);
+                Id_prop_type = (Int32)row["id_prop_type"];
+                Id_data_type = (Int32)row["id_data_type"];
 
-                id_area_val = (Int64)row["id_area_val"];
-                timestamp_area_val = Convert.ToDateTime(row["timestamp_area_val"]);
-                on_val = (Boolean)row["on_val"];
-                is_use = (Boolean)row["is_use"];
-                ready = (Boolean)row["ready"];
+                Id_area_val = (Int64)row["id_area_val"];
+                Timestamp_area_val = Convert.ToDateTime(row["timestamp_area_val"]);
+                On_val = (Boolean)row["on_val"];
+                Is_use = (Boolean)row["is_use"];
+                Ready = (Boolean)row["ready"];
             }
             else
             {
@@ -47,49 +46,27 @@ namespace pg_class.pg_classes
         #endregion
 
         #region СВОЙСТВА КЛАССА
-        private Int64 id_global_prop = 0;
-        private Int64 id_conception = 0;
-        private Int32 id_prop_type;
-        private Int32 id_data_type;
-        private Boolean is_use;
-        private DateTime timestamp_global_prop;
-        private Boolean on_val;
-        private Boolean ready;
-
-        private Int64 id_area_val = 0;
-        private DateTime timestamp_area_val;
-
+        
         /// <summary>
         /// Идентификатор глобального свойства концепции
         /// </summary>
-        public Int64 Id_global_prop { get => id_global_prop; }
+        public Int64 Id_global_prop { get; set; }
 
         /// <summary>
         /// Идентификатор концепции свойства
         /// </summary>
-        public Int64 Id_conception { get => id_conception; }
+        public Int64 Id_conception { get; set; }
 
         /// <summary>
         /// Штамп времени глобального свойства
         /// </summary>
-        public DateTime Timestamp_global_prop
-        {
-            get
-            {
-                return timestamp_global_prop;
-            }
-        }
-
+        public DateTime Timestamp_global_prop { get; set; }
+        
         /// <summary>
         /// Идентификатор типа свойства
         /// </summary>
-        public Int32 Id_prop_type
-        {
-            get
-            {
-                return id_prop_type;
-            }
-        }
+        public Int32 Id_prop_type { get; set; }
+        
 
         /// <summary>
         /// Тип свойства
@@ -98,21 +75,15 @@ namespace pg_class.pg_classes
         {
             get
             {
-                return (ePropType)id_prop_type;
+                return (ePropType)Id_prop_type;
             }
         }
 
         /// <summary>
         /// Идентификатор типа данных свойства
         /// </summary>
-        public Int32 Id_data_type
-        {
-            get
-            {
-                return id_data_type;
-            }
-        }
-
+        public Int32 Id_data_type { get; set; }
+        
         /// <summary>
         /// Тип данных свойства
         /// </summary>
@@ -120,7 +91,7 @@ namespace pg_class.pg_classes
         {
             get
             {
-                return (eDataType)id_data_type;
+                return (eDataType)Id_data_type;
             }
         }
 
@@ -135,7 +106,6 @@ namespace pg_class.pg_classes
             }
         }
 
-        ///////**************************
         /// <summary>
         /// Тип данных свойства в среде .Net 
         /// </summary>
@@ -150,79 +120,28 @@ namespace pg_class.pg_classes
         /// <summary>
         /// Признак используемого глобального свойства
         /// </summary>
-        public Boolean Is_use
-        {
-            get
-            {
-                return is_use;
-            }
-        }
-
+        public Boolean Is_use { get; set; }
+        
         /// <summary>
         /// Область значений глобального свойства определена
         /// </summary>
-        public Boolean On_val
-        {
-            get
-            {
-                return on_val;
-            }
-        }
-
+        public Boolean On_val { get; set; }
+        
         /// <summary>
         /// Область значений свойства определена, свойство готово к связыванию, шаг №2
         /// </summary>
-        public Boolean Ready
-        {
-            get
-            {
-                return ready;
-            }
-        }
-
+        public Boolean Ready { get; set; }
+        
         /// <summary>
         /// Идентификатор области значений глобального свойства концепции
         /// </summary>
-        public Int64 Id_area_val
-        {
-            get
-            {
-
-                return id_area_val;
-            }
-            set
-            {
-                if (id_area_val != value)
-                {
-                    id_area_val = value;
-                    on_change = true;
-                }
-            }
-        }
-
+        public Int64 Id_area_val { get; set; }
+        
         /// <summary>
         /// Штамп времени области значений глобального свойства применим для объектных свойств
         /// </summary>
-        public DateTime Timestamp_area_val
-        {
-            get
-            {
-                return timestamp_area_val;
-            }
-        }
-
-        private Boolean on_change;
-        /// <summary>
-        /// Свойство определяющее потребность в обновлении данных БД
-        /// </summary>
-        public Boolean On_change
-        {
-            get
-            {
-                return on_change;
-            }
-        }
-
+        public DateTime Timestamp_area_val { get; set; }
+                
         /// <summary>
         /// Ссылка на менеджера данных
         /// </summary>
@@ -262,22 +181,16 @@ namespace pg_class.pg_classes
                 return sb.ToString();
             }
         }
-
         #endregion
 
         #region МЕТОДЫ КЛАССА
-
         /// <summary>
         /// Обновление области значений глобального свойства
         /// </summary>
         public void Update()
         {
-            if (on_change)
-            {
-                Manager.global_prop_area_val_upd(this);
-                Refresh();
-                on_change = false;
-            }
+            Manager.global_prop_area_val_upd(this);
+            Refresh();
         }
 
         /// <summary>
@@ -288,21 +201,20 @@ namespace pg_class.pg_classes
             global_prop_area_val temp = null;
             Boolean Result = false;
 
-            temp = Manager.global_prop_area_val_by_id_prop(id_global_prop);
+            temp = Manager.global_prop_area_val_by_id_prop(Id_global_prop);
             if (temp != null)
             {
-                id_global_prop = temp.Id_global_prop;
-                id_conception = temp.Id_conception;
-                id_prop_type = temp.Id_prop_type;
-                id_data_type = temp.Id_data_type;
-                is_use = temp.Is_use;
-                timestamp_global_prop = temp.Timestamp_global_prop;
-                id_area_val = temp.Id_area_val;
-                timestamp_area_val = temp.Timestamp_area_val;
-                on_val = temp.On_val;
-                ready = temp.Ready;
+                Id_global_prop = temp.Id_global_prop;
+                Id_conception = temp.Id_conception;
+                Id_prop_type = temp.Id_prop_type;
+                Id_data_type = temp.Id_data_type;
+                Is_use = temp.Is_use;
+                Timestamp_global_prop = temp.Timestamp_global_prop;
+                Id_area_val = temp.Id_area_val;
+                Timestamp_area_val = temp.Timestamp_area_val;
+                On_val = temp.On_val;
+                Ready = temp.Ready;
                 Result = true;
-                on_change = false;
             }
             else
             {
@@ -316,7 +228,7 @@ namespace pg_class.pg_classes
         /// </summary>
         public prop_type prop_type_get()
         {
-            return Manager.prop_type_by_id(id_prop_type);
+            return Manager.prop_type_by_id(Id_prop_type);
         }
 
         /// <summary>
@@ -333,7 +245,7 @@ namespace pg_class.pg_classes
         /// </summary>
         public conception Conception_get()
         {
-            return Manager.conception_by_id(id_conception);
+            return Manager.conception_by_id(Id_conception);
         }
 
         /// <summary>
@@ -354,13 +266,14 @@ namespace pg_class.pg_classes
         public con_prop_data_type Prop_area_user_prop_get()
         {
             con_prop_data_type Result = null;
-            if (id_prop_type == 1)
+            if (Id_prop_type == 1)
             {
-                Result = Manager.Con_prop_data_type_by_id(id_conception, id_data_type); ;
+                Result = Manager.Con_prop_data_type_by_id(Id_conception, Id_data_type); ;
             }
             else
             {
-                throw (new PgDataException(eEntity.global_prop_area_val, eAction.Select, eSubClass_ErrID.SCE3_Violation_Rules, "Сущность области значений не соотвествует типу свойства!"));
+                throw new ArgumentOutOfRangeException(
+                    "Сущность области значений не соответствует типу свойства!");
             }
             return Result;
         }
@@ -371,13 +284,14 @@ namespace pg_class.pg_classes
         public prop_enum Prop_area_enum_prop_get()
         {
             prop_enum Result = null;
-            if (id_prop_type == 2)
+            if (Id_prop_type == 2)
             {
-                Result = Manager.prop_enum_by_id(id_area_val);
+                Result = Manager.prop_enum_by_id(Id_area_val);
             }
             else
             {
-                throw (new PgDataException(eEntity.global_prop_area_val, eAction.Select, eSubClass_ErrID.SCE3_Violation_Rules, "Сущность области значений не соотвествует типу свойства!"));
+                throw new ArgumentOutOfRangeException(
+                    "Сущность области значений не соответствует типу свойства!");
             }
             return Result;
         }
@@ -388,13 +302,14 @@ namespace pg_class.pg_classes
         public vclass Prop_area_object_prop_get()
         {
             vclass Result = null;
-            if (id_prop_type == 3)
+            if (Id_prop_type == 3)
             {
-                Result = Manager.class_act_by_id(id_area_val);
+                Result = Manager.class_act_by_id(Id_area_val);
             }
             else
             {
-                throw (new PgDataException(eEntity.global_prop_area_val, eAction.Select, eSubClass_ErrID.SCE3_Violation_Rules, "Сущность области значений не соотвествует типу свойства!"));
+                throw new ArgumentOutOfRangeException(
+                    "Сущность области значений не соответствует типу свойства!");
             }
             return Result;
         }
@@ -405,13 +320,14 @@ namespace pg_class.pg_classes
         public entity Prop_area_link_prop_get()
         {
             entity Result = null;
-            if (id_prop_type == 4)
+            if (Id_prop_type == 4)
             {
-                Result = Manager.entity_by_id(Convert.ToInt32(id_area_val));
+                Result = Manager.entity_by_id(Convert.ToInt32(Id_area_val));
             }
             else
             {
-                throw (new PgDataException(eEntity.global_prop_area_val, eAction.Select, eSubClass_ErrID.SCE3_Violation_Rules, "Сущность области значений не соотвествует типу свойства!"));
+                throw new ArgumentOutOfRangeException(
+                    "Сущность области значений не соответствует типу свойства!");
             }
             return Result;
         }
@@ -422,19 +338,19 @@ namespace pg_class.pg_classes
         public Object Prop_area_get()
         {
             Object Result = null;
-            switch (id_prop_type)
+            switch (Id_prop_type)
             {
                 case 1:
-                    Result = Manager.Con_prop_data_type_by_id(id_conception, id_data_type);
+                    Result = Manager.Con_prop_data_type_by_id(Id_conception, Id_data_type);
                     break;
                 case 2:
-                    Result = Manager.prop_enum_by_id(id_area_val);
+                    Result = Manager.prop_enum_by_id(Id_area_val);
                     break;
                 case 3:
-                    Result = Manager.class_act_by_id(id_area_val);
+                    Result = Manager.class_act_by_id(Id_area_val);
                     break;
                 case 4:
-                    Result = Manager.entity_by_id(Convert.ToInt32(id_area_val));
+                    Result = Manager.entity_by_id(Convert.ToInt32(Id_area_val));
                     break;
                 default:
                     Result = null;
@@ -476,31 +392,31 @@ namespace pg_class.pg_classes
         public override string ToString()
         {
             String Result = "Область значений: н/д";
-            switch (id_prop_type)
+            switch (Id_prop_type)
             {
                 case 1:
-                    con_prop_data_type av = Manager.Con_prop_data_type_by_id(id_conception, id_data_type);
+                    con_prop_data_type av = Manager.Con_prop_data_type_by_id(Id_conception, Id_data_type);
                     if (av != null)
                     {
                         Result = String.Format("Тип данных: {0}", av.ToString());
                     }
                     break;
                 case 2:
-                    prop_enum ea = Manager.prop_enum_by_id(id_area_val);
+                    prop_enum ea = Manager.prop_enum_by_id(Id_area_val);
                     if (ea != null)
                     {
                         Result = String.Format("Перечисление: {0}", ea.ToString());
                     }
                     break;
                 case 3:
-                    vclass ca = Manager.class_act_by_id(id_area_val);
+                    vclass ca = Manager.class_act_by_id(Id_area_val);
                     if (ca != null)
                     {
                         Result = String.Format("Класс: {0}", ca.ToString());
                     }
                     break;
                 case 4:
-                    entity e = Manager.entity_by_id(Convert.ToInt32(id_area_val));
+                    entity e = Manager.entity_by_id(Convert.ToInt32(Id_area_val));
                     if (e != null)
                     {
                         Result = String.Format("Класс: {0}", e.ToString());

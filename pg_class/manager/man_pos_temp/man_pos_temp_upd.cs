@@ -37,24 +37,12 @@ namespace pg_class
             cmdk.Parameters["idesc"].Value = idesc;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
+            pos_temp = pos_temp_by_id(iid);
+            if (pos_temp != null)
             {
-                case 0:
-                    pos_temp = pos_temp_by_id(iid);
-                    if (pos_temp != null)
-                    {
-                        //Генерируем событие изменения
-                        PosTempChangeEventArgs e = new PosTempChangeEventArgs(pos_temp, eAction.Update);
-                        PosTempOnChange(e);
-                    }
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(iid, eEntity.pos_temp, error, desc_error, eAction.Update, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
+                //Генерируем событие изменения
+                PosTempChangeEventArgs e = new PosTempChangeEventArgs(pos_temp, eAction.Update);
+                PosTempOnChange(e);
             }
 
             //Возвращаем сущность

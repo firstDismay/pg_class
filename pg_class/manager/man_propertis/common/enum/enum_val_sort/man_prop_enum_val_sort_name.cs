@@ -34,24 +34,12 @@ namespace pg_class
             cmdk.Parameters["iid_prop_enum"].Value = iid_prop_enum;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-            switch (error)
+            SortList = prop_enum_val_by_id_prop_enum(iid_prop_enum);
+            foreach (prop_enum_val item in SortList)
             {
-                case 0:
-                    SortList = prop_enum_val_by_id_prop_enum(iid_prop_enum);
-                    foreach (prop_enum_val item in SortList)
-                    {
-                        //Генерируем события изменения сортировки элементов перечисления
-                        PropEnumValChangeEventArgs e = new PropEnumValChangeEventArgs(item, eAction.Update);
-                        PropEnumValOnChange(e);
-                    }
-                    break;
-                default:
-                    //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(iid_prop_enum, eEntity.prop_enum, error, desc_error, eAction.Update, eJournalMessageType.error);
-                    JournalMessageOnReceived(me);
-                    throw new PgDataException(error, desc_error);
+                //Генерируем события изменения сортировки элементов перечисления
+                PropEnumValChangeEventArgs e = new PropEnumValChangeEventArgs(item, eAction.Update);
+                PropEnumValOnChange(e);
             }
 
             //Возвращаем сущность
