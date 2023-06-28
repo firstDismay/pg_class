@@ -244,13 +244,13 @@ namespace pg_class
         /// <summary>
         /// Лист правил назначения правил пересчета объектов вещественного класса
         /// </summary>
-        public List<class_unit_conversion_rule> class_unit_conversion_rules(Int64 iid_class)
+        public List<class_unit_conversion_rule> class_unit_conversion_rules_by_id_class(Int64 iid_class)
         {
             List<class_unit_conversion_rule> rule_list = new List<class_unit_conversion_rule>();
             DataTable tbl_rule_list = TableByName("vclass_unit_conversion_rules");
             NpgsqlCommandKey cmdk;
 
-            cmdk = CommandByKey("class_unit_conversion_rules");
+            cmdk = CommandByKey("class_unit_conversion_rules_by_id_class");
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -281,22 +281,22 @@ namespace pg_class
         /// <summary>
         /// Лист правил назначения правил пересчета объектов вещественного класса
         /// </summary>
-        public List<class_unit_conversion_rule> class_unit_conversion_rules(vclass Class)
+        public List<class_unit_conversion_rule> class_unit_conversion_rules_by_id_class(vclass Class)
         {
-            return class_unit_conversion_rules(Class.Id);
+            return class_unit_conversion_rules_by_id_class(Class.Id);
         }
 
         //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
-        public Boolean class_unit_conversion_rules(out eAccess Access)
+        public Boolean class_unit_conversion_rules_by_id_class(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
 
-            cmdk = CommandByKey("class_unit_conversion_rules");
+            cmdk = CommandByKey("class_unit_conversion_rules_by_id_class");
             if (cmdk != null)
             {
                 Result = cmdk.Access;
