@@ -7,6 +7,7 @@ namespace pg_class.pg_exceptions
     /// </summary>
     public class PgFunctionMessage
     {
+        public String func { get; set; }
         public String codeerr { get; set; }
         public String actionerr { get; set; }
         public String entity { get; set; }
