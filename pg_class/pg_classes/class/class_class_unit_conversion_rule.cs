@@ -13,7 +13,7 @@ namespace pg_class.pg_classes
         {
             get
             {
-                return Manager.class_unit_conversion_rules(this);
+                return Manager.class_unit_conversion_rules_by_id_class(this);
             }
         }
 
