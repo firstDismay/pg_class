@@ -41,7 +41,7 @@ namespace pg_class
             cmdk.Parameters["iplan_max"].Value = iplan_max;
             cmdk.Parameters["irange_max"].Value = irange_max;
             cmdk.ExecuteNonQuery();
-            
+
             id = Convert.ToInt64(cmdk.Parameters["outid"].Value);
             if (id > 0)
             {

@@ -45,7 +45,7 @@ namespace pg_class
                     cmdk.Parameters["iid_prop_enum_val"].Value = newPositionPropEnumVal.Id_prop_enum_val;
                 }
                 cmdk.ExecuteNonQuery();
-                
+
                 position_prop_enum_val = position_prop_enum_val_by_id_prop(newPositionPropEnumVal);
                 if (position_prop_enum_val != null)
                 {

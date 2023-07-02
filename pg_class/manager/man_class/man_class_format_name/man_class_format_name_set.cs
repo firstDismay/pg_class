@@ -123,7 +123,7 @@ namespace pg_class
             cmdk.Parameters["iid_class"].Value = iid_class;
             cmdk.Parameters["iquantity_show"].Value = iquantity_show;
             cmdk.ExecuteNonQuery();
-            
+
             //Генерируем событие изменения представления класса
             ClassChangeEventArgs e = new ClassChangeEventArgs(vclass, eAction.Update);
             ClassOnChange(e);

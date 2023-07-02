@@ -32,7 +32,7 @@ namespace pg_class
             plan_range centity = plan_range_by_id(iid);
             cmdk.Parameters["iid"].Value = iid;
             cmdk.ExecuteNonQuery();
-                        
+
             //Генерируем событие изменения концепции
             if (centity != null)
             {

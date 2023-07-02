@@ -34,7 +34,7 @@ namespace pg_class
             cmdk.Parameters["ialias"].Value = ialias;
             cmdk.Parameters["isort"].Value = isort;
             cmdk.ExecuteNonQuery();
-                        
+
             //Вызов события изменения списка вложенности
             Con_Prop_Data_TypeListChangeEventArgs e;
             e = new Con_Prop_Data_TypeListChangeEventArgs(iid_conception, iid_prop_data_type, eActionRuleList.addrule);

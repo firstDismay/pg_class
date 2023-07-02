@@ -4,7 +4,6 @@ using pg_class.pg_commands;
 using pg_class.pg_exceptions;
 using System;
 using System.Net.Sockets;
-using System.Security.Principal;
 using System.Text;
 
 namespace pg_class
@@ -41,8 +40,8 @@ namespace pg_class
                     }
                     //Вызов события журнала
                     me = new JournalEventArgs(0, entity, Message.codeerr, e.Message, action, eJournalMessageType.error);
-                        JournalMessageOnReceived(me);
-                        throw (new PgDataException(Message));
+                    JournalMessageOnReceived(me);
+                    throw (new PgDataException(Message));
 
                 case Npgsql.NpgsqlException cne:
 

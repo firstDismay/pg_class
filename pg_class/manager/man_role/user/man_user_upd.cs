@@ -18,7 +18,7 @@ namespace pg_class
             Int32 error;
             String desc_error;
             NpgsqlCommandKey cmdk;
-            
+
             cmdk = CommandByKey("user_upd");
 
             if (cmdk != null)

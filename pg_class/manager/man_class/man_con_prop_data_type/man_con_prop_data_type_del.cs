@@ -32,7 +32,7 @@ namespace pg_class
             cmdk.Parameters["iid_conception"].Value = iid_conception;
             cmdk.Parameters["iid_prop_data_type"].Value = iid_prop_data_type;
             cmdk.ExecuteNonQuery();
-                        
+
             //Вызов события изменения списка вложенности
             Con_Prop_Data_TypeListChangeEventArgs e;
             e = new Con_Prop_Data_TypeListChangeEventArgs(iid_conception, iid_prop_data_type, eActionRuleList.delrule);

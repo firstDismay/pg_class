@@ -37,13 +37,13 @@ namespace pg_class
             cmdk.Parameters["inested_limit"].Value = inested_limit;
             cmdk.Parameters["idesc"].Value = idesc;
             cmdk.ExecuteNonQuery();
-            
+
             id = Convert.ToInt64(cmdk.Parameters["outid"].Value);
             if (id > 0)
             {
                 pos_temp = pos_temp_by_id(id);
             }
-        
+
             if (pos_temp != null)
             {
                 //Генерируем событие изменения концепции
@@ -106,7 +106,7 @@ namespace pg_class
 
             cmdk.Parameters["iid_pattern"].Value = iid_pattern;
             cmdk.ExecuteNonQuery();
-            
+
             id = Convert.ToInt64(cmdk.Parameters["outid"].Value);
             if (id > 0)
             {

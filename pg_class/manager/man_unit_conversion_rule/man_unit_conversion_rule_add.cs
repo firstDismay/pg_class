@@ -45,7 +45,7 @@ namespace pg_class
             //Генерируем событие изменения правила пересчета
             UnitConversionRuleChangeEventArgs e = new UnitConversionRuleChangeEventArgs(id, eAction.Insert);
             UnitConversionRuleOnChange(e);
-            
+
             //Возвращаем сущность
             return rule;
         }

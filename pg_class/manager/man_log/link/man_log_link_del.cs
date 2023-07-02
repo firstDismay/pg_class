@@ -102,7 +102,7 @@ namespace pg_class
             cmdk.Parameters["iid_entity_instance"].Value = iid_entity_instance;
             cmdk.Parameters["iid_sub_entity_instance"].Value = iid_sub_entity_instance;
             cmdk.ExecuteNonQuery();
-                      
+
             if (log_link != null)
             {
                 //Генерируем событие изменения

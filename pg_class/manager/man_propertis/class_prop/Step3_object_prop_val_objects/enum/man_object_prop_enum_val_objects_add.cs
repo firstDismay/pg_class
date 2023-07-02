@@ -35,7 +35,7 @@ namespace pg_class
             cmdk.Parameters["on_internal"].Value = on_internal;
             cmdk.Parameters["iid_prop_enum_val"].Value = newClass_prop_enum_val.Id_prop_enum_val;
             cmdk.ExecuteNonQuery();
-                        
+
             //Возвращаем сущность
             return Position_parent;
         }

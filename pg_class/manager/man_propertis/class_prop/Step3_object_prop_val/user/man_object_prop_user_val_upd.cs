@@ -144,7 +144,7 @@ namespace pg_class
                 }
                 cmdk.ExecuteNonQuery();
                 ObjectPropUserVal = object_prop_user_val_by_id_prop(newObjectPropUserVal);
-                
+
                 if (ObjectPropUserVal != null)
                 {
                     //Генерируем событие изменения значения свойства объекта

@@ -1,5 +1,4 @@
-﻿using pg_class.pg_exceptions;
-using System;
+﻿using System;
 
 namespace pg_class.pg_classes
 {

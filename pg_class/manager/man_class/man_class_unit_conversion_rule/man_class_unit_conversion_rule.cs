@@ -104,7 +104,7 @@ namespace pg_class
             cmdk.Parameters["iid_class"].Value = iid_class;
             cmdk.Parameters["iid_unit_conversion_rule"].Value = iid_unit_conversion_rule;
             cmdk.ExecuteNonQuery();
-                        
+
             //Вызов события изменения списка вложенности
             ClassUnitConversionRuleChangeEventArgs e;
             e = new ClassUnitConversionRuleChangeEventArgs(iid_class, eAction.Delete);
