@@ -31,8 +31,13 @@ namespace pg_class
                     }
                     if (Message.codeerr == null)
                     {
+                        Message.func = "unknown_function";
                         Message.codeerr = "unknown_error";
+                        Message.messageerr = "Еhe error is not mapped to API logic";
+                        Message.classerr = "unknown_class";
+                        Message.hinterr = "The error is probably a system error of the database server";
                     }
+                    
                     eAction action;
                     if (!Enum.TryParse(Message.actionerr, out action))
                     {
