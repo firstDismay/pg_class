@@ -9,19 +9,9 @@ namespace pg_class.pg_classes
         /// <summary>
         /// Метод добавляет новое значение свойств ссылок объектам позиции указанного снимка класса
         /// </summary>
-        public void object_prop_link_val_objects_add(class_prop_link_val Class_prop_link_val, Boolean on_internal = false)
+        public void object_prop_link_val_objects_set(class_prop_link_val Class_prop_link_val, Boolean on_internal = false)
         {
-            Manager.object_prop_link_val_objects_add(this, Class_prop_link_val, on_internal);
-        }
-        #endregion
-
-        #region ИЗМЕНИТЬ ЗНАЧЕНИЕ
-        /// <summary>
-        /// Метод изменяет новое значение свойств ссылок объектам позиции указанного снимка класса
-        /// </summary>
-        public void object_prop_link_val_objects_upd(class_prop_link_val Class_prop_link_val, Boolean on_internal = false)
-        {
-            Manager.object_prop_link_val_objects_upd(this, Class_prop_link_val, on_internal);
+            Manager.object_prop_link_val_objects_set(this, Class_prop_link_val, on_internal);
         }
         #endregion
 

@@ -308,14 +308,7 @@ namespace pg_class.pg_classes
         {
             if (on_change)
             {
-                if (this.StorageType == eStorageType.NotSaved)
-                {
-                    Manager.object_prop_link_val_add(this);
-                }
-                else
-                {
-                    Manager.object_prop_link_val_upd(this);
-                }
+                Manager.object_prop_link_val_set(this);
                 Refresh();
                 on_change = false;
             }

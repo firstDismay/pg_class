@@ -287,14 +287,7 @@ namespace pg_class.pg_classes
             {
                 if (this.StorageType != eStorageType.History)
                 {
-                    if (this.StorageType == eStorageType.NotSaved)
-                    {
-                        Manager.class_prop_link_val_add(this);
-                    }
-                    else
-                    {
-                        Manager.class_prop_link_val_upd(this);
-                    }
+                    Manager.class_prop_link_val_set(this);
                     Refresh();
                     on_change = false;
                 }

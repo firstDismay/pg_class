@@ -8,17 +8,17 @@ namespace pg_class
     public partial class manager
     {
         /// <summary>
-        /// Добавить данные значения свойства типа ссылка
+        /// Установить данные значения свойства типа перечисление
         /// </summary>
-        public class_prop_link_val class_prop_link_val_add(Int64 iid_class_prop, Int32 iid_entity, Int64 iid_entity_instance, Int64 iid_sub_entity_instance)
+        public class_prop_enum_val class_prop_enum_val_set(Int64 iid_class_prop, Int64 iid_prop_enum, Int64 iid_prop_enum_val)
         {
-            class_prop_link_val Class_prop_link_val = null;
+            class_prop_enum_val Class_prop_enum_val = null;
             Int64 id = 0;
             Int32 error;
             String desc_error;
             NpgsqlCommandKey cmdk = null;
 
-            cmdk = CommandByKey("class_prop_link_val_add");
+            cmdk = CommandByKey("class_prop_enum_val_set");
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -32,52 +32,44 @@ namespace pg_class
             }
 
             cmdk.Parameters["iid_class_prop"].Value = iid_class_prop;
-            cmdk.Parameters["iid_entity"].Value = iid_entity;
+            cmdk.Parameters["iid_prop_enum"].Value = iid_prop_enum;
 
-            if (iid_entity_instance <= 0)
+            if (iid_prop_enum_val <= 0)
             {
-                cmdk.Parameters["iid_entity_instance"].Value = DBNull.Value;
+                cmdk.Parameters["iid_prop_enum_val"].Value = DBNull.Value;
             }
             else
             {
-                cmdk.Parameters["iid_entity_instance"].Value = iid_entity_instance;
-            }
-
-            if (iid_sub_entity_instance <= 0)
-            {
-                cmdk.Parameters["iid_sub_entity_instance"].Value = DBNull.Value;
-            }
-            else
-            {
-                cmdk.Parameters["iid_sub_entity_instance"].Value = iid_sub_entity_instance;
+                cmdk.Parameters["iid_prop_enum_val"].Value = iid_prop_enum_val;
             }
             cmdk.ExecuteNonQuery();
 
             id = Convert.ToInt64(cmdk.Parameters["outid"].Value);
             if (id > 0)
             {
-                Class_prop_link_val = class_prop_link_val_by_id_prop(iid_class_prop);
+                Class_prop_enum_val = class_prop_enum_val_by_id_prop(iid_class_prop);
             }
 
-            if (Class_prop_link_val != null)
+            if (Class_prop_enum_val != null)
             {
                 //Генерируем событие изменения данных значения свойства типа перечисление
-                ClassPropLinkValChangeEventArgs e = new ClassPropLinkValChangeEventArgs(Class_prop_link_val, eAction.Insert);
-                ClassPropLinkValOnChange(e);
+                ClassPropEnumValChangeEventArgs e = new ClassPropEnumValChangeEventArgs(Class_prop_enum_val, eAction.Insert);
+                ClassPropEnumValOnChange(e);
             }
             //Возвращаем Сущность
-            return Class_prop_link_val;
+            return Class_prop_enum_val;
         }
 
+
         /// <summary>
-        /// Добавить данные значения свойства-ссылки
+        /// Добавить данные значения свойства типа перечисление
         /// </summary>
-        public class_prop_link_val class_prop_link_val_add(class_prop_link_val Class_prop_link_val)
+        public class_prop_enum_val class_prop_enum_val_set(class_prop_enum_val Class_prop_enum_val)
         {
-            class_prop_link_val Result = null;
-            if (Class_prop_link_val != null)
+            class_prop_enum_val Result = null;
+            if (Class_prop_enum_val != null)
             {
-                Result = class_prop_link_val_add(Class_prop_link_val.Id_class_prop, Class_prop_link_val.Link_id_entity, Class_prop_link_val.Link_id_entity_instance, Class_prop_link_val.Link_id_sub_entity_instance);
+                Result = class_prop_enum_val_set(Class_prop_enum_val.Id_class_prop, Class_prop_enum_val.Id_prop_enum, Class_prop_enum_val.Id_prop_enum_val);
             }
             return Result;
         }
@@ -86,13 +78,12 @@ namespace pg_class
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
-        public Boolean class_prop_link_val_add(out eAccess Access)
+        public Boolean class_prop_enum_val_set(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
-
-            cmdk = CommandByKey("class_prop_link_val_add");
+            cmdk = CommandByKey("class_prop_enum_val_set");
             if (cmdk != null)
             {
                 Result = cmdk.Access;

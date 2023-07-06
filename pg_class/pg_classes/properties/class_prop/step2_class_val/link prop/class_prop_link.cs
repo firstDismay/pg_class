@@ -10,12 +10,12 @@ namespace pg_class.pg_classes
         /// <summary>
         /// Метод добавляет новое значение свойства-ссылки
         /// </summary>
-        public class_prop_link_val link_data_add(class_prop_link_val ClassPropLinkVal)
+        public class_prop_link_val link_data_set(class_prop_link_val ClassPropLinkVal)
         {
             class_prop_link_val Result = null;
             if (this.StorageType == eStorageType.Active)
             {
-                Result = Manager.class_prop_link_val_add(ClassPropLinkVal.Id_class_prop, ClassPropLinkVal.Link_id_entity, ClassPropLinkVal.Link_id_entity_instance, ClassPropLinkVal.Link_id_sub_entity_instance);
+                Result = Manager.class_prop_link_val_set(ClassPropLinkVal.Id_class_prop, ClassPropLinkVal.Link_id_entity, ClassPropLinkVal.Link_id_entity_instance, ClassPropLinkVal.Link_id_sub_entity_instance);
             }
             else
             {

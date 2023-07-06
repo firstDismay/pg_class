@@ -10,13 +10,13 @@ namespace pg_class.pg_classes
         /// <summary>
         /// Метод добавляет новое значение свойства типа перечисление
         /// </summary>
-        public class_prop_enum_val enum_data_add(class_prop_enum_val ClassPropEnumVal)
+        public class_prop_enum_val enum_data_set(class_prop_enum_val ClassPropEnumVal)
         {
             class_prop_enum_val Result = null;
 
             if (this.StorageType == eStorageType.Active)
             {
-                Result = Manager.class_prop_enum_val_add(ClassPropEnumVal.Id_class_prop, ClassPropEnumVal.Id_prop_enum, ClassPropEnumVal.Id_prop_enum_val);
+                Result = Manager.class_prop_enum_val_set(ClassPropEnumVal.Id_class_prop, ClassPropEnumVal.Id_prop_enum, ClassPropEnumVal.Id_prop_enum_val);
             }
             else
             {
@@ -29,12 +29,12 @@ namespace pg_class.pg_classes
         /// <summary>
         /// Метод добавляет новое значение свойства типа перечисление
         /// </summary>
-        public class_prop_enum_val enum_data_add(prop_enum_val PropEnumVal)
+        public class_prop_enum_val enum_data_set(prop_enum_val PropEnumVal)
         {
             class_prop_enum_val Result = null;
             if (this.StorageType == eStorageType.Active)
             {
-                Result = Manager.class_prop_enum_val_add(this.Id, PropEnumVal.Id_prop_enum, PropEnumVal.Id_prop_enum_val);
+                Result = Manager.class_prop_enum_val_set(this.Id, PropEnumVal.Id_prop_enum, PropEnumVal.Id_prop_enum_val);
             }
             else
             {

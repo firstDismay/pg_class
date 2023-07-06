@@ -8,10 +8,10 @@
         /// <summary>
         /// Метод добавляет новое значение пользовательского свойства объекта
         /// </summary>
-        public object_prop_user_val user_data_add(object_prop_user_val ObjectPropUserVal)
+        public object_prop_user_val user_data_set(object_prop_user_val ObjectPropUserVal)
         {
             object_prop_user_val Result = null;
-            Result = Manager.object_prop_user_val_add(ObjectPropUserVal);
+            Result = Manager.object_prop_user_val_set(ObjectPropUserVal);
             return Result;
         }
 

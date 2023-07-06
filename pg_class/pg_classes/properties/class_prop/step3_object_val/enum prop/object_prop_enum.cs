@@ -8,10 +8,10 @@
         /// <summary>
         /// Метод добавляет новое значение свойства-перечисления объекта
         /// </summary>
-        public object_prop_enum_val enum_data_add(object_prop_enum_val ObjectPropEnumVal)
+        public object_prop_enum_val enum_data_set(object_prop_enum_val ObjectPropEnumVal)
         {
             object_prop_enum_val Result = null;
-            Result = Manager.object_prop_enum_val_add(ObjectPropEnumVal);
+            Result = Manager.object_prop_enum_val_set(ObjectPropEnumVal);
             return Result;
         }
         #endregion

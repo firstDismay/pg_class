@@ -9,19 +9,9 @@ namespace pg_class.pg_classes
         /// <summary>
         /// Метод добавляет новое значение пользовательских свойств объектам позиции указанного снимка класса
         /// </summary>
-        public void object_prop_user_val_objects_add(class_prop_user_val ClassPropUserVal, Boolean on_internal = false)
+        public void object_prop_user_val_objects_set(class_prop_user_val ClassPropUserVal, Boolean on_internal = false)
         {
-            Manager.objects_prop_user_val_objects_add(this, ClassPropUserVal, on_internal);
-        }
-        #endregion
-
-        #region ИЗМЕНИТЬ ЗНАЧЕНИЕ
-        /// <summary>
-        /// Метод изменяет значение пользовательских свойств объектам позиции указанного снимка класса
-        /// </summary>
-        public void object_prop_user_val_objects_upd(class_prop_user_val ClassPropUserVal, Boolean on_internal = false)
-        {
-            Manager.objects_prop_user_val_objects_upd(this, ClassPropUserVal, on_internal);
+            Manager.objects_prop_user_val_objects_set(this, ClassPropUserVal, on_internal);
         }
         #endregion
 

@@ -10,7 +10,7 @@ namespace pg_class
         /// <summary>
         /// Добавить новое значение пользовательского свойства активного представления класса
         /// </summary>
-        public object_prop_user_val object_prop_user_val_add(object_prop_user_val newObjectPropUserVal)
+        public object_prop_user_val object_prop_user_val_set(object_prop_user_val newObjectPropUserVal)
         {
             object_prop_user_val ObjectPropUserVal = null;
             Int32 error;
@@ -22,7 +22,7 @@ namespace pg_class
                 switch (newObjectPropUserVal.DataSize)
                 {
                     case eDataSize.BigData:
-                        cmdk = CommandByKey("object_prop_user_big_val_add");
+                        cmdk = CommandByKey("object_prop_user_big_val_set");
                         if (cmdk != null)
                         {
                             if (!cmdk.Access)
@@ -66,7 +66,7 @@ namespace pg_class
 
                         break;
                     case eDataSize.SmallData:
-                        cmdk = CommandByKey("object_prop_user_small_val_add");
+                        cmdk = CommandByKey("object_prop_user_small_val_set");
 
                         if (cmdk != null)
                         {
@@ -158,13 +158,13 @@ namespace pg_class
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
-        public Boolean object_prop_user_val_add(out eAccess Access)
+        public Boolean object_prop_user_val_set(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
 
-            cmdk = CommandByKey("object_prop_user_val_add");
+            cmdk = CommandByKey("object_prop_user_small_val_set");
             if (cmdk != null)
             {
                 Result = cmdk.Access;
