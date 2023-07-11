@@ -210,6 +210,7 @@
     <Compile Include="manager\Global\eventargs\Base\Class\ClassUnitConversionRuleChangeEventArgs.cs" />
     <Compile Include="manager\Global\eventargs\Base\Conception\Con_Prop_Data_TypeListChangeEventArgs.cs" />
     <Compile Include="manager\Global\eventargs\Base\Role\RoleUserChangeEventArgs.cs" />
+    <Compile Include="manager\Global\man_classes\AggActionClass\error_message.cs" />
     <Compile Include="manager\Global\man_classes\man_command\pg_commands\NpgsqlCommandKey_SetRole.cs" />
     <Compile Include="manager\Global\man_classes\NPGSQL_TypeJsonClass\object_add\json_object_prop_val.cs" />
     <Compile Include="manager\Global\man_classes\NPGSQL_TypeJsonClass\object_add\json_object_add_parameters.cs" />
@@ -262,7 +263,6 @@
     <Compile Include="manager\Global\man_pool\man_pool.cs" />
     <Compile Include="manager\Global\man_pool\pool\pool.cs" />
     <Compile Include="manager\Global\man_pool\pool\pool_timer_control.cs" />
-    <Compile Include="manager\Global\man_classes\AggActionClass\errarg_object_add.cs" />
     <Compile Include="manager\Global\man_classes\AggActionClass\errarg_object_cast.cs" />
     <Compile Include="manager\Global\man_classes\NPGSQL_TypeMapClass\pg_class\pg_cdoc_link.cs" />
     <Compile Include="manager\Global\man_classes\NPGSQL_TypeMapClass\pg_class\pg_cdoc_file.cs" />

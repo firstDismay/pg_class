@@ -155,7 +155,7 @@ namespace pg_class.pg_classes
         ///  Метод выполняет создание объектов всех вещественных классов указанного класса
         ///  object_add_for_class_act
         /// </summary>
-        public List<errarg_object_add> Object_add_for_class_act(vclass Class)
+        public List<error_message> Object_add_for_class_act(vclass Class)
         {
             return Manager.object_add_for_class_act(Class, this);
         }

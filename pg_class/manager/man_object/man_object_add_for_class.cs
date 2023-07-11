@@ -12,12 +12,12 @@ namespace pg_class
         /// <summary>
         ///  Метод выполняет создание объектов всех вещественных классов указанного класса
         /// </summary>
-        public List<errarg_object_add> object_add_for_class_act(Int64 iid_class, Int64 iid_position)
+        public List<error_message> object_add_for_class_act(Int64 iid_class, Int64 iid_position)
         {
-            List<errarg_object_add> object_list = new List<errarg_object_add>();
+            List<error_message> object_list = new List<error_message>();
             //object_general o;
 
-            DataTable tbl_result = TableByName("errarg_object_add");
+            DataTable tbl_result = TableByName("error_message");
 
 
             NpgsqlCommandKey cmdk;
@@ -43,12 +43,12 @@ namespace pg_class
 
             cmdk.Fill(tbl_result);
 
-            errarg_object_add og;
+            error_message og;
             if (tbl_result.Rows.Count > 0)
             {
                 foreach (System.Data.DataRow dr in tbl_result.Rows)
                 {
-                    og = new errarg_object_add(dr);
+                    og = new error_message(dr);
                     object_list.Add(og);
                 }
             }
@@ -66,7 +66,7 @@ namespace pg_class
         /// <summary>
         ///  Метод выполняет создание объектов всех вещественных классов указанного класса
         /// </summary>
-        public List<errarg_object_add> object_add_for_class_act(vclass Class, position Position_target)
+        public List<error_message> object_add_for_class_act(vclass Class, position Position_target)
         {
             return object_add_for_class_act(Class.Id, Position_target.Id);
         }

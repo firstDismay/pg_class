@@ -13,9 +13,9 @@ namespace pg_class
         /// <summary>
         ///  Метод добавляет список объектов по массиву параметров объектов
         /// </summary>
-        public List<errarg_object_add> object_add_for_array_object_parameters(json_object_parameters[] object_parameters)
+        public List<error_message> object_add_for_array_object_parameters(json_object_parameters[] object_parameters)
         {
-            List<errarg_object_add> object_list = new List<errarg_object_add>();
+            List<error_message> object_list = new List<error_message>();
             DataTable tbl_result = TableByName("errarg_object_add");
             NpgsqlCommandKey cmdk;
 
@@ -41,12 +41,12 @@ namespace pg_class
             cmdk.Parameters["object_parameters"].Value = sobject_parameters;
             cmdk.Fill(tbl_result);
 
-            errarg_object_add og;
+            error_message og;
             if (tbl_result.Rows.Count > 0)
             {
                 foreach (System.Data.DataRow dr in tbl_result.Rows)
                 {
-                    og = new errarg_object_add(dr);
+                    og = new error_message(dr);
                     object_list.Add(og);
                 }
             }
