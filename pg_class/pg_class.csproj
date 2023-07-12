@@ -263,7 +263,6 @@
     <Compile Include="manager\Global\man_pool\man_pool.cs" />
     <Compile Include="manager\Global\man_pool\pool\pool.cs" />
     <Compile Include="manager\Global\man_pool\pool\pool_timer_control.cs" />
-    <Compile Include="manager\Global\man_classes\AggActionClass\errarg_object_cast.cs" />
     <Compile Include="manager\Global\man_classes\NPGSQL_TypeMapClass\pg_class\pg_cdoc_link.cs" />
     <Compile Include="manager\Global\man_classes\NPGSQL_TypeMapClass\pg_class\pg_cdoc_file.cs" />
     <Compile Include="manager\Global\man_classes\NPGSQL_TypeMapClass\pg_class\pg_cobject_prop.cs" />

@@ -10,7 +10,7 @@ namespace pg_class.pg_classes
         /// Метод приводит все объекты класса к состоянию данного класса
         /// object_cast_for_class
         /// </summary>
-        public List<errarg_cast> Object_cast_to_me()
+        public List<error_message> Object_cast_to_me()
         {
             return Manager.object_cast_for_class(this);
         }
@@ -19,7 +19,7 @@ namespace pg_class.pg_classes
         /// приводит все объекты к активным состояниям классов рекурсивно начиная с указанного
         /// object_cast_for_class_act
         /// </summary>
-        public List<errarg_cast> Object_cast_to_active_state()
+        public List<error_message> Object_cast_to_active_state()
         {
             return Manager.object_cast_for_class_act(this);
         }

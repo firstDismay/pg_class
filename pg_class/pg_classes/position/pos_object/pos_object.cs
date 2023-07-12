@@ -166,7 +166,7 @@ namespace pg_class.pg_classes
         /// Приводит все объекты позиции к активным состояниям классов
         /// object_cast_for_class_act_by_id_group
         /// </summary>
-        public List<errarg_cast> Object_cast_to_active_state()
+        public List<error_message> Object_cast_to_active_state()
         {
             return Manager.object_cast_for_class_act_by_id_position(this);
         }

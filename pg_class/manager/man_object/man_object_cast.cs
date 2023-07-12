@@ -85,10 +85,10 @@ namespace pg_class
         /// <summary>
         ///  Метод выполняет приведение всех объектов к указанному снимку класса
         /// </summary>
-        public List<errarg_cast> object_cast_for_class(Int64 iid_class, DateTime itimestamp_class)
+        public List<error_message> object_cast_for_class(Int64 iid_class, DateTime itimestamp_class)
         {
-            List<errarg_cast> object_cast_list = new List<errarg_cast>();
-            DataTable tbl_result = TableByName("errarg_cast");
+            List<error_message> object_cast_list = new List<error_message>();
+            DataTable tbl_result = TableByName("error_message");
             NpgsqlCommandKey cmdk;
 
             cmdk = CommandByKey("object_cast_for_class");
@@ -108,12 +108,12 @@ namespace pg_class
             cmdk.Parameters["itimestamp_class"].Value = itimestamp_class;
             cmdk.Fill(tbl_result);
 
-            errarg_cast og;
+            error_message og;
             if (tbl_result.Rows.Count > 0)
             {
                 foreach (System.Data.DataRow dr in tbl_result.Rows)
                 {
-                    og = new errarg_cast(dr);
+                    og = new error_message(dr);
                     object_cast_list.Add(og);
                 }
             }
@@ -123,7 +123,7 @@ namespace pg_class
         /// <summary>
         ///  Метод выполняет приведение всех объектов к указанному снимку класса
         /// </summary>
-        public List<errarg_cast> object_cast_for_class(vclass Class_target)
+        public List<error_message> object_cast_for_class(vclass Class_target)
         {
             return object_cast_for_class(Class_target.Id, Class_target.Timestamp);
         }
@@ -157,10 +157,10 @@ namespace pg_class
         /// <summary>
         ///  Метод приводит все объекты к активным состояниям классов рекурсивно начиная с указанного
         /// </summary>
-        public List<errarg_cast> object_cast_for_class_act(Int64 iid_class)
+        public List<error_message> object_cast_for_class_act(Int64 iid_class)
         {
-            List<errarg_cast> object_cast_list = new List<errarg_cast>();
-            DataTable tbl_result = TableByName("errarg_cast");
+            List<error_message> object_cast_list = new List<error_message>();
+            DataTable tbl_result = TableByName("error_message");
             NpgsqlCommandKey cmdk;
 
             cmdk = CommandByKey("object_cast_for_class_act");
@@ -179,12 +179,12 @@ namespace pg_class
             cmdk.Parameters["iid_class"].Value = iid_class;
             cmdk.Fill(tbl_result);
 
-            errarg_cast og;
+            error_message og;
             if (tbl_result.Rows.Count > 0)
             {
                 foreach (System.Data.DataRow dr in tbl_result.Rows)
                 {
-                    og = new errarg_cast(dr);
+                    og = new error_message(dr);
                     object_cast_list.Add(og);
                 }
             }
@@ -194,7 +194,7 @@ namespace pg_class
         /// <summary>
         ///  Метод приводит все объекты к активным состояниям классов рекурсивно начиная с указанного
         /// </summary>
-        public List<errarg_cast> object_cast_for_class_act(vclass Class_target)
+        public List<error_message> object_cast_for_class_act(vclass Class_target)
         {
             return object_cast_for_class_act(Class_target.Id);
         }
@@ -227,10 +227,10 @@ namespace pg_class
         /// <summary>
         ///  Метод приводит все объекты к активным состояниям классов указанной группы
         /// </summary>
-        public List<errarg_cast> object_cast_for_class_act_by_id_group(Int64 iid_group)
+        public List<error_message> object_cast_for_class_act_by_id_group(Int64 iid_group)
         {
-            List<errarg_cast> object_cast_list = new List<errarg_cast>();
-            DataTable tbl_result = TableByName("errarg_cast");
+            List<error_message> object_cast_list = new List<error_message>();
+            DataTable tbl_result = TableByName("error_message");
             NpgsqlCommandKey cmdk;
 
             cmdk = CommandByKey("object_cast_for_class_act_by_id_group");
@@ -249,12 +249,12 @@ namespace pg_class
             cmdk.Parameters["iid_group"].Value = iid_group;
             cmdk.Fill(tbl_result);
 
-            errarg_cast og;
+            error_message og;
             if (tbl_result.Rows.Count > 0)
             {
                 foreach (System.Data.DataRow dr in tbl_result.Rows)
                 {
-                    og = new errarg_cast(dr);
+                    og = new error_message(dr);
                     object_cast_list.Add(og);
                 }
             }
@@ -264,7 +264,7 @@ namespace pg_class
         /// <summary>
         ///  Метод приводит все объекты к активным состояниям классов указанной группы
         /// </summary>
-        public List<errarg_cast> object_cast_for_class_act_by_id_group(group Group_target)
+        public List<error_message> object_cast_for_class_act_by_id_group(group Group_target)
         {
             return object_cast_for_class_act_by_id_group(Group_target.Id);
         }
@@ -297,10 +297,10 @@ namespace pg_class
         /// <summary>
         ///  Метод приводит все объекты позции к активным состояниям классов рекурсивно
         /// </summary>
-        public List<errarg_cast> object_cast_for_class_act_by_id_position(Int64 iid_position)
+        public List<error_message> object_cast_for_class_act_by_id_position(Int64 iid_position)
         {
-            List<errarg_cast> object_cast_list = new List<errarg_cast>();
-            DataTable tbl_result = TableByName("errarg_cast");
+            List<error_message> object_cast_list = new List<error_message>();
+            DataTable tbl_result = TableByName("error_message");
             NpgsqlCommandKey cmdk;
 
             cmdk = CommandByKey("object_cast_for_class_act_by_id_position");
@@ -319,12 +319,12 @@ namespace pg_class
             cmdk.Parameters["iid_position"].Value = iid_position;
             cmdk.Fill(tbl_result);
 
-            errarg_cast og;
+            error_message og;
             if (tbl_result.Rows.Count > 0)
             {
                 foreach (System.Data.DataRow dr in tbl_result.Rows)
                 {
-                    og = new errarg_cast(dr);
+                    og = new error_message(dr);
                     object_cast_list.Add(og);
                 }
             }
@@ -334,7 +334,7 @@ namespace pg_class
         /// <summary>
         ///  Метод приводит все объекты позции к активным состояниям классов рекурсивно
         /// </summary>
-        public List<errarg_cast> object_cast_for_class_act_by_id_position(position Position_target)
+        public List<error_message> object_cast_for_class_act_by_id_position(position Position_target)
         {
             return object_cast_for_class_act_by_id_position(Position_target.Id);
         }
