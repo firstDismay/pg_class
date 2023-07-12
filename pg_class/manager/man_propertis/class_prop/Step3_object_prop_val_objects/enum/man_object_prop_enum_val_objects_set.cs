@@ -44,7 +44,7 @@ namespace pg_class
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
-        public Boolean object_prop_enum_val_objects_add(out eAccess Access)
+        public Boolean object_prop_enum_val_objects_set(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;
