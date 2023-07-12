@@ -10,7 +10,7 @@ namespace pg_class
         /// <summary>
         /// Метод добавляет новый объект и встраивает его в объектное свойство в качестве значения
         /// </summary>
-        public object_general object_prop_object_val_add_new(Int64 iid_object_carrier, Int64 iid_class_prop, Int64 iid_class_real, Int32 iid_unit_conversion_rule, Decimal icquantity)
+        public object_general object_prop_object_val_set_new(Int64 iid_object_carrier, Int64 iid_class_prop, Int64 iid_class_real, Int32 iid_unit_conversion_rule, Decimal icquantity)
         {
             object_general Object = null;
             object_prop_object_val ObjectPropObjectVal = null;
@@ -19,7 +19,7 @@ namespace pg_class
             String desc_error;
             NpgsqlCommandKey cmdk;
 
-            cmdk = CommandByKey("object_prop_object_val_add_new");
+            cmdk = CommandByKey("object_prop_object_val_set_new");
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -66,9 +66,9 @@ namespace pg_class
         /// <summary>
         /// Метод добавляет новый объект и встраивает его в объектное свойство в качестве значения
         /// </summary>
-        public object_general object_prop_object_val_add_new(object_prop Object_prop, vclass Class_real, unit_conversion_rule Unit_conversion_rule, Decimal icquantity)
+        public object_general object_prop_object_val_set_new(object_prop Object_prop, vclass Class_real, unit_conversion_rule Unit_conversion_rule, Decimal icquantity)
         {
-            return object_prop_object_val_add_new(Object_prop.Id_object_carrier, Object_prop.Id_class_prop, Class_real.Id, Unit_conversion_rule.Id, icquantity);
+            return object_prop_object_val_set_new(Object_prop.Id_object_carrier, Object_prop.Id_class_prop, Class_real.Id, Unit_conversion_rule.Id, icquantity);
         }
 
 
@@ -76,13 +76,13 @@ namespace pg_class
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
-        public Boolean object_prop_object_val_add_new(out eAccess Access)
+        public Boolean object_prop_object_val_set_new(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
 
-            cmdk = CommandByKey("object_prop_object_val_add_new");
+            cmdk = CommandByKey("object_prop_object_val_set_new");
             if (cmdk != null)
             {
                 Result = cmdk.Access;
@@ -101,7 +101,7 @@ namespace pg_class
         /// <summary>
         /// Метод встраивает существующий объект в объектное свойство в качестве значения STEP3
         /// </summary>
-        public object_general object_prop_object_val_add(Int64 iid_object_carrier, Int64 iid_class_prop, Int64 iid_object_val, Decimal icquantity)
+        public object_general object_prop_object_val_set(Int64 iid_object_carrier, Int64 iid_class_prop, Int64 iid_object_val, Decimal icquantity)
         {
             object_general Object_embed = null;
             object_general Object_change = null;
@@ -112,7 +112,7 @@ namespace pg_class
             String desc_error;
             NpgsqlCommandKey cmdk;
 
-            cmdk = CommandByKey("object_prop_object_val_add");
+            cmdk = CommandByKey("object_prop_object_val_set");
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -171,22 +171,22 @@ namespace pg_class
         /// <summary>
         /// Метод встраивает существующий объект в объектное свойство в качестве значения STEP3
         /// </summary>
-        public object_general object_prop_object_val_add(object_prop Object_prop, object_general Object_Val, Decimal icquantity)
+        public object_general object_prop_object_val_set(object_prop Object_prop, object_general Object_Val, Decimal icquantity)
         {
-            return object_prop_object_val_add(Object_prop.Id_object_carrier, Object_prop.Id_class_prop, Object_Val.Id, icquantity);
+            return object_prop_object_val_set(Object_prop.Id_object_carrier, Object_prop.Id_class_prop, Object_Val.Id, icquantity);
         }
 
         //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
-        public Boolean object_prop_object_val_add(out eAccess Access)
+        public Boolean object_prop_object_val_set(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
 
-            cmdk = CommandByKey("object_prop_object_val_add");
+            cmdk = CommandByKey("object_prop_object_val_set");
             if (cmdk != null)
             {
                 Result = cmdk.Access;

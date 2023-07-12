@@ -11,10 +11,10 @@ namespace pg_class.pg_classes
         /// <summary>
         /// Метод добавляет новое значение объектного свойство класса
         /// </summary>
-        public class_prop_object_val object_data_add(vclass class_val, Decimal ibquantity_min, Decimal ibquantity_max,
+        public class_prop_object_val object_data_set(vclass class_val, Decimal ibquantity_min, Decimal ibquantity_max,
                                      eObjectPropCreateEmdedMode iembed_mode, Boolean iembed_single, Int64 embed_class_real_id, Int32 iid_unit_conversion_rule)
         {
-            return Manager.class_prop_object_val_add(this, class_val,
+            return Manager.class_prop_object_val_set(this, class_val,
                       ibquantity_min, ibquantity_max,
                                      iembed_mode, iembed_single, embed_class_real_id, iid_unit_conversion_rule);
         }
@@ -22,10 +22,10 @@ namespace pg_class.pg_classes
         /// <summary>
         /// Метод добавляет новое значение объектного свойство класса
         /// </summary>
-        public class_prop_object_val object_data_add(vclass class_val, Decimal ibquantity_min, Decimal ibquantity_max,
+        public class_prop_object_val object_data_set(vclass class_val, Decimal ibquantity_min, Decimal ibquantity_max,
                                      eObjectPropCreateEmdedMode iembed_mode, Boolean iembed_single, Int64 embed_class_real_id, unit_conversion_rule Unit_conversion_rule)
         {
-            return Manager.class_prop_object_val_add(this, class_val,
+            return Manager.class_prop_object_val_set(this, class_val,
                       ibquantity_min, ibquantity_max,
                                      iembed_mode, iembed_single, embed_class_real_id, Unit_conversion_rule);
         }
@@ -33,9 +33,9 @@ namespace pg_class.pg_classes
         /// <summary>
         /// Метод добавляет новое значение объектного свойство класса
         /// </summary>
-        public class_prop_object_val object_data_add(vclass class_val, Decimal ibquantity_min, Decimal ibquantity_max)
+        public class_prop_object_val object_data_set(vclass class_val, Decimal ibquantity_min, Decimal ibquantity_max)
         {
-            return Manager.class_prop_object_val_add(this, class_val,
+            return Manager.class_prop_object_val_set(this, class_val,
                       ibquantity_min, ibquantity_max,
                                      eObjectPropCreateEmdedMode.NoAction, true, -1, -1);
         }

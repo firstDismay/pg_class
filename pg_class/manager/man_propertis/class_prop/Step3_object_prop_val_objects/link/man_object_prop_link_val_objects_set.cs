@@ -10,13 +10,13 @@ namespace pg_class
         /// <summary>
         /// Добавить данные значения свойства типа ссылка объектам снимка класса в указанной позиции
         /// </summary>
-        public position object_prop_link_val_objects_add(position Position_parent, class_prop_link_val newClass_prop_link_val, Boolean on_internal = false)
+        public position object_prop_link_val_objects_set(position Position_parent, class_prop_link_val newClass_prop_link_val, Boolean on_internal = false)
         {
             Int32 error;
             String desc_error;
             NpgsqlCommandKey cmdk = null;
 
-            cmdk = CommandByKey("object_prop_link_val_objects_add");
+            cmdk = CommandByKey("object_prop_link_val_objects_set");
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -52,13 +52,13 @@ namespace pg_class
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
-        public Boolean object_prop_link_val_objects_add(out eAccess Access)
+        public Boolean object_prop_link_val_objects_set(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
 
-            cmdk = CommandByKey("object_prop_link_val_objects_add");
+            cmdk = CommandByKey("object_prop_link_val_objects_set");
             if (cmdk != null)
             {
                 Result = cmdk.Access;

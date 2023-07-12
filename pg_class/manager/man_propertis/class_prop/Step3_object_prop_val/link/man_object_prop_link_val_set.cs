@@ -8,18 +8,18 @@ namespace pg_class
     public partial class manager
     {
         /// <summary>
-        /// Добавить новое значение свойства-перечисления активного представления класса
+        /// Добавить новое значение свойства-ссылки активного представления класса
         /// </summary>
-        public object_prop_enum_val object_prop_enum_val_add(object_prop_enum_val newObjectPropEnumVal)
+        public object_prop_link_val object_prop_link_val_set(object_prop_link_val newObjectPropLinkVal)
         {
-            object_prop_enum_val ObjectPropEnumVal = null;
+            object_prop_link_val ObjectPropLinkVal = null;
             Int32 error;
             String desc_error;
             NpgsqlCommandKey cmdk;
 
-            if (newObjectPropEnumVal != null)
+            if (newObjectPropLinkVal != null)
             {
-                cmdk = CommandByKey("object_prop_enum_val_add");
+                cmdk = CommandByKey("object_prop_link_val_set");
                 if (cmdk != null)
                 {
                     if (!cmdk.Access)
@@ -32,44 +32,52 @@ namespace pg_class
                     throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
                 }
 
-                cmdk.Parameters["iid_object"].Value = newObjectPropEnumVal.Id_object;
-                cmdk.Parameters["iid_class_prop"].Value = newObjectPropEnumVal.Id_class_prop;
+                cmdk.Parameters["iid_object"].Value = newObjectPropLinkVal.Id_object;
+                cmdk.Parameters["iid_class_prop"].Value = newObjectPropLinkVal.Id_class_prop;
                 cmdk.Parameters["setname"].Value = true;
 
-                if (newObjectPropEnumVal.Id_prop_enum_val <= 0)
+                if (newObjectPropLinkVal.Link_id_entity_instance <= 0)
                 {
-                    cmdk.Parameters["iid_prop_enum_val"].Value = DBNull.Value;
+                    cmdk.Parameters["iid_entity_instance"].Value = DBNull.Value;
                 }
                 else
                 {
-                    cmdk.Parameters["iid_prop_enum_val"].Value = newObjectPropEnumVal.Id_prop_enum_val;
+                    cmdk.Parameters["iid_entity_instance"].Value = newObjectPropLinkVal.Link_id_entity_instance;
+                }
+
+                if (newObjectPropLinkVal.Link_id_sub_entity_instance <= 0)
+                {
+                    cmdk.Parameters["iid_sub_entity_instance"].Value = DBNull.Value;
+                }
+                else
+                {
+                    cmdk.Parameters["iid_sub_entity_instance"].Value = newObjectPropLinkVal.Link_id_sub_entity_instance;
                 }
                 cmdk.ExecuteNonQuery();
-                
-                ObjectPropEnumVal = object_prop_enum_val_by_id_prop(newObjectPropEnumVal);
-                
-                if (ObjectPropEnumVal != null)
+
+                ObjectPropLinkVal = object_prop_link_val_by_id_prop(newObjectPropLinkVal);
+                if (ObjectPropLinkVal != null)
                 {
                     //Генерируем событие изменения значения свойства объекта
-                    ObjectPropEnumValChangeEventArgs e = new ObjectPropEnumValChangeEventArgs(ObjectPropEnumVal, eAction.Insert);
-                    ObjectPropEnumValOnChange(e);
+                    ObjectPropLinkValChangeEventArgs e = new ObjectPropLinkValChangeEventArgs(ObjectPropLinkVal, eAction.Insert);
+                    ObjectPropLinkValOnChange(e);
                 }
             }
             //Возвращаем сущность
-            return ObjectPropEnumVal;
+            return ObjectPropLinkVal;
         }
 
         //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
-        public Boolean object_prop_enum_val_add(out eAccess Access)
+        public Boolean object_prop_link_val_set(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
 
-            cmdk = CommandByKey("object_prop_enum_val_add");
+            cmdk = CommandByKey("object_prop_link_val_set");
             if (cmdk != null)
             {
                 Result = cmdk.Access;
@@ -83,6 +91,7 @@ namespace pg_class
                 }
             }
             return Result;
+
         }
     }
 }

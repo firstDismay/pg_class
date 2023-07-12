@@ -10,14 +10,14 @@ namespace pg_class
         /// <summary>
         /// Добавить новое значение объектного свойства объектов снимка класса в указанной позиции
         /// </summary>
-        public position object_prop_object_val_oblects_add(position Position_parent, Int64 iid_class_prop, DateTime itimestamp_class,
+        public position object_prop_object_val_objects_set(position Position_parent, Int64 iid_class_prop, DateTime itimestamp_class,
                                Int64 iid_class_real, Int32 iid_unit_conversion_rule, Decimal icquantity, Boolean on_internal = false)
         {
             Int32 error;
             String desc_error;
             NpgsqlCommandKey cmdk;
 
-            cmdk = CommandByKey("object_prop_object_val_objects_add_new");
+            cmdk = CommandByKey("object_prop_object_val_objects_set_new");
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -53,9 +53,9 @@ namespace pg_class
         /// <summary>
         /// Добавить новое значение объектного свойства объектов снимка класса в указанной позиции
         /// </summary>
-        public position object_prop_object_val_oblects_add(position Position_parent, class_prop_object_val newClass_prop_object_val, Decimal icquantity, Boolean on_internal = false)
+        public position object_prop_object_val_objects_set(position Position_parent, class_prop_object_val newClass_prop_object_val, Decimal icquantity, Boolean on_internal = false)
         {
-            return object_prop_object_val_oblects_add(Position_parent, newClass_prop_object_val.Id_class_prop, newClass_prop_object_val.Timestamp_class,
+            return object_prop_object_val_objects_set(Position_parent, newClass_prop_object_val.Id_class_prop, newClass_prop_object_val.Timestamp_class,
                                newClass_prop_object_val.Id_class_val, newClass_prop_object_val.Id_unit_conversion_rule, icquantity, on_internal);
         }
 
@@ -63,13 +63,13 @@ namespace pg_class
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
-        public Boolean object_prop_object_val_objects_add_new(out eAccess Access)
+        public Boolean object_prop_object_val_objects_set(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
 
-            cmdk = CommandByKey("object_prop_object_val_objects_add_new");
+            cmdk = CommandByKey("object_prop_object_val_objects_set_new");
             if (cmdk != null)
             {
                 Result = cmdk.Access;

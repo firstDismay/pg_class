@@ -1,6 +1,5 @@
 ﻿using pg_class.pg_classes;
 using System;
-using pg_class.pg_exceptions;
 
 namespace pg_class.pg_exceptions
 {
@@ -26,7 +25,7 @@ namespace pg_class.pg_exceptions
         /// Класс сообщение функции об ошибке
         /// </summary>
         public PgFunctionMessage MessageFunction
-        { 
+        {
             get { return message; }
         }
 
@@ -35,12 +34,13 @@ namespace pg_class.pg_exceptions
         /// </summary>
         private eEntity Entity
         {
-            get 
-            { if (message != null)
+            get
+            {
+                if (message != null)
                 {
                     eEntity result;
                     if (Enum.TryParse(message.entity, out result))
-                    { 
+                    {
                         return result;
                     }
                 }

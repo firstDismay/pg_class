@@ -39,7 +39,7 @@ namespace pg_class
             cmdk.ExecuteNonQuery();
 
             prop_link = pos_temp_prop_by_id(iid_pos_temp_prop);
-            
+
             if (global_prop_link_pos_temp_prop != null)
             {
                 //Генерируем событие изменения

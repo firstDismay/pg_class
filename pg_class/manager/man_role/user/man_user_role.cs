@@ -79,7 +79,7 @@ namespace pg_class
             Int32 error;
             String desc_error;
             NpgsqlCommandKey cmdk;
-            
+
             cmdk = CommandByKey("user_role_user_revoke");
             if (cmdk != null)
             {
@@ -96,7 +96,7 @@ namespace pg_class
             cmdk.Parameters["ilogin"].Value = user.Login;
             cmdk.Parameters["irole_user"].Value = role.NameSystem;
             cmdk.ExecuteNonQuery();
-            
+
             Result = true;
             //Генерируем событие изменения концепции
             UserChangeEventArgs e = new UserChangeEventArgs(user, eAction.Update);

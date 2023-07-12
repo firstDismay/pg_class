@@ -1,5 +1,4 @@
-﻿using pg_class.pg_exceptions;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
 
@@ -1049,14 +1048,7 @@ namespace pg_class.pg_classes
         {
             if (on_change)
             {
-                if (this.StorageType == eStorageType.NotSaved)
-                {
-                    Manager.object_prop_user_val_add(this);
-                }
-                else
-                {
-                    Manager.object_prop_user_val_upd(this);
-                }
+                Manager.object_prop_user_val_set(this);
                 Refresh();
                 on_change = false;
             }

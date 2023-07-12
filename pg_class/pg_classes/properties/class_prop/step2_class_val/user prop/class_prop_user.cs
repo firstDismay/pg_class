@@ -1,5 +1,4 @@
-﻿using pg_class.pg_exceptions;
-using System;
+﻿using System;
 
 namespace pg_class.pg_classes
 {
@@ -11,12 +10,12 @@ namespace pg_class.pg_classes
         /// <summary>
         /// Метод добавляет новое значение пользовательского свойство класса
         /// </summary>
-        public class_prop_user_val user_data_add(class_prop_user_val ClassPropUserVal)
+        public class_prop_user_val user_data_set(class_prop_user_val ClassPropUserVal)
         {
             class_prop_user_val Result = null;
             if (this.StorageType == eStorageType.Active)
             {
-                Result = Manager.class_prop_user_val_add(ClassPropUserVal);
+                Result = Manager.class_prop_user_val_set(ClassPropUserVal);
             }
             else
             {

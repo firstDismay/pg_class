@@ -4,7 +4,6 @@ using pg_class.pg_commands;
 using pg_class.pg_exceptions;
 using System;
 using System.Net.Sockets;
-using System.Security.Principal;
 using System.Text;
 
 namespace pg_class
@@ -32,8 +31,13 @@ namespace pg_class
                     }
                     if (Message.codeerr == null)
                     {
+                        Message.func = "unknown_function";
                         Message.codeerr = "unknown_error";
+                        Message.messageerr = "Еhe error is not mapped to API logic";
+                        Message.classerr = "unknown_class";
+                        Message.hinterr = "The error is probably a system error of the database server";
                     }
+                    
                     eAction action;
                     if (!Enum.TryParse(Message.actionerr, out action))
                     {
@@ -41,8 +45,8 @@ namespace pg_class
                     }
                     //Вызов события журнала
                     me = new JournalEventArgs(0, entity, Message.codeerr, e.Message, action, eJournalMessageType.error);
-                        JournalMessageOnReceived(me);
-                        throw (new PgDataException(Message));
+                    JournalMessageOnReceived(me);
+                    throw (new PgDataException(Message));
 
                 case Npgsql.NpgsqlException cne:
 

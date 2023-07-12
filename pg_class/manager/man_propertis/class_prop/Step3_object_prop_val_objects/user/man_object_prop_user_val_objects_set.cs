@@ -8,12 +8,10 @@ namespace pg_class
     public partial class manager
     {
         /// <summary>
-        /// Изменить допустимые параметры пользовательского свойства активного представления класса
+        /// Добавить новое значение пользовательского свойства объектам снимка класса в указанной позиции
         /// </summary>
-        public class_prop_user_val class_prop_user_val_upd(class_prop_user_val newClassPropUserVal)
+        public position objects_prop_user_val_objects_set(position Position_parent, class_prop_user_val newClassPropUserVal, Boolean on_internal = false)
         {
-            class_prop class_prop = null;
-            class_prop_user_val class_prop_user_val = null;
             Int32 error;
             String desc_error;
             NpgsqlCommandKey cmdk = null;
@@ -23,7 +21,7 @@ namespace pg_class
                 switch (newClassPropUserVal.DataSize)
                 {
                     case eDataSize.BigData:
-                        cmdk = CommandByKey("class_prop_user_big_val_upd");
+                        cmdk = CommandByKey("object_prop_user_big_val_objects_set");
 
                         if (cmdk != null)
                         {
@@ -37,11 +35,10 @@ namespace pg_class
                             throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
                         }
 
+                        cmdk.Parameters["iid_position"].Value = Position_parent.Id;
                         cmdk.Parameters["iid_class_prop"].Value = newClassPropUserVal.Id_class_prop;
-                        cmdk.Parameters["imin_val"].Value = newClassPropUserVal.Min_val;
-                        cmdk.Parameters["imin_on"].Value = newClassPropUserVal.Min_on;
-                        cmdk.Parameters["imax_val"].Value = newClassPropUserVal.Max_val;
-                        cmdk.Parameters["imax_on"].Value = newClassPropUserVal.Max_on;
+                        cmdk.Parameters["itimestamp_class"].Value = newClassPropUserVal.Timestamp_class;
+                        cmdk.Parameters["on_internal"].Value = on_internal;
                         cmdk.Parameters["ival_text"].Value = DBNull.Value;
                         cmdk.Parameters["ival_bytea"].Value = DBNull.Value;
                         cmdk.Parameters["ival_json"].Value = DBNull.Value;
@@ -59,6 +56,7 @@ namespace pg_class
                                 case eDataType.val_bytea:
                                     if (newClassPropUserVal.Val_bytea != null)
                                     {
+                                        cmdk.Parameters["ival_bytea"].Size = newClassPropUserVal.Val_bytea.Length;
                                         cmdk.Parameters["ival_bytea"].Value = newClassPropUserVal.Val_bytea;
                                     }
                                     break;
@@ -72,7 +70,7 @@ namespace pg_class
                         }
                         break;
                     case eDataSize.SmallData:
-                        cmdk = CommandByKey("class_prop_user_small_val_upd");
+                        cmdk = CommandByKey("object_prop_user_small_val_objects_set");
 
                         if (cmdk != null)
                         {
@@ -86,13 +84,10 @@ namespace pg_class
                             throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
                         }
 
+                        cmdk.Parameters["iid_position"].Value = Position_parent.Id;
                         cmdk.Parameters["iid_class_prop"].Value = newClassPropUserVal.Id_class_prop;
-                        cmdk.Parameters["imin_val"].Value = newClassPropUserVal.Min_val;
-                        cmdk.Parameters["imin_on"].Value = newClassPropUserVal.Min_on;
-                        cmdk.Parameters["imax_val"].Value = newClassPropUserVal.Max_val;
-                        cmdk.Parameters["imax_on"].Value = newClassPropUserVal.Max_on;
-                        cmdk.Parameters["iround"].Value = newClassPropUserVal.Round_val;
-                        cmdk.Parameters["iround_on"].Value = newClassPropUserVal.Round_on;
+                        cmdk.Parameters["itimestamp_class"].Value = newClassPropUserVal.Timestamp_class;
+                        cmdk.Parameters["on_internal"].Value = on_internal;
                         cmdk.Parameters["ival_varchar"].Value = DBNull.Value;
                         cmdk.Parameters["ival_int"].Value = DBNull.Value;
                         cmdk.Parameters["ival_numeric"].Value = DBNull.Value;
@@ -104,7 +99,7 @@ namespace pg_class
                         cmdk.Parameters["ival_time"].Value = DBNull.Value;
                         cmdk.Parameters["ival_interval"].Value = DBNull.Value;
                         cmdk.Parameters["ival_timestamp"].Value = DBNull.Value;
-                        cmdk.Parameters["ival_bigint"].Value = DBNull.Value;
+                        cmdk.Parameters["ival_bigint"].Value = 0;
 
                         if (newClassPropUserVal.On_val)
                         {
@@ -155,33 +150,28 @@ namespace pg_class
                 }
                 cmdk.ExecuteNonQuery();
 
-                class_prop = class_prop_by_id(newClassPropUserVal.Id_class_prop);
-                class_prop_user_val = class_prop_user_val_by_id_prop(class_prop);
-
-                if (class_prop_user_val != null)
-                {
-                    //Генерируем событие изменения значения объектного свойства класса
-                    ClassPropUserValChangeEventArgs e2 = new ClassPropUserValChangeEventArgs(class_prop_user_val, eAction.Update);
-                    ClassPropUserValOnChange(e2);
-                }
-
+                /*if (Position_parent != null)
+                       {
+                           //Генерируем событие изменения позиции
+                           PositionChangeEventArgs e = new PositionChangeEventArgs(Position_parent, eAction.Update);
+                           PositionOnChange(e);
+                       }*/
             }
             //Возвращаем сущность
-            return class_prop_user_val;
+            return Position_parent;
         }
-
 
         //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
-        public Boolean class_prop_user_val_upd(out eAccess Access)
+        public Boolean object_prop_user_val_objects_set(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
 
-            cmdk = CommandByKey("class_prop_user_small_val_upd");
+            cmdk = CommandByKey("object_prop_user_small_val_objects_set");
             if (cmdk != null)
             {
                 Result = cmdk.Access;

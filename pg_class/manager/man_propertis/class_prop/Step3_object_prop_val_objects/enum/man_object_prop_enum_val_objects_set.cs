@@ -8,15 +8,15 @@ namespace pg_class
     public partial class manager
     {
         /// <summary>
-        /// Изменить данные значения свойства типа перечисление объектам снимка класса в указанной позиции
+        /// Добавить данные значения свойства типа перечисление объектам снимка класса в указанной позиции
         /// </summary>
-        public position object_prop_enum_val_objects_upd(position Position_parent, class_prop_enum_val newClass_prop_enum_val, Boolean on_internal = false)
+        public position object_prop_enum_val_objects_set(position Position_parent, class_prop_enum_val newClass_prop_enum_val, Boolean on_internal = false)
         {
             Int32 error;
             String desc_error;
             NpgsqlCommandKey cmdk = null;
 
-            cmdk = CommandByKey("object_prop_enum_val_objects_upd");
+            cmdk = CommandByKey("object_prop_enum_val_objects_set");
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -44,13 +44,13 @@ namespace pg_class
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
-        public Boolean object_prop_enum_val_objects_upd(out eAccess Access)
+        public Boolean object_prop_enum_val_objects_add(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
 
-            cmdk = CommandByKey("object_prop_enum_val_objects_upd");
+            cmdk = CommandByKey("object_prop_enum_val_objects_set");
             if (cmdk != null)
             {
                 Result = cmdk.Access;

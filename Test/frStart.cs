@@ -68,7 +68,7 @@ namespace Test
 
 
 
-            NEW_pg_class.class_add(99999999121,444441212,"12121","121212",true,true,true,12,12,1212121);
+            NEW_pg_class.class_add(99999999121, 444441212, "12121", "121212", true, true, true, 12, 12, 1212121);
 
             String sm2 = manager.SearchMethodsToString(eSearchMethods.like_lower);
 

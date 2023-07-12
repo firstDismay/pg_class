@@ -1,5 +1,4 @@
-﻿using pg_class.pg_exceptions;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -46,7 +45,7 @@ namespace pg_class.pg_classes
         #endregion
 
         #region СВОЙСТВА КЛАССА
-        
+
         /// <summary>
         /// Идентификатор глобального свойства концепции
         /// </summary>
@@ -61,12 +60,12 @@ namespace pg_class.pg_classes
         /// Штамп времени глобального свойства
         /// </summary>
         public DateTime Timestamp_global_prop { get; set; }
-        
+
         /// <summary>
         /// Идентификатор типа свойства
         /// </summary>
         public Int32 Id_prop_type { get; set; }
-        
+
 
         /// <summary>
         /// Тип свойства
@@ -83,7 +82,7 @@ namespace pg_class.pg_classes
         /// Идентификатор типа данных свойства
         /// </summary>
         public Int32 Id_data_type { get; set; }
-        
+
         /// <summary>
         /// Тип данных свойства
         /// </summary>
@@ -121,27 +120,27 @@ namespace pg_class.pg_classes
         /// Признак используемого глобального свойства
         /// </summary>
         public Boolean Is_use { get; set; }
-        
+
         /// <summary>
         /// Область значений глобального свойства определена
         /// </summary>
         public Boolean On_val { get; set; }
-        
+
         /// <summary>
         /// Область значений свойства определена, свойство готово к связыванию, шаг №2
         /// </summary>
         public Boolean Ready { get; set; }
-        
+
         /// <summary>
         /// Идентификатор области значений глобального свойства концепции
         /// </summary>
         public Int64 Id_area_val { get; set; }
-        
+
         /// <summary>
         /// Штамп времени области значений глобального свойства применим для объектных свойств
         /// </summary>
         public DateTime Timestamp_area_val { get; set; }
-                
+
         /// <summary>
         /// Ссылка на менеджера данных
         /// </summary>

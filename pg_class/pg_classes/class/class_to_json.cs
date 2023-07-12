@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using pg_class.pg_exceptions;
 using System;
 
 namespace pg_class.pg_classes

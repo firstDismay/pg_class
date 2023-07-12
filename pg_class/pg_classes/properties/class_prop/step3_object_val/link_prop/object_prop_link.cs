@@ -8,10 +8,10 @@
         /// <summary>
         /// Метод добавляет новое значение свойства-ссылки объекта
         /// </summary>
-        public object_prop_link_val link_data_add(object_prop_link_val ObjectPropLinkVal)
+        public object_prop_link_val link_data_set(object_prop_link_val ObjectPropLinkVal)
         {
             object_prop_link_val Result = null;
-            Result = Manager.object_prop_link_val_add(ObjectPropLinkVal);
+            Result = Manager.object_prop_link_val_set(ObjectPropLinkVal);
             return Result;
         }
         #endregion

@@ -35,7 +35,7 @@ namespace pg_class
             cmdk.Parameters["iid_log"].Value = iid_log;
             cmdk.ExecuteNonQuery();
 
-           
+
             //Генерируем событие изменения концепции
             if (log != null)
             {

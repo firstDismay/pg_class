@@ -34,7 +34,7 @@ namespace pg_class
 
             cmdk.Parameters["iid_class_prop"].Value = iid_class_prop;
             cmdk.ExecuteNonQuery();
-                        
+
             //Генерируем событие удаления свойства класса
             if (Class_prop_link_val != null)
             {
