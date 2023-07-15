@@ -10,7 +10,7 @@ namespace pg_class
         /// <summary>
         /// Добавить новое значение объектного свойства шаблона
         /// </summary>
-        public pos_temp_prop_object_val pos_temp_prop_object_val_add(Int64 iid_pos_temp_prop, Int64 iid_class_val,
+        public pos_temp_prop_object_val pos_temp_prop_object_val_set(Int64 iid_pos_temp_prop, Int64 iid_class_val,
                                      Decimal ibquantity_min, Decimal ibquantity_max,
                                      eObjectPropCreateEmdedMode iembed_mode, Boolean iembed_single, Int64 iembed_class_real_id, Int32 iid_unit_conversion_rule)
         {
@@ -20,7 +20,7 @@ namespace pg_class
             String desc_error;
             NpgsqlCommandKey cmdk;
 
-            cmdk = CommandByKey("pos_temp_prop_object_val_add");
+            cmdk = CommandByKey("pos_temp_prop_object_val_set");
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -66,24 +66,24 @@ namespace pg_class
         /// <summary>
         /// Добавить новое значение объектного свойства шаблона
         /// </summary>
-        public pos_temp_prop_object_val pos_temp_prop_object_val_add(pos_temp_prop PosTemp_prop, vclass class_val,
+        public pos_temp_prop_object_val pos_temp_prop_object_val_set(pos_temp_prop PosTemp_prop, vclass class_val,
                        Decimal ibquantity_min, Decimal ibquantity_max,
                                      eObjectPropCreateEmdedMode iembed_mode, Boolean iembed_single, Int64 embed_class_real_id, Int32 iid_unit_conversion_rule)
         {
-            return pos_temp_prop_object_val_add(PosTemp_prop.Id, class_val.Id, ibquantity_min, ibquantity_max, iembed_mode, iembed_single, embed_class_real_id, iid_unit_conversion_rule);
+            return pos_temp_prop_object_val_set(PosTemp_prop.Id, class_val.Id, ibquantity_min, ibquantity_max, iembed_mode, iembed_single, embed_class_real_id, iid_unit_conversion_rule);
         }
 
 
         /// <summary>
         /// Добавить новое значение объектного свойства шаблона
-        public pos_temp_prop_object_val pos_temp_prop_object_val_add(pos_temp_prop PosTemp_prop, vclass class_val,
+        public pos_temp_prop_object_val pos_temp_prop_object_val_set(pos_temp_prop PosTemp_prop, vclass class_val,
                        Decimal ibquantity_min, Decimal ibquantity_max,
                                      eObjectPropCreateEmdedMode iembed_mode, Boolean iembed_single, Int64 embed_class_real_id, unit_conversion_rule Unit_conversion_rule)
         {
             pos_temp_prop_object_val Result = null;
             if (PosTemp_prop != null)
             {
-                Result = pos_temp_prop_object_val_add(PosTemp_prop.Id, class_val.Id, ibquantity_min, ibquantity_max, iembed_mode, iembed_single, embed_class_real_id, Unit_conversion_rule.Id);
+                Result = pos_temp_prop_object_val_set(PosTemp_prop.Id, class_val.Id, ibquantity_min, ibquantity_max, iembed_mode, iembed_single, embed_class_real_id, Unit_conversion_rule.Id);
             }
             return Result;
         }
@@ -92,12 +92,12 @@ namespace pg_class
         /// <summary>
         /// Добавить новое значение объектного свойства шаблона
         /// </summary>
-        public pos_temp_prop_object_val pos_temp_prop_object_val_add(pos_temp_prop_object_val PosTemp_prop_object_val)
+        public pos_temp_prop_object_val pos_temp_prop_object_val_set(pos_temp_prop_object_val PosTemp_prop_object_val)
         {
             pos_temp_prop_object_val Result = null;
             if (PosTemp_prop_object_val != null)
             {
-                Result = pos_temp_prop_object_val_add(PosTemp_prop_object_val.Id_pos_temp_prop, PosTemp_prop_object_val.Id_class_val, PosTemp_prop_object_val.Bquantity_min,
+                Result = pos_temp_prop_object_val_set(PosTemp_prop_object_val.Id_pos_temp_prop, PosTemp_prop_object_val.Id_class_val, PosTemp_prop_object_val.Bquantity_min,
                     PosTemp_prop_object_val.Bquantity_max,
                                         PosTemp_prop_object_val.Embed_mode, PosTemp_prop_object_val.Embed_single, PosTemp_prop_object_val.Embed_class_real_id, PosTemp_prop_object_val.Id_unit_conversion_rule);
             }
@@ -107,14 +107,14 @@ namespace pg_class
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
-        public Boolean pos_temp_prop_object_val_add(out eAccess Access)
+        public Boolean pos_temp_prop_object_val_set(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
 
 
-            cmdk = CommandByKey("pos_temp_prop_object_val_add");
+            cmdk = CommandByKey("pos_temp_prop_object_val_set");
             if (cmdk != null)
             {
                 Result = cmdk.Access;

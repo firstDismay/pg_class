@@ -8,12 +8,13 @@ namespace pg_class
     public partial class manager
     {
         /// <summary>
-        /// Изменить допустимые параметры пользовательского свойства активного представления класса
+        /// Добавить новое значение пользовательского свойства шаблона
         /// </summary>
-        public pos_temp_prop_user_val pos_temp_prop_user_val_upd(pos_temp_prop_user_val newPosTempPropUserVal)
+        public pos_temp_prop_user_val pos_temp_prop_user_val_set(pos_temp_prop_user_val newPosTempPropUserVal)
         {
+            pos_temp_prop_user_val PosTempPropUserVal = null;
             pos_temp_prop pos_temp_prop = null;
-            pos_temp_prop_user_val pos_temp_prop_user_val = null;
+            Int64 id = 0;
             Int32 error;
             String desc_error;
             NpgsqlCommandKey cmdk = null;
@@ -23,7 +24,7 @@ namespace pg_class
                 switch (newPosTempPropUserVal.DataSize)
                 {
                     case eDataSize.BigData:
-                        cmdk = CommandByKey("pos_temp_prop_user_big_val_upd");
+                        cmdk = CommandByKey("pos_temp_prop_user_big_val_set");
 
                         if (cmdk != null)
                         {
@@ -59,6 +60,7 @@ namespace pg_class
                                 case eDataType.val_bytea:
                                     if (newPosTempPropUserVal.Val_bytea != null)
                                     {
+                                        cmdk.Parameters["ival_bytea"].Size = newPosTempPropUserVal.Val_bytea.Length;
                                         cmdk.Parameters["ival_bytea"].Value = newPosTempPropUserVal.Val_bytea;
                                     }
                                     break;
@@ -72,7 +74,7 @@ namespace pg_class
                         }
                         break;
                     case eDataSize.SmallData:
-                        cmdk = CommandByKey("pos_temp_prop_user_small_val_upd");
+                        cmdk = CommandByKey("pos_temp_prop_user_small_val_set");
 
                         if (cmdk != null)
                         {
@@ -104,7 +106,7 @@ namespace pg_class
                         cmdk.Parameters["ival_time"].Value = DBNull.Value;
                         cmdk.Parameters["ival_interval"].Value = DBNull.Value;
                         cmdk.Parameters["ival_timestamp"].Value = DBNull.Value;
-                        cmdk.Parameters["ival_bigint"].Value = DBNull.Value;
+                        cmdk.Parameters["ival_bigint"].Value = 0;
 
                         if (newPosTempPropUserVal.On_val)
                         {
@@ -156,30 +158,29 @@ namespace pg_class
                 cmdk.ExecuteNonQuery();
 
                 pos_temp_prop = pos_temp_prop_by_id(newPosTempPropUserVal.Id_pos_temp_prop);
-                pos_temp_prop_user_val = pos_temp_prop_user_val_by_id_prop(pos_temp_prop);
-                if (pos_temp_prop_user_val != null)
+                PosTempPropUserVal = pos_temp_prop_user_val_by_id_prop(pos_temp_prop);
+                if (PosTempPropUserVal != null)
                 {
-                    //Генерируем событие изменения значения объектного свойства шаблоа
-                    PosTempPropUserValChangeEventArgs e = new PosTempPropUserValChangeEventArgs(pos_temp_prop_user_val, eAction.Update);
+                    //Генерируем событие изменения значения свойства шаблона
+                    PosTempPropUserValChangeEventArgs e = new PosTempPropUserValChangeEventArgs(PosTempPropUserVal, eAction.Insert);
                     PosTempPropUserValOnChange(e);
                 }
             }
-
             //Возвращаем сущность
-            return pos_temp_prop_user_val;
+            return PosTempPropUserVal;
         }
 
         //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
-        public Boolean pos_temp_prop_user_val_upd(out eAccess Access)
+        public Boolean pos_temp_prop_user_val_set(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
 
-            cmdk = CommandByKey("pos_temp_prop_user_small_val_upd");
+            cmdk = CommandByKey("pos_temp_prop_user_small_val_set");
             if (cmdk != null)
             {
                 Result = cmdk.Access;
@@ -193,6 +194,7 @@ namespace pg_class
                 }
             }
             return Result;
+
         }
     }
 }

@@ -10,14 +10,14 @@ namespace pg_class
         /// <summary>
         /// Добавить данные значения свойства типа ссылка
         /// </summary>
-        public pos_temp_prop_link_val pos_temp_prop_link_val_add(Int64 iid_pos_temp_prop, Int32 iid_entity, Int64 iid_entity_instance, Int64 iid_sub_entity_instance)
+        public pos_temp_prop_link_val pos_temp_prop_link_val_set(Int64 iid_pos_temp_prop, Int32 iid_entity, Int64 iid_entity_instance, Int64 iid_sub_entity_instance)
         {
             pos_temp_prop_link_val pos_temp_prop_link_val = null;
             Int32 error;
             String desc_error;
             NpgsqlCommandKey cmdk = null;
 
-            cmdk = CommandByKey("pos_temp_prop_link_val_add");
+            cmdk = CommandByKey("pos_temp_prop_link_val_set");
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -66,12 +66,12 @@ namespace pg_class
         /// <summary>
         /// Добавить данные значения свойства типа ссылка
         /// </summary>
-        public pos_temp_prop_link_val pos_temp_prop_link_val_add(pos_temp_prop_link_val PosTemp_prop_link_val)
+        public pos_temp_prop_link_val pos_temp_prop_link_val_set(pos_temp_prop_link_val PosTemp_prop_link_val)
         {
             pos_temp_prop_link_val Result = null;
             if (PosTemp_prop_link_val != null)
             {
-                Result = pos_temp_prop_link_val_add(PosTemp_prop_link_val.Id_pos_temp_prop, PosTemp_prop_link_val.Link_id_entity, PosTemp_prop_link_val.Link_id_entity_instance, PosTemp_prop_link_val.Link_id_sub_entity_instance);
+                Result = pos_temp_prop_link_val_set(PosTemp_prop_link_val.Id_pos_temp_prop, PosTemp_prop_link_val.Link_id_entity, PosTemp_prop_link_val.Link_id_entity_instance, PosTemp_prop_link_val.Link_id_sub_entity_instance);
             }
             return Result;
         }
@@ -80,13 +80,13 @@ namespace pg_class
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
-        public Boolean pos_temp_prop_link_val_add(out eAccess Access)
+        public Boolean pos_temp_prop_link_val_set(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
 
-            cmdk = CommandByKey("pos_temp_prop_link_val_add");
+            cmdk = CommandByKey("pos_temp_prop_link_val_set");
             if (cmdk != null)
             {
                 Result = cmdk.Access;

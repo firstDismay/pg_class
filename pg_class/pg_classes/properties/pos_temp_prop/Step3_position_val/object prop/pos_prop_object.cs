@@ -14,18 +14,18 @@ namespace pg_class.pg_classes
         /// Создать и встроить объект в качестве значения объектного свойства
         /// position_prop_object_val_add_new
         /// </summary>
-        public object_general object_data_add_new(vclass Class_real, unit_conversion_rule Unit_conversion_rule, Decimal iquantity)
+        public object_general object_data_set_new(vclass Class_real, unit_conversion_rule Unit_conversion_rule, Decimal iquantity)
         {
-            return Manager.position_prop_object_val_add_new(this, Class_real, Unit_conversion_rule, iquantity);
+            return Manager.position_prop_object_val_set_new(this, Class_real, Unit_conversion_rule, iquantity);
         }
 
         /// <summary>
         /// Встроить существующий объект в качестве значения объектного свойства
         /// position_prop_object_val_add
         /// </summary>
-        public object_general object_data_add(object_general Object_Val, Decimal icquantity)
+        public object_general object_data_set(object_general Object_Val, Decimal icquantity)
         {
-            return Manager.position_prop_object_val_add(this, Object_Val, icquantity);
+            return Manager.position_prop_object_val_set(this, Object_Val, icquantity);
         }
         #endregion
 

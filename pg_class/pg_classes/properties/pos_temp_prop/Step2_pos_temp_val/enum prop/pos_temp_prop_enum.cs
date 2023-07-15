@@ -9,20 +9,19 @@
         /// Добавить данные значения свойства типа перечисление, Шаг №2
         /// pos_temp_prop_enum_val_add
         /// </summary>
-        public pos_temp_prop_enum_val enum_data_add(pos_temp_prop_enum_val PosTemp_prop_enum_val)
+        public pos_temp_prop_enum_val enum_data_set(pos_temp_prop_enum_val PosTemp_prop_enum_val)
         {
-            return Manager.pos_temp_prop_enum_val_add(PosTemp_prop_enum_val);
+            return Manager.pos_temp_prop_enum_val_set(PosTemp_prop_enum_val);
         }
 
         /// <summary>
         /// Добавить данные значения свойства типа перечисление, Шаг №2
         /// pos_temp_prop_enum_val_add
         /// </summary>
-        public pos_temp_prop_enum_val enum_data_add(prop_enum_val PropEnumVal)
+        public pos_temp_prop_enum_val enum_data_set(prop_enum_val PropEnumVal)
         {
-            return Manager.pos_temp_prop_enum_val_add(this.Id, PropEnumVal.Id_prop_enum, PropEnumVal.Id_prop_enum_val);
+            return Manager.pos_temp_prop_enum_val_set(this.Id, PropEnumVal.Id_prop_enum, PropEnumVal.Id_prop_enum_val);
         }
-
         #endregion
 
         #region УДАЛИТЬ ЗНАЧЕНИЕ

@@ -10,7 +10,7 @@ namespace pg_class
         /// <summary>
         /// Добавить данные значения свойства типа перечисление
         /// </summary>
-        public pos_temp_prop_enum_val pos_temp_prop_enum_val_add(Int64 iid_pos_temp_prop, Int64 iid_prop_enum, Int64 iid_prop_enum_val)
+        public pos_temp_prop_enum_val pos_temp_prop_enum_val_set(Int64 iid_pos_temp_prop, Int64 iid_prop_enum, Int64 iid_prop_enum_val)
         {
             pos_temp_prop_enum_val pos_temp_prop_enum_val = null;
             Int64 id = 0;
@@ -18,7 +18,7 @@ namespace pg_class
             String desc_error;
             NpgsqlCommandKey cmdk = null;
 
-            cmdk = CommandByKey("pos_temp_prop_enum_val_add");
+            cmdk = CommandByKey("pos_temp_prop_enum_val_set");
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -44,11 +44,7 @@ namespace pg_class
             }
             cmdk.ExecuteNonQuery();
 
-            id = Convert.ToInt64(cmdk.Parameters["outid"].Value);
-            if (id > 0)
-            {
-                pos_temp_prop_enum_val = pos_temp_prop_enum_val_by_id_prop(iid_pos_temp_prop);
-            }
+            pos_temp_prop_enum_val = pos_temp_prop_enum_val_by_id_prop(iid_pos_temp_prop);
             if (pos_temp_prop_enum_val != null)
             {
                 //Генерируем событие изменения данных значения свойства типа перечисление
@@ -64,12 +60,12 @@ namespace pg_class
         /// <summary>
         /// Добавить данные значения свойства типа перечисление
         /// </summary>
-        public pos_temp_prop_enum_val pos_temp_prop_enum_val_add(pos_temp_prop_enum_val PosTemp_prop_enum_val)
+        public pos_temp_prop_enum_val pos_temp_prop_enum_val_set(pos_temp_prop_enum_val PosTemp_prop_enum_val)
         {
             pos_temp_prop_enum_val Result = null;
             if (PosTemp_prop_enum_val != null)
             {
-                Result = pos_temp_prop_enum_val_add(PosTemp_prop_enum_val.Id_pos_temp_prop, PosTemp_prop_enum_val.Id_prop_enum, PosTemp_prop_enum_val.Id_prop_enum_val);
+                Result = pos_temp_prop_enum_val_set(PosTemp_prop_enum_val.Id_pos_temp_prop, PosTemp_prop_enum_val.Id_prop_enum, PosTemp_prop_enum_val.Id_prop_enum_val);
             }
             return Result;
         }
@@ -78,13 +74,13 @@ namespace pg_class
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
-        public Boolean pos_temp_prop_enum_val_add(out eAccess Access)
+        public Boolean pos_temp_prop_enum_val_set(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
 
-            cmdk = CommandByKey("pos_temp_prop_enum_val_add");
+            cmdk = CommandByKey("pos_temp_prop_enum_val_set");
             if (cmdk != null)
             {
                 Result = cmdk.Access;

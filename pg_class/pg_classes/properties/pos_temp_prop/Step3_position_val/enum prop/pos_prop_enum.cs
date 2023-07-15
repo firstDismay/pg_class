@@ -8,9 +8,9 @@
         /// <summary>
         /// Метод добавляет новое значение свойства-перечисления шаг №3
         /// </summary>
-        public position_prop_enum_val enum_data_add(position_prop_enum_val PositionPropEnumVal)
+        public position_prop_enum_val enum_data_set(position_prop_enum_val PositionPropEnumVal)
         {
-            return Manager.position_prop_enum_val_add(PositionPropEnumVal);
+            return Manager.position_prop_enum_val_set(PositionPropEnumVal);
         }
         #endregion
 

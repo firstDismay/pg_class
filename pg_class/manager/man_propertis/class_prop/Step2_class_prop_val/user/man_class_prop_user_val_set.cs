@@ -157,13 +157,8 @@ namespace pg_class
                 }
                 cmdk.ExecuteNonQuery();
 
-                id = Convert.ToInt64(cmdk.Parameters["outid"].Value);
-                if (id > 0)
-                {
-                    class_prop = class_prop_by_id(newClassPropUserVal.Id_class_prop);
-                    ClassPropUserVal = class_prop_user_val_by_id_prop(class_prop);
-                }
-
+                class_prop = class_prop_by_id(newClassPropUserVal.Id_class_prop);
+                ClassPropUserVal = class_prop_user_val_by_id_prop(class_prop);
                 if (ClassPropUserVal != null)
                 {
                     //Генерируем событие изменения значения объектного свойства класса

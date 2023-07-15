@@ -345,14 +345,7 @@ namespace pg_class.pg_classes
         {
             if (on_change)
             {
-                if (this.StorageType == eStorageType.NotSaved)
-                {
-                    Manager.pos_temp_prop_enum_val_add(this);
-                }
-                else
-                {
-                    Manager.pos_temp_prop_enum_val_upd(this);
-                }
+                Manager.pos_temp_prop_enum_val_set(this);
                 Refresh();
                 on_change = false;
             }

@@ -44,12 +44,7 @@ namespace pg_class
             }
             cmdk.ExecuteNonQuery();
 
-            id = Convert.ToInt64(cmdk.Parameters["outid"].Value);
-            if (id > 0)
-            {
-                Class_prop_enum_val = class_prop_enum_val_by_id_prop(iid_class_prop);
-            }
-
+            Class_prop_enum_val = class_prop_enum_val_by_id_prop(iid_class_prop);
             if (Class_prop_enum_val != null)
             {
                 //Генерируем событие изменения данных значения свойства типа перечисление

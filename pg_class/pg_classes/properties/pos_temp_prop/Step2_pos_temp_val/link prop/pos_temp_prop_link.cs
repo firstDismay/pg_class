@@ -8,9 +8,9 @@
         /// Добавить данные значения свойства типа ссылка, Шаг №2
         /// pos_temp_prop_link_val_add
         /// </summary>
-        public pos_temp_prop_link_val link_data_add(pos_temp_prop_link_val PosTemp_prop_link_val)
+        public pos_temp_prop_link_val link_data_set(pos_temp_prop_link_val PosTemp_prop_link_val)
         {
-            return Manager.pos_temp_prop_link_val_add(PosTemp_prop_link_val);
+            return Manager.pos_temp_prop_link_val_set(PosTemp_prop_link_val);
         }
         #endregion
 

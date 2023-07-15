@@ -8,10 +8,10 @@
         /// <summary>
         /// Метод добавляет новое значение пользовательского свойства позиции
         /// </summary>
-        public position_prop_user_val user_data_add(position_prop_user_val ObjectPropUserVal)
+        public position_prop_user_val user_data_set(position_prop_user_val ObjectPropUserVal)
         {
             position_prop_user_val Result = null;
-            Result = Manager.position_prop_user_val_add(ObjectPropUserVal);
+            Result = Manager.position_prop_user_val_set(ObjectPropUserVal);
             return Result;
         }
 

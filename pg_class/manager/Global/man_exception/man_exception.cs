@@ -23,19 +23,23 @@ namespace pg_class
             switch (e)
             {
                 case Npgsql.PostgresException cpe:
-                    Message = JsonConvert.DeserializeObject<PgFunctionMessage>(cpe.MessageText);
-                    eEntity entity;
+                    try
+                    {
+                        Message = JsonConvert.DeserializeObject<PgFunctionMessage>(cpe.MessageText);
+                    }
+                    catch (JsonException)
+                    {
+                        Message = new PgFunctionMessage();
+                        Message.func = "unknown_function";
+                        Message.codeerr = cpe.SqlState;
+                        Message.messageerr = cpe.Message;
+                        Message.classerr = "unknown_class";
+                        Message.hinterr = "The error is probably a system error of the database server";
+                    }
+                eEntity entity;
                     if (!Enum.TryParse(Message.entity, out entity))
                     {
                         entity = eEntity.entity;
-                    }
-                    if (Message.codeerr == null)
-                    {
-                        Message.func = "unknown_function";
-                        Message.codeerr = "unknown_error";
-                        Message.messageerr = "Еhe error is not mapped to API logic";
-                        Message.classerr = "unknown_class";
-                        Message.hinterr = "The error is probably a system error of the database server";
                     }
                     
                     eAction action;

@@ -8,9 +8,9 @@
         /// <summary>
         /// Метод добавляет новое значение свойства-ссылки позиции
         /// </summary>
-        public position_prop_link_val link_data_add(position_prop_link_val PositionPropLinkVal)
+        public position_prop_link_val link_data_set(position_prop_link_val PositionPropLinkVal)
         {
-            return Manager.position_prop_link_val_add(PositionPropLinkVal);
+            return Manager.position_prop_link_val_set(PositionPropLinkVal);
         }
         #endregion
 

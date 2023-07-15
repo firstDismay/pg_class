@@ -14,15 +14,10 @@ namespace pg_class
         public class_prop_user_val class_prop_user_big_val_by_id_prop(Int64 iid_class_prop)
         {
             class_prop_user_val class_prop_user_val = null;
-
             DataTable tbl_vclass_prop_obj_val_class = TableByName("vclass_prop_user_big_val");
-
-
             NpgsqlCommandKey cmdk;
 
-
             cmdk = CommandByKey("class_prop_user_big_val_by_id_prop");
-
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -46,7 +41,6 @@ namespace pg_class
             }
             return class_prop_user_val;
         }
-
 
         /// <summary>
         /// Выбрать значение пользовательского свойства активного представления класса по идентификатору значения свойства

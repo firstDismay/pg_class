@@ -15,5 +15,10 @@ namespace pg_class.pg_exceptions
         public String hinterr { get; set; }
         public String classerr { get; set; }
         public String classerrdesc { get; set; }
+
+        public override string ToString()
+        {
+            return String.Format("Функция: {0} Код ошибки: {1} Сообщение: {2}", func, codeerr, messageerr);
+        }
     }
 }

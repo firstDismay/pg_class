@@ -8,9 +8,9 @@ namespace pg_class
     public partial class manager
     {
         /// <summary>
-        /// Изменить новое значение пользовательского свойства позиции
+        /// Добавить новое значение пользовательского свойства позиции
         /// </summary>
-        public position_prop_user_val position_prop_user_val_upd(position_prop_user_val newPositionPropUserVal)
+        public position_prop_user_val position_prop_user_val_set(position_prop_user_val newPositionPropUserVal)
         {
             position_prop_user_val position_prop_user_val = null;
             Int32 error;
@@ -22,8 +22,7 @@ namespace pg_class
                 switch (newPositionPropUserVal.DataSize)
                 {
                     case eDataSize.BigData:
-                        cmdk = CommandByKey("position_prop_user_big_val_upd");
-
+                        cmdk = CommandByKey("position_prop_user_big_val_set");
                         if (cmdk != null)
                         {
                             if (!cmdk.Access)
@@ -63,9 +62,10 @@ namespace pg_class
                                 }
                                 break;
                         }
+
                         break;
                     case eDataSize.SmallData:
-                        cmdk = CommandByKey("position_prop_user_small_val_upd");
+                        cmdk = CommandByKey("position_prop_user_small_val_set");
 
                         if (cmdk != null)
                         {
@@ -145,7 +145,7 @@ namespace pg_class
                 if (position_prop_user_val != null)
                 {
                     //Генерируем событие изменения значения свойства позиции
-                    PositionPropUserValChangeEventArgs e = new PositionPropUserValChangeEventArgs(position_prop_user_val, eAction.Update);
+                    PositionPropUserValChangeEventArgs e = new PositionPropUserValChangeEventArgs(position_prop_user_val, eAction.Insert);
                     PositionPropUserValOnChange(e);
                 }
             }
@@ -157,13 +157,13 @@ namespace pg_class
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
-        public Boolean position_prop_user_val_upd(out eAccess Access)
+        public Boolean position_prop_user_val_set(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
 
-            cmdk = CommandByKey("position_prop_user_small_val_upd");
+            cmdk = CommandByKey("position_prop_user_small_val_set");
             if (cmdk != null)
             {
                 Result = cmdk.Access;

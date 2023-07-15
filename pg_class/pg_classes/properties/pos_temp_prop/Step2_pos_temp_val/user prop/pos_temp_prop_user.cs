@@ -9,9 +9,9 @@
         /// Добавить новое значение пользовательского свойства шаблона, Шаг №2 
         /// pos_temp_prop_user_val_add
         /// </summary>
-        public pos_temp_prop_user_val user_data_add(pos_temp_prop_user_val PosTempPropUserVal)
+        public pos_temp_prop_user_val user_data_set(pos_temp_prop_user_val PosTempPropUserVal)
         {
-            return Manager.pos_temp_prop_user_val_add(PosTempPropUserVal);
+            return Manager.pos_temp_prop_user_val_set(PosTempPropUserVal);
         }
         #endregion
 
