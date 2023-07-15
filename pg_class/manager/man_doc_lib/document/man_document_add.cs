@@ -149,6 +149,18 @@ namespace pg_class
         /// </summary>
         public document document_add(Int64 iid_category, Int64 iid_parent,
                                      String iname, String idesc, String iregnum, DateTime iregdate,
+                                     log Log)
+        {
+            return document_add(iid_category, iid_parent,
+                                     iname, idesc, iregnum, iregdate,
+                                     Log.EntityID, Log.Id, -1);
+        }
+
+        /// <summary>
+        /// Метод добавляет новый документ
+        /// </summary>
+        public document document_add(Int64 iid_category, Int64 iid_parent,
+                                     String iname, String idesc, String iregnum, DateTime iregdate,
                                      group Group)
         {
             return document_add(iid_category, iid_parent,

@@ -983,6 +983,78 @@ namespace pg_class
             return Result;
         }
 
+
+        /// <summary>
+        /// Лист документов по идентификатору записи лога
+        /// </summary>
+        public List<document> document_ext_by_id_log(Int64 iid_log)
+        {
+            List<document> entity_list = new List<document>();
+            DataTable tbl_entity = TableByName("vdocument");
+            NpgsqlCommandKey cmdk;
+
+            cmdk = CommandByKey("document_ext_by_id_log");
+            if (cmdk != null)
+            {
+                if (!cmdk.Access)
+                {
+                    throw new AccessDataBaseException(404, String.Format(@"Отказано в доступе к методу: {0}!", cmdk.CommandText));
+                }
+            }
+            else
+            {
+                throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
+            }
+
+            cmdk.Parameters["iid_log"].Value = iid_log;
+            cmdk.Fill(tbl_entity);
+
+            document ce;
+            if (tbl_entity.Rows.Count > 0)
+            {
+                foreach (System.Data.DataRow dr in tbl_entity.Rows)
+                {
+                    ce = new document(dr);
+                    entity_list.Add(ce);
+                }
+            }
+            return entity_list;
+        }
+
+        /// <summary>
+        /// Лист документов по идентификатору записи лога
+        /// </summary>
+        public List<document> document_ext_by_id_log(log Log)
+        {
+            return document_ext_by_id_log(Log.Id);
+        }
+
+        //ACCESS
+        /// <summary>
+        /// Проверка прав доступа к методу
+        /// </summary>
+        public Boolean document_ext_by_id_log(out eAccess Access)
+        {
+            Boolean Result = false;
+            Access = eAccess.NotFound;
+            NpgsqlCommandKey cmdk;
+
+            cmdk = CommandByKey("document_ext_by_id_log");
+            if (cmdk != null)
+            {
+                Result = cmdk.Access;
+                if (Result)
+                {
+                    Access = eAccess.Success;
+                }
+                else
+                {
+                    Access = eAccess.NotAvailable;
+                }
+            }
+            return Result;
+        }
+
         /// <summary>
         /// Лист документов концепции по маске имени документа
         /// </summary>
