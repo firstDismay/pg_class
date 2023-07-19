@@ -8,16 +8,15 @@ namespace pg_class
     public partial class manager
     {
         /// <summary>
-        /// Метод изменяет параметры назначения типа данных в указанной концепции
+        /// Метод добавляет выбранный тип данных в указанную концепцию
         /// </summary>
-        public con_prop_data_type con_prop_data_type_upd(Int64 iid_conception, Int32 iid_prop_data_type, String ialias, Int32 isort)
+        public void con_prop_data_type_set(Int64 iid_conception, Int32 iid_prop_data_type, String ialias, Int32 isort)
         {
-            con_prop_data_type con_prop_data_type = null;
             Int32 error;
             String desc_error;
             NpgsqlCommandKey cmdk;
 
-            cmdk = CommandByKey("con_prop_data_type_upd");
+            cmdk = CommandByKey("con_prop_data_type_set");
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -36,35 +35,39 @@ namespace pg_class
             cmdk.Parameters["isort"].Value = isort;
             cmdk.ExecuteNonQuery();
 
-            con_prop_data_type = Con_prop_data_type_by_id(iid_conception, iid_prop_data_type);
-
-            //Вызов события изменения элемента назначения типа данных на концепцию
-            Con_Prop_Data_TypeChangeEventArgs e;
-            e = new Con_Prop_Data_TypeChangeEventArgs(iid_conception, iid_prop_data_type, eActionRuleList.updaterule);
-            OnCon_Prop_Data_TypeChange(e);
-            //Возвращаем сущность
-            return con_prop_data_type;
+            //Вызов события изменения списка вложенности
+            Con_Prop_Data_TypeListChangeEventArgs e;
+            e = new Con_Prop_Data_TypeListChangeEventArgs(iid_conception, iid_prop_data_type, eActionRuleList.addrule);
+            OnCon_Prop_Data_TypeListChange(e);
         }
 
         /// <summary>
-        /// Метод изменяет параметры назначения типа данных в указанной концепции
+        /// Метод добавляет выбранный тип данных в указанную концепцию
         /// </summary>
-        public void con_prop_data_type_upd(con_prop_data_type Con_prop_data_type)
+        public void con_prop_data_type_set(con_prop_data_type Con_prop_data_type)
         {
-            con_prop_data_type_upd(Con_prop_data_type.Id_conception, Con_prop_data_type.Id, Con_prop_data_type.Alias, Con_prop_data_type.Sort);
+            con_prop_data_type_set(Con_prop_data_type.Id_conception, Con_prop_data_type.Id, Con_prop_data_type.Alias, Con_prop_data_type.Sort);
+        }
+
+        /// <summary>
+        /// Метод добавляет выбранный тип данных в указанную концепцию
+        /// </summary>
+        public void con_prop_data_type_set(conception Conception, prop_data_type Con_prop_data_type, String Alias, Int32 Sort)
+        {
+            con_prop_data_type_set(Conception.Id, Con_prop_data_type.Id, Alias, Sort);
         }
 
         //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
-        public Boolean con_prop_data_type_upd(out eAccess Access)
+        public Boolean con_prop_data_type_set(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
 
-            cmdk = CommandByKey("con_prop_data_type_upd");
+            cmdk = CommandByKey("con_prop_data_type_set");
             if (cmdk != null)
             {
                 Result = cmdk.Access;

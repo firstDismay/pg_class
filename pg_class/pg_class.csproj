@@ -317,7 +317,6 @@
     <Compile Include="manager\man_class\man_con_prop_data_type\man_con_prop_data_type_ListChangeEvent.cs" />
     <Compile Include="manager\man_class\man_con_prop_data_type\man_con_prop_data_type_sel.cs" />
     <Compile Include="manager\man_class\man_con_prop_data_type\man_con_prop_data_type_del.cs" />
-    <Compile Include="manager\man_class\man_con_prop_data_type\man_con_prop_data_type_upd.cs" />
     <Compile Include="manager\man_conception\man_conception_list.cs" />
     <Compile Include="manager\man_conception\man_conception_add.cs" />
     <Compile Include="manager\man_conception\man_conception_event.cs" />
@@ -588,7 +587,7 @@
     <Compile Include="manager\man_propertis\class_prop\Step1_class_prop\man_class_prop_event.cs" />
     <Compile Include="manager\man_object\man_object_event.cs" />
     <Compile Include="manager\man_class\man_class_unit_conversion_rule\man_class_unit_conversion_rule.cs" />
-    <Compile Include="manager\man_class\man_con_prop_data_type\man_con_prop_data_type_add.cs" />
+    <Compile Include="manager\man_class\man_con_prop_data_type\man_con_prop_data_type_set.cs" />
     <Compile Include="manager\man_propertis\global_prop\Step4_search_func\class\man_class_act_ext_by_msk_global_prop_id_class.cs" />
     <Compile Include="manager\man_propertis\global_prop\Step4_search_func\class\man_class_act_ext_by_msk_global_prop.cs" />
     <Compile Include="manager\man_propertis\global_prop\Step4_search_func\class\man_class_act_by_msk_global_prop.cs" />

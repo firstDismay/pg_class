@@ -9,28 +9,28 @@ namespace pg_class.pg_classes
         #region ДОБАВИТЬ
         /// <summary>
         /// Метод добавляет тип данных в список типов данных концепции
-        /// Con_prop_data_type_add
+        /// Con_prop_data_type_set
         /// </summary>
-        public void Con_prop_data_type_add(con_prop_data_type Con_prop_data_type)
+        public void con_prop_data_type_set(con_prop_data_type Con_prop_data_type)
         {
-            Manager.Con_prop_data_type_add(Con_prop_data_type);
+            Manager.con_prop_data_type_set(Con_prop_data_type);
         }
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
-        public Boolean Con_prop_data_type_add(out eAccess Access)
+        public Boolean con_prop_data_type_set(out eAccess Access)
         {
-            return Manager.Con_prop_data_type_add(out Access);
+            return Manager.con_prop_data_type_set(out Access);
         }
         //*************************************************************************************
 
         /// <summary>
         /// Метод добавляет тип данных в список типов данных концепции
-        /// Con_prop_data_type_add
+        /// Con_prop_data_type_set
         /// </summary>
-        public void Con_prop_data_type_add(prop_data_type Con_prop_data_type, String Alias = "", Int32 Sort = 0)
+        public void con_prop_data_type_set(prop_data_type Con_prop_data_type, String Alias = "", Int32 Sort = 0)
         {
-            Manager.Con_prop_data_type_add(this, Con_prop_data_type, Alias, Sort);
+            Manager.con_prop_data_type_set(this, Con_prop_data_type, Alias, Sort);
         }
         #endregion
 

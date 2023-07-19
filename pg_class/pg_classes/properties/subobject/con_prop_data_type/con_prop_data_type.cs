@@ -159,7 +159,7 @@ namespace pg_class.pg_classes
         {
             if (on_change)
             {
-                Manager.con_prop_data_type_upd(this);
+                Manager.con_prop_data_type_set(this);
                 Refresh();
                 on_change = false;
             }
