@@ -10,12 +10,12 @@ namespace pg_class
         /// <summary>
         /// Метод определяет актуальность состояния шаблона позиции
         /// </summary>
-        public eEntityState pos_temp_is_actual(Int64 iid, DateTime mytimestamp)
+        public eEntityState pos_temp_is_actual(Int64 iid, DateTime itimestamp)
         {
             Int32 is_actual = 3;
             NpgsqlCommandKey cmdk;
 
-            cmdk = CommandByKey("pos_temp_is_actual2");
+            cmdk = CommandByKey("pos_temp_is_actual");
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -29,7 +29,7 @@ namespace pg_class
             }
 
             cmdk.Parameters["iid"].Value = iid;
-            cmdk.Parameters["mytimestamp"].Value = mytimestamp;
+            cmdk.Parameters["itimestamp"].Value = itimestamp;
             is_actual = (Int32)cmdk.ExecuteScalar();
 
             return (eEntityState)is_actual;
