@@ -10,7 +10,7 @@ namespace pg_class
         /// <summary>
         /// Метод изменяет указанную роль пользователя
         /// </summary>
-        public role_user user_role_user_upd(String irole_name, String irole_description, String irole_namesys, String irole_newnamesys)
+        public role_user user_role_user_upd(String irole_name, String irole_description, String irole_namesys, String irole_namesys_new)
         {
             role_user role_user = null;
             Int32 error;
@@ -33,10 +33,10 @@ namespace pg_class
             cmdk.Parameters["irole_name"].Value = irole_name;
             cmdk.Parameters["irole_description"].Value = irole_description;
             cmdk.Parameters["irole_namesys"].Value = irole_namesys;
-            cmdk.Parameters["irole_newnamesys"].Value = irole_newnamesys;
+            cmdk.Parameters["irole_namesys_new"].Value = irole_namesys_new;
             cmdk.ExecuteNonQuery();
 
-            role_user = user_role_user_by_namesys(irole_newnamesys);
+            role_user = user_role_user_by_namesys(irole_namesys_new);
             if (role_user != null)
             {
                 //Генерируем событие изменения концепции

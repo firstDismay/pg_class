@@ -10,7 +10,7 @@ namespace pg_class
         /// <summary>
         /// Метод удаляет указанного пользователя
         /// </summary>
-        public void user_del(String login)
+        public void user_del(String irole_name)
         {
             Int32 error;
             String desc_error;
@@ -29,9 +29,9 @@ namespace pg_class
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
 
-            user usr = user_by_login(login);
+            user usr = user_by_login(irole_name);
 
-            cmdk.Parameters["ilogin"].Value = login;
+            cmdk.Parameters["irole_name"].Value = irole_name;
             cmdk.ExecuteNonQuery();
 
             //Генерируем событие удаления пользователя

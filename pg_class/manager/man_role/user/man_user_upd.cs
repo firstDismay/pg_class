@@ -10,7 +10,7 @@ namespace pg_class
         /// <summary>
         /// Метод изменяет указанного пользователя
         /// </summary>
-        public user user_upd(String usr_name, String usr_otchestvo, String usr_familiya, String usr_login, String usr_newlogin,
+        public user user_upd(String usr_name, String usr_otchestvo, String usr_familiya, String usr_rolname, String usr_rolname_new,
             Boolean usr_rolsuper, Boolean usr_rolinherit, Boolean usr_rolcreaterole, Boolean usr_rolcreatedb,
             Boolean usr_rolcanlogin, Boolean usr_rolcanweblogin, Boolean usr_bypassrls)
         {
@@ -36,8 +36,8 @@ namespace pg_class
             cmdk.Parameters["usr_name"].Value = usr_name;
             cmdk.Parameters["usr_otchestvo"].Value = usr_otchestvo;
             cmdk.Parameters["usr_familiya"].Value = usr_familiya;
-            cmdk.Parameters["usr_login"].Value = usr_login;
-            cmdk.Parameters["usr_newlogin"].Value = usr_newlogin;
+            cmdk.Parameters["usr_rolname"].Value = usr_rolname;
+            cmdk.Parameters["usr_rolname_new"].Value = usr_rolname_new;
             cmdk.Parameters["usr_rolsuper"].Value = usr_rolsuper;
             cmdk.Parameters["usr_rolsuper"].Value = usr_rolsuper;
             cmdk.Parameters["usr_rolinherit"].Value = usr_rolinherit;
@@ -48,7 +48,7 @@ namespace pg_class
             cmdk.Parameters["usr_bypassrls"].Value = usr_bypassrls;
             cmdk.ExecuteNonQuery();
 
-            user = user_by_login(usr_newlogin);
+            user = user_by_login(usr_rolname_new);
             //Генерируем событие изменения концепции
             UserChangeEventArgs e = new UserChangeEventArgs(user, eAction.Update);
             UserOnChange(e);
