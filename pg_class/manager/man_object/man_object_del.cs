@@ -81,10 +81,10 @@ namespace pg_class
         /// <summary>
         ///  Метод удаляет группу объектов по массиву идентификаторов объектов
         /// </summary>
-        public List<errarg_action> object_del_by_id_array(Int64[] object_array)
+        public List<error_message> object_del_by_id_array(Int64[] object_array)
         {
-            List<errarg_action> entity_action_list = new List<errarg_action>();
-            DataTable tbl_result = TableByName("errarg_action");
+            List<error_message> entity_action_list = new List<error_message>();
+            DataTable tbl_result = TableByName("error_message");
             NpgsqlCommandKey cmdk;
 
             cmdk = CommandByKey("object_del_by_id_array");
@@ -103,12 +103,12 @@ namespace pg_class
             cmdk.Parameters["object_array"].Value = object_array;
             cmdk.Fill(tbl_result);
 
-            errarg_action ea;
+            error_message ea;
             if (tbl_result.Rows.Count > 0)
             {
                 foreach (System.Data.DataRow dr in tbl_result.Rows)
                 {
-                    ea = new errarg_action(dr);
+                    ea = new error_message(dr);
                     entity_action_list.Add(ea);
                 }
             }
@@ -118,7 +118,7 @@ namespace pg_class
         /// <summary>
         ///  Метод удаляет группу объектов по массиву идентификаторов объектов
         /// </summary>
-        public List<errarg_action> object_del_by_id_array(object_general[] object_array)
+        public List<error_message> object_del_by_id_array(object_general[] object_array)
         {
             Int64[] id_array;
             if (object_array.Length > 0)

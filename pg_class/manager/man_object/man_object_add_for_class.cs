@@ -15,11 +15,7 @@ namespace pg_class
         public List<error_message> object_add_for_class_act(Int64 iid_class, Int64 iid_position)
         {
             List<error_message> object_list = new List<error_message>();
-            //object_general o;
-
             DataTable tbl_result = TableByName("error_message");
-
-
             NpgsqlCommandKey cmdk;
 
 
