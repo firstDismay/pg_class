@@ -18,7 +18,7 @@ namespace pg_class.pg_exceptions
 
         public override string ToString()
         {
-            return String.Format(@"Функция: {0} Действие: {1} Сущность: {2} Класс ошибки: {3} Код ошибки: {4} Сообщение: {5} Подсказка: {6}", 
+            return String.Format(@"{5} Функция: {0} Действие: {1} Сущность: {2} Класс ошибки: {3} Код ошибки: {4} Подсказка: {6}", 
                                 func, actionerr, entity, classerrdesc, codeerr, messageerr, hinterr);
         }
     }
