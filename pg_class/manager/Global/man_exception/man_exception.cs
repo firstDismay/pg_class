@@ -42,13 +42,10 @@ namespace pg_class
                         entity = eEntity.entity;
                     }
                     
-                    eAction action;
-                    if (!Enum.TryParse(Message.actionerr, out action))
-                    {
-                        action = eAction.AnyAction;
-                    }
+                eAction action = def_converter.StringToAction(Message.actionerr);
+                    
                     //Вызов события журнала
-                    me = new JournalEventArgs(0, entity, Message.codeerr, e.Message, action, eJournalMessageType.error);
+                    me = new JournalEventArgs(0, entity, Message.codeerr, Message.ToString(), action, eJournalMessageType.error);
                     JournalMessageOnReceived(me);
                     throw (new PgDataException(Message));
 
