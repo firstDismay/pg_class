@@ -217,6 +217,7 @@
     <Compile Include="manager\Global\man_classes\NPGSQL_TypeJsonClass\SearchObjectMethod\json_search_metod_object.cs" />
     <Compile Include="manager\Global\man_classes\NPGSQL_TypeMapClass\pg_class\pg_clog_category.cs" />
     <Compile Include="manager\Global\man_classes\NPGSQL_TypeMapClass\pg_class\pg_clog_link.cs" />
+    <Compile Include="manager\Global\man_declaration\man_def_converter.cs" />
     <Compile Include="manager\Global\man_declaration\man_def_doc_lib.cs" />
     <Compile Include="manager\Global\man_declaration\man_def_manager.cs" />
     <Compile Include="manager\Global\man_declaration\man_def_export.cs" />
@@ -243,7 +244,6 @@
     <Compile Include="manager\Global\man_classes\NPGSQL_TypeJsonClass\SearchObjectMethod\json_search_condition.cs" />
     <Compile Include="manager\Global\man_classes\NPGSQL_TypeMapClass\pg_class\pg_cdoc_category.cs" />
     <Compile Include="manager\Global\man_classes\NPGSQL_TypeMapClass\pg_enum\pg_enum_mapping.cs" />
-    <Compile Include="manager\Global\man_common\errarg_action.cs" />
     <Compile Include="manager\Global\man_declaration\man_functions_export_mode.cs" />
     <Compile Include="manager\Global\man_declaration\man_functions_entity_error_match.cs" />
     <Compile Include="manager\Global\man_declaration\man_functions_entity_match.cs" />
