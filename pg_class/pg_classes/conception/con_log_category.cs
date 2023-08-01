@@ -46,7 +46,7 @@ namespace pg_class.pg_classes
         /// </summary>
         public List<log_category> log_category_list_get()
         {
-            return Manager.log_category_on_by_id_conception(Id);
+            return Manager.log_category_by_id_conception(Id);
         }
 
         /// <summary>
