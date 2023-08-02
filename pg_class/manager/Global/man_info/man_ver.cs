@@ -16,7 +16,7 @@ namespace pg_class
         {
             get
             {
-                return 229;
+                return 230;
             }
         }
 
