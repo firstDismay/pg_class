@@ -338,8 +338,7 @@ namespace pg_class.pg_classes
         /// </summary>
         public void Del()
         {
-            throw (new Exception("Метод не реализован!"));
-            //Manager.class_prop_del(this);
+            Manager.global_prop_link_pos_temp_prop_exclude(id_global_prop, id_pos_temp_prop);
         }
 
         #endregion

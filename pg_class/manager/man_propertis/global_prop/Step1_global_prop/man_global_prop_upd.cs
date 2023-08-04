@@ -40,9 +40,13 @@ namespace pg_class
             cmdk.ExecuteNonQuery();
 
             global_prop = global_prop_by_id(iid_global_prop);
-            //Генерируем событие изменения свойства класса
-            GlobalPropChangeEventArgs e = new GlobalPropChangeEventArgs(global_prop, eAction.Update);
-            GlobalPropOnChange(e);
+
+            if (global_prop != null)
+            {
+                //Генерируем событие изменения свойства класса
+                GlobalPropChangeEventArgs e = new GlobalPropChangeEventArgs(global_prop, eAction.Update);
+                GlobalPropOnChange(e);
+            }
             //Возвращаем сущность
             return global_prop;
         }

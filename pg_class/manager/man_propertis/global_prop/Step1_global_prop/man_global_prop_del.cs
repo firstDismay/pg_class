@@ -36,9 +36,6 @@ namespace pg_class
             cmdk.Parameters["iid_global_prop"].Value = iid_global_prop;
             cmdk.ExecuteNonQuery();
 
-            error = Convert.ToInt32(cmdk.Parameters["outresult"].Value);
-            desc_error = Convert.ToString(cmdk.Parameters["outdesc"].Value);
-
             //Генерируем событие удаления свойства класса
             if (global_prop != null)
             {

@@ -57,8 +57,7 @@ namespace pg_class
         /// </summary>
         public rulel1_class_on_pos_temp GetRule()
         {
-            throw new Exception("Метод не реализован!");
-            //return Manager.rulel1_class_on_pos_temp_by_id(id_class, id_pos_temp);
+            return Manager.rulel1_class_on_pos_temp_by_id(id_class, id_pos_temp);
         }
         #endregion
     }
