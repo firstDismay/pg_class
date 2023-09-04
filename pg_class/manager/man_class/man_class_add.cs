@@ -17,7 +17,7 @@ namespace pg_class
             Int64 id = 0;
             NpgsqlCommandKey cmdk;
 
-            cmdk = CommandByKey("class_add2");
+            cmdk = CommandByKey("class_add");
             if (cmdk != null)
             {
                 if (!cmdk.Access)
