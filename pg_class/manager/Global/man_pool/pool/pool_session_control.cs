@@ -42,7 +42,7 @@ namespace pg_class.poolcn
             manager.PoolConnectCountOnChangeStatic(this, pc);
 
             //Вызов события журнала
-            me = new JournalEventArgs(0, eEntity.pool, "0", "Вход пользователя выполнен", eAction.Connect, eJournalMessageType.information);
+            me = new JournalEventArgs(0, eEntity.pool, "action_allowed", "Вход пользователя выполнен", eAction.Connect, eJournalMessageType.information);
             manager.JournalMessageOnReceivedStatic(this, me);
         }
 
@@ -73,7 +73,7 @@ namespace pg_class.poolcn
             manager.PoolConnectCountOnChangeStatic(this, pc);
 
             //Вызов события журнала
-            JournalEventArgs me = new JournalEventArgs(0, eEntity.pool, "0", "Выход пользователя выполнен", eAction.DisConnect, eJournalMessageType.information);
+            JournalEventArgs me = new JournalEventArgs(0, eEntity.pool, "action_allowed", "Выход пользователя выполнен", eAction.DisConnect, eJournalMessageType.information);
             manager.JournalMessageOnReceivedStatic(this, me);
         }
         #endregion

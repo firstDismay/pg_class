@@ -125,7 +125,7 @@ namespace pg_class.poolcn
                         String Message = "Метод открытия подключения к серверу класса коннект вызвал исключение, параметры соединения не определены";
                         manager.ManagerStateInstanceStsticSet(eManagerState.NoReady);
                         //Вызов события журнала
-                        JournalEventArgs me = new JournalEventArgs(0, eEntity.connect, "0", Message, eAction.Connect, eJournalMessageType.error);
+                        JournalEventArgs me = new JournalEventArgs(0, eEntity.connect, "connection_error", Message, eAction.Connect, eJournalMessageType.error);
                         manager.JournalMessageOnReceivedStatic(this, me);
                         //Генерируем событие изменения состояния менеджера данных
                         ManagerStateChangeEventArgs e = new ManagerStateChangeEventArgs(eEntity.pool, eManagerState.NoReady);
@@ -151,7 +151,7 @@ namespace pg_class.poolcn
                     SetLastTimeUsing();
 
                     //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(0, eEntity.connect, "0", "Свободное подключение установлено", eAction.Connect, eJournalMessageType.information);
+                    JournalEventArgs me = new JournalEventArgs(0, eEntity.connect, "action_allowed", "Свободное подключение установлено", eAction.Connect, eJournalMessageType.information);
                     manager.JournalMessageOnReceivedStatic(this, me);
                 }
             }
@@ -166,7 +166,7 @@ namespace pg_class.poolcn
                 {
                     manager.ManagerStateInstanceStsticSet(eManagerState.LogOff);
                     //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(0, eEntity.connect, "0", "Ошибка подключения к серверу", eAction.Connect, eJournalMessageType.error);
+                    JournalEventArgs me = new JournalEventArgs(0, eEntity.connect, "connection_error", "Ошибка подключения к серверу", eAction.Connect, eJournalMessageType.error);
                     manager.JournalMessageOnReceivedStatic(this, me);
                     //Генерируем событие изменения состояния менеджера данных
                     ManagerStateChangeEventArgs e = new ManagerStateChangeEventArgs(eEntity.pool, eManagerState.NoReady);
@@ -177,7 +177,7 @@ namespace pg_class.poolcn
                 {
                     manager.ManagerStateInstanceStsticSet(eManagerState.NoReady);
                     //Вызов события журнала
-                    JournalEventArgs me = new JournalEventArgs(0, eEntity.connect, "0", "Ошибка подключения к серверу", eAction.Connect, eJournalMessageType.error);
+                    JournalEventArgs me = new JournalEventArgs(0, eEntity.connect, "connection_error", "Ошибка подключения к серверу", eAction.Connect, eJournalMessageType.error);
                     manager.JournalMessageOnReceivedStatic(this, me);
                     //Генерируем событие изменения состояния менеджера данных
                     ManagerStateChangeEventArgs e = new ManagerStateChangeEventArgs(eEntity.pool, eManagerState.NoReady);
@@ -205,7 +205,7 @@ namespace pg_class.poolcn
                 is_corupted = true;
 
                 //Вызов события журнала
-                JournalEventArgs me = new JournalEventArgs(0, eEntity.manager, "0", "Неиспользуемое подключение закрыто", eAction.Delete, eJournalMessageType.information);
+                JournalEventArgs me = new JournalEventArgs(0, eEntity.manager, "action_allowed", "Неиспользуемое подключение закрыто", eAction.Delete, eJournalMessageType.information);
                 manager.JournalMessageOnReceivedStatic(this, me);
             }
         }
@@ -219,7 +219,7 @@ namespace pg_class.poolcn
             {
                 cn.CloseAsync();
                 //Вызов события журнала
-                JournalEventArgs me = new JournalEventArgs(0, eEntity.manager, "0", "Подключение закрыто", eAction.DisConnect, eJournalMessageType.information);
+                JournalEventArgs me = new JournalEventArgs(0, eEntity.manager, "action_allowed", "Подключение закрыто", eAction.DisConnect, eJournalMessageType.information);
                 manager.JournalMessageOnReceivedStatic(this, me);
             }
         }

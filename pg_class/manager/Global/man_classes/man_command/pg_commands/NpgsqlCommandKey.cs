@@ -511,7 +511,7 @@ namespace pg_class.pg_commands
                 }
 
                 //Вызов события журнала
-                JournalEventArgs me = new JournalEventArgs(-1, eEntity.entity, "0", Message, eAction.Execute, eJournalMessageType.debug);
+                JournalEventArgs me = new JournalEventArgs(-1, eEntity.entity, "action_allowed", Message, eAction.Execute, eJournalMessageType.debug);
                 manager.JournalMessageOnReceivedStatic(this, me);
             }
         }
@@ -573,7 +573,7 @@ namespace pg_class.pg_commands
 
                 Message = String.Format("{0}| Время выполнения: {1}мс", Message, LeadTime_ms);
                 //Вызов события журнала
-                JournalEventArgs me = new JournalEventArgs(procoid_, eEntity.entity, "0", Message, eAction.Execute, eJournalMessageType.debug);
+                JournalEventArgs me = new JournalEventArgs(procoid_, eEntity.entity, "action_allowed", Message, eAction.Execute, eJournalMessageType.debug);
                 manager.JournalMessageOnReceivedStatic(this, me);
             }
         }

@@ -27,10 +27,10 @@ namespace pg_class
             //Инициализация класса менеджера
             managerstate = eManagerState.NoReady;
             //Вызов события журнала
-            me = new JournalEventArgs(0, eEntity.manager, "0", "Сессия журнала открыта", eAction.Init, eJournalMessageType.information);
+            me = new JournalEventArgs(0, eEntity.manager, "action_allowed", "Сессия журнала открыта", eAction.Init, eJournalMessageType.information);
             JournalMessageOnReceived(me);
             //Вызов события журнала
-            me = new JournalEventArgs(0, eEntity.manager, "0", "Менеджер данных создан", eAction.Init, eJournalMessageType.information);
+            me = new JournalEventArgs(0, eEntity.manager, "action_allowed", "Менеджер данных создан", eAction.Init, eJournalMessageType.information);
             JournalMessageOnReceived(me);
         }
 

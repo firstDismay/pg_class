@@ -29,12 +29,12 @@ namespace pg_class
                     ManagerStateChangeEventArgs e = new ManagerStateChangeEventArgs(eEntity.pool, eManagerState.Connected);
                     manager.OnManagerStateChange(e);
 
-                    me = new JournalEventArgs(0, eEntity.manager, "0", "Открытие сессии пользователя", eAction.Init, eJournalMessageType.information);
+                    me = new JournalEventArgs(0, eEntity.manager, "action_allowed", "Открытие сессии пользователя", eAction.Init, eJournalMessageType.information);
                     Me.JournalMessageOnReceived(me);
                 }
                 else
                 {
-                    me = new JournalEventArgs(0, eEntity.manager, "0", "Пул соединений не создан, открытие сессии невозможно", eAction.Init, eJournalMessageType.error);
+                    me = new JournalEventArgs(0, eEntity.manager, "connection_error", "Пул соединений не создан, открытие сессии невозможно", eAction.Init, eJournalMessageType.error);
                     Me.JournalMessageOnReceived(me);
                     throw (new PgManagerException(404, "Пул соединений не создан",
                    "HINT: Для создания пула соединений предварительно используйте метод Pool_create"));
@@ -42,7 +42,7 @@ namespace pg_class
             }
             else
             {
-                me = new JournalEventArgs(0, eEntity.manager, "0", "Не выполнена инициализация класса параметров подключения pg_settings", eAction.Init, eJournalMessageType.error);
+                me = new JournalEventArgs(0, eEntity.manager, "connection_error", "Не выполнена инициализация класса параметров подключения pg_settings", eAction.Init, eJournalMessageType.error);
                 Me.JournalMessageOnReceived(me);
                 throw (new PgManagerException(404, "Не выполнена инициализация класса параметров подключения pg_settings",
                    "Не выполнена инициализация класса параметров подключения pg_settings"));
@@ -73,7 +73,7 @@ namespace pg_class
                 ManagerStateChangeEventArgs e = new ManagerStateChangeEventArgs(eEntity.pool, eManagerState.LogOff);
                 manager.OnManagerStateChange(e);
 
-                me = new JournalEventArgs(0, eEntity.manager, "0", "Закрытие сессии пользователя", eAction.DisConnect, eJournalMessageType.information);
+                me = new JournalEventArgs(0, eEntity.manager, "action_allowed", "Закрытие сессии пользователя", eAction.DisConnect, eJournalMessageType.information);
                 if (Me != null)
                 {
                     Me.JournalMessageOnReceived(me);
