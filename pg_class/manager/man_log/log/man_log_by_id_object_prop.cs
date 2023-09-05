@@ -13,7 +13,7 @@ namespace pg_class
         /// <summary>
         /// Лист записей журнала по идентификатору свойства объекта
         /// </summary>
-        public List<log> log_by_id_object_prop(Int64 iid_class_prop, Int64 id_object)
+        public List<log> log_by_id_object_prop(Int64 iid_class_prop, Int64 iid_object)
         {
             List<log> entity_list = new List<log>();
             DataTable tbl_entity = TableByName("vlog");
@@ -33,7 +33,7 @@ namespace pg_class
             }
 
             cmdk.Parameters["iid_class_prop"].Value = iid_class_prop;
-            cmdk.Parameters["id_object"].Value = id_object;
+            cmdk.Parameters["iid_object"].Value = iid_object;
             cmdk.Fill(tbl_entity);
 
             log ce;
