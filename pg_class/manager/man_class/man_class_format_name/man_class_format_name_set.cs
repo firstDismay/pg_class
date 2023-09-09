@@ -124,6 +124,7 @@ namespace pg_class
             cmdk.Parameters["iquantity_show"].Value = iquantity_show;
             cmdk.ExecuteNonQuery();
 
+            vclass = class_act_by_id(iid_class);
             //Генерируем событие изменения представления класса
             ClassChangeEventArgs e = new ClassChangeEventArgs(vclass, eAction.Update);
             ClassOnChange(e);
