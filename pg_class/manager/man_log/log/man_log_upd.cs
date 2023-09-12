@@ -37,15 +37,20 @@ namespace pg_class
             cmdk.Parameters["idatetime"].Value = idatetime;
             cmdk.Parameters["ititle"].Value = ititle;
             cmdk.Parameters["imessage"].Value = imessage;
+
+            if (iclass_body == null || iclass_body == "") iclass_body = "none";
             cmdk.Parameters["iclass_body"].Value = iclass_body;
-            if (ibody != null)
+
+            if (ibody == null || !man_json.IsJson(ibody))
             {
-                cmdk.Parameters["ibody"].Value = ibody;
+                cmdk.Parameters["ibody"].Value = "{}";
+
             }
             else
             {
-                cmdk.Parameters["ibody"].Value = DBNull.Value;
+                cmdk.Parameters["ibody"].Value = ibody;
             }
+
             cmdk.ExecuteNonQuery();
 
             log = log_by_id(iid_log);

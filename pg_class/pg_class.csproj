@@ -42,7 +42,7 @@
     <ApplicationIcon>АВАТАР_пилот.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
+    <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
     <AssemblyOriginatorKeyFile>pg_class_key.snk</AssemblyOriginatorKeyFile>
@@ -330,6 +330,7 @@
     <Compile Include="manager\man_log\categoty\man_log_categoty_is_actual.cs" />
     <Compile Include="manager\man_log\categoty\man_log_categoty_sel.cs" />
     <Compile Include="manager\man_log\categoty\man_log_categoty_upd.cs" />
+    <Compile Include="manager\Global\man_json\man_json.cs" />
     <Compile Include="manager\man_log\log\man_log_add.cs" />
     <Compile Include="manager\man_log\log\man_log_by_id_category.cs" />
     <Compile Include="manager\man_log\log\man_log_by_id_pos_temp.cs" />

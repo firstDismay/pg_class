@@ -2,6 +2,7 @@
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
 using System;
+using Newtonsoft.Json;
 
 namespace pg_class
 {
@@ -39,14 +40,18 @@ namespace pg_class
 
             cmdk.Parameters["ititle"].Value = ititle;
             cmdk.Parameters["imessage"].Value = imessage;
+            
+            if (iclass_body == null || iclass_body == "") iclass_body = "none"; 
             cmdk.Parameters["iclass_body"].Value = iclass_body;
-            if (ibody != null)
+
+            if (ibody == null || !man_json.IsJson(ibody))
             {
-                cmdk.Parameters["ibody"].Value = ibody;
+                cmdk.Parameters["ibody"].Value = "{}";
+
             }
             else
             {
-                cmdk.Parameters["ibody"].Value = DBNull.Value;
+                cmdk.Parameters["ibody"].Value = ibody;
             }
 
             cmdk.Parameters["iid_entity"].Value = iid_entity;
