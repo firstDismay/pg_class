@@ -766,6 +766,7 @@
     <Compile Include="pg_classes\conception\con_ICloneable.cs" />
     <Compile Include="pg_classes\group\group_log_link.cs" />
     <Compile Include="pg_classes\group\group_log.cs" />
+    <Compile Include="pg_classes\log\log\log_doc_link.cs" />
     <Compile Include="pg_classes\log\log\log.cs" />
     <Compile Include="pg_classes\log\log\log_category.cs" />
     <Compile Include="pg_classes\log\log\log_entity.cs" />

@@ -200,6 +200,14 @@ namespace pg_class
             return doc_link_by_entity(iid_document, Class_prop.EntityID, Class_prop.Id, -1);
         }
 
+        /// <summary>
+        /// Ссылка на документ по идентификатору сущности
+        /// </summary>
+        public doc_link doc_link_by_entity(Int64 iid_document, log Log)
+        {
+            return doc_link_by_entity(iid_document, Log.EntityID, Log.Id, -1);
+        }
+
         //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу

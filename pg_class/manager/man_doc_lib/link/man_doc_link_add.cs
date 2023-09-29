@@ -133,6 +133,14 @@ namespace pg_class
             return doc_link_add(iid_document, Class_prop.EntityID, Class_prop.Id, -1);
         }
 
+        /// <summary>
+        /// Метод добавляет ссылку на документ для указанной сущности
+        /// </summary>
+        public doc_link doc_link_add(Int64 iid_document, log Log)
+        {
+            return doc_link_add(iid_document, Log.EntityID, Log.Id, -1);
+        }
+
         //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу

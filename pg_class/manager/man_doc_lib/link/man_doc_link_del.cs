@@ -191,6 +191,14 @@ namespace pg_class
             doc_link_del_by_entity(iid_document, Class_prop.EntityID, Class_prop.Id, -1);
         }
 
+        /// <summary>
+        /// Метод удаляет указанную ссылку документа по идентификатору сущности
+        /// </summary>
+        public void doc_link_del_by_entity(Int64 iid_document, log Log)
+        {
+            doc_link_del_by_entity(iid_document, Log.EntityID, Log.Id, -1);
+        }
+
         //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
