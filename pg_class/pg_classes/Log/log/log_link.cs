@@ -89,14 +89,6 @@ namespace pg_class.pg_classes
         {
             return Manager.log_link_add(Id, Class_prop.EntityID, Class_prop.Id, -1);
         }
-
-        /// <summary>
-        /// Метод добавляет новую ссылку
-        /// </summary>
-        public log_link log_link_add(document Document)
-        {
-            return Manager.log_link_add(Id, Document.EntityID, Document.Id, -1);
-        }
         #endregion
 
         #region УДАЛИТЬ
@@ -194,14 +186,6 @@ namespace pg_class.pg_classes
         public void log_link_del(class_prop Class_prop)
         {
             Manager.log_link_del_by_entity(this.Id, Class_prop.EntityID, Class_prop.Id, -1);
-        }
-
-        /// <summary>
-        /// Метод удаляет указанную ссылку
-        /// </summary>
-        public void log_link_del(document Document)
-        {
-            Manager.log_link_del_by_entity(this.Id, Document.EntityID, Document.Id, -1);
         }
         #endregion
 
