@@ -9,7 +9,7 @@ namespace pg_class.pg_classes
     public partial class log
     {
         #region МЕТОДЫ ДЛЯ РАБОТЫ С ДОКУМЕНТАМИ
-        #region ДОБАВИТЬ [ФАЙЛ МАССИВ]
+        #region ДОБАВИТЬ
 
         /// <summary>
         /// Метод добавляет новый документ

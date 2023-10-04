@@ -89,6 +89,14 @@ namespace pg_class.pg_classes
         {
             return Manager.doc_link_add(Id, Class_prop.EntityID, Class_prop.Id, -1);
         }
+
+        /// <summary>
+        /// Метод добавляет новый файл документа
+        /// </summary>
+        public doc_link doc_link_add(log Log)
+        {
+            return Manager.doc_link_add(Id, Log.EntityID, Log.Id, -1);
+        }
         #endregion
 
         #region УДАЛИТЬ
@@ -187,6 +195,14 @@ namespace pg_class.pg_classes
         {
             Manager.doc_link_del_by_entity(this.Id, Class_prop.EntityID, Class_prop.Id, -1);
         }
+
+        /// <summary>
+        /// Метод удаляет указанную ссылку документа по идентификатору сущности
+        /// </summary>
+        public void doc_link_del(log Log)
+        {
+            Manager.doc_link_del_by_entity(this.Id, Log.EntityID, Log.Id, -1);
+        }
         #endregion
 
         #region ВЫБРАТЬ
@@ -281,6 +297,14 @@ namespace pg_class.pg_classes
         public doc_link doc_link_by_entity(class_prop Class_prop)
         {
             return Manager.doc_link_by_entity(this.Id, Class_prop.EntityID, Class_prop.Id, -1);
+        }
+
+        /// <summary>
+        /// Ссылка на документ по идентификатору сущности
+        /// </summary>
+        public doc_link doc_link_by_entity(log Log)
+        {
+            return Manager.doc_link_by_entity(this.Id, Log.EntityID, Log.Id, -1);
         }
         #endregion
         #endregion
