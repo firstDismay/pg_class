@@ -133,14 +133,6 @@ namespace pg_class
             return log_link_add(iid_log, Class_prop.EntityID, Class_prop.Id, -1);
         }
 
-        /// <summary>
-        /// Метод добавляет ссылку для указанной записи журнала
-        /// </summary>
-        public log_link log_link_add(Int64 iid_log, document Document)
-        {
-            return log_link_add(iid_log, Document.EntityID, Document.Id, -1);
-        }
-
         //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу

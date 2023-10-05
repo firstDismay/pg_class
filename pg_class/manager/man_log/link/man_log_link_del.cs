@@ -191,14 +191,6 @@ namespace pg_class
             log_link_del_by_entity(iid_log, Class_prop.EntityID, Class_prop.Id, -1);
         }
 
-        /// <summary>
-        /// Метод удаляет указанную ссылку записи журнала по идентификатору сущности
-        /// </summary>
-        public void log_link_del_by_entity(Int64 iid_log, document Document)
-        {
-            log_link_del_by_entity(iid_log, Document.EntityID, Document.Id, -1);
-        }
-
         //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
