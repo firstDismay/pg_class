@@ -1,5 +1,4 @@
 ﻿using pg_class.pg_classes;
-using pg_class.pg_classes;
 using pg_class.pg_commands;
 using pg_class.pg_exceptions;
 using System;
