@@ -347,7 +347,8 @@
     <Compile Include="manager\man_log\log\man_log_by_id_user.cs" />
     <Compile Include="manager\man_log\log\man_log_by_id_position.cs" />
     <Compile Include="manager\man_log\log\man_log_by_id_conception.cs" />
-    <Compile Include="manager\man_log\log\man_log_del.cs" />
+    <Compile Include="manager\man_log\log\man_log_del - Копировать.cs" />
+    <Compile Include="manager\man_log\log\man_log_set_main_link.cs" />
     <Compile Include="manager\man_log\log\man_log_event.cs" />
     <Compile Include="manager\man_log\log\man_log_is_actual.cs" />
     <Compile Include="manager\man_log\log\man_log_by_id.cs" />
@@ -773,6 +774,7 @@
     <Compile Include="pg_classes\log\log\log_class_body.cs" />
     <Compile Include="pg_classes\log\log\log_link.cs" />
     <Compile Include="pg_classes\log\log\log_document.cs" />
+    <Compile Include="pg_classes\log\log\log_path.cs" />
     <Compile Include="pg_classes\log\log_category\log_category.cs" />
     <Compile Include="pg_classes\log\log_category\log_category_log.cs" />
     <Compile Include="pg_classes\log\log_category\log_category_entity.cs" />

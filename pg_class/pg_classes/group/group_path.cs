@@ -27,6 +27,5 @@ namespace pg_class.pg_classes
             return path;
         }
         #endregion
-
     }
 }

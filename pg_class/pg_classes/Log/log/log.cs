@@ -50,6 +50,7 @@ namespace pg_class.pg_classes
 
                     user_current = (String)row["user_current"];
                     timestamp = Convert.ToDateTime(row["timestamp"]);
+                    path = "Здесь должен быть путь основоной ссылки записи лога";
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(String.Format("Наименование входной таблицы '{0}' не соответствует ограничениям конструктора!", row.Table.TableName));
@@ -74,6 +75,7 @@ namespace pg_class.pg_classes
         private String user_current;
         private DateTime timestamp;
         private String tablename;
+        
         /// <summary>
         /// Имя таблицы базы ассистента, содержащей запись
         /// </summary>
@@ -236,7 +238,6 @@ namespace pg_class.pg_classes
         public eEntityState Is_actual()
         {
             return Manager.log_is_actual(this);
-            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -253,6 +254,15 @@ namespace pg_class.pg_classes
             }
         }
 
+        /// <summary>
+        /// Устанавливает основную ссылку
+        /// </summary>
+        public void SetMainLink(log_link ilog_link)
+        {
+                include_class_body_to_json_boby();
+                Manager.log_set_main_link(this.Id, ilog_link.Id);
+                Refresh();
+        }
 
         /// <summary>
         /// Обновление записи журнала из БД

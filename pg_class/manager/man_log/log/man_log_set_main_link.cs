@@ -8,15 +8,16 @@ namespace pg_class
     public partial class manager
     {
         /// <summary>
-        /// Метод удаляет запись журнала указанный по идентификатору
+        /// Метод устанавливает основную ссылку для указанной записи журнала
         /// </summary>
-        public void log_del(Int64 iid_log)
+        public log log_set_main_link(Int64 iid_log, Int64 iid_log_link)
         {
+            log log = null;
             Int32 error;
             String desc_error;
             NpgsqlCommandKey cmdk;
 
-            cmdk = CommandByKey("log_del");
+            cmdk = CommandByKey("log_set_main_link");
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -29,32 +30,32 @@ namespace pg_class
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
 
-            //Запрос удаляемой сущности
-            log log = log_by_id(iid_log);
-
             cmdk.Parameters["iid_log"].Value = iid_log;
+            cmdk.Parameters["iid_log_link"].Value = iid_log_link;
             cmdk.ExecuteNonQuery();
-
-
-            //Генерируем событие изменения концепции
+            
+            log = log_by_id(iid_log);
             if (log != null)
             {
-                LogChangeEventArgs e = new LogChangeEventArgs(log, eAction.Delete);
+                //Генерируем событие изменения
+                LogChangeEventArgs e = new LogChangeEventArgs(log, eAction.Update);
                 LogOnChange(e);
             }
+            //Возвращаем сущность
+            return log;
         }
 
         //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
-        public Boolean log_del(out eAccess Access)
+        public Boolean log_set_main_link(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
 
-            cmdk = CommandByKey("log_del");
+            cmdk = CommandByKey("log_set_main_link");
             if (cmdk != null)
             {
                 Result = cmdk.Access;
