@@ -3,33 +3,33 @@
     public partial class global_prop
     {
         #region МЕТОДЫ РАБОТЫ С ДАННЫМИ ОБЛАСТИ ЗНАЧЕНИЙ ГЛОБАЛЬНЫХ СВОЙСТВ
-        #region ДОБАВИТЬ ЗНАЧЕНИЕ
+        #region УСТАНОВИТЬ ЗНАЧЕНИЕ
 
         /// <summary>
-        /// Метод добавляет новые данные области значения глобального свойства
-        /// global_prop_area_val_add
+        /// Метод устанавливает новые данные области значения глобального свойства
+        /// global_prop_area_val_set
         /// </summary>
-        public global_prop_area_val area_data_add(prop_enum PropEnum)
+        public global_prop_area_val area_data_set(prop_enum PropEnum)
         {
-            return Manager.global_prop_area_val_add(this, PropEnum);
+            return Manager.global_prop_area_val_set(this, PropEnum);
         }
 
         /// <summary>
-        /// Метод добавляет новые данные области значения глобального свойства
-        /// global_prop_area_val_add
+        /// Метод устанавливает новые данные области значения глобального свойства
+        /// global_prop_area_val_set
         /// </summary>
-        public global_prop_area_val area_data_add(vclass ClassVal)
+        public global_prop_area_val area_data_set(vclass ClassVal)
         {
-            return Manager.global_prop_area_val_add(this, ClassVal);
+            return Manager.global_prop_area_val_set(this, ClassVal);
         }
 
         /// <summary>
-        /// Метод добавляет новые данные области значения глобального свойства
-        /// global_prop_area_val_add
+        /// Метод устанавливает новые данные области значения глобального свойства
+        /// global_prop_area_val_set
         /// </summary>
-        public global_prop_area_val area_data_add(entity EntityVal)
+        public global_prop_area_val area_data_set(entity EntityVal)
         {
-            return Manager.global_prop_area_val_add(this, EntityVal);
+            return Manager.global_prop_area_val_set(this, EntityVal);
         }
         #endregion
 

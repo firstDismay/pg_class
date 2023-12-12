@@ -10,14 +10,14 @@ namespace pg_class
         /// <summary>
         /// Метод добавляет новые данные области значения глобального свойства
         /// </summary>
-        public global_prop_area_val global_prop_area_val_add(Int64 iid_global_prop, Int64 iid_area_val)
+        public global_prop_area_val global_prop_area_val_set(Int64 iid_global_prop, Int64 iid_area_val)
         {
             global_prop_area_val global_prop_area_val = null;
             Int32 error;
             String desc_error;
             NpgsqlCommandKey cmdk;
 
-            cmdk = CommandByKey("global_prop_area_val_add");
+            cmdk = CommandByKey("global_prop_area_val_set");
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -48,14 +48,14 @@ namespace pg_class
         /// <summary>
         /// Метод добавляет новые данные области значения глобального свойства
         /// </summary>
-        public global_prop_area_val global_prop_area_val_add(global_prop GlobalProp, prop_enum PropEnum)
+        public global_prop_area_val global_prop_area_val_set(global_prop GlobalProp, prop_enum PropEnum)
         {
             global_prop_area_val Result = null;
             if (GlobalProp != null && PropEnum != null)
             {
                 if (GlobalProp.Prop_type == ePropType.PropEnum)
                 {
-                    Result = global_prop_area_val_add(GlobalProp.Id, PropEnum.Id_prop_enum);
+                    Result = global_prop_area_val_set(GlobalProp.Id, PropEnum.Id_prop_enum);
                 }
                 else
                 {
@@ -69,14 +69,14 @@ namespace pg_class
         /// <summary>
         /// Метод добавляет новые данные области значения глобального свойства
         /// </summary>
-        public global_prop_area_val global_prop_area_val_add(global_prop GlobalProp, vclass ClassVal)
+        public global_prop_area_val global_prop_area_val_set(global_prop GlobalProp, vclass ClassVal)
         {
             global_prop_area_val Result = null;
             if (GlobalProp != null && ClassVal != null)
             {
                 if (GlobalProp.Prop_type == ePropType.PropObject)
                 {
-                    Result = global_prop_area_val_add(GlobalProp.Id, ClassVal.Id);
+                    Result = global_prop_area_val_set(GlobalProp.Id, ClassVal.Id);
                 }
                 else
                 {
@@ -90,14 +90,14 @@ namespace pg_class
         /// <summary>
         /// Метод добавляет новые данные области значения глобального свойства
         /// </summary>
-        public global_prop_area_val global_prop_area_val_add(global_prop GlobalProp, entity EntityVal)
+        public global_prop_area_val global_prop_area_val_set(global_prop GlobalProp, entity EntityVal)
         {
             global_prop_area_val Result = null;
             if (GlobalProp != null && EntityVal != null)
             {
                 if (GlobalProp.Prop_type == ePropType.PropLink)
                 {
-                    Result = global_prop_area_val_add(GlobalProp.Id, EntityVal.Id);
+                    Result = global_prop_area_val_set(GlobalProp.Id, EntityVal.Id);
                 }
                 else
                 {
@@ -112,13 +112,13 @@ namespace pg_class
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
-        public Boolean global_prop_area_val_add(out eAccess Access)
+        public Boolean global_prop_area_val_set(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
 
-            cmdk = CommandByKey("global_prop_area_val_add");
+            cmdk = CommandByKey("global_prop_area_val_set");
             if (cmdk != null)
             {
                 Result = cmdk.Access;
