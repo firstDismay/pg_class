@@ -801,6 +801,7 @@
     <Compile Include="pg_classes\group\group_ICloneable.cs" />
     <Compile Include="pg_classes\group\group_document.cs" />
     <Compile Include="pg_classes\group\group_doc_link.cs" />
+    <Compile Include="pg_classes\log\log_link\log_link_path.cs" />
     <Compile Include="pg_classes\nested rule\object_rule_L1\rulel1_class_on_pos_temp.cs" />
     <Compile Include="pg_classes\nested rule\object_rule_L1\rulel1_class_on_pos_temp_access.cs" />
     <Compile Include="pg_classes\nested rule\object_rule_L1\rulel1_class_on_pos_temp_access_entity.cs" />

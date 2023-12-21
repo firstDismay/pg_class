@@ -50,7 +50,7 @@ namespace pg_class.pg_classes
 
                     user_current = (String)row["user_current"];
                     timestamp = Convert.ToDateTime(row["timestamp"]);
-                    path = "Здесь должен быть путь основоной ссылки записи лога";
+                    path = (String)row["path"];
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(String.Format("Наименование входной таблицы '{0}' не соответствует ограничениям конструктора!", row.Table.TableName));

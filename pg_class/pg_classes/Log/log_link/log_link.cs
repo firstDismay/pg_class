@@ -35,6 +35,7 @@ namespace pg_class.pg_classes
                 id_entity = (Int32)row["id_entity"];
                 id_entity_instance = (Int64)row["id_entity_instance"];
                 id_sub_entity_instance = (Int64)row["id_sub_entity_instance"];
+                path = (String)row["path"];
             }
             else
             {
