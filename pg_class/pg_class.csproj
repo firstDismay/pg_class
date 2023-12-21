@@ -347,7 +347,7 @@
     <Compile Include="manager\man_log\log\man_log_by_id_user.cs" />
     <Compile Include="manager\man_log\log\man_log_by_id_position.cs" />
     <Compile Include="manager\man_log\log\man_log_by_id_conception.cs" />
-    <Compile Include="manager\man_log\log\man_log_del - Копировать.cs" />
+    <Compile Include="manager\man_log\log\man_log_del.cs" />
     <Compile Include="manager\man_log\log\man_log_set_main_link.cs" />
     <Compile Include="manager\man_log\log\man_log_event.cs" />
     <Compile Include="manager\man_log\log\man_log_is_actual.cs" />
