@@ -16,11 +16,12 @@ namespace pg_class
         public Int32 id_entity { get; set; }
         public Int64 id_entity_instance { get; set; }
         public Int64 id_sub_entity_instance { get; set; }
-
+        public String path { get; set; }
+        public Boolean is_main_link { get; set; }
+    
         public override string ToString()
         {
             return message;
         }
     }
 }
-

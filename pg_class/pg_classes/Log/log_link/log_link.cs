@@ -36,6 +36,7 @@ namespace pg_class.pg_classes
                 id_entity_instance = (Int64)row["id_entity_instance"];
                 id_sub_entity_instance = (Int64)row["id_sub_entity_instance"];
                 path = (String)row["path"];
+                is_main_link = (Boolean)row["is_main_link"];
             }
             else
             {
@@ -61,6 +62,8 @@ namespace pg_class.pg_classes
                 id_entity = ll.id_entity;
                 id_entity_instance = ll.id_entity_instance;
                 id_sub_entity_instance = ll.id_sub_entity_instance;
+                path = ll.path;
+                is_main_link=ll.is_main_link;
             }
             else
             {
@@ -79,6 +82,12 @@ namespace pg_class.pg_classes
         private Int32 id_entity;
         private Int64 id_entity_instance;
         private Int64 id_sub_entity_instance;
+        private Boolean is_main_link;
+
+        /// <summary>
+        /// Признак основной ссылки записи лога
+        /// </summary>
+        public Boolean Is_main_link { get => is_main_link; }
 
         /// <summary>
         /// Идентификатор ссылки 
@@ -210,6 +219,9 @@ namespace pg_class.pg_classes
                 id_entity = temp.Link_id_entity;
                 id_entity_instance = temp.Link_id_entity_instance;
                 id_sub_entity_instance = temp.Link_id_sub_entity_instance;
+
+                path = temp.Path();
+                is_main_link = temp.Is_main_link;   
                 Result = true;
             }
             else

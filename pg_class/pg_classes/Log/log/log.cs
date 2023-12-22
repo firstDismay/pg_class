@@ -51,6 +51,7 @@ namespace pg_class.pg_classes
                     user_current = (String)row["user_current"];
                     timestamp = Convert.ToDateTime(row["timestamp"]);
                     path = (String)row["path"];
+                    main_log_link = (Int64)row["main_log_link"];
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(String.Format("Наименование входной таблицы '{0}' не соответствует ограничениям конструктора!", row.Table.TableName));
@@ -75,11 +76,17 @@ namespace pg_class.pg_classes
         private String user_current;
         private DateTime timestamp;
         private String tablename;
-        
+        private Int64 main_log_link;
+
         /// <summary>
         /// Имя таблицы базы ассистента, содержащей запись
         /// </summary>
         public String Tablename { get => tablename; }
+
+        /// <summary>
+        /// Идентификатор основной ссылки записи лога
+        /// </summary>
+        public Int64 Main_log_link { get => main_log_link; }
 
         /// <summary>
         /// Идентификатор окумента
@@ -291,6 +298,8 @@ namespace pg_class.pg_classes
                         datetime = temp.Datetime;
                         user_current = temp.User_current;
                         timestamp = temp.Timestamp;
+                        path = temp.Path();
+                        main_log_link = temp.Main_log_link;
                         Result = true;
                         on_change = false;
                     }
