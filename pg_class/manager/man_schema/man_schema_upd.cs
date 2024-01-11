@@ -28,5 +28,24 @@ namespace pg_class
                 throw new AccessDataBaseException(404, String.Format(@"Отказано в доступе к методу обновления схемы данных текущей базы!"));
             }
         }
+
+        //ACCESS
+        /// <summary>
+        /// Проверка прав доступа к методу
+        /// </summary>
+        public Boolean schema_update(out eAccess Access)
+        {
+            Boolean Result = false;
+
+            if (this.User_current.RolSuper)
+            {
+                Access = eAccess.Success;
+            }
+            else
+            {
+                Access = eAccess.NotAvailable;
+            }
+            return Result;
+        }
     }
 }
