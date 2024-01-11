@@ -668,6 +668,7 @@
     <Compile Include="manager\man_role\role_base\man_role_base_current.cs" />
     <Compile Include="manager\man_nested_rule\man_object_rule_L2\man_rulel2_class_on_position_event.cs" />
     <Compile Include="manager\man_nested_rule\man_object_rule_L1\man_rulel1_group\man_rulel1_group_on_pos_temp_event.cs" />
+    <Compile Include="manager\man_schema\man_schema_upd.cs" />
     <Compile Include="manager\man_unit\man_unit_sel.cs" />
     <Compile Include="manager\man_group\man_group_event.cs" />
     <Compile Include="manager\man_group\man_group_patch.cs" />
