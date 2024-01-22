@@ -320,6 +320,12 @@ namespace pg_class.pg_classes
                 case eEntity.object_prop:
                     Result = Manager.object_prop_by_id(id_entity_instance, id_sub_entity_instance);
                     break;
+                case eEntity.document:
+                    Result = Manager.document_by_id(id_entity_instance);
+                    break;
+                case eEntity.log:
+                    Result = Manager.log_by_id(id_entity_instance);
+                    break;
                 default:
                     Result = Manager.entity_by_id(Convert.ToInt32(id_entity));
                     break;
