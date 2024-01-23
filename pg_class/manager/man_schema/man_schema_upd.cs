@@ -40,6 +40,7 @@ namespace pg_class
             if (this.User_current.RolSuper)
             {
                 Access = eAccess.Success;
+                Result = true;
             }
             else
             {
