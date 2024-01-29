@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace pg_class.pg_classes
 {
@@ -8,9 +9,18 @@ namespace pg_class.pg_classes
         /// Метод возвращает список активных базовых классов концепции
         /// class_act_base_by_id_conception
         /// </summary>
-        public List<vclass> class_act_base_list_get()
+        public List<vclass> class_act_base_list_get(Boolean Extended = false)
         {
-            return Manager.class_act_base_by_id_conception(this);
+            List<vclass> Result = null;
+            if (Extended)
+            {
+                Result = Manager.class_act_ext_base_by_id_conception(this);
+            }
+            else
+            {
+                Result = Manager.class_act_base_by_id_conception(this);
+            }
+            return Result;
         }
     }
 }

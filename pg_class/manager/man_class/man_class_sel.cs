@@ -1199,7 +1199,6 @@ namespace pg_class
             }
             return Result;
         }
-        //////////////////////********************************************************
 
         /// <summary>
         /// Метод возвращает список активных базовых классов по идентификатору концепции
@@ -1210,7 +1209,7 @@ namespace pg_class
             DataTable tbl_vclass = TableByName("vclass");
             NpgsqlCommandKey cmdk;
 
-            cmdk = CommandByKey("class_act_by_id_prop_data_type");
+            cmdk = CommandByKey("class_act_base_by_id_conception");
             if (cmdk != null)
             {
                 if (!cmdk.Access)
