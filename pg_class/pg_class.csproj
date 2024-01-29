@@ -752,6 +752,7 @@
     <Compile Include="pg_classes\class\class_to_json.cs" />
     <Compile Include="pg_classes\class\SubClass\class_name_format_builder.cs" />
     <Compile Include="pg_classes\class\SubClass\pattern_string.cs" />
+    <Compile Include="pg_classes\conception\con_class_act_base.cs" />
     <Compile Include="pg_classes\conception\con_log.cs" />
     <Compile Include="pg_classes\conception\con_class_full.cs" />
     <Compile Include="pg_classes\conception\con_class.cs" />
