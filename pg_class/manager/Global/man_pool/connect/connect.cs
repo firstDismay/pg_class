@@ -64,7 +64,7 @@ namespace pg_class.poolcn
         }
 
         /// <summary>
-        /// Параметры текущей сесии пользователя, хранимые независимо от состояния экземпляра менеджера
+        /// Параметры текущей сессии пользователя, хранимые независимо от состояния экземпляра менеджера
         /// </summary>
         public pg_settings Session_Settings
         {
@@ -123,7 +123,7 @@ namespace pg_class.poolcn
                     else
                     {
                         String Message = "Метод открытия подключения к серверу класса коннект вызвал исключение, параметры соединения не определены";
-                        manager.ManagerStateInstanceStsticSet(eManagerState.NoReady);
+                        manager.ManagerStateInstanceStaticSet(eManagerState.NoReady);
                         //Вызов события журнала
                         JournalEventArgs me = new JournalEventArgs(0, eEntity.connect, "connection_error", Message, eAction.Connect, eJournalMessageType.error);
                         manager.JournalMessageOnReceivedStatic(this, me);
@@ -164,7 +164,7 @@ namespace pg_class.poolcn
 
                 if (manager.StateInstance == eManagerState.LogOff)
                 {
-                    manager.ManagerStateInstanceStsticSet(eManagerState.LogOff);
+                    manager.ManagerStateInstanceStaticSet(eManagerState.LogOff);
                     //Вызов события журнала
                     JournalEventArgs me = new JournalEventArgs(0, eEntity.connect, "connection_error", "Ошибка подключения к серверу", eAction.Connect, eJournalMessageType.error);
                     manager.JournalMessageOnReceivedStatic(this, me);
@@ -175,7 +175,7 @@ namespace pg_class.poolcn
                 }
                 else
                 {
-                    manager.ManagerStateInstanceStsticSet(eManagerState.NoReady);
+                    manager.ManagerStateInstanceStaticSet(eManagerState.NoReady);
                     //Вызов события журнала
                     JournalEventArgs me = new JournalEventArgs(0, eEntity.connect, "connection_error", "Ошибка подключения к серверу", eAction.Connect, eJournalMessageType.error);
                     manager.JournalMessageOnReceivedStatic(this, me);
@@ -201,7 +201,7 @@ namespace pg_class.poolcn
                 cn.Dispose();
                 cn = null;
 
-                //Сообщить в пул соединений о необхимости исключить подключение из списка соединений
+                //Сообщить в пул соединений о необходимости исключить подключение из списка соединений
                 is_corupted = true;
 
                 //Вызов события журнала
@@ -218,6 +218,8 @@ namespace pg_class.poolcn
             if (cn != null)
             {
                 cn.CloseAsync();
+                cn.Dispose();
+                cn = null;
                 //Вызов события журнала
                 JournalEventArgs me = new JournalEventArgs(0, eEntity.manager, "action_allowed", "Подключение закрыто", eAction.DisConnect, eJournalMessageType.information);
                 manager.JournalMessageOnReceivedStatic(this, me);
