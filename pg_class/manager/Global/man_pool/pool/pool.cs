@@ -45,7 +45,7 @@ namespace pg_class.poolcn
 
         //private pg_settings Pg_PoolSessionSettings;
         /// <summary>
-        /// Параметры текущей сесии пользователя, хранимые независимо от состояния экземпляра менеджера
+        /// Параметры текущей сессии пользователя, хранимые независимо от состояния экземпляра менеджера
         /// </summary>
         internal pg_settings Session_Settings
         {
@@ -56,7 +56,7 @@ namespace pg_class.poolcn
         }
 
         /// <summary>
-        /// Максимальное количество подключений в сесии менеджера
+        /// Максимальное количество подключений в сессии менеджера
         /// </summary>
         internal int PoolConnectMax
         {
@@ -72,7 +72,7 @@ namespace pg_class.poolcn
         }
 
         /// <summary>
-        /// Текущее количество подключений в сесии менеджера
+        /// Текущее количество подключений в сессии менеджера
         /// </summary>
         internal int PoolConnectCurrent
         {

@@ -151,7 +151,7 @@ namespace pg_class
 
         Int32 PoolConnectMax_;
         /// <summary>
-        /// Максимальное количество подключений в сесии менеджера
+        /// Максимальное количество подключений в сессии менеджера
         /// </summary>
         public int PoolConnectMax
         {

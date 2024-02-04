@@ -76,7 +76,7 @@ namespace pg_class
         }
 
         /// <summary>
-        /// Максимальное количество подключений в сесии менеджера
+        /// Максимальное количество подключений в сессии менеджера
         /// </summary>
         internal int PoolConnectMax
         {
@@ -92,7 +92,7 @@ namespace pg_class
         }
 
         /// <summary>
-        /// Текущее количество подключений в сесии менеджера
+        /// Текущее количество подключений в сессии менеджера
         /// </summary>
         internal int PoolConnectCurrent
         {

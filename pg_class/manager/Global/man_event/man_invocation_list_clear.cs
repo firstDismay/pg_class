@@ -416,7 +416,7 @@
                 }
             }
 
-            //Завершение сесии ведения журнала
+            //Завершение сессии ведения журнала
             //Вызов события журнала
             JournalEventArgs me = new JournalEventArgs(0, eEntity.manager, "action_allowed", "Сессия журнала закрыта", eAction.DisConnect, eJournalMessageType.information);
             JournalMessageOnReceived(me);

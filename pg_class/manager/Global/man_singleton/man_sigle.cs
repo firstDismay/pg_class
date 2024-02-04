@@ -76,7 +76,7 @@ namespace pg_class
         /// <summary>
         /// Состояние экземпляра менеджера данных установить
         /// </summary>
-        static internal void ManagerStateInstanceStsticSet(eManagerState ManagerState)
+        static internal void ManagerStateInstanceStaticSet(eManagerState ManagerState)
         {
             managerstate = ManagerState;
         }

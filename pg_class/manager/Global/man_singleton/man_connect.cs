@@ -9,7 +9,7 @@ namespace pg_class
 
         internal static pg_settings Pg_ManagerSettings;
         /// <summary>
-        /// Параметры текущей сесии пользователя, хранимые независимо от состояния экземпляра менеджера
+        /// Параметры текущей сессии пользователя, хранимые независимо от состояния экземпляра менеджера
         /// </summary>
         public static pg_settings Session_Settings
         {
@@ -20,7 +20,7 @@ namespace pg_class
         }
 
         /// <summary>
-        /// Максимальное количество подключений в сесии менеджера
+        /// Максимальное количество подключений в сессии менеджера
         /// </summary>
         public static int PoolConnectMaxStatic
         {
@@ -36,7 +36,7 @@ namespace pg_class
         }
 
         /// <summary>
-        /// Текущее количество подключений в сесии менеджера
+        /// Текущее количество подключений в сессии менеджера
         /// </summary>
         public static int PoolConnectCurrentStatic
         {
@@ -50,11 +50,9 @@ namespace pg_class
                 return Result;
             }
         }
-
         #endregion
 
         #region ДОСТУП К СОЕДИНЕНИЯМ ПУЛА
-
         internal connect Connect_Get()
         {
             connect Result = null;
@@ -67,7 +65,6 @@ namespace pg_class
         #endregion
 
         #region ЗАКРЫТИЕ СОЕДИНЕНИЯ
-
         /// <summary>
         /// Метод закрывает менеджер конфигуратора БД и освобождает ресурсы и очищает подписки на события менеджера
         /// </summary>
@@ -75,9 +72,7 @@ namespace pg_class
         {
             if (Me != null)
             {
-                //===========
                 Me.Pool_drop();
-                //===========
                 //Очищаем листы подписчиков на события менеджеров данных
                 Me.InvocationListClear();
                 //Обнуление переменной одиночки
