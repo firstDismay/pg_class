@@ -863,6 +863,7 @@
     <Compile Include="pg_classes\pos_temp\pos_temp_group.cs" />
     <Compile Include="pg_classes\pos_temp\pos_temp_conception.cs" />
     <Compile Include="pg_classes\pos_temp\pos_temp_log_link.cs" />
+    <Compile Include="pg_classes\properties\class_prop\step1_prop\class_prop_global_prop_link.cs" />
     <Compile Include="pg_classes\properties\class_prop\step1_prop\class_prop_log_link.cs" />
     <Compile Include="pg_classes\properties\class_prop\step1_prop\class_prop_search_method.cs" />
     <Compile Include="pg_classes\properties\class_prop\step1_prop\class_prop_log.cs" />
@@ -874,7 +875,6 @@
     <Compile Include="pg_classes\properties\class_prop\step3_object_val\object_prop_document.cs" />
     <Compile Include="pg_classes\properties\class_prop\step1_prop\class_prop_document.cs" />
     <Compile Include="pg_classes\properties\class_prop\step1_prop\class_prop_sort.cs" />
-    <Compile Include="pg_classes\properties\class_prop\step1_prop\class_prop_global_prop.cs" />
     <Compile Include="pg_classes\properties\class_prop\step1_prop\class_prop_IComparable.cs" />
     <Compile Include="pg_classes\properties\class_prop\step1_prop\class_prop_ICloneable.cs" />
     <Compile Include="pg_classes\properties\class_prop\step2_class_val\enum prop\class_prop_enum.cs" />
@@ -890,12 +890,12 @@
     <Compile Include="pg_classes\properties\global_prop\Step4_find_func\global_prop_find_func_object.cs" />
     <Compile Include="pg_classes\properties\global_prop\Step4_agg_func\global_prop_agg_func_match.cs" />
     <Compile Include="pg_classes\properties\global_prop\Step4_group_action\global_prop_group_action_class_prop.cs" />
+    <Compile Include="pg_classes\properties\pos_temp_prop\Step1_prop\pos_temp_prop_global_prop_link.cs" />
     <Compile Include="pg_classes\properties\pos_temp_prop\Step1_prop\pos_temp_prop_log.cs" />
     <Compile Include="pg_classes\properties\pos_temp_prop\Step1_prop\pos_temp_prop_log_link.cs" />
     <Compile Include="pg_classes\properties\pos_temp_prop\Step1_prop\pos_temp_prop_doc_link.cs" />
     <Compile Include="pg_classes\properties\pos_temp_prop\Step1_prop\pos_temp_prop_document.cs" />
     <Compile Include="pg_classes\properties\pos_temp_prop\Step1_prop\pos_temp_prop_pos_temp.cs" />
-    <Compile Include="pg_classes\properties\pos_temp_prop\Step1_prop\pos_temp_prop_global_prop.cs" />
     <Compile Include="pg_classes\properties\pos_temp_prop\Step1_prop\pos_temp_prop_sort.cs" />
     <Compile Include="pg_classes\properties\pos_temp_prop\Step2_pos_temp_val\enum prop\pos_temp_prop_enum.cs" />
     <Compile Include="pg_classes\properties\pos_temp_prop\Step2_pos_temp_val\enum prop\pos_temp_prop_enum_val.cs" />
