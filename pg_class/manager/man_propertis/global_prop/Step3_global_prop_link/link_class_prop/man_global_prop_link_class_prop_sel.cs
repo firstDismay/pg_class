@@ -12,18 +12,13 @@ namespace pg_class
         /// <summary>
         /// Выбор ссылки глобального свойства на свойство класса по идентификатору ссылки
         /// </summary>
-        public global_prop_link_class_prop global_prop_link_class_prop_by_id(Int64 iid_global_prop, Int64 iid_class_prop_definition)
+        public global_prop_link_class_prop global_prop_link_class_prop_by_id(Int64 iid_class_prop_definition)
         {
             global_prop_link_class_prop global_prop_link_class_prop = null;
-
             DataTable tbl_vglobal_prop_link = TableByName("vglobal_prop_link_class_prop");
 
-
             NpgsqlCommandKey cmdk;
-
-
             cmdk = CommandByKey("global_prop_link_class_prop_by_id");
-
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -36,12 +31,8 @@ namespace pg_class
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
 
-
-            cmdk.Parameters["iid_global_prop"].Value = iid_global_prop;
             cmdk.Parameters["iid_class_prop_definition"].Value = iid_class_prop_definition;
-
             cmdk.Fill(tbl_vglobal_prop_link);
-
             if (tbl_vglobal_prop_link.Rows.Count > 0)
             {
                 global_prop_link_class_prop = new global_prop_link_class_prop(tbl_vglobal_prop_link.Rows[0]);
@@ -52,9 +43,9 @@ namespace pg_class
         /// <summary>
         /// Выбор ссылки глобального свойства на свойство класса по идентификатору ссылки
         /// </summary>
-        public global_prop_link_class_prop global_prop_link_class_prop_by_id(global_prop GlobalProp, class_prop ClassProp)
+        public global_prop_link_class_prop global_prop_link_class_prop_by_id(class_prop ClassProp)
         {
-            return global_prop_link_class_prop_by_id(GlobalProp.Id, ClassProp.Id);
+            return global_prop_link_class_prop_by_id(ClassProp.Id);
         }
 
         /// <summary>
@@ -62,7 +53,7 @@ namespace pg_class
         /// </summary>
         public global_prop_link_class_prop global_prop_link_class_prop_by_id(global_prop_link_class_prop GlobalPropLink)
         {
-            return global_prop_link_class_prop_by_id(GlobalPropLink.Id_global_prop, GlobalPropLink.Id_class_prop_definition);
+            return global_prop_link_class_prop_by_id(GlobalPropLink.Id_class_prop_definition);
         }
 
         //ACCESS

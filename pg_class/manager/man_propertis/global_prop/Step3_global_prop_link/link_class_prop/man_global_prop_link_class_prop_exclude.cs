@@ -10,12 +10,9 @@ namespace pg_class
         /// <summary>
         /// Метод удаляет свойство класса из глобального свойства
         /// </summary>
-        public global_prop_link_class_prop global_prop_link_class_prop_exclude(Int64 iid_global_prop, Int64 iid_class_prop_definition)
+        public global_prop_link_class_prop global_prop_link_class_prop_exclude(Int64 iid_class_prop_definition)
         {
-            Int32 error;
-            String desc_error;
             global_prop_link_class_prop global_prop_link_class_prop;
-            class_prop prop_link;
             NpgsqlCommandKey cmdk;
 
             cmdk = CommandByKey("global_prop_link_class_prop_exclude");
@@ -32,13 +29,12 @@ namespace pg_class
             }
 
             //Запрос удаляемой сущности
-            global_prop_link_class_prop = global_prop_link_class_prop_by_id(iid_global_prop, iid_class_prop_definition);
+            global_prop_link_class_prop = global_prop_link_class_prop_by_id(iid_class_prop_definition);
 
-            cmdk.Parameters["iid_global_prop"].Value = iid_global_prop;
             cmdk.Parameters["iid_class_prop_definition"].Value = iid_class_prop_definition;
             cmdk.ExecuteNonQuery();
 
-            prop_link = prop_link = class_prop_by_id(iid_class_prop_definition);
+            var prop_link = class_prop_by_id(iid_class_prop_definition);
 
             //Генерируем событие изменения
             if (global_prop_link_class_prop != null)
@@ -60,12 +56,12 @@ namespace pg_class
         /// <summary>
         /// Метод удаляет свойство класса из глобального свойства
         /// </summary>
-        public global_prop_link_class_prop global_prop_link_class_prop_exclude(global_prop GlobalProp, class_prop ClassProp)
+        public global_prop_link_class_prop global_prop_link_class_prop_exclude(class_prop ClassProp)
         {
             global_prop_link_class_prop Result = null;
-            if ((GlobalProp != null) & (ClassProp != null))
+            if (ClassProp != null)
             {
-                Result = global_prop_link_class_prop_exclude(GlobalProp.Id, ClassProp.Id);
+                Result = global_prop_link_class_prop_exclude( ClassProp.Id);
             }
             return Result;
         }

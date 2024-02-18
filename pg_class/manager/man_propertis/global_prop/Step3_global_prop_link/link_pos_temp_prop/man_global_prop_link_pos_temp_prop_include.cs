@@ -35,7 +35,7 @@ namespace pg_class
             cmdk.Parameters["iid_pos_temp_prop"].Value = iid_pos_temp_prop;
             cmdk.ExecuteNonQuery();
 
-            global_prop_link_pos_temp_prop = global_prop_link_pos_temp_prop_by_id(iid_global_prop, iid_pos_temp_prop);
+            global_prop_link_pos_temp_prop = global_prop_link_pos_temp_prop_by_id(iid_pos_temp_prop);
             prop_link = pos_temp_prop_by_id(iid_pos_temp_prop);
 
             if (global_prop_link_pos_temp_prop != null)

@@ -10,10 +10,8 @@ namespace pg_class
         /// <summary>
         /// Метод удаляет свойство класса из глобального свойства
         /// </summary>
-        public global_prop_link_pos_temp_prop global_prop_link_pos_temp_prop_exclude(Int64 iid_global_prop, Int64 iid_pos_temp_prop)
+        public global_prop_link_pos_temp_prop global_prop_link_pos_temp_prop_exclude(Int64 iid_pos_temp_prop)
         {
-            Int32 error;
-            String desc_error;
             global_prop_link_pos_temp_prop global_prop_link_pos_temp_prop;
             pos_temp_prop prop_link;
             NpgsqlCommandKey cmdk;
@@ -32,9 +30,8 @@ namespace pg_class
             }
 
             //Запрос удаляемой сущности
-            global_prop_link_pos_temp_prop = global_prop_link_pos_temp_prop_by_id(iid_global_prop, iid_pos_temp_prop);
+            global_prop_link_pos_temp_prop = global_prop_link_pos_temp_prop_by_id(iid_pos_temp_prop);
 
-            cmdk.Parameters["iid_global_prop"].Value = iid_global_prop;
             cmdk.Parameters["iid_pos_temp_prop"].Value = iid_pos_temp_prop;
             cmdk.ExecuteNonQuery();
 
@@ -60,12 +57,12 @@ namespace pg_class
         /// <summary>
         /// Метод удаляет свойство класса из глобального свойства
         /// </summary>
-        public global_prop_link_pos_temp_prop global_prop_link_pos_temp_prop_exclude(global_prop GlobalProp, pos_temp_prop PosTempProp)
+        public global_prop_link_pos_temp_prop global_prop_link_pos_temp_prop_exclude(pos_temp_prop PosTempProp)
         {
             global_prop_link_pos_temp_prop Result = null;
-            if ((GlobalProp != null) & (PosTempProp != null))
+            if (PosTempProp != null)
             {
-                Result = global_prop_link_pos_temp_prop_exclude(GlobalProp.Id, PosTempProp.Id);
+                Result = global_prop_link_pos_temp_prop_exclude(PosTempProp.Id);
             }
             return Result;
         }

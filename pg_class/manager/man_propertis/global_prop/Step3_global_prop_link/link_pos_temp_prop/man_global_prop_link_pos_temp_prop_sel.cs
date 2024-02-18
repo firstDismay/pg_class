@@ -12,7 +12,7 @@ namespace pg_class
         /// <summary>
         /// Выбор ссылки глобального свойства на свойство класса по идентификатору ссылки
         /// </summary>
-        public global_prop_link_pos_temp_prop global_prop_link_pos_temp_prop_by_id(Int64 iid_global_prop, Int64 iid_pos_temp_prop)
+        public global_prop_link_pos_temp_prop global_prop_link_pos_temp_prop_by_id(Int64 iid_pos_temp_prop)
         {
             global_prop_link_pos_temp_prop global_prop_link_pos_temp_prop = null;
 
@@ -20,8 +20,6 @@ namespace pg_class
 
 
             NpgsqlCommandKey cmdk;
-
-
             cmdk = CommandByKey("global_prop_link_pos_temp_prop_by_id");
 
             if (cmdk != null)
@@ -36,12 +34,8 @@ namespace pg_class
                 throw new AccessDataBaseException(405, String.Format(@"Не найден метод: {0}!", cmdk.CommandText));
             }
 
-
-            cmdk.Parameters["iid_global_prop"].Value = iid_global_prop;
             cmdk.Parameters["iid_pos_temp_prop"].Value = iid_pos_temp_prop;
-
             cmdk.Fill(tbl_vglobal_prop_link);
-
             if (tbl_vglobal_prop_link.Rows.Count > 0)
             {
                 global_prop_link_pos_temp_prop = new global_prop_link_pos_temp_prop(tbl_vglobal_prop_link.Rows[0]);
@@ -52,9 +46,9 @@ namespace pg_class
         /// <summary>
         /// Выбор ссылки глобального свойства на свойство класса по идентификатору ссылки
         /// </summary>
-        public global_prop_link_pos_temp_prop global_prop_link_pos_temp_prop_by_id(global_prop GlobalProp, pos_temp_prop PosTempProp)
+        public global_prop_link_pos_temp_prop global_prop_link_pos_temp_prop_by_id(pos_temp_prop PosTempProp)
         {
-            return global_prop_link_pos_temp_prop_by_id(GlobalProp.Id, PosTempProp.Id);
+            return global_prop_link_pos_temp_prop_by_id(PosTempProp.Id);
         }
 
         /// <summary>
@@ -62,7 +56,7 @@ namespace pg_class
         /// </summary>
         public global_prop_link_pos_temp_prop global_prop_link_pos_temp_prop_by_id(global_prop_link_pos_temp_prop GlobalPropLink)
         {
-            return global_prop_link_pos_temp_prop_by_id(GlobalPropLink.Id_global_prop, GlobalPropLink.Id_pos_temp_prop);
+            return global_prop_link_pos_temp_prop_by_id(GlobalPropLink.Id_pos_temp_prop);
         }
 
         //ACCESS

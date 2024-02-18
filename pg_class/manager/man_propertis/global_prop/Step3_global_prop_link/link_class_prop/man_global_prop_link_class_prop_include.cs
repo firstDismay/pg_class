@@ -34,7 +34,7 @@ namespace pg_class
             cmdk.Parameters["iid_global_prop"].Value = iid_global_prop;
             cmdk.Parameters["iid_class_prop_definition"].Value = iid_class_prop_definition;
             cmdk.ExecuteNonQuery();
-            global_prop_link_class_prop = global_prop_link_class_prop_by_id(iid_global_prop, iid_class_prop_definition);
+            global_prop_link_class_prop = global_prop_link_class_prop_by_id(iid_class_prop_definition);
             prop_link = class_prop_by_id(iid_class_prop_definition);
 
             if (global_prop_link_class_prop != null)

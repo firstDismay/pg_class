@@ -284,7 +284,7 @@ namespace pg_class.pg_classes
         {
             global_prop_link_class_prop temp = null;
             Boolean Result = false;
-            temp = Manager.global_prop_link_class_prop_by_id(id_global_prop, id_class_prop_definition);
+            temp = Manager.global_prop_link_class_prop_by_id(id_class_prop_definition);
             if (temp != null)
             {
                 id_conception = temp.Id_conception;
@@ -337,7 +337,7 @@ namespace pg_class.pg_classes
         public void Del()
         {
 
-            Manager.global_prop_link_class_prop_exclude(this.Id_global_prop, this.Id_class_prop_definition);
+            Manager.global_prop_link_class_prop_exclude(this.Id_class_prop_definition);
         }
 
         #endregion

@@ -27,7 +27,7 @@ namespace pg_class.pg_classes
         /// </summary>
         public global_prop_link_class_prop Link_class_prop_exclude(class_prop ClassProp)
         {
-            return Manager.global_prop_link_class_prop_exclude(this, ClassProp);
+            return Manager.global_prop_link_class_prop_exclude(ClassProp);
         }
         #endregion
 
