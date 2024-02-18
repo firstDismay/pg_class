@@ -22,7 +22,7 @@ namespace pg_class.pg_classes
         {
             return Manager.con_prop_data_type_set(out Access);
         }
-        //*************************************************************************************
+        
 
         /// <summary>
         /// Метод добавляет тип данных в список типов данных концепции
@@ -50,7 +50,7 @@ namespace pg_class.pg_classes
         {
             return Manager.Con_prop_data_type_del(out Access);
         }
-        //*************************************************************************************
+        
         #endregion
 
         #region ВЫБРАТЬ
@@ -69,7 +69,7 @@ namespace pg_class.pg_classes
         {
             return Manager.Con_prop_data_type_full_by_id_con(out Access);
         }
-        //*************************************************************************************
+        
 
         /// <summary>
         /// Метод возвращает назначение типа данных концепции по идентификатору
@@ -86,7 +86,7 @@ namespace pg_class.pg_classes
         {
             return Manager.Con_prop_data_type_by_id(out Access);
         }
-        //*************************************************************************************
+        
 
         /// <summary>
         /// Лист типов данных свойств класса по типу свойства
@@ -103,7 +103,7 @@ namespace pg_class.pg_classes
         {
             return Manager.Con_prop_data_type_by_id_prop_type(out Access);
         }
-        //*************************************************************************************
+        
 
         /// <summary>
         /// Лист типов данных свойств класса по типу свойства
@@ -113,7 +113,7 @@ namespace pg_class.pg_classes
         {
             return Manager.Con_prop_data_type_by_id_prop_type(id, id_prop_type);
         }
-        //*************************************************************************************
+        
 
 
         /// <summary>

@@ -37,7 +37,7 @@ namespace pg_class.pg_classes.calendar
         {
             Manager.plan_del(Plan.Id);
         }
-        //*************************************************************************************
+        
         #endregion
 
         #region ВЫБРАТЬ

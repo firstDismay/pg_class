@@ -25,7 +25,7 @@ namespace pg_class.pg_classes
         {
             return Manager.prop_enum_add(out Access);
         }
-        //*************************************************************************************
+        
 
         /// <summary>
         /// Метод добавляет новое перечисление для свойств
@@ -35,7 +35,7 @@ namespace pg_class.pg_classes
         {
             return Manager.prop_enum_add(id, iname, idesc, iid_prop_enum_use_area, iid_data_type);
         }
-        //*************************************************************************************
+        
         #endregion
 
         #region УДАЛИТЬ
@@ -54,7 +54,7 @@ namespace pg_class.pg_classes
         {
             return Manager.prop_enum_del(out Access);
         }
-        //*************************************************************************************
+        
         #endregion
 
         #region ВЫБРАТЬ
@@ -67,7 +67,7 @@ namespace pg_class.pg_classes
             return Manager.prop_enum_by_id_conception(this);
         }
 
-        //*************************************************************************************
+        
 
         /// <summary>
         /// Метод возвращает лист перечислений концепции
@@ -77,7 +77,7 @@ namespace pg_class.pg_classes
         {
             return Manager.prop_enum_by_id_conception_data_type(this, ConPropDataType);
         }
-        //*************************************************************************************
+        
 
         /// <summary>
         ///  Выбрать все перечисления для свойства по идентификатору концепции с учетом области применения
@@ -87,7 +87,7 @@ namespace pg_class.pg_classes
         {
             return Manager.prop_enum_by_id_conception_use_area(this, Prop_enum_use_area);
         }
-        //*************************************************************************************
+        
 
         /// <summary>
         ///  Выбрать все перечисления для свойства по идентификатору концепции с учетом области применения
@@ -97,7 +97,7 @@ namespace pg_class.pg_classes
         {
             return Manager.prop_enum_by_id_conception_use_area(id, (Int32)Prop_enum_use_area);
         }
-        //*************************************************************************************
+        
 
         /// <summary>
         ///  Выбрать все перечисления для свойства по идентификатору концепции с учетом области применения и типа данных перечисления
@@ -107,7 +107,7 @@ namespace pg_class.pg_classes
         {
             return Manager.prop_enum_by_id_conception_use_area_data_type(id, Prop_enum_use_area.Id, Data_type.Id);
         }
-        //*************************************************************************************
+        
 
         /// <summary>
         ///  Выбрать все перечисления для свойства по идентификатору концепции с учетом области применения и типа данных перечисления
@@ -117,7 +117,7 @@ namespace pg_class.pg_classes
         {
             return Manager.prop_enum_by_id_conception_use_area_data_type(id, (Int32)Prop_enum_use_area, (Int32)DataType);
         }
-        //*************************************************************************************
+        
 
 
         /// <summary>
@@ -135,7 +135,7 @@ namespace pg_class.pg_classes
         {
             return Manager.prop_enum_for_object_by_id_conception_data_type(out Access);
         }
-        //*************************************************************************************
+        
 
         /// <summary>
         ///  Выбрать все перечисления для свойств объектов по идентификатору концепции с учетом типа данных перечисления
@@ -145,7 +145,7 @@ namespace pg_class.pg_classes
         {
             return Manager.prop_enum_for_object_by_id_conception_data_type(id, (Int32)DataType);
         }
-        //*************************************************************************************
+        
 
         /// <summary>
         ///  Выбрать все перечисления для свойств позиций по идентификатору концепции с учетом типа данных перечисления
@@ -183,7 +183,7 @@ namespace pg_class.pg_classes
         {
             return Manager.prop_enum_use_area_by_all(out Access);
         }
-        //*************************************************************************************
+        
         #endregion
         #endregion
     }

@@ -22,7 +22,7 @@ namespace pg_class.pg_classes
         {
             return Manager.unit_conception_by_all(out Access);
         }
-        //*************************************************************************************
+        
         #endregion
     }
 }

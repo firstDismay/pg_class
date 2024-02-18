@@ -15,7 +15,7 @@ namespace pg_class.pg_classes
         {
             return Manager.global_prop_add(this, Prop_type, Data_type, iname, idesc, ivisible);
         }
-        //*************************************************************************************
+        
 
         /// <summary>
         /// Метод добавляет новое глобальное свойство по образцу существующего свойства
@@ -25,7 +25,7 @@ namespace pg_class.pg_classes
         {
             return Manager.global_prop_add_as_class_prop(this, ClasProp);
         }
-        //*************************************************************************************
+        
 
         /// <summary>
         /// Метод добавляет новое глобальное свойство по образцу существующего свойства
@@ -35,7 +35,7 @@ namespace pg_class.pg_classes
         {
             return Manager.global_prop_add_as_pos_temp_prop(this, PosTempProp);
         }
-        //*************************************************************************************
+        
         #endregion
 
         #region УДАЛИТЬ
@@ -90,7 +90,7 @@ namespace pg_class.pg_classes
             return Manager.global_prop_by_name(this, iname);
         }
 
-        //*************************************************************************************
+        
         #endregion
 
         /// <summary>

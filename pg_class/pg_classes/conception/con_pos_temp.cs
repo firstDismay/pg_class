@@ -40,7 +40,7 @@ namespace pg_class.pg_classes
         {
             return Manager.pos_temp_add(out Access);
         }
-        //*************************************************************************************
+        
 
         #endregion
 
@@ -60,7 +60,7 @@ namespace pg_class.pg_classes
         {
             return Manager.pos_temp_del(out Access);
         }
-        //*************************************************************************************
+        
         #endregion
 
         #region ВЫБРАТЬ
@@ -79,7 +79,7 @@ namespace pg_class.pg_classes
         {
             return Manager.pos_temp_nestedlist_by_id(out Access);
         }
-        //*************************************************************************************
+        
 
 
         /// <summary>
@@ -97,7 +97,7 @@ namespace pg_class.pg_classes
         {
             return Manager.pos_temp_by_id_prototype(out Access);
         }
-        //*************************************************************************************
+        
 
 
         /// <summary>
@@ -115,7 +115,7 @@ namespace pg_class.pg_classes
         {
             return Manager.pos_temp_by_id_con(out Access);
         }
-        //*************************************************************************************
+        
         #endregion
 
         #endregion

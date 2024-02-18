@@ -36,7 +36,7 @@ namespace pg_class.pg_classes
         {
             return Manager.position_add(out Access);
         }
-        //*************************************************************************************
+        
 
         #endregion
 
@@ -67,7 +67,7 @@ namespace pg_class.pg_classes
         {
             return Manager.position_del(out Access);
         }
-        //*************************************************************************************
+        
         #endregion
 
         #region ВЫБРАТЬ
@@ -86,7 +86,7 @@ namespace pg_class.pg_classes
         {
             return Manager.position_root_by_id_conception(out Access);
         }
-        //*************************************************************************************
+        
         #endregion
         #endregion
     }

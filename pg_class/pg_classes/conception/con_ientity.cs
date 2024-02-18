@@ -82,7 +82,7 @@ namespace pg_class.pg_classes
         {
             return Manager.entity_by_id(out Access);
         }
-        //*************************************************************************************
+        
 
         /// <summary>
         /// Сущность БД
@@ -105,7 +105,7 @@ namespace pg_class.pg_classes
         {
             return Manager.entity_by_id(out Access);
         }
-        //*************************************************************************************
+        
     }
 
 }

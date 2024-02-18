@@ -40,7 +40,7 @@ namespace pg_class.pg_classes
         {
             Manager.document_del(Document.Id);
         }
-        //*************************************************************************************
+        
         #endregion
 
         #region ВЫБРАТЬ

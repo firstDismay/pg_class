@@ -159,7 +159,7 @@ namespace pg_class.pg_classes
         {
             Manager.document_del(Document.Id);
         }
-        //*************************************************************************************
+        
         #endregion
 
         #region ВЫБРАТЬ
@@ -179,7 +179,7 @@ namespace pg_class.pg_classes
                 return Manager.document_by_id_conception(Id);
             }
         }
-        //*************************************************************************************
+        
 
         /// <summary>
         /// Лист документов концепции по маске имени документов
@@ -197,7 +197,7 @@ namespace pg_class.pg_classes
                 return Manager.document_by_msk_name_id_conception(iname, Id);
             }
         }
-        //*************************************************************************************
+        
         #endregion
 
         #region СЛУЖЕБНЫЕ МЕТОДЫ БИБЛИОТЕКИ ДОКУМЕНТОВ

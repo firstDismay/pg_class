@@ -24,7 +24,7 @@ namespace pg_class.pg_classes
         {
             return Manager.unit_conversion_rule_add(out Access);
         }
-        //*************************************************************************************
+        
         #endregion
 
         #region УДАЛИТЬ
@@ -43,7 +43,7 @@ namespace pg_class.pg_classes
         {
             return Manager.unit_conversion_rule_del(out Access);
         }
-        //*************************************************************************************
+        
 
         /// <summary>
         /// Метод удаляет правило пересчета единиц измерения колличества объектов
@@ -53,7 +53,7 @@ namespace pg_class.pg_classes
         {
             Manager.unit_conversion_rule_del(Id_Rule);
         }
-        //*************************************************************************************
+        
         #endregion
 
         #region ВЫБРАТЬ
@@ -72,7 +72,7 @@ namespace pg_class.pg_classes
         {
             return Manager.unit_conversion_rule_base_by_id_unit(out Access);
         }
-        //*************************************************************************************
+        
 
         /// <summary>
         /// Базовое правило пересчета по идентификатору измеряемой величины
@@ -98,7 +98,7 @@ namespace pg_class.pg_classes
         {
             return Manager.unit_conversion_rule_by_id_unit(out Access);
         }
-        //*************************************************************************************
+        
 
         /// <summary>
         /// Лист правил пересчета по идентификатору величины измерения
@@ -108,7 +108,7 @@ namespace pg_class.pg_classes
         {
             return Manager.unit_conversion_rule_by_id_unit(Id, Unit);
         }
-        //*************************************************************************************
+        
         #endregion
         #endregion
     }

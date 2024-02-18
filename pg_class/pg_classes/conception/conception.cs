@@ -341,7 +341,7 @@ namespace pg_class.pg_classes
         {
             return Manager.conception_upd(out Access);
         }
-        //*************************************************************************************
+        
 
         /// <summary>
         /// удаление текущей концепции
@@ -358,7 +358,7 @@ namespace pg_class.pg_classes
         {
             return Manager.conception_del(out Access);
         }
-        //*************************************************************************************
+        
 
         /// <summary>
         /// Обновление концепции из БД
@@ -398,7 +398,7 @@ namespace pg_class.pg_classes
         {
             return Manager.conception_by_id(out Access);
         }
-        //*************************************************************************************
+        
 
         /// <summary>
         /// Позиция корзины концепции
@@ -415,7 +415,7 @@ namespace pg_class.pg_classes
         {
             return Manager.position_by_id(out Access);
         }
-        //*************************************************************************************
+        
 
         /// <summary>
         /// Группа корзины концепции
@@ -431,7 +431,7 @@ namespace pg_class.pg_classes
         {
             return Manager.group_by_id(out Access);
         }
-        //*************************************************************************************
+        
 
         /// <summary>
         /// Шаблон позиция корзины концепции
@@ -448,7 +448,7 @@ namespace pg_class.pg_classes
         {
             return Manager.pos_temp_by_id(out Access);
         }
-        //*************************************************************************************
+        
 
         /// <summary>
         /// Проверка прав доступа к методу
@@ -457,7 +457,7 @@ namespace pg_class.pg_classes
         {
             return Manager.conception_is_actual(out Access);
         }
-        //*************************************************************************************
+        
 
         /// <summary>
         /// Восстановление концепции

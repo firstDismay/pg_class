@@ -24,7 +24,7 @@ namespace pg_class.pg_classes
         {
             return Manager.group_add(out Access);
         }
-        //*************************************************************************************
+        
         #endregion
 
         #region УДАЛИТЬ
@@ -43,7 +43,7 @@ namespace pg_class.pg_classes
         {
             return Manager.group_del(out Access);
         }
-        //*************************************************************************************
+        
         #endregion
 
         #region ВЫБРАТЬ
@@ -62,7 +62,7 @@ namespace pg_class.pg_classes
         {
             return Manager.group_by_id_parent(out Access);
         }
-        //*************************************************************************************
+        
         #endregion
         #endregion
     }

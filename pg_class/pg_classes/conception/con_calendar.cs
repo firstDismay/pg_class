@@ -36,7 +36,7 @@ namespace pg_class.pg_classes
         {
             Manager.plan_del(Plan.Id);
         }
-        //*************************************************************************************
+        
         #endregion
 
         #region ВЫБРАТЬ
@@ -48,7 +48,7 @@ namespace pg_class.pg_classes
         {
             return Manager.plan_by_id_conception(Id);
         }
-        //*************************************************************************************
+        
 
 
         #endregion

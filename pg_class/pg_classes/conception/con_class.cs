@@ -24,7 +24,7 @@ namespace pg_class.pg_classes
         {
             return Manager.class_move_to_class(out Access);
         }
-        //*************************************************************************************
+        
 
         /// <summary>
         /// Метод копирует активное представление класса в указанный абстрактный класс
@@ -41,7 +41,7 @@ namespace pg_class.pg_classes
         {
             return Manager.class_copy_to_class(out Access);
         }
-        //*************************************************************************************
+        
 
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace pg_class.pg_classes
         {
             return Manager.class_move_to_group(out Access);
         }
-        //*************************************************************************************
+        
 
 
         /// <summary>
@@ -77,7 +77,7 @@ namespace pg_class.pg_classes
         {
             return Manager.class_copy_to_group(out Access);
         }
-        //*************************************************************************************
+        
 
         #endregion
 
@@ -90,7 +90,7 @@ namespace pg_class.pg_classes
         {
             return Manager.class_act_lost_info(this);
         }
-        //*************************************************************************************
+        
 
         #endregion
 
@@ -110,7 +110,7 @@ namespace pg_class.pg_classes
         {
             return Manager.class_snapshot_clear(out Access);
         }
-        //*************************************************************************************
+        
 
         /// <summary>
         /// Лист неиспользуемых снимков классов концепции по идентификатору концепции
@@ -127,7 +127,7 @@ namespace pg_class.pg_classes
         {
             return Manager.class_snapshot_clear_info(out Access);
         }
-        //*************************************************************************************
+        
         #endregion
 
         #region НАЙТИ КЛАСС

@@ -21,7 +21,7 @@ namespace pg_class.pg_classes
         {
             return Manager.pos_prototype_nested_by_id_prototype(out Access);
         }
-        //*************************************************************************************
+        
 
 
         /// <summary>
@@ -39,7 +39,7 @@ namespace pg_class.pg_classes
         {
             return Manager.pos_prototype_by_all(out Access);
         }
-        //*************************************************************************************
+        
 
         #endregion
     }

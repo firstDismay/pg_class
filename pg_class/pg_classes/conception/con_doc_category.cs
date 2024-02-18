@@ -17,7 +17,7 @@ namespace pg_class.pg_classes
         {
             return Manager.doc_category_add(Id, iname, idesc, ion_grouping, ion);
         }
-        //*************************************************************************************
+        
         #endregion
 
         #region УДАЛИТЬ
@@ -37,7 +37,7 @@ namespace pg_class.pg_classes
         {
             Manager.doc_category_del(Doc_category.Id);
         }
-        //*************************************************************************************
+        
         #endregion
 
         #region ВЫБРАТЬ
@@ -49,7 +49,7 @@ namespace pg_class.pg_classes
         {
             return Manager.doc_category_by_id_conception(Id);
         }
-        //*************************************************************************************
+        
 
         /// <summary>
         /// Лист включенных категорий документов концепции по идентификатору концепции
@@ -59,7 +59,7 @@ namespace pg_class.pg_classes
         {
             return Manager.doc_category_on_by_id_conception(Id);
         }
-        //*************************************************************************************
+        
         #endregion
         #endregion
     }

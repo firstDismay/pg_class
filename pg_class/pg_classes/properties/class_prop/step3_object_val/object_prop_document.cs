@@ -40,7 +40,7 @@ namespace pg_class.pg_classes
         {
             Manager.document_del(Document.Id);
         }
-        //*************************************************************************************
+        
 
         /// <summary>
         /// Метод удаляет указанный документ, все вложенные документы их файлы
@@ -57,7 +57,7 @@ namespace pg_class.pg_classes
         {
             Manager.document_del_all(Document.Id);
         }
-        //*************************************************************************************
+        
         #endregion
 
         #region ВЫБРАТЬ
