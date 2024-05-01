@@ -30,7 +30,7 @@ namespace pg_class.pg_classes
             List<object_general> Result;
             if (Extended)
             {
-                Result = Manager.object_ext_by_id_class_full(this);
+                Result = Manager.object_ext_by_id_class_recursive(this);
             }
             else
             {
