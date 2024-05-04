@@ -284,6 +284,9 @@
     <Compile Include="manager\man_conception\man_conception_sel.cs" />
     <Compile Include="manager\man_conception\man_conception_del.cs" />
     <Compile Include="manager\man_export\log\man_log_exp_by_id_log_array.cs" />
+    <Compile Include="manager\man_group\man_group_sel\man_group_by_id.cs" />
+    <Compile Include="manager\man_group\man_group_sel\man_group_by_id_parent.cs" />
+    <Compile Include="manager\man_group\man_group_sel\man_group_by_name.cs" />
     <Compile Include="manager\man_log\categoty\man_log_categoty_add.cs" />
     <Compile Include="manager\man_log\categoty\man_log_categoty_del.cs" />
     <Compile Include="manager\man_log\categoty\man_log_categoty_event.cs" />
@@ -360,7 +363,6 @@
     <Compile Include="manager\Global\man_classes\NPGSQL_TypeMapClass\pg_class\pg_tblcol.cs" />
     <Compile Include="manager\Global\man_classes\NPGSQL_TypeMapClass\pg_class\pg_argument.cs" />
     <Compile Include="manager\man_group\man_group_is_actual.cs" />
-    <Compile Include="manager\man_group\man_group_sel.cs" />
     <Compile Include="manager\man_group\man_group_del.cs" />
     <Compile Include="manager\man_group\man_group_upd.cs" />
     <Compile Include="manager\man_group\man_group_add.cs" />
