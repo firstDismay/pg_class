@@ -458,7 +458,16 @@
     <Compile Include="manager\man_object\man_object_carrier_sel.cs" />
     <Compile Include="manager\man_object\man_object_patch.cs" />
     <Compile Include="manager\man_position\man_position_is_actula.cs" />
-    <Compile Include="manager\man_position\man_position_sel.cs" />
+    <Compile Include="manager\man_position\man_position_sel\man_position_by_id.cs" />
+    <Compile Include="manager\man_position\man_position_sel\man_position_by_id_parent.cs" />
+    <Compile Include="manager\man_position\man_position_sel\man_position_root_by_id_conception.cs" />
+    <Compile Include="manager\man_position\man_position_sel\man_position_by_id_pos_temp.cs" />
+    <Compile Include="manager\man_position\man_position_sel\man_position_by_id_global_prop.cs" />
+    <Compile Include="manager\man_position\man_position_sel\man_position_by_id_prop_data_type.cs" />
+    <Compile Include="manager\man_position\man_position_sel\man_position_by_id_prop_enum.cs" />
+    <Compile Include="manager\man_position\man_position_sel\man_position_by_id_prop_enum_val.cs" />
+    <Compile Include="manager\man_position\man_position_sel\man_position_name_layout_by_id_pos_temp.cs" />
+    <Compile Include="manager\man_position\man_position_sel\man_position_by_name.cs" />
     <Compile Include="manager\man_position\man_position_del.cs" />
     <Compile Include="manager\man_position\man_position_upd.cs" />
     <Compile Include="manager\man_position\man_position_add.cs" />
