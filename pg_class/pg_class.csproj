@@ -395,6 +395,7 @@
     <Compile Include="manager\man_nested_rule\man_pos_temp_rule\man_pos_temp_nested_list_sel.cs" />
     <Compile Include="manager\man_nested_rule\man_pos_temp_rule\man_pos_temp_nested_list_exclude.cs" />
     <Compile Include="manager\man_nested_rule\man_pos_temp_rule\man_pos_temp_nested_list_include.cs" />
+    <Compile Include="manager\man_object\man_object_ext_sel\man_object_ext_by_id_position_id_pos_temp.cs" />
     <Compile Include="manager\man_object\man_object_ext_sel\man_object_ext_by_id_pos_temp.cs" />
     <Compile Include="manager\man_object\man_object_ext_sel\man_object_ext_inside_by_id_carrier_array.cs" />
     <Compile Include="manager\man_object\man_object_ext_sel\man_object_ext_by_id_array.cs" />
@@ -419,6 +420,7 @@
     <Compile Include="manager\man_object\man_object_is_actual.cs" />
     <Compile Include="manager\man_object\man_object_ext_sel\man_object_ext_by_link_object.cs" />
     <Compile Include="manager\man_object\man_object_sel\man_object_by_id.cs" />
+    <Compile Include="manager\man_object\man_object_sel\man_object_by_id_position_id_pos_temp.cs" />
     <Compile Include="manager\man_object\man_object_sel\man_object_by_id_pos_temp.cs" />
     <Compile Include="manager\man_object\man_object_sel\man_object_inside_by_id_carrier_array.cs" />
     <Compile Include="manager\man_object\man_object_sel\man_object_by_id_array.cs" />
