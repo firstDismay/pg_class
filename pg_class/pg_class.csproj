@@ -459,6 +459,7 @@
     <Compile Include="manager\man_object\man_object_patch.cs" />
     <Compile Include="manager\man_position\man_position_is_actula.cs" />
     <Compile Include="manager\man_position\man_position_sel\man_position_by_id.cs" />
+    <Compile Include="manager\man_position\man_position_sel\man_position_by_id_recursive.cs" />
     <Compile Include="manager\man_position\man_position_sel\man_position_by_id_parent.cs" />
     <Compile Include="manager\man_position\man_position_sel\man_position_root_by_id_conception.cs" />
     <Compile Include="manager\man_position\man_position_sel\man_position_by_id_pos_temp.cs" />
