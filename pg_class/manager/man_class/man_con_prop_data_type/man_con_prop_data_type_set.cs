@@ -12,8 +12,6 @@ namespace pg_class
         /// </summary>
         public void con_prop_data_type_set(Int64 iid_conception, Int32 iid_prop_data_type, String ialias, Int32 isort)
         {
-            Int32 error;
-            String desc_error;
             NpgsqlCommandKey cmdk;
 
             cmdk = CommandByKey("con_prop_data_type_set");

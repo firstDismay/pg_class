@@ -14,8 +14,7 @@ namespace pg_class
         {
             position position = null;
             Int64 id = 0;
-            Int32 error;
-            String desc_error;
+           
             NpgsqlCommandKey cmdk;
 
             cmdk = CommandByKey("position_add");
@@ -87,8 +86,6 @@ namespace pg_class
         {
             position position = null;
             Int64 id = 0;
-            Int32 error;
-            String desc_error;
             NpgsqlCommandKey cmdk;
 
             cmdk = CommandByKey("position_copy");

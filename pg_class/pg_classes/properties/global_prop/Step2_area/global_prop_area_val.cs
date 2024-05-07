@@ -235,7 +235,7 @@ namespace pg_class.pg_classes
         /// </summary>
         public con_prop_data_type prop_data_type_get()
         {
-            return Manager.Con_prop_data_type_by_id(Id_conception, Id_data_type);
+            return Manager.сon_prop_data_type_by_id(Id_conception, Id_data_type);
         }
 
         /// <summary>
@@ -267,7 +267,7 @@ namespace pg_class.pg_classes
             con_prop_data_type Result = null;
             if (Id_prop_type == 1)
             {
-                Result = Manager.Con_prop_data_type_by_id(Id_conception, Id_data_type); ;
+                Result = Manager.сon_prop_data_type_by_id(Id_conception, Id_data_type); ;
             }
             else
             {
@@ -340,7 +340,7 @@ namespace pg_class.pg_classes
             switch (Id_prop_type)
             {
                 case 1:
-                    Result = Manager.Con_prop_data_type_by_id(Id_conception, Id_data_type);
+                    Result = Manager.сon_prop_data_type_by_id(Id_conception, Id_data_type);
                     break;
                 case 2:
                     Result = Manager.prop_enum_by_id(Id_area_val);
@@ -379,7 +379,7 @@ namespace pg_class.pg_classes
         {
             get
             {
-                return Manager.Con_prop_data_type_by_id_prop_type(Id_conception, Id_prop_type);
+                return Manager.сon_prop_data_type_by_id_prop_type(Id_conception, Id_prop_type);
             }
         }
         #endregion
@@ -394,7 +394,7 @@ namespace pg_class.pg_classes
             switch (Id_prop_type)
             {
                 case 1:
-                    con_prop_data_type av = Manager.Con_prop_data_type_by_id(Id_conception, Id_data_type);
+                    con_prop_data_type av = Manager.сon_prop_data_type_by_id(Id_conception, Id_data_type);
                     if (av != null)
                     {
                         Result = String.Format("Тип данных: {0}", av.ToString());

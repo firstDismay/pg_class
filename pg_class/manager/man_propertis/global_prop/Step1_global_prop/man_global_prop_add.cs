@@ -14,8 +14,6 @@ namespace pg_class
         {
             global_prop global_prop = null;
             Int64 id = 0;
-            Int32 error;
-            String desc_error;
             NpgsqlCommandKey cmdk;
 
             cmdk = CommandByKey("global_prop_add");
@@ -99,8 +97,6 @@ namespace pg_class
         {
             global_prop global_prop = null;
             Int64 id = 0;
-            Int32 error;
-            String desc_error;
             NpgsqlCommandKey cmdk;
 
             cmdk = CommandByKey("global_prop_add_as_class_prop");
@@ -180,8 +176,6 @@ namespace pg_class
         {
             global_prop global_prop = null;
             Int64 id = 0;
-            Int32 error;
-            String desc_error;
             NpgsqlCommandKey cmdk;
 
             cmdk = CommandByKey("global_prop_add_as_pos_temp_prop");

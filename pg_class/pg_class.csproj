@@ -259,22 +259,74 @@
     <Compile Include="manager\man_calendar\plan_given_range_plan\man_plan_given_range_plan_is_actual.cs" />
     <Compile Include="manager\man_calendar\plan_range\man_plan_range_event.cs" />
     <Compile Include="manager\man_calendar\plan\man_plan_event.cs" />
+    <Compile Include="manager\man_class\man_class_act_ready_check.cs" />
     <Compile Include="manager\man_class\man_class_event.cs" />
+    <Compile Include="manager\man_class\man_class_ext_sel\man_class_act_ext_by_id.cs" />
+    <Compile Include="manager\man_class\man_class_ext_sel\man_class_act_ext_by_id_parent.cs" />
+    <Compile Include="manager\man_class\man_class_ext_sel\man_class_act_ext_by_id_global_prop.cs" />
+    <Compile Include="manager\man_class\man_class_ext_sel\man_class_act_ext_by_id_group.cs" />
+    <Compile Include="manager\man_class\man_class_ext_sel\man_class_act_real_ext_by_id_group.cs" />
+    <Compile Include="manager\man_class\man_class_ext_sel\man_class_act_real_ext_allowed_by_id_group.cs" />
+    <Compile Include="manager\man_class\man_class_ext_sel\man_class_act_ext_base_allowed_by_id_group.cs" />
+    <Compile Include="manager\man_class\man_class_ext_sel\man_class_act_ext_base_by_id_conception.cs" />
+    <Compile Include="manager\man_class\man_class_ext_sel\man_class_act_ext_by_id_parent_strict_name.cs" />
+    <Compile Include="manager\man_class\man_class_ext_sel\man_class_act_ext_by_id_parent_msk_name.cs" />
+    <Compile Include="manager\man_class\man_class_ext_sel\man_class_act_ext_by_id_group_msk_name.cs" />
     <Compile Include="manager\man_class\man_class_format_name\man_class_format_name_set.cs" />
     <Compile Include="manager\man_class\man_class_is_actual.cs" />
-    <Compile Include="manager\man_class\man_class_ext_find.cs" />
-    <Compile Include="manager\man_class\man_class_find.cs" />
-    <Compile Include="manager\man_class\man_class_ext_sel.cs" />
-    <Compile Include="manager\man_class\man_class_sel.cs" />
+    <Compile Include="manager\man_class\man_class_act_prop_check.cs" />
+    <Compile Include="manager\man_class\man_class_ext_sel\man_class_act_ext_by_id_conception_msk_name.cs" />
+    <Compile Include="manager\man_class\man_class_sel\man_class_act_by_id_parent_strict_name.cs" />
+    <Compile Include="manager\man_class\man_class_sel\man_class_act_by_id_parent_msk_name.cs" />
+    <Compile Include="manager\man_class\man_class_sel\man_class_act_by_id_group_msk_name.cs" />
+    <Compile Include="manager\man_class\man_class_sel\man_class_act_by_id_conception_msk_name.cs" />
+    <Compile Include="manager\man_class\man_class_sel\man_class_act_by_id.cs" />
+    <Compile Include="manager\man_class\man_class_sel\man_class_act_by_id_parent.cs" />
+    <Compile Include="manager\man_class\man_class_sel\man_class_act_by_id_global_prop.cs" />
+    <Compile Include="manager\man_class\man_class_sel\man_class_act_real_by_id_parent.cs" />
+    <Compile Include="manager\man_class\man_class_sel\man_class_act_by_id_group.cs" />
+    <Compile Include="manager\man_class\man_class_sel\man_class_act_real_by_id_group.cs" />
+    <Compile Include="manager\man_class\man_class_sel\man_class_act_real_allowed_by_id_group.cs" />
+    <Compile Include="manager\man_class\man_class_sel\man_class_act_base_allowed_by_id_group.cs" />
+    <Compile Include="manager\man_class\man_class_sel\man_class_carrier_by_id_class_prop.cs" />
+    <Compile Include="manager\man_class\man_class_sel\man_class_act_lost_info.cs" />
+    <Compile Include="manager\man_class\man_class_sel\man_class_act_by_id_unit_conversion_rule.cs" />
+    <Compile Include="manager\man_class\man_class_sel\man_class_act_by_id_prop_enum.cs" />
+    <Compile Include="manager\man_class\man_class_sel\man_class_act_by_id_prop_enum_val.cs" />
+    <Compile Include="manager\man_class\man_class_sel\man_class_act_by_id_prop_data_type.cs" />
+    <Compile Include="manager\man_class\man_class_sel\man_class_act_base_by_id_conception.cs" />
     <Compile Include="manager\man_class\man_class_del.cs" />
-    <Compile Include="manager\man_class\man_class_snapshot\man_class_snapshot_clean.cs" />
-    <Compile Include="manager\man_class\man_class_snapshot\man_class_snapshot_ext_sel.cs" />
+    <Compile Include="manager\man_class\man_class_sel\man_class_full_real_by_id_group.cs" />
+    <Compile Include="manager\man_class\man_class_sel\man_class_full_real_by_id_conception.cs" />
+    <Compile Include="manager\man_class\man_class_snapshot\man_class_snapshot_clear.cs" />
+    <Compile Include="manager\man_class\man_class_snapshot\man_class_snapshot_clear_info.cs" />
+    <Compile Include="manager\man_class\man_class_snapshot_ext_sel\man_class_snapshot_ext_by_id.cs" />
+    <Compile Include="manager\man_class\man_class_snapshot_ext_sel\man_class_snapshot_ext_by_id_class.cs" />
+    <Compile Include="manager\man_class\man_class_snapshot_ext_sel\man_class_snapshot_ext_by_id_parent_snapshot.cs" />
+    <Compile Include="manager\man_class\man_class_snapshot_ext_sel\man_class_snapshot_ext_on_object_by_id_parent_snapshot_parent_pos.cs" />
+    <Compile Include="manager\man_class\man_class_snapshot_ext_sel\man_class_snapshot_ext_base_by_id_position.cs" />
+    <Compile Include="manager\man_class\man_class_snapshot_sel\man_class_snapshot_by_id.cs" />
+    <Compile Include="manager\man_class\man_class_snapshot_sel\man_class_snapshot_by_id_class.cs" />
+    <Compile Include="manager\man_class\man_class_snapshot_sel\man_class_snapshot_full_by_id_class.cs" />
+    <Compile Include="manager\man_class\man_class_snapshot_sel\man_class_snapshot_by_id_parent_snapshot.cs" />
+    <Compile Include="manager\man_class\man_class_snapshot_sel\man_class_snapshot_on_object_by_id_parent_snapshot_parent_pos.cs" />
+    <Compile Include="manager\man_class\man_class_snapshot_sel\man_class_snapshot_base_by_id_position.cs" />
+    <Compile Include="manager\man_class\man_class_snapshot_sel\man_class_snapshot_by_id_prop_enum.cs" />
+    <Compile Include="manager\man_class\man_class_snapshot_sel\man_class_snapshot_by_id_prop_enum_val.cs" />
+    <Compile Include="manager\man_class\man_class_snapshot_sel\man_class_snapshot_by_id_unit_conversion_rule.cs" />
+    <Compile Include="manager\man_class\man_class_unit_conversion_rule\man_class_unit_conversion_rules_full.cs" />
+    <Compile Include="manager\man_class\man_class_unit_conversion_rule\man_class_unit_conversion_rules_by_id_class.cs" />
+    <Compile Include="manager\man_class\man_class_unit_conversion_rule\man_class_unit_conversion_rules_by_id.cs" />
+    <Compile Include="manager\man_class\man_class_unit_conversion_rule\man_class_unit_conversion_rules_del.cs" />
+    <Compile Include="manager\man_class\man_class_unit_conversion_rule\man_class_unit_conversion_rules_add.cs" />
     <Compile Include="manager\man_class\man_class_unit_conversion_rule\man_class_unit_conversion_rule_event.cs" />
     <Compile Include="manager\man_class\man_class_upd.cs" />
     <Compile Include="manager\man_class\man_class_add.cs" />
     <Compile Include="manager\man_class\man_con_prop_data_type\man_con_prop_data_type_ChangeEvent.cs" />
     <Compile Include="manager\man_class\man_con_prop_data_type\man_con_prop_data_type_ListChangeEvent.cs" />
-    <Compile Include="manager\man_class\man_con_prop_data_type\man_con_prop_data_type_sel.cs" />
+    <Compile Include="manager\man_class\man_con_prop_data_type\man_сon_prop_data_type_by_id.cs" />
+    <Compile Include="manager\man_class\man_con_prop_data_type\man_сon_prop_data_type_full_by_id_con.cs" />
+    <Compile Include="manager\man_class\man_con_prop_data_type\man_сon_prop_data_type_by_id_prop_type.cs" />
     <Compile Include="manager\man_class\man_con_prop_data_type\man_con_prop_data_type_del.cs" />
     <Compile Include="manager\man_conception\man_conception_list.cs" />
     <Compile Include="manager\man_conception\man_conception_add.cs" />
@@ -337,7 +389,7 @@
     <Compile Include="manager\man_doc_lib\document\man_document_upd.cs" />
     <Compile Include="manager\man_doc_lib\document\man_document_add.cs" />
     <Compile Include="manager\man_doc_lib\document\man_document_const.cs" />
-    <Compile Include="manager\man_class\man_class_full.cs" />
+    <Compile Include="manager\man_class\man_class_sel\man_class_full_real_by_id_parent.cs" />
     <Compile Include="manager\man_doc_lib\document\man_document_ext_sel.cs" />
     <Compile Include="manager\man_doc_lib\document\man_document_event.cs" />
     <Compile Include="manager\man_doc_lib\file\man_doc_file_is_actual.cs" />
@@ -607,7 +659,7 @@
     <Compile Include="manager\man_entity\man_entity_sel.cs" />
     <Compile Include="manager\man_propertis\class_prop\Step1_class_prop\man_class_prop_event.cs" />
     <Compile Include="manager\man_object\man_object_event.cs" />
-    <Compile Include="manager\man_class\man_class_unit_conversion_rule\man_class_unit_conversion_rule.cs" />
+    <Compile Include="manager\man_class\man_class_unit_conversion_rule\man_class_unit_conversion_rules_by_unit.cs" />
     <Compile Include="manager\man_class\man_con_prop_data_type\man_con_prop_data_type_set.cs" />
     <Compile Include="manager\man_propertis\global_prop\Step4_search_func\class\man_class_act_ext_by_msk_global_prop_id_class.cs" />
     <Compile Include="manager\man_propertis\global_prop\Step4_search_func\class\man_class_act_ext_by_msk_global_prop.cs" />
@@ -691,7 +743,7 @@
     <Compile Include="manager\man_unit\man_unit_sel.cs" />
     <Compile Include="manager\man_group\man_group_event.cs" />
     <Compile Include="manager\man_group\man_group_patch.cs" />
-    <Compile Include="manager\man_class\man_class_snapshot\man_class_snapshot_sel.cs" />
+    <Compile Include="manager\man_class\man_class_snapshot_sel\man_class_snapshot_by_id_prop_data_type.cs" />
     <Compile Include="manager\man_class\man_class_path.cs" />
     <Compile Include="manager\man_nested_rule\man_pos_temp_rule\man_pos_temp_nested_list_event.cs" />
     <Compile Include="manager\Global\eventargs\Base\PosTemp\PosTempNestedListChangeEventArgs.cs" />
@@ -1133,6 +1185,9 @@
     <Content Include="АВАТАР_пилот.ico" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Microsoft.Bcl.AsyncInterfaces">
+      <Version>7.0.0</Version>
+    </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
       <Version>13.0.3</Version>
     </PackageReference>
@@ -1140,7 +1195,7 @@
       <Version>4.1.12</Version>
     </PackageReference>
     <PackageReference Include="System.Text.Json">
-      <Version>7.0.4</Version>
+      <Version>7.0.3</Version>
     </PackageReference>
     <PackageReference Include="System.Threading.Channels">
       <Version>7.0.0</Version>

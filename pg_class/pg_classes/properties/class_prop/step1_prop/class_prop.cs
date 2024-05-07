@@ -886,7 +886,7 @@ namespace pg_class.pg_classes
         /// </summary>
         public con_prop_data_type prop_data_type_get()
         {
-            return Manager.Con_prop_data_type_by_id(Id_conception, Id_data_type);
+            return Manager.сon_prop_data_type_by_id(Id_conception, Id_data_type);
         }
 
         /// <summary>
@@ -967,7 +967,7 @@ namespace pg_class.pg_classes
         {
             get
             {
-                return Manager.Con_prop_data_type_by_id_prop_type(Id_conception, Id_prop_type);
+                return Manager.сon_prop_data_type_by_id_prop_type(Id_conception, Id_prop_type);
             }
         }
         #endregion

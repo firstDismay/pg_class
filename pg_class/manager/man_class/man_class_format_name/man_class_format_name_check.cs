@@ -79,5 +79,31 @@ namespace pg_class
             }
             return Result;
         }
+
+        //ACCESS
+        /// <summary>
+        /// Проверка прав доступа к методу
+        /// </summary>
+        public Boolean class_name_format_check(out eAccess Access)
+        {
+            Boolean Result = false;
+            Access = eAccess.NotFound;
+            NpgsqlCommandKey cmdk;
+
+            cmdk = CommandByKey("class_act_name_format_check");
+            if (cmdk != null)
+            {
+                Result = cmdk.Access;
+                if (Result)
+                {
+                    Access = eAccess.Success;
+                }
+                else
+                {
+                    Access = eAccess.NotAvailable;
+                }
+            }
+            return Result;
+        }
     }
 }

@@ -60,69 +60,69 @@ namespace pg_class.pg_classes
         /// </summary>
         public List<con_prop_data_type> Con_prop_data_type_full_list()
         {
-            return Manager.Con_prop_data_type_full_by_id_con(this);
+            return Manager.сon_prop_data_type_full_by_id_con(this);
         }
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
         public Boolean Con_prop_data_type_full_list(out eAccess Access)
         {
-            return Manager.Con_prop_data_type_full_by_id_con(out Access);
+            return Manager.сon_prop_data_type_full_by_id_con(out Access);
         }
         
 
         /// <summary>
         /// Метод возвращает назначение типа данных концепции по идентификатору
-        /// Con_prop_data_type_by_id
+        /// сon_prop_data_type_by_id
         /// </summary>
-        public con_prop_data_type Con_prop_data_type_by_id(Int32 Id_con_prop_data_type)
+        public con_prop_data_type сon_prop_data_type_by_id(Int32 Id_con_prop_data_type)
         {
-            return Manager.Con_prop_data_type_by_id(Id, Id_con_prop_data_type);
+            return Manager.сon_prop_data_type_by_id(Id, Id_con_prop_data_type);
         }
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
-        public Boolean Con_prop_data_type_by_id(out eAccess Access)
+        public Boolean сon_prop_data_type_by_id(out eAccess Access)
         {
-            return Manager.Con_prop_data_type_by_id(out Access);
+            return Manager.сon_prop_data_type_by_id(out Access);
         }
         
 
         /// <summary>
         /// Лист типов данных свойств класса по типу свойства
-        /// Con_prop_data_type_by_id_prop_type
+        /// сon_prop_data_type_by_id_prop_type
         /// </summary>
         public List<con_prop_data_type> Prop_data_type(prop_type Prop_type)
         {
-            return Manager.Con_prop_data_type_by_id_prop_type(id, Prop_type);
+            return Manager.сon_prop_data_type_by_id_prop_type(id, Prop_type);
         }
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
         public Boolean Prop_data_type(out eAccess Access)
         {
-            return Manager.Con_prop_data_type_by_id_prop_type(out Access);
+            return Manager.сon_prop_data_type_by_id_prop_type(out Access);
         }
         
 
         /// <summary>
         /// Лист типов данных свойств класса по типу свойства
-        /// Con_prop_data_type_by_id_prop_type
+        /// сon_prop_data_type_by_id_prop_type
         /// </summary>
         public List<con_prop_data_type> Prop_data_type(Int32 id_prop_type)
         {
-            return Manager.Con_prop_data_type_by_id_prop_type(id, id_prop_type);
+            return Manager.сon_prop_data_type_by_id_prop_type(id, id_prop_type);
         }
         
 
 
         /// <summary>
         /// Лист типов данных свойств класса по типу свойства
-        /// Con_prop_data_type_by_id_prop_type
+        /// сon_prop_data_type_by_id_prop_type
         /// </summary>
         public List<con_prop_data_type> Prop_data_type(ePropType PropType)
         {
-            return Manager.Con_prop_data_type_by_id_prop_type(id, (Int32)PropType);
+            return Manager.сon_prop_data_type_by_id_prop_type(id, (Int32)PropType);
         }
         //*****************************************************************************
         #endregion

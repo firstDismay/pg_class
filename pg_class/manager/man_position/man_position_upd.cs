@@ -13,8 +13,6 @@ namespace pg_class
         public position position_upd(Int64 id, String iname, String idesc, Int32 isort)
         {
             position position = null;
-            Int32 error;
-            String desc_error;
             NpgsqlCommandKey cmdk;
 
             cmdk = CommandByKey("position_upd");
@@ -87,8 +85,6 @@ namespace pg_class
         public position position_move(Int64 ChildPos, Int64 ParentPos)
         {
             position position = null;
-            Int32 error;
-            String desc_error;
             NpgsqlCommandKey cmdk;
 
             cmdk = CommandByKey("position_move");
@@ -160,8 +156,6 @@ namespace pg_class
         public position position_move_root(Int64 ChildPos)
         {
             position position = null;
-            Int32 error;
-            String desc_error;
             NpgsqlCommandKey cmdk;
 
             cmdk = CommandByKey("position_move");
@@ -233,8 +227,6 @@ namespace pg_class
         public position position_changelock(Int64 iid, Boolean onlock)
         {
             position position = null;
-            Int32 error;
-            String desc_error;
             NpgsqlCommandKey cmdk;
 
             cmdk = CommandByKey("position_changelock");

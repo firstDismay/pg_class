@@ -172,7 +172,7 @@ namespace pg_class.pg_classes
         {
             con_prop_data_type temp;
             Boolean Result = false;
-            temp = Manager.Con_prop_data_type_by_id(id_conception, Id);
+            temp = Manager.сon_prop_data_type_by_id(id_conception, Id);
 
             if (temp != null)
             {

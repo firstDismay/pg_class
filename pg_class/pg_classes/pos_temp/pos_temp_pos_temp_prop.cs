@@ -109,7 +109,7 @@ namespace pg_class.pg_classes
         /// </summary>
         public List<con_prop_data_type> Prop_data_type_by_prop_type(prop_type Prop_type)
         {
-            return Manager.Con_prop_data_type_by_id_prop_type(Id_conception, Prop_type);
+            return Manager.сon_prop_data_type_by_id_prop_type(Id_conception, Prop_type);
         }
         #endregion
     }

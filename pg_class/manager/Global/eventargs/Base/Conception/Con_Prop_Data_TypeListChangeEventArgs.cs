@@ -59,7 +59,7 @@ namespace pg_class
         /// </summary>
         public con_prop_data_type GetCon_Prop_Data_Type()
         {
-            return Manager.Con_prop_data_type_by_id(Id_Conception, Id_Prop_Data_Type);
+            return Manager.сon_prop_data_type_by_id(Id_Conception, Id_Prop_Data_Type);
         }
         #endregion
     }

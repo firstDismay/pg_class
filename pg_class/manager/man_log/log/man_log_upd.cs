@@ -14,8 +14,6 @@ namespace pg_class
                                         String ititle, String imessage, String iclass_body, String ibody)
         {
             log log = null;
-            Int32 error;
-            String desc_error;
             NpgsqlCommandKey cmdk;
 
             cmdk = CommandByKey("log_upd");
