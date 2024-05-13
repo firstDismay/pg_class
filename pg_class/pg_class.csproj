@@ -333,7 +333,9 @@
     <Compile Include="manager\man_conception\man_conception_event.cs" />
     <Compile Include="manager\man_conception\man_conception_prop.cs" />
     <Compile Include="manager\man_conception\man_conception_is_actual.cs" />
-    <Compile Include="manager\man_conception\man_conception_sel.cs" />
+    <Compile Include="manager\man_conception\man_conception_sel\man_conception_by_id.cs" />
+    <Compile Include="manager\man_conception\man_conception_sel\man_conception_by_all.cs" />
+    <Compile Include="manager\man_conception\man_conception_sel\man_conception_by_default.cs" />
     <Compile Include="manager\man_conception\man_conception_del.cs" />
     <Compile Include="manager\man_export\log\man_log_exp_by_id_log_array.cs" />
     <Compile Include="manager\man_group\man_group_sel\man_group_by_id.cs" />
