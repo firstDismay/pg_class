@@ -12,13 +12,13 @@ namespace pg_class
         /// <summary>
         /// Метод возвращает список назначений типов данных для указанной концепции по идентификатору типа свойства
         /// </summary>
-        public List<con_prop_data_type> сon_prop_data_type_by_id_prop_type(Int64 iid_conception, Int32 iid_prop_type)
+        public List<con_prop_data_type> con_prop_data_type_by_id_prop_type(Int64 iid_conception, Int32 iid_prop_type)
         {
             List<con_prop_data_type> rule_list = new List<con_prop_data_type>();
             DataTable tbl_rule_list = TableByName("vcon_prop_data_type");
             NpgsqlCommandKey cmdk;
 
-            cmdk = CommandByKey("сon_prop_data_type_by_id_prop_type");
+            cmdk = CommandByKey("con_prop_data_type_by_id_prop_type");
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -50,30 +50,30 @@ namespace pg_class
         /// <summary>
         /// Метод возвращает список назначений типов данных для указанной концепции по идентификатору типа свойства
         /// </summary>
-        public List<con_prop_data_type> сon_prop_data_type_by_id_prop_type(conception Conception, prop_type Prop_type)
+        public List<con_prop_data_type> con_prop_data_type_by_id_prop_type(conception Conception, prop_type Prop_type)
         {
-            return сon_prop_data_type_by_id_prop_type(Conception.Id, Prop_type.Id);
+            return con_prop_data_type_by_id_prop_type(Conception.Id, Prop_type.Id);
         }
 
         /// <summary>
         /// Метод возвращает список назначений типов данных для указанной концепции по идентификатору типа свойства
         /// </summary>
-        public List<con_prop_data_type> сon_prop_data_type_by_id_prop_type(Int64 iid_conception, prop_type Prop_type)
+        public List<con_prop_data_type> con_prop_data_type_by_id_prop_type(Int64 iid_conception, prop_type Prop_type)
         {
-            return сon_prop_data_type_by_id_prop_type(iid_conception, Prop_type.Id);
+            return con_prop_data_type_by_id_prop_type(iid_conception, Prop_type.Id);
         }
 
         //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
-        public Boolean сon_prop_data_type_by_id_prop_type(out eAccess Access)
+        public Boolean con_prop_data_type_by_id_prop_type(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
 
-            cmdk = CommandByKey("сon_prop_data_type_by_id_prop_type");
+            cmdk = CommandByKey("con_prop_data_type_by_id_prop_type");
             if (cmdk != null)
             {
                 Result = cmdk.Access;
