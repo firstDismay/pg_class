@@ -90,39 +90,39 @@ namespace pg_class.pg_classes
 
         /// <summary>
         /// Лист типов данных свойств класса по типу свойства
-        /// сon_prop_data_type_by_id_prop_type
+        /// con_prop_data_type_by_id_prop_type
         /// </summary>
         public List<con_prop_data_type> Prop_data_type(prop_type Prop_type)
         {
-            return Manager.сon_prop_data_type_by_id_prop_type(id, Prop_type);
+            return Manager.con_prop_data_type_by_id_prop_type(id, Prop_type);
         }
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
         public Boolean Prop_data_type(out eAccess Access)
         {
-            return Manager.сon_prop_data_type_by_id_prop_type(out Access);
+            return Manager.con_prop_data_type_by_id_prop_type(out Access);
         }
         
 
         /// <summary>
         /// Лист типов данных свойств класса по типу свойства
-        /// сon_prop_data_type_by_id_prop_type
+        /// con_prop_data_type_by_id_prop_type
         /// </summary>
         public List<con_prop_data_type> Prop_data_type(Int32 id_prop_type)
         {
-            return Manager.сon_prop_data_type_by_id_prop_type(id, id_prop_type);
+            return Manager.con_prop_data_type_by_id_prop_type(id, id_prop_type);
         }
         
 
 
         /// <summary>
         /// Лист типов данных свойств класса по типу свойства
-        /// сon_prop_data_type_by_id_prop_type
+        /// con_prop_data_type_by_id_prop_type
         /// </summary>
         public List<con_prop_data_type> Prop_data_type(ePropType PropType)
         {
-            return Manager.сon_prop_data_type_by_id_prop_type(id, (Int32)PropType);
+            return Manager.con_prop_data_type_by_id_prop_type(id, (Int32)PropType);
         }
         //*****************************************************************************
         #endregion

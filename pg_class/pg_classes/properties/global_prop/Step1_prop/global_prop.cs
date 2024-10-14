@@ -483,7 +483,7 @@ namespace pg_class.pg_classes
         {
             get
             {
-                return Manager.сon_prop_data_type_by_id_prop_type(Id_conception, Id_prop_type);
+                return Manager.con_prop_data_type_by_id_prop_type(Id_conception, Id_prop_type);
             }
         }
         #endregion
