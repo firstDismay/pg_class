@@ -18,7 +18,7 @@ namespace pg_class
             DataTable tbl_rulel2 = TableByName("vcon_prop_data_type");
             NpgsqlCommandKey cmdk;
 
-            cmdk = CommandByKey("сon_prop_data_type_by_id");
+            cmdk = CommandByKey("con_prop_data_type_by_id");
             if (cmdk != null)
             {
                 if (!cmdk.Access)
