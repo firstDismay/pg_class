@@ -171,6 +171,14 @@ namespace pg_class.pg_classes
         {
             return Manager.class_prop_add(this.Id, Prop_type.Id, On_Override, Data_type.Id, iname, idesc, itag, isort);
         }
+
+        /// <summary>
+        /// Метод добавляет новое свойство класса по шаблону глобального свойства
+        /// </summary>
+        public class_prop class_prop_add_as_global_prop(global_prop Global_Prop, Boolean On_Override, String itag, Int32 isort)
+        {
+            return Manager.class_prop_add_as_global_prop(this.Id, Global_Prop.Id, On_Override, itag, isort);
+        }
         #endregion
 
         #region ИЗМЕНИТЬ

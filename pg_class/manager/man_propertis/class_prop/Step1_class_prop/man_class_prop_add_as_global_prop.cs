@@ -8,15 +8,15 @@ namespace pg_class
     public partial class manager
     {
         /// <summary>
-        /// Метод добавляет новое свойство класса
+        /// Метод добавляет новое свойство класса по шаблону глобального свойства
         /// </summary>
-        public class_prop class_prop_add(Int64 iid_class, Int32 iid_prop_type, Boolean ion_override, Int32 iid_data_type, String iname, String idesc, String itag, Int32 isort)
+        public class_prop class_prop_add_as_global_prop(Int64 iid_class, Int64 iid_global_prop, Boolean ion_override, String itag, Int32 isort)
         {
             class_prop class_prop = null;
             Int64 id = 0;
             NpgsqlCommandKey cmdk;
 
-            cmdk = CommandByKey("class_prop_add");
+            cmdk = CommandByKey("class_prop_add_as_global_prop");
             if (cmdk != null)
             {
                 if (!cmdk.Access)
@@ -30,11 +30,8 @@ namespace pg_class
             }
 
             cmdk.Parameters["iid_class"].Value = iid_class;
-            cmdk.Parameters["iid_prop_type"].Value = iid_prop_type;
+            cmdk.Parameters["iid_global_prop"].Value = iid_global_prop;
             cmdk.Parameters["ion_override"].Value = ion_override;
-            cmdk.Parameters["iid_data_type"].Value = iid_data_type;
-            cmdk.Parameters["iname"].Value = iname;
-            cmdk.Parameters["idesc"].Value = idesc;
             cmdk.Parameters["itag"].Value = itag;
             cmdk.Parameters["isort"].Value = isort;
             cmdk.ExecuteNonQuery();
@@ -56,16 +53,16 @@ namespace pg_class
         }
 
         /// <summary>
-        /// Метод добавляет новое свойство класса
+        /// Метод добавляет новое свойство класса по шаблону глобального свойства
         /// </summary>
-        public class_prop class_prop_add(vclass Class, prop_type Prop_type, Boolean On_Override, con_prop_data_type Data_type, String iname, String idesc, String itag, Int32 isort)
+        public class_prop class_prop_add_as_global_prop(vclass Class, global_prop Global_prop, Boolean On_Override, String itag, Int32 isort)
         {
             class_prop Result = null;
             if (Class != null)
             {
                 if (Class.StorageType == eStorageType.Active)
                 {
-                    Result = class_prop_add(Class.Id, Prop_type.Id, On_Override, Data_type.Id, iname, idesc, itag, isort);
+                    Result = class_prop_add_as_global_prop(Class.Id, Global_prop.Id, On_Override, itag, isort);
                 }
                 else
                 {
@@ -76,18 +73,17 @@ namespace pg_class
             return Result;
         }
 
-
         //ACCESS
         /// <summary>
         /// Проверка прав доступа к методу
         /// </summary>
-        public Boolean class_prop_add(out eAccess Access)
+        public Boolean class_prop_add_as_global_prop(out eAccess Access)
         {
             Boolean Result = false;
             Access = eAccess.NotFound;
             NpgsqlCommandKey cmdk;
 
-            cmdk = CommandByKey("class_prop_add");
+            cmdk = CommandByKey("class_prop_add_as_global_prop");
             if (cmdk != null)
             {
                 Result = cmdk.Access;
