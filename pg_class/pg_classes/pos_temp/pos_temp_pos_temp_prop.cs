@@ -33,7 +33,7 @@ namespace pg_class.pg_classes
 
         #endregion
 
-        #region МЕТОДЫ РАБОТЫ  СО СПИСКОМ СВОЙСТВ КЛАССА
+        #region МЕТОДЫ РАБОТЫ  СО СПИСКОМ СВОЙСТВ  ШАБЛОНА ПОЗИЦИЙ
         #region ДОБАВИТЬ
 
         /// <summary>
@@ -43,6 +43,14 @@ namespace pg_class.pg_classes
         public pos_temp_prop pos_temp_prop_add(prop_type Prop_type, Boolean On_Override, prop_data_type Data_type, String iname, String idesc, Int32 isort)
         {
             return Manager.pos_temp_prop_add(this.Id, Prop_type.Id, On_Override, Data_type.Id, iname, idesc, isort);
+        }
+
+        /// <summary>
+        /// Метод добавляет новое свойство шаблона позиций по шаблону глобального свойства
+        /// </summary>
+        public pos_temp_prop pos_temp_prop_add_as_global_prop(global_prop Global_Prop, Boolean On_Override, Int32 isort)
+        {
+            return Manager.pos_temp_prop_add_as_global_prop(this.Id, Global_Prop.Id, On_Override, isort);
         }
         #endregion
 
