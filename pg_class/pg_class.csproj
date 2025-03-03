@@ -677,6 +677,7 @@
     <Compile Include="manager\man_class\man_class_format_name\man_class_format_name_check.cs" />
     <Compile Include="manager\man_propertis\global_prop\Step4_search_func\object_ext\man_object_ext_sel_by_array_prop.cs" />
     <Compile Include="manager\man_propertis\global_prop\Step4_search_func\object\man_object_sel_by_array_prop.cs" />
+    <Compile Include="manager\man_propertis\pos_temp\Step1_pos_temp_prop\man_pos_temp_prop_add_as_global_prop.cs" />
     <Compile Include="manager\man_propertis\pos_temp\Step1_pos_temp_prop\man_pos_temp_prop_is_actual.cs" />
     <Compile Include="manager\man_propertis\pos_temp\Step1_pos_temp_prop\man_pos_temp_prop_sel.cs" />
     <Compile Include="manager\man_propertis\pos_temp\Step1_pos_temp_prop\man_pos_temp_prop_del.cs" />
