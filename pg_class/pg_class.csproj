@@ -454,6 +454,7 @@
     <Compile Include="manager\man_nested_rule\man_pos_temp_rule\man_pos_temp_nested_list_sel.cs" />
     <Compile Include="manager\man_nested_rule\man_pos_temp_rule\man_pos_temp_nested_list_exclude.cs" />
     <Compile Include="manager\man_nested_rule\man_pos_temp_rule\man_pos_temp_nested_list_include.cs" />
+    <Compile Include="manager\man_object\man_object _move.cs" />
     <Compile Include="manager\man_object\man_object_ext_sel\man_object_ext_by_id_position_id_pos_temp.cs" />
     <Compile Include="manager\man_object\man_object_ext_sel\man_object_ext_by_id_pos_temp.cs" />
     <Compile Include="manager\man_object\man_object_ext_sel\man_object_ext_inside_by_id_carrier_array.cs" />
